@@ -1,3 +1,8 @@
+This is a copy of the Chargebee OpenAPI Spec with changes committed to Git for easy tracking of API changes. 
+
+Original Readme follows:
+
+--- 
 # Chargebee OpenAPI Specification
 
 ### ⚠️ Early Access
