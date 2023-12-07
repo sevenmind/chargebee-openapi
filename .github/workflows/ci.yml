@@ -21,10 +21,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install yq
+        uses: mikefarah/yq@master
       - name: Refresh API Specs
         run: |
-          curl https://openapi.chargebee.com/${{ matrix.spec }}/index.json -o specs/${{matrix.spec}}/index.json
-          curl https://openapi.chargebee.com/${{ matrix.spec }}/index.yaml -o specs/${{matrix.spec}}/index.yaml
+          curl https://openapi.chargebee.com/${{ matrix.spec }}/index.json | yq -P -p=json -o=json 'del(.info.x-generated-on)' >| specs/${{matrix.spec}}/index.json
+          curl https://openapi.chargebee.com/${{ matrix.spec }}/index.yaml | yq -P 'del(.info.x-generated-on)' >| specs/${{matrix.spec}}/index.yaml
       - name: check for changes
         uses: tj-actions/verify-changed-files@v16
         id: changed
