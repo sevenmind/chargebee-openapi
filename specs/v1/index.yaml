@@ -25099,6 +25099,7 @@ components:
             - active
             - non_renewing
             - cancelled
+            - transferred
         term_ends_at:
           pattern: ^[0-9]{10}$
           type: integer
@@ -27017,7 +27018,7 @@ components:
         status:
           type: string
           description: |
-            Current state of the subscription \* future - The subscription is scheduled to start at a future date. \* in_trial - The subscription is in trial. \* active - The subscription is active and will be charged for automatically based on the items in it. \* cancelled - The subscription has been canceled and is no longer in service. \* non_renewing - The subscription will be canceled at the end of the current term.
+            Current state of the subscription \* future - The subscription is scheduled to start at a future date. \* transferred - The `transferred` status will be reflected on the source business entity's subscription attribute once the [customer transfer](https://www.chargebee.com/docs/2.0/mbe-getting-started-with-customer-transfer.html) activity is completed successfully. This status is only valid for [product catalog 2.0](https://www.chargebee.com/docs/2.0/product-catalog.html) as the Multiple Business Entity features can only be enabled for product catalog 2.0. \* in_trial - The subscription is in trial. \* active - The subscription is active and will be charged for automatically based on the items in it. \* cancelled - The subscription has been canceled and is no longer in service. \* non_renewing - The subscription will be canceled at the end of the current term.
           deprecated: false
           enum:
             - future
@@ -27025,6 +27026,7 @@ components:
             - active
             - non_renewing
             - cancelled
+            - transferred
         trial_start:
           pattern: ^[0-9]{10}$
           type: integer
@@ -27335,6 +27337,7 @@ components:
         - active
         - non_renewing
         - cancelled
+        - transferred
     Taxability:
       type: string
       deprecated: false

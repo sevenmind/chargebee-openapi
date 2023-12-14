@@ -33092,7 +33092,8 @@
               "in_trial",
               "active",
               "non_renewing",
-              "cancelled"
+              "cancelled",
+              "transferred"
             ]
           },
           "term_ends_at": {
@@ -35051,14 +35052,15 @@
           },
           "status": {
             "type": "string",
-            "description": "Current state of the subscription \\* future - The subscription is scheduled to start at a future date. \\* in_trial - The subscription is in trial. \\* active - The subscription is active and will be charged for automatically based on the items in it. \\* cancelled - The subscription has been canceled and is no longer in service. \\* non_renewing - The subscription will be canceled at the end of the current term.\n",
+            "description": "Current state of the subscription \\* future - The subscription is scheduled to start at a future date. \\* transferred - The `transferred` status will be reflected on the source business entity's subscription attribute once the [customer transfer](https://www.chargebee.com/docs/2.0/mbe-getting-started-with-customer-transfer.html) activity is completed successfully. This status is only valid for [product catalog 2.0](https://www.chargebee.com/docs/2.0/product-catalog.html) as the Multiple Business Entity features can only be enabled for product catalog 2.0. \\* in_trial - The subscription is in trial. \\* active - The subscription is active and will be charged for automatically based on the items in it. \\* cancelled - The subscription has been canceled and is no longer in service. \\* non_renewing - The subscription will be canceled at the end of the current term.\n",
             "deprecated": false,
             "enum": [
               "future",
               "in_trial",
               "active",
               "non_renewing",
-              "cancelled"
+              "cancelled",
+              "transferred"
             ]
           },
           "trial_start": {
@@ -35389,7 +35391,8 @@
           "in_trial",
           "active",
           "non_renewing",
-          "cancelled"
+          "cancelled",
+          "transferred"
         ]
       },
       "Taxability": {
