@@ -2232,6 +2232,7 @@ paths:
                         - paypal_express_checkout
                         - amazon_payments
                         - direct_debit
+                        - automated_bank_transfer
                     gateway:
                       type: string
                       description: |
@@ -3433,6 +3434,7 @@ paths:
                         - paypal_express_checkout
                         - amazon_payments
                         - direct_debit
+                        - automated_bank_transfer
                     gateway:
                       type: string
                       description: |
@@ -5405,6 +5407,7 @@ paths:
                         - paypal_express_checkout
                         - amazon_payments
                         - direct_debit
+                        - automated_bank_transfer
                     gateway:
                       type: string
                       description: |
@@ -7135,6 +7138,7 @@ paths:
                         - paypal_express_checkout
                         - amazon_payments
                         - direct_debit
+                        - automated_bank_transfer
                     gateway:
                       type: string
                       description: |
@@ -24935,6 +24939,7 @@ components:
                 - paypal_express_checkout
                 - amazon_payments
                 - direct_debit
+                - automated_bank_transfer
             gateway:
               type: string
               description: |
@@ -27643,6 +27648,7 @@ components:
         - paypal_express_checkout
         - amazon_payments
         - direct_debit
+        - automated_bank_transfer
   parameters:
     coupon-id:
       name: coupon-id

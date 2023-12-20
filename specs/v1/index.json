@@ -2921,7 +2921,8 @@
                           "card",
                           "paypal_express_checkout",
                           "amazon_payments",
-                          "direct_debit"
+                          "direct_debit",
+                          "automated_bank_transfer"
                         ]
                       },
                       "gateway": {
@@ -4314,7 +4315,8 @@
                           "card",
                           "paypal_express_checkout",
                           "amazon_payments",
-                          "direct_debit"
+                          "direct_debit",
+                          "automated_bank_transfer"
                         ]
                       },
                       "gateway": {
@@ -7003,7 +7005,8 @@
                           "card",
                           "paypal_express_checkout",
                           "amazon_payments",
-                          "direct_debit"
+                          "direct_debit",
+                          "automated_bank_transfer"
                         ]
                       },
                       "gateway": {
@@ -9253,7 +9256,8 @@
                           "card",
                           "paypal_express_checkout",
                           "amazon_payments",
-                          "direct_debit"
+                          "direct_debit",
+                          "automated_bank_transfer"
                         ]
                       },
                       "gateway": {
@@ -32921,7 +32925,8 @@
                   "card",
                   "paypal_express_checkout",
                   "amazon_payments",
-                  "direct_debit"
+                  "direct_debit",
+                  "automated_bank_transfer"
                 ]
               },
               "gateway": {
@@ -35715,7 +35720,8 @@
           "card",
           "paypal_express_checkout",
           "amazon_payments",
-          "direct_debit"
+          "direct_debit",
+          "automated_bank_transfer"
         ]
       }
     },
