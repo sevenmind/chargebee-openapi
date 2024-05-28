@@ -25542,6 +25542,7 @@ components:
         - sage_pay
         - tco
         - wirecard
+        - not_applicable
     HostedPage:
       required:
         - content
@@ -26585,12 +26586,17 @@ components:
     PaymentMethod:
       type: string
       deprecated: false
+      default: card
       enum:
         - cash
         - check
+        - chargeback
         - bank_transfer
-        - direct_debit
         - other
+        - card
+        - amazon_payments
+        - paypal_express_checkout
+        - direct_debit
     Plan:
       required:
         - charge_model
@@ -27642,7 +27648,7 @@ components:
         This resource represents the [transaction](https://www.chargebee.com/docs/transactions.html) event that has happened in your account.
     Type:
       type: string
-      deprecated: true
+      deprecated: false
       enum:
         - card
         - paypal_express_checkout

@@ -33551,7 +33551,8 @@
           "paypal_payflow_pro",
           "sage_pay",
           "tco",
-          "wirecard"
+          "wirecard",
+          "not_applicable"
         ]
       },
       "HostedPage": {
@@ -34600,12 +34601,17 @@
       "PaymentMethod": {
         "type": "string",
         "deprecated": false,
+        "default": "card",
         "enum": [
           "cash",
           "check",
+          "chargeback",
           "bank_transfer",
-          "direct_debit",
-          "other"
+          "other",
+          "card",
+          "amazon_payments",
+          "paypal_express_checkout",
+          "direct_debit"
         ]
       },
       "Plan": {
@@ -35715,7 +35721,7 @@
       },
       "Type": {
         "type": "string",
-        "deprecated": true,
+        "deprecated": false,
         "enum": [
           "card",
           "paypal_express_checkout",
