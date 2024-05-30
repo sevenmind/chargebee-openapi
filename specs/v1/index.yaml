@@ -26143,7 +26143,7 @@ components:
                   - subscription
                   - customer
               note:
-                maxLength: 2000
+                maxLength: 65000
                 type: string
                 description: |
                   Actual note.
