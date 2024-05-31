@@ -3250,6 +3250,12 @@ paths:
                       description: |
                         Company name of the customer.
                       deprecated: false
+                    phone:
+                      maxLength: 50
+                      type: string
+                      description: |
+                        Phone number of the customer
+                      deprecated: false
                     taxability:
                       type: string
                       description: |
@@ -3264,12 +3270,6 @@ paths:
                       enum:
                         - taxable
                         - exempt
-                    phone:
-                      maxLength: 50
-                      type: string
-                      description: |
-                        Phone number of the customer
-                      deprecated: false
                     auto_collection:
                       type: string
                       description: |
@@ -14558,6 +14558,12 @@ paths:
                       description: |
                         Company name of the customer.
                       deprecated: false
+                    phone:
+                      maxLength: 50
+                      type: string
+                      description: |
+                        Phone number of the customer
+                      deprecated: false
                     taxability:
                       type: string
                       description: |
@@ -14572,12 +14578,6 @@ paths:
                       enum:
                         - taxable
                         - exempt
-                    phone:
-                      maxLength: 50
-                      type: string
-                      description: |
-                        Phone number of the customer
-                      deprecated: false
                   additionalProperties: true
                   description: |
                     Parameters for customer
