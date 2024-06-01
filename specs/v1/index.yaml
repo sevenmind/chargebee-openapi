@@ -11243,7 +11243,7 @@ paths:
                   type: object
                   properties:
                     amount:
-                      minimum: 1
+                      minimum: 0
                       type: integer
                       description: |
                         The amount to be refunded (for online payments) or recorded as refunded (for offline payments). If not specified, the entire refundable amount for this invoice is refunded. The refundable amount is the total amount paid (and not already refunded) for the invoice. **Note:** Any [linked_taxes_withheld](/docs/api/invoices#invoice_linked_taxes_withheld) associated with the invoice can also be recorded as refunded via this operation.
@@ -26055,7 +26055,7 @@ components:
                 format: unix-time
                 deprecated: false
               txn_amount:
-                minimum: 1
+                minimum: 0
                 type: integer
                 description: |
                   Total amount of the transaction
@@ -27459,7 +27459,7 @@ components:
             The currency code (ISO 4217 format) for the transaction.
           deprecated: false
         amount:
-          minimum: 1
+          minimum: 0
           type: integer
           description: |
             Amount for this transaction.
@@ -27632,7 +27632,7 @@ components:
                 format: unix-time
                 deprecated: false
               txn_amount:
-                minimum: 1
+                minimum: 0
                 type: integer
                 description: |
                   Amount of this refund transaction.
