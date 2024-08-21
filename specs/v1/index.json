@@ -28628,7 +28628,6 @@
                 "transaction",
                 "plan",
                 "addon",
-                "coupon",
                 "order",
                 "business_entity"
               ]
@@ -28919,7 +28918,6 @@
                       "transaction",
                       "plan",
                       "addon",
-                      "coupon",
                       "order",
                       "business_entity"
                     ]
@@ -32096,7 +32094,6 @@
               "transaction",
               "plan",
               "addon",
-              "coupon",
               "order",
               "business_entity"
             ]
@@ -33051,7 +33048,6 @@
           "transaction",
           "plan",
           "addon",
-          "coupon",
           "order",
           "business_entity"
         ]

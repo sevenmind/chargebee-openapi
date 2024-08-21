@@ -21560,7 +21560,6 @@ paths:
               - transaction
               - plan
               - addon
-              - coupon
               - order
               - business_entity
         - name: entity_id
@@ -21770,7 +21769,6 @@ paths:
                     - transaction
                     - plan
                     - addon
-                    - coupon
                     - order
                     - business_entity
                 entity_id:
@@ -24171,7 +24169,6 @@ components:
             - transaction
             - plan
             - addon
-            - coupon
             - order
             - business_entity
         added_by:
@@ -25059,7 +25056,6 @@ components:
         - transaction
         - plan
         - addon
-        - coupon
         - order
         - business_entity
     Estimate:
