@@ -26069,7 +26069,8 @@
                     "default": "percentage",
                     "enum": [
                       "fixed_amount",
-                      "percentage"
+                      "percentage",
+                      "offer_quantity"
                     ]
                   },
                   "discount_amount": {
@@ -32243,7 +32244,8 @@
             "default": "percentage",
             "enum": [
               "fixed_amount",
-              "percentage"
+              "percentage",
+              "offer_quantity"
             ]
           },
           "discount_percentage": {

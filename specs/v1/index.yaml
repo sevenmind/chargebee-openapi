@@ -19692,6 +19692,7 @@ paths:
                   enum:
                     - fixed_amount
                     - percentage
+                    - offer_quantity
                 discount_amount:
                   minimum: 0
                   type: integer
@@ -24315,6 +24316,7 @@ components:
           enum:
             - fixed_amount
             - percentage
+            - offer_quantity
         discount_percentage:
           maximum: 100
           minimum: 0.01
