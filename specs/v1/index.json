@@ -26064,7 +26064,7 @@
                   },
                   "discount_type": {
                     "type": "string",
-                    "description": "The type of deduction. \\* fixed_amount - The specified amount will be deducted. \\* percentage - The specified percentage will be deducted. \\* offer_quantity - The specified units will be offered for free.\n",
+                    "description": "The type of deduction. \\* fixed_amount - The specified amount will be deducted. \\* percentage - The specified percentage will be deducted. \\* offer_quantity - Applies a discount based on the number of free units offered in a per unit plan subscription without reducing the total quantity sold.\n",
                     "deprecated": false,
                     "default": "percentage",
                     "enum": [
@@ -32239,7 +32239,7 @@
           },
           "discount_type": {
             "type": "string",
-            "description": "The type of deduction \\* fixed_amount - The specified amount will be deducted. \\* percentage - The specified percentage will be deducted.\n",
+            "description": "The type of deduction \\* fixed_amount - The specified amount will be deducted. \\* percentage - The specified percentage will be deducted. \\* offer_quantity - Applies a discount based on the number of free units offered in a per unit plan subscription without reducing the total quantity sold.\n",
             "deprecated": false,
             "default": "percentage",
             "enum": [
