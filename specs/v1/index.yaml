@@ -17731,7 +17731,7 @@ paths:
                     Display name used in invoice. If it is not configured then name is used in invoice.
                   deprecated: false
                 description:
-                  maxLength: 500
+                  maxLength: 2000
                   type: string
                   description: |
                     Description about the plan to show in the hosted pages \& customer portal.
@@ -18180,7 +18180,7 @@ paths:
                     Display name used in invoice. If it is not configured then name is used in invoice.
                   deprecated: false
                 description:
-                  maxLength: 500
+                  maxLength: 2000
                   type: string
                   description: |
                     Description about the plan to show in the hosted pages \& customer portal.
@@ -18624,7 +18624,7 @@ paths:
                     Display name used in invoice. If it is not configured then name is used in invoice.
                   deprecated: false
                 description:
-                  maxLength: 500
+                  maxLength: 2000
                   type: string
                   description: |
                     Description about the addon to show in the hosted pages \& customer portal. This description will not be shown if multiple addons are added.
@@ -19066,7 +19066,7 @@ paths:
                     Display name used in invoice. If it is not configured then name is used in invoice.
                   deprecated: false
                 description:
-                  maxLength: 500
+                  maxLength: 2000
                   type: string
                   description: |
                     Description about the addon to show in the hosted pages \& customer portal. This description will not be shown if multiple addons are added.
@@ -23753,7 +23753,7 @@ components:
             Display name used in invoice. If it is not configured then name is used in invoice.
           deprecated: false
         description:
-          maxLength: 500
+          maxLength: 2000
           type: string
           description: |
             Description about the addon to show in the hosted pages \& customer portal. This description will not be shown if multiple addons are added.
@@ -26627,7 +26627,7 @@ components:
             Display name used in invoice. If it is not configured then name is used in invoice.
           deprecated: false
         description:
-          maxLength: 500
+          maxLength: 2000
           type: string
           description: |
             Description about the plan to show in the hosted pages \& customer portal.

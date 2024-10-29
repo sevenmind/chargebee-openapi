@@ -23462,7 +23462,7 @@
                     "deprecated": false
                   },
                   "description": {
-                    "maxLength": 500,
+                    "maxLength": 2000,
                     "type": "string",
                     "description": "Description about the plan to show in the hosted pages \\& customer portal.\n",
                     "deprecated": false
@@ -24046,7 +24046,7 @@
                     "deprecated": false
                   },
                   "description": {
-                    "maxLength": 500,
+                    "maxLength": 2000,
                     "type": "string",
                     "description": "Description about the plan to show in the hosted pages \\& customer portal.\n",
                     "deprecated": false
@@ -24630,7 +24630,7 @@
                     "deprecated": false
                   },
                   "description": {
-                    "maxLength": 500,
+                    "maxLength": 2000,
                     "type": "string",
                     "description": "Description about the addon to show in the hosted pages \\& customer portal. This description will not be shown if multiple addons are added.\n",
                     "deprecated": false
@@ -25224,7 +25224,7 @@
                     "deprecated": false
                   },
                   "description": {
-                    "maxLength": 500,
+                    "maxLength": 2000,
                     "type": "string",
                     "description": "Description about the addon to show in the hosted pages \\& customer portal. This description will not be shown if multiple addons are added.\n",
                     "deprecated": false
@@ -31658,7 +31658,7 @@
             "deprecated": false
           },
           "description": {
-            "maxLength": 500,
+            "maxLength": 2000,
             "type": "string",
             "description": "Description about the addon to show in the hosted pages \\& customer portal. This description will not be shown if multiple addons are added.\n",
             "deprecated": false
@@ -34645,7 +34645,7 @@
             "deprecated": false
           },
           "description": {
-            "maxLength": 500,
+            "maxLength": 2000,
             "type": "string",
             "description": "Description about the plan to show in the hosted pages \\& customer portal.\n",
             "deprecated": false
