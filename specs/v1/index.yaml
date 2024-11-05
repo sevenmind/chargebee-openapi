@@ -21563,6 +21563,9 @@ paths:
               - addon
               - order
               - business_entity
+              - omnichannel_subscription
+              - omnichannel_subscription_item
+              - omnichannel_transaction
         - name: entity_id
           in: query
           description: Unique identifier of the entity.
@@ -21772,6 +21775,9 @@ paths:
                     - addon
                     - order
                     - business_entity
+                    - omnichannel_subscription
+                    - omnichannel_subscription_item
+                    - omnichannel_transaction
                 entity_id:
                   maxLength: 100
                   type: string
@@ -24172,6 +24178,9 @@ components:
             - addon
             - order
             - business_entity
+            - omnichannel_subscription
+            - omnichannel_subscription_item
+            - omnichannel_transaction
         added_by:
           maxLength: 100
           type: string
@@ -25060,6 +25069,9 @@ components:
         - addon
         - order
         - business_entity
+        - omnichannel_subscription
+        - omnichannel_subscription_item
+        - omnichannel_transaction
     Estimate:
       required:
         - amount

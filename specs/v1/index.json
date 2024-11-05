@@ -28630,7 +28630,10 @@
                 "plan",
                 "addon",
                 "order",
-                "business_entity"
+                "business_entity",
+                "omnichannel_subscription",
+                "omnichannel_subscription_item",
+                "omnichannel_transaction"
               ]
             }
           },
@@ -28920,7 +28923,10 @@
                       "plan",
                       "addon",
                       "order",
-                      "business_entity"
+                      "business_entity",
+                      "omnichannel_subscription",
+                      "omnichannel_subscription_item",
+                      "omnichannel_transaction"
                     ]
                   },
                   "entity_id": {
@@ -32096,7 +32102,10 @@
               "plan",
               "addon",
               "order",
-              "business_entity"
+              "business_entity",
+              "omnichannel_subscription",
+              "omnichannel_subscription_item",
+              "omnichannel_transaction"
             ]
           },
           "added_by": {
@@ -33051,7 +33060,10 @@
           "plan",
           "addon",
           "order",
-          "business_entity"
+          "business_entity",
+          "omnichannel_subscription",
+          "omnichannel_subscription_item",
+          "omnichannel_transaction"
         ]
       },
       "Estimate": {
