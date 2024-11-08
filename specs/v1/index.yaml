@@ -6,8 +6,8 @@ info:
     url: https://www.chargebee.com
     email: support@chargebee.com
   version: v1 (PC 1.0)
-  x-cb-api-version: 1
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     description: Live Site
@@ -26057,6 +26057,7 @@ components:
                   - failure
                   - timeout
                   - needs_attention
+                  - late_failure
               txn_date:
                 pattern: ^[0-9]{10}$
                 type: integer
@@ -27493,6 +27494,7 @@ components:
             - failure
             - timeout
             - needs_attention
+            - late_failure
         initiator_type:
           type: string
           description: |
@@ -27634,6 +27636,7 @@ components:
                   - failure
                   - timeout
                   - needs_attention
+                  - late_failure
               txn_date:
                 pattern: ^[0-9]{10}$
                 type: integer

@@ -8,8 +8,8 @@
       "email": "support@chargebee.com"
     },
     "version": "v1 (PC 1.0)",
-    "x-cb-api-version": 1,
-    "x-cb-product-catalog-version": 1
+    "x-cb-product-catalog-version": 1,
+    "x-cb-api-version": 1
   },
   "servers": [
     {
@@ -34056,7 +34056,8 @@
                     "voided",
                     "failure",
                     "timeout",
-                    "needs_attention"
+                    "needs_attention",
+                    "late_failure"
                   ]
                 },
                 "txn_date": {
@@ -35554,7 +35555,8 @@
               "voided",
               "failure",
               "timeout",
-              "needs_attention"
+              "needs_attention",
+              "late_failure"
             ]
           },
           "initiator_type": {
@@ -35700,7 +35702,8 @@
                     "voided",
                     "failure",
                     "timeout",
-                    "needs_attention"
+                    "needs_attention",
+                    "late_failure"
                   ]
                 },
                 "txn_date": {
