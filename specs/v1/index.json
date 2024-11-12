@@ -8,8 +8,8 @@
       "email": "support@chargebee.com"
     },
     "version": "v1 (PC 1.0)",
-    "x-cb-api-version": 1,
-    "x-cb-product-catalog-version": 1
+    "x-cb-product-catalog-version": 1,
+    "x-cb-api-version": 1
   },
   "servers": [
     {
@@ -34048,7 +34048,7 @@
                 },
                 "txn_status": {
                   "type": "string",
-                  "description": "The status of this transaction. \\* success - The transaction is successful. \\* in_progress - Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html) or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method. \\* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure \\* needs_attention - Connection with Gateway got terminated abruptly. So, status of this transaction needs to be resolved manually \\* timeout - Transaction failed because of Gateway not accepting the connection. \\* voided - The transaction got voided or authorization expired at gateway.\n",
+                  "description": "The status of this transaction. \\* success - The transaction is successful. \\* in_progress - Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html) or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method. \\* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure \\* needs_attention - Connection with Gateway got terminated abruptly. So, status of this transaction needs to be resolved manually \\* timeout - Transaction failed because of Gateway not accepting the connection. \\* voided - The transaction got voided or authorization expired at gateway. \\* late_failure - Indicates that a successful payment transaction has failed now due to a late failure notification from the payment gateway, typically caused by issues like insufficient funds or a closed bank account.\n",
                   "deprecated": false,
                   "enum": [
                     "in_progress",
@@ -35547,7 +35547,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The status of this transaction. \\* in_progress - Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html) or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method. \\* voided - The transaction got voided or authorization expired at gateway. \\* needs_attention - Connection with Gateway got terminated abruptly. So, status of this transaction needs to be resolved manually \\* timeout - Transaction failed because of Gateway not accepting the connection. \\* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure \\* success - The transaction is successful.\n",
+            "description": "The status of this transaction. \\* in_progress - Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html) or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method. \\* voided - The transaction got voided or authorization expired at gateway. \\* needs_attention - Connection with Gateway got terminated abruptly. So, status of this transaction needs to be resolved manually \\* timeout - Transaction failed because of Gateway not accepting the connection. \\* late_failure - Indicates that a successful payment transaction has failed now due to a late failure notification from the payment gateway, typically caused by issues like insufficient funds or a closed bank account. \\* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure \\* success - The transaction is successful.\n",
             "deprecated": false,
             "enum": [
               "in_progress",
@@ -35694,7 +35694,7 @@
                 },
                 "txn_status": {
                   "type": "string",
-                  "description": "The status of this transaction. \\* voided - The transaction got voided or authorization expired at gateway. \\* success - The transaction is successful. \\* timeout - Transaction failed because of Gateway not accepting the connection. \\* needs_attention - Connection with Gateway got terminated abruptly. So, status of this transaction needs to be resolved manually \\* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure \\* in_progress - Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html) or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method.\n",
+                  "description": "The status of this transaction. \\* voided - The transaction got voided or authorization expired at gateway. \\* late_failure - Indicates that a successful payment transaction has failed now due to a late failure notification from the payment gateway, typically caused by issues like insufficient funds or a closed bank account. \\* success - The transaction is successful. \\* timeout - Transaction failed because of Gateway not accepting the connection. \\* needs_attention - Connection with Gateway got terminated abruptly. So, status of this transaction needs to be resolved manually \\* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure \\* in_progress - Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html) or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method.\n",
                   "deprecated": false,
                   "enum": [
                     "in_progress",
