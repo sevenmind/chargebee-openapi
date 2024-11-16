@@ -6,8 +6,8 @@ info:
     url: https://www.chargebee.com
     email: support@chargebee.com
   version: v1 (PC 1.0)
-  x-cb-product-catalog-version: 1
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     description: Live Site
