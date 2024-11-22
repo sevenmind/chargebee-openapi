@@ -27680,7 +27680,8 @@
                 "re_scheduled",
                 "failed",
                 "skipped",
-                "not_applicable"
+                "not_applicable",
+                "disabled"
               ]
             }
           },
@@ -33426,7 +33427,8 @@
                     "re_scheduled",
                     "failed",
                     "skipped",
-                    "not_applicable"
+                    "not_applicable",
+                    "disabled"
                   ]
                 }
               },
@@ -35358,11 +35360,6 @@
             "type": "object",
             "additionalProperties": true,
             "description": "A set of key-value pairs stored as additional information for the subscription. \\[Learn more\\](./#meta_data).\n",
-            "deprecated": false
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": true,
             "deprecated": false
           }
         },

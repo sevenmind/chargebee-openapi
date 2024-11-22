@@ -20877,6 +20877,7 @@ paths:
               - failed
               - skipped
               - not_applicable
+              - disabled
         - name: event_type
           in: query
           description: "Specify it if you need to fetch events of a particular type.\n* subscription_cancelling - Sent when the customer's subscription is nearing it's scheduled cancellation date.\n* card_deleted - Sent when a card is deleted for a customer\n* card_expired - Sent when a card for a customer is expired\n* customer_deleted - Sent when a customer is deleted\n* subscription_cancelled - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* subscription_scheduled_cancellation_removed - Sent when scheduled cancellation is removed for the subscription.\n* customer_changed - Sent when a customer is changed\n* invoice_deleted - Event triggered when an invoice is deleted.\n* subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.\n* subscription_cancellation_scheduled - Sent when subscription is scheduled to cancel at end of current term\n* subscription_created - Sent when a new subscription is created.\n* card_expiring - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.\n* card_updated - Sent when the card is updated for a customer.\n* payment_initiated - Sent when a payment is initiated via direct debit\n* subscription_renewed - Sent when the subscription is renewed from the current term.\n* subscription_activated - Sent after the subscription has been moved from trial to active state\n* subscription_changed - Sent after the subscription's recurring items have been changed\n* customer_created - Sent when a customer is created. This event happens when only a new customer is created or when a customer is automatically created during new subscription creation.\n* subscription_deleted - Sent when a subscription has been deleted\n* subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state\n* subscription_trial_ending - Sent when the customer's trial period is about to end.\n* refund_initiated - Sent when a refund is initiated via direct debit\n* transaction_deleted - Triggered when a transaction is deleted. \n* subscription_trial_extended - Trial Extension\n* transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n* card_added - Sent when a card is added for a customer.\n* subscription_renewal_reminder - Sent before each subscription's renewal based on plan's period\n* invoice_updated - Triggered when the invoice’s shipping/billing address is updated, if the invoice is voided, or when the amount due is modified due to payments applied/removed.\n* payment_refunded - Sent when a payment refund is made\n* payment_succeeded - Sent when the payment is successfully collected\n* payment_failed - Sent when attempt to charge customer's credit card fails\n* subscription_started - Sent when a 'future' subscription gets started at the scheduled date.\n* invoice_generated - Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \"Pending\" invoice is closed.\n* invoice_created - Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the “Notify for Pending Invoices” option is enabled.\n* transaction_created - Triggered when a transaction is recorded"
@@ -25421,6 +25422,7 @@ components:
                   - failed
                   - skipped
                   - not_applicable
+                  - disabled
             deprecated: false
         event_type:
           type: string
@@ -27310,10 +27312,6 @@ components:
           additionalProperties: true
           description: |
             A set of key-value pairs stored as additional information for the subscription. \[Learn more\](./#meta_data).
-          deprecated: false
-        metadata:
-          type: object
-          additionalProperties: true
           deprecated: false
       additionalProperties: true
       description: |
