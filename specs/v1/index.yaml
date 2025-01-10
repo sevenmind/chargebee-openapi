@@ -6,8 +6,8 @@ info:
     url: https://www.chargebee.com
     email: support@chargebee.com
   version: v1 (PC 1.0)
-  x-cb-api-version: 1
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     description: Live Site
@@ -19708,6 +19708,11 @@ paths:
                     The percentage of the original amount that should be deducted from it.
                   format: double
                   deprecated: false
+                discount_quantity:
+                  minimum: 1
+                  type: integer
+                  format: int32
+                  deprecated: false
                 apply_on:
                   type: string
                   description: |
@@ -24341,6 +24346,11 @@ components:
           description: |
             The value of the deduction. The format of this value depends on the [kind of currency](/docs/api#currencies).
           format: int64
+          deprecated: false
+        discount_quantity:
+          minimum: 1
+          type: integer
+          format: int32
           deprecated: false
         duration_type:
           type: string
