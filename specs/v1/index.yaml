@@ -6,8 +6,8 @@ info:
     url: https://www.chargebee.com
     email: support@chargebee.com
   version: v1 (PC 1.0)
-  x-cb-product-catalog-version: 1
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     description: Live Site
@@ -21572,6 +21572,7 @@ paths:
               - omnichannel_subscription
               - omnichannel_subscription_item
               - omnichannel_transaction
+              - recorded_purchase
         - name: entity_id
           in: query
           description: Unique identifier of the entity.
@@ -21784,6 +21785,7 @@ paths:
                     - omnichannel_subscription
                     - omnichannel_subscription_item
                     - omnichannel_transaction
+                    - recorded_purchase
                 entity_id:
                   maxLength: 100
                   type: string
@@ -24187,6 +24189,7 @@ components:
             - omnichannel_subscription
             - omnichannel_subscription_item
             - omnichannel_transaction
+            - recorded_purchase
         added_by:
           maxLength: 100
           type: string
@@ -25083,6 +25086,7 @@ components:
         - omnichannel_subscription
         - omnichannel_subscription_item
         - omnichannel_transaction
+        - recorded_purchase
     Estimate:
       required:
         - amount
