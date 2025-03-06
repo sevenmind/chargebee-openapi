@@ -6,8 +6,8 @@ info:
     url: https://www.chargebee.com
     email: support@chargebee.com
   version: v1 (PC 1.0)
-  x-cb-api-version: 1
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     description: Live Site
@@ -21556,6 +21556,7 @@ paths:
             * plan - Entity that represents a subscription plan
             * coupon - Entity that represents a discount coupon
             * subscription - Entity that represents a subscription of a customer
+            * omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes
             * recorded_purchase - Entity that represents recorded purchases
             * transaction - Entity that represents a transaction.
             * addon - Entity that represents an addon
@@ -21580,6 +21581,7 @@ paths:
               - omnichannel_subscription_item
               - omnichannel_transaction
               - recorded_purchase
+              - omnichannel_subscription_item_scheduled_change
         - name: entity_id
           in: query
           description: Unique identifier of the entity.
@@ -21779,7 +21781,7 @@ paths:
                 entity_type:
                   type: string
                   description: |
-                    Type of the entity to create the comment for. \* omnichannel_transaction - Entity that represents omnichannel subscription transaction \* order - Entity that represents an order \* omnichannel_subscription - Entity that represents omnichannel subscription \* customer - Entity that represents a customer \* invoice - Invoice description \* omnichannel_subscription_item - Entity that represents omnichannel subscription item \* business_entity - Entity that represents item of type business entity \* plan - Entity that represents a subscription plan \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* recorded_purchase - Entity that represents recorded purchases \* transaction - Entity that represents a transaction. \* addon - Entity that represents an addon \* credit_note - Credit note description \* quote - Entity that represents a quote
+                    Type of the entity to create the comment for. \* omnichannel_transaction - Entity that represents omnichannel subscription transaction \* order - Entity that represents an order \* omnichannel_subscription - Entity that represents omnichannel subscription \* customer - Entity that represents a customer \* invoice - Invoice description \* omnichannel_subscription_item - Entity that represents omnichannel subscription item \* business_entity - Entity that represents item of type business entity \* plan - Entity that represents a subscription plan \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes \* recorded_purchase - Entity that represents recorded purchases \* transaction - Entity that represents a transaction. \* addon - Entity that represents an addon \* credit_note - Credit note description \* quote - Entity that represents a quote
                   deprecated: false
                   enum:
                     - customer
@@ -21793,6 +21795,7 @@ paths:
                     - omnichannel_subscription_item
                     - omnichannel_transaction
                     - recorded_purchase
+                    - omnichannel_subscription_item_scheduled_change
                 entity_id:
                   maxLength: 100
                   type: string
@@ -24183,7 +24186,7 @@ components:
         entity_type:
           type: string
           description: |
-            Type of the entity this comment generated for \* omnichannel_transaction - Entity that represents omnichannel subscription transaction \* order - Entity that represents an order \* omnichannel_subscription - Entity that represents omnichannel subscription \* customer - Entity that represents a customer \* invoice - Invoice description \* omnichannel_subscription_item - Entity that represents omnichannel subscription item \* business_entity - Entity that represents item of type business entity \* plan - Entity that represents a subscription plan \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* recorded_purchase - Entity that represents recorded purchases \* transaction - Entity that represents a transaction. \* addon - Entity that represents an addon \* credit_note - Credit note description \* quote - Entity that represents a quote
+            Type of the entity this comment generated for \* omnichannel_transaction - Entity that represents omnichannel subscription transaction \* invoice - Invoice description \* plan - Entity that represents a subscription plan \* omnichannel_subscription_item_scheduled_change - Entity that represents omnichannel subscription item scheduled changes \* transaction - Entity that represents a transaction. \* quote - Entity that represents a quote \* order - Entity that represents an order \* omnichannel_subscription - Entity that represents omnichannel subscription \* customer - Entity that represents a customer \* omnichannel_subscription_item - Entity that represents omnichannel subscription item \* business_entity - Entity that represents item of type business entity \* coupon - Entity that represents a discount coupon \* subscription - Entity that represents a subscription of a customer \* recorded_purchase - Entity that represents recorded purchases \* addon - Entity that represents an addon \* credit_note - Credit note description
           deprecated: false
           enum:
             - customer
@@ -24197,6 +24200,7 @@ components:
             - omnichannel_subscription_item
             - omnichannel_transaction
             - recorded_purchase
+            - omnichannel_subscription_item_scheduled_change
         added_by:
           maxLength: 100
           type: string
@@ -24219,7 +24223,7 @@ components:
         type:
           type: string
           description: |
-            Type of comment this is. \* user - Comment generated by user either via API or Admin console. \* system - Comment generated by Chargebee when any backend changes happen for an entity
+            Type of comment this is. \* system - Comment generated by Chargebee when any backend changes happen for an entity \* user - Comment generated by user either via API or Admin console.
           deprecated: false
           default: user
           enum:
@@ -25096,6 +25100,7 @@ components:
         - omnichannel_subscription_item
         - omnichannel_transaction
         - recorded_purchase
+        - omnichannel_subscription_item_scheduled_change
     Estimate:
       required:
         - amount
