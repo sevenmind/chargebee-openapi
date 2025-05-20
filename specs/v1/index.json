@@ -34171,23 +34171,10 @@
             "deprecated": false,
             "items": {
               "required": [
-                "entity_type",
                 "note"
               ],
               "type": "object",
               "properties": {
-                "entity_type": {
-                  "type": "string",
-                  "description": "Type of entity to which the note belongs. \\* subscription - Entity that represents a subscription of customer. \\* customer - Entity that represents a customer. \\* addon - Entity that represents an addon. \\* plan - Entity that represents a plan. \\* coupon - Entity that represents a coupon.\n",
-                  "deprecated": false,
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "coupon",
-                    "subscription",
-                    "customer"
-                  ]
-                },
                 "note": {
                   "maxLength": 65000,
                   "type": "string",
@@ -34199,6 +34186,18 @@
                   "type": "string",
                   "description": "Unique identifier of the entity.\n",
                   "deprecated": false
+                },
+                "entity_type": {
+                  "type": "string",
+                  "description": "Type of entity to which the note belongs. \\* subscription - Entity that represents a subscription of customer. \\* customer - Entity that represents a customer. \\* addon - Entity that represents an addon. \\* plan - Entity that represents a plan. \\* coupon - Entity that represents a coupon.\n",
+                  "deprecated": false,
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "coupon",
+                    "subscription",
+                    "customer"
+                  ]
                 }
               },
               "deprecated": false
