@@ -6,8 +6,8 @@ info:
     url: https://www.chargebee.com
     email: support@chargebee.com
   version: v1 (PC 1.0)
-  x-cb-api-version: 1
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     description: Live Site
@@ -25089,6 +25089,77 @@ components:
           deprecated: false
       description: |
         Requesting to download a file through this API will return the `download_url` attribute as the response. This attribute will contain a URL that will allow the requested content to be downloaded.
+    EinvoicingCountryConfiguration:
+      required:
+        - country
+        - is_tax_identifier
+        - scheme_name
+      type: object
+      properties:
+        external_id:
+          maxLength: 30
+          type: string
+          deprecated: false
+        type:
+          type: string
+          deprecated: false
+          default: legal_entity
+          enum:
+            - legal_entity
+            - entity_identifier
+        taxRegNumberId:
+          type: integer
+          format: int64
+          deprecated: false
+          default: 0
+        is_tax_identifier:
+          type: boolean
+          deprecated: false
+          default: false
+        scheme_name:
+          maxLength: 50
+          type: string
+          deprecated: false
+        scheme_value:
+          maxLength: 50
+          type: string
+          deprecated: false
+        country:
+          maxLength: 30
+          type: string
+          deprecated: false
+        state:
+          maxLength: 30
+          type: string
+          deprecated: false
+          default: '*'
+        irp_username:
+          maxLength: 250
+          type: string
+          deprecated: false
+        irp_validation_status:
+          type: string
+          deprecated: false
+          default: not_applicable
+          enum:
+            - not_applicable
+            - valid
+            - invalid
+        irp_validated_at:
+          pattern: ^[0-9]{10}$
+          type: integer
+          format: unix-time
+          deprecated: false
+        network:
+          type: string
+          deprecated: false
+          enum:
+            - peppol
+            - storecove
+            - irp
+            - sdi
+            - finvoice
+            - not_applicable
     EntityType:
       type: string
       deprecated: false
