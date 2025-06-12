@@ -33531,7 +33531,7 @@
                 },
                 "pc_version": {
                   "type": "string",
-                  "description": "null\n",
+                  "description": "The product catalog version associated with the event.\n",
                   "deprecated": false,
                   "enum": [
                     "1.0",

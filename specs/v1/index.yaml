@@ -25503,7 +25503,7 @@ components:
               pc_version:
                 type: string
                 description: |
-                  null
+                  The product catalog version associated with the event.
                 deprecated: false
                 enum:
                   - "1.0"
