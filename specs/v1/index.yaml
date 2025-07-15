@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2025-07-11.2d6dc287c4603b323635fabc98a5983ae2a70fed
-  x-cb-api-version: 1
+  version: 2025-07-14.5593f633e1605fb4ec79cd431fb3a848b2203116
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     description: Live Site
@@ -24161,6 +24161,13 @@ components:
           deprecated: false
       description: |
         This resource helps you to retrieve, update, and delete card details for a customer.
+    ChargebeeResponseSchemaType:
+      type: string
+      deprecated: false
+      enum:
+        - plans_addons
+        - items
+        - compat
     Comment:
       required:
         - created_at
@@ -25500,14 +25507,15 @@ components:
                 description: |
                   Uniquely identifies a webhook
                 deprecated: false
-              pc_version:
+              chargebee_response_schema_type:
                 type: string
                 description: |
-                  The product catalog version associated with the event.
+                  \* plans_addons - \* items - \* compat -
                 deprecated: false
                 enum:
-                  - "1.0"
-                  - "2.0"
+                  - plans_addons
+                  - items
+                  - compat
               webhook_status:
                 type: string
                 description: |
@@ -26710,12 +26718,6 @@ components:
         - amazon_payments
         - paypal_express_checkout
         - direct_debit
-    PcVersion:
-      type: string
-      deprecated: false
-      enum:
-        - "1.0"
-        - "2.0"
     Plan:
       required:
         - charge_model
