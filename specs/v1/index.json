@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2025-07-15.f42d942eff244d55e23602eff3d17a174da2d52a",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 1
+    "version": "2025-07-16.9c670a69ae3ba65cb930240ee8da85cb11d6a95d",
+    "x-cb-api-version": 1,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -32087,15 +32087,6 @@
         },
         "description": "This resource helps you to retrieve, update, and delete card details for a customer.\n"
       },
-      "ChargebeeResponseSchemaType": {
-        "type": "string",
-        "deprecated": false,
-        "enum": [
-          "plans_addons",
-          "items",
-          "compat"
-        ]
-      },
       "Comment": {
         "required": [
           "created_at",
@@ -33537,16 +33528,6 @@
                   "type": "string",
                   "description": "Uniquely identifies a webhook\n",
                   "deprecated": false
-                },
-                "chargebee_response_schema_type": {
-                  "type": "string",
-                  "description": "\\* plans_addons - \\* items - \\* compat -\n",
-                  "deprecated": false,
-                  "enum": [
-                    "plans_addons",
-                    "items",
-                    "compat"
-                  ]
                 },
                 "webhook_status": {
                   "type": "string",
