@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2025-07-29.7d1f4186d414f0da242ed365eab62f78ea66c7f6
+  version: 2025-07-30.c716fbb95339643f3f34bd5ad7a8dfe301b254c5
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -25777,12 +25777,6 @@ components:
           description: |
             The invoice number. Acts as a identifier for invoice and typically generated sequentially.
           deprecated: false
-        po_number:
-          maxLength: 100
-          type: string
-          description: |
-            Purchase Order Number for this invoice
-          deprecated: false
         customer_id:
           maxLength: 50
           type: string
@@ -25810,6 +25804,26 @@ components:
             - not_paid
             - voided
             - pending
+        start_date:
+          pattern: ^[0-9]{10}$
+          type: integer
+          description: |
+            Start date of the invoice.
+          format: unix-time
+          deprecated: false
+        end_date:
+          pattern: ^[0-9]{10}$
+          type: integer
+          description: |
+            The document date displayed on the invoice PDF. By default, it has the same value as the effective date of the action that created the invoice (subscription creation, update, or invoice creation). This date can be backdated (set to a value in the past) while performing the actions. Backdating an invoice is done for reasons such as booking revenue for a previous date or when the subscription or non-recurring charge is effective as of a past date. However, if the invoice is created as `pending`, and if the site is configured to set invoice dates to the date of closing, then upon invoice closure, this date is changed to the invoice closing date.
+          format: unix-time
+          deprecated: false
+        po_number:
+          maxLength: 100
+          type: string
+          description: |
+            Purchase Order Number for this invoice
+          deprecated: false
         vat_number:
           maxLength: 20
           type: string
@@ -25825,25 +25839,25 @@ components:
           enum:
             - tax_exclusive
             - tax_inclusive
-        start_date:
-          pattern: ^[0-9]{10}$
-          type: integer
-          description: |
-            Start date of the invoice.
-          format: unix-time
-          deprecated: false
-        end_date:
-          pattern: ^[0-9]{10}$
-          type: integer
-          description: |
-            The document date displayed on the invoice PDF. By default, it has the same value as the effective date of the action that created the invoice (subscription creation, update, or invoice creation). This date can be backdated (set to a value in the past) while performing the actions. Backdating an invoice is done for reasons such as booking revenue for a previous date or when the subscription or non-recurring charge is effective as of a past date. However, if the invoice is created as `pending`, and if the site is configured to set invoice dates to the date of closing, then upon invoice closure, this date is changed to the invoice closing date.
-          format: unix-time
-          deprecated: false
         currency_code:
           maxLength: 3
           type: string
           description: |
             The currency code (ISO 4217 format) for the invoice
+          deprecated: false
+        tax:
+          minimum: 0
+          type: integer
+          description: |
+            Total tax amount for this invoice
+          format: int64
+          deprecated: false
+        sub_total:
+          minimum: 0
+          type: integer
+          description: |
+            The sum of all the line item amounts minus the sum of all line item discounts. In other words, this is the sum of all [line_items[]](invoices#invoice_line_items)`.amount` - the sum of all [line_item_discounts[]](invoices#invoice_line_item_discounts)`.discount_amount`.
+          format: int64
           deprecated: false
         amount:
           minimum: 0
@@ -25852,11 +25866,11 @@ components:
             Invoiced amount displayed in cents; that is, a decimal point is not present between the whole number and the decimal part. For example, $499.99 is displayed as 49999, and so on.
           format: int64
           deprecated: false
-        amount_paid:
+        amount_due:
           minimum: 0
           type: integer
           description: |
-            Payments collected successfully for the invoice. This is the sum of [linked_payments[]](invoices#invoice_linked_payments)`.txn_amount` for all `linked_payments[]` that have `txn_status` as `success`.
+            The unpaid amount that is due on the invoice. This is calculated as: [total](invoices#invoice_total) - [amount_paid](invoices#invoice_amount_paid) - sum of [applied_credits](invoices#invoice_applied_credits)`.applied_amount` - sum of [adjustment_credit_notes](invoices#invoice_adjustment_credit_notes)`.cn_total` - sum of [linked_taxes_withheld](invoices#invoice_linked_taxes_withheld)`.amount`.
           format: int64
           deprecated: false
         amount_adjusted:
@@ -25867,19 +25881,11 @@ components:
           format: int64
           deprecated: false
           default: 0
-        credits_applied:
+        amount_paid:
           minimum: 0
           type: integer
           description: |
-            Total credits applied against this invoice.
-          format: int64
-          deprecated: false
-          default: 0
-        amount_due:
-          minimum: 0
-          type: integer
-          description: |
-            The unpaid amount that is due on the invoice. This is calculated as: [total](invoices#invoice_total) - [amount_paid](invoices#invoice_amount_paid) - sum of [applied_credits](invoices#invoice_applied_credits)`.applied_amount` - sum of [adjustment_credit_notes](invoices#invoice_adjustment_credit_notes)`.cn_total` - sum of [linked_taxes_withheld](invoices#invoice_linked_taxes_withheld)`.amount`.
+            Payments collected successfully for the invoice. This is the sum of [linked_payments[]](invoices#invoice_linked_payments)`.txn_amount` for all `linked_payments[]` that have `txn_status` as `success`.
           format: int64
           deprecated: false
         paid_on:
@@ -25889,6 +25895,14 @@ components:
             Timestamp indicating the date \& time this invoice got paid.
           format: unix-time
           deprecated: false
+        credits_applied:
+          minimum: 0
+          type: integer
+          description: |
+            Total credits applied against this invoice.
+          format: int64
+          deprecated: false
+          default: 0
         dunning_status:
           type: string
           description: |
@@ -25905,20 +25919,6 @@ components:
           description: |
             Timestamp indicating when will the next attempt to collect payment for this invoice occur.
           format: unix-time
-          deprecated: false
-        sub_total:
-          minimum: 0
-          type: integer
-          description: |
-            The sum of all the line item amounts minus the sum of all line item discounts. In other words, this is the sum of all [line_items[]](invoices#invoice_line_items)`.amount` - the sum of all [line_item_discounts[]](invoices#invoice_line_item_discounts)`.discount_amount`.
-          format: int64
-          deprecated: false
-        tax:
-          minimum: 0
-          type: integer
-          description: |
-            Total tax amount for this invoice
-          format: int64
           deprecated: false
         first_invoice:
           type: boolean
