@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2025-07-31.8aae5a3a42d34c46f475855a2f594bbe14f47207
+  version: 2025-08-01.f6fe94e29271ff54d6d45553d8c0b9b28e34e430
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -21575,6 +21575,8 @@ paths:
               - recorded_purchase
               - omnichannel_subscription_item_scheduled_change
               - sales_order
+              - omnichannel_one_time_order
+              - omnichannel_one_time_order_item
         - name: entity_id
           in: query
           description: Unique identifier of the entity.
@@ -21790,6 +21792,8 @@ paths:
                     - recorded_purchase
                     - omnichannel_subscription_item_scheduled_change
                     - sales_order
+                    - omnichannel_one_time_order
+                    - omnichannel_one_time_order_item
                 entity_id:
                   maxLength: 100
                   type: string
@@ -24196,6 +24200,8 @@ components:
             - recorded_purchase
             - omnichannel_subscription_item_scheduled_change
             - sales_order
+            - omnichannel_one_time_order
+            - omnichannel_one_time_order_item
         added_by:
           maxLength: 100
           type: string
@@ -25166,6 +25172,8 @@ components:
         - recorded_purchase
         - omnichannel_subscription_item_scheduled_change
         - sales_order
+        - omnichannel_one_time_order
+        - omnichannel_one_time_order_item
     Estimate:
       required:
         - amount
