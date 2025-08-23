@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2025-08-21.eb148cd2777cf04a169704a91e178258c1871ad5",
-    "x-cb-api-version": 1,
-    "x-cb-product-catalog-version": 1
+    "version": "2025-08-22.8cbd47629c03122cac817d4643c49395a076eafc",
+    "x-cb-product-catalog-version": 1,
+    "x-cb-api-version": 1
   },
   "servers": [
     {
