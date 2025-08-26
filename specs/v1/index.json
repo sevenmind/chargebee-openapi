@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2025-08-22.8cbd47629c03122cac817d4643c49395a076eafc",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 1
+    "version": "2025-08-25.0c8713105df5e3f27a8d61c849c09e4be8a8754b",
+    "x-cb-api-version": 1,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -36741,107 +36741,6 @@
         "required": [
           "download_url",
           "valid_till"
-        ],
-        "example": null
-      },
-      "EinvoicingCountryConfiguration": {
-        "type": "object",
-        "properties": {
-          "external_id": {
-            "type": "string",
-            "deprecated": false,
-            "maxLength": 30,
-            "example": null
-          },
-          "type": {
-            "type": "string",
-            "default": "legal_entity",
-            "deprecated": false,
-            "enum": [
-              "legal_entity",
-              "entity_identifier"
-            ],
-            "example": null
-          },
-          "taxRegNumberId": {
-            "type": "integer",
-            "format": "int64",
-            "default": 0,
-            "deprecated": false,
-            "example": null
-          },
-          "is_tax_identifier": {
-            "type": "boolean",
-            "default": false,
-            "deprecated": false,
-            "example": null
-          },
-          "scheme_name": {
-            "type": "string",
-            "deprecated": false,
-            "maxLength": 50,
-            "example": null
-          },
-          "scheme_value": {
-            "type": "string",
-            "deprecated": false,
-            "maxLength": 50,
-            "example": null
-          },
-          "country": {
-            "type": "string",
-            "deprecated": false,
-            "maxLength": 30,
-            "example": null
-          },
-          "state": {
-            "type": "string",
-            "default": "*",
-            "deprecated": false,
-            "maxLength": 30,
-            "example": null
-          },
-          "irp_username": {
-            "type": "string",
-            "deprecated": false,
-            "maxLength": 250,
-            "example": null
-          },
-          "irp_validation_status": {
-            "type": "string",
-            "default": "not_applicable",
-            "deprecated": false,
-            "enum": [
-              "not_applicable",
-              "valid",
-              "invalid"
-            ],
-            "example": null
-          },
-          "irp_validated_at": {
-            "type": "integer",
-            "format": "unix-time",
-            "deprecated": false,
-            "example": null
-          },
-          "network": {
-            "type": "string",
-            "deprecated": false,
-            "enum": [
-              "peppol",
-              "storecove",
-              "irp",
-              "sdi",
-              "finvoice",
-              "not_applicable"
-            ],
-            "example": null
-          }
-        },
-        "required": [
-          "country",
-          "is_tax_identifier",
-          "scheme_name"
         ],
         "example": null
       },
