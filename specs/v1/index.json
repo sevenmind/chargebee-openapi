@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2025-08-27.d4e16b3eded4794a69a0e2ef70ef5dde327c78f6",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 1
+    "version": "2025-08-28.06aa9b21e8d4892954491b24bdb8c7f49c036966",
+    "x-cb-api-version": 1,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -31291,16 +31291,7 @@
                 "plan",
                 "addon",
                 "order",
-                "business_entity",
-                "omnichannel_subscription",
-                "omnichannel_subscription_item",
-                "omnichannel_transaction",
-                "recorded_purchase",
-                "omnichannel_subscription_item_scheduled_change",
-                "sales_order",
-                "omnichannel_one_time_order",
-                "omnichannel_one_time_order_item",
-                "usage_file"
+                "business_entity"
               ],
               "example": null
             }
@@ -31609,16 +31600,7 @@
                       "plan",
                       "addon",
                       "order",
-                      "business_entity",
-                      "omnichannel_subscription",
-                      "omnichannel_subscription_item",
-                      "omnichannel_transaction",
-                      "recorded_purchase",
-                      "omnichannel_subscription_item_scheduled_change",
-                      "sales_order",
-                      "omnichannel_one_time_order",
-                      "omnichannel_one_time_order_item",
-                      "usage_file"
+                      "business_entity"
                     ],
                     "example": null
                   },
@@ -35447,16 +35429,7 @@
               "plan",
               "addon",
               "order",
-              "business_entity",
-              "omnichannel_subscription",
-              "omnichannel_subscription_item",
-              "omnichannel_transaction",
-              "recorded_purchase",
-              "omnichannel_subscription_item_scheduled_change",
-              "sales_order",
-              "omnichannel_one_time_order",
-              "omnichannel_one_time_order_item",
-              "usage_file"
+              "business_entity"
             ],
             "example": null
           },
@@ -36754,16 +36727,7 @@
           "plan",
           "addon",
           "order",
-          "business_entity",
-          "omnichannel_subscription",
-          "omnichannel_subscription_item",
-          "omnichannel_transaction",
-          "recorded_purchase",
-          "omnichannel_subscription_item_scheduled_change",
-          "sales_order",
-          "omnichannel_one_time_order",
-          "omnichannel_one_time_order_item",
-          "usage_file"
+          "business_entity"
         ],
         "example": null
       },
