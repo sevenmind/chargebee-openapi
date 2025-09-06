@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2025-09-04.6d7a8baf4feef31ca62708afcc7766347cf1430d
+  version: 2025-09-05.6d7a8baf4feef31ca62708afcc7766347cf1430d
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -168,7 +168,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -401,7 +401,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -590,7 +590,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -1072,7 +1072,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -1283,7 +1283,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -1509,7 +1509,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -1668,7 +1668,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -1936,7 +1936,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -2099,7 +2099,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -2934,7 +2934,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -3172,7 +3172,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -3344,7 +3344,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -4281,7 +4281,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -4513,7 +4513,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -4751,7 +4751,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -4902,7 +4902,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -5117,7 +5117,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -5333,7 +5333,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -5565,7 +5565,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -5794,7 +5794,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -6022,7 +6022,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -6293,7 +6293,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -6449,7 +6449,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -6743,7 +6743,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -7031,7 +7031,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -7263,7 +7263,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -7585,7 +7585,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -7760,7 +7760,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -8433,7 +8433,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -8721,7 +8721,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -8877,7 +8877,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -9114,7 +9114,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -9359,7 +9359,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -9566,7 +9566,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -9926,7 +9926,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -10174,7 +10174,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -10375,7 +10375,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -10601,7 +10601,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -10783,7 +10783,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -11018,7 +11018,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -11245,7 +11245,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -11466,7 +11466,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -11683,7 +11683,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -11900,7 +11900,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -12133,7 +12133,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -12322,7 +12322,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -12777,7 +12777,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -13044,7 +13044,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -13252,7 +13252,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -13405,7 +13405,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -13587,7 +13587,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -13845,7 +13845,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -14017,7 +14017,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -14292,7 +14292,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -14474,7 +14474,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -14641,7 +14641,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -14998,7 +14998,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -15180,7 +15180,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -15376,7 +15376,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -15562,7 +15562,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -15831,7 +15831,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -15988,7 +15988,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -16170,7 +16170,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -16481,7 +16481,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -16931,7 +16931,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -17237,7 +17237,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -17520,7 +17520,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -17673,7 +17673,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -18052,7 +18052,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -18237,7 +18237,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -18552,7 +18552,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -18981,7 +18981,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -19375,7 +19375,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -19838,7 +19838,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -20045,7 +20045,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -20217,7 +20217,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -20583,7 +20583,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -20736,7 +20736,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -21097,7 +21097,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -21250,7 +21250,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -21576,7 +21576,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -21748,7 +21748,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -22085,7 +22085,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -22292,7 +22292,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -22464,7 +22464,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -22831,7 +22831,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -22984,7 +22984,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -23208,7 +23208,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -23361,7 +23361,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -23530,7 +23530,7 @@ paths:
             pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -23836,7 +23836,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -24103,7 +24103,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -24271,7 +24271,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -24474,7 +24474,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -24627,7 +24627,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -24834,7 +24834,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -25085,7 +25085,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -25310,7 +25310,7 @@ paths:
                 explode: true
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -25535,7 +25535,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -25742,7 +25742,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -25895,7 +25895,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -26048,7 +26048,7 @@ paths:
             example: null
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -26292,7 +26292,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -26545,7 +26545,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
@@ -26941,7 +26941,7 @@ paths:
             encoding: {}
       responses:
         "200":
-          description: on success
+          description: OK
           content:
             application/json:
               schema:
