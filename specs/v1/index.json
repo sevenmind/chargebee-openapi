@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2025-09-16.26ed3c6bfa620c15c9afc0d0c4e2e6112e9ccfd0",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 1
+    "version": "2025-09-17.4d0564e7e729ed29edad4bfa3daa00981ae3b79f",
+    "x-cb-api-version": 1,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -37366,6 +37366,7 @@
       },
       "Invoice": {
         "type": "object",
+        "additionalProperties": true,
         "description": "Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.\n\nGenerally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.\n\nWhen invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.\n\n**Note:** If *consolidated invoicing* is enabled, the attribute *invoice.subscription_id* should **not** be used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items'](/docs/api/invoices#invoice_line_items) *subscription_id* attribute should be referred.\n",
         "properties": {
           "id": {
