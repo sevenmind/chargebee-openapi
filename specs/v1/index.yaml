@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2025-10-28.4ddf13514bf21e633f453b93546c626d21d44ff4
-  x-cb-api-version: 1
+  version: 2025-10-29.a2e9c6cfe25706b9ff1636bbc0927b9551b8a70f
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -253,16 +253,7 @@ paths:
   /subscriptions/{subscription-id}/change_term_end:
     post:
       summary: Change term end
-      description: |
-        Changes the subscription's current term end date. Depending on the "status" of the subscription, "term end date" has different effects.
-
-        * If the Subscription is in **trial**, it affects trial end date.
-        * If the Subscription is **active**, it affects the next billing date.
-        * If the Subscription's status is **non_renewing**, this affects the upcoming cancellation date.
-
-        When changing the current term there won't be any prorations calculated. All future renewals(if applicable) of the subscription will be shifted based on the new date.
-
-        **Tip**: To cycle through a couple of billing cycles and test webhooks, you may use this API.
+      description: "Changes the subscription's current term end date. Depending on the \"status\" of the subscription, \"term end date\" has different effects.\n\n* If the Subscription is in **trial**, it affects trial end date.\n* If the Subscription is **active**, it affects the next billing date.\n* If the Subscription's status is **non_renewing**, this affects the upcoming cancellation date.\n\nWhen changing the current term there won't be any prorations calculated. All future renewals(if applicable) of the subscription will be shifted based on the new date.\n\n**Tip**: To cycle through a couple of billing cycles and test webhooks, you may use this API.  \nAdvance charges, if any, will be refunded as credits and a new invoice will be generated on renewal.\n"
       operationId: change_term_end
       parameters:
         - name: chargebee-request-origin-device
@@ -680,12 +671,7 @@ paths:
         - BasicAuth: []
     post:
       summary: Create subscription for customer
-      description: |
-        **Note:** This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide) and pass it as input parameter to this API.
-
-        Creates a new subscription for an existing customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.
-
-        If the plan does not have a trial period and if any of the recurring-item has charges, then the customer is charged immediately if auto_collection is turned 'on'. In that case, subscription is created only if the customer has a payment method on file and attempted payment is successful.
+      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide)\nand pass it as input parameter to this API.\n\nCreates a new subscription for an existing customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.\n\nIf the plan does not have a trial period and if any of the recurring-item has charges, then the customer is charged immediately if auto_collection is turned 'on'. In that case, subscription is created only if the customer has a payment method on file and attempted payment is successful.  \nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n"
       operationId: create_subscription_for_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -993,7 +979,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -1165,8 +1151,7 @@ paths:
   /subscriptions/{subscription-id}/delete:
     post:
       summary: Delete a subscription
-      description: |
-        Deletes the subscription resource.
+      description: "Deletes the subscription resource.  \nThis operation is irreversible - all data related to the subscription, such as invoices, transactions, and reports, will be deleted.\n**Note:** This operation schedules the subscription resource for deletion. It will be deleted in a few minutes.\n"
       operationId: delete_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -1599,19 +1584,15 @@ paths:
   /subscriptions/{subscription-id}/retrieve_with_scheduled_changes:
     get:
       summary: Retrieve with scheduled changes
-      description: |+
-        Retrieves a subscription with the scheduled changes applied. **Note:** Only the following attributes are changed
+      description: |
+        Retrieves a subscription with the scheduled changes applied.
+        **Note:** Only the following attributes are changed
 
         * plan_id
         * plan_quantity
         * remaining_billing_cycles
         * addons
-        * coupons
-
-        Other attributes such as **status** ,**next_billing_at** are not changed and will reflect the current subscription values.
-
-        <br />
-
+        * coupons Other attributes such as **status** ,**next_billing_at** are not changed and will reflect the current subscription values.
       operationId: retrieve_with_scheduled_changes
       parameters:
         - name: chargebee-request-origin-device
@@ -1770,27 +1751,7 @@ paths:
   /subscriptions/{subscription-id}/reactivate:
     post:
       summary: Reactivate a subscription
-      description: |
-        **Note:** This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide) and pass it as input parameter to this API.
-
-        This API is used to reactivate a **cancelled** subscription. You may also optionally specify a trial end date, to move the subscription to **In Trial** state. If trial end is not specified, the subscription will be activated and any applicable charges will be initiated.
-
-        Unless the billing cycle is specified, it will be set to plan's default billing cycle.
-
-        During an in-term reactivation^++^, unless the billing cycle is specified, the subscription's remaining billing cycles will be restored. If a trial end date is specified, then the plan's default billing cycle is used.
-
-        **What is an "in-term reactivation"?** An "in-term reactivation" happens when the billing term of the subscription is retained upon cancellation and reactivation is initiated within that term.
-
-        **When is the 'billing term' retained for a cancelled subscription?** When dunning (payment failure retry settings) is configured with the last retry configured as
-
-        * cancel subscription and mark invoice as 'Not Paid', or
-        * cancel subscription and mark the invoice as 'Voided' and the case if any of the current term invoices is partially or fully paid, the invoice is not voided but instead Chargebee marks the invoices as 'Not Paid'.
-
-        <br />
-
-        **Note :** In both cases, the billing term is retained and upon reactivation the subscription will be moved to active state (if the plan does not have a trial period) and no invoice will be generated. Ensure that you collect any unpaid invoices.
-
-        **Example :** A Subscription was billed from 1st to 31st of a month and it was cancelled on the 20th due to one of the above cases (billing term is not reset). If the reactivation happens on 25th then it is considered an in-term reactivation.
+      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide)\nand pass it as input parameter to this API.\n\nThis API is used to reactivate a **cancelled** subscription. You may also optionally specify a trial end date, to move the subscription to **In Trial** state. If trial end is not specified, the subscription will be activated and any applicable charges will be initiated.\n\nUnless the billing cycle is specified, it will be set to plan's default billing cycle.\n\nDuring an in-term reactivation++, unless the billing cycle is specified, the subscription's remaining billing cycles will be restored. If a trial end date is specified, then the plan's default billing cycle is used.\n\n**What is an \"in-term reactivation\"?**\nAn \"in-term reactivation\" happens when the billing term of the subscription is retained upon cancellation and reactivation is initiated within that term.\n\n**When is the 'billing term' retained for a cancelled subscription?**\nWhen dunning (payment failure retry settings) is configured with the last retry configured as\n\n* cancel subscription and mark invoice as 'Not Paid', or\n* cancel subscription and mark the invoice as 'Voided' and the case if any of the current term invoices is partially or fully paid, the invoice is not voided but instead Chargebee marks the invoices as 'Not Paid'.\n\n**Note :** In both cases, the billing term is retained and upon reactivation the subscription will be moved to active state (if the plan does not have a trial period) and no invoice will be generated. Ensure that you collect any unpaid invoices.\n\n**Example :** A Subscription was billed from 1st to 31st of a month and it was cancelled on the 20th due to one of the above cases (billing term is not reset). If the reactivation happens on 25th then it is considered an in-term reactivation.  \nReactivation of a subscription in **non_renewing** state has been deprecated. To remove a scheduled cancellation of a **non_renewing** Subscription, use [Remove Scheduled Cancellation](/docs/api/v1/subscriptions#remove_scheduled_cancellation) API.\nHowever, if you use reactivate API to remove scheduled cancellation for a **non_renewing** Subscription, then the status will be set to **active** and the billing cycle will be set to forever. If any value is passed for trial_end or billing cycle, an error will be thrown.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n**Additional Error Scenarios:** If there is a need to create an immediate charge and the collection fails, an error will be thrown.\n"
       operationId: reactivate_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -2219,25 +2180,7 @@ paths:
         - BasicAuth: []
     post:
       summary: Update a subscription
-      description: |+
-        **Note:** This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide) and pass it as input parameter to this API.
-
-        You can modify the plan, plan quantity and add or remove addons for the subscription. By default the changes are applied immediately and the charges (/credits) are prorated and adjusted with the next billing term. You may also choose to effect the changes at the end of the current term by passing **end_of_term** as "true". In this case proration will not be done.
-
-        Only the parameters that are passed are modified for the subscription. Rest will reflect the existing values.
-
-        By default, the addons passed are appended to the existing list of addons for this subscription. In case a passed addon already exists for this subscription, quantity value is replaced. If you want to completely replace the addons for this subscription, pass **replace_addon_list** as "true".
-
-        [Card](/docs/api/v1/cards#card_attributes) and 'vat_number' attributes can also be passed during subscription update. If they are passed, corresponding Billing Info attributes - the [Billing Address](/docs/api/v1/customers#billing_address_attributes) and 'vat_number' - will be replaced automatically.
-
-        Passing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable
-
-        * If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.
-        * If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form.
-        * You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.
-
-        <br />
-
+      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide)\nand pass it as input parameter to this API.\n\nYou can modify the plan, plan quantity and add or remove addons for the subscription. By default the changes are applied immediately and the charges (/credits) are prorated and adjusted with the next billing term. You may also choose to effect the changes at the end of the current term by passing **end_of_term** as \"true\". In this case proration will not be done.\n\nOnly the parameters that are passed are modified for the subscription. Rest will reflect the existing values.\n\nBy default, the addons passed are appended to the existing list of addons for this subscription. In case a passed addon already exists for this subscription, quantity value is replaced. If you want to completely replace the addons for this subscription, pass **replace_addon_list** as \"true\".\n\n[Card](/docs/api/v1/cards#card_attributes) and 'vat_number' attributes can also be passed during subscription update. If they are passed, corresponding Billing Info attributes - the [Billing Address](/docs/api/v1/customers#billing_address_attributes) and 'vat_number' - will be replaced automatically.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.\n\n**Proration Scenario:**\nA customer changes from a $15 plan to $30 plan after 15 days of a monthly term. He will be billed a total of $7.50 immediately. Calculation will be as follows:  \n\n|---------------------------------------------|---------|\n| Prorated Charge(New Plan)                   | $15.00  |\n| Prorated Credit(Old Plan) for unused period | ($7.50) |\n| Total prorated amount                       | $7.50   |\n\nDowngrading will result in credit being created which will be applied when the subscription is charged on start of the next term.\n\n**Billing Cycle:** The billing period for a subscription does not change if the plans intervals of both old and new are same. However, if a customer changes to a plan that has different billing interval(say monthly to yearly), the billing period is reset. Customer is charged immediately for the modified subscription after applying credit for the unused period for the old subscription.\n\n**Card and VAT number Input:** If they are passed, corresponding [Billing Address](/docs/api/v1/customers#billing_address_attributes) attributes and [vat_number](/docs/api/v1/customers#customer_attributes) will be replaced. i.e existing values for Billing Address and 'vat_number' will be cleared and the new values will be set.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n\n**Advance charges**, if any, will be refunded as credits and a new invoice will be generated on renewal.\n"
       operationId: update_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -2431,7 +2374,7 @@ paths:
                 prorate:
                   type: boolean
                   deprecated: false
-                  description: "<ul> \n <li>When <code>true</code>: <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-mechanism\" target=\"_blank\">Prorated credits or charges</a> are created as applicable for this change.</li> \n <li>When <code>false</code>: The subscription is changed without creating any credits or charges.</li> \n <li>When not provided, the value configured in the <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-for-subscription-change\" target=\"_blank\">site settings</a> is considered.</li> \n</ul> \n<div class=\"alert alert-warning\"> <strong>Caveat</strong> \n <p>For further changes within the same billing term, when <code>prorate</code> is set to <code>true</code>, <strong>credits</strong> are <strong>not created</strong> when <strong>all</strong> the conditions below hold true:</p> \n <p>An immediate previous change was made</p> \n <ul> \n  <li>with <code>prorate</code> set to <code>false</code> and</li> \n  <li>no changes were made to the subscription’s billing term and</li> \n  <li>a change was made to either the subscription’s plan, its addons, or the prices of the plan or addons.</li> \n </ul> \n</div>"
+                  description: "<ul> \n <li>When <code>true</code>: <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-mechanism\" target=\"_blank\">Prorated credits or charges</a> are created as applicable for this change.</li> \n <li>When <code>false</code>: The subscription is changed without creating any credits or charges.</li> \n <li>When not provided, the value configured in the <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-for-subscription-change\" target=\"_blank\">site settings</a> is considered.</li> \n</ul> \n<div class=\"alert alert-warning\"> <strong>Caveat</strong> \n <p>For further changes within the same billing term, when <code>prorate</code> is set to <code>true</code>, <strong>credits</strong> are <strong>not created</strong> when <strong>all</strong> the conditions below hold true:</p> \n <p>An immediate previous change was made</p> \n <ul> \n  <li>with <code>prorate</code> set to <code>false</code> and</li> \n  <li>no changes were made to the subscription's billing term and</li> \n  <li>a change was made to either the subscription's plan, its addons, or the prices of the plan or addons.</li> \n </ul> \n</div>"
                   example: null
                 end_of_term:
                   type: boolean
@@ -2591,7 +2534,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -2791,7 +2734,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -2896,7 +2839,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -3075,10 +3018,7 @@ paths:
   /subscriptions/{subscription-id}/add_charge_at_term_end:
     post:
       summary: Add charge at term end
-      description: |
-        Adds a one time charge to the subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.
-
-        To collect a charge immediately, [use this API](/docs/api/v1/invoices#create_invoice_for_charge).
+      description: "Adds a one time charge to the subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.\n\nTo collect a charge immediately, [use this API](/docs/api/v1/invoices#create_invoice_for_charge).  \nIf any subscription changes happen before the end of the current term, these charges will be collected along with it.\n"
       operationId: add_charge_at_term_end
       parameters:
         - name: chargebee-request-origin-device
@@ -3304,7 +3244,8 @@ paths:
     get:
       summary: List subscriptions
       description: |
-        Returns a list of subscriptions meeting **all** the conditions specified in the filter parameters below.
+        Returns a list of subscriptions meeting **all**
+        the conditions specified in the filter parameters below.
       operationId: list_subscriptions
       parameters:
         - name: chargebee-request-origin-device
@@ -3494,8 +3435,10 @@ paths:
         - BasicAuth: []
     post:
       summary: Create a subscription
-      description: |+
-        **Note:** This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide) and pass it as input parameter to this API.
+      description: |
+        **Note:**
+        This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide)
+        and pass it as input parameter to this API.
 
         Creates a new subscription along with the customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.
 
@@ -3518,19 +3461,13 @@ paths:
         Passing card details to this API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable
 
         * If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.
-        * If you are using Braintree gateway, you can use [Braintree.js](//www.braintreepayments.com/docs/javascript) with your checkout form. Please refer this [tutorial](https://www.chargebee.com/tutorials/braintree-js-example.html) for more details.
-
-        You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.
-
-        <br />
+        * If you are using Braintree gateway, you can use [Braintree.js](//www.braintreepayments.com/docs/javascript) with your checkout form. Please refer this [tutorial](https://www.chargebee.com/tutorials/braintree-js-example.html) for more details. You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration.
 
         #### Billing Address
 
         * The Billing Address is significant especially when EU VAT or Customized Tax options are in use, because tax calculations will be based on this address.
         * In the case of EU VAT, for customers without Billing Address, taxes will not be included.
         * In the case of Customized Tax option, the billing address will be used to determine tax if shipping address is not available for the customer. If both addresses are not available, tax calculation will not happen.
-
-        <br />
 
         **Note:** For the sites created before 1st Mar 2014, customer's billing address and 'vat_number' will be replaced automatically whenever the associated card gets updated. i.e existing values for billing address and 'vat_number' will be cleared and the new values will be set. This behaviour is changed now - The VAT number should always be passed along billing address and not with card address. Both the addresses have to be dealt separately.
 
@@ -3544,9 +3481,6 @@ paths:
 
         * [Check out this tutorial to create trial signup with custom fields.](//www.chargebee.com/tutorials/custom-fields-recurring-billing-example.html)
         * [Learn how to implement a in-app checkout flow that allows your customers to select addons and apply coupons. Estimate API is used to dynamically calculate the order summary shown to the customer.](https://www.chargebee.com/tutorials/in-app-checkout-page-using-estimate-api-example.html)
-
-        <br />
-
       operationId: create_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -3814,8 +3748,8 @@ paths:
                       deprecated: false
                       description: |-
                         Specifies if the customer is liable for tax
-                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee’s native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee’s <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee’s AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
-                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that’s not available either, the tax is taken as zero.
+                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee's native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee's <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee's AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
+                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
                       enum:
                         - taxable
                         - exempt
@@ -3987,7 +3921,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -4187,7 +4121,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -4292,7 +4226,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -4441,14 +4375,7 @@ paths:
   /subscriptions/{subscription-id}/cancel:
     post:
       summary: Cancel a subscription
-      description: |
-        Cancelling a subscription will move the current state of the subscription to the **cancelled** state and will stop all recurring actions.
-
-        You could schedule the cancellation by passing **end_of_term** parameter as **true** . If scheduled, the subscription status will be set to **non_renewing** if it is in **active** state until the end of term and then **cancelled** . Subscription's state will not change if it is in **in_trial** state. However, cancellation will be scheduled at the trial end date.
-
-        While cancelling a subscription, we try to collect all pending amount against the current and old invoices. No refund for the unused period is processed (let us know if you need have specific refund scenarios).
-
-        If the collection of pending charges fails while cancelling, it will still be moved to **cancelled** status. We will continue to retry collecting the payment based on the configured retry settings until it is manually overridden.
+      description: "Cancelling a subscription will move the current state of the subscription to the **cancelled** state and will stop all recurring actions.\n\nYou could schedule the cancellation by passing **end_of_term** parameter as **true** . If scheduled, the subscription status will be set to **non_renewing** if it is in **active** state until the end of term and then **cancelled** . Subscription's state will not change if it is in **in_trial** state. However, cancellation will be scheduled at the trial end date.\n\nWhile cancelling a subscription, we try to collect all pending amount against the current and old invoices. No refund for the unused period is processed (let us know if you need have specific refund scenarios).\n\nIf the collection of pending charges fails while cancelling, it will still be moved to **cancelled** status. We will continue to retry collecting the payment based on the configured retry settings until it is manually overridden.  \nAdvance charges, if any, will be refunded as credits.\n"
       operationId: cancel_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -4672,10 +4599,7 @@ paths:
   /subscriptions/{subscription-id}/charge_addon_at_term_end:
     post:
       summary: Charge addon at term end
-      description: |
-        Adds a "non-recurring addon" charge to a subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.
-
-        To collect the charges for the non-recurring addon immediately, [use this API](/docs/api/v1/invoices#create_invoice_for_addon).
+      description: "Adds a \"non-recurring addon\" charge to a subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.\n\nTo collect the charges for the non-recurring addon immediately, [use this API](/docs/api/v1/invoices#create_invoice_for_addon).  \nIf any subscription changes happen before the end of the current term, these charges will be collected along with it.\n"
       operationId: charge_addon_at_term_end
       parameters:
         - name: chargebee-request-origin-device
@@ -5266,8 +5190,7 @@ paths:
   /customers/{customer-id}/delete:
     post:
       summary: Delete a customer
-      description: |
-        Deletes the customer resource.
+      description: "Deletes the customer resource.  \nThis will delete the Payment Method from the gateway/vault. If you do not want the Payment Method to be deleted from the vault, set the value for the delete_payment_method parameter to false.\nThis operation is irreversible - all data related to the customer, such as subscriptions, invoices, transactions, and reports, will be deleted.\n**Note:** This operation schedules the customer resource for deletion. It will be deleted in a few minutes.\n"
       operationId: delete_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -6174,7 +6097,28 @@ paths:
   /customers/{customer-id}/update_payment_method:
     post:
       summary: Update payment method for a customer
-      description: "<p>Updates payment method details for a customer. </p> \n<p class=\"alert alert-info\"><strong>Note: </strong>If you wish to pass the card number, CVV, or the single-use card tokens provided by gateways like Stripe, then use the <a href=\"cards#update_card_for_a_customer\">Update card for a customer</a> API under Cards resource. This API is not supported for Chargebee Test Gateway, which is provided to help you understand the billing workflow in Chargebee. </p> \n<p> <b>PayPal Express Checkout</b> You can use this API if you are directly integrating PayPal Express Checkout in your website instead of using Chargebee's hosted pages. When your customer updates his payment method using PayPal Express Checkout, you will be provided with the <i>Billing Agreement ID</i> by PayPal. You can update the payment method for that customer in Chargebee by passing <code>type</code> as <code>paypal_express_checkout</code> and <code>reference_id</code> with the <i>Billing Agreement ID</i>. </p> \n<p> <b>Login and Pay with Amazon</b> You can use this API if you are directly integrating <i>Login and Pay with Amazon</i> in your website instead of using Chargebee's hosted pages. When your customer updates Amazon as a payment method, you will be provided with the <i>Billing Agreement ID</i> by Amazon. You can update the payment method for that customer in Chargebee by passing <code>type</code> as <code>amazon_payments</code> and <code>reference_id</code> with the <i>Billing Agreement ID</i>. </p> \n<p> <b>Card Payments</b> When the card details of your customer are stored in the vault of gateways such as Stripe or Braintree, you can use this API to update the <i>reference id</i> provided by them in Chargebee. To use this API, pass  </p>\n<ul> \n <li> <code>type</code> as <code>card</code>. </li> \n <li> <code>gateway</code> with the gateway associated with the card. If the gateway is not specified, the default gateway will be used. </li> \n <li> <code>reference_id</code> with the identifier provided by the gateway/Spreedly to reference that specific card. </li> \n</ul> \n<p> <b>Reference id format for Card Payments</b> The format of reference_id will differ based on where the card is stored. <b>Stripe: </b> In case of Stripe, the reference_id consists of combination of Stripe Customer ID and Stripe Card ID separated by forward slash (e.g. <em>cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G</em>). If you are passing Stripe Customer ID alone, then Chargebee will store the card marked as active for that customer in Stripe.  <b>Braintree:</b> In case of Braintree, the reference_id consists of combination of Braintree Customer ID and Braintree Payment Method Token separated by forward slash (e.g. <em>cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G</em>). If you are passing Braintree Customer ID alone, then Chargebee will store the card marked as default for that customer in Braintree. <b>Spreedly Card vault:</b> If the card details are stored in Spreedly vault, then you need to provide the Spreedly token as <code>reference_id</code>. </p> \n<p> <b>Direct Debit Payments</b> When the bank account details of your customer is stored in the vault of Authorize.Net, you can use this API to update the reference id provided by them in Chargebee. To use this API, pass  </p>\n<ul> \n <li> <code>type</code> as <code>direct_debit</code>. </li> \n <li> <code>gateway</code> with the gateway where the bank account details are stored (e.g. <em>authorize_net</em>). If the gateway is not specified, the gateway supporting the direct debit will be used. </li> \n <li> <code>reference_id</code> with the identifier provided by the gateway to reference the customer's bank account details. </li> \n</ul> \n<p> <b>Reference id format for Direct Debit Payments</b> The reference_id consists of combination of Authorize.Net's Customer Profile ID and Payment Profile ID separated by forward slash (e.g. <em>2384383/34834382</em>). If you are passing Authorize.Net's Customer Profile ID alone, then Chargebee will store the first bank account details present in payment profile list of that customer in Authorize.Net. </p> \n<p> <b>Note: </b>While using this API to update payment method details, <a href=\"https://www.chargebee.com/docs/cards.html#card-verification\">Card Verification</a> will not happen even if it is enabled for that particular gateway. </p>"
+      description: |-
+        <div class="api-description"><p>Updates payment method details for a customer.</p><div class="alert alert-info"><p><strong>Note:</strong>
+        If you wish to pass the card number, CVV, or the single-use card tokens provided by gateways like Stripe, then use the <a href="cards#update_card_for_a_customer">Update card for a customer</a>
+        API under Cards resource. This API is not supported for Chargebee Test Gateway, which is provided to help you understand the billing workflow in Chargebee.</p></div><p><strong>PayPal Express Checkout</strong>
+        You can use this API if you are directly integrating PayPal Express Checkout in your website instead of using Chargebee&#x27;s hosted pages. When your customer updates his payment method using PayPal Express Checkout, you will be provided with the <em>Billing Agreement ID</em> by PayPal. You can update the payment method for that customer in Chargebee by passing <code>type</code> as <code>paypal_express_checkout</code> and <code>reference_id</code> with the <em>Billing Agreement ID</em>.</p><p><strong>Login and Pay with Amazon</strong>
+        You can use this API if you are directly integrating <em>Login and Pay with Amazon</em> in your website instead of using Chargebee&#x27;s hosted pages. When your customer updates Amazon as a payment method, you will be provided with the <em>Billing Agreement ID</em> by Amazon. You can update the payment method for that customer in Chargebee by passing <code>type</code> as <code>amazon_payments</code> and <code>reference_id</code> with the <em>Billing Agreement ID</em>.</p><p><strong>Card Payments</strong>
+        When the card details of your customer are stored in the vault of gateways such as Stripe or Braintree, you can use this API to update the <em>reference id</em> provided by them in Chargebee. To use this API, pass</p><ul>
+        <li><code>type</code> as <code>card</code>.</li>
+        <li><code>gateway</code> with the gateway associated with the card. If the gateway is not specified, the default gateway will be used.</li>
+        <li><code>reference_id</code> with the identifier provided by the gateway/Spreedly to reference that specific card.</li>
+        </ul><p><strong>Reference id format for Card Payments</strong>
+        The format of reference_id will differ based on where the card is stored.
+        <strong>Stripe:</strong> In case of Stripe, the reference_id consists of combination of Stripe Customer ID and Stripe Card ID separated by forward slash (e.g. <em>cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G</em>). If you are passing Stripe Customer ID alone, then Chargebee will store the card marked as active for that customer in Stripe.
+        <strong>Braintree:</strong> In case of Braintree, the reference_id consists of combination of Braintree Customer ID and Braintree Payment Method Token separated by forward slash (e.g. <em>cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G</em>). If you are passing Braintree Customer ID alone, then Chargebee will store the card marked as default for that customer in Braintree.
+        <strong>Spreedly Card vault:</strong> If the card details are stored in Spreedly vault, then you need to provide the Spreedly token as <code>reference_id</code>.</p><p><strong>Direct Debit Payments</strong>
+        When the bank account details of your customer is stored in the vault of Authorize.Net, you can use this API to update the reference id provided by them in Chargebee. To use this API, pass</p><ul>
+        <li><code>type</code> as <code>direct_debit</code>.</li>
+        <li><code>gateway</code> with the gateway where the bank account details are stored (e.g. <em>authorize_net</em>). If the gateway is not specified, the gateway supporting the direct debit will be used.</li>
+        <li><code>reference_id</code> with the identifier provided by the gateway to reference the customer&#x27;s bank account details.</li>
+        </ul><p><strong>Reference id format for Direct Debit Payments</strong>
+        The reference_id consists of combination of Authorize.Net&#x27;s Customer Profile ID and Payment Profile ID separated by forward slash (e.g. <em>2384383/34834382</em>). If you are passing Authorize.Net&#x27;s Customer Profile ID alone, then Chargebee will store the first bank account details present in payment profile list of that customer in Authorize.Net.</p><p><strong>Note:</strong> While using this API to update payment method details, <a href="https://www.chargebee.com/docs/cards.html#card-verification">Card Verification</a> will not happen even if it is enabled for that particular gateway.</p><div class="alert alert-info"><p>Storing card after successful 3DS flow not supported in this API. Use <a href="/docs/api/payment_sources#create_using_payment_intent">create using Payment Intent API</a>
+        under Payment source to store the card after successful 3DS flow completion.</p></div></div>
       operationId: update_payment_method_for_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -6788,8 +6732,8 @@ paths:
                   deprecated: false
                   description: |-
                     Specifies if the customer is liable for tax.
-                    * exempt - <ul><li>Customer is exempted from tax. When using Chargebee’s native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee’s <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee’s AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
-                    * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that’s not available either, the tax is taken as zero.
+                    * exempt - <ul><li>Customer is exempted from tax. When using Chargebee's native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee's <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee's AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
+                    * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
                   enum:
                     - taxable
                     - exempt
@@ -7415,7 +7359,7 @@ paths:
 
         During this operation if Billing Info(Billing Address and vat_number) is not already present it will get added. Whereas if it is present already, the existing values will be replaced. i.e existing values for Billing Address and vat_number will be cleared and the new values will be set.
 
-        **Note:**When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.
+        **Note:** When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.
       operationId: update_billing_info_for_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -7650,13 +7594,13 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                         <div class="alert alert-info">
                             <p><strong>E-Invoicing</strong></p>
                             <p>
-                                If <code>country</code> is provided as different from the existing value and if <code>entity_identifier_scheme</code>, <code>entity_identifier_standard</code>, and <code>entity_identifier</code> already exist and are not provided for this operation, they’re cleared.
+                                If <code>country</code> is provided as different from the existing value and if <code>entity_identifier_scheme</code>, <code>entity_identifier_standard</code>, and <code>entity_identifier</code> already exist and are not provided for this operation, they're cleared.
                             </p>
                         </div>
                         <span isMicro='true' featureId='cb-einvoicing'></span>
@@ -7939,7 +7883,9 @@ paths:
     post:
       summary: Create a customer
       description: |
-        **Note:** This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide) and pass it as input parameter to this API.
+        **Note:**
+        This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide)
+        and pass it as input parameter to this API.
 
         Creates a customer. You can create a customer and then create subscriptions for the customer when required. When creating a customer, you can pass along the billing address and card details.
 
@@ -7953,7 +7899,7 @@ paths:
 
         Billing Address attributes shall be explicitly passed for customers paying offline(Cash, Check, Bank Transfer etc).
 
-        **Note:**When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.
+        **Note:** When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.
       operationId: create_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -8148,8 +8094,8 @@ paths:
                   deprecated: false
                   description: |-
                     Specifies if the customer is liable for tax.
-                    * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that’s not available either, the tax is taken as zero.
-                    * exempt - <ul><li>Customer is exempted from tax. When using Chargebee’s native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee’s <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee’s AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
+                    * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
+                    * exempt - <ul><li>Customer is exempted from tax. When using Chargebee's native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee's <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee's AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
                   enum:
                     - taxable
                     - exempt
@@ -8312,7 +8258,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -8512,7 +8458,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -9057,7 +9003,8 @@ paths:
     post:
       summary: Update card for customer using payment intent
       description: |
-        Used to store the card to the customer after 3DS flow completion. [Learn more](/docs/api#3ds-payment-verification) on the 3DS integration guide via Chargebee APIs
+        Used to store the card to the customer after 3DS flow completion. [Learn more](/docs/api#3ds-payment-verification)
+        on the 3DS integration guide via Chargebee APIs
       operationId: update_card_for_customer_using_payment_intent
       parameters:
         - name: chargebee-request-origin-device
@@ -9297,10 +9244,7 @@ paths:
   /customers/{customer-id}/switch_gateway:
     post:
       summary: Switch gateway
-      description: |
-        Switches the gateway in which customer's card information is stored.
-
-        This is applicable only if the payment method is "card".
+      description: "Switches the gateway in which customer's card information is stored.\n\nThis is applicable only if the payment method is \"card\".  \nThis operation is not supported if the current gateway is Braintree or Stripe.\n"
       operationId: switch_gateway
       parameters:
         - name: chargebee-request-origin-device
@@ -9746,7 +9690,8 @@ paths:
     post:
       summary: Update card for a customer
       description: |
-        Storing card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources#create_using_payment_intent) under Payemnt source to store the card after successful 3DS flow completion.
+        Storing card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources#create_using_payment_intent)
+        under Payemnt source to store the card after successful 3DS flow completion.
 
         Adds or replaces card details of a customer. Updating card details replaces the present payment method.
 
@@ -9756,9 +9701,7 @@ paths:
         * If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your card update form.
         * You can also use our [Hosted Pages](https://www.chargebee.com/docs/hosted_pages.html) based integration. Use our [Hosted Page - Update Card](/docs/api/v1/hosted_pages#update_card) API to generate a 'Update Card' Hosted Page link.
 
-        <br />
-
-        **Note:** For customers signed up before 1st March 2014, if the card's billing information is specified in the input, the customer's Billing Info (i.e [Billing Address](/docs/api/v1/customers#billing_address_attributes) and vat_number) will also be replaced with the new values automatically.
+        \*\*Note:\*\*For customers signed up before 1st March 2014, if the card's billing information is specified in the input, the customer's Billing Info (i.e [Billing Address](/docs/api/v1/customers#billing_address_attributes) and vat_number) will also be replaced with the new values automatically.
       operationId: update_card_for_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -10015,7 +9958,7 @@ paths:
                     <div class="alert alert-info">
                         <p><strong>Brexit</strong></p>
                         <p>
-                            If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                            If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                         </p>
                     </div>.
                   maxLength: 50
@@ -10990,6 +10933,9 @@ paths:
 
         * If the invoice has successful payment(s)
         * If the invoice has credit adjustment(s)
+
+        * Please note that, if the current term invoice is voided and if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.
+        * If the invoice that is voided has [Promotional Credits](//www.chargebee.com/docs/account-credits.html) applied to it, the same will be reclaimed.
       operationId: void_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -11438,6 +11384,9 @@ paths:
 
         * If the invoice has successful payment(s)
         * If the invoice has credit adjustment(s)
+
+        * Please note that, after the current term invoice is deleted, if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.
+        * Any [Promotional Credits](//www.chargebee.com/docs/account-credits.html) applied to this invoice would be reclaimed.
       operationId: delete_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -12522,14 +12471,7 @@ paths:
         - BasicAuth: []
     post:
       summary: Create an invoice
-      description: |
-        **Note:** This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide) and pass it as input parameter to this API.
-
-        Creates a one-off invoice for multiple 'Non Recurring' addon \& ad-hoc charges for a customer. If the 'auto collection' has been turned 'on' for that customer then payment will be immediately collected using the payment method associated with the customer. The invoice will be generated only upon successful collection of payments. However if the 'auto collection' is turned 'off', no collection attempt will be made and the invoice generated would have a "Payment Due" status.
-
-        The Shipping Address can be passed, which will then be attached to the generated invoice.
-
-        A 'One Time' coupon can be explicitly specified while creating this invoice.
+      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/v1#3ds-implementation-guide)\nand pass it as input parameter to this API.\n\nCreates a one-off invoice for multiple 'Non Recurring' addon \\& ad-hoc charges for a customer. If the 'auto collection' has been turned 'on' for that customer then payment will be immediately collected using the payment method associated with the customer. The invoice will be generated only upon successful collection of payments. However if the 'auto collection' is turned 'off', no collection attempt will be made and the invoice generated would have a \"Payment Due\" status.\n\nThe Shipping Address can be passed, which will then be attached to the generated invoice.\n\nA 'One Time' coupon can be explicitly specified while creating this invoice.  \nAvailable Credits and Excess Payments will automatically be applied to this invoice.\n"
       operationId: create_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -12779,7 +12721,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -15114,7 +15056,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -16712,6 +16654,9 @@ paths:
         #### Related Tutorials
 
         * [Create a subscription using Chargebee's hosted page](//www.chargebee.com/checkout-portal-docs/checkout-new-tutorial.html)
+
+        As mentioned before this behavior is very similar to the create subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful creation of subscription.
+        Any errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.
       operationId: checkout_new_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -16996,8 +16941,8 @@ paths:
                       deprecated: false
                       description: |-
                         Specifies if the customer is liable for tax
-                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee’s native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee’s <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee’s AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
-                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that’s not available either, the tax is taken as zero.
+                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee's native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee's <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee's AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
+                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
                       enum:
                         - taxable
                         - exempt
@@ -17911,6 +17856,9 @@ paths:
         #### Related Tutorial
 
         * [Upgrade existing subscription using Chargebee's hosted page](//www.chargebee.com/checkout-portal-docs/checkout-existing-tutorial.html)
+
+        As mentioned before this behavior is very similar to the update subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful checkout of subscription.
+        Any errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.
       operationId: checkout_existing_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -18618,7 +18566,7 @@ paths:
                   <div class="alert alert-info">
                       <p><strong>Brexit</strong></p>
                       <p>
-                          If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                          If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                       </p>
                   </div>
                 maxLength: 50
@@ -18807,7 +18755,7 @@ paths:
   /estimates/update_subscription:
     post:
       summary: Update subscription estimate
-      description: |+
+      description: |
         Generates an estimate for the 'update subscription' operation. The input will be similar to the [Update Subscription](/docs/api/v1/subscriptions#update_a_subscription) API but subscription will not be updated, but just an estimate will be generated.
 
         In case 'update subscription' operation will not create an invoice immediately, the estimate generated will be for the 'end of term' invoice. Some of the cases where the invoice will not be generated immediately are
@@ -18821,9 +18769,6 @@ paths:
 
         * If you use the **EU VAT** tax option, you need to specify 'billing_address\[country\]' and 'customer\[vat_number\]' attributes for the tax calculation to happen. If these attributes are not passed, the tax will be ignored for this estimate.
         * If you use the **Customized Tax** option, you need to specify the shipping address and billing address parameters for the tax calculation to happen. This is because Chargebee will use the customer's shipping address to determine the tax applicable. If the shipping address is not available, then the billing address will be used to determine tax. If both addresses are not available, tax will be ignored for this estimate.
-
-        <br />
-
       operationId: update_subscription_estimate
       parameters:
         - name: chargebee-request-origin-device
@@ -18957,7 +18902,7 @@ paths:
                 prorate:
                   type: boolean
                   deprecated: false
-                  description: "<ul> \n <li>When <code>true</code>: <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-mechanism\" target=\"_blank\">Prorated credits or charges</a> are created as applicable for this change.</li> \n <li>When <code>false</code>: The subscription is changed without creating any credits or charges.</li> \n <li>When not provided, the value configured in the <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-for-subscription-change\" target=\"_blank\">site settings</a> is considered.</li> \n</ul> \n<div class=\"alert alert-warning\"> <strong>Caveat</strong> \n <p>For further changes within the same billing term, when <code>prorate</code> is set to <code>true</code>, <strong>credits</strong> are <strong>not created</strong> when <strong>all</strong> the conditions below hold true:</p> \n <p>An immediate previous change was made</p> \n <ul> \n  <li>with <code>prorate</code> set to <code>false</code> and</li> \n  <li>no changes were made to the subscription’s billing term and</li> \n  <li>a change was made to either the subscription’s plan, its addons, or the prices of the plan or addons.</li> \n </ul> \n</div>"
+                  description: "<ul> \n <li>When <code>true</code>: <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-mechanism\" target=\"_blank\">Prorated credits or charges</a> are created as applicable for this change.</li> \n <li>When <code>false</code>: The subscription is changed without creating any credits or charges.</li> \n <li>When not provided, the value configured in the <a href=\"https://www.chargebee.com/docs/1.0/proration.html#proration-for-subscription-change\" target=\"_blank\">site settings</a> is considered.</li> \n</ul> \n<div class=\"alert alert-warning\"> <strong>Caveat</strong> \n <p>For further changes within the same billing term, when <code>prorate</code> is set to <code>true</code>, <strong>credits</strong> are <strong>not created</strong> when <strong>all</strong> the conditions below hold true:</p> \n <p>An immediate previous change was made</p> \n <ul> \n  <li>with <code>prorate</code> set to <code>false</code> and</li> \n  <li>no changes were made to the subscription's billing term and</li> \n  <li>a change was made to either the subscription's plan, its addons, or the prices of the plan or addons.</li> \n </ul> \n</div>"
                   example: null
                 end_of_term:
                   type: boolean
@@ -19067,7 +19012,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -19102,7 +19047,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -19261,14 +19206,12 @@ paths:
     post:
       summary: Create subscription estimate
       description: |
-        Generates an estimate for the 'create subscription' operation. This input will be similar to the [Create Subscription](/docs/api/v1/subscriptions#create_a_subscription) API but no subscription will be created, but just an estimate will be generated.
-
+        Generates an estimate for the 'create subscription' operation. This input will be similar to the [Create Subscription](/docs/api/v1/subscriptions#create_a_subscription)
+        API but no subscription will be created, but just an estimate will be generated.
         **Note:**
 
         * If you use the **EU VAT** tax option, you need to specify 'billing_address\[country\]' and 'customer\[vat_number\]' attributes for the tax calculation to happen. If these attributes are not passed, the tax will be ignored for this estimate.
         * If you use the **Customized Tax** option, you need to specify the shipping address and billing address parameters for the tax calculation to happen. This is because Chargebee will use the customer's shipping address to determine the tax applicable. If the shipping address is not available, then the billing address will be used to determine tax. If both addresses are not available, tax will be ignored for this estimate.
-
-        <br />
 
         #### Related Tutorial
 
@@ -19487,7 +19430,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -19522,7 +19465,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -19547,8 +19490,8 @@ paths:
                       deprecated: false
                       description: |-
                         Specifies if the customer is liable for tax
-                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee’s native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee’s <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee’s AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
-                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that’s not available either, the tax is taken as zero.
+                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee's native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee's <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee's AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
+                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
                       enum:
                         - taxable
                         - exempt
@@ -19850,8 +19793,8 @@ paths:
                       deprecated: false
                       description: |-
                         Specifies if the customer is liable for tax
-                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee’s native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee’s <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee’s AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
-                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that’s not available either, the tax is taken as zero.
+                        * exempt - <ul><li>Customer is exempted from tax. When using Chargebee's native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee's <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee's AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
+                        * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
                       enum:
                         - taxable
                         - exempt
@@ -19886,7 +19829,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -19991,7 +19934,7 @@ paths:
                         <div class="alert alert-info">
                             <p><strong>Brexit</strong></p>
                             <p>
-                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                                If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                             </p>
                         </div>
                       maxLength: 50
@@ -24086,7 +24029,7 @@ paths:
                     <div class="alert alert-info">
                         <p><strong>Brexit</strong></p>
                         <p>
-                            If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                            If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                         </p>
                     </div>.
                   maxLength: 50
@@ -24176,9 +24119,8 @@ paths:
   /events:
     get:
       summary: List events
-      description: |+
+      description: |
         Retrieves list of events.
-
       operationId: list_events
       parameters:
         - name: chargebee-request-origin-device
@@ -24457,9 +24399,8 @@ paths:
   /events/{event-id}:
     get:
       summary: Retrieve an event
-      description: |+
+      description: |
         Retrieves a specific event identified by a unique event identifier.
-
       operationId: retrieve_an_event
       parameters:
         - name: chargebee-request-origin-device
@@ -25655,8 +25596,6 @@ paths:
         * **auth_session_id** - this should be sent as part of the endpoint.
         * **auth_session_token** - this should be sent as value for the input parameter **token**.
 
-        <br />
-
         **Note:** This API is not applicable for [in-app](https://www.chargebee.com/docs/v3-self-serve-portal.html) portal.
       operationId: activate_a_portal_session
       parameters:
@@ -26081,7 +26020,9 @@ paths:
   /portal_sessions/{portal-session-id}:
     get:
       summary: Retrieve a portal session
-      description: This API retrieves a portal session using <code>portal_session_id</code> as a path parameter.
+      description: |-
+        <div class="api-description"><p>This API retrieves a portal session using <code>portal_session_id</code>
+        as a path parameter.</p></div>
       operationId: retrieve_a_portal_session
       parameters:
         - name: chargebee-request-origin-device
@@ -26751,7 +26692,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |-
-                    <p>The unique identifier of the customer for whom the <code>payment_intent</code> will be created. If specified, the <code>payment_intent</code> will be used exclusively for that customer.  If not specified, the <code>payment_intent</code> won’t be associated with any customer and will be available for any customer.</p>
+                    <p>The unique identifier of the customer for whom the <code>payment_intent</code> will be created. If specified, the <code>payment_intent</code> will be used exclusively for that customer.  If not specified, the <code>payment_intent</code> won't be associated with any customer and will be available for any customer.</p>
 
                     <div class='alert alert-info'>
                         <strong>See also</strong>
@@ -27833,7 +27774,7 @@ components:
             <div class="alert alert-info">
                 <p><strong>Brexit</strong></p>
                 <p>
-                    If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                    If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                 </p>
             </div>
           maxLength: 50
@@ -28031,7 +27972,7 @@ components:
             <div class="alert alert-info">
                 <p><strong>Brexit</strong></p>
                 <p>
-                    If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                    If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                 </p>
             </div>
           maxLength: 50
@@ -29102,8 +29043,8 @@ components:
           deprecated: false
           description: |-
             Specifies if the customer is liable for tax
-            * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that’s not available either, the tax is taken as zero.
-            * exempt - <ul><li>Customer is exempted from tax. When using Chargebee’s native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee’s <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee’s AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
+            * taxable - Computes tax for the customer based on the <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">site configuration</a>. In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
+            * exempt - <ul><li>Customer is exempted from tax. When using Chargebee's native <a href="https://www.chargebee.com/docs/tax.html" target="_blank" rel="noopener noreferrer">Taxes</a> feature or when using the <a href="https://www.chargebee.com/docs/taxjar.html" target="_blank" rel="noopener noreferrer">TaxJar integration</a>, no other action is needed.</li><li>However, when using our <a href="https://www.chargebee.com/docs/avalara.html" target="_blank" rel="noopener noreferrer">Avalara integration</a>, optionally, specify <code>entity_code</code> or <code>exempt_number</code> attributes if you use Chargebee's <a target="_blank" href="https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption">AvaTax for Sales</a> or specify <code>exemption_details</code> attribute if you use <a href="https://www.chargebee.com/docs/avatax-for-communication.html" target="_blank" rel="noopener noreferrer">Chargebee's AvaTax for Communications</a> integration. Tax may still be applied by Avalara for certain values of <code>entity_code</code>/<code>exempt_number</code>/<code>exemption_details</code> based on the state/region/province of the taxable address.</li></ul>
           enum:
             - taxable
             - exempt
@@ -29201,7 +29142,7 @@ components:
                 <div class="alert alert-info">
                     <p><strong>Brexit</strong></p>
                     <p>
-                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                     </p>
                 </div>
               maxLength: 50
@@ -29601,7 +29542,7 @@ components:
       example: null
     Download:
       type: object
-      description: <p> Requesting to download a file through this API will return the <code>download_url</code> attribute as the response. This attribute will contain a URL that will allow the requested content to be downloaded. </p>
+      description: <div class="api-description"><p>Requesting to download a file through this API will return the <code>download_url</code> attribute as the response. This attribute will contain a URL that will allow the requested content to be downloaded.</p></div>
       properties:
         download_url:
           type: string
@@ -29939,14 +29880,7 @@ components:
       example: null
     Event:
       type: object
-      description: |
-        Whenever any important changes happen in your Chargebee site, they are recorded as Events. Event contains data about affected resources and additional details such as when it occurred.
-
-        You could listen to the events in your application by configuring Webhook url and handle it based on the type of event. We post the event data as request body with content type set as **application/json** to your webhook url.
-
-        For example, when a subscription is cancelled due to non payment, an event **"subscription_cancelled"** is recorded and fired to your webhook url.
-
-        To mark a webhook notification successful, we expect the [HTTP status code](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to be 200 from your webhook url. If we don't receive 200 response code, we retry calling your webhook with exponential time interval for next 2 days. You could also try resending it from our admin console.
+      description: "Whenever any important changes happen in your Chargebee site, they are recorded as Events. Event contains data about affected resources and additional details such as when it occurred.\n\nYou could listen to the events in your application by configuring Webhook url and handle it based on the type of event. We post the event data as request body with content type set as **application/json** to your webhook url.\n\nFor example, when a subscription is cancelled due to non payment, an event **\"subscription_cancelled\"** is recorded and fired to your webhook url.\n\nTo mark a webhook notification successful, we expect the [HTTP status code](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to be 200 from your webhook url. If we don't receive 200 response code, we retry calling your webhook with exponential time interval for next 2 days. You could also try resending it from our admin console.  \n**API Version:**\nChargebee supports multiple API versions now. The *api_version* attribute indicates the API version based on which the event *content* is structured. While processing webhooks, ensure the *api_version* is same as the API version used by your webhook server's client library.\n\n#### Securing your Webhook URL:\n\nYou can have **basic authentication**\nfor the webhook url.\n\n* In the Webhook Settings page (*Settings \\> Webhooks* ), check the option *My webhook URL is protected by basic authentication*.\n* Enter *Username* and *Password* and click Update Webhook URL OR Generate a random key and have it as part of your webhook url eg. http://yourapp.com/chargebee-webhook/cuktqaem0i2fkd5jt9cdtojcn9cvb3Y\n\nIn addition to securing your webhook, you can always fetch the event from Chargebee using [Retrieve an Event](/docs/api/v1/events#retrieve_an_event)\nAPI call.\n\nEnsure that you keep the secrets secret :)\n"
       properties:
         id:
           type: string
@@ -29983,7 +29917,6 @@ components:
         user:
           type: string
           deprecated: false
-          description: 'The “user” that triggered the event. The value depends on the <code>source</code> attribute:</br><ul><li>When <code>source</code> is <code>admin_console</code>: the email address of the user that triggered the event.</li><li>When <code>source</code> is <code>api</code>, <code>js_api</code>  or <code>bulk_operation</code>: the <a href="https://www.chargebee.com/docs/api_keys.html#create-an-api-key" target="_blank" rel="noopener noreferrer">name</a> of the API key that was used to trigger the event.</li><li>When the <code>source</code> is <code>external_service</code>: the name of the service that called our webhook. Eg. <code>ADYEN</code>, <code>STRIPE</code>, <code>AMAZON_PAYMENTS</code> etc.</li><li>When the <code>source</code> is <code>hosted_page</code> or <code>portal</code>: the <code>user</code> attribute is not passed.</li></ul>'
           maxLength: 150
           example: null
         webhooks:
@@ -30276,14 +30209,7 @@ components:
     Invoice:
       type: object
       additionalProperties: true
-      description: |
-        Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.
-
-        Generally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.
-
-        When invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.
-
-        **Note:** If *consolidated invoicing* is enabled, the attribute *invoice.subscription_id* should **not** be used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items'](/docs/api/invoices#invoice_line_items) *subscription_id* attribute should be referred.
+      description: "Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.\n\nGenerally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.\n\nWhen invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.  \n**Note:**\nIf *consolidated invoicing*\nis enabled, the attribute *invoice.subscription_id*\nshould **not**\nbe used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items'](/docs/api/invoices#invoice_line_items)\n*subscription_id*\nattribute should be referred.\n"
       properties:
         id:
           type: string
@@ -30690,9 +30616,9 @@ components:
                 description: |-
                   Type of the transaction.
                   * payment_reversal - Indicates a reversal transaction.
-                  * refund - The transaction represents a refund of <code><a href="transactions#transaction_amount">amount</a></code> to the customer’s <code><a href="payment_sources">payment_source</a></code>.
-                  * authorization - The transaction represents an authorization for capturing the <code><a href="transactions#transaction_amount">amount</a></code> from the customer’s <code><a href="payment_sources">payment_source</a></code>.
-                  * payment - The transaction represents capture of <code><a href="transactions#transaction_amount">amount</a></code> from the customer’s <code><a href="payment_sources">payment_source</a></code>.
+                  * refund - The transaction represents a refund of <code><a href="transactions#transaction_amount">amount</a></code> to the customer's <code><a href="payment_sources">payment_source</a></code>.
+                  * authorization - The transaction represents an authorization for capturing the <code><a href="transactions#transaction_amount">amount</a></code> from the customer's <code><a href="payment_sources">payment_source</a></code>.
+                  * payment - The transaction represents capture of <code><a href="transactions#transaction_amount">amount</a></code> from the customer's <code><a href="payment_sources">payment_source</a></code>.
                 enum:
                   - authorization
                   - payment
@@ -30933,7 +30859,7 @@ components:
                 <div class="alert alert-info">
                     <p><strong>Brexit</strong></p>
                     <p>
-                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                     </p>
                 </div>
               maxLength: 50
@@ -31039,7 +30965,7 @@ components:
                 <div class="alert alert-info">
                     <p><strong>Brexit</strong></p>
                     <p>
-                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                     </p>
                 </div>
               maxLength: 50
@@ -31622,7 +31548,7 @@ components:
           type: string
           deprecated: false
           description: |-
-            <p>The unique identifier of the customer for whom the <code>payment_intent</code> will be created. If specified, the <code>payment_intent</code> will be used exclusively for that customer.  If not specified, the <code>payment_intent</code> won’t be associated with any customer and will be available for any customer.</p>
+            <p>The unique identifier of the customer for whom the <code>payment_intent</code> will be created. If specified, the <code>payment_intent</code> will be used exclusively for that customer.  If not specified, the <code>payment_intent</code> won't be associated with any customer and will be available for any customer.</p>
 
             <div class='alert alert-info'>
                 <strong>See also</strong>
@@ -32053,17 +31979,29 @@ components:
       example: null
     PortalSession:
       type: object
-      description: |
-        Customer Portal lets your customers to manage their account and billing themselves. Chargebee supports Single Sign-on (SSO) to access the customer portal. If you already have your own authentication for your website, it allows your authenticated customers to access their portal without having to login again.
-
-        **Note:** You can instead allow your customers to access the portal via login page provided by Chargebee. [Read more](https://www.chargebee.com/docs/1.0/customer_portal.html#how-can-customers-access-their-customer-account-portal).
-
-        Please follow the below steps for supporting portal access via SSO:
-
-        1. Enable the "Allow access to customer portal via API" under "Settings \> Hosted Pages Settings \> Customer Portal" to use the portal sessions API.
-        2. Provide a link in your website/application which your authenticated customers can use to access the portal (For example, {your_website_url}/portal_link).
-        3. Handle the link request in your server code and create a portal session for the customer by calling Chargebee's "Create a portal session" API
-        4. Forward the user to the access URL present in the "Portal Session" resource returned by the above API call.
+      description: |-
+        <div class="api-description"><p>Customer Portal lets your customers to manage their account and billing themselves. Chargebee supports Single Sign-on (SSO) to access the customer portal. If you already have your own authentication for your website, it allows your authenticated customers to access their portal without having to login again.</p><p><strong>Note:</strong> You can instead allow your customers to access the portal via login page provided by Chargebee. <a href="https://www.chargebee.com/docs/1.0/customer_portal.html#how-can-customers-access-their-customer-account-portal" target="_blank">Read more</a>.</p><p>Please follow the below steps for supporting portal access via SSO:</p><ol>
+        <li>Enable the &quot;Allow access to customer portal via API&quot; under &quot;Settings &gt; Hosted Pages Settings &gt; Customer Portal&quot; to use the portal sessions API.</li>
+        <li>Provide a link in your website/application which your authenticated customers can use to access the portal (For example, <code>{your_website_url}/portal_link</code>).</li>
+        <li>Handle the link request in your server code and create a portal session for the customer by calling Chargebee&#x27;s &quot;Create a portal session&quot; API</li>
+        <li>Forward the user to the access URL present in the &quot;Portal Session&quot; resource returned by the above API call.</li>
+        </ol><div class="alert alert-info"><p><strong>Notes about access URL:</strong></p><ul>
+        <li>The access URL should be accessed by the customer within one hour from the time it was created.</li>
+        <li>Once accessed, the session is valid until the user logs out from the portal UI or logout API is called from your application for this session.</li>
+        <li>Once accessed, the access url cannot be reused. Hence do not persist this URL. Whenever you need to provide access to the portal, you need to create a new portal session.</li>
+        </ul></div><h4>Using Chargebee&#x27;s authentication to allow access to your website</h4><p><strong>Note:</strong> This feature is not supported in <a href="https://www.chargebee.com/docs/inapp-self-serve-portal.html" target="_blank">in-app</a> portal.
+        Chargebee allows you to integrate your website by building user authentication on top of Chargebee. If you would want to allow access to parts of your website only to subscribers (like a paywall), you can integrate Chargebee&#x27;s authentication without having to handle it from your end.
+        <strong>Workflow:</strong>
+        Users should be redirected to the portal login URL - <strong>https://yourdomain.chargebeeportal.com/portal/login</strong> by passing the following parameters:</p><ul>
+        <li><strong>return_url</strong> - URL the users should be redirected to upon successful authentication.</li>
+        <li><strong>cancel_url</strong> - URL the users should be redirected to when they want to go back to your website during login.
+        The domain name used in the Return/Cancel URL should be added as a &#x27;Whitelisted Domain&#x27; in Chargebee. Add just the domain name in Chargebee and not the entire URL: E.g. yourdomain.com.</li>
+        </ul><p>Upon successful authentication, a session is created for the user and Chargebee redirects the user to the return_url along with the following parameters:</p><ul>
+        <li><strong>auth_session_id</strong> - Identifier to the authenticated session.</li>
+        <li><strong>auth_session_token</strong> - Token for the session which should be sent later to activate this session.
+        Using the <strong>auth_session_id</strong> &amp; <strong>auth_session_token</strong>, you should call <a href="#activate_a_portal_session">Activate a Portal Session</a> API to validate the session details and create a session for that user in your website.
+        <strong>Note:</strong> The process of setting up the portal account will take place along with the authentication process.</li>
+        </ul></div>
       properties:
         id:
           type: string
@@ -32355,7 +32293,11 @@ components:
     Subscription:
       type: object
       additionalProperties: true
-      description: "<p> Subscription represents the recurring items a customer has subscribed to. The recurring items can be - plan, addons. It may also contain the discount items like coupons. </p> \n<p> Subscriptions are invoiced at the start of every term based on the recurring items and charged immediately against the customer's credit card if 'auto_collection' is turned 'on', otherwise the resulting invoice will be created as 'Payment Due'. </p> \n<p class=\"alert alert-info\"><strong>Note:</strong> The maximum number of subscriptions for any given <a href=\"./customers\">customer</a> (<code><a href=\"subscriptions#subscription_status\">active</a></code> or not) is 900.</p>"
+      description: |-
+        <div class="api-description"><p>Subscription represents the recurring items a customer has subscribed to. The recurring items can be - plan, addons. It may also contain the discount items like coupons.</p><p>Subscriptions are invoiced at the start of every term based on the recurring items and charged immediately against the customer&#x27;s credit card if &#x27;auto_collection&#x27; is turned &#x27;on&#x27;, otherwise the resulting invoice will be created as &#x27;Payment Due&#x27;.</p><div class="alert alert-info"><p><strong>Note:</strong>
+        The maximum number of subscriptions for any given <a href="./customers">customer</a>
+        (<code><a href="subscriptions#subscription_status">active</a></code>
+        or not) is 900.</p></div></div>
       properties:
         id:
           type: string
@@ -32701,7 +32643,7 @@ components:
                 <div class="alert alert-info">
                     <p><strong>Brexit</strong></p>
                     <p>
-                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom – Northern Ireland</strong>) is available as an option.
+                        If you have enabled <a rel="noopener noreferrer" target="_blank" href="https://www.chargebee.com/docs/eu-vat.html">EU VAT</a> in 2021 or later, or have <a href="https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee" target="_blank" rel="noopener noreferrer">manually enable</a> the Brexit configuration, then <code>XI</code> (the code for <strong>United Kingdom - Northern Ireland</strong>) is available as an option.
                     </p>
                 </div>
               maxLength: 50
@@ -33754,7 +33696,8 @@ components:
     Transaction:
       type: object
       description: |
-        This resource represents the [transaction](https://www.chargebee.com/docs/transactions.html) event that has happened in your account.
+        This resource represents the [transaction](https://www.chargebee.com/docs/transactions.html)
+        event that has happened in your account.
       properties:
         id:
           type: string
@@ -33846,9 +33789,9 @@ components:
           description: |-
             Type of the transaction.
             * payment_reversal - Indicates a reversal transaction.
-            * payment - The transaction represents capture of <code><a href="transactions#transaction_amount">amount</a></code> from the customer’s <code><a href="payment_sources">payment_source</a></code>.
-            * refund - The transaction represents a refund of <code><a href="transactions#transaction_amount">amount</a></code> to the customer’s <code><a href="payment_sources">payment_source</a></code>.
-            * authorization - The transaction represents an authorization for capturing the <code><a href="transactions#transaction_amount">amount</a></code> from the customer’s <code><a href="payment_sources">payment_source</a></code>.
+            * payment - The transaction represents capture of <code><a href="transactions#transaction_amount">amount</a></code> from the customer's <code><a href="payment_sources">payment_source</a></code>.
+            * refund - The transaction represents a refund of <code><a href="transactions#transaction_amount">amount</a></code> to the customer's <code><a href="payment_sources">payment_source</a></code>.
+            * authorization - The transaction represents an authorization for capturing the <code><a href="transactions#transaction_amount">amount</a></code> from the customer's <code><a href="payment_sources">payment_source</a></code>.
           enum:
             - authorization
             - payment
