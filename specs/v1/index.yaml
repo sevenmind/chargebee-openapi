@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-01-05.2384b8e365b6622288c6a7edc05d1334abc24829
-  x-cb-product-catalog-version: 1
+  version: 2026-01-06.fce8112e89d4b9286f5bc6658a4b706d4b2a9067
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -32646,7 +32646,7 @@ components:
     Invoice:
       type: object
       additionalProperties: true
-      description: "Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.\n\nGenerally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.\n\nWhen invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.  \n**Note:**\nIf *consolidated invoicing*\nis enabled, the attribute *invoice.subscription_id*\nshould **not**\nbe used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items'](/docs/api/invoices#invoice_line_items)\n*subscription_id*\nattribute should be referred.\n"
+      description: "Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.\n\nGenerally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.\n\nWhen invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.  \n**Note:**\nIf *consolidated invoicing*\nis enabled, the attribute *invoice.subscription_id*\nshould **not**\nbe used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items](/docs/api/invoices#invoice_line_items)\n*subscription_id*\nattribute should be referred.\n"
       properties:
         id:
           type: string
@@ -32668,7 +32668,7 @@ components:
           description: |-
             <p class="mb-2">The identifier of the subscription this invoice belongs to.
             <strong class="font-semibold">Note</strong>:
-            When consolidated invoicing is enabled, you have to refer to <a href="https://apidocs.chargebee.com/docs/api/invoices#invoice_line_items">line_item`s</a>
+            When consolidated invoicing is enabled, you have to refer to <a href="https://apidocs.chargebee.com/docs/api/invoices#invoice_line_items">line_items</a>
             <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">subscription_id</code>
             to identify the subscriptions associated with this invoice. However, it is important to avoid using this attribute if the invoice includes charges from multiple subscriptions, as it will be null in such cases.</p>
           maxLength: 50
@@ -32765,7 +32765,7 @@ components:
           description: |-
             <p class="mb-2">The sum of all the line item amounts minus the sum of all line item discounts. In other words, this is the sum of all <code><a href="invoices#invoice_line_items">line_items[]</a>.amount</code></p>
             <ul class="list-disc list-outside ml-6 my-4 space-y-2">
-            <li class="text-base leading-relaxed">the sum of all <code><a href="invoices#invoice_line_item_discounts">line_item_discounts[]</a>.discount_amount</code>.</li>
+            <li class="text-base leading-relaxed">the sum of all <code><a href="invoices#invoice_line_item_discounts">line_item_discounts[].discount_amount</a></code>.</li>
             </ul>
           minimum: 0
           example: null
@@ -32807,7 +32807,7 @@ components:
           format: int64
           deprecated: false
           description: |-
-            <p class="mb-2">Payments collected successfully for the invoice. This is the sum of <code><a href="invoices#invoice_linked_payments">linked_payments[]</a>.txn_amount</code>
+            <p class="mb-2">Payments collected successfully for the invoice. This is the sum of <code><a href="invoices#invoice_linked_payments">linked_payments[].txn_amount</a></code>
             for all <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">linked_payments[]</code>
             that have <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">txn_status</code>
             as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">success</code>.</p>
