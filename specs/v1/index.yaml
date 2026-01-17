@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-01-14.de90c4c15df4b4391fd4d516627156e0f8d065d8
+  version: 2026-01-16.1a6c8092dd69a7c75a7a78425a783abac4e9f595
   x-cb-api-version: 1
   x-cb-product-catalog-version: 1
 servers:
@@ -31711,7 +31711,10 @@ components:
             card:
               $ref: '#/components/schemas/Card'
             subscriptions:
-              $ref: '#/components/schemas/Subscription'
+              type: array
+              items:
+                $ref: '#/components/schemas/Subscription'
+              example: null
           required:
             - card
             - customer
