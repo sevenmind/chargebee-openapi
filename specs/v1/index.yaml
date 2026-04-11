@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-04-09.c8aa15cf3727f78fe35903455344a494be466797
-  x-cb-product-catalog-version: 1
+  version: 2026-04-10.03931c72403cce6d85429cf9028e79d3d1b32ebe
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -25939,6 +25939,7 @@ paths:
               - skipped
               - not_applicable
               - disabled
+              - rate_limited
             example: null
         - name: event_type
           in: query
@@ -32298,6 +32299,7 @@ components:
                   - skipped
                   - not_applicable
                   - disabled
+                  - rate_limited
                 example: null
             required:
               - id
