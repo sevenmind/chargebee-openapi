@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-04-15.8f9724acb53534216d90eaea1c813ad369280523
+  version: 2026-04-17.abe8e273923603355eca711a01d43a9040fcbd19
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -32256,6 +32256,15 @@ components:
         user:
           type: string
           deprecated: false
+          description: |-
+            <p class="mb-2">The &quot;user&quot; that triggered the event. The value depends on the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">source</code>
+            attribute:</p>
+            <ul class="list-disc list-outside ml-6 my-4 space-y-2">
+            <li class="text-base leading-relaxed">When <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">source</code> is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">admin_console</code>: the email address of the user that triggered the event.</li>
+            <li class="text-base leading-relaxed">When <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">source</code> is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">api</code>, <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">js_api</code> or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">bulk_operation</code>: the <a href="https://www.chargebee.com/docs/api_keys.html#create-an-api-key" target="_blank" rel="noopener noreferrer">name</a> of the API key that was used to trigger the event.</li>
+            <li class="text-base leading-relaxed">When the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">source</code> is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">external_service</code>: the name of the service that called our webhook. Eg. <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">ADYEN</code>, <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">STRIPE</code>, <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AMAZON_PAYMENTS</code> etc.</li>
+            <li class="text-base leading-relaxed">When the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">source</code> is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">hosted_page</code> or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">portal</code>: the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">user</code> attribute is not passed.</li>
+            </ul>
           maxLength: 150
           example: null
         webhooks:
