@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-04-24.e483e6f671de2bb5323a1a771cd6e5c4029644ff
-  x-cb-product-catalog-version: 1
+  version: 2026-04-27.6c45981ddda2de37ce0c6799905e1f276c791fa0
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
