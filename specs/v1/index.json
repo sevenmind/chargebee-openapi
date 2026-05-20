@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-05-18.f298886be283654011372ac5605ee7cb70bfeea3",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 1
+    "version": "2026-05-19.aa108779ba2279c3e7f5c1a8ed719fd445a172e8",
+    "x-cb-api-version": 1,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -38384,6 +38384,15 @@
           "occurred_at",
           "source",
           "webhook_status"
+        ],
+        "example": null
+      },
+      "Layout": {
+        "type": "string",
+        "deprecated": false,
+        "enum": [
+          "in_app",
+          "full_page"
         ],
         "example": null
       },
