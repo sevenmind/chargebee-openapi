@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-05-20.dcfb0d4c3645954d013b5f30acf7fb325df1eac4
-  x-cb-api-version: 1
+  version: 2026-05-21.a03c995ce9cefe1c1adcec65aec985090f5b9a66
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -26028,7 +26028,7 @@ paths:
             Sent before each subscription's renewal based on plan's period
             \* invoice_updated -
 
-            Triggered when the invoice's shipping/billing address is updated, if the invoice is voided, or when the amount due is modified due to payments applied/removed.
+            Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.
             \* payment_refunded -
 
             Sent when a payment refund is made
@@ -32410,7 +32410,7 @@ components:
             Sent before each subscription's renewal based on plan's period
             \* invoice_updated -
 
-            Triggered when the invoice's shipping/billing address is updated, if the invoice is voided, or when the amount due is modified due to payments applied/removed.
+            Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.
             \* payment_refunded -
 
             Sent when a payment refund is made
@@ -37734,10 +37734,10 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   invoice_updated:
-    description: <p class="mb-2">Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.</p>
+    description: <p class="mb-2">Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.</p>
     post:
       summary: Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.
-      description: <p class="mb-2">Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.</p>
+      description: <p class="mb-2">Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.</p>
       operationId: onInvoice_updatedWebhook
       requestBody:
         description: Payload for invoice_updated event
