@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-05-22.86b175dd00a2dd1b7e6e58a3e18140f889d5a148
-  x-cb-product-catalog-version: 1
+  version: 2026-05-25.f177ef5b01ba739dec57b23eef9a8657ec6378ca
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -29721,6 +29721,51 @@ components:
       required:
         - label
         - subscription_id
+      example: null
+    ApiKey:
+      type: object
+      properties:
+        key_name:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        key:
+          type: string
+          deprecated: false
+          maxLength: 250
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        status:
+          type: string
+          deprecated: false
+          enum:
+            - enabled
+            - disabled
+          example: null
+        roles:
+          type: array
+          deprecated: false
+          items:
+            type: string
+            deprecated: false
+            enum:
+              - full_access
+              - update_access
+              - read_only_access
+              - read_transactional_data
+              - read_product_configuration
+              - publishable
+              - publishable_extended
+            example: null
+          example: null
+      required:
+        - created_at
+        - key_name
       example: null
     ApiVersion:
       type: string
