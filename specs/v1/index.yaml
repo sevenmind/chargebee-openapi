@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-05-27.017611a6f73590dc7223cb5827e07abf53151689
-  x-cb-product-catalog-version: 1
+  version: 2026-05-29.c8ef2b13c0a71089abb90dd664d1264d3d0068dd
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -603,7 +603,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -2470,15 +2470,9 @@ paths:
                         \* nmi -
 
                         NMI is a payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* eway_rapid -
 
                         eWAY Rapid is a payment gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -2722,9 +2716,6 @@ paths:
                       deprecated: false
                       description: |
                         Name of the gateway the payment method is associated with.
-                        \* chargebee -
-
-                        Chargebee test gateway.
                         \* stripe -
 
                         Stripe is a payment gateway.
@@ -2779,15 +2770,9 @@ paths:
                         \* eway_rapid -
 
                         eWAY Rapid is a payment gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* ogone -
 
                         Ingenico ePayments (formerly known as Ogone) is a payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* tco -
 
                         2Checkout is a payment gateway.
@@ -3152,7 +3137,7 @@ paths:
                         type: string
                         deprecated: false
                         description: |
-                          null
+                          \* full_term - \* partial_term - \* none -
                         enum:
                           - full_term
                           - partial_term
@@ -3623,7 +3608,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -4086,15 +4071,9 @@ paths:
                         \* nmi -
 
                         NMI is a payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* eway_rapid -
 
                         eWAY Rapid is a payment gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -4338,9 +4317,6 @@ paths:
                       deprecated: false
                       description: |
                         Name of the gateway the payment method is associated with.
-                        \* chargebee -
-
-                        Chargebee test gateway.
                         \* stripe -
 
                         Stripe is a payment gateway.
@@ -4395,15 +4371,9 @@ paths:
                         \* eway_rapid -
 
                         eWAY Rapid is a payment gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* ogone -
 
                         Ingenico ePayments (formerly known as Ogone) is a payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* tco -
 
                         2Checkout is a payment gateway.
@@ -6768,15 +6738,9 @@ paths:
                       deprecated: false
                       description: |
                         Name of the gateway the payment method is associated with.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* braintree -
 
                         Braintree is a payment gateway.
-                        \* chargebee -
-
-                        Chargebee test gateway.
                         \* nmi -
 
                         NMI is a payment gateway.
@@ -6807,9 +6771,6 @@ paths:
                         \* bluepay -
 
                         BluePay is a payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* tco -
 
                         2Checkout is a payment gateway.
@@ -8412,7 +8373,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -8760,15 +8721,9 @@ paths:
                         \* nmi -
 
                         NMI is a payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* eway_rapid -
 
                         eWAY Rapid is a payment gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -9012,9 +8967,6 @@ paths:
                       deprecated: false
                       description: |
                         Name of the gateway the payment method is associated with.
-                        \* chargebee -
-
-                        Chargebee test gateway.
                         \* stripe -
 
                         Stripe is a payment gateway.
@@ -9069,15 +9021,9 @@ paths:
                         \* eway_rapid -
 
                         eWAY Rapid is a payment gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* ogone -
 
                         Ingenico ePayments (formerly known as Ogone) is a payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* tco -
 
                         2Checkout is a payment gateway.
@@ -10181,7 +10127,71 @@ paths:
                 gateway:
                   type: string
                   deprecated: false
-                  description: "Name of the gateway you want to switch to.\n\\* twikey -\n\nTwikey is a payment service provider that specializes in processing direct debit payments across the EU.\n\\* ecentric -\n\nEcentric provides a seamless payment processing service in South Africa specializing on omnichannel capabilities.\n\\* bluesnap -\n\nBlueSnap is a payment gateway.\n\\* jp_morgan -\n\nJ.P. Morgan Mobility Payment Solutions is a payment gateway that enables you to securely accept and manage digital payments across different [payment_source_type](/docs/api/payment_sources/payment_source-object#type).  \nThis feature is a **Private Beta Release** . [Request access](https://app.chargebee.com/login?forward=https://app.chargebee.com/request_access/jp-morgan-bacs&ref=feature) to enable the J.P. Morgan Mobility Payment Solutions gateway via payFURL for your test and live sites.\n\\* tco -\n\n2Checkout is a payment gateway.\n\\* first_data_global -\n\nFirst Data Global Gateway Virtual Terminal Account\n\\* exact -\n\nExact Payments is a payment gateway.\n\\* deutsche_bank -\n\nDeutsche Bank is the leading German bank with strong European roots and a global network.  \nThis feature is a **Private Beta Release**.\n\\* bluepay -\n\nBluePay is a payment gateway.\n\\* paypal_express_checkout -\n\nPayPal Express Checkout is a payment gateway.\n\\* nuvei -\n\nNuvei is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses.  \nThis feature is a **Private Beta Release** . [Request access](https://app.chargebee.com/login?forward=https://app.chargebee.com/request_access/nuvei&ref=feature) to enable Nuvei for your test and live sites.\n\\* eway -\n\neWAY Account is a payment gateway.\n\\* metrics_global -\n\nMetrics global is a leading payment service provider providing unified payment services in the US.\n\\* paypal_payflow_pro -\n\nPayPal Payflow Pro is a payment gateway.\n\\* razorpay -\n\nRazorpay is a fast growing payment service provider in India working with all leading banks and support for major local payment methods including Netbanking, UPI etc.\n\\* global_payments -\n\nGlobal Payments is a payment service provider.\n\\* amazon_payments -\n\nAmazon Payments is a payment service provider.\n\\* dlocal -\n\nDlocal provides payment solutions for global commerce by accepting local payment methods.\n\\* not_applicable -\n\nIndicates that payment gateway is not applicable for this resource.\n\\* windcave -\n\nWindcave provides an end to end payment processing solution in ANZ and other leading global markets.\n\\* checkout_com -\n\nCheckout.com is a payment gateway.\n\\* adyen -\n\nAdyen is a payment gateway.\n\\* braintree -\n\nBraintree is a payment gateway.\n\\* nmi -\n\nNMI is a payment gateway.\n\\* quickbooks -\n\nIntuit QuickBooks Payments gateway\n\\* wepay -\n\nWePay is a payment gateway.\n\\* worldpay -\n\nWorldPay is a payment gateway\n\\* paystack -\n\nPaystack is a payment gateway for businesses in Africa. It enables secure payment acceptance both online and offline.  \nThis feature is a **Private Beta Release** . [Request access](https://app.chargebee.com/login?forward=https://app.chargebee.com/request_access/paystack&ref=feature) to enable Paystack for your test and live sites.\n\\* ezidebit -\n\nEzidebit is a payment gateway integration based in Australia that supports automated direct debit, BPAY, and card payments for businesses.  \nThis feature is a **Private Beta Release**.\n\\* pay_com -\n\nPay.com provides payment services focused on simplicity and hassle-free operations for businesses of all sizes.\n\\* wirecard -\n\nWireCard Account is a payment service provider.\n\\* chargebee_payments -\n\nChargebee Payments gateway\n\\* sage_pay -\n\nSage Pay is a payment gateway.\n\\* moneris_us -\n\nMoneris USA is a payment gateway.\n\\* pin -\n\nPin is a payment gateway\n\\* authorize_net -\n\nAuthorize.net is a payment gateway\n\\* elavon -\n\nElavon Virtual Merchant is a payment solution.\n\\* paypal_pro -\n\nPayPal Pro Account is a payment gateway.\n\\* orbital -\n\nChase Paymentech(Orbital) is a payment gateway.\n\\* paypal -\n\nPayPal Commerce is a payment gateway.\n\\* beanstream -\n\nBambora(formerly known as Beanstream) is a payment gateway.\n\\* hdfc -\n\nHDFC Account is a payment gateway.\n\\* ingenico_direct -\n\nWorldline Online Payments is a payment gateway.\n\\* ogone -\n\nIngenico ePayments (formerly known as Ogone) is a payment gateway.\n\\* migs -\n\nMasterCard Internet Gateway Service payment gateway.\n\\* stripe -\n\nStripe is a payment gateway.\n\\* vantiv -\n\nVantiv is a payment gateway.\n\\* moneris -\n\nMoneris is a payment gateway.\n\\* bank_of_america -\n\nBank of America Gateway\n\\* chargebee -\n\nChargebee test gateway.\n\\* eway_rapid -\n\neWAY Rapid is a payment gateway.\n\\* gocardless -\n\nGoCardless is a payment service provider.\n\\* mollie -\n\nMollie is a payment gateway.\n\\* paymill -\n\nPAYMILL is a payment gateway.\n\\* balanced_payments -\n\nBalanced is a payment gateway\n\\* solidgate -\n\nSolidgate is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses.  \nThis feature is a **Private Beta Release**.\n\\* cybersource -\n\nCyberSource is a payment gateway.\n\\* ebanx -\n\nEBANX is a payment gateway, enabling businesses to accept diverse local payment methods from various countries for increased market reach and conversion.\n"
+                  description: |
+                    Name of the gateway you want to switch to.
+                    \* braintree -
+
+                    Braintree is a payment gateway.
+                    \* beanstream -
+
+                    Bambora(formerly known as Beanstream) is a payment gateway.
+                    \* hdfc -
+
+                    HDFC Account is a payment gateway.
+                    \* nmi -
+
+                    NMI is a payment gateway.
+                    \* bluepay -
+
+                    BluePay is a payment gateway.
+                    \* ogone -
+
+                    Ingenico ePayments (formerly known as Ogone) is a payment gateway.
+                    \* migs -
+
+                    MasterCard Internet Gateway Service payment gateway.
+                    \* worldpay -
+
+                    WorldPay is a payment gateway
+                    \* stripe -
+
+                    Stripe is a payment gateway.
+                    \* wirecard -
+
+                    WireCard Account is a payment service provider.
+                    \* sage_pay -
+
+                    Sage Pay is a payment gateway.
+                    \* eway -
+
+                    eWAY Account is a payment gateway.
+                    \* paypal_payflow_pro -
+
+                    PayPal Payflow Pro is a payment gateway.
+                    \* eway_rapid -
+
+                    eWAY Rapid is a payment gateway.
+                    \* pin -
+
+                    Pin is a payment gateway
+                    \* authorize_net -
+
+                    Authorize.net is a payment gateway
+                    \* elavon -
+
+                    Elavon Virtual Merchant is a payment solution.
+                    \* paymill -
+
+                    PAYMILL is a payment gateway.
+                    \* first_data_global -
+
+                    First Data Global Gateway Virtual Terminal Account
+                    \* balanced_payments -
+
+                    Balanced is a payment gateway
+                    \* paypal_pro -
+
+                    PayPal Pro Account is a payment gateway.
                   enum:
                     - stripe
                     - braintree
@@ -10637,7 +10647,77 @@ paths:
                 gateway:
                   type: string
                   deprecated: false
-                  description: "Name of the gateway this card should be stored with.\n\\* twikey -\n\nTwikey is a payment service provider that specializes in processing direct debit payments across the EU.\n\\* ecentric -\n\nEcentric provides a seamless payment processing service in South Africa specializing on omnichannel capabilities.\n\\* bluesnap -\n\nBlueSnap is a payment gateway.\n\\* jp_morgan -\n\nJ.P. Morgan Mobility Payment Solutions is a payment gateway that enables you to securely accept and manage digital payments across different [payment_source_type](/docs/api/payment_sources/payment_source-object#type).  \nThis feature is a **Private Beta Release** . [Request access](https://app.chargebee.com/login?forward=https://app.chargebee.com/request_access/jp-morgan-bacs&ref=feature) to enable the J.P. Morgan Mobility Payment Solutions gateway via payFURL for your test and live sites.\n\\* tco -\n\n2Checkout is a payment gateway.\n\\* first_data_global -\n\nFirst Data Global Gateway Virtual Terminal Account\n\\* exact -\n\nExact Payments is a payment gateway.\n\\* deutsche_bank -\n\nDeutsche Bank is the leading German bank with strong European roots and a global network.  \nThis feature is a **Private Beta Release**.\n\\* bluepay -\n\nBluePay is a payment gateway.\n\\* paypal_express_checkout -\n\nPayPal Express Checkout is a payment gateway.\n\\* nuvei -\n\nNuvei is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses.  \nThis feature is a **Private Beta Release** . [Request access](https://app.chargebee.com/login?forward=https://app.chargebee.com/request_access/nuvei&ref=feature) to enable Nuvei for your test and live sites.\n\\* eway -\n\neWAY Account is a payment gateway.\n\\* metrics_global -\n\nMetrics global is a leading payment service provider providing unified payment services in the US.\n\\* paypal_payflow_pro -\n\nPayPal Payflow Pro is a payment gateway.\n\\* razorpay -\n\nRazorpay is a fast growing payment service provider in India working with all leading banks and support for major local payment methods including Netbanking, UPI etc.\n\\* global_payments -\n\nGlobal Payments is a payment service provider.\n\\* amazon_payments -\n\nAmazon Payments is a payment service provider.\n\\* dlocal -\n\nDlocal provides payment solutions for global commerce by accepting local payment methods.\n\\* not_applicable -\n\nIndicates that payment gateway is not applicable for this resource.\n\\* windcave -\n\nWindcave provides an end to end payment processing solution in ANZ and other leading global markets.\n\\* checkout_com -\n\nCheckout.com is a payment gateway.\n\\* adyen -\n\nAdyen is a payment gateway.\n\\* braintree -\n\nBraintree is a payment gateway.\n\\* nmi -\n\nNMI is a payment gateway.\n\\* quickbooks -\n\nIntuit QuickBooks Payments gateway\n\\* wepay -\n\nWePay is a payment gateway.\n\\* worldpay -\n\nWorldPay is a payment gateway\n\\* paystack -\n\nPaystack is a payment gateway for businesses in Africa. It enables secure payment acceptance both online and offline.  \nThis feature is a **Private Beta Release** . [Request access](https://app.chargebee.com/login?forward=https://app.chargebee.com/request_access/paystack&ref=feature) to enable Paystack for your test and live sites.\n\\* ezidebit -\n\nEzidebit is a payment gateway integration based in Australia that supports automated direct debit, BPAY, and card payments for businesses.  \nThis feature is a **Private Beta Release**.\n\\* pay_com -\n\nPay.com provides payment services focused on simplicity and hassle-free operations for businesses of all sizes.\n\\* wirecard -\n\nWireCard Account is a payment service provider.\n\\* chargebee_payments -\n\nChargebee Payments gateway\n\\* sage_pay -\n\nSage Pay is a payment gateway.\n\\* moneris_us -\n\nMoneris USA is a payment gateway.\n\\* pin -\n\nPin is a payment gateway\n\\* authorize_net -\n\nAuthorize.net is a payment gateway\n\\* elavon -\n\nElavon Virtual Merchant is a payment solution.\n\\* paypal_pro -\n\nPayPal Pro Account is a payment gateway.\n\\* orbital -\n\nChase Paymentech(Orbital) is a payment gateway.\n\\* paypal -\n\nPayPal Commerce is a payment gateway.\n\\* beanstream -\n\nBambora(formerly known as Beanstream) is a payment gateway.\n\\* hdfc -\n\nHDFC Account is a payment gateway.\n\\* ingenico_direct -\n\nWorldline Online Payments is a payment gateway.\n\\* ogone -\n\nIngenico ePayments (formerly known as Ogone) is a payment gateway.\n\\* migs -\n\nMasterCard Internet Gateway Service payment gateway.\n\\* stripe -\n\nStripe is a payment gateway.\n\\* vantiv -\n\nVantiv is a payment gateway.\n\\* moneris -\n\nMoneris is a payment gateway.\n\\* bank_of_america -\n\nBank of America Gateway\n\\* chargebee -\n\nChargebee test gateway.\n\\* eway_rapid -\n\neWAY Rapid is a payment gateway.\n\\* gocardless -\n\nGoCardless is a payment service provider.\n\\* mollie -\n\nMollie is a payment gateway.\n\\* paymill -\n\nPAYMILL is a payment gateway.\n\\* balanced_payments -\n\nBalanced is a payment gateway\n\\* solidgate -\n\nSolidgate is a secure and reliable payment processing solution that allows you to accept payments from customers and suitable for various types of businesses.  \nThis feature is a **Private Beta Release**.\n\\* cybersource -\n\nCyberSource is a payment gateway.\n\\* ebanx -\n\nEBANX is a payment gateway, enabling businesses to accept diverse local payment methods from various countries for increased market reach and conversion.\n"
+                  description: |
+                    Name of the gateway this card should be stored with.
+                    \* braintree -
+
+                    Braintree is a payment gateway.
+                    \* nmi -
+
+                    NMI is a payment gateway.
+                    \* worldpay -
+
+                    WorldPay is a payment gateway
+                    \* wirecard -
+
+                    WireCard Account is a payment service provider.
+                    \* sage_pay -
+
+                    Sage Pay is a payment gateway.
+                    \* pin -
+
+                    Pin is a payment gateway
+                    \* authorize_net -
+
+                    Authorize.net is a payment gateway
+                    \* tco -
+
+                    2Checkout is a payment gateway.
+                    \* elavon -
+
+                    Elavon Virtual Merchant is a payment solution.
+                    \* first_data_global -
+
+                    First Data Global Gateway Virtual Terminal Account
+                    \* paypal_pro -
+
+                    PayPal Pro Account is a payment gateway.
+                    \* beanstream -
+
+                    Bambora(formerly known as Beanstream) is a payment gateway.
+                    \* hdfc -
+
+                    HDFC Account is a payment gateway.
+                    \* bluepay -
+
+                    BluePay is a payment gateway.
+                    \* ogone -
+
+                    Ingenico ePayments (formerly known as Ogone) is a payment gateway.
+                    \* migs -
+
+                    MasterCard Internet Gateway Service payment gateway.
+                    \* stripe -
+
+                    Stripe is a payment gateway.
+                    \* eway -
+
+                    eWAY Account is a payment gateway.
+                    \* chargebee -
+
+                    Chargebee test gateway.
+                    \* paypal_payflow_pro -
+
+                    PayPal Payflow Pro is a payment gateway.
+                    \* eway_rapid -
+
+                    eWAY Rapid is a payment gateway.
+                    \* paymill -
+
+                    PAYMILL is a payment gateway.
+                    \* balanced_payments -
+
+                    Balanced is a payment gateway
                   enum:
                     - chargebee
                     - stripe
@@ -11675,7 +11755,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -13230,7 +13310,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -13915,18 +13995,14 @@ paths:
                       description: |-
                         <p class="mb-2">The payment method of this transaction</p>
                         * cash - <p class="mb-2">Cash</p>
-                        * paypal_express_checkout - <p class="mb-2">Paypal Express Checkout</p>
-                        * card - <p class="mb-2">Card</p>
                         * other - <p class="mb-2">Payment Methods other than the above types</p>
-                        * check - <p class="mb-2">Check</p>
-                        * direct_debit - <p class="mb-2">Direct Debit</p>
                         * bank_transfer - <p class="mb-2">Bank Transfer</p>
                         * chargeback - <p class="mb-2">Only applicable for a transaction of <code><a href="/docs/api/transactions/transaction-object#type">type</a></code>
                         = <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">refund</code>.
                         This value is set by Chargebee when an automated <a href="https://www.chargebee.com/docs/chargeback.html#chargeback-process" target="_blank" rel="noopener noreferrer">chargeback</a>
                         occurs. You can also set this explicitly when <a href="/docs/api/transactions/record-an-offline-refund">recording a refund</a>
                         .</p>
-                        * amazon_payments - <p class="mb-2">Amazon Payments</p>
+                        * check - <p class="mb-2">Check</p>
                       enum:
                         - cash
                         - check
@@ -14528,7 +14604,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -14961,7 +15037,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -15435,7 +15511,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -16173,7 +16249,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -16371,7 +16447,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -16559,7 +16635,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -16771,21 +16847,23 @@ paths:
                 payment_method:
                   type: string
                   deprecated: false
-                  description: |-
-                    <p class="mb-2">The payment method of this transaction.</p>
-                    * card - <p class="mb-2">Card</p>
-                    * cash - <p class="mb-2">Cash</p>
-                    * bank_transfer - <p class="mb-2">Bank Transfer</p>
-                    * paypal_express_checkout - <p class="mb-2">Paypal Express Checkout</p>
-                    * amazon_payments - <p class="mb-2">Amazon Payments</p>
-                    * check - <p class="mb-2">Check</p>
-                    * direct_debit - <p class="mb-2">Direct Debit</p>
-                    * chargeback - <p class="mb-2">Only applicable for a transaction of <code><a href="/docs/api/transactions/transaction-object#type">type</a></code>
-                    = <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">refund</code>.
-                    This value is set by Chargebee when an automated <a href="https://www.chargebee.com/docs/chargeback.html#chargeback-process" target="_blank" rel="noopener noreferrer">chargeback</a>
-                    occurs. You can also set this explicitly when <a href="/docs/api/transactions/record-an-offline-refund">recording a refund</a>
-                    .</p>
-                    * other - <p class="mb-2">Payment Methods other than the above types</p>
+                  description: |
+                    The payment method of this transaction.
+                    \* check -
+
+                    Check
+                    \* cash -
+
+                    Cash
+                    \* direct_debit -
+
+                    Direct Debit
+                    \* other -
+
+                    Payment Methods other than the above types
+                    \* bank_transfer -
+
+                    Bank Transfer
                   enum:
                     - cash
                     - check
@@ -17184,7 +17262,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -17485,9 +17563,6 @@ paths:
                         \* migs -
 
                         MasterCard Internet Gateway Service payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* paymill -
 
                         PAYMILL is a payment gateway.
@@ -17503,9 +17578,6 @@ paths:
                         \* chargebee -
 
                         Chargebee test gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -18045,15 +18117,9 @@ paths:
                         \* elavon -
 
                         Elavon Virtual Merchant is a payment solution.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* eway_rapid -
 
                         eWAY Rapid is a payment gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -18399,9 +18465,6 @@ paths:
                         \* migs -
 
                         MasterCard Internet Gateway Service payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* paymill -
 
                         PAYMILL is a payment gateway.
@@ -18417,9 +18480,6 @@ paths:
                         \* chargebee -
 
                         Chargebee test gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -18791,9 +18851,6 @@ paths:
                         \* migs -
 
                         MasterCard Internet Gateway Service payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* paymill -
 
                         PAYMILL is a payment gateway.
@@ -18809,9 +18866,6 @@ paths:
                         \* chargebee -
 
                         Chargebee test gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -19420,9 +19474,6 @@ paths:
                         \* migs -
 
                         MasterCard Internet Gateway Service payment gateway.
-                        \* not_applicable -
-
-                        Indicates that payment gateway is not applicable for this resource.
                         \* paymill -
 
                         PAYMILL is a payment gateway.
@@ -19438,9 +19489,6 @@ paths:
                         \* chargebee -
 
                         Chargebee test gateway.
-                        \* twikey -
-
-                        Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                         \* beanstream -
 
                         Bambora(formerly known as Beanstream) is a payment gateway.
@@ -19902,12 +19950,6 @@ paths:
               coupon:
                 type: string
                 deprecated: false
-                description: |
-                  The id of the coupon. For validating the coupon code provided by the user , use the following codes in combination with the param attribute in the error response.
-
-                  * **resource_not_found :** Returned if the coupon is not present.
-                  * **resource_limit_exhausted :** Returned if the coupon has expired or the maximum redemption for the coupon has already been reached.
-                  * **invalid_request :** Returned if the coupon is not applicable for the particular plan/addon.
                 maxLength: 100
                 example: null
             required:
@@ -20527,7 +20569,7 @@ paths:
                         type: string
                         deprecated: false
                         description: |
-                          null
+                          \* full_term - \* partial_term - \* none -
                         enum:
                           - full_term
                           - partial_term
@@ -21888,7 +21930,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -23515,7 +23557,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -24274,7 +24316,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -24529,6 +24571,7 @@ paths:
                   type: integer
                   format: int32
                   deprecated: false
+                  description: ""
                   minimum: 1
                   example: null
                 apply_on:
@@ -24538,12 +24581,10 @@ paths:
                     <p class="mb-2">The amount on the invoice to which the coupon is applied.</p>
                     * invoice_amount - <p class="mb-2">The coupon is applied to the invoice <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">sub_total</code>
                     .</p>
-                    * each_unit_of_specified_items - <p class="mb-2">Discount will be applied to each unit of plan and addon items specified.</p>
                     * each_specified_item - <p class="mb-2">The coupon is applied to the <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">invoice.line_item.amount</code>
                     that corresponds to the plan or addon specified by <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">plan_ids</code>
                     and <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">addon_ids</code>
                     .</p>
-                    * specified_items_total - <p class="mb-2">Discount will be applied to the total of plan and addon items specified.</p>
                   enum:
                     - invoice_amount
                     - each_specified_item
@@ -25902,25 +25943,25 @@ paths:
             Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.
             **Note**:
             To retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.
-            \* not_applicable -
-
-            Webhook call is not applicable for this event.
             \* re_scheduled -
 
             Webhook call has been rescheduled due failure(s) in previous call(s)
-            \* succeeded -
-
-            Webhook call was successful.
             \* not_configured -
 
             Webhook was not configured when this event occurred
             \* scheduled -
 
             Webhook call has been scheduled.
-            \* failed -
+            \* rate_limited - \* failed -
 
             Webhook call has been suspended after the all retries have resulted in failure.
-            \* skipped -
+            \* not_applicable -
+
+            Webhook call is not applicable for this event.
+            \* succeeded -
+
+            Webhook call was successful.
+            \* disabled - \* skipped -
 
             Skipped as specified in request
           required: false
@@ -25978,21 +26019,12 @@ paths:
             \* subscription_created -
 
             Sent when a new subscription is created.
-            \* card_expiring -
-
-            Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.
             \* card_updated -
 
             Sent when the card is updated for a customer.
             \* payment_initiated -
 
             Sent when a payment is initiated via direct debit
-            \* subscription_renewed -
-
-            Sent when the subscription is renewed from the current term.
-            \* subscription_activated -
-
-            Sent after the subscription has been moved from trial to active state
             \* subscription_changed -
 
             Sent after the subscription's recurring items have been changed
@@ -26002,9 +26034,6 @@ paths:
             \* subscription_deleted -
 
             Sent when a subscription has been deleted
-            \* subscription_reactivated -
-
-            Sent when the subscription is moved from cancelled state to active or in_trial state
             \* subscription_trial_ending -
 
             Sent when the customer's trial period is about to end.
@@ -26014,15 +26043,33 @@ paths:
             \* transaction_deleted -
 
             Triggered when a transaction is deleted.
+            \* card_added -
+
+            Sent when a card is added for a customer.
+            \* payment_succeeded -
+
+            Sent when the payment is successfully collected
+            \* payment_failed -
+
+            Sent when attempt to charge customer's credit card fails
+            \* card_expiring -
+
+            Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.
+            \* subscription_renewed -
+
+            Sent when the subscription is renewed from the current term.
+            \* subscription_activated -
+
+            Sent after the subscription has been moved from trial to active state
+            \* subscription_reactivated -
+
+            Sent when the subscription is moved from cancelled state to active or in_trial state
             \* subscription_trial_extended -
 
             Trial Extension
             \* transaction_updated -
 
             Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.
-            \* card_added -
-
-            Sent when a card is added for a customer.
             \* subscription_renewal_reminder -
 
             Sent before each subscription's renewal based on plan's period
@@ -26032,12 +26079,6 @@ paths:
             \* payment_refunded -
 
             Sent when a payment refund is made
-            \* payment_succeeded -
-
-            Sent when the payment is successfully collected
-            \* payment_failed -
-
-            Sent when attempt to charge customer's credit card fails
             \* subscription_started -
 
             Sent when a 'future' subscription gets started at the scheduled date.
@@ -26116,7 +26157,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -26797,39 +26838,27 @@ paths:
           in: query
           description: |
             Type of the entity this comment generated for.
-            \* order -
-
-            Entity that represents an order
-            \* customer -
-
-            Entity that represents a customer
-            \* invoice -
-
-            Invoice description
             \* business_entity -
 
             Entity that represents item of type business entity
             \* plan -
 
             Entity that represents a subscription plan
-            \* coupon -
+            \* order -
 
-            Entity that represents a discount coupon
+            Entity that represents an order
             \* subscription -
 
             Entity that represents a subscription of a customer
+            \* customer -
+
+            Entity that represents a customer
             \* transaction -
 
             Entity that represents a transaction.
             \* addon -
 
             Entity that represents an addon
-            \* credit_note -
-
-            Credit note description
-            \* quote -
-
-            Entity that represents a quote
           required: false
           deprecated: false
           style: form
@@ -26881,7 +26910,7 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
                     maxLength: 1000
                     example: null
                 required:
@@ -27074,39 +27103,27 @@ paths:
                   deprecated: false
                   description: |
                     Type of the entity to create the comment for.
-                    \* order -
-
-                    Entity that represents an order
-                    \* customer -
-
-                    Entity that represents a customer
-                    \* invoice -
-
-                    Invoice description
                     \* business_entity -
 
                     Entity that represents item of type business entity
                     \* plan -
 
                     Entity that represents a subscription plan
-                    \* coupon -
+                    \* order -
 
-                    Entity that represents a discount coupon
+                    Entity that represents an order
                     \* subscription -
 
                     Entity that represents a subscription of a customer
+                    \* customer -
+
+                    Entity that represents a customer
                     \* transaction -
 
                     Entity that represents a transaction.
                     \* addon -
 
                     Entity that represents an addon
-                    \* credit_note -
-
-                    Credit note description
-                    \* quote -
-
-                    Entity that represents a quote
                   enum:
                     - customer
                     - subscription
@@ -29557,7 +29574,7 @@ components:
           default: site_default
           deprecated: false
           description: |
-            null
+            \* full_term - \* site_default - \* partial_term -
           enum:
             - site_default
             - partial_term
@@ -29812,9 +29829,6 @@ components:
           deprecated: false
           description: |
             Name of the gateway this payment source is stored with.
-            \* twikey -
-
-            Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
             \* tco -
 
             2Checkout is a payment gateway.
@@ -30427,18 +30441,12 @@ components:
             \* customer -
 
             Entity that represents a customer
-            \* invoice -
-
-            Invoice description
             \* business_entity -
 
             Entity that represents item of type business entity
             \* plan -
 
             Entity that represents a subscription plan
-            \* coupon -
-
-            Entity that represents a discount coupon
             \* subscription -
 
             Entity that represents a subscription of a customer
@@ -30448,12 +30456,6 @@ components:
             \* addon -
 
             Entity that represents an addon
-            \* credit_note -
-
-            Credit note description
-            \* quote -
-
-            Entity that represents a quote
           enum:
             - customer
             - subscription
@@ -30662,6 +30664,7 @@ components:
           type: integer
           format: int32
           deprecated: false
+          description: ""
           minimum: 1
           example: null
         duration_type:
@@ -31507,9 +31510,6 @@ components:
                 \* elavon -
 
                 Elavon Virtual Merchant is a payment solution.
-                \* twikey -
-
-                Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
                 \* braintree -
 
                 Braintree is a payment gateway.
@@ -31915,7 +31915,7 @@ components:
             \* non_renewing -
 
             The subscription will be canceled at the end of the current term.
-            \* cancelled -
+            \* transferred - \* cancelled -
 
             The subscription has been canceled and is no longer in service.
             \* future -
@@ -32332,18 +32332,7 @@ components:
               webhook_status:
                 type: string
                 deprecated: false
-                description: |-
-                  <ul class="list-disc list-outside ml-6 my-4 space-y-2">
-                  <li class="text-base leading-relaxed"><strong class="font-semibold">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>
-                  <li class="text-base leading-relaxed"><strong class="font-semibold">When the event resource is passed as part of a webhook call:</strong> The <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>
-                  </ul>
-                  * scheduled - <p class="mb-2">Webhook call has been scheduled.</p>
-                  * not_applicable - <p class="mb-2">Webhook call is not applicable for this event.</p>
-                  * skipped - <p class="mb-2">Skipped as specified in request</p>
-                  * failed - <p class="mb-2">Webhook call has been suspended after the all retries have resulted in failure.</p>
-                  * re_scheduled - <p class="mb-2">Webhook call has been rescheduled due failure(s) in previous call(s)</p>
-                  * not_configured - <p class="mb-2">Webhook was not configured when this event occurred</p>
-                  * succeeded - <p class="mb-2">Webhook call was successful.</p>
+                description: "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is passed as part of a webhook call:</strong> The <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>\n</ul>\n* scheduled - <p class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n* skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n* disabled - \n* failed - <p class=\"mb-2\">Webhook call has been suspended after the all retries have resulted in failure.</p>\n* re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled due failure(s) in previous call(s)</p>\n* not_configured - <p class=\"mb-2\">Webhook was not configured when this event occurred</p>\n* succeeded - <p class=\"mb-2\">Webhook call was successful.</p>\n* rate_limited - "
                 enum:
                   - not_configured
                   - scheduled
@@ -34846,12 +34835,6 @@ components:
           deprecated: false
           description: |
             Indicates the current status of the portal session.
-            \* created -
-
-            Indicates that the portal session is just created and not yet accessed by the user.
-            \* logged_out -
-
-            Indicates that the portal session is logged out either by user or via API.
             \* not_yet_activated -
 
             Indicates that the portal session is created and not yet activated for the customer to allow access to your website. This is applicable when you use Chargebee's authentication for your website
@@ -34861,6 +34844,12 @@ components:
             \* logged_in -
 
             Indicates that the portal session URL has been accessed by the user and the session is active.
+            \* created -
+
+            Indicates that the portal session is just created and not yet accessed by the user.
+            \* logged_out -
+
+            Indicates that the portal session is logged out either by user or via API.
           enum:
             - created
             - logged_in
@@ -36655,9 +36644,6 @@ components:
           deprecated: false
           description: |
             Gateway through which this transaction was done. Applicable only for 'Card' Payment Method
-            \* twikey -
-
-            Twikey is a payment service provider that specializes in processing direct debit payments across the EU.
             \* tco -
 
             2Checkout is a payment gateway.
