@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-06-30.0158baa1a66c5d5616e17a230e2a07cb1ceba44e
+  version: 2026-07-06.fecf1a6f1150453b82da7bd138b71315114a726b
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -32231,11 +32231,6 @@ components:
         * [Subscription](/docs/api/v1/subscriptions/subscription-object) - The updated details of the subscription.
         * [Card](/docs/api/v1/cards/card-object) - The details about the card provided while subscribing.
         * [Invoice](/docs/api/v1/invoices/invoice-object) - The details about the invoice, if one is generated.
-
-        [Update Payment Method](/docs/api/v1/hosted_pages/update-payment-method):
-
-        * [Customer](/docs/api/v1/customers/customer-object) - The details about the customer for whom the card was updated.
-        * [Card](/docs/api/v1/cards/card-object) - The details about the updated card. It will be present only if the type of payment method is card.
 
         When an embedded hosted page is cancelled by your end user, the **content** attribute will have the unmodified details of customer, subscription and card resources.
       properties:
