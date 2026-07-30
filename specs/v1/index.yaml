@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-07-28.0536ab689677e97a7fea42ccff02ff97c1f30c4f
+  version: 2026-07-29.274c0bb3921bcbf3b027bc45db6eb709a56bb32a
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -961,13 +961,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -975,7 +977,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -2633,13 +2635,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -2647,7 +2651,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -2930,13 +2934,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -2944,7 +2950,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -3041,13 +3047,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -3055,7 +3063,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -4234,13 +4242,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -4248,7 +4258,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -4531,13 +4541,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -4545,7 +4557,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -4642,13 +4654,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -4656,7 +4670,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -8128,13 +8142,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -8142,7 +8158,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -8884,13 +8900,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -8898,7 +8916,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -9181,13 +9199,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -9195,7 +9215,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -10824,13 +10844,15 @@ paths:
                   deprecated: false
                   description: |-
                     <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                    without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                    without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                     as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                     (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                     ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                     (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                     ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                     (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                    ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                    (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                     ).</p>
                   maxLength: 50
                   example: null
@@ -10838,7 +10860,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |-
-                    <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                    <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
                     is provided.</p>
                   maxLength: 50
                   example: null
@@ -13608,13 +13630,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -13622,7 +13646,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -16000,13 +16024,15 @@ paths:
                       deprecated: false
                       description: |-
                         <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                        without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                         ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                         ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                         (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                        ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                        (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                         ).</p>
                       maxLength: 50
                       example: null
@@ -16014,7 +16040,7 @@ paths:
                       type: string
                       deprecated: false
                       description: |-
-                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                        <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                         is provided.</p>
                       maxLength: 50
                       example: null
@@ -25298,13 +25324,15 @@ paths:
                   deprecated: false
                   description: |-
                     <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search/code" target="_blank">ISO 3166-2 state/province code</a>
-                    without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                    without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                     as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                     (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                     ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                     (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                     ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                     (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                    ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                    (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                     ).</p>
                   maxLength: 50
                   example: null
@@ -25312,7 +25340,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |-
-                    <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada and India If <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                    <p class="mb-2">The state/province name. Is set by Chargebee automatically for US, Canada, India and UAE, if <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                     is provided.</p>
                   maxLength: 50
                   example: null
@@ -29296,13 +29324,15 @@ components:
           deprecated: false
           description: |-
             <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search" target="_blank">ISO 3166-2 state/province code</a>
-            without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+            without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
             as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
             (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
             ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
             (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
             ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
             (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+            ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+            (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
             ).</p>
           maxLength: 50
           example: null
@@ -29608,13 +29638,15 @@ components:
           deprecated: false
           description: |-
             <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search" target="_blank">ISO 3166-2 state/province code</a>
-            without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+            without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">billing_state_code</code>
             as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
             (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
             ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
             (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
             ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
             (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+            ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+            (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
             ).</p>
           maxLength: 50
           example: null
@@ -30868,13 +30900,15 @@ components:
               deprecated: false
               description: |-
                 <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search" target="_blank">ISO 3166-2 state/province code</a>
-                without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                 as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                 ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                 ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                 ).</p>
               maxLength: 50
               example: null
@@ -33089,13 +33123,15 @@ components:
               deprecated: false
               description: |-
                 <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search" target="_blank">ISO 3166-2 state/province code</a>
-                without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                 as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                 ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                 ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                 ).</p>
               maxLength: 50
               example: null
@@ -33201,13 +33237,15 @@ components:
               deprecated: false
               description: |-
                 <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search" target="_blank">ISO 3166-2 state/province code</a>
-                without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                 as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                 ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                 ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                 ).</p>
               maxLength: 50
               example: null
@@ -35060,13 +35098,15 @@ components:
               deprecated: false
               description: |-
                 <p class="mb-2">The <a href="https://www.iso.org/obp/ui/#search" target="_blank">ISO 3166-2 state/province code</a>
-                without the country prefix. Currently supported for USA, Canada and India. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
+                without the country prefix. Currently supported for USA, Canada, India and UAE. For instance, for Arizona (USA), set <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">state_code</code>
                 as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AZ</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">US-AZ</code>
                 ). For Tamil Nadu (India), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">TN</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">IN-TN</code>
                 ). For British Columbia (Canada), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">BC</code>
                 (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">CA-BC</code>
+                ). For Dubai (UAE), set as <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">DU</code>
+                (not <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">AE-DU</code>
                 ).</p>
               maxLength: 50
               example: null
