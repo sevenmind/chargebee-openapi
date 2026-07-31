@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-07-29.274c0bb3921bcbf3b027bc45db6eb709a56bb32a
-  x-cb-product-catalog-version: 1
+  version: 2026-07-30.22b393b90bbb3c6773919832df2c874bf537b9ec
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -36842,6 +36842,97 @@ components:
         - automated_bank_transfer
       example: null
   parameters:
+    Prefer:
+      name: Prefer
+      in: header
+      description: Must be set to <code>respond-async</code>. Instructs Chargebee to process the request asynchronously and return <code>202 Accepted</code> immediately.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: Must be set to <code>respond-async</code>. Instructs Chargebee to process the request asynchronously and return <code>202 Accepted</code> immediately.
+        example: respond-async
+      x-cb-async-header: true
+    reason-code-id:
+      name: reason-code-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    invoice-id:
+      name: invoice-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    transaction-id:
+      name: transaction-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 10
+        description: The number of resources to be returned.
+        x-cb-is-pagination-parameter: true
+        maximum: 100
+        minimum: 1
+        example: null
+    chargebee-event-email:
+      name: chargebee-event-email
+      in: header
+      description: skip only emails
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: skip only emails
+        enum:
+          - all-disabled
+    chargebee-request-origin-ip:
+      name: chargebee-request-origin-ip
+      in: header
+      description: The IP address of the customer where the request originated
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: The IP address of the customer where the request originated
+        example: 192.168.1.2
+        pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+    coupon-code-code:
+      name: coupon-code-code
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    comment-id:
+      name: comment-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
     coupon-id:
       name: coupon-id
       in: path
@@ -36862,6 +36953,19 @@ components:
         x-cb-is-pagination-parameter: true
         maxLength: 1000
         example: null
+    chargebee-async-callback-url:
+      name: chargebee-async-callback-url
+      in: header
+      description: The callback URL where Chargebee will <code>POST</code> the async result. Must be an <code>https://</code> URL and may embed basic-auth credentials, e.g. <code>https://username:password@example.com</code>.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uri
+        description: The callback URL where Chargebee will <code>POST</code> the async result. Must be an <code>https://</code> URL and may embed basic-auth credentials, e.g. <code>https://username:password@example.com</code>.
+        example: https://username:password@example.com
+      x-cb-async-header: true
     subscription-id:
       name: subscription-id
       in: path
@@ -36886,14 +36990,19 @@ components:
       explode: false
       schema:
         type: string
-    reason-code-id:
-      name: reason-code-id
-      in: path
+    chargebee-request-id:
+      name: chargebee-request-id
+      in: header
+      description: A client-generated unique identifier (UUID recommended) for this request. Echoed back as <code>request.id</code> in the async callback payload, allowing you to correlate each callback to its originating request.
       required: true
       style: simple
       explode: false
       schema:
         type: string
+        description: A client-generated unique identifier (UUID recommended) for this request. Echoed back as <code>request.id</code> in the async callback payload, allowing you to correlate each callback to its originating request.
+        example: 7c9e2f4a-8b1d-4e6f-9a0c-3d5e7f9b1c2d
+        maxLength: 100
+      x-cb-async-header: true
     order-id:
       name: order-id
       in: path
@@ -36922,24 +37031,8 @@ components:
       explode: false
       schema:
         type: string
-    invoice-id:
-      name: invoice-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     plan-id:
       name: plan-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    transaction-id:
-      name: transaction-id
       in: path
       required: true
       style: simple
@@ -37001,33 +37094,6 @@ components:
         type: string
         description: The device from which the customer has made the request
         example: Android
-    limit:
-      name: limit
-      in: query
-      required: false
-      style: form
-      explode: true
-      schema:
-        type: integer
-        format: int32
-        default: 10
-        description: The number of resources to be returned.
-        x-cb-is-pagination-parameter: true
-        maximum: 100
-        minimum: 1
-        example: null
-    chargebee-event-email:
-      name: chargebee-event-email
-      in: header
-      description: skip only emails
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: skip only emails
-        enum:
-          - all-disabled
     addon-id:
       name: addon-id
       in: path
@@ -37036,36 +37102,8 @@ components:
       explode: false
       schema:
         type: string
-    chargebee-request-origin-ip:
-      name: chargebee-request-origin-ip
-      in: header
-      description: The IP address of the customer where the request originated
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: The IP address of the customer where the request originated
-        example: 192.168.1.2
-        pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
     event-id:
       name: event-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    coupon-code-code:
-      name: coupon-code-code
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    comment-id:
-      name: comment-id
       in: path
       required: true
       style: simple
