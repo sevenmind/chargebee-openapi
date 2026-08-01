@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-07-30.22b393b90bbb3c6773919832df2c874bf537b9ec",
+    "version": "2026-07-31.80bf32d445d1731de6ed29572b43291062ee7933",
     "x-cb-api-version": 1,
     "x-cb-product-catalog-version": 1
   },
@@ -3536,7 +3536,7 @@
                         "items": {
                           "type": "string",
                           "deprecated": false,
-                          "description": "\\* full_term - \\* partial_term - \\* none -\n",
+                          "description": "\\* full_term -\n\nCharge the full price of the addon or give the full credit. Don't apply any proration.\n\\* partial_term -\n\nProrate the charges or credits for the rest of the current term.\n\\* none -\n\nDon't apply any charges or credits for the addon.\n",
                           "enum": [
                             "full_term",
                             "partial_term",
@@ -23430,7 +23430,7 @@
                         "items": {
                           "type": "string",
                           "deprecated": false,
-                          "description": "\\* full_term - \\* partial_term - \\* none -\n",
+                          "description": "\\* full_term -\n\nCharge the full price of the addon or give the full credit. Don't apply any proration.\n\\* partial_term -\n\nProrate the charges or credits for the rest of the current term.\n\\* none -\n\nDon't apply any charges or credits for the addon.\n",
                           "enum": [
                             "full_term",
                             "partial_term",
@@ -28147,7 +28147,7 @@
                     "type": "integer",
                     "format": "int32",
                     "deprecated": false,
-                    "description": "",
+                    "description": "<p class=\"mb-2\">The number of free units offered. Applicable only when <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">discount_type</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offer_quantity</code>.</p>",
                     "minimum": 1,
                     "example": null
                   },
@@ -29856,7 +29856,7 @@
           {
             "name": "webhook_status",
             "in": "query",
-            "description": "Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.\n**Note**:\nTo retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.\n\\* re_scheduled -\n\nWebhook call has been rescheduled due failure(s) in previous call(s)\n\\* not_configured -\n\nWebhook was not configured when this event occurred\n\\* scheduled -\n\nWebhook call has been scheduled.\n\\* rate_limited - \\* failed -\n\nWebhook call has been suspended after the all retries have resulted in failure.\n\\* not_applicable -\n\nWebhook call is not applicable for this event.\n\\* succeeded -\n\nWebhook call was successful.\n\\* disabled - \\* skipped -\n\nSkipped as specified in request\n",
+            "description": "Returns the events (occurred in the past 6 days) which has this status in any of the events' webhooks.\n**Note**:\nTo retrieve events which have occurred before the 6 day period, use the occurred_at(start_time/end_time) attribute.\n\\* re_scheduled -\n\nWebhook call has been rescheduled due failure(s) in previous call(s)\n\\* not_configured -\n\nWebhook was not configured when this event occurred\n\\* scheduled -\n\nWebhook call has been scheduled.\n\\* rate_limited -\n\nWebhook call was rate limited.\n\\* failed -\n\nWebhook call has been suspended after the all retries have resulted in failure.\n\\* not_applicable -\n\nWebhook call is not applicable for this event.\n\\* succeeded -\n\nWebhook call was successful.\n\\* disabled -\n\nDisabled as it is no longer used.\n\\* skipped -\n\nSkipped as specified in request\n",
             "required": false,
             "deprecated": false,
             "style": "form",
@@ -34289,7 +34289,7 @@
             "type": "string",
             "default": "site_default",
             "deprecated": false,
-            "description": "\\* full_term - \\* site_default - \\* partial_term -\n",
+            "description": "Configuration for proration of charges and credits when the addon is used in a subscription.\n\\* full_term -\n\nUpdating a subscription will apply full charges or full credits for this addon.\n\\* site_default -\n\nUpdating a subscription will apply the site-level default settings.\n\\* partial_term -\n\nUpdating a subscription will apply proration to charges or credits for this addon.\n",
             "enum": [
               "site_default",
               "partial_term",
@@ -35219,7 +35219,7 @@
             "type": "integer",
             "format": "int32",
             "deprecated": false,
-            "description": "",
+            "description": "<p class=\"mb-2\">The number of free units offered. Applicable only when <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">discount_type</code> is <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offer_quantity</code>.</p>",
             "minimum": 1,
             "example": null
           },
@@ -36356,14 +36356,14 @@
           "subscription_id": {
             "type": "string",
             "deprecated": false,
-            "description": "Applicable only for subsctiption related estimates. The identifier of the subscription this estimate belongs to.\n",
+            "description": "Applicable only for subscription related estimates. The identifier of the subscription this estimate belongs to.\n",
             "maxLength": 100,
             "example": null
           },
           "subscription_status": {
             "type": "string",
             "deprecated": false,
-            "description": "Applicable only for subsctiption related estimates. The post-operation status of the subscription.\n\\* in_trial -\n\nThe subscription is in trial.\n\\* active -\n\nThe subscription is active and will be charged for automatically based on the items in it.\n\\* non_renewing -\n\nThe subscription will be canceled at the end of the current term.\n\\* transferred - \\* cancelled -\n\nThe subscription has been canceled and is no longer in service.\n\\* future -\n\nThe subscription is scheduled to start at a future date.\n",
+            "description": "Applicable only for subscription related estimates. The post-operation status of the subscription.\n\\* in_trial -\n\nThe subscription is in trial.\n\\* active -\n\nThe subscription is active and will be charged for automatically based on the items in it.\n\\* non_renewing -\n\nThe subscription will be canceled at the end of the current term.\n\\* transferred -\n\nThe subscription has been transferred to another business entity within the organization.\n\\* cancelled -\n\nThe subscription has been canceled and is no longer in service.\n\\* future -\n\nThe subscription is scheduled to start at a future date.\n",
             "enum": [
               "future",
               "in_trial",
@@ -36378,7 +36378,7 @@
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
-            "description": "Applicable only for subsctiption related estimates. End of the current billing term\n",
+            "description": "Applicable only for subscription related estimates. End of the current billing term\n",
             "example": null
           },
           "collect_now": {
@@ -36715,7 +36715,7 @@
                 "webhook_status": {
                   "type": "string",
                   "deprecated": false,
-                  "description": "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is passed as part of a webhook call:</strong> The <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>\n</ul>\n* scheduled - <p class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n* skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n* disabled - \n* failed - <p class=\"mb-2\">Webhook call has been suspended after the all retries have resulted in failure.</p>\n* re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled due failure(s) in previous call(s)</p>\n* not_configured - <p class=\"mb-2\">Webhook was not configured when this event occurred</p>\n* succeeded - <p class=\"mb-2\">Webhook call was successful.</p>\n* rate_limited - ",
+                  "description": "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is passed as part of a webhook call:</strong> The <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>\n</ul>\n* scheduled - <p class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n* skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n* disabled - <p class=\"mb-2\">Disabled as it is no longer used.</p>\n* failed - <p class=\"mb-2\">Webhook call has been suspended after the all retries have resulted in failure.</p>\n* re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled due failure(s) in previous call(s)</p>\n* not_configured - <p class=\"mb-2\">Webhook was not configured when this event occurred</p>\n* succeeded - <p class=\"mb-2\">Webhook call was successful.</p>\n* rate_limited - <p class=\"mb-2\">Webhook call was rate limited.</p>",
                   "enum": [
                     "not_configured",
                     "scheduled",

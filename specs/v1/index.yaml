@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-07-30.22b393b90bbb3c6773919832df2c874bf537b9ec
+  version: 2026-07-31.80bf32d445d1731de6ed29572b43291062ee7933
   x-cb-api-version: 1
   x-cb-product-catalog-version: 1
 servers:
@@ -3145,7 +3145,15 @@ paths:
                         type: string
                         deprecated: false
                         description: |
-                          \* full_term - \* partial_term - \* none -
+                          \* full_term -
+
+                          Charge the full price of the addon or give the full credit. Don't apply any proration.
+                          \* partial_term -
+
+                          Prorate the charges or credits for the rest of the current term.
+                          \* none -
+
+                          Don't apply any charges or credits for the addon.
                         enum:
                           - full_term
                           - partial_term
@@ -20199,7 +20207,15 @@ paths:
                         type: string
                         deprecated: false
                         description: |
-                          \* full_term - \* partial_term - \* none -
+                          \* full_term -
+
+                          Charge the full price of the addon or give the full credit. Don't apply any proration.
+                          \* partial_term -
+
+                          Prorate the charges or credits for the rest of the current term.
+                          \* none -
+
+                          Don't apply any charges or credits for the addon.
                         enum:
                           - full_term
                           - partial_term
@@ -24201,7 +24217,7 @@ paths:
                   type: integer
                   format: int32
                   deprecated: false
-                  description: ""
+                  description: <p class="mb-2">The number of free units offered. Applicable only when <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">discount_type</code> is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offer_quantity</code>.</p>
                   minimum: 1
                   example: null
                 apply_on:
@@ -25584,7 +25600,10 @@ paths:
             \* scheduled -
 
             Webhook call has been scheduled.
-            \* rate_limited - \* failed -
+            \* rate_limited -
+
+            Webhook call was rate limited.
+            \* failed -
 
             Webhook call has been suspended after the all retries have resulted in failure.
             \* not_applicable -
@@ -25593,7 +25612,10 @@ paths:
             \* succeeded -
 
             Webhook call was successful.
-            \* disabled - \* skipped -
+            \* disabled -
+
+            Disabled as it is no longer used.
+            \* skipped -
 
             Skipped as specified in request
           required: false
@@ -29206,7 +29228,16 @@ components:
           default: site_default
           deprecated: false
           description: |
-            \* full_term - \* site_default - \* partial_term -
+            Configuration for proration of charges and credits when the addon is used in a subscription.
+            \* full_term -
+
+            Updating a subscription will apply full charges or full credits for this addon.
+            \* site_default -
+
+            Updating a subscription will apply the site-level default settings.
+            \* partial_term -
+
+            Updating a subscription will apply proration to charges or credits for this addon.
           enum:
             - site_default
             - partial_term
@@ -30255,7 +30286,7 @@ components:
           type: integer
           format: int32
           deprecated: false
-          description: ""
+          description: <p class="mb-2">The number of free units offered. Applicable only when <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">discount_type</code> is <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offer_quantity</code>.</p>
           minimum: 1
           example: null
         duration_type:
@@ -31491,14 +31522,14 @@ components:
           type: string
           deprecated: false
           description: |
-            Applicable only for subsctiption related estimates. The identifier of the subscription this estimate belongs to.
+            Applicable only for subscription related estimates. The identifier of the subscription this estimate belongs to.
           maxLength: 100
           example: null
         subscription_status:
           type: string
           deprecated: false
           description: |
-            Applicable only for subsctiption related estimates. The post-operation status of the subscription.
+            Applicable only for subscription related estimates. The post-operation status of the subscription.
             \* in_trial -
 
             The subscription is in trial.
@@ -31508,7 +31539,10 @@ components:
             \* non_renewing -
 
             The subscription will be canceled at the end of the current term.
-            \* transferred - \* cancelled -
+            \* transferred -
+
+            The subscription has been transferred to another business entity within the organization.
+            \* cancelled -
 
             The subscription has been canceled and is no longer in service.
             \* future -
@@ -31527,7 +31561,7 @@ components:
           format: unix-time
           deprecated: false
           description: |
-            Applicable only for subsctiption related estimates. End of the current billing term
+            Applicable only for subscription related estimates. End of the current billing term
           example: null
         collect_now:
           type: boolean
@@ -31925,7 +31959,20 @@ components:
               webhook_status:
                 type: string
                 deprecated: false
-                description: "<ul class=\"list-disc list-outside ml-6 my-4 space-y-2\">\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>\n<li class=\"text-base leading-relaxed\"><strong class=\"font-semibold\">When the event resource is passed as part of a webhook call:</strong> The <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>\n</ul>\n* scheduled - <p class=\"mb-2\">Webhook call has been scheduled.</p>\n* not_applicable - <p class=\"mb-2\">Webhook call is not applicable for this event.</p>\n* skipped - <p class=\"mb-2\">Skipped as specified in request</p>\n* disabled - \n* failed - <p class=\"mb-2\">Webhook call has been suspended after the all retries have resulted in failure.</p>\n* re_scheduled - <p class=\"mb-2\">Webhook call has been rescheduled due failure(s) in previous call(s)</p>\n* not_configured - <p class=\"mb-2\">Webhook was not configured when this event occurred</p>\n* succeeded - <p class=\"mb-2\">Webhook call was successful.</p>\n* rate_limited - "
+                description: |-
+                  <ul class="list-disc list-outside ml-6 my-4 space-y-2">
+                  <li class="text-base leading-relaxed"><strong class="font-semibold">When the event resource is retrieved via API:</strong> Represents the status of the webhook call made to this webhook.</li>
+                  <li class="text-base leading-relaxed"><strong class="font-semibold">When the event resource is passed as part of a webhook call:</strong> The <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">webhooks</code> object is unavailable on the first webhook call for the event. For subsequent calls, this attribute holds the status from after the last retry.</li>
+                  </ul>
+                  * scheduled - <p class="mb-2">Webhook call has been scheduled.</p>
+                  * not_applicable - <p class="mb-2">Webhook call is not applicable for this event.</p>
+                  * skipped - <p class="mb-2">Skipped as specified in request</p>
+                  * disabled - <p class="mb-2">Disabled as it is no longer used.</p>
+                  * failed - <p class="mb-2">Webhook call has been suspended after the all retries have resulted in failure.</p>
+                  * re_scheduled - <p class="mb-2">Webhook call has been rescheduled due failure(s) in previous call(s)</p>
+                  * not_configured - <p class="mb-2">Webhook was not configured when this event occurred</p>
+                  * succeeded - <p class="mb-2">Webhook call was successful.</p>
+                  * rate_limited - <p class="mb-2">Webhook call was rate limited.</p>
                 enum:
                   - not_configured
                   - scheduled
