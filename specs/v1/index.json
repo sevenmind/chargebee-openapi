@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-08-11.f1c56476941135bcc6bf133765e46562b06c5567",
+    "version": "2026-08-12.f166a6474811890a7949302d413c67028cd879ef",
     "x-cb-product-catalog-version": 1,
     "x-cb-api-version": 1
   },
@@ -38475,7 +38475,6 @@
         "required": [
           "amount",
           "created_at",
-          "customer_id",
           "expires_at",
           "id",
           "modified_at",
