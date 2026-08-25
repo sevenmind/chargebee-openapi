@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-08-21.e0b1318f3c6e760f416f8bc0214270c034dc062d
+  version: 2026-08-24.2d56b4a99c0feea65fbe21df5fad7353836f2248
   x-cb-api-version: 2
   x-cb-product-catalog-version: 1
 servers:
@@ -965,6 +965,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -3916,6 +3929,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     gateway_account_id:
                       type: string
@@ -4273,6 +4299,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -5939,6 +5978,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -7326,6 +7378,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -8916,6 +8981,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -11485,6 +11563,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     gateway_account_id:
                       type: string
@@ -11924,6 +12015,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -14185,6 +14289,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     gateway_account_id:
                       type: string
@@ -14530,6 +14647,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -20137,6 +20267,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     gateway_account_id:
                       type: string
@@ -23633,6 +23776,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     gateway_account_id:
                       type: string
@@ -23990,6 +24146,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -25575,6 +25744,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     gateway_account_id:
                       type: string
@@ -26131,6 +26313,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -26549,6 +26744,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -28082,6 +28290,19 @@ paths:
                     - touch_n_go
                     - tamara
                     - qpay
+                    - ovo
+                    - momo
+                    - mercado_pago
+                    - nequi
+                    - nupay
+                    - picpay
+                    - thai_qr
+                    - blik
+                    - fpx
+                    - wero
+                    - p24
+                    - affirm_pay
+                    - rakuten_pay
                   example: null
                 id_at_vault:
                   type: string
@@ -29220,6 +29441,19 @@ paths:
                     - touch_n_go
                     - tamara
                     - qpay
+                    - ovo
+                    - momo
+                    - mercado_pago
+                    - nequi
+                    - nupay
+                    - picpay
+                    - thai_qr
+                    - blik
+                    - fpx
+                    - wero
+                    - p24
+                    - affirm_pay
+                    - rakuten_pay
                   example: null
                 gateway_account_id:
                   type: string
@@ -31007,7 +31241,7 @@ paths:
               is:
                 type: string
                 description: |
-                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay
+                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay \* \`ovo\` - Payments made via OVO. \* \`momo\` - Payments made via MoMo. \* \`mercado_pago\` - Payments made via Mercado Pago. \* \`nequi\` - Payments made via Nequi. \* \`nupay\` - Payments made via NuPay. \* \`picpay\` - Payments made via PicPay. \* \`thai_qr\` - Payments made via Thai QR. \* \`blik\` - Payments made via BLIK. \* \`fpx\` - Payments made via FPX. \* \`wero\` - Payments made via Wero. \* \`p24\` - Payments made via Przelewy24 (P24). \* \`affirm_pay\` - Payments made via Affirm Pay. \* \`rakuten_pay\` - Payments made via Rakuten Pay.
                 enum:
                   - card
                   - paypal_express_checkout
@@ -31063,11 +31297,24 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
                 example: null
               is_not:
                 type: string
                 description: |
-                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay
+                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay \* \`ovo\` - Payments made via OVO. \* \`momo\` - Payments made via MoMo. \* \`mercado_pago\` - Payments made via Mercado Pago. \* \`nequi\` - Payments made via Nequi. \* \`nupay\` - Payments made via NuPay. \* \`picpay\` - Payments made via PicPay. \* \`thai_qr\` - Payments made via Thai QR. \* \`blik\` - Payments made via BLIK. \* \`fpx\` - Payments made via FPX. \* \`wero\` - Payments made via Wero. \* \`p24\` - Payments made via Przelewy24 (P24). \* \`affirm_pay\` - Payments made via Affirm Pay. \* \`rakuten_pay\` - Payments made via Rakuten Pay.
                 enum:
                   - card
                   - paypal_express_checkout
@@ -31123,11 +31370,24 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
                 example: null
               in:
                 type: string
                 description: |
-                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay
+                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay \* \`ovo\` - Payments made via OVO. \* \`momo\` - Payments made via MoMo. \* \`mercado_pago\` - Payments made via Mercado Pago. \* \`nequi\` - Payments made via Nequi. \* \`nupay\` - Payments made via NuPay. \* \`picpay\` - Payments made via PicPay. \* \`thai_qr\` - Payments made via Thai QR. \* \`blik\` - Payments made via BLIK. \* \`fpx\` - Payments made via FPX. \* \`wero\` - Payments made via Wero. \* \`p24\` - Payments made via Przelewy24 (P24). \* \`affirm_pay\` - Payments made via Affirm Pay. \* \`rakuten_pay\` - Payments made via Rakuten Pay.
                 enum:
                   - card
                   - paypal_express_checkout
@@ -31183,12 +31443,25 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
-                pattern: ^\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay))*\]$
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
+                pattern: ^\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay))*\]$
                 example: null
               not_in:
                 type: string
                 description: |
-                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay
+                  \* \`card\` - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource. \* \`paypal_express_checkout\` - Payments made via PayPal Express Checkout. \* \`amazon_payments\` - Payments made via Amazon Payments. \* \`direct_debit\` - Represents bank account for which the direct debit or ACH agreement/mandate is created. \* \`generic\` - Payments made via Generic Payment Method. \* \`alipay\` - Payments made via Alipay \* \`unionpay\` - Payments made via UnionPay. \* \`apple_pay\` - Payments made via Apple Pay. \* \`wechat_pay\` - Payments made via WeChat Pay \* \`ideal\` - Payments made via iDEAL. \* \`google_pay\` - Payments made via Google Pay. \* \`sofort\` - Payments made via Sofort. \* \`bancontact\` - Payments made via Bancontact Card. \* \`giropay\` - Payments made via giropay. \* \`dotpay\` - Payments made via Dotpay. \* \`upi\` - UPI Payments. \* \`netbanking_emandates\` - Netbanking (eMandates) Payments. \* \`venmo\` - Payments made via Venmo \* \`pay_to\` - Payments made via PayTo \* \`faster_payments\` - Payments made via Faster Payments \* \`sepa_instant_transfer\` - Payments made via Sepa Instant Transfer \* \`automated_bank_transfer\` - Represents virtual bank account using which the payment will be done. \* \`klarna_pay_now\` - Payments made via Klarna Pay Now \* \`online_banking_poland\` - Payments made via Online Banking Poland \* \`payconiq_by_bancontact\` - Payments made via Payconiq by Bancontact \* \`electronic_payment_standard\` - Payments made via Electronic Payment Standard. \* \`kbc_payment_button\` - Payments made via KBC Payment Button. \* \`pay_by_bank\` - Payments made via Pay By Bank. \* \`trustly\` - Payments made via Trustly. \* \`stablecoin\` - Payments made via Stablecoin \* \`kakao_pay\` - Payments made via Kakao Pay \* \`naver_pay\` - Payments made via Naver Pay \* \`revolut_pay\` - Payments made via Revolut Pay \* \`cash_app_pay\` - Payments made via Cash App Pay \* \`twint\` - Payments made via Twint \* \`go_pay\` - Payments made via Go Pay \* \`grab_pay\` - Payments made via Grab Pay \* \`pay_co\` - Payments made via Pay Co \* \`after_pay\` - Payments made via After pay \* \`swish\` - Payments made via Swish \* \`payme\` - Payments made via PayMe \* \`pix\` - Payments made via Pix \* \`klarna\` - Payments made via Klarna \* \`alipay_hk\` - Payments made via Alipay HK \* \`paypay\` - Payments made via PayPay \* \`gcash\` - Payments made via GCash \* \`south_korean_cards\` - Payments made via South Korean Cards \* \`paynow\` - Payments made via PayNow \* \`bizum\` - Payments made via Bizum \* \`promptpay\` - Payments made via PromptPay \* \`dana\` - Payments made via Dana \* \`touch_n_go\` - Payments made via Touch 'n Go \* \`tamara\` - Payments made via Tamara \* \`qpay\` - Payments made via Qpay \* \`ovo\` - Payments made via OVO. \* \`momo\` - Payments made via MoMo. \* \`mercado_pago\` - Payments made via Mercado Pago. \* \`nequi\` - Payments made via Nequi. \* \`nupay\` - Payments made via NuPay. \* \`picpay\` - Payments made via PicPay. \* \`thai_qr\` - Payments made via Thai QR. \* \`blik\` - Payments made via BLIK. \* \`fpx\` - Payments made via FPX. \* \`wero\` - Payments made via Wero. \* \`p24\` - Payments made via Przelewy24 (P24). \* \`affirm_pay\` - Payments made via Affirm Pay. \* \`rakuten_pay\` - Payments made via Rakuten Pay.
                 enum:
                   - card
                   - paypal_express_checkout
@@ -31244,7 +31517,20 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
-                pattern: ^\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay))*\]$
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
+                pattern: ^\[(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay)(,(card|paypal_express_checkout|amazon_payments|direct_debit|generic|alipay|unionpay|apple_pay|wechat_pay|ideal|google_pay|sofort|bancontact|giropay|dotpay|upi|netbanking_emandates|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|pix|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay))*\]$
                 example: null
         - name: status
           in: query
@@ -32104,6 +32390,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -32906,6 +33205,19 @@ paths:
                     - touch_n_go
                     - tamara
                     - qpay
+                    - ovo
+                    - momo
+                    - mercado_pago
+                    - nequi
+                    - nupay
+                    - picpay
+                    - thai_qr
+                    - blik
+                    - fpx
+                    - wero
+                    - p24
+                    - affirm_pay
+                    - rakuten_pay
                   example: null
                 tmp_token:
                   type: string
@@ -44003,6 +44315,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     gateway_account_id:
                       type: string
@@ -44348,6 +44673,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -46997,6 +47335,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -48919,6 +49270,19 @@ paths:
                           - touch_n_go
                           - tamara
                           - qpay
+                          - ovo
+                          - momo
+                          - mercado_pago
+                          - nequi
+                          - nupay
+                          - picpay
+                          - thai_qr
+                          - blik
+                          - fpx
+                          - wero
+                          - p24
+                          - affirm_pay
+                          - rakuten_pay
                         example: null
                       example: null
                     date:
@@ -51438,6 +51802,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -52192,6 +52569,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -53465,6 +53855,19 @@ paths:
                           - touch_n_go
                           - tamara
                           - qpay
+                          - ovo
+                          - momo
+                          - mercado_pago
+                          - nequi
+                          - nupay
+                          - picpay
+                          - thai_qr
+                          - blik
+                          - fpx
+                          - wero
+                          - p24
+                          - affirm_pay
+                          - rakuten_pay
                         example: null
                       example: null
                     date:
@@ -64394,6 +64797,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -65538,6 +65954,19 @@ paths:
                   * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                   * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                   * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                  * `ovo` - OVO
+                  * `momo` - MoMo
+                  * `mercado_pago` - Mercado Pago
+                  * `nequi` - Nequi
+                  * `nupay` - NuPay
+                  * `picpay` - PicPay
+                  * `thai_qr` - Thai QR
+                  * `blik` - BLIK
+                  * `fpx` - FPX
+                  * `wero` - Wero
+                  * `p24` - Przelewy24 (P24)
+                  * `affirm_pay` - Affirm Pay
+                  * `rakuten_pay` - Rakuten Pay
                 enum:
                   - card
                   - cash
@@ -65601,6 +66030,19 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
                 example: null
               is_not:
                 type: string
@@ -65669,6 +66111,19 @@ paths:
                   * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                   * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                   * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                  * `ovo` - OVO
+                  * `momo` - MoMo
+                  * `mercado_pago` - Mercado Pago
+                  * `nequi` - Nequi
+                  * `nupay` - NuPay
+                  * `picpay` - PicPay
+                  * `thai_qr` - Thai QR
+                  * `blik` - BLIK
+                  * `fpx` - FPX
+                  * `wero` - Wero
+                  * `p24` - Przelewy24 (P24)
+                  * `affirm_pay` - Affirm Pay
+                  * `rakuten_pay` - Rakuten Pay
                 enum:
                   - card
                   - cash
@@ -65732,6 +66187,19 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
                 example: null
               in:
                 type: string
@@ -65800,6 +66268,19 @@ paths:
                   * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                   * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                   * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                  * `ovo` - OVO
+                  * `momo` - MoMo
+                  * `mercado_pago` - Mercado Pago
+                  * `nequi` - Nequi
+                  * `nupay` - NuPay
+                  * `picpay` - PicPay
+                  * `thai_qr` - Thai QR
+                  * `blik` - BLIK
+                  * `fpx` - FPX
+                  * `wero` - Wero
+                  * `p24` - Przelewy24 (P24)
+                  * `affirm_pay` - Affirm Pay
+                  * `rakuten_pay` - Rakuten Pay
                 enum:
                   - card
                   - cash
@@ -65863,7 +66344,20 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
-                pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay))*\]$
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
+                pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay))*\]$
                 example: null
               not_in:
                 type: string
@@ -65932,6 +66426,19 @@ paths:
                   * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                   * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                   * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                  * `ovo` - OVO
+                  * `momo` - MoMo
+                  * `mercado_pago` - Mercado Pago
+                  * `nequi` - Nequi
+                  * `nupay` - NuPay
+                  * `picpay` - PicPay
+                  * `thai_qr` - Thai QR
+                  * `blik` - BLIK
+                  * `fpx` - FPX
+                  * `wero` - Wero
+                  * `p24` - Przelewy24 (P24)
+                  * `affirm_pay` - Affirm Pay
+                  * `rakuten_pay` - Rakuten Pay
                 enum:
                   - card
                   - cash
@@ -65995,7 +66502,20 @@ paths:
                   - touch_n_go
                   - tamara
                   - qpay
-                pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay))*\]$
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
+                pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay))*\]$
                 example: null
         - name: gateway
           in: query
@@ -66081,6 +66601,7 @@ paths:
                   * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                   * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                   * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                  * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                   * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                 enum:
                   - chargebee
@@ -66143,6 +66664,7 @@ paths:
                   - tempus
                   - moyasar
                   - payway
+                  - payu
                   - not_applicable
                 example: null
               is_not:
@@ -66208,6 +66730,7 @@ paths:
                   * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                   * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                   * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                  * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                   * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                 enum:
                   - chargebee
@@ -66270,6 +66793,7 @@ paths:
                   - tempus
                   - moyasar
                   - payway
+                  - payu
                   - not_applicable
                 example: null
               in:
@@ -66335,6 +66859,7 @@ paths:
                   * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                   * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                   * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                  * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                   * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                 enum:
                   - chargebee
@@ -66397,8 +66922,9 @@ paths:
                   - tempus
                   - moyasar
                   - payway
+                  - payu
                   - not_applicable
-                pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable))*\]$
+                pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable))*\]$
                 example: null
               not_in:
                 type: string
@@ -66463,6 +66989,7 @@ paths:
                   * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                   * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                   * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                  * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                   * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                 enum:
                   - chargebee
@@ -66525,8 +67052,9 @@ paths:
                   - tempus
                   - moyasar
                   - payway
+                  - payu
                   - not_applicable
-                pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable))*\]$
+                pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable))*\]$
                 example: null
         - name: gateway_account_id
           in: query
@@ -67901,6 +68429,19 @@ paths:
                     - touch_n_go
                     - tamara
                     - qpay
+                    - ovo
+                    - momo
+                    - mercado_pago
+                    - nequi
+                    - nupay
+                    - picpay
+                    - thai_qr
+                    - blik
+                    - fpx
+                    - wero
+                    - p24
+                    - affirm_pay
+                    - rakuten_pay
                   example: null
                 date:
                   type: integer
@@ -77457,6 +77998,19 @@ paths:
                         - touch_n_go
                         - tamara
                         - qpay
+                        - ovo
+                        - momo
+                        - mercado_pago
+                        - nequi
+                        - nupay
+                        - picpay
+                        - thai_qr
+                        - blik
+                        - fpx
+                        - wero
+                        - p24
+                        - affirm_pay
+                        - rakuten_pay
                       example: null
                     reference_id:
                       type: string
@@ -107763,6 +108317,19 @@ paths:
                             * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                             * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                             * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                            * `ovo` - OVO
+                            * `momo` - MoMo
+                            * `mercado_pago` - Mercado Pago
+                            * `nequi` - Nequi
+                            * `nupay` - NuPay
+                            * `picpay` - PicPay
+                            * `thai_qr` - Thai QR
+                            * `blik` - BLIK
+                            * `fpx` - FPX
+                            * `wero` - Wero
+                            * `p24` - Przelewy24 (P24)
+                            * `affirm_pay` - Affirm Pay
+                            * `rakuten_pay` - Rakuten Pay
                           enum:
                             - card
                             - cash
@@ -107826,6 +108393,19 @@ paths:
                             - touch_n_go
                             - tamara
                             - qpay
+                            - ovo
+                            - momo
+                            - mercado_pago
+                            - nequi
+                            - nupay
+                            - picpay
+                            - thai_qr
+                            - blik
+                            - fpx
+                            - wero
+                            - p24
+                            - affirm_pay
+                            - rakuten_pay
                           example: null
                         is_not:
                           type: string
@@ -107894,6 +108474,19 @@ paths:
                             * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                             * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                             * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                            * `ovo` - OVO
+                            * `momo` - MoMo
+                            * `mercado_pago` - Mercado Pago
+                            * `nequi` - Nequi
+                            * `nupay` - NuPay
+                            * `picpay` - PicPay
+                            * `thai_qr` - Thai QR
+                            * `blik` - BLIK
+                            * `fpx` - FPX
+                            * `wero` - Wero
+                            * `p24` - Przelewy24 (P24)
+                            * `affirm_pay` - Affirm Pay
+                            * `rakuten_pay` - Rakuten Pay
                           enum:
                             - card
                             - cash
@@ -107957,6 +108550,19 @@ paths:
                             - touch_n_go
                             - tamara
                             - qpay
+                            - ovo
+                            - momo
+                            - mercado_pago
+                            - nequi
+                            - nupay
+                            - picpay
+                            - thai_qr
+                            - blik
+                            - fpx
+                            - wero
+                            - p24
+                            - affirm_pay
+                            - rakuten_pay
                           example: null
                         in:
                           type: string
@@ -108025,6 +108631,19 @@ paths:
                             * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                             * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                             * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                            * `ovo` - OVO
+                            * `momo` - MoMo
+                            * `mercado_pago` - Mercado Pago
+                            * `nequi` - Nequi
+                            * `nupay` - NuPay
+                            * `picpay` - PicPay
+                            * `thai_qr` - Thai QR
+                            * `blik` - BLIK
+                            * `fpx` - FPX
+                            * `wero` - Wero
+                            * `p24` - Przelewy24 (P24)
+                            * `affirm_pay` - Affirm Pay
+                            * `rakuten_pay` - Rakuten Pay
                           enum:
                             - card
                             - cash
@@ -108088,7 +108707,20 @@ paths:
                             - touch_n_go
                             - tamara
                             - qpay
-                          pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay))*\]$
+                            - ovo
+                            - momo
+                            - mercado_pago
+                            - nequi
+                            - nupay
+                            - picpay
+                            - thai_qr
+                            - blik
+                            - fpx
+                            - wero
+                            - p24
+                            - affirm_pay
+                            - rakuten_pay
+                          pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay))*\]$
                           example: null
                         not_in:
                           type: string
@@ -108157,6 +108789,19 @@ paths:
                             * `touch_n_go` - Touch 'n Go <span isMicro='true' featureId='cb-touch-n-go'></span>
                             * `tamara` - Tamara <span isMicro='true' featureId='cb-tamara'></span>
                             * `qpay` - Qpay <span isMicro='true' featureId='cb-qpay'></span>
+                            * `ovo` - OVO
+                            * `momo` - MoMo
+                            * `mercado_pago` - Mercado Pago
+                            * `nequi` - Nequi
+                            * `nupay` - NuPay
+                            * `picpay` - PicPay
+                            * `thai_qr` - Thai QR
+                            * `blik` - BLIK
+                            * `fpx` - FPX
+                            * `wero` - Wero
+                            * `p24` - Przelewy24 (P24)
+                            * `affirm_pay` - Affirm Pay
+                            * `rakuten_pay` - Rakuten Pay
                           enum:
                             - card
                             - cash
@@ -108220,7 +108865,20 @@ paths:
                             - touch_n_go
                             - tamara
                             - qpay
-                          pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay))*\]$
+                            - ovo
+                            - momo
+                            - mercado_pago
+                            - nequi
+                            - nupay
+                            - picpay
+                            - thai_qr
+                            - blik
+                            - fpx
+                            - wero
+                            - p24
+                            - affirm_pay
+                            - rakuten_pay
+                          pattern: ^\[(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay)(,(card|cash|check|chargeback|bank_transfer|amazon_payments|paypal_express_checkout|direct_debit|alipay|unionpay|apple_pay|wechat_pay|ach_credit|sepa_credit|ideal|google_pay|sofort|bancontact|giropay|dotpay|other|app_store|upi|netbanking_emandates|play_store|custom|boleto|venmo|pay_to|faster_payments|sepa_instant_transfer|automated_bank_transfer|klarna_pay_now|online_banking_poland|payconiq_by_bancontact|electronic_payment_standard|kbc_payment_button|pay_by_bank|trustly|stablecoin|kakao_pay|naver_pay|revolut_pay|cash_app_pay|pix|twint|go_pay|grab_pay|pay_co|after_pay|swish|payme|klarna|alipay_hk|paypay|gcash|south_korean_cards|paynow|bizum|promptpay|dana|touch_n_go|tamara|qpay|ovo|momo|mercado_pago|nequi|nupay|picpay|thai_qr|blik|fpx|wero|p24|affirm_pay|rakuten_pay))*\]$
                           example: null
                     gateway:
                       type: object
@@ -108292,6 +108950,7 @@ paths:
                             * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                             * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                             * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                            * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                             * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                           enum:
                             - chargebee
@@ -108354,6 +109013,7 @@ paths:
                             - tempus
                             - moyasar
                             - payway
+                            - payu
                             - not_applicable
                           example: null
                         is_not:
@@ -108419,6 +109079,7 @@ paths:
                             * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                             * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                             * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                            * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                             * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                           enum:
                             - chargebee
@@ -108481,6 +109142,7 @@ paths:
                             - tempus
                             - moyasar
                             - payway
+                            - payu
                             - not_applicable
                           example: null
                         in:
@@ -108546,6 +109208,7 @@ paths:
                             * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                             * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                             * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                            * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                             * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                           enum:
                             - chargebee
@@ -108608,8 +109271,9 @@ paths:
                             - tempus
                             - moyasar
                             - payway
+                            - payu
                             - not_applicable
-                          pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable))*\]$
+                          pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable))*\]$
                           example: null
                         not_in:
                           type: string
@@ -108674,6 +109338,7 @@ paths:
                             * `tempus` - Tempus Technologies is a payment gateway and payments technology provider offering secure payment processing with end-to-end encryption (P2PE) and tokenization.
                             * `moyasar` - Moyasar is a fully integrated online payment services that makes accepting payments simple and secure
                             * `payway` - Payway is a payment gateway that enables secure card and payment acceptance.
+                            * `payu` - PayU is a payment gateway that enables secure card payment acceptance via PaymentsOS.
                             * `not_applicable` - Indicates that payment gateway is not applicable for this resource.
                           enum:
                             - chargebee
@@ -108736,8 +109401,9 @@ paths:
                             - tempus
                             - moyasar
                             - payway
+                            - payu
                             - not_applicable
-                          pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|not_applicable))*\]$
+                          pattern: ^\[(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable)(,(chargebee|chargebee_payments|adyen|stripe|wepay|braintree|authorize_net|paypal_pro|pin|eway|eway_rapid|worldpay|balanced_payments|beanstream|bluepay|elavon|first_data_global|hdfc|migs|nmi|ogone|paymill|paypal_payflow_pro|sage_pay|tco|wirecard|amazon_payments|paypal_express_checkout|gocardless|orbital|moneris_us|moneris|bluesnap|cybersource|vantiv|checkout_com|paypal|ingenico_direct|exact|mollie|quickbooks|razorpay|global_payments|bank_of_america|ecentric|metrics_global|windcave|pay_com|ebanx|dlocal|nuvei|solidgate|paystack|jp_morgan|deutsche_bank|ezidebit|twikey|tempus|moyasar|payway|payu|not_applicable))*\]$
                           example: null
                     gateway_account_id:
                       type: object
@@ -119179,6 +119845,19 @@ paths:
                     - touch_n_go
                     - tamara
                     - qpay
+                    - ovo
+                    - momo
+                    - mercado_pago
+                    - nequi
+                    - nupay
+                    - picpay
+                    - thai_qr
+                    - blik
+                    - fpx
+                    - wero
+                    - p24
+                    - affirm_pay
+                    - rakuten_pay
                   example: null
                 success_url:
                   type: string
@@ -119677,6 +120356,19 @@ paths:
                     - touch_n_go
                     - tamara
                     - qpay
+                    - ovo
+                    - momo
+                    - mercado_pago
+                    - nequi
+                    - nupay
+                    - picpay
+                    - thai_qr
+                    - blik
+                    - fpx
+                    - wero
+                    - p24
+                    - affirm_pay
+                    - rakuten_pay
                   example: null
                 success_url:
                   type: string
@@ -134839,6 +135531,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         gateway_account_id:
@@ -141922,6 +142615,19 @@ components:
                 - touch_n_go
                 - tamara
                 - qpay
+                - ovo
+                - momo
+                - mercado_pago
+                - nequi
+                - nupay
+                - picpay
+                - thai_qr
+                - blik
+                - fpx
+                - wero
+                - p24
+                - affirm_pay
+                - rakuten_pay
               example: null
             gateway:
               type: string
@@ -142054,6 +142760,7 @@ components:
                 - tempus
                 - moyasar
                 - payway
+                - payu
                 - not_applicable
               example: null
             gateway_account_id:
@@ -149585,6 +150292,7 @@ components:
         - tempus
         - moyasar
         - payway
+        - payu
         - gocardless
         - not_applicable
       example: null
@@ -149759,6 +150467,7 @@ components:
         - tempus
         - moyasar
         - payway
+        - payu
         - not_applicable
       example: null
     GatewayPaymentMethodToken:
@@ -149838,6 +150547,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         gateway_customer_id:
@@ -157736,6 +158446,19 @@ components:
             - touch_n_go
             - tamara
             - qpay
+            - ovo
+            - momo
+            - mercado_pago
+            - nequi
+            - nupay
+            - picpay
+            - thai_qr
+            - blik
+            - fpx
+            - wero
+            - p24
+            - affirm_pay
+            - rakuten_pay
           example: null
         success_url:
           type: string
@@ -158088,6 +158811,19 @@ components:
                 - touch_n_go
                 - tamara
                 - qpay
+                - ovo
+                - momo
+                - mercado_pago
+                - nequi
+                - nupay
+                - picpay
+                - thai_qr
+                - blik
+                - fpx
+                - wero
+                - p24
+                - affirm_pay
+                - rakuten_pay
               example: null
             id_at_gateway:
               type: string
@@ -158516,6 +159252,19 @@ components:
                   - touch_n_go
                   - tamara
                   - qpay
+                  - ovo
+                  - momo
+                  - mercado_pago
+                  - nequi
+                  - nupay
+                  - picpay
+                  - thai_qr
+                  - blik
+                  - fpx
+                  - wero
+                  - p24
+                  - affirm_pay
+                  - rakuten_pay
                 example: null
               id_at_gateway:
                 type: string
@@ -158887,6 +159636,19 @@ components:
         - touch_n_go
         - tamara
         - qpay
+        - ovo
+        - momo
+        - mercado_pago
+        - nequi
+        - nupay
+        - picpay
+        - thai_qr
+        - blik
+        - fpx
+        - wero
+        - p24
+        - affirm_pay
+        - rakuten_pay
         - chargeback
         - card
         - amazon_payments
@@ -159007,6 +159769,19 @@ components:
         - touch_n_go
         - tamara
         - qpay
+        - ovo
+        - momo
+        - mercado_pago
+        - nequi
+        - nupay
+        - picpay
+        - thai_qr
+        - blik
+        - fpx
+        - wero
+        - p24
+        - affirm_pay
+        - rakuten_pay
       example: null
     PaymentReferenceNumber:
       type: object
@@ -159458,6 +160233,19 @@ components:
             - touch_n_go
             - tamara
             - qpay
+            - ovo
+            - momo
+            - mercado_pago
+            - nequi
+            - nupay
+            - picpay
+            - thai_qr
+            - blik
+            - fpx
+            - wero
+            - p24
+            - affirm_pay
+            - rakuten_pay
           example: null
         reference_id:
           type: string
@@ -159561,6 +160349,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         gateway_account_id:
@@ -160996,6 +161785,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         payload:
@@ -172538,6 +173328,19 @@ components:
             - touch_n_go
             - tamara
             - qpay
+            - ovo
+            - momo
+            - mercado_pago
+            - nequi
+            - nupay
+            - picpay
+            - thai_qr
+            - blik
+            - fpx
+            - wero
+            - p24
+            - affirm_pay
+            - rakuten_pay
           example: null
         gateway:
           type: string
@@ -172604,6 +173407,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         gateway_account_id:
@@ -173554,6 +174358,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         gateway_account_id:
@@ -173622,6 +174427,19 @@ components:
             - touch_n_go
             - tamara
             - qpay
+            - ovo
+            - momo
+            - mercado_pago
+            - nequi
+            - nupay
+            - picpay
+            - thai_qr
+            - blik
+            - fpx
+            - wero
+            - p24
+            - affirm_pay
+            - rakuten_pay
           example: null
         status:
           type: string
@@ -174085,6 +174903,19 @@ components:
             - touch_n_go
             - tamara
             - qpay
+            - ovo
+            - momo
+            - mercado_pago
+            - nequi
+            - nupay
+            - picpay
+            - thai_qr
+            - blik
+            - fpx
+            - wero
+            - p24
+            - affirm_pay
+            - rakuten_pay
           example: null
         reference_number:
           type: string
@@ -174160,6 +174991,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         type:
@@ -175197,6 +176029,19 @@ components:
         - touch_n_go
         - tamara
         - qpay
+        - ovo
+        - momo
+        - mercado_pago
+        - nequi
+        - nupay
+        - picpay
+        - thai_qr
+        - blik
+        - fpx
+        - wero
+        - p24
+        - affirm_pay
+        - rakuten_pay
         - free_trial
         - pay_up_front
         - pay_as_you_go
@@ -176203,6 +177048,7 @@ components:
             - tempus
             - moyasar
             - payway
+            - payu
             - not_applicable
           example: null
         gateway_account_id:
