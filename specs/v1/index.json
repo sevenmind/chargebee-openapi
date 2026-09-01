@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-08-28.8cd61620e039d8cacf264d3341b75ccb75dae2cc",
+    "version": "2026-08-31.8cd61620e039d8cacf264d3341b75ccb75dae2cc",
     "x-cb-product-catalog-version": 1,
     "x-cb-api-version": 1
   },
@@ -20541,7 +20541,7 @@
     "/hosted_pages/checkout_new": {
       "post": {
         "summary": "Checkout new subscription",
-        "description": "Hosted page to accept card details from the subscriber and create a new subscription. This is similar to our server to server API [Create a Subscription](/docs/api/v1/subscriptions/create-a-subscription).\n\nWhen the redirect URL is notified of the result, we would advise you to [retrieve the subscription](/docs/api/v1/subscriptions/retrieve-a-subscription) and verify the details.\n\n#### Related Tutorials\n\n* [Create a subscription using Chargebee's hosted page](https://www.chargebee.com/checkout-portal-docs/checkout-new-tutorial.html)\n\nAs mentioned before this behavior is very similar to the create subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful creation of subscription.\nAny errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.\n",
+        "description": "Hosted page to accept card details from the subscriber and create a new subscription. This is similar to our server to server API [Create a Subscription](/docs/api/v1/subscriptions/create-a-subscription).\n\nWhen the redirect URL is notified of the result, we would advise you to [retrieve the subscription](/docs/api/v1/subscriptions/retrieve-a-subscription) and verify the details.\n\n#### Related Tutorials\n\n* [Create a subscription using Chargebee's hosted page](https://www.chargebee.com/tutorials/chargebee-js-checkout-new-subscription/)\n\nAs mentioned before this behavior is very similar to the create subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful creation of subscription.\nAny errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.\n",
         "operationId": "checkout_new_subscription",
         "parameters": [
           {
@@ -22016,7 +22016,7 @@
     "/hosted_pages/checkout_existing": {
       "post": {
         "summary": "Checkout existing subscription",
-        "description": "You can checkout an existing subscription(typically in the trial state) by passing in the plan, quantity and addon details(like [Update a Subscription](/docs/api/v1/subscriptions/update-a-subscription))\n\nWhen the redirect URL is notified of the result, we would advise you to [retrieve the subscription](/docs/api/v1/subscriptions/retrieve-a-subscription) and verify the details.\n\n#### Related Tutorial\n\n* [Upgrade existing subscription using Chargebee's hosted page](https://www.chargebee.com/checkout-portal-docs/checkout-existing-tutorial.html)\n\nAs mentioned before this behavior is very similar to the update subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful checkout of subscription.\nAny errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.\n",
+        "description": "You can checkout an existing subscription(typically in the trial state) by passing in the plan, quantity and addon details(like [Update a Subscription](/docs/api/v1/subscriptions/update-a-subscription))\n\nWhen the redirect URL is notified of the result, we would advise you to [retrieve the subscription](/docs/api/v1/subscriptions/retrieve-a-subscription) and verify the details.\n\n#### Related Tutorial\n\n* [Upgrade existing subscription using Chargebee's hosted page](https://www.chargebee.com/tutorials/chargebee-js-checkout-existing-subscription/)\n\nAs mentioned before this behavior is very similar to the update subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful checkout of subscription.\nAny errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.\n",
         "operationId": "checkout_existing_subscription",
         "parameters": [
           {

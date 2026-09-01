@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-08-28.8cd61620e039d8cacf264d3341b75ccb75dae2cc
+  version: 2026-08-31.8cd61620e039d8cacf264d3341b75ccb75dae2cc
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -16050,7 +16050,7 @@ paths:
 
         #### Related Tutorials
 
-        * [Create a subscription using Chargebee's hosted page](https://www.chargebee.com/checkout-portal-docs/checkout-new-tutorial.html)
+        * [Create a subscription using Chargebee's hosted page](https://www.chargebee.com/tutorials/chargebee-js-checkout-new-subscription/)
 
         As mentioned before this behavior is very similar to the create subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful creation of subscription.
         Any errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.
@@ -17312,7 +17312,7 @@ paths:
 
         #### Related Tutorial
 
-        * [Upgrade existing subscription using Chargebee's hosted page](https://www.chargebee.com/checkout-portal-docs/checkout-existing-tutorial.html)
+        * [Upgrade existing subscription using Chargebee's hosted page](https://www.chargebee.com/tutorials/chargebee-js-checkout-existing-subscription/)
 
         As mentioned before this behavior is very similar to the update subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful checkout of subscription.
         Any errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.
