@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-08-28.8cd61620e039d8cacf264d3341b75ccb75dae2cc
+  version: 2026-08-31.8cd61620e039d8cacf264d3341b75ccb75dae2cc
   x-cb-product-catalog-version: 2
   x-cb-api-version: 2
 servers:
@@ -286,7 +286,7 @@ paths:
   /subscriptions/{subscription-id}/update_for_items:
     post:
       summary: Update a subscription
-      description: "Updates a subscription by modifying its item prices, coupons, billing configuration, payment method, and other attributes. Any parameters not provided remain unchanged. The changes can be applied immediately, scheduled for a future date, or even backdated to a past date.  \n\n### Impacts\n\n**#### Subscription and Ramps: Impact on existing scheduled changes**  \n* If the subscription has existing scheduled changes, the behavior depends on whether [Ramps](/docs/api/ramps) are enabled:\n  * **Ramps disabled**: Any existing scheduled change on the subscription is deleted.\n  * **Ramps enabled with compatibility mode** :\n    * If only one ramp is present:\n      * If the ramp was created using this API, the ramp is deleted.\n      * If the ramp was created using the [Create a ramp API](/docs/api/ramps/create-a-ramp), and the date-time of the new change is before the date-time of the ramp, then the ramp is moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n    * If multiple ramps are present: all ramps after the date-time of the new change are moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n* For more details, see [Ramps API compatibility mode](/docs/api/subscriptions#ramps-compat-mode).  \n**#### Subscription: Other impacts**  \n* When the [Remove mandatory add-ons from old plan during subscription plan update](https://www.chargebee.com/docs/2.0/subscriptions#remove-mandatory-addons) setting is enabled on your Chargebee site, all [mandatory addons](/docs/api/attached_items) with the old plan are automatically removed during the subscription update to a new plan.  \n**#### Invoice**  \n* If an invoice is generated, any available [credits and excess payments](/docs/api/customers#balances) for the customer are automatically applied subject to [limits set at the site level](https://www.chargebee.com/docs/billing/2.0/invoices-credit-notes-and-quotes/credit-notes#credits-flexibility), which can be overridden for subscriptions via [`subscription.billing_override`](/docs/api/subscriptions#billing_override).  \n**#### Credit Note**  \n* When the subscription change occurs in the middle of a billing term, and `prorate` is `true`, prorated [credits](/docs/api/credit_notes) may be created for the unused service periods of the subscription items.  \n**#### Payment Source**  \n* If `payment_intent`, `payment_method`, or `card` parameters are provided, a new [payment source](/docs/api/payment_sources) is created for the customer and associated with the subscription as the [`payment_source_id`](/docs/api/subscriptions/subscription-object#payment_source_id).  \n\n### Use Cases\n\n#### Add item prices to the subscription\n\nTo add new item prices to the subscription, pass them in the `subscription_items` parameter.\n\n##### Example\n\nConsider a subscription with the following item prices:\n\n* `plan-a-monthly-usd`\n* `addon-b-monthly-usd`\n\nIf you call this API with the following item price:\n\n* `addon-c-monthly-usd`\n\nThe subscription will be updated to include the following item prices:\n\n* `plan-a-monthly-usd`\n* `addon-b-monthly-usd`\n* `addon-c-monthly-usd`  \n\n#### Replace item prices in the subscription\n\nTo replace all existing item prices in the subscription with a new set of item prices, include the `replace_items_list` parameter and set it to `true`.\n\n##### Example\n\nConsider a subscription with the following item prices:\n\n* `plan-a-monthly-usd`\n* `addon-b-monthly-usd`\n\nIf you call this API with the following item prices and set `replace_items_list` to `true`:\n\n* `plan-c-monthly-usd`\n* `addon-d-monthly-usd`\n\nThe subscription will be updated to include only the new item prices:\n\n* `plan-c-monthly-usd`\n* `addon-d-monthly-usd`  \n\n#### Change the payment method during the update\n\nAn update can generate an invoice for prorated charges, which Chargebee attempts to collect immediately when `auto_collection` is `on`. Pass the payment details in this API call when the customer supplies a new payment method as part of the update, or when the resulting charge requires [Strong Customer Authentication](https://www.chargebee.com/docs/payments/2.0/others/psd2-sca) (SCA) (i.e. 3D-Secure).\n\nChargebee creates the [payment source](/docs/api/payment_sources), associates it with the subscription as the [`payment_source_id`](/docs/api/subscriptions/subscription-object#payment_source_id), and collects the invoice using it. This means you do not need a separate [Create a payment source API](/docs/api/payment_sources/create-using-payment-intent) call before updating the subscription.\n\nUse `payment_intent`, `payment_method`, or `card`, depending on how you capture the payment details.\n\n##### Using `payment_intent`\n\nUsing payment intents is the recommended way to create a payment source in Chargebee for both SCA and non-SCA flows.\n\n1. Create a `payment_intent` resource by calling the [Create a payment intent API](/docs/api/payment_intents/create-a-payment-intent). Set `amount` to the amount due for this update, which you can retrieve using the [Estimate for updating a subscription API](/docs/api/estimates/estimate-for-updating-a-subscription).\n2. Pass the `payment_intent` object to your frontend and use Chargebee.js to capture the payment source details from the customer. Use [Payment Method Helpers](https://www.chargebee.com/checkout-portal-docs/payment-method-helper.html) to show payment method UIs and collect payment method details from the customer.\n3. Listen to the [`payment_intent_updated`](/docs/api/events#payment_intent_updated) event. Once the `payment_intent.status` is `authorized`, pass the `payment_intent.id` using the `payment_intent[id]` parameter in this API call.\n\n##### Using `payment_method`\n\nIf you prefer to use the payment gateway's SDKs to capture the payment method details, you can then use the `payment_method` parameter in this API to pass the payment method token and other details.\n\n1. Use the JavaScript library of your payment gateway to capture the payment method details. Examples include:\n   * [Stripe.js](https://stripe.com/docs/js)\n   * [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2)\n   * [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html) (if you use [Authorize.Net](https://developer.authorize.net/api/reference/features/acceptjs.html))\n   * Adyen's [Client-Side Encryption](https://docs.adyen.com/online-payments/classic-integrations/api-integration-ecommerce/cse-integration-ecommerce) (if you use Adyen)\n2. Pass the payment method token using the `payment_method[reference_id]` or `payment_method[tmp_token]` parameter along with any additional parameters required by the payment gateway to create the payment source.\n\n##### Using `card`\n\nIf you are PCI compliant, you can pass raw card details via this API. Use the `card` parameter to pass the card details.\n"
+      description: "Updates a subscription by modifying its item prices, coupons, billing configuration, payment method, and other attributes. Any parameters not provided remain unchanged. The changes can be applied immediately, scheduled for a future date, or even backdated to a past date.  \n\n### Impacts\n\n**#### Subscription and Ramps: Impact on existing scheduled changes**  \n* If the subscription has existing scheduled changes, the behavior depends on whether [Ramps](/docs/api/ramps) are enabled:\n  * **Ramps disabled**: Any existing scheduled change on the subscription is deleted.\n  * **Ramps enabled with compatibility mode** :\n    * If only one ramp is present:\n      * If the ramp was created using this API, the ramp is deleted.\n      * If the ramp was created using the [Create a ramp API](/docs/api/ramps/create-a-ramp), and the date-time of the new change is before the date-time of the ramp, then the ramp is moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n    * If multiple ramps are present: all ramps after the date-time of the new change are moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n* For more details, see [Ramps API compatibility mode](/docs/api/subscriptions#ramps-compat-mode).  \n**#### Subscription: Other impacts**  \n* When the [Remove mandatory add-ons from old plan during subscription plan update](https://www.chargebee.com/docs/2.0/subscriptions#remove-mandatory-addons) setting is enabled on your Chargebee site, all [mandatory addons](/docs/api/attached_items) with the old plan are automatically removed during the subscription update to a new plan.  \n**#### Invoice**  \n* If an invoice is generated, any available [credits and excess payments](/docs/api/customers#balances) for the customer are automatically applied subject to [limits set at the site level](https://www.chargebee.com/docs/billing/2.0/invoices-credit-notes-and-quotes/credit-notes#credits-flexibility), which can be overridden for subscriptions via [`subscription.billing_override`](/docs/api/subscriptions#billing_override).  \n**#### Credit Note**  \n* When the subscription change occurs in the middle of a billing term, and `prorate` is `true`, prorated [credits](/docs/api/credit_notes) may be created for the unused service periods of the subscription items.  \n**#### Payment Source**  \n* If `payment_intent`, `payment_method`, or `card` parameters are provided, a new [payment source](/docs/api/payment_sources) is created for the customer and associated with the subscription as the [`payment_source_id`](/docs/api/subscriptions/subscription-object#payment_source_id).  \n\n### Use Cases\n\n#### Add item prices to the subscription\n\nTo add new item prices to the subscription, pass them in the `subscription_items` parameter.\n\n##### Example\n\nConsider a subscription with the following item prices:\n\n* `plan-a-monthly-usd`\n* `addon-b-monthly-usd`\n\nIf you call this API with the following item price:\n\n* `addon-c-monthly-usd`\n\nThe subscription will be updated to include the following item prices:\n\n* `plan-a-monthly-usd`\n* `addon-b-monthly-usd`\n* `addon-c-monthly-usd`  \n\n#### Replace item prices in the subscription\n\nTo replace all existing item prices in the subscription with a new set of item prices, include the `replace_items_list` parameter and set it to `true`.\n\n##### Example\n\nConsider a subscription with the following item prices:\n\n* `plan-a-monthly-usd`\n* `addon-b-monthly-usd`\n\nIf you call this API with the following item prices and set `replace_items_list` to `true`:\n\n* `plan-c-monthly-usd`\n* `addon-d-monthly-usd`\n\nThe subscription will be updated to include only the new item prices:\n\n* `plan-c-monthly-usd`\n* `addon-d-monthly-usd`  \n\n#### Change the payment method during the update\n\nAn update can generate an invoice for prorated charges, which Chargebee attempts to collect immediately when `auto_collection` is `on`. Pass the payment details in this API call when the customer supplies a new payment method as part of the update, or when the resulting charge requires [Strong Customer Authentication](https://www.chargebee.com/docs/payments/2.0/others/psd2-sca) (SCA) (i.e. 3D-Secure).\n\nChargebee creates the [payment source](/docs/api/payment_sources), associates it with the subscription as the [`payment_source_id`](/docs/api/subscriptions/subscription-object#payment_source_id), and collects the invoice using it. This means you do not need a separate [Create a payment source API](/docs/api/payment_sources/create-using-payment-intent) call before updating the subscription.\n\nUse `payment_intent`, `payment_method`, or `card`, depending on how you capture the payment details.\n\n##### Using `payment_intent`\n\nUsing payment intents is the recommended way to create a payment source in Chargebee for both SCA and non-SCA flows.\n\n1. Create a `payment_intent` resource by calling the [Create a payment intent API](/docs/api/payment_intents/create-a-payment-intent). Set `amount` to the amount due for this update, which you can retrieve using the [Estimate for updating a subscription API](/docs/api/estimates/estimate-for-updating-a-subscription).\n2. Pass the `payment_intent` object to your frontend and use Chargebee.js to capture the payment source details from the customer. Use [Payment Components](https://www.chargebee.com/docs/payments/2.0/payment-components/overview) to show payment method UIs and collect payment method details from the customer.\n3. Listen to the [`payment_intent_updated`](/docs/api/events#payment_intent_updated) event. Once the `payment_intent.status` is `authorized`, pass the `payment_intent.id` using the `payment_intent[id]` parameter in this API call.\n\n##### Using `payment_method`\n\nIf you prefer to use the payment gateway's SDKs to capture the payment method details, you can then use the `payment_method` parameter in this API to pass the payment method token and other details.\n\n1. Use the JavaScript library of your payment gateway to capture the payment method details. Examples include:\n   * [Stripe.js](https://stripe.com/docs/js)\n   * [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2)\n   * [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html) (if you use [Authorize.Net](https://developer.authorize.net/api/reference/features/acceptjs.html))\n   * Adyen's [Client-Side Encryption](https://docs.adyen.com/online-payments/classic-integrations/api-integration-ecommerce/cse-integration-ecommerce) (if you use Adyen)\n2. Pass the payment method token using the `payment_method[reference_id]` or `payment_method[tmp_token]` parameter along with any additional parameters required by the payment gateway to create the payment source.\n\n##### Using `card`\n\nIf you are PCI compliant, you can pass raw card details via this API. Use the `card` parameter to pass the card details.\n"
       operationId: update_subscription_for_items
       parameters:
         - name: chargebee-request-origin-device
@@ -633,7 +633,7 @@ paths:
                 token_id:
                   type: string
                   deprecated: false
-                  description: "The Chargebee payment token generated by [Chargebee JS](https://www.chargebee.com/checkout-portal-docs/3ds-helper-overview.html#using-gateway-s-hosted-fields).  \n**Note** :\nThe payment token created via Chargebee JS uses the gateway selected through [Smart Routing](https://www.chargebee.com/docs/payments/2.0/payment-gateways-and-configuration/gateway_settings#smart-routing).\nExplicitly passing a `gateway_id`\nin this API call will not override the gateway associated with the token.\n"
+                  description: "The Chargebee payment token generated by [Chargebee.js](https://www.chargebee.com/docs/payments/2.0/card-components-and-helpers/3ds-helper#using-the-gateways-hosted-fields).  \n**Note** :\nThe payment token created via Chargebee.js uses the gateway selected through [Smart Routing](https://www.chargebee.com/docs/payments/2.0/payment-gateways-and-configuration/gateway_settings#smart-routing).\nExplicitly passing a `gateway_id`\nin this API call will not override the gateway associated with the token.\n"
                   maxLength: 40
                   example: null
                 invoice_notes:
@@ -7129,7 +7129,7 @@ paths:
   /subscriptions/{subscription-id}/reactivate:
     post:
       summary: Reactivate a subscription
-      description: "Reactivates a canceled subscription.\n\nUse this operation to restore a canceled subscription to an active or in-trial state.\n\n#### Extend non-renewing subscriptions\n\nTo extend the billing cycles of a `non_renewing` subscription, use the [Remove scheduled cancellation API](/docs/api/subscriptions/remove-scheduled-cancellation).  \n\n#### In-term reactivation\n\nThe subscription's current billing term is demarcated by the [`current_term_start`](/docs/api/subscriptions/subscription-object#current_term_start) and `current_term_end` attributes. These attributes are retained even if the subscription is canceled. An \"in-term reactivation\" happens when the subscription is reactivated on or before `current_term_end`.  \n\n### Prerequisites \\& Constraints\n\n* The subscription `status` must be `cancelled`.  \n\n### Impacts\n\n**#### Subscription**  \n* For subscriptions canceled due to payment failure, [in-term reactivation](#in-term) is governed by the Chargebee Billing [configuration for reactivation](https://www.chargebee.com/docs/billing/2.0/subscriptions/reactivation#in-term-reactivation).  \n**#### Invoice**  \nIf an invoice gets generated during this operation, customer [balances](/docs/api/customers#balances) such as promotional credits, excess payments, and refundable credits are automatically applied subject to [limits set at the site level](https://www.chargebee.com/docs/billing/2.0/invoices-credit-notes-and-quotes/credit-notes#credits-flexibility) which can be overridden for subscriptions via [`subscription.billing_override`](/docs/api/subscriptions#billing_override).  \n\n### Use Cases\n\n#### Change the payment method during reactivation\n\nUse the `payment_intent` parameter to create a payment source for the customer. If reactivation generates an invoice and `auto_collection` is `on`, Chargebee immediately attempts payment collection using the new payment source.  \n**Note**\n\n* This works for both [Strong Customer Authentication](https://www.chargebee.com/docs/payments/2.0/others/psd2-sca) (SCA) (i.e. 3D-Secure) and non-SCA flows.\n* The payment source replaces the existing [primary payment source](/docs/api/customers#primary_payment_source_id) for the customer.\n\n1. Create a `payment_intent` resource by calling the [Create a payment intent API](/docs/api/payment_intents/create-a-payment-intent). Set `amount` to the amount due for this reactivation.\n2. Pass the `payment_intent` object to your frontend and use Chargebee.js to capture the payment source details from the customer. You can use [Payment Components](https://www.chargebee.com/checkout-portal-docs/payment-components.html) to capture the payment source details.\n3. Listen to the [`payment_intent_updated`](/docs/api/events#payment_intent_updated) event. Once the `payment_intent.status` is `authorized`, pass the `payment_intent.id` using the `payment_intent[id]` parameter in this API call.  \n\n#### Related APIs\n\n[Remove scheduled cancellation](/docs/api/subscriptions?prod_cat_ver=2#remove_scheduled_cancellation)\n"
+      description: "Reactivates a canceled subscription.\n\nUse this operation to restore a canceled subscription to an active or in-trial state.\n\n#### Extend non-renewing subscriptions\n\nTo extend the billing cycles of a `non_renewing` subscription, use the [Remove scheduled cancellation API](/docs/api/subscriptions/remove-scheduled-cancellation).  \n\n#### In-term reactivation\n\nThe subscription's current billing term is demarcated by the [`current_term_start`](/docs/api/subscriptions/subscription-object#current_term_start) and `current_term_end` attributes. These attributes are retained even if the subscription is canceled. An \"in-term reactivation\" happens when the subscription is reactivated on or before `current_term_end`.  \n\n### Prerequisites \\& Constraints\n\n* The subscription `status` must be `cancelled`.  \n\n### Impacts\n\n**#### Subscription**  \n* For subscriptions canceled due to payment failure, [in-term reactivation](#in-term) is governed by the Chargebee Billing [configuration for reactivation](https://www.chargebee.com/docs/billing/2.0/subscriptions/reactivation#in-term-reactivation).  \n**#### Invoice**  \nIf an invoice gets generated during this operation, customer [balances](/docs/api/customers#balances) such as promotional credits, excess payments, and refundable credits are automatically applied subject to [limits set at the site level](https://www.chargebee.com/docs/billing/2.0/invoices-credit-notes-and-quotes/credit-notes#credits-flexibility) which can be overridden for subscriptions via [`subscription.billing_override`](/docs/api/subscriptions#billing_override).  \n\n### Use Cases\n\n#### Change the payment method during reactivation\n\nUse the `payment_intent` parameter to create a payment source for the customer. If reactivation generates an invoice and `auto_collection` is `on`, Chargebee immediately attempts payment collection using the new payment source.  \n**Note**\n\n* This works for both [Strong Customer Authentication](https://www.chargebee.com/docs/payments/2.0/others/psd2-sca) (SCA) (i.e. 3D-Secure) and non-SCA flows.\n* The payment source replaces the existing [primary payment source](/docs/api/customers#primary_payment_source_id) for the customer.\n\n1. Create a `payment_intent` resource by calling the [Create a payment intent API](/docs/api/payment_intents/create-a-payment-intent). Set `amount` to the amount due for this reactivation.\n2. Pass the `payment_intent` object to your frontend and use Chargebee.js to capture the payment source details from the customer. You can use [Payment Components](https://www.chargebee.com/docs/payments/2.0/payment-components/overview) to capture the payment source details.\n3. Listen to the [`payment_intent_updated`](/docs/api/events#payment_intent_updated) event. Once the `payment_intent.status` is `authorized`, pass the `payment_intent.id` using the `payment_intent[id]` parameter in this API call.  \n\n#### Related APIs\n\n[Remove scheduled cancellation](/docs/api/subscriptions?prod_cat_ver=2#remove_scheduled_cancellation)\n"
       operationId: reactivate_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -9031,6 +9031,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this subscription should be linked to. Applicable only when multiple brands have been created for the site. Unlike `business_entity_id`, this need not match the brand of the `{customer_id}`; when the two differ, the value provided here is used for the subscription. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the subscription is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 trial_end:
@@ -17711,7 +17712,7 @@ paths:
         - BasicAuth: []
     post:
       summary: Create a customer
-      description: "Creates a customer resource. Optionally, creates a payment source for the customer.  \n**Creating payment source**\n\nAlthough this operation supports creation of a customer with a [payment source](/docs/api/payment_sources), it is recommended to use one of the [Payment Source APIs](/docs/api/payment_sources) to capture payment source details instead of using this operation. This way, even if payment source creation fails due to errors at the payment gateway, the customer resource can still be created successfully.  \n\n### Impacts\n\n**#### Customer**  \n* If the multi-business entity feature is enabled, the customer is linked to the business entity specified; otherwise, the customer record is linked to the [default business entity](/docs/api/advanced-features) defined for the site.  \n**#### Invoices**  \n* Chargebee uses the `billing_address` object from the customer to set the values in the [`billing_address`](/docs/api/invoices/invoice-object#billing_address) of the invoices generated for the customer.\n* If the `billing_address` object does not include the `first_name`, `last_name`, or `company` fields, Chargebee automatically uses the values from [`customer.first_name`](/docs/api/customers/customer-object#first_name), [`customer.last_name`](/docs/api/customers/customer-object#last_name), and [`customer.company`](/docs/api/customers/customer-object#company) (if available) when generating invoices.  \n**#### Payment source**  \n* If `payment_intent` or `payment_method` parameter is passed, a `payment_source` resource of the appropriate type is created for the customer.\n* If `bank_account` parameter is passed, a `payment_source` resource of `type` `direct_debit` is created for the customer.\n* If `card` parameter is passed, a `payment_source` resource of `type` `card` is created for the customer.  \n**##### Integrations**  \n* If CRM systems are connected to Chargebee, a corresponding record is created in the connected CRM (such as Salesforce, and HubSpot).  \n\n### Use Cases\n\n#### Create payment source using `payment_intent`\n\nUse the `payment_intent` parameter to create a payment source for the customer. Using payment intents is the recommended way to create a payment source in Chargebee for both [Strong Customer Authentication](https://www.chargebee.com/docs/payments/2.0/others/psd2-sca) (SCA) (i.e. 3D-Secure) and non-SCA flows.\n\n1. Create a `payment_intent` resource by calling the [Create a payment intent API](/docs/api/payment_intents/create-a-payment-intent).\n2. Pass the `payment_intent` object to your frontend and use Chargebee.js to capture the payment source details from the customer. Use [Payment Method Helpers](https://www.chargebee.com/checkout-portal-docs/payment-method-helper.html) to show payment method UIs and collect payment method details from the customer.\n3. Listen to the [`payment_intent_updated`](/docs/api/events#payment_intent_updated) event. Once the `payment_intent.status` is `authorized`, pass the `payment_intent.id` using the `payment_intent[id]` parameter in this API call.  \n\n#### Create payment source using `payment_method`\n\nIf you prefer to use the payment gateway's SDKs to capture the payment method details, you can then use the `payment_method` parameter in this API to pass the payment method token and other details.\n\n1. Use the JavaScript library of your payment gateway to capture the payment method details. Examples include:\n\n* [Stripe.js](https://stripe.com/docs/js)\n* [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2)\n* [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html) (if you use [Authorize.Net](https://developer.authorize.net/api/reference/features/acceptjs.html))\n* Adyen's [Client-Side Encryption](https://docs.adyen.com/online-payments/classic-integrations/api-integration-ecommerce/cse-integration-ecommerce) (if you use Adyen)\n\n1. Pass the payment method token using the `payment_method[reference_id]` or `payment_method[tmp_token]` parameter along with any additional parameters required by the payment gateway to create the payment source.  \n\n#### Create payment source using `bank_account`\n\nYou can pass raw bank account details via this API. Use the `bank_account` parameter to pass the bank account details.  \n\n#### Create payment source using `card`\n\nIf you are PCI compliant, you can pass raw card details via this API. Use the `card` parameter to pass the card details.  \n\n#### Related APIs\n\n[Update a customer](/docs/api/customers?prod_cat_ver=2#update_a_customer)[Update billing info for a customer](/docs/api/customers?prod_cat_ver=2#update_billing_info_for_a_customer)\n"
+      description: "Creates a customer resource. Optionally, creates a payment source for the customer.  \n**Creating payment source**\n\nAlthough this operation supports creation of a customer with a [payment source](/docs/api/payment_sources), it is recommended to use one of the [Payment Source APIs](/docs/api/payment_sources) to capture payment source details instead of using this operation. This way, even if payment source creation fails due to errors at the payment gateway, the customer resource can still be created successfully.  \n\n### Impacts\n\n**#### Customer**  \n* If the multi-business entity feature is enabled, the customer is linked to the business entity specified; otherwise, the customer record is linked to the [default business entity](/docs/api/advanced-features) defined for the site.  \n**#### Invoices**  \n* Chargebee uses the `billing_address` object from the customer to set the values in the [`billing_address`](/docs/api/invoices/invoice-object#billing_address) of the invoices generated for the customer.\n* If the `billing_address` object does not include the `first_name`, `last_name`, or `company` fields, Chargebee automatically uses the values from [`customer.first_name`](/docs/api/customers/customer-object#first_name), [`customer.last_name`](/docs/api/customers/customer-object#last_name), and [`customer.company`](/docs/api/customers/customer-object#company) (if available) when generating invoices.  \n**#### Payment source**  \n* If `payment_intent` or `payment_method` parameter is passed, a `payment_source` resource of the appropriate type is created for the customer.\n* If `bank_account` parameter is passed, a `payment_source` resource of `type` `direct_debit` is created for the customer.\n* If `card` parameter is passed, a `payment_source` resource of `type` `card` is created for the customer.  \n**##### Integrations**  \n* If CRM systems are connected to Chargebee, a corresponding record is created in the connected CRM (such as Salesforce, and HubSpot).  \n\n### Use Cases\n\n#### Create payment source using `payment_intent`\n\nUse the `payment_intent` parameter to create a payment source for the customer. Using payment intents is the recommended way to create a payment source in Chargebee for both [Strong Customer Authentication](https://www.chargebee.com/docs/payments/2.0/others/psd2-sca) (SCA) (i.e. 3D-Secure) and non-SCA flows.\n\n1. Create a `payment_intent` resource by calling the [Create a payment intent API](/docs/api/payment_intents/create-a-payment-intent).\n2. Pass the `payment_intent` object to your frontend and use Chargebee.js to capture the payment source details from the customer. Use [Payment Components](https://www.chargebee.com/docs/payments/2.0/payment-components/overview) to show payment method UIs and collect payment method details from the customer.\n3. Listen to the [`payment_intent_updated`](/docs/api/events#payment_intent_updated) event. Once the `payment_intent.status` is `authorized`, pass the `payment_intent.id` using the `payment_intent[id]` parameter in this API call.  \n\n#### Create payment source using `payment_method`\n\nIf you prefer to use the payment gateway's SDKs to capture the payment method details, you can then use the `payment_method` parameter in this API to pass the payment method token and other details.\n\n1. Use the JavaScript library of your payment gateway to capture the payment method details. Examples include:\n\n* [Stripe.js](https://stripe.com/docs/js)\n* [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2)\n* [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html) (if you use [Authorize.Net](https://developer.authorize.net/api/reference/features/acceptjs.html))\n* Adyen's [Client-Side Encryption](https://docs.adyen.com/online-payments/classic-integrations/api-integration-ecommerce/cse-integration-ecommerce) (if you use Adyen)\n\n1. Pass the payment method token using the `payment_method[reference_id]` or `payment_method[tmp_token]` parameter along with any additional parameters required by the payment gateway to create the payment source.  \n\n#### Create payment source using `bank_account`\n\nYou can pass raw bank account details via this API. Use the `bank_account` parameter to pass the bank account details.  \n\n#### Create payment source using `card`\n\nIf you are PCI compliant, you can pass raw card details via this API. Use the `card` parameter to pass the card details.  \n\n#### Related APIs\n\n[Update a customer](/docs/api/customers?prod_cat_ver=2#update_a_customer)[Update billing info for a customer](/docs/api/customers?prod_cat_ver=2#update_billing_info_for_a_customer)\n"
       operationId: create_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -18179,7 +18180,7 @@ paths:
                 token_id:
                   type: string
                   deprecated: false
-                  description: "The Chargebee payment token generated by [Chargebee JS](https://www.chargebee.com/checkout-portal-docs/3ds-helper-overview.html#using-gateway-s-hosted-fields).  \n**Note** :\nThe payment token created via Chargebee JS uses the gateway selected through [Smart Routing](https://www.chargebee.com/docs/payments/2.0/payment-gateways-and-configuration/gateway_settings#smart-routing).\nExplicitly passing a `gateway_id`\nin this API call will not override the gateway associated with the token.\n"
+                  description: "The Chargebee payment token generated by [Chargebee.js](https://www.chargebee.com/docs/payments/2.0/card-components-and-helpers/3ds-helper#using-the-gateways-hosted-fields).  \n**Note** :\nThe payment token created via Chargebee.js uses the gateway selected through [Smart Routing](https://www.chargebee.com/docs/payments/2.0/payment-gateways-and-configuration/gateway_settings#smart-routing).\nExplicitly passing a `gateway_id`\nin this API call will not override the gateway associated with the token.\n"
                   maxLength: 40
                   example: null
                 business_entity_id:
@@ -18191,6 +18192,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this customer should be linked to. Applicable only when multiple brands have been created for the site. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the customer is linked to the default brand defined for the site.\n"
                   maxLength: 50
                   example: null
                 invoice_notes:
@@ -20199,7 +20201,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Token generated by Chargebee JS representing payment method details.
+                    Token generated by Chargebee.js representing payment method details.
                   maxLength: 40
                   example: null
                 replace_primary_payment_source:
@@ -23420,6 +23422,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 type:
@@ -24218,6 +24221,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 replace_primary_payment_source:
@@ -26301,6 +26305,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 replace_primary_payment_source:
@@ -26893,6 +26898,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 voucher_payment_source:
@@ -27255,6 +27261,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 replace_primary_payment_source:
@@ -28073,6 +28080,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 replace_primary_payment_source:
@@ -28087,7 +28095,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Token generated by Chargebee JS representing payment method details.
+                    Token generated by Chargebee.js representing payment method details.
                   maxLength: 40
                   example: null
               required:
@@ -28507,6 +28515,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n"
                   maxLength: 50
                   example: null
                 issuing_country:
@@ -38718,7 +38727,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Token generated by Chargebee JS representing payment method details.
+                    Token generated by Chargebee.js representing payment method details.
                   maxLength: 40
                   example: null
                 replace_primary_payment_source:
@@ -62548,6 +62557,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. Resources created through the hosted page, such as the customer and the subscription, are linked to the same brand. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the brand of the customer or subscription referenced in the request is used, or the default brand defined for the site when the request references neither.\n"
                   maxLength: 50
                   example: null
                 layout:
@@ -63830,6 +63840,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the customer or subscription in the request; when the two differ, the value provided here is used for the hosted page. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the hosted page is linked to the brand of the customer or subscription in the request.\n"
                   maxLength: 50
                   example: null
                 expiry:
@@ -64332,6 +64343,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. Resources created through the hosted page, such as the customer and the subscription, are linked to the same brand. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the brand of the customer or subscription referenced in the request is used, or the default brand defined for the site when the request references neither.\n"
                   maxLength: 50
                   example: null
                 redirect_url:
@@ -65440,6 +65452,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the customer or subscription in the request; when the two differ, the value provided here is used for the hosted page. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the hosted page is linked to the brand of the customer or subscription in the request.\n"
                   maxLength: 50
                   example: null
                 redirect_url:
@@ -65708,6 +65721,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the customer or subscription in the request; when the two differ, the value provided here is used for the hosted page. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the hosted page is linked to the brand of the customer or subscription in the request.\n"
                   maxLength: 50
                   example: null
                 redirect_url:
@@ -65973,6 +65987,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. Resources created through the hosted page, such as the customer and the subscription, are linked to the same brand. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the brand of the customer or subscription referenced in the request is used, or the default brand defined for the site when the request references neither.\n"
                   maxLength: 50
                   example: null
                 billing_cycles:
@@ -67398,6 +67413,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the customer or subscription in the request; when the two differ, the value provided here is used for the hosted page. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the hosted page is linked to the brand of the customer or subscription in the request.\n"
                   maxLength: 50
                   example: null
                 redirect_url:
@@ -67662,6 +67678,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the customer or subscription in the request; when the two differ, the value provided here is used for the hosted page. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the hosted page is linked to the brand of the customer or subscription in the request.\n"
                   maxLength: 50
                   example: null
                 mandatory_items_to_remove:
@@ -68873,6 +68890,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the customer or subscription in the request; when the two differ, the value provided here is used for the hosted page. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the hosted page is linked to the brand of the customer or subscription in the request.\n"
                   maxLength: 50
                   example: null
                 pass_thru_content:
@@ -69714,6 +69732,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this hosted page should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the customer or subscription in the request; when the two differ, the value provided here is used for the hosted page. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the hosted page is linked to the brand of the customer or subscription in the request.\n"
                   maxLength: 50
                   example: null
                 redirect_url:
@@ -115321,6 +115340,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this payment intent should be linked to. Applicable only when multiple brands have been created for the site. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment intent is linked to the brand of the customer it is created for, or to the default brand defined for the site when no customer is specified.\n"
                   maxLength: 50
                   example: null
                 customer_id:
@@ -152061,6 +152081,7 @@ paths:
                 brand_id:
                   type: string
                   deprecated: false
+                  description: "The unique ID of the [brand](/docs/api/brands) this pricing page session should be linked to. Applicable only when multiple brands have been created for the site. The customer and subscription created through the session are linked to the same brand. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the default brand defined for the site is used.\n"
                   maxLength: 50
                   example: null
                 auto_select_local_currency:
@@ -172097,6 +172118,8 @@ components:
         brand_id:
           type: string
           deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/brands) this credit note belongs to. This is always the same as the brand of the invoice referenced by `reference_invoice_id`. It cannot be set independently.
           maxLength: 50
           example: null
         line_items:
@@ -175761,6 +175784,8 @@ components:
         brand_id:
           type: string
           deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/brands) this customer belongs to. The brand is assigned when the customer is created. When none is specified, the customer is linked to the default brand defined for the site.
           maxLength: 50
           example: null
         billing_address:
@@ -183873,7 +183898,7 @@ components:
               The event was triggered by an operation performed through the [public API](/docs/api/getting-started)
               .
             * js_api -
-              The event was triggered by an operation performed through [Chargebee JS](https://www.chargebee.com/checkout-portal-docs/)
+              The event was triggered by an operation performed through [Chargebee.js](https://www.chargebee.com/checkout-portal-docs/)
               .
           enum:
             - admin_console
@@ -187576,6 +187601,8 @@ components:
         brand_id:
           type: string
           deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/brands) this hosted page belongs to. Unless a brand was specified in the request, this is the brand of the customer or subscription the hosted page was created for.
           maxLength: 50
           example: null
       required:
@@ -188294,6 +188321,8 @@ components:
         brand_id:
           type: string
           deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/brands) this invoice belongs to. Depending on whether the invoice was created directly for a customer or for a subscription, this is the brand of the customer or the subscription respectively. It is always inherited and cannot be set on the invoice itself.
           maxLength: 50
           example: null
         exchange_rates:
@@ -200975,6 +201004,8 @@ components:
         brand_id:
           type: string
           deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/brands) this payment intent belongs to. Unless a brand was specified in the request, this is the brand of the customer the payment intent was created for.
           maxLength: 50
           example: null
         active_payment_attempt:
@@ -201661,10 +201692,10 @@ components:
 
                 * portal - The request came from the [Self-Serve Portal](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/self-serve-portal).
                 * collect_now - The request came from the [Collect Now](https://apidocs.chargebee.com/docs/api/hosted_pages/collect-now) hosted page.
-                * card_components - The request came from Chargebee.js [Card Components](https://www.chargebee.com/checkout-portal-docs/components-fields.html).
+                * card_components - The request came from Chargebee.js [Card Components](https://www.chargebee.com/docs/payments/2.0/card-components-and-helpers/card-components).
                 * checkout - The request came from [hosted checkout](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-checkout), including hosted checkout for [gift subscriptions](https://www.chargebee.com/docs/billing/2.0/subscriptions/gift-subscriptions#gift-subscription-workflow).
-                * payment_components - The request came from Chargebee.js [Payment Components](https://www.chargebee.com/checkout-portal-docs/payment-components.html).
-                * payment_method_helper - The request came from the Chargebee.js [Payment Method Helper](https://www.chargebee.com/checkout-portal-docs/payment-method-helper.html).
+                * payment_components - The request came from Chargebee.js [Payment Components](https://www.chargebee.com/docs/payments/2.0/payment-components/overview).
+                * payment_method_helper - The request came from the Chargebee.js [Payment Method Helper](https://www.chargebee.com/docs/payments/2.0/card-components-and-helpers/payment-method-helper).
               enum:
                 - payment_method_helper
                 - card_components
@@ -202872,6 +202903,8 @@ components:
         brand_id:
           type: string
           deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/brands) this payment source belongs to. Unless a brand was specified in the request, this is the brand of the customer the payment source was created for.
           maxLength: 50
           example: null
         card:
@@ -214728,6 +214761,8 @@ components:
         brand_id:
           type: string
           deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/brands) this subscription belongs to. This is the brand of the customer the subscription was created for, unless a different brand was specified in the create request.
           maxLength: 50
           example: null
         subscription_items:
