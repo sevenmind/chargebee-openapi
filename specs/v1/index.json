@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-02.a1b50348c2c83c8b16a0b9b7378091c10c8d1c26",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 1
+    "version": "2026-09-03.b33d788b1b8bd2d6609ad27124cd2d6a3ae50a19",
+    "x-cb-api-version": 1,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -65,9 +65,86 @@
       }
     }
   ],
+  "tags": [
+    {
+      "name": "addons",
+      "description": "Addons are additional charges applied to a subscription apart from the base plan charge."
+    },
+    {
+      "name": "addresses",
+      "description": "Subscriptions can have addresses like \"Shipping Address\" associated with them."
+    },
+    {
+      "name": "cards",
+      "description": "This resource helps you to retrieve, update, and delete card details for a customer."
+    },
+    {
+      "name": "comments",
+      "description": "Comments are additional information that you can add to your resources."
+    },
+    {
+      "name": "coupon_codes",
+      "description": "Coupon codes are used along with existing coupons in Chargebee."
+    },
+    {
+      "name": "coupons",
+      "description": "Coupons are discounts codes that you can configure and apply to subscriptions."
+    },
+    {
+      "name": "csv_tax_rules",
+      "description": "Operations on the `csv_tax_rules` resource."
+    },
+    {
+      "name": "customers",
+      "description": "Represents a customer."
+    },
+    {
+      "name": "estimates",
+      "description": "Estimates, as the name implies, can be used to find out the estimate for performing an operation as against performing the operation itself."
+    },
+    {
+      "name": "events",
+      "description": "Whenever any important changes happen in your Chargebee site, they are recorded as Events."
+    },
+    {
+      "name": "hosted_pages",
+      "description": "Hosted pages are the easiest and most secure way to integrate chargebee with your website."
+    },
+    {
+      "name": "invoices",
+      "description": "Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term."
+    },
+    {
+      "name": "orders",
+      "description": "The Order resource can be used for integrating Chargebee with any shipping/order management application (like ShipStation) Orders are not automatically generated or updated by Chargebee currently."
+    },
+    {
+      "name": "payment_intents",
+      "description": "PaymentIntent is created to help you through the 3DS flow of collecting payment from your customer."
+    },
+    {
+      "name": "plans",
+      "description": "Specifies the price with billing frequency for a subscription."
+    },
+    {
+      "name": "portal_sessions",
+      "description": "Customer Portal lets your customers to manage their account and billing themselves."
+    },
+    {
+      "name": "subscriptions",
+      "description": "Subscription represents the recurring items a customer has subscribed to."
+    },
+    {
+      "name": "transactions",
+      "description": "This resource represents the [transaction](https://www.chargebee.com/docs/transactions.html) event that has happened in your account."
+    }
+  ],
   "paths": {
     "/subscriptions/{subscription-id}/remove_scheduled_changes": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Remove scheduled changes",
         "description": "Removes the subscription changes scheduled on next renewal. Advance charges, if any, will be refunded as credits and a new invoice will be generated on renewal.\n",
         "operationId": "remove_scheduled_changes",
@@ -344,6 +421,9 @@
     },
     "/subscriptions/{subscription-id}/change_term_end": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Change term end",
         "description": "Changes the subscription's current term end date. Depending on the \"status\" of the subscription, \"term end date\" has different effects.\n\n* If the Subscription is in **trial**, it affects trial end date.\n* If the Subscription is **active**, it affects the next billing date.\n* If the Subscription's status is **non_renewing**, this affects the upcoming cancellation date.\n\nWhen changing the current term there won't be any prorations calculated. All future renewals(if applicable) of the subscription will be shifted based on the new date.\n\n**Tip**: To cycle through a couple of billing cycles and test webhooks, you may use this API.  \nAdvance charges, if any, will be refunded as credits and a new invoice will be generated on renewal.\n",
         "operationId": "change_term_end",
@@ -643,6 +723,9 @@
     },
     "/customers/{customer-id}/subscriptions": {
       "get": {
+        "tags": [
+          "customers"
+        ],
         "summary": "List subscriptions for a customer",
         "description": "Retrieves the list of subscriptions for a customer sorted by recent created ones on top\n",
         "operationId": "list_subscriptions_for_a_customer",
@@ -904,6 +987,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Create subscription for customer",
         "description": "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a new subscription for an existing customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.\n\nIf the plan does not have a trial period and if any of the recurring-item has charges, then the customer is charged immediately if auto_collection is turned 'on'. In that case, subscription is created only if the customer has a payment method on file and attempted payment is successful.  \nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n",
         "operationId": "create_subscription_for_customer",
@@ -1455,6 +1541,9 @@
     },
     "/subscriptions/{subscription-id}/delete": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Delete a subscription",
         "description": "Deletes the subscription resource.  \nThis operation is irreversible - all data related to the subscription, such as invoices, transactions, and reports, will be deleted.\n**Note:** This operation schedules the subscription resource for deletion. It will be deleted in a few minutes.\n",
         "operationId": "delete_a_subscription",
@@ -1731,6 +1820,9 @@
     },
     "/subscriptions/{subscription-id}/remove_scheduled_cancellation": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Remove scheduled cancellation",
         "description": "If the subscription is in **Non Renewing** or **In Trial** state and is also scheduled to cancel at the end of current term, then this API can be used to remove the scheduled cancellation. When a scheduled cancellation is removed, the subscription will revert to **Active** or **In Trial** state, whichever is the state before cancellation was scheduled.\n\nWhile removing the scheduled cancellation, you may specify the number of billing cycles. If the billing cycle is not specified, the default billing cycle from the plan will be applied on the subscription.\n",
         "operationId": "remove_scheduled_cancellation",
@@ -2028,6 +2120,9 @@
     },
     "/subscriptions/{subscription-id}/retrieve_with_scheduled_changes": {
       "get": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Retrieve with scheduled changes",
         "description": "Retrieves a subscription with the scheduled changes applied.\n\n**Note:** Only the following attributes are changed\n\n* plan_id\n* plan_quantity\n* remaining_billing_cycles\n* addons\n* coupons Other attributes such as **status** ,**next_billing_at** are not changed and will reflect the current subscription values.\n",
         "operationId": "retrieve_with_scheduled_changes",
@@ -2250,6 +2345,9 @@
     },
     "/subscriptions/{subscription-id}/reactivate": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Reactivate a subscription",
         "description": "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nThis API is used to reactivate a **cancelled** subscription. You may also optionally specify a trial end date, to move the subscription to **In Trial** state. If trial end is not specified, the subscription will be activated and any applicable charges will be initiated.\n\nUnless the billing cycle is specified, it will be set to plan's default billing cycle.\n\nDuring an in-term reactivation++, unless the billing cycle is specified, the subscription's remaining billing cycles will be restored. If a trial end date is specified, then the plan's default billing cycle is used.\n\n**What is an \"in-term reactivation\"?**\n\nAn \"in-term reactivation\" happens when the billing term of the subscription is retained upon cancellation and reactivation is initiated within that term.\n\n**When is the 'billing term' retained for a cancelled subscription?**\n\nWhen dunning (payment failure retry settings) is configured with the last retry configured as\n\n* cancel subscription and mark invoice as 'Not Paid', or\n* cancel subscription and mark the invoice as 'Voided' and the case if any of the current term invoices is partially or fully paid, the invoice is not voided but instead Chargebee marks the invoices as 'Not Paid'.\n\n**Note :** In both cases, the billing term is retained and upon reactivation the subscription will be moved to active state (if the plan does not have a trial period) and no invoice will be generated. Ensure that you collect any unpaid invoices.\n\n**Example :** A Subscription was billed from 1st to 31st of a month and it was cancelled on the 20th due to one of the above cases (billing term is not reset). If the reactivation happens on 25th then it is considered an in-term reactivation.  \nReactivation of a subscription in **non_renewing** state has been deprecated. To remove a scheduled cancellation of a **non_renewing** Subscription, use [Remove Scheduled Cancellation](/docs/api/v1/subscriptions/remove-scheduled-cancellation) API.\nHowever, if you use reactivate API to remove scheduled cancellation for a **non_renewing** Subscription, then the status will be set to **active** and the billing cycle will be set to forever. If any value is passed for trial_end or billing cycle, an error will be thrown.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n**Additional Error Scenarios:** If there is a need to create an immediate charge and the collection fails, an error will be thrown.\n",
         "operationId": "reactivate_a_subscription",
@@ -2599,6 +2697,9 @@
     },
     "/subscriptions/{subscription-id}": {
       "get": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Retrieve a subscription",
         "description": "Retrieves a subscription.\n",
         "operationId": "retrieve_a_subscription",
@@ -2819,6 +2920,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Update a subscription",
         "description": "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nYou can modify the plan, plan quantity and add or remove addons for the subscription. By default the changes are applied immediately and the charges (/credits) are prorated and adjusted with the next billing term. You may also choose to effect the changes at the end of the current term by passing **end_of_term** as \"true\". In this case proration will not be done.\n\nOnly the parameters that are passed are modified for the subscription. Rest will reflect the existing values.\n\nBy default, the addons passed are appended to the existing list of addons for this subscription. In case a passed addon already exists for this subscription, quantity value is replaced. If you want to completely replace the addons for this subscription, pass **replace_addon_list** as \"true\".\n\n[Card](/docs/api/v1/cards/card-object) and 'vat_number' attributes can also be passed during subscription update. If they are passed, corresponding Billing Info attributes - the [Billing Address](/docs/api/v1/customers/customer-object) and 'vat_number' - will be replaced automatically.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.\n\n**Proration Scenario:**\nA customer changes from a $15 plan to $30 plan after 15 days of a monthly term. He will be billed a total of $7.50 immediately. Calculation will be as follows:  \n\n|---------------------------------------------|---------|\n| Prorated Charge(New Plan)                   | $15.00  |\n| Prorated Credit(Old Plan) for unused period | ($7.50) |\n| Total prorated amount                       | $7.50   |\n\nDowngrading will result in credit being created which will be applied when the subscription is charged on start of the next term.\n\n**Billing Cycle:** The billing period for a subscription does not change if the plans intervals of both old and new are same. However, if a customer changes to a plan that has different billing interval(say monthly to yearly), the billing period is reset. Customer is charged immediately for the modified subscription after applying credit for the unused period for the old subscription.\n\n**Card and VAT number Input:** If they are passed, corresponding [Billing Address](/docs/api/v1/customers/customer-object) attributes and [vat_number](/docs/api/v1/customers/customer-object) will be replaced. i.e existing values for Billing Address and 'vat_number' will be cleared and the new values will be set.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n\n**Advance charges**, if any, will be refunded as credits and a new invoice will be generated on renewal.\n",
         "operationId": "update_a_subscription",
@@ -3730,6 +3834,9 @@
     },
     "/subscriptions/{subscription-id}/add_charge_at_term_end": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Add charge at term end",
         "description": "Adds a one time charge to the subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.\n\nTo collect a charge immediately, [use this API](/docs/api/v1/invoices/create-invoice-for-a-one-time-charge).  \nIf any subscription changes happen before the end of the current term, these charges will be collected along with it.\n",
         "operationId": "add_charge_at_term_end",
@@ -4028,6 +4135,9 @@
     },
     "/subscriptions": {
       "get": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "List subscriptions",
         "description": "Returns a list of subscriptions meeting **all**\nthe conditions specified in the filter parameters below.\n",
         "operationId": "list_subscriptions",
@@ -4285,6 +4395,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Create a subscription",
         "description": "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a new subscription along with the customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.\n\n#### Future Subscriptions\n\nIf the **start_date** is specified, the subscription will be created in 'future' state (.ie, instead of starting immediately it will be scheduled to start at the specified 'start_date'). Besides if 'trial' is specified (plan configuration or specified explicitly using trial_end), the subscription will go into 'trial' state when it starts. Otherwise it will directly become 'active' when it starts.\n\n#### Trial Period\n\nIf the plan has trial period or if the trial_end is specified explicitly, the subscription will be created in 'in_trial' state.\n\nIf the card details are passed, it is not charged until the end of the trial period. Incase you need to verify the card you could enable the ['card verification option'](https://www.chargebee.com/docs/cards.html#card-verification) in the gateway settings.\n\n#### Invoice\n\nIf the plan does not have a trial period and if any of the recurring items has charges, then a invoice would be raised immediately. If 'auto_collection' is turned 'on', then card attributes are mandatory and subscription will be created only if the payment was successful.\n\n#### Card details\n\nPassing card details to this API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form. Please refer this [tutorial](https://www.chargebee.com/tutorials/braintree-js-example.html) for more details. You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.\n\n#### Billing Address\n\n* The Billing Address is significant especially when EU VAT or Customized Tax options are in use, because tax calculations will be based on this address.\n* In the case of EU VAT, for customers without Billing Address, taxes will not be included.\n* In the case of Customized Tax option, the billing address will be used to determine tax if shipping address is not available for the customer. If both addresses are not available, tax calculation will not happen.\n\n**Note:** For the sites created before 1st Mar 2014, customer's billing address and 'vat_number' will be replaced automatically whenever the associated card gets updated. i.e existing values for billing address and 'vat_number' will be cleared and the new values will be set. This behaviour is changed now - The VAT number should always be passed along billing address and not with card address. Both the addresses have to be dealt separately.\n\nBilling Address attributes shall be explicitly passed for customers paying offline(Cash, Check, Bank Transfer etc).\n\n#### Shipping Address\n\nThe Shipping Address is significant for the Customized Tax option, because tax calculations will be based on this address. For customers without Shipping Address, Billing Address details will be used to calculate taxes. If neither of the addresses are available for a customer, taxes will not be calculated for him/her.\n\n#### Related Tutorials\n\n* [Check out this tutorial to create trial signup with custom fields.](https://www.chargebee.com/tutorials/custom-fields-recurring-billing-example.html)\n* [Learn how to implement a in-app checkout flow that allows your customers to select addons and apply coupons. Estimate API is used to dynamically calculate the order summary shown to the customer.](https://www.chargebee.com/tutorials/in-app-checkout-page-using-estimate-api-example.html)\n",
         "operationId": "create_a_subscription",
@@ -5245,6 +5358,9 @@
     },
     "/subscriptions/{subscription-id}/cancel": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Cancel a subscription",
         "description": "Cancelling a subscription will move the current state of the subscription to the **cancelled** state and will stop all recurring actions.\n\nYou could schedule the cancellation by passing **end_of_term** parameter as **true** . If scheduled, the subscription status will be set to **non_renewing** if it is in **active** state until the end of term and then **cancelled** . Subscription's state will not change if it is in **in_trial** state. However, cancellation will be scheduled at the trial end date.\n\nWhile cancelling a subscription, we try to collect all pending amount against the current and old invoices. No refund for the unused period is processed (let us know if you need have specific refund scenarios).\n\nIf the collection of pending charges fails while cancelling, it will still be moved to **cancelled** status. We will continue to retry collecting the payment based on the configured retry settings until it is manually overridden.  \nAdvance charges, if any, will be refunded as credits.\n",
         "operationId": "cancel_a_subscription",
@@ -5545,6 +5661,9 @@
     },
     "/subscriptions/{subscription-id}/charge_addon_at_term_end": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Charge addon at term end",
         "description": "Adds a \"non-recurring addon\" charge to a subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.\n\nTo collect the charges for the non-recurring addon immediately, [use this API](/docs/api/v1/invoices/create-invoice-for-a-non-recurring-addon).  \nIf any subscription changes happen before the end of the current term, these charges will be collected along with it.\n",
         "operationId": "charge_addon_at_term_end",
@@ -5843,6 +5962,9 @@
     },
     "/subscriptions/{subscription-id}/scheduled_changes": {
       "get": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Scheduled_changes a subscription_scheduled_change",
         "operationId": "scheduled_changes_a_subscription_scheduled_change",
         "parameters": [
@@ -6055,6 +6177,9 @@
     },
     "/subscriptions/{subscription-id}/update_scheduled_changes": {
       "post": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Update_scheduled_changes a subscription_scheduled_change",
         "operationId": "update_scheduled_changes_a_subscription_scheduled_change",
         "parameters": [
@@ -6344,6 +6469,9 @@
     },
     "/customers/{customer-id}/delete": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Delete a customer",
         "description": "Deletes the customer resource.  \nThis will delete the Payment Method from the gateway/vault. If you do not want the Payment Method to be deleted from the vault, set the value for the delete_payment_method parameter to false.\nThis operation is irreversible - all data related to the customer, such as subscriptions, invoices, transactions, and reports, will be deleted.\n**Note:** This operation schedules the customer resource for deletion. It will be deleted in a few minutes.\n",
         "operationId": "delete_a_customer",
@@ -6635,6 +6763,9 @@
     },
     "/customers/{customer-id}/deduct_account_credits": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Deduct account credits for a customer",
         "description": "This API call can be used to deduct credits for a customer. [Learn more about Promotional Credits](https://www.chargebee.com/docs/2.0/credit-notes.html#creating-promotional-credits).\n\nFor example, if a customer has a credit balance of $20, if you pass the **amount** as $5, then the customer's credit balance would become $15.\n",
         "operationId": "deduct_account_credits_for_a_customer",
@@ -6934,6 +7065,9 @@
     },
     "/customers/{customer-id}/set_account_credits": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Set account credits for a customer",
         "description": "This API call can be used to set credits for a customer. [Learn more about Promotional Credits](https://www.chargebee.com/docs/2.0/credit-notes.html#creating-promotional-credits).\n\nFor example, if a customer has a credit balance of $10 and if you would like to set the balance to $100, you could pass the **amount** as $100.\n",
         "operationId": "set_account_credits_for_a_customer",
@@ -7233,6 +7367,9 @@
     },
     "/customers/{customer-id}/delete_contact": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Delete contacts for a customer",
         "description": "Deletes the contact information. [Learn more about Contacts](https://www.chargebee.com/docs/customers.html#add-contact).\n",
         "operationId": "delete_contacts_for_a_customer",
@@ -7540,6 +7677,9 @@
     },
     "/customers/{customer-id}/update_payment_method": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Update payment method for a customer",
         "description": "Updates payment method details for a customer.  \n**Note:**\nIf you wish to pass the card number, CVV, or the single-use card tokens provided by gateways like Stripe, then use the [Update card for a customer](/docs/api/cards/update-card-for-a-customer)\nAPI under Cards resource. This API is not supported for Chargebee Test Gateway, which is provided to help you understand the billing workflow in Chargebee.\n\n**PayPal Express Checkout**\n\nYou can use this API if you are directly integrating PayPal Express Checkout in your website instead of using Chargebee's hosted pages. When your customer updates his payment method using PayPal Express Checkout, you will be provided with the *Billing Agreement ID* by PayPal. You can update the payment method for that customer in Chargebee by passing `type` as `paypal_express_checkout` and `reference_id` with the *Billing Agreement ID*.\n\n**Login and Pay with Amazon**\n\nYou can use this API if you are directly integrating *Login and Pay with Amazon* in your website instead of using Chargebee's hosted pages. When your customer updates Amazon as a payment method, you will be provided with the *Billing Agreement ID* by Amazon. You can update the payment method for that customer in Chargebee by passing `type` as `amazon_payments` and `reference_id` with the *Billing Agreement ID*.\n\n**Card Payments**\n\nWhen the card details of your customer are stored in the vault of gateways such as Stripe or Braintree, you can use this API to update the *reference id* provided by them in Chargebee. To use this API, pass\n\n* `type` as `card`.\n* `gateway` with the gateway associated with the card. If the gateway is not specified, the default gateway will be used.\n* `reference_id` with the identifier provided by the gateway/Spreedly to reference that specific card.\n\n**Reference id format for Card Payments**\n\nThe format of reference_id will differ based on where the card is stored.\n\n**Stripe:** In case of Stripe, the reference_id consists of combination of Stripe Customer ID and Stripe Card ID separated by forward slash (e.g. *cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G* ). If you are passing Stripe Customer ID alone, then Chargebee will store the card marked as active for that customer in Stripe.\n\n**Braintree:** In case of Braintree, the reference_id consists of combination of Braintree Customer ID and Braintree Payment Method Token separated by forward slash (e.g. *cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G* ). If you are passing Braintree Customer ID alone, then Chargebee will store the card marked as default for that customer in Braintree.\n\n**Spreedly Card vault:** If the card details are stored in Spreedly vault, then you need to provide the Spreedly token as `reference_id`.\n\n**Direct Debit Payments**\n\nWhen the bank account details of your customer is stored in the vault of Authorize.Net, you can use this API to update the reference id provided by them in Chargebee. To use this API, pass\n\n* `type` as `direct_debit`.\n* `gateway` with the gateway where the bank account details are stored (e.g. *authorize_net*). If the gateway is not specified, the gateway supporting the direct debit will be used.\n* `reference_id` with the identifier provided by the gateway to reference the customer's bank account details.\n\n**Reference id format for Direct Debit Payments**\n\nThe reference_id consists of combination of Authorize.Net's Customer Profile ID and Payment Profile ID separated by forward slash (e.g. *2384383/34834382*). If you are passing Authorize.Net's Customer Profile ID alone, then Chargebee will store the first bank account details present in payment profile list of that customer in Authorize.Net.\n\n**Note:** While using this API to update payment method details, [Card Verification](https://www.chargebee.com/docs/cards.html#card-verification) will not happen even if it is enabled for that particular gateway.  \nStoring card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources/create-using-payment-intent)\nunder Payment source to store the card after successful 3DS flow completion.\n",
         "operationId": "update_payment_method_for_a_customer",
@@ -7891,6 +8031,9 @@
     },
     "/customers/{customer-id}": {
       "get": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Retrieve a customer",
         "description": "Retrieves the details of the desired customer. You can use the unique identifier for a particular customer to retrieve the desired details.\n",
         "operationId": "retrieve_a_customer",
@@ -8106,6 +8249,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Update a customer",
         "description": "Updates the customer resource. However this method cannot be used for updating the 'Billing Info' - the Billing Address and 'vat_number' attributes - of the customer. To update the same, use our [Update Billing Info](/docs/api/v1/customers/update-billing-info-for-a-customer) API.\n",
         "operationId": "update_a_customer",
@@ -8470,6 +8616,9 @@
     },
     "/customers/{customer-id}/update_contact": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Update contacts for a customer",
         "description": "Updates the contact information. [Learn more about Contacts](https://www.chargebee.com/docs/customers.html#add-contact).\n",
         "operationId": "update_contacts_for_a_customer",
@@ -8834,6 +8983,9 @@
     },
     "/customers/{customer-id}/add_account_credits": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Add account credits to a customer",
         "description": "This API call can be used to add credits to a customer. [Learn more about Promotional Credits](https://www.chargebee.com/docs/2.0/credit-notes.html#creating-promotional-credits).\n\nFor example, if a customer has credits of $10, if you pass the **amount** as $10, then the customer's credit balance would become $20.\n",
         "operationId": "add_account_credits_to_a_customer",
@@ -9133,6 +9285,9 @@
     },
     "/customers/{customer-id}/update_billing_info": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Update billing info for a customer",
         "description": "This method is used for updating the 'Billing Info' - the Billing Address and 'vat_number' attributes - of the customer. For updating the other customer attributes use our [Update Customer](/docs/api/v1/customers/update-a-customer) API.\n\nDuring this operation if Billing Info(Billing Address and vat_number) is not already present it will get added. Whereas if it is present already, the existing values will be replaced. i.e existing values for Billing Address and vat_number will be cleared and the new values will be set.\n\n**Note:** When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.\n",
         "operationId": "update_billing_info_for_a_customer",
@@ -9529,6 +9684,9 @@
     },
     "/customers": {
       "get": {
+        "tags": [
+          "customers"
+        ],
         "summary": "List customers",
         "description": "Retrieves a list of customers added to your Chargebee site. The list contains the necessary customer details such as First Name, Last Name and the Customer ID.\n",
         "operationId": "list_customers",
@@ -9781,6 +9939,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Create a customer",
         "description": "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a customer. You can create a customer and then create subscriptions for the customer when required. When creating a customer, you can pass along the billing address and card details.\n\nPassing credit card details to through the API involves PCI liability at your end as sensitive card information passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable:\n\n* If you use Stripe, you can also use [Stripe.js](https://stripe.com/docs/js) with your checkout form, to collect card information.\n* If you are using Braintree gateway, you can use [Braintree.js](https://developer.paypal.com/braintree/docs/guides/client-sdk/setup/javascript/v2) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.\n\nThe Billing Address is significant especially when [EU VAT taxes](https://www.chargebee.com/docs/tax.html#european-union-vat) are involved, for tax calculations will be based on this address. For customers without a billing address, EU VAT taxes will not be included. Thus ensure to set this properly if you have configured EU VAT Tax.\n\nBilling Address attributes shall be explicitly passed for customers paying offline(Cash, Check, Bank Transfer etc).\n\n**Note:** When an invoice is generated for a customer, the billing address provided for the customer will be stored with the invoice. If the First Name, Last Name, and Company fields do not contain any information under Billing Info, the same will be picked from Customer Details if the same is available there.\n",
         "operationId": "create_a_customer",
@@ -10510,6 +10671,9 @@
     },
     "/customers/{customer-id}/add_contact": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Add contacts to a customer",
         "description": "Creates an additional contact for the customer. You can add up to a maximum of 6 contacts. [Learn more about Contacts](https://www.chargebee.com/docs/customers.html#add-contact).\n",
         "operationId": "add_contacts_to_a_customer",
@@ -10874,6 +11038,9 @@
     },
     "/cards/{customer-id}": {
       "get": {
+        "tags": [
+          "cards"
+        ],
         "summary": "Retrieve card for a customer",
         "description": "Retrieves the credit card for the customer ID.\n",
         "operationId": "retrieve_card_for_a_customer",
@@ -11087,6 +11254,9 @@
     },
     "/customers/{customer-id}/credit_card_using_payment_intent": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Update card for customer using payment intent",
         "description": "Used to store the card to the customer after 3DS flow completion. [Learn more](/docs/api/getting-started)\non the 3DS integration guide via Chargebee APIs\n",
         "operationId": "update_card_for_customer_using_payment_intent",
@@ -11400,6 +11570,9 @@
     },
     "/customers/{customer-id}/switch_gateway": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Switch gateway",
         "description": "Switches the gateway in which customer's card information is stored.\n\nThis is applicable only if the payment method is \"card\".  \nThis operation is not supported if the current gateway is Braintree or Stripe.\n",
         "operationId": "switch_gateway",
@@ -11717,6 +11890,9 @@
     },
     "/customers/{customer-id}/delete_card": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Delete card for a customer",
         "description": "Deletes the existing card for a customer. Upon successful deletion of card the auto_collection attribute for this customer will be set to off and card_deleted event will be triggered.\n\nIf there is no card present in the gateway for the customer, this API will return successfully without throwing any error.\n",
         "operationId": "delete_card_for_a_customer",
@@ -11984,6 +12160,9 @@
     },
     "/customers/{customer-id}/credit_card": {
       "post": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Update card for a customer",
         "description": "Storing card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources/create-using-payment-intent)\nunder Payemnt source to store the card after successful 3DS flow completion.\n\nAdds or replaces card details of a customer. Updating card details replaces the present payment method.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your card update form.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your card update form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration. Use our [Hosted Page - Update Card](/docs/api/v1/hosted_pages) API to generate a 'Update Card' Hosted Page link.\n\n\\*\\*Note:\\*\\*For customers signed up before 1st March 2014, if the card's billing information is specified in the input, the customer's Billing Info (i.e [Billing Address](/docs/api/v1/customers/customer-object) and vat_number) will also be replaced with the new values automatically.\n",
         "operationId": "update_card_for_a_customer",
@@ -12412,6 +12591,9 @@
     },
     "/invoices/charge_addon": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Create invoice for a non-recurring addon",
         "description": "This API generates invoices for a non-recurring addon.\n",
         "operationId": "create_invoice_for_a_non-recurring_addon",
@@ -12725,6 +12907,9 @@
     },
     "/invoices/{invoice-id}/stop_dunning": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Stop dunning for invoice",
         "description": "This API is used to stop dunning for \"Payment Due\" invoices that have been enabled for Auto Collection. When dunning is stopped, the status of the invoice will be changed to \"Not Paid\".\n",
         "operationId": "stop_dunning_for_invoice",
@@ -12992,6 +13177,9 @@
     },
     "/invoices/{invoice-id}/add_addon_charge": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Add non-recurring addon to a pending invoice",
         "description": "This API endpoint adds a non-recurring addon to a pending invoice.\n",
         "operationId": "add_non-recurring_addon_to_a_pending_invoice",
@@ -13290,6 +13478,9 @@
     },
     "/customers/{customer-id}/invoices": {
       "get": {
+        "tags": [
+          "customers"
+        ],
         "summary": "List invoices for a customer",
         "description": "Lists all the invoices (latest first) for the specified customer.\n",
         "operationId": "list_invoices_for_a_customer",
@@ -13553,6 +13744,9 @@
     },
     "/invoices/{invoice-id}/void": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Void an invoice",
         "description": "This API voids the specified invoice. If the invoice has been successfully voided using this API, the response will contain the voided 'invoice' object and 'Invoice Updated' event will be triggered. If the void has not been successful, a corresponding error message would be returned.\n\nVoiding an invoice is not possible\n\n* If the invoice has successful payment(s)\n* If the invoice has credit adjustment(s)\n\n* Please note that, if the current term invoice is voided and if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.\n* If the invoice that is voided has [Promotional Credits](https://www.chargebee.com/docs/account-credits.html) applied to it, the same will be reclaimed.\n",
         "operationId": "void_an_invoice",
@@ -13840,6 +14034,9 @@
     },
     "/invoices/{invoice-id}/add_charge": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Add one-time charge to a pending invoice",
         "description": "This API endpoint adds a one-time charge to a pending invoice.\n",
         "operationId": "add_one-time_charge_to_a_pending_invoice",
@@ -14139,6 +14336,9 @@
     },
     "/invoices/{invoice-id}/delete": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Delete an invoice",
         "description": "This API deletes the specified invoice. If the invoice has been successfully deleted using this API, the response will contain the deleted 'invoice' object. If the deletion has not been successful, a corresponding error message would be returned.\n\nDeleting an invoice is not possible\n\n* If the invoice has successful payment(s)\n* If the invoice has credit adjustment(s)\n\n* Please note that, after the current term invoice is deleted, if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.\n* Any [Promotional Credits](https://www.chargebee.com/docs/account-credits.html) applied to this invoice would be reclaimed.\n",
         "operationId": "delete_an_invoice",
@@ -14426,6 +14626,9 @@
     },
     "/invoices/{invoice-id}/collect_payment": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Collect payment for an invoice",
         "description": "This API can be used to collect the payments for **payment_due** and **not_paid** invoices. If no payment method is present for the customer or if the payment is unsuccessful, the corresponding error will be thrown.\n",
         "operationId": "collect_payment_for_an_invoice",
@@ -14719,6 +14922,9 @@
     },
     "/invoices/{invoice-id}/collect": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Close pending invoice",
         "description": "This API closes the 'pending' invoice. If \"[metered billing](https://www.chargebee.com/docs/metered_billing.html)\" is used, please ensure that the usage charges are added before invoking this API.\n\nIf the 'Auto-Collection' is turned 'ON' for the particular customer, the payment for this invoice will be automatically collected.\n\nWhile closing the pending invoice, the invoice number will be assigned based on the current invoice number sequence. The invoice end date will also be updated with the date of closure.\n\nAvailable Credits and Excess Payments will automatically be applied while closing the pending invoice.\n\nClosing a pending invoice would be allowed only if the invoice consists of atleast one line-item. Invoices without line-items cannot be closed. However, they can be deleted using the [Delete Invoice API](/docs/api/v1/invoices/delete-an-invoice).\n\n#### Related Tutorial\n\n* [Check out the tutorial on how to use metered / usage based billing.](https://www.chargebee.com/tutorials/usage-based-billing-example.html)\n",
         "operationId": "close_pending_invoice",
@@ -14986,6 +15192,9 @@
     },
     "/invoices/{invoice-id}/refund": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Refund an invoice",
         "description": "A refund returns money to a customer. The refund request is processed via the payment gateway that was used to charge the customer.\n\nYou can choose to either make a full refund for the entire amount or you can do as many partial refunds until you reach the total amount charged for the invoice.\n\n[Read more](https://www.chargebee.com/docs/refunds.html) on refunds in our docs.\n\nError will be thrown if you attempt to:\n\n* refund an offline invoice. To record refund for such invoices, use [this API](/docs/api/v1/invoices/record-refund-for-an-invoice).\n* refund an entirely refunded invoice.\n",
         "operationId": "refund_an_invoice",
@@ -15286,6 +15495,9 @@
     },
     "/invoices": {
       "get": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "List invoices",
         "description": "Lists all the Invoices.\n",
         "operationId": "list_invoices",
@@ -15549,6 +15761,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Create an invoice",
         "description": "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a one-off invoice for multiple 'Non Recurring' addon \\& ad-hoc charges for a customer. If the 'auto collection' has been turned 'on' for that customer then payment will be immediately collected using the payment method associated with the customer. The invoice will be generated only upon successful collection of payments. However if the 'auto collection' is turned 'off', no collection attempt will be made and the invoice generated would have a \"Payment Due\" status.\n\nThe Shipping Address can be passed, which will then be attached to the generated invoice.\n\nA 'One Time' coupon can be explicitly specified while creating this invoice.  \nAvailable Credits and Excess Payments will automatically be applied to this invoice.\n",
         "operationId": "create_an_invoice",
@@ -16067,6 +16282,9 @@
     },
     "/invoices/{invoice-id}/record_refund": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Record refund for an invoice",
         "description": "Offline refunds can be recorded for invoices that have been paid via card payments, Amazon Payments, Paypal Express Checkout, as well as offline payments.\n\n[Read more](https://www.chargebee.com/docs/refunds.html#reconciling-offline-refunds) on refunds in our docs.\n",
         "operationId": "record_refund_for_an_invoice",
@@ -16413,6 +16631,9 @@
     },
     "/invoices/{invoice-id}/pdf": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Retrieve Invoice as PDF",
         "description": "Gets the invoice as PDF. The returned URL is secure and allows download. The URL will expire in 60 minutes.\n\n#### Related Tutorial\n\n* [Check out customer portal tutorial on how to download invoice as PDF.](https://www.chargebee.com/tutorials/customer-portal-sample.html#downloading_invoices_as_pdf)\n",
         "operationId": "retrieve_invoice_as_pdf",
@@ -16680,6 +16901,9 @@
     },
     "/invoices/{invoice-id}": {
       "get": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Retrieve an invoice",
         "description": "Retrieve the invoice for the specified invoice id.\n",
         "operationId": "retrieve_an_invoice",
@@ -16893,6 +17117,9 @@
     },
     "/subscriptions/{subscription-id}/invoices": {
       "get": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "List invoices for a subscription",
         "description": "Lists all the invoices (latest first) for the specified subscription.\n",
         "operationId": "list_invoices_for_a_subscription",
@@ -17156,6 +17383,9 @@
     },
     "/invoices/charge": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Create invoice for a one-time charge",
         "description": "This API generates invoices for a one-time charge.\n",
         "operationId": "create_invoice_for_a_one-time_charge",
@@ -17469,6 +17699,9 @@
     },
     "/orders": {
       "get": {
+        "tags": [
+          "orders"
+        ],
         "summary": "List orders",
         "description": "This API is used to retrieve a list of all the available orders.\n",
         "operationId": "list_orders",
@@ -17717,6 +17950,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "orders"
+        ],
         "summary": "Create an order",
         "description": "This API is used to retrieve an order.\n",
         "operationId": "create_an_order",
@@ -18049,6 +18285,9 @@
     },
     "/invoices/{invoice-id}/orders": {
       "get": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "List orders for an invoice",
         "description": "Retrieves the orders corresponding to an invoice, with the latest ones on top.\n",
         "operationId": "list_orders_for_an_invoice",
@@ -18312,6 +18551,9 @@
     },
     "/orders/{order-id}": {
       "get": {
+        "tags": [
+          "orders"
+        ],
         "summary": "Retrieve an order",
         "description": "Retrieves an order corresponding to the order id passed.\n",
         "operationId": "retrieve_an_order",
@@ -18523,6 +18765,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "orders"
+        ],
         "summary": "Update an order",
         "description": "Updates an order. If the status of an order is changed while updating the order, the status_update_at attribute is set with the current time.\n",
         "operationId": "update_an_order",
@@ -18957,6 +19202,9 @@
     },
     "/customers/{customer-id}/transactions": {
       "get": {
+        "tags": [
+          "customers"
+        ],
         "summary": "List transactions for a customer",
         "description": "Retrieves the transactions for a customer sorted by the recent ones on top.\n",
         "operationId": "list_transactions_for_a_customer",
@@ -19220,6 +19468,9 @@
     },
     "/subscriptions/{subscription-id}/transactions": {
       "get": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "List transactions for a subscription",
         "description": "Retrieves the transactions for a subscription sorted by the recent ones on top.\n",
         "operationId": "list_transactions_for_a_subscription",
@@ -19483,6 +19734,9 @@
     },
     "/transactions": {
       "get": {
+        "tags": [
+          "transactions"
+        ],
         "summary": "List transactions",
         "description": "Lists all the transactions.\n",
         "operationId": "list_transactions",
@@ -19733,6 +19987,9 @@
     },
     "/invoices/{invoice-id}/record_payment": {
       "post": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "Record Payment for an invoice",
         "description": "To record offline payments (Cash,Check etc) for 'payment_due' or 'not_paid' invoices.\n\nThe invoice status will be marked as 'paid' when the amount that is due is recorded.\n",
         "operationId": "record_payment_for_an_invoice",
@@ -20064,6 +20321,9 @@
     },
     "/transactions/{transaction-id}": {
       "get": {
+        "tags": [
+          "transactions"
+        ],
         "summary": "Retrieve a transaction",
         "description": "Retrieve a transaction identified by its unique id.\n",
         "operationId": "retrieve_a_transaction",
@@ -20277,6 +20537,9 @@
     },
     "/invoices/{invoice-id}/transactions": {
       "get": {
+        "tags": [
+          "invoices"
+        ],
         "summary": "List transactions for an invoice",
         "description": "Retrieves the transactions for an invoice with the recent ones on top. This returns all the payment attempts(manual \\& automatic) made for this invoice.\n",
         "operationId": "list_transactions_for_an_invoice",
@@ -20540,6 +20803,9 @@
     },
     "/hosted_pages/checkout_new": {
       "post": {
+        "tags": [
+          "hosted_pages"
+        ],
         "summary": "Checkout new subscription",
         "description": "Hosted page to accept card details from the subscriber and create a new subscription. This is similar to our server to server API [Create a Subscription](/docs/api/v1/subscriptions/create-a-subscription).\n\nWhen the redirect URL is notified of the result, we would advise you to [retrieve the subscription](/docs/api/v1/subscriptions/retrieve-a-subscription) and verify the details.\n\n#### Related Tutorials\n\n* [Create a subscription using Chargebee's hosted page](https://www.chargebee.com/tutorials/chargebee-js-checkout-new-subscription/)\n\nAs mentioned before this behavior is very similar to the create subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful creation of subscription.\nAny errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.\n",
         "operationId": "checkout_new_subscription",
@@ -21057,6 +21323,9 @@
     },
     "/hosted_pages/checkout_onetime_addons": {
       "post": {
+        "tags": [
+          "hosted_pages"
+        ],
         "summary": "Checkout onetime addons",
         "description": "This operation is only supported by the **2Checkout** payment gateway.\n",
         "operationId": "checkout_onetime_addons",
@@ -21443,6 +21712,9 @@
     },
     "/hosted_pages/checkout_onetime_charge": {
       "post": {
+        "tags": [
+          "hosted_pages"
+        ],
         "summary": "Checkout onetime charge",
         "description": "This operation is only supported by the **2Checkout** payment gateway.\n",
         "operationId": "checkout_onetime_charge",
@@ -21802,6 +22074,9 @@
     },
     "/hosted_pages/{hosted-page-id}": {
       "get": {
+        "tags": [
+          "hosted_pages"
+        ],
         "summary": "Retrieve a hosted page",
         "description": "This API is used to retrieve a hosted page. You will get the URL from the API response.\n",
         "operationId": "retrieve_a_hosted_page",
@@ -22015,6 +22290,9 @@
     },
     "/hosted_pages/checkout_existing": {
       "post": {
+        "tags": [
+          "hosted_pages"
+        ],
         "summary": "Checkout existing subscription",
         "description": "You can checkout an existing subscription(typically in the trial state) by passing in the plan, quantity and addon details(like [Update a Subscription](/docs/api/v1/subscriptions/update-a-subscription))\n\nWhen the redirect URL is notified of the result, we would advise you to [retrieve the subscription](/docs/api/v1/subscriptions/retrieve-a-subscription) and verify the details.\n\n#### Related Tutorial\n\n* [Upgrade existing subscription using Chargebee's hosted page](https://www.chargebee.com/tutorials/chargebee-js-checkout-existing-subscription/)\n\nAs mentioned before this behavior is very similar to the update subscription API call. All the web hook events will be fired only after the submission of payment details by the customer and successful checkout of subscription.\nAny errors related to the payment form that is submitted is handled as a response within the form so that the user is kept informed about the reason for failure to take corrective action.\n",
         "operationId": "checkout_existing_subscription",
@@ -22472,6 +22750,9 @@
     },
     "/subscriptions/{subscription-id}/renewal_estimate": {
       "get": {
+        "tags": [
+          "subscriptions"
+        ],
         "summary": "Subscription renewal estimate",
         "description": "This returns an estimate of the amount that will be charged when the subscription renews. The estimate is calculated based on the items present in the subscription. This includes the plan, addons and coupons(if any) of the subscription. This API is not supported for \"Cancelled\" subscriptions.\n\nYou can also specify whether you need the estimate to include delayed charges.\n\nFor \"Non Renewing\" subscriptions, only delayed charges(one time charges and non renewing addons) that may have been added to the subscription to be charged at the end of the current term will be included. Plan, addons and coupons(if any) of the subscription will not be included.\n\nThis API will not generate a renewal invoice if an [advance invoice](https://www.chargebee.com/docs/advance-invoices.html) is already present for the subscription.\n",
         "operationId": "subscription_renewal_estimate",
@@ -22715,6 +22996,9 @@
     },
     "/customers/{customer-id}/create_subscription_estimate": {
       "get": {
+        "tags": [
+          "customers"
+        ],
         "summary": "Create subscription for a customer estimate",
         "description": "Create a subscription for the existing estimate of a customer.\n",
         "operationId": "create_subscription_for_a_customer_estimate",
@@ -23098,6 +23382,9 @@
     },
     "/estimates/update_subscription": {
       "post": {
+        "tags": [
+          "estimates"
+        ],
         "summary": "Update subscription estimate",
         "description": "Generates an estimate for the 'update subscription' operation. The input will be similar to the [Update Subscription](/docs/api/v1/subscriptions/update-a-subscription) API but subscription will not be updated, but just an estimate will be generated.\n\nIn case 'update subscription' operation will not create an invoice immediately, the estimate generated will be for the 'end of term' invoice. Some of the cases where the invoice will not be generated immediately are\n\n* In case of downgrades only credits will be added to customer.\n* 'end_of_term' option is true.\n* 'prorate' option is false.\n* Only coupon is applied.\n\n**Note:**\n\n* If you use the **EU VAT** tax option, you need to specify 'billing_address\\[country\\]' and 'customer\\[vat_number\\]' attributes for the tax calculation to happen. If these attributes are not passed, the tax will be ignored for this estimate.\n* If you use the **Customized Tax** option, you need to specify the shipping address and billing address parameters for the tax calculation to happen. This is because Chargebee will use the customer's shipping address to determine the tax applicable. If the shipping address is not available, then the billing address will be used to determine tax. If both addresses are not available, tax will be ignored for this estimate.\n",
         "operationId": "update_subscription_estimate",
@@ -23603,6 +23890,9 @@
     },
     "/estimates/create_subscription": {
       "post": {
+        "tags": [
+          "estimates"
+        ],
         "summary": "Create subscription estimate",
         "description": "Generates an estimate for the 'create subscription' operation. This input will be similar to the [Create Subscription](/docs/api/v1/subscriptions/create-a-subscription)\nAPI but no subscription will be created, but just an estimate will be generated.\n**Note:**\n\n* If you use the **EU VAT** tax option, you need to specify 'billing_address\\[country\\]' and 'customer\\[vat_number\\]' attributes for the tax calculation to happen. If these attributes are not passed, the tax will be ignored for this estimate.\n* If you use the **Customized Tax** option, you need to specify the shipping address and billing address parameters for the tax calculation to happen. This is because Chargebee will use the customer's shipping address to determine the tax applicable. If the shipping address is not available, then the billing address will be used to determine tax. If both addresses are not available, tax will be ignored for this estimate.\n\n#### Related Tutorial\n\n* [Check out this tutorial for when and how to use create subscription estimate API](https://www.chargebee.com/tutorials/in-app-checkout-page-using-estimate-api-example.html)\n",
         "operationId": "create_subscription_estimate",
@@ -24070,6 +24360,9 @@
     },
     "/estimates/create_invoice": {
       "post": {
+        "tags": [
+          "estimates"
+        ],
         "summary": "Create invoice estimate",
         "description": "Generates an estimate for the 'create an invoice' operation. This is similar to the [Create an invoice](/docs/api/v1/invoices/create-an-invoice) API, but the invoice will not be generated. Only an estimate for this operation is created.\n",
         "operationId": "create_invoice_estimate",
@@ -24616,6 +24909,9 @@
     },
     "/plans/{plan-id}/delete": {
       "post": {
+        "tags": [
+          "plans"
+        ],
         "summary": "Delete a plan",
         "description": "When a plan that already has subscriptions/invoices linked to it is deleted, it does not get completely purged but is instead moved to \"Archived\" state. No other subscriptions can use this plan but subscriptions already on it will continue to renew. Once a plan has been archived, it cannot be edited or used again and the plan cannot be un-archived.\n\nIf no subscriptions or invoices are linked to a plan, the plan will be permanently deleted from your Chargebee site. This action cannot be undone.\n\nIf a plan that is an applicable item for a coupon is deleted, then the plan will be removed from that coupon's list of applicable items.\n\nArchiving a plan will not affect coupons in anyway.\n",
         "operationId": "delete_a_plan",
@@ -24883,6 +25179,9 @@
     },
     "/plans": {
       "get": {
+        "tags": [
+          "plans"
+        ],
         "summary": "List plans",
         "description": "This API fetches all the active and archived plans. If the limit parameter is not set, it will return upto 10 plans\n",
         "operationId": "list_plans",
@@ -25131,6 +25430,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "plans"
+        ],
         "summary": "Create a plan",
         "description": "This endpoint creates a new plan based on the plan Id and plan name.\n",
         "operationId": "create_a_plan",
@@ -25556,6 +25858,9 @@
     },
     "/plans/{plan-id}": {
       "get": {
+        "tags": [
+          "plans"
+        ],
         "summary": "Retrieve a plan",
         "description": "This endpoint retrieves a specific plan using the plan id.\n",
         "operationId": "retrieve_a_plan",
@@ -25767,6 +26072,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "plans"
+        ],
         "summary": "Update a plan",
         "description": "When updating plans that are already linked to an invoice or a subscription, you can only update the following parameters:\n\n* name\n* invoice_name\n* setup_cost\n* price\n* trial_period\n* trial_period_unit\n* redirect_url\n* enabled_in_hosted_pages\n",
         "operationId": "update_a_plan",
@@ -26194,6 +26502,9 @@
     },
     "/addons/{addon-id}": {
       "get": {
+        "tags": [
+          "addons"
+        ],
         "summary": "Retrieve an addon",
         "description": "Retrieve a specific addon using the id.\n",
         "operationId": "retrieve_an_addon",
@@ -26405,6 +26716,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "addons"
+        ],
         "summary": "Update an addon",
         "description": "When updating addons that already have an invoice or a subscription linked to it, you can only update the following parameters:\n\n* name\n* invoice_name\n* price\n",
         "operationId": "update_an_addon",
@@ -26804,6 +27118,9 @@
     },
     "/addons": {
       "get": {
+        "tags": [
+          "addons"
+        ],
         "summary": "List addons",
         "description": "List the addons. This returns all your current active and archived addons.\n",
         "operationId": "list_addons",
@@ -27052,6 +27369,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "addons"
+        ],
         "summary": "Create an addon",
         "description": "Create a new addon.\n",
         "operationId": "create_an_addon",
@@ -27450,6 +27770,9 @@
     },
     "/addons/{addon-id}/delete": {
       "post": {
+        "tags": [
+          "addons"
+        ],
         "summary": "Delete an addon",
         "description": "When an addon that already has subscriptions/invoices linked to it is deleted, it does not get completely purged but is instead moved to \"Archived\" state. No other subscriptions can use this addon but subscriptions already on it will continue to renew. Once an addon has been archived, it cannot be edited or used again and the addon cannot be un-archived.\n\nIf no subscriptions or invoices are linked to an addon, the addon will be permanently deleted from your Chargebee site. This action cannot be undone.\n\nIf an addon that is an applicable item for a coupon is deleted, then the addon will be removed from that coupon's list of applicable items.\n\nArchiving an addon will not affect coupons in anyway.\n",
         "operationId": "delete_an_addon",
@@ -27717,6 +28040,9 @@
     },
     "/coupons": {
       "get": {
+        "tags": [
+          "coupons"
+        ],
         "summary": "List coupons",
         "description": "List all the available coupons that are created for a specific promotion or offers. You can find list of coupon codes that are currently active, expired, archived or deleted.\n",
         "operationId": "list_coupons",
@@ -27965,6 +28291,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "coupons"
+        ],
         "summary": "Create a coupon",
         "description": "This API creates a new coupon for a specific promotion or offers.\n",
         "operationId": "create_a_coupon",
@@ -28401,6 +28730,9 @@
     },
     "/coupons/{coupon-id}": {
       "get": {
+        "tags": [
+          "coupons"
+        ],
         "summary": "Retrieve a coupon",
         "description": "This API retrieves a specific coupon using the coupon ID.\n",
         "operationId": "retrieve_a_coupon",
@@ -28614,6 +28946,9 @@
     },
     "/coupon_codes": {
       "post": {
+        "tags": [
+          "coupon_codes"
+        ],
         "summary": "Create a coupon code for a coupon",
         "description": "Create a new coupon code and associate it to an existing main coupon resource.\n",
         "operationId": "create_a_coupon_code_for_a_coupon",
@@ -28907,6 +29242,9 @@
     },
     "/coupon_codes/{coupon-code-code}": {
       "get": {
+        "tags": [
+          "coupon_codes"
+        ],
         "summary": "Retrieve a coupon code",
         "description": "Retrieves a specific coupon code details.\n",
         "operationId": "retrieve_a_coupon_code",
@@ -29120,6 +29458,9 @@
     },
     "/addresses": {
       "get": {
+        "tags": [
+          "addresses"
+        ],
         "summary": "Retrieve an address",
         "description": "Retrieves an address resource for a subscription and the specified label.\n",
         "operationId": "retrieve_an_address",
@@ -29348,6 +29689,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "addresses"
+        ],
         "summary": "Update an address",
         "description": "Adds or replaces the address for a subscription. If an address is already present for the specified label, it will be replaced otherwise new address is added with that label.\n",
         "operationId": "update_an_address",
@@ -29725,6 +30069,9 @@
     },
     "/events": {
       "get": {
+        "tags": [
+          "events"
+        ],
         "summary": "List events",
         "description": "Retrieves list of events.\n",
         "operationId": "list_events",
@@ -30081,6 +30428,9 @@
     },
     "/events/{event-id}": {
       "get": {
+        "tags": [
+          "events"
+        ],
         "summary": "Retrieve an event",
         "description": "Retrieves a specific event identified by a unique event identifier.\n",
         "operationId": "retrieve_an_event",
@@ -30294,6 +30644,9 @@
     },
     "/comments/{comment-id}/delete": {
       "post": {
+        "tags": [
+          "comments"
+        ],
         "summary": "Delete a comment",
         "description": "Delete a comment for an [entity](/docs/api/v2/pcv-1/comments/create-a-comment#entity_type) identified by comment ID.\n\nOnly the comments that are added via Admin console and API can be deleted. Chargebee generated \"System\" comments cannot be deleted.\n",
         "operationId": "delete_a_comment",
@@ -30561,6 +30914,9 @@
     },
     "/comments/{comment-id}": {
       "get": {
+        "tags": [
+          "comments"
+        ],
         "summary": "Retrieve a comment",
         "description": "Retrieve a comment for an entity identified by comment ID.\n",
         "operationId": "retrieve_a_comment",
@@ -30774,6 +31130,9 @@
     },
     "/comments": {
       "get": {
+        "tags": [
+          "comments"
+        ],
         "summary": "List comments",
         "description": "Retrieve the list of comments sorted by the recent ones on the top.\n\nIf you want to retrieve the list of comments for an [entity](/docs/api/v2/pcv-1/comments/list-comments), for example, subscription you can filter them by passing the entity type and unique identifier for that entity, for example, subscription ID.\n",
         "operationId": "list_comments",
@@ -31060,6 +31419,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "comments"
+        ],
         "summary": "Create a comment",
         "description": "Create a new comment for an entity. The newly added comment will be shown in the web interface as well.\n",
         "operationId": "create_a_comment",
@@ -31368,6 +31730,9 @@
     },
     "/portal_sessions": {
       "post": {
+        "tags": [
+          "portal_sessions"
+        ],
         "summary": "Create a portal session",
         "description": "Creates a portal session for a customer. The session resource in the response contains the access URL. Forward the customer to that access URL. If you would like to logout the customer later via API call, you need to store the id of the portal session resource returned by this API. While creating a session, you also need to pass the redirect URL to which your customers will be sent to upon logout from the portal UI.\n",
         "operationId": "create_a_portal_session",
@@ -31665,6 +32030,9 @@
     },
     "/portal_sessions/{portal-session-id}/activate": {
       "post": {
+        "tags": [
+          "portal_sessions"
+        ],
         "summary": "Activate a portal session",
         "description": "When an user is sent back to your return URL with session details, you should validate that information by calling this API. The details passed to the **return_url** should be sent as below:\n\n* **auth_session_id** - this should be sent as part of the endpoint.\n* **auth_session_token** - this should be sent as value for the input parameter **token**.\n\n**Note:** This API is not applicable for [in-app](https://www.chargebee.com/docs/v3-self-serve-portal.html) portal.\n",
         "operationId": "activate_a_portal_session",
@@ -31955,6 +32323,9 @@
     },
     "/portal_sessions/{portal-session-id}/logout": {
       "post": {
+        "tags": [
+          "portal_sessions"
+        ],
         "summary": "Logout a portal session",
         "description": "Logs out the portal session. Typically this should be called when customers logout of your application.\n\nIf this API is called for a Portal Session that currently is in :\n\n* \"created\" status, the session status will be marked as \"logged_out\" and the access URL will become invalid.\n* \"logged_in\" status, the session status will be marked as \"logged_out\" and customer will not be able to use that session.\n* \"logged_out\" status, this will return normally without changing any attribute of this resource.\n",
         "operationId": "logout_a_portal_session",
@@ -32222,6 +32593,9 @@
     },
     "/portal_sessions/{portal-session-id}": {
       "get": {
+        "tags": [
+          "portal_sessions"
+        ],
         "summary": "Retrieve a portal session",
         "description": "This API retrieves a portal session using `portal_session_id`\nas a path parameter.\n",
         "operationId": "retrieve_a_portal_session",
@@ -32435,6 +32809,9 @@
     },
     "/payment_intents/{payment-intent-id}": {
       "get": {
+        "tags": [
+          "payment_intents"
+        ],
         "summary": "Retrieve a payment intent",
         "description": "Retrieves the PaymentIntent resource.\n",
         "operationId": "retrieve_a_payment_intent",
@@ -32646,6 +33023,9 @@
         ]
       },
       "post": {
+        "tags": [
+          "payment_intents"
+        ],
         "summary": "Update a payment intent",
         "description": "Updating properties on a PaymentIntent object. All the subsequent 3DS transaction attempts will have the updated values.\n",
         "operationId": "update_a_payment_intent",
@@ -32962,6 +33342,9 @@
     },
     "/payment_intents": {
       "post": {
+        "tags": [
+          "payment_intents"
+        ],
         "summary": "Create a payment intent",
         "description": "Creates a PaymentIntent object. This is to be used with Chargebee.js API to complete the 3DS flow for new or stored cards.\n\nWhile creating, specify the appropriate gateway account and amount. Exact amount can be estimated using our [Estimate API](/docs/api/estimates).\n",
         "operationId": "create_a_payment_intent",
@@ -33283,6 +33666,9 @@
     },
     "/csv_tax_rules": {
       "post": {
+        "tags": [
+          "csv_tax_rules"
+        ],
         "summary": "Taxes Csv import",
         "operationId": "taxes_csv_import",
         "parameters": [
@@ -36779,6 +37165,12 @@
               "card_expired",
               "card_deleted"
             ],
+            "example": null
+          },
+          "site_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 60,
             "example": null
           },
           "api_version": {
