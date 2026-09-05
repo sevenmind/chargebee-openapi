@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-03.b33d788b1b8bd2d6609ad27124cd2d6a3ae50a19",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 1
+    "version": "2026-09-04.225d1c11dffc1c07ae227ea17f30dd5a0f221078",
+    "x-cb-product-catalog-version": 1,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -3551,7 +3551,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -10809,7 +10810,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -13355,7 +13357,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -23212,7 +23215,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -25587,7 +25591,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -26350,7 +26355,8 @@
         "tags": [
           "customers"
         ],
-        "summary": "Send payment request email",
+        "summary": "Send Payment Request Email",
+        "description": "Sends a request payment email to the customer using the site's published **Collect Payment Email** Engage notification template.\n\nUse this operation to manually trigger a payment request email when you want the customer to pay outstanding invoices.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/v2/pcv-1/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Collect Payment Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer must have a valid email address.\n* The customer must have at least one unpaid invoice.\n",
         "operationId": "send_payment_request_email",
         "parameters": [
           {
@@ -26541,6 +26547,7 @@
                   "properties": {
                     "email_logs": {
                       "type": "array",
+                      "description": "<p class=\"mb-2\">List of <a href=\"/docs/api/v2/pcv-1/email_logs\">email log</a> objects for the send request. Each entry describes one email that was sent or attempted.</p>",
                       "items": {
                         "$ref": "#/components/schemas/EmailLog",
                         "description": "Resource object representing email_log"
@@ -28702,7 +28709,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -30259,7 +30267,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -38824,7 +38833,8 @@
                     "enum": [
                       "cartes_bancaires",
                       "mastercard",
-                      "visa"
+                      "visa",
+                      "dankort"
                     ],
                     "example": null
                   },
@@ -46302,7 +46312,8 @@
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
-                          "visa"
+                          "visa",
+                          "dankort"
                         ],
                         "example": null
                       },
@@ -48226,7 +48237,8 @@
         "tags": [
           "invoices"
         ],
-        "summary": "Send invoice email",
+        "summary": "Send Invoice Email",
+        "description": "Sends the invoice email to the customer using the site's published **Send Invoice Email** Engage notification template.\n\nUse this operation to resend or manually trigger the invoice email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/v2/pcv-1/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Invoice Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the invoice must have a valid email address.\n* The invoice `status` must be `paid`, `payment_due`, `not_paid`, or `posted`.\n",
         "operationId": "send_invoice_email",
         "parameters": [
           {
@@ -48417,6 +48429,7 @@
                   "properties": {
                     "email_logs": {
                       "type": "array",
+                      "description": "<p class=\"mb-2\">List of <a href=\"/docs/api/v2/pcv-1/email_logs\">email log</a> objects for the send request. Each entry describes one email that was sent or attempted.</p>",
                       "items": {
                         "$ref": "#/components/schemas/EmailLog",
                         "description": "Resource object representing email_log"
@@ -62067,7 +62080,8 @@
         "tags": [
           "credit_notes"
         ],
-        "summary": "Send credit note email",
+        "summary": "Send Credit Note Email",
+        "description": "Sends the credit note email to the customer using the site's published **Send Credit Note Email** Engage notification template.\n\nUse this operation to resend or manually trigger the credit note email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/v2/pcv-1/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Credit Note Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the credit note must have a valid email address.\n* The credit note `status` must not be `voided`.\n* The credit note `reason_code` must not be `write_off`.\n",
         "operationId": "send_credit_note_email",
         "parameters": [
           {
@@ -62258,6 +62272,7 @@
                   "properties": {
                     "email_logs": {
                       "type": "array",
+                      "description": "<p class=\"mb-2\">List of <a href=\"/docs/api/v2/pcv-1/email_logs\">email log</a> objects for the send request. Each entry describes one email that was sent or attempted.</p>",
                       "items": {
                         "$ref": "#/components/schemas/EmailLog",
                         "description": "Resource object representing email_log"
@@ -156684,40 +156699,47 @@
       },
       "EmailLog": {
         "type": "object",
+        "description": "Email logs represent emails sent through Chargebee notification APIs, including [send invoice email](/docs/api/v2/pcv-1/invoices#send_invoice_email), [send credit note email](/docs/api/v2/pcv-1/credit_notes#send_credit_note_email), and [send payment request email](/docs/api/v2/pcv-1/customers#send_payment_request_email).\n\nThese objects are returned in the async `result.email_logs` array when a send-email operation completes successfully. There is no standalone retrieve or list API for email logs.\n",
         "properties": {
           "id": {
             "type": "string",
             "deprecated": false,
+            "description": "Unique identifier of this email.\n",
             "maxLength": 40,
             "example": null
           },
           "template_name": {
             "type": "string",
             "deprecated": false,
+            "description": "Name of the notification / email template that was sent.\n",
             "maxLength": 100,
             "example": null
           },
           "from_address": {
             "type": "string",
             "deprecated": false,
+            "description": "The from email address used for this email.\n",
             "maxLength": 254,
             "example": null
           },
           "to_address": {
             "type": "string",
             "deprecated": false,
+            "description": "The recipient email address.\n",
             "maxLength": 254,
             "example": null
           },
           "subject": {
             "type": "string",
             "deprecated": false,
+            "description": "Subject line of the email.\n",
             "maxLength": 500,
             "example": null
           },
           "status": {
             "type": "string",
             "deprecated": false,
+            "description": "Status of the email send request.\n\n* failed - Sending the email failed.\n* deferred - The email was deferred.\n* succeeded - The email was sent successfully.\n* scheduled - The email has been scheduled for delivery.\n",
             "enum": [
               "scheduled",
               "succeeded",
@@ -156729,12 +156751,14 @@
           "customer_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The unique identifier of the customer associated with this email.\n",
             "maxLength": 50,
             "example": null
           },
           "error_message": {
             "type": "string",
             "deprecated": false,
+            "description": "Error message when the email could not be sent or was deferred.\n",
             "maxLength": 1500,
             "example": null
           }
@@ -183931,6 +183955,12 @@
             "deprecated": false,
             "description": "Identifier provided by the gateway to reference that specific card.\n",
             "maxLength": 100,
+            "example": null
+          },
+          "network_transaction_reference": {
+            "type": "object",
+            "additionalProperties": true,
+            "deprecated": false,
             "example": null
           }
         },
