@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-07.874292ee5205429f980db51657207e5156f195a4
+  version: 2026-09-08.a7bad4eab3b2f3ce6ded10766a51b205b31ea749
   x-cb-api-version: 2
   x-cb-product-catalog-version: 1
 servers:
@@ -3390,7 +3390,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -10222,7 +10222,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -12698,7 +12698,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -21267,7 +21267,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -23441,7 +23441,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -26157,7 +26157,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* mada - A Mada card scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* mada - A Mada card scheme.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -27497,7 +27497,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* mastercard - A MasterCard scheme.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -34437,7 +34437,7 @@ paths:
                 preferred_scheme:
                   type: string
                   deprecated: false
-                  description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* mastercard - A MasterCard scheme.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n"
+                  description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* mastercard - A MasterCard scheme.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n"
                   enum:
                     - cartes_bancaires
                     - mastercard
@@ -40498,7 +40498,7 @@ paths:
                     preferred_scheme:
                       type: string
                       deprecated: false
-                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n"
+                      description: "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n"
                       enum:
                         - cartes_bancaires
                         - mastercard
@@ -127382,6 +127382,78 @@ components:
         - invoice_amount
         - specific_item_price
       example: null
+    Approval:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        headline:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        approval_type:
+          type: string
+          deprecated: false
+          enum:
+            - item_price_point
+            - critical_actions
+            - quotes
+          example: null
+        action_type:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        version_number:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+        approval_config_rule_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        status:
+          type: string
+          deprecated: false
+          enum:
+            - yet_to_start
+            - in_progress
+            - approved
+            - rejected
+            - cancelled
+            - override_approved
+            - override_rejected
+            - override_cancelled
+          example: null
+        requester:
+          type: string
+          deprecated: false
+          maxLength: 150
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        modified_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - action_type
+        - approval_type
+        - created_at
+        - id
+        - modified_at
+        - status
+      example: null
     ApprovalEstimate:
       type: object
       properties:
@@ -133458,6 +133530,7 @@ components:
             - business_ruleset
             - alert_status
             - omnichannel_subscription_item_metric
+            - price_ramp
           example: null
         api_name:
           type: string
@@ -135837,6 +135910,7 @@ components:
         - business_ruleset
         - alert_status
         - omnichannel_subscription_item_metric
+        - price_ramp
         - charge
       example: null
     Estimate:
@@ -163064,6 +163138,10 @@ components:
           type: object
           additionalProperties: true
           deprecated: false
+          description: |
+            The network transaction reference that the vault the card was copied from holds for this card. It is returned only when that vault holds one; otherwise it is omitted. Contains `original_network_transaction_id`, the identifier the card scheme issued for this card.
+
+            Pass that identifier to the destination gateway when you store the card there, to keep the card's stored credential chain intact. This lets the card scheme continue to recognize later merchant-initiated transactions as part of the same series.
           example: null
       required:
         - gateway
