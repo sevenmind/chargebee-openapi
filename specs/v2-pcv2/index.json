@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-07.874292ee5205429f980db51657207e5156f195a4",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-09-08.a7bad4eab3b2f3ce6ded10766a51b205b31ea749",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -300,7 +300,7 @@
     },
     {
       "name": "purchases",
-      "description": "**Deprecated** The `purchase` resource and its associated operations on this page are deprecated."
+      "description": "**Deprecated.** The Purchase API is deprecated."
     },
     {
       "name": "quotes",
@@ -1218,7 +1218,7 @@
                       "preferred_scheme": {
                         "type": "string",
                         "deprecated": false,
-                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n",
+                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n",
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
@@ -21273,7 +21273,7 @@
                       "preferred_scheme": {
                         "type": "string",
                         "deprecated": false,
-                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n",
+                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n",
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
@@ -23729,7 +23729,7 @@
                       "preferred_scheme": {
                         "type": "string",
                         "deprecated": false,
-                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n",
+                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n",
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
@@ -26959,7 +26959,7 @@
                       "preferred_scheme": {
                         "type": "string",
                         "deprecated": false,
-                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* mada - A Mada card scheme.\n* visa - A Visa card scheme.\n",
+                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* mada - A Mada card scheme.\n* visa - A Visa card scheme.\n",
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
@@ -28596,7 +28596,7 @@
                       "preferred_scheme": {
                         "type": "string",
                         "deprecated": false,
-                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* mastercard - A MasterCard scheme.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n",
+                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n",
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
@@ -37613,7 +37613,7 @@
                   "preferred_scheme": {
                     "type": "string",
                     "deprecated": false,
-                    "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* mastercard - A MasterCard scheme.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n",
+                    "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* mastercard - A MasterCard scheme.\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* visa - A Visa card scheme.\n",
                     "enum": [
                       "cartes_bancaires",
                       "mastercard",
@@ -47306,7 +47306,7 @@
                       "preferred_scheme": {
                         "type": "string",
                         "deprecated": false,
-                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is only supported for Stripe.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* visa - A Visa card scheme.\n",
+                        "description": "The customer's preferred card scheme for co-branded cards.  \n**Note**:\nCurrently, this parameter is supported only for Stripe, Adyen, and Chargebee Payments.\n\n* cartes_bancaires - A Cartes Bancaires card scheme.\n* mastercard - A MasterCard scheme.\n* dankort - A Dankort card scheme. Supported only for Adyen and Chargebee Payments.\n* visa - A Visa card scheme.\n",
                         "enum": [
                           "cartes_bancaires",
                           "mastercard",
@@ -53088,14 +53088,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -53119,14 +53119,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "in": {
-                      "type": "string",
-                      "pattern": "^\\[(.*)(,.*)*\\]$",
-                      "example": null
-                    },
                     "is": {
                       "type": "string",
                       "minLength": 1,
+                      "example": null
+                    },
+                    "in": {
+                      "type": "string",
+                      "pattern": "^\\[(.*)(,.*)*\\]$",
                       "example": null
                     }
                   }
@@ -103594,14 +103594,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -120736,6 +120736,17 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
+                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -120747,17 +120758,6 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
-                          },
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
                           }
                         }
                       },
@@ -120767,14 +120767,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "in": {
-                            "type": "string",
-                            "pattern": "^\\[(.*)(,.*)*\\]$",
-                            "example": null
-                          },
                           "is": {
                             "type": "string",
                             "minLength": 1,
+                            "example": null
+                          },
+                          "in": {
+                            "type": "string",
+                            "pattern": "^\\[(.*)(,.*)*\\]$",
                             "example": null
                           }
                         }
@@ -130291,14 +130291,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "in": {
-                        "type": "string",
-                        "pattern": "^\\[(.*)(,.*)*\\]$",
-                        "example": null
-                      },
                       "is": {
                         "type": "string",
                         "minLength": 1,
+                        "example": null
+                      },
+                      "in": {
+                        "type": "string",
+                        "pattern": "^\\[(.*)(,.*)*\\]$",
                         "example": null
                       }
                     }
@@ -156438,6 +156438,15 @@
               "deprecated": false,
               "example": "active",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -156446,15 +156455,6 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
                   "example": null
                 }
               }
@@ -156473,14 +156473,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -160206,14 +160206,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -160232,6 +160232,18 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -160243,18 +160255,6 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
                   "example": null
                 }
               }
@@ -160273,14 +160273,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -164176,7 +164176,7 @@
           "purchases"
         ],
         "summary": "Create a purchase",
-        "description": "**Deprecated**\nThe `purchase` resource and its associated operations on this page are deprecated. Avoid using them in your integrations. The ability to purchase multiple plans in a single subscription will be supported through the [Subscriptions API](/docs/api/subscriptions) in the future.\n\nCreates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. To create multiple subscriptions, provide multiple subscription groups.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. The following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                     **`discounts[index][i]` is not provided**                                                                                      |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon is applied to all the invoices immediately generated upon invoking this API. * The coupon is not applied to subsequent invoices, such as those generated upon subscription renewal.                   |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied to all the invoices immediately generated upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal. |\n\n",
+        "description": "**Deprecated.** The Purchase API is deprecated. It still works and existing integrations are unaffected, but it's no longer recommended for new integrations. Support for purchasing multiple plans in a single subscription is planned for the [Subscriptions API](/docs/api/subscriptions).\n\nCreates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. To create multiple subscriptions, provide multiple subscription groups.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. The following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                     **`discounts[index][i]` is not provided**                                                                                      |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon is applied to all the invoices immediately generated upon invoking this API. * The coupon is not applied to subsequent invoices, such as those generated upon subscription renewal.                   |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied to all the invoices immediately generated upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal. |\n\n",
         "operationId": "create_a_purchase",
         "parameters": [
           {
@@ -165256,7 +165256,7 @@
           "purchases"
         ],
         "summary": "Estimates for purchase",
-        "description": "**Deprecated**\nThe `purchase` resource and its associated operations on this page are deprecated. Avoid using them in your integrations. The ability to purchase multiple plans in a single subscription will be supported through the [Subscriptions API](/docs/api/subscriptions) in the future.\n\nReturns an estimate for creating a `purchase` resource. The operation works exactly like [Create a purchase](/docs/api/purchases/create-a-purchase), except that only an [estimate](/docs/api/estimates) resource is returned without an actual `purchase` resource being created.\n",
+        "description": "**Deprecated.** The Purchase API is deprecated. It still works and existing integrations are unaffected, but it's no longer recommended for new integrations. Support for purchasing multiple plans in a single subscription is planned for the [Subscriptions API](/docs/api/subscriptions).\n\nReturns an estimate for creating a `purchase` resource. The operation works exactly like [Create a purchase](/docs/api/purchases/create-a-purchase), except that only an [estimate](/docs/api/estimates) resource is returned without an actual `purchase` resource being created.\n",
         "operationId": "estimates_for_purchase",
         "parameters": [
           {
@@ -171224,6 +171224,17 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -171234,17 +171245,6 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
                   "example": null
                 }
               }
@@ -171263,14 +171263,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -182245,11 +182245,6 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
                 "on": {
                   "type": "string",
                   "format": "unix-time",
@@ -182260,6 +182255,11 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -182284,11 +182284,6 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
                 "on": {
                   "type": "string",
                   "format": "unix-time",
@@ -182299,6 +182294,11 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -184479,12 +184479,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -196446,6 +196446,23 @@
               "type": "object",
               "deprecated": false,
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -196462,23 +196479,6 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
                   "example": null
                 }
               },
@@ -199360,7 +199360,8 @@
                     "business_rule",
                     "business_ruleset",
                     "alert_status",
-                    "omnichannel_subscription_item_metric"
+                    "omnichannel_subscription_item_metric",
+                    "price_ramp"
                   ],
                   "example": null
                 },
@@ -199771,6 +199772,93 @@
             "example": null
           }
         },
+        "example": null
+      },
+      "Approval": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "headline": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "approval_type": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "item_price_point",
+              "critical_actions",
+              "quotes"
+            ],
+            "example": null
+          },
+          "action_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "version_number": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "approval_config_rule_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "yet_to_start",
+              "in_progress",
+              "approved",
+              "rejected",
+              "cancelled",
+              "override_approved",
+              "override_rejected",
+              "override_cancelled"
+            ],
+            "example": null
+          },
+          "requester": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 150,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "modified_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "action_type",
+          "approval_type",
+          "created_at",
+          "id",
+          "modified_at",
+          "status"
+        ],
         "example": null
       },
       "ApprovalConditionInfo": {
@@ -208563,7 +208651,8 @@
               "business_rule",
               "business_ruleset",
               "alert_status",
-              "omnichannel_subscription_item_metric"
+              "omnichannel_subscription_item_metric",
+              "price_ramp"
             ],
             "example": null
           },
@@ -212188,7 +212277,8 @@
           "business_rule",
           "business_ruleset",
           "alert_status",
-          "omnichannel_subscription_item_metric"
+          "omnichannel_subscription_item_metric",
+          "price_ramp"
         ],
         "example": null
       },
@@ -239295,7 +239385,7 @@
       },
       "Purchase": {
         "type": "object",
-        "description": "**Deprecated**\nThe `purchase` resource and its associated operations on this page are deprecated. Avoid using them in your integrations. The ability to purchase multiple plans in a single subscription will be supported through the [Subscriptions API](/docs/api/subscriptions) in the future.\n\nThe `purchase` resource represents a collection of [item prices](/docs/api/item_prices) bought together. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\n**Prerequisite**\n\nPurchases must be enabled explicitly for the site. If not already enabled, contact eap@chargebee.com. Purchases require the following features to work so they're automatically enabled along with them:\n\n* [Consolidated Invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html)\n* [Manual discounts](https://www.chargebee.com/docs/2.0/subscription-manual-discounts.html)\n* [Multiple coupon support](https://www.chargebee.com/docs/2.0/coupons.html#applying-multiple-coupons-to-a-subscription)\n* [Multi-decimal pricing and quantities](https://www.chargebee.com/docs/2.0/multi-decimal-support.html)  \n**Note**\n\nOnce created, Chargebee never modifies a `purchase` resource; it cannot be modified via API either.\n",
+        "description": "**Deprecated.** The Purchase API is deprecated. It still works and existing integrations are unaffected, but it's no longer recommended for new integrations. Support for purchasing multiple plans in a single subscription is planned for the [Subscriptions API](/docs/api/subscriptions).\n\nThe `purchase` resource represents a collection of [item prices](/docs/api/item_prices) bought together. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\n**Prerequisite**\n\nPurchases must be enabled explicitly for the site. If not already enabled, contact eap@chargebee.com. Purchases require the following features to work so they're automatically enabled along with them:\n\n* [Consolidated Invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html)\n* [Manual discounts](https://www.chargebee.com/docs/2.0/subscription-manual-discounts.html)\n* [Multiple coupon support](https://www.chargebee.com/docs/2.0/coupons.html#applying-multiple-coupons-to-a-subscription)\n* [Multi-decimal pricing and quantities](https://www.chargebee.com/docs/2.0/multi-decimal-support.html)  \n**Note**\n\nOnce created, Chargebee never modifies a `purchase` resource; it cannot be modified via API either.\n",
         "properties": {
           "id": {
             "type": "string",
@@ -252734,6 +252824,7 @@
             "type": "object",
             "additionalProperties": true,
             "deprecated": false,
+            "description": "The network transaction reference that the vault the card was copied from holds for this card. It is returned only when that vault holds one; otherwise it is omitted. Contains `original_network_transaction_id`, the identifier the card scheme issued for this card.\n\nPass that identifier to the destination gateway when you store the card there, to keep the card's stored credential chain intact. This lets the card scheme continue to recognize later merchant-initiated transactions as part of the same series.\n",
             "example": null
           }
         },
@@ -258224,6 +258315,16 @@
       },
       "omnichannel-subscription-id": {
         "name": "omnichannel-subscription-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "approval-id": {
+        "name": "approval-id",
         "in": "path",
         "required": true,
         "style": "simple",
