@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-08.a7bad4eab3b2f3ce6ded10766a51b205b31ea749
-  x-cb-api-version: 2
+  version: 2026-09-09.480841d69c46585c912697ea217434d3fc67aa7c
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -5450,23 +5450,13 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - dana
-                        - touch_n_go
                         - tamara
                         - qpay
-                        - ovo
-                        - momo
-                        - mercado_pago
-                        - nequi
-                        - nupay
-                        - picpay
-                        - thai_qr
                         - blik
                         - fpx
                         - wero
                         - p24
                         - affirm_pay
-                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -10764,23 +10754,13 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - dana
-                        - touch_n_go
                         - tamara
                         - qpay
-                        - ovo
-                        - momo
-                        - mercado_pago
-                        - nequi
-                        - nupay
-                        - picpay
-                        - thai_qr
                         - blik
                         - fpx
                         - wero
                         - p24
                         - affirm_pay
-                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -24043,23 +24023,13 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - dana
-                        - touch_n_go
                         - tamara
                         - qpay
-                        - ovo
-                        - momo
-                        - mercado_pago
-                        - nequi
-                        - nupay
-                        - picpay
-                        - thai_qr
                         - blik
                         - fpx
                         - wero
                         - p24
                         - affirm_pay
-                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -43767,23 +43737,13 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - dana
-                        - touch_n_go
                         - tamara
                         - qpay
-                        - ovo
-                        - momo
-                        - mercado_pago
-                        - nequi
-                        - nupay
-                        - picpay
-                        - thai_qr
                         - blik
                         - fpx
                         - wero
                         - p24
                         - affirm_pay
-                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -45614,23 +45574,13 @@ paths:
                           - bank_transfer
                           - other
                           - custom
-                          - dana
-                          - touch_n_go
                           - tamara
                           - qpay
-                          - ovo
-                          - momo
-                          - mercado_pago
-                          - nequi
-                          - nupay
-                          - picpay
-                          - thai_qr
                           - blik
                           - fpx
                           - wero
                           - p24
                           - affirm_pay
-                          - rakuten_pay
                         example: null
                       example: null
                     date:
@@ -46992,13 +46942,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -47021,13 +46971,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -48002,23 +47952,13 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - dana
-                        - touch_n_go
                         - tamara
                         - qpay
-                        - ovo
-                        - momo
-                        - mercado_pago
-                        - nequi
-                        - nupay
-                        - picpay
-                        - thai_qr
                         - blik
                         - fpx
                         - wero
                         - p24
                         - affirm_pay
-                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -48723,23 +48663,13 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - dana
-                        - touch_n_go
                         - tamara
                         - qpay
-                        - ovo
-                        - momo
-                        - mercado_pago
-                        - nequi
-                        - nupay
-                        - picpay
-                        - thai_qr
                         - blik
                         - fpx
                         - wero
                         - p24
                         - affirm_pay
-                        - rakuten_pay
                       example: null
                     reference_number:
                       type: string
@@ -49964,23 +49894,13 @@ paths:
                           - bank_transfer
                           - other
                           - custom
-                          - dana
-                          - touch_n_go
                           - tamara
                           - qpay
-                          - ovo
-                          - momo
-                          - mercado_pago
-                          - nequi
-                          - nupay
-                          - picpay
-                          - thai_qr
                           - blik
                           - fpx
                           - wero
                           - p24
                           - affirm_pay
-                          - rakuten_pay
                         example: null
                       example: null
                     date:
@@ -63856,23 +63776,13 @@ paths:
                     - bank_transfer
                     - other
                     - custom
-                    - dana
-                    - touch_n_go
                     - tamara
                     - qpay
-                    - ovo
-                    - momo
-                    - mercado_pago
-                    - nequi
-                    - nupay
-                    - picpay
-                    - thai_qr
                     - blik
                     - fpx
                     - wero
                     - p24
                     - affirm_pay
-                    - rakuten_pay
                   example: null
                 date:
                   type: integer
@@ -91886,13 +91796,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -109422,13 +109332,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -133458,6 +133368,97 @@ components:
         - id
         - is_base_currency
       example: null
+    CustomDataSchema:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        display_name:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        entity_type:
+          type: string
+          deprecated: false
+          enum:
+            - customer
+            - subscription
+            - invoice
+            - quote
+            - credit_note
+            - transaction
+            - plan
+            - addon
+            - coupon
+            - order
+            - plan_item
+            - addon_item
+            - charge_item
+            - plan_price
+            - addon_price
+            - charge_price
+            - differential_price
+            - attached_item
+            - feature
+            - subscription_entitlement
+            - item_entitlement
+            - business_entity
+            - omnichannel_subscription
+            - omnichannel_subscription_item
+            - omnichannel_transaction
+            - recorded_purchase
+            - omnichannel_subscription_item_scheduled_change
+            - sales_order
+            - omnichannel_one_time_order
+            - omnichannel_one_time_order_item
+            - usage_file
+            - business_rule
+            - business_ruleset
+            - alert_status
+            - omnichannel_subscription_item_metric
+            - price_ramp
+          example: null
+        schema_definition:
+          type: string
+          deprecated: false
+          maxLength: 65532
+          example: null
+        status:
+          type: string
+          default: active
+          deprecated: false
+          enum:
+            - active
+            - archived
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        modified_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - display_name
+        - entity_type
+        - id
+        - modified_at
+        - schema_definition
+        - status
+      example: null
     CustomFieldConfig:
       type: object
       description: |
@@ -150399,23 +150400,13 @@ components:
         - bank_transfer
         - other
         - custom
-        - dana
-        - touch_n_go
         - tamara
         - qpay
-        - ovo
-        - momo
-        - mercado_pago
-        - nequi
-        - nupay
-        - picpay
-        - thai_qr
         - blik
         - fpx
         - wero
         - p24
         - affirm_pay
-        - rakuten_pay
         - chargeback
         - card
         - amazon_payments
@@ -150469,6 +150460,16 @@ components:
         - paynow
         - bizum
         - promptpay
+        - dana
+        - touch_n_go
+        - ovo
+        - momo
+        - mercado_pago
+        - nequi
+        - nupay
+        - picpay
+        - thai_qr
+        - rakuten_pay
       example: null
     PaymentMethodSavePolicy:
       type: string
@@ -167271,6 +167272,14 @@ components:
         type: string
     tax-withheld-id:
       name: tax-withheld-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    custom-data-schema-id:
+      name: custom-data-schema-id
       in: path
       required: true
       style: simple
