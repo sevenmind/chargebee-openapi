@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-11.5d374f51c83bd976cff827deca437b11747619a6",
+    "version": "2026-09-14.0f830d3436101884131b387e074f951a612e056b",
     "x-cb-product-catalog-version": 1,
     "x-cb-api-version": 1
   },
@@ -290,15 +290,15 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -592,15 +592,15 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -853,7 +853,7 @@
                         "properties": {
                           "subscription": {
                             "$ref": "#/components/schemas/Subscription",
-                            "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                            "description": "Resource object representing subscription\n"
                           }
                         },
                         "required": [
@@ -865,7 +865,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -1406,19 +1406,19 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     },
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -1689,15 +1689,15 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -1989,15 +1989,15 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -2214,15 +2214,15 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -2562,19 +2562,19 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     },
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -2791,15 +2791,15 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -3699,19 +3699,19 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     },
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -4013,7 +4013,7 @@
                   "properties": {
                     "estimate": {
                       "$ref": "#/components/schemas/Estimate",
-                      "description": "<p class=\"mb-2\">Resource object representing estimate</p>"
+                      "description": "Resource object representing estimate\n"
                     }
                   },
                   "required": [
@@ -4273,7 +4273,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -5223,19 +5223,19 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     },
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -5526,19 +5526,19 @@
                   "properties": {
                     "subscription": {
                       "$ref": "#/components/schemas/Subscription",
-                      "description": "<p class=\"mb-2\">Resource object representing subscription</p>"
+                      "description": "Resource object representing subscription\n"
                     },
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     },
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -5840,7 +5840,7 @@
                   "properties": {
                     "estimate": {
                       "$ref": "#/components/schemas/Estimate",
-                      "description": "<p class=\"mb-2\">Resource object representing estimate</p>"
+                      "description": "Resource object representing estimate\n"
                     }
                   },
                   "required": [
@@ -6637,11 +6637,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -6943,7 +6943,7 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     }
                   },
                   "required": [
@@ -7245,7 +7245,7 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     }
                   },
                   "required": [
@@ -7551,11 +7551,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -7905,11 +7905,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -8125,11 +8125,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -8490,11 +8490,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -8857,11 +8857,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -9163,7 +9163,7 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     }
                   },
                   "required": [
@@ -9558,11 +9558,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -9817,7 +9817,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -10545,11 +10545,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -10912,11 +10912,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -11132,7 +11132,7 @@
                   "properties": {
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -11443,11 +11443,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -11763,11 +11763,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -12038,7 +12038,7 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     }
                   },
                   "required": [
@@ -12464,11 +12464,11 @@
                   "properties": {
                     "customer": {
                       "$ref": "#/components/schemas/Customer",
-                      "description": "<p class=\"mb-2\">Resource object representing customer</p>"
+                      "description": "Resource object representing customer\n"
                     },
                     "card": {
                       "$ref": "#/components/schemas/Card",
-                      "description": "<p class=\"mb-2\">Resource object representing card</p>"
+                      "description": "Resource object representing card\n"
                     }
                   },
                   "required": [
@@ -12785,7 +12785,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -13055,7 +13055,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -13356,7 +13356,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -13620,7 +13620,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -13912,7 +13912,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -14214,7 +14214,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -14504,7 +14504,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -14795,11 +14795,11 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     },
                     "transaction": {
                       "$ref": "#/components/schemas/Transaction",
-                      "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                      "description": "Resource object representing transaction\n"
                     }
                   },
                   "required": [
@@ -15070,7 +15070,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -15368,11 +15368,11 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     },
                     "transaction": {
                       "$ref": "#/components/schemas/Transaction",
-                      "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                      "description": "Resource object representing transaction\n"
                     }
                   },
                   "required": [
@@ -15639,7 +15639,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -16160,7 +16160,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -16505,11 +16505,11 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     },
                     "transaction": {
                       "$ref": "#/components/schemas/Transaction",
-                      "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                      "description": "Resource object representing transaction\n"
                     }
                   },
                   "required": [
@@ -16779,7 +16779,7 @@
                   "properties": {
                     "download": {
                       "$ref": "#/components/schemas/Download",
-                      "description": "<p class=\"mb-2\">Resource object representing download</p>"
+                      "description": "Resource object representing download\n"
                     }
                   },
                   "required": [
@@ -16995,7 +16995,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -17259,7 +17259,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -17577,7 +17577,7 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     }
                   },
                   "required": [
@@ -17828,7 +17828,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -18163,7 +18163,7 @@
                   "properties": {
                     "order": {
                       "$ref": "#/components/schemas/Order",
-                      "description": "<p class=\"mb-2\">Resource object representing order</p>"
+                      "description": "Resource object representing order\n"
                     }
                   },
                   "required": [
@@ -18427,7 +18427,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -18645,7 +18645,7 @@
                   "properties": {
                     "order": {
                       "$ref": "#/components/schemas/Order",
-                      "description": "<p class=\"mb-2\">Resource object representing order</p>"
+                      "description": "Resource object representing order\n"
                     }
                   },
                   "required": [
@@ -19080,7 +19080,7 @@
                   "properties": {
                     "order": {
                       "$ref": "#/components/schemas/Order",
-                      "description": "<p class=\"mb-2\">Resource object representing order</p>"
+                      "description": "Resource object representing order\n"
                     }
                   },
                   "required": [
@@ -19332,7 +19332,7 @@
                         "properties": {
                           "transaction": {
                             "$ref": "#/components/schemas/Transaction",
-                            "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                            "description": "Resource object representing transaction\n"
                           }
                         },
                         "required": [
@@ -19344,7 +19344,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -19598,7 +19598,7 @@
                         "properties": {
                           "transaction": {
                             "$ref": "#/components/schemas/Transaction",
-                            "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                            "description": "Resource object representing transaction\n"
                           }
                         },
                         "required": [
@@ -19610,7 +19610,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -19851,7 +19851,7 @@
                         "properties": {
                           "transaction": {
                             "$ref": "#/components/schemas/Transaction",
-                            "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                            "description": "Resource object representing transaction\n"
                           }
                         },
                         "required": [
@@ -19863,7 +19863,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -20194,11 +20194,11 @@
                   "properties": {
                     "invoice": {
                       "$ref": "#/components/schemas/Invoice",
-                      "description": "<p class=\"mb-2\">Resource object representing invoice</p>"
+                      "description": "Resource object representing invoice\n"
                     },
                     "transaction": {
                       "$ref": "#/components/schemas/Transaction",
-                      "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                      "description": "Resource object representing transaction\n"
                     }
                   },
                   "required": [
@@ -20415,7 +20415,7 @@
                   "properties": {
                     "transaction": {
                       "$ref": "#/components/schemas/Transaction",
-                      "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                      "description": "Resource object representing transaction\n"
                     }
                   },
                   "required": [
@@ -20667,7 +20667,7 @@
                         "properties": {
                           "transaction": {
                             "$ref": "#/components/schemas/Transaction",
-                            "description": "<p class=\"mb-2\">Resource object representing transaction</p>"
+                            "description": "Resource object representing transaction\n"
                           }
                         },
                         "required": [
@@ -20679,7 +20679,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -21201,7 +21201,7 @@
                   "properties": {
                     "hosted_page": {
                       "$ref": "#/components/schemas/HostedPage",
-                      "description": "<p class=\"mb-2\">Resource object representing hosted_page</p>"
+                      "description": "Resource object representing hosted_page\n"
                     }
                   },
                   "required": [
@@ -21590,7 +21590,7 @@
                   "properties": {
                     "hosted_page": {
                       "$ref": "#/components/schemas/HostedPage",
-                      "description": "<p class=\"mb-2\">Resource object representing hosted_page</p>"
+                      "description": "Resource object representing hosted_page\n"
                     }
                   },
                   "required": [
@@ -21952,7 +21952,7 @@
                   "properties": {
                     "hosted_page": {
                       "$ref": "#/components/schemas/HostedPage",
-                      "description": "<p class=\"mb-2\">Resource object representing hosted_page</p>"
+                      "description": "Resource object representing hosted_page\n"
                     }
                   },
                   "required": [
@@ -22168,7 +22168,7 @@
                   "properties": {
                     "hosted_page": {
                       "$ref": "#/components/schemas/HostedPage",
-                      "description": "<p class=\"mb-2\">Resource object representing hosted_page</p>"
+                      "description": "Resource object representing hosted_page\n"
                     }
                   },
                   "required": [
@@ -22628,7 +22628,7 @@
                   "properties": {
                     "hosted_page": {
                       "$ref": "#/components/schemas/HostedPage",
-                      "description": "<p class=\"mb-2\">Resource object representing hosted_page</p>"
+                      "description": "Resource object representing hosted_page\n"
                     }
                   },
                   "required": [
@@ -22874,7 +22874,7 @@
                   "properties": {
                     "estimate": {
                       "$ref": "#/components/schemas/Estimate",
-                      "description": "<p class=\"mb-2\">Resource object representing estimate</p>"
+                      "description": "Resource object representing estimate\n"
                     }
                   },
                   "required": [
@@ -23260,7 +23260,7 @@
                   "properties": {
                     "estimate": {
                       "$ref": "#/components/schemas/Estimate",
-                      "description": "<p class=\"mb-2\">Resource object representing estimate</p>"
+                      "description": "Resource object representing estimate\n"
                     }
                   },
                   "required": [
@@ -23768,7 +23768,7 @@
                   "properties": {
                     "estimate": {
                       "$ref": "#/components/schemas/Estimate",
-                      "description": "<p class=\"mb-2\">Resource object representing estimate</p>"
+                      "description": "Resource object representing estimate\n"
                     }
                   },
                   "required": [
@@ -24238,7 +24238,7 @@
                   "properties": {
                     "estimate": {
                       "$ref": "#/components/schemas/Estimate",
-                      "description": "<p class=\"mb-2\">Resource object representing estimate</p>"
+                      "description": "Resource object representing estimate\n"
                     }
                   },
                   "required": [
@@ -24787,7 +24787,7 @@
                   "properties": {
                     "estimate": {
                       "$ref": "#/components/schemas/Estimate",
-                      "description": "<p class=\"mb-2\">Resource object representing estimate</p>"
+                      "description": "Resource object representing estimate\n"
                     }
                   },
                   "required": [
@@ -25057,7 +25057,7 @@
                   "properties": {
                     "plan": {
                       "$ref": "#/components/schemas/Plan",
-                      "description": "<p class=\"mb-2\">Resource object representing plan</p>"
+                      "description": "Resource object representing plan\n"
                     }
                   },
                   "required": [
@@ -25308,7 +25308,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -25736,7 +25736,7 @@
                   "properties": {
                     "plan": {
                       "$ref": "#/components/schemas/Plan",
-                      "description": "<p class=\"mb-2\">Resource object representing plan</p>"
+                      "description": "Resource object representing plan\n"
                     }
                   },
                   "required": [
@@ -25952,7 +25952,7 @@
                   "properties": {
                     "plan": {
                       "$ref": "#/components/schemas/Plan",
-                      "description": "<p class=\"mb-2\">Resource object representing plan</p>"
+                      "description": "Resource object representing plan\n"
                     }
                   },
                   "required": [
@@ -26380,7 +26380,7 @@
                   "properties": {
                     "plan": {
                       "$ref": "#/components/schemas/Plan",
-                      "description": "<p class=\"mb-2\">Resource object representing plan</p>"
+                      "description": "Resource object representing plan\n"
                     }
                   },
                   "required": [
@@ -26596,7 +26596,7 @@
                   "properties": {
                     "addon": {
                       "$ref": "#/components/schemas/Addon",
-                      "description": "<p class=\"mb-2\">Resource object representing addon</p>"
+                      "description": "Resource object representing addon\n"
                     }
                   },
                   "required": [
@@ -26996,7 +26996,7 @@
                   "properties": {
                     "addon": {
                       "$ref": "#/components/schemas/Addon",
-                      "description": "<p class=\"mb-2\">Resource object representing addon</p>"
+                      "description": "Resource object representing addon\n"
                     }
                   },
                   "required": [
@@ -27247,7 +27247,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -27648,7 +27648,7 @@
                   "properties": {
                     "addon": {
                       "$ref": "#/components/schemas/Addon",
-                      "description": "<p class=\"mb-2\">Resource object representing addon</p>"
+                      "description": "Resource object representing addon\n"
                     }
                   },
                   "required": [
@@ -27918,7 +27918,7 @@
                   "properties": {
                     "addon": {
                       "$ref": "#/components/schemas/Addon",
-                      "description": "<p class=\"mb-2\">Resource object representing addon</p>"
+                      "description": "Resource object representing addon\n"
                     }
                   },
                   "required": [
@@ -28169,7 +28169,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -28608,7 +28608,7 @@
                   "properties": {
                     "coupon": {
                       "$ref": "#/components/schemas/Coupon",
-                      "description": "<p class=\"mb-2\">Resource object representing coupon</p>"
+                      "description": "Resource object representing coupon\n"
                     }
                   },
                   "required": [
@@ -28824,7 +28824,7 @@
                   "properties": {
                     "coupon": {
                       "$ref": "#/components/schemas/Coupon",
-                      "description": "<p class=\"mb-2\">Resource object representing coupon</p>"
+                      "description": "Resource object representing coupon\n"
                     }
                   },
                   "required": [
@@ -29120,7 +29120,7 @@
                   "properties": {
                     "coupon_code": {
                       "$ref": "#/components/schemas/CouponCode",
-                      "description": "<p class=\"mb-2\">Resource object representing coupon_code</p>"
+                      "description": "Resource object representing coupon_code\n"
                     }
                   },
                   "required": [
@@ -29336,7 +29336,7 @@
                   "properties": {
                     "coupon_code": {
                       "$ref": "#/components/schemas/CouponCode",
-                      "description": "<p class=\"mb-2\">Resource object representing coupon_code</p>"
+                      "description": "Resource object representing coupon_code\n"
                     }
                   },
                   "required": [
@@ -29569,7 +29569,7 @@
                   "properties": {
                     "address": {
                       "$ref": "#/components/schemas/Address",
-                      "description": "<p class=\"mb-2\">Resource object representing address</p>"
+                      "description": "Resource object representing address\n"
                     }
                   },
                   "required": [
@@ -29947,7 +29947,7 @@
                   "properties": {
                     "address": {
                       "$ref": "#/components/schemas/Address",
-                      "description": "<p class=\"mb-2\">Resource object representing address</p>"
+                      "description": "Resource object representing address\n"
                     }
                   },
                   "required": [
@@ -30304,7 +30304,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -30522,7 +30522,7 @@
                   "properties": {
                     "event": {
                       "$ref": "#/components/schemas/Event",
-                      "description": "<p class=\"mb-2\">Resource object representing event</p>"
+                      "description": "Resource object representing event\n"
                     }
                   },
                   "required": [
@@ -30792,7 +30792,7 @@
                   "properties": {
                     "comment": {
                       "$ref": "#/components/schemas/Comment",
-                      "description": "<p class=\"mb-2\">Resource object representing comment</p>"
+                      "description": "Resource object representing comment\n"
                     }
                   },
                   "required": [
@@ -31008,7 +31008,7 @@
                   "properties": {
                     "comment": {
                       "$ref": "#/components/schemas/Comment",
-                      "description": "<p class=\"mb-2\">Resource object representing comment</p>"
+                      "description": "Resource object representing comment\n"
                     }
                   },
                   "required": [
@@ -31297,7 +31297,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "<p class=\"mb-2\">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">offset</code>.</p>",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -31608,7 +31608,7 @@
                   "properties": {
                     "comment": {
                       "$ref": "#/components/schemas/Comment",
-                      "description": "<p class=\"mb-2\">Resource object representing comment</p>"
+                      "description": "Resource object representing comment\n"
                     }
                   },
                   "required": [
@@ -31908,7 +31908,7 @@
                   "properties": {
                     "portal_session": {
                       "$ref": "#/components/schemas/PortalSession",
-                      "description": "<p class=\"mb-2\">Resource object representing portal_session</p>"
+                      "description": "Resource object representing portal_session\n"
                     }
                   },
                   "required": [
@@ -32201,7 +32201,7 @@
                   "properties": {
                     "portal_session": {
                       "$ref": "#/components/schemas/PortalSession",
-                      "description": "<p class=\"mb-2\">Resource object representing portal_session</p>"
+                      "description": "Resource object representing portal_session\n"
                     }
                   },
                   "required": [
@@ -32471,7 +32471,7 @@
                   "properties": {
                     "portal_session": {
                       "$ref": "#/components/schemas/PortalSession",
-                      "description": "<p class=\"mb-2\">Resource object representing portal_session</p>"
+                      "description": "Resource object representing portal_session\n"
                     }
                   },
                   "required": [
@@ -32687,7 +32687,7 @@
                   "properties": {
                     "portal_session": {
                       "$ref": "#/components/schemas/PortalSession",
-                      "description": "<p class=\"mb-2\">Resource object representing portal_session</p>"
+                      "description": "Resource object representing portal_session\n"
                     }
                   },
                   "required": [
@@ -32903,7 +32903,7 @@
                   "properties": {
                     "payment_intent": {
                       "$ref": "#/components/schemas/PaymentIntent",
-                      "description": "<p class=\"mb-2\">Resource object representing payment_intent</p>"
+                      "description": "Resource object representing payment_intent\n"
                     }
                   },
                   "required": [
@@ -33220,7 +33220,7 @@
                   "properties": {
                     "payment_intent": {
                       "$ref": "#/components/schemas/PaymentIntent",
-                      "description": "<p class=\"mb-2\">Resource object representing payment_intent</p>"
+                      "description": "Resource object representing payment_intent\n"
                     }
                   },
                   "required": [
@@ -33544,7 +33544,7 @@
                   "properties": {
                     "payment_intent": {
                       "$ref": "#/components/schemas/PaymentIntent",
-                      "description": "<p class=\"mb-2\">Resource object representing payment_intent</p>"
+                      "description": "Resource object representing payment_intent\n"
                     }
                   },
                   "required": [
@@ -41672,13 +41672,13 @@
       "Prefer": {
         "name": "Prefer",
         "in": "header",
-        "description": "Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.\n",
+        "description": "Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.",
         "required": true,
         "style": "simple",
         "explode": false,
         "schema": {
           "type": "string",
-          "description": "Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.\n",
+          "description": "Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.",
           "example": "respond-async"
         },
         "x-cb-async-header": true
@@ -41804,14 +41804,14 @@
       "chargebee-async-callback-url": {
         "name": "chargebee-async-callback-url",
         "in": "header",
-        "description": "The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.\n",
+        "description": "The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.",
         "required": true,
         "style": "simple",
         "explode": false,
         "schema": {
           "type": "string",
           "format": "uri",
-          "description": "The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.\n",
+          "description": "The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.",
           "example": "https://username:password@example.com"
         },
         "x-cb-async-header": true
@@ -41849,13 +41849,13 @@
       "chargebee-request-id": {
         "name": "chargebee-request-id",
         "in": "header",
-        "description": "A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.\n",
+        "description": "A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.",
         "required": true,
         "style": "simple",
         "explode": false,
         "schema": {
           "type": "string",
-          "description": "A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.\n",
+          "description": "A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.",
           "example": "7c9e2f4a-8b1d-4e6f-9a0c-3d5e7f9b1c2d",
           "maxLength": 100
         },
@@ -42003,10 +42003,10 @@
   "jsonSchemaDialect": "https://spec.openapis.org/oas/3.1/dialect/base",
   "webhooks": {
     "subscription_reactivated": {
-      "description": "<p class=\"mb-2\">Triggered when the subscription is moved from <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">cancelled</code> <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">status</code> to <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">active</code> or <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">in_trial</code>.</p>",
+      "description": "Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.\n",
       "post": {
         "summary": "Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.",
-        "description": "<p class=\"mb-2\">Triggered when the subscription is moved from <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">cancelled</code> <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">status</code> to <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">active</code> or <code class=\"bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap\">in_trial</code>.</p>",
+        "description": "Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.\n",
         "operationId": "onSubscription_reactivatedWebhook",
         "requestBody": {
           "description": "Payload for subscription_reactivated event",
@@ -42027,10 +42027,10 @@
       }
     },
     "transaction_updated": {
-      "description": "<p class=\"mb-2\">Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.</p>",
+      "description": "Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n",
       "post": {
         "summary": "Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.",
-        "description": "<p class=\"mb-2\">Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.</p>",
+        "description": "Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n",
         "operationId": "onTransaction_updatedWebhook",
         "requestBody": {
           "description": "Payload for transaction_updated event",
@@ -42051,10 +42051,10 @@
       }
     },
     "subscription_created": {
-      "description": "<p class=\"mb-2\">Triggered when a new subscription is created.</p>",
+      "description": "Triggered when a new subscription is created.\n",
       "post": {
         "summary": "Triggered when a new subscription is created.",
-        "description": "<p class=\"mb-2\">Triggered when a new subscription is created.</p>",
+        "description": "Triggered when a new subscription is created.\n",
         "operationId": "onSubscription_createdWebhook",
         "requestBody": {
           "description": "Payload for subscription_created event",
@@ -42075,10 +42075,10 @@
       }
     },
     "subscription_cancellation_scheduled": {
-      "description": "<p class=\"mb-2\">Triggered when subscription is scheduled to cancel at end of current term.</p>",
+      "description": "Triggered when subscription is scheduled to cancel at end of current term.\n",
       "post": {
         "summary": "Triggered when subscription is scheduled to cancel at end of current term.",
-        "description": "<p class=\"mb-2\">Triggered when subscription is scheduled to cancel at end of current term.</p>",
+        "description": "Triggered when subscription is scheduled to cancel at end of current term.\n",
         "operationId": "onSubscription_cancellation_scheduledWebhook",
         "requestBody": {
           "description": "Payload for subscription_cancellation_scheduled event",
@@ -42099,10 +42099,10 @@
       }
     },
     "subscription_trial_extended": {
-      "description": "<p class=\"mb-2\">Trial Extension</p>",
+      "description": "Trial Extension\n",
       "post": {
         "summary": "Trial Extension",
-        "description": "<p class=\"mb-2\">Trial Extension</p>",
+        "description": "Trial Extension\n",
         "operationId": "onSubscription_trial_extendedWebhook",
         "requestBody": {
           "description": "Payload for subscription_trial_extended event",
@@ -42123,10 +42123,10 @@
       }
     },
     "subscription_deleted": {
-      "description": "<p class=\"mb-2\">Triggered when a subscription is deleted.</p>",
+      "description": "Triggered when a subscription is deleted.\n",
       "post": {
         "summary": "Triggered when a subscription is deleted.",
-        "description": "<p class=\"mb-2\">Triggered when a subscription is deleted.</p>",
+        "description": "Triggered when a subscription is deleted.\n",
         "operationId": "onSubscription_deletedWebhook",
         "requestBody": {
           "description": "Payload for subscription_deleted event",
@@ -42147,10 +42147,10 @@
       }
     },
     "invoice_generated": {
-      "description": "<p class=\"mb-2\">Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.</p>",
+      "description": "Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.\n",
       "post": {
         "summary": "Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.",
-        "description": "<p class=\"mb-2\">Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.</p>",
+        "description": "Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.\n",
         "operationId": "onInvoice_generatedWebhook",
         "requestBody": {
           "description": "Payload for invoice_generated event",
@@ -42171,10 +42171,10 @@
       }
     },
     "subscription_cancelling": {
-      "description": "<p class=\"mb-2\">Triggered 6 days prior to the scheduled cancellation date.</p>",
+      "description": "Triggered 6 days prior to the scheduled cancellation date.\n",
       "post": {
         "summary": "Triggered 6 days prior to the scheduled cancellation date.",
-        "description": "<p class=\"mb-2\">Triggered 6 days prior to the scheduled cancellation date.</p>",
+        "description": "Triggered 6 days prior to the scheduled cancellation date.\n",
         "operationId": "onSubscription_cancellingWebhook",
         "requestBody": {
           "description": "Payload for subscription_cancelling event",
@@ -42195,10 +42195,10 @@
       }
     },
     "subscription_renewed": {
-      "description": "<p class=\"mb-2\">Triggered when the subscription is renewed from the current term.</p>",
+      "description": "Triggered when the subscription is renewed from the current term.\n",
       "post": {
         "summary": "Triggered when the subscription is renewed from the current term.",
-        "description": "<p class=\"mb-2\">Triggered when the subscription is renewed from the current term.</p>",
+        "description": "Triggered when the subscription is renewed from the current term.\n",
         "operationId": "onSubscription_renewedWebhook",
         "requestBody": {
           "description": "Payload for subscription_renewed event",
@@ -42219,10 +42219,10 @@
       }
     },
     "subscription_scheduled_cancellation_removed": {
-      "description": "<p class=\"mb-2\">Triggered when scheduled cancellation is removed for the subscription.</p>",
+      "description": "Triggered when scheduled cancellation is removed for the subscription.\n",
       "post": {
         "summary": "Triggered when scheduled cancellation is removed for the subscription.",
-        "description": "<p class=\"mb-2\">Triggered when scheduled cancellation is removed for the subscription.</p>",
+        "description": "Triggered when scheduled cancellation is removed for the subscription.\n",
         "operationId": "onSubscription_scheduled_cancellation_removedWebhook",
         "requestBody": {
           "description": "Payload for subscription_scheduled_cancellation_removed event",
@@ -42243,10 +42243,10 @@
       }
     },
     "payment_refunded": {
-      "description": "<p class=\"mb-2\">Triggered when a payment refund is made.</p>",
+      "description": "Triggered when a payment refund is made.\n",
       "post": {
         "summary": "Triggered when a payment refund is made.",
-        "description": "<p class=\"mb-2\">Triggered when a payment refund is made.</p>",
+        "description": "Triggered when a payment refund is made.\n",
         "operationId": "onPayment_refundedWebhook",
         "requestBody": {
           "description": "Payload for payment_refunded event",
@@ -42267,10 +42267,10 @@
       }
     },
     "subscription_changed": {
-      "description": "<p class=\"mb-2\">Triggered when the subscription&#x27;s recurring items are changed.</p>",
+      "description": "Triggered when the subscription's recurring items are changed.\n",
       "post": {
         "summary": "Triggered when the subscription's recurring items are changed.",
-        "description": "<p class=\"mb-2\">Triggered when the subscription&#x27;s recurring items are changed.</p>",
+        "description": "Triggered when the subscription's recurring items are changed.\n",
         "operationId": "onSubscription_changedWebhook",
         "requestBody": {
           "description": "Payload for subscription_changed event",
@@ -42291,10 +42291,10 @@
       }
     },
     "invoice_created": {
-      "description": "<p class=\"mb-2\">Event triggered (in the case of metered billing) when a &quot;Pending&quot; invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the &quot;Notify for Pending Invoices&quot; option is enabled.</p>",
+      "description": "Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.\n",
       "post": {
         "summary": "Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the “Notify for Pending Invoices” option is enabled.",
-        "description": "<p class=\"mb-2\">Event triggered (in the case of metered billing) when a &quot;Pending&quot; invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the &quot;Notify for Pending Invoices&quot; option is enabled.</p>",
+        "description": "Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.\n",
         "operationId": "onInvoice_createdWebhook",
         "requestBody": {
           "description": "Payload for invoice_created event",
@@ -42315,10 +42315,10 @@
       }
     },
     "transaction_created": {
-      "description": "<p class=\"mb-2\">Triggered when a transaction is recorded.</p>",
+      "description": "Triggered when a transaction is recorded.\n",
       "post": {
         "summary": "Triggered when a transaction is recorded.",
-        "description": "<p class=\"mb-2\">Triggered when a transaction is recorded.</p>",
+        "description": "Triggered when a transaction is recorded.\n",
         "operationId": "onTransaction_createdWebhook",
         "requestBody": {
           "description": "Payload for transaction_created event",
@@ -42339,10 +42339,10 @@
       }
     },
     "subscription_cancelled": {
-      "description": "<p class=\"mb-2\">Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as &#x27;cancel_reason&#x27;.</p>",
+      "description": "Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.\n",
       "post": {
         "summary": "Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.",
-        "description": "<p class=\"mb-2\">Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as &#x27;cancel_reason&#x27;.</p>",
+        "description": "Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.\n",
         "operationId": "onSubscription_cancelledWebhook",
         "requestBody": {
           "description": "Payload for subscription_cancelled event",
@@ -42363,10 +42363,10 @@
       }
     },
     "invoice_deleted": {
-      "description": "<p class=\"mb-2\">Event triggered when an invoice is deleted.</p>",
+      "description": "Event triggered when an invoice is deleted.\n",
       "post": {
         "summary": "Event triggered when an invoice is deleted.",
-        "description": "<p class=\"mb-2\">Event triggered when an invoice is deleted.</p>",
+        "description": "Event triggered when an invoice is deleted.\n",
         "operationId": "onInvoice_deletedWebhook",
         "requestBody": {
           "description": "Payload for invoice_deleted event",
@@ -42387,10 +42387,10 @@
       }
     },
     "payment_failed": {
-      "description": "<p class=\"mb-2\">Triggered when the payment collection fails.</p>",
+      "description": "Triggered when the payment collection fails.\n",
       "post": {
         "summary": "Triggered when the payment collection fails.",
-        "description": "<p class=\"mb-2\">Triggered when the payment collection fails.</p>",
+        "description": "Triggered when the payment collection fails.\n",
         "operationId": "onPayment_failedWebhook",
         "requestBody": {
           "description": "Payload for payment_failed event",
@@ -42411,10 +42411,10 @@
       }
     },
     "card_expired": {
-      "description": "<p class=\"mb-2\">Triggered when the card for a customer has expired.</p>",
+      "description": "Triggered when the card for a customer has expired.\n",
       "post": {
         "summary": "Triggered when the card for a customer has expired.",
-        "description": "<p class=\"mb-2\">Triggered when the card for a customer has expired.</p>",
+        "description": "Triggered when the card for a customer has expired.\n",
         "operationId": "onCard_expiredWebhook",
         "requestBody": {
           "description": "Payload for card_expired event",
@@ -42435,10 +42435,10 @@
       }
     },
     "invoice_updated": {
-      "description": "<p class=\"mb-2\">Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.</p>",
+      "description": "Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.\n",
       "post": {
         "summary": "Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.",
-        "description": "<p class=\"mb-2\">Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.</p>",
+        "description": "Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.\n",
         "operationId": "onInvoice_updatedWebhook",
         "requestBody": {
           "description": "Payload for invoice_updated event",
@@ -42459,10 +42459,10 @@
       }
     },
     "payment_succeeded": {
-      "description": "<p class=\"mb-2\">Triggered when the payment is successfully collected.</p>",
+      "description": "Triggered when the payment is successfully collected.\n",
       "post": {
         "summary": "Triggered when the payment is successfully collected.",
-        "description": "<p class=\"mb-2\">Triggered when the payment is successfully collected.</p>",
+        "description": "Triggered when the payment is successfully collected.\n",
         "operationId": "onPayment_succeededWebhook",
         "requestBody": {
           "description": "Payload for payment_succeeded event",
@@ -42483,10 +42483,10 @@
       }
     },
     "card_updated": {
-      "description": "<p class=\"mb-2\">Triggered when the card is updated for a customer.</p>",
+      "description": "Triggered when the card is updated for a customer.\n",
       "post": {
         "summary": "Triggered when the card is updated for a customer.",
-        "description": "<p class=\"mb-2\">Triggered when the card is updated for a customer.</p>",
+        "description": "Triggered when the card is updated for a customer.\n",
         "operationId": "onCard_updatedWebhook",
         "requestBody": {
           "description": "Payload for card_updated event",
@@ -42507,10 +42507,10 @@
       }
     },
     "card_expiring": {
-      "description": "<p class=\"mb-2\">Triggered when the customer&#x27;s credit card is expiring soon. Triggered 30 days before the expiry date.</p>",
+      "description": "Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.\n",
       "post": {
         "summary": "Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.",
-        "description": "<p class=\"mb-2\">Triggered when the customer&#x27;s credit card is expiring soon. Triggered 30 days before the expiry date.</p>",
+        "description": "Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.\n",
         "operationId": "onCard_expiringWebhook",
         "requestBody": {
           "description": "Payload for card_expiring event",
@@ -42531,10 +42531,10 @@
       }
     },
     "card_deleted": {
-      "description": "<p class=\"mb-2\">Triggered when a card is deleted for a customer.</p>",
+      "description": "Triggered when a card is deleted for a customer.\n",
       "post": {
         "summary": "Triggered when a card is deleted for a customer.",
-        "description": "<p class=\"mb-2\">Triggered when a card is deleted for a customer.</p>",
+        "description": "Triggered when a card is deleted for a customer.\n",
         "operationId": "onCard_deletedWebhook",
         "requestBody": {
           "description": "Payload for card_deleted event",
@@ -42555,10 +42555,10 @@
       }
     },
     "customer_created": {
-      "description": "<p class=\"mb-2\">Triggered when a customer is created.</p>",
+      "description": "Triggered when a customer is created.\n",
       "post": {
         "summary": "Triggered when a customer is created.",
-        "description": "<p class=\"mb-2\">Triggered when a customer is created.</p>",
+        "description": "Triggered when a customer is created.\n",
         "operationId": "onCustomer_createdWebhook",
         "requestBody": {
           "description": "Payload for customer_created event",
@@ -42579,10 +42579,10 @@
       }
     },
     "subscription_shipping_address_updated": {
-      "description": "<p class=\"mb-2\">Triggered when shipping address is added or updated for a subscription.</p>",
+      "description": "Triggered when shipping address is added or updated for a subscription.\n",
       "post": {
         "summary": "Triggered when shipping address is added or updated for a subscription.",
-        "description": "<p class=\"mb-2\">Triggered when shipping address is added or updated for a subscription.</p>",
+        "description": "Triggered when shipping address is added or updated for a subscription.\n",
         "operationId": "onSubscription_shipping_address_updatedWebhook",
         "requestBody": {
           "description": "Payload for subscription_shipping_address_updated event",
@@ -42603,10 +42603,10 @@
       }
     },
     "customer_changed": {
-      "description": "<p class=\"mb-2\">Triggered when a customer is changed.</p>",
+      "description": "Triggered when a customer is changed.\n",
       "post": {
         "summary": "Triggered when a customer is changed.",
-        "description": "<p class=\"mb-2\">Triggered when a customer is changed.</p>",
+        "description": "Triggered when a customer is changed.\n",
         "operationId": "onCustomer_changedWebhook",
         "requestBody": {
           "description": "Payload for customer_changed event",
@@ -42627,10 +42627,10 @@
       }
     },
     "subscription_renewal_reminder": {
-      "description": "<p class=\"mb-2\">Triggered 3 days before each subscription&#x27;s renewal.</p>",
+      "description": "Triggered 3 days before each subscription's renewal.\n",
       "post": {
         "summary": "Triggered 3 days before each subscription's renewal.",
-        "description": "<p class=\"mb-2\">Triggered 3 days before each subscription&#x27;s renewal.</p>",
+        "description": "Triggered 3 days before each subscription's renewal.\n",
         "operationId": "onSubscription_renewal_reminderWebhook",
         "requestBody": {
           "description": "Payload for subscription_renewal_reminder event",
@@ -42651,10 +42651,10 @@
       }
     },
     "subscription_started": {
-      "description": "<p class=\"mb-2\">Triggered when a &#x27;future&#x27; subscription gets started.</p>",
+      "description": "Triggered when a 'future' subscription gets started.\n",
       "post": {
         "summary": "Triggered when a 'future' subscription gets started.",
-        "description": "<p class=\"mb-2\">Triggered when a &#x27;future&#x27; subscription gets started.</p>",
+        "description": "Triggered when a 'future' subscription gets started.\n",
         "operationId": "onSubscription_startedWebhook",
         "requestBody": {
           "description": "Payload for subscription_started event",
@@ -42675,10 +42675,10 @@
       }
     },
     "transaction_deleted": {
-      "description": "<p class=\"mb-2\">Triggered when a transaction is deleted.</p>",
+      "description": "Triggered when a transaction is deleted.\n",
       "post": {
         "summary": "Triggered when a transaction is deleted.",
-        "description": "<p class=\"mb-2\">Triggered when a transaction is deleted.</p>",
+        "description": "Triggered when a transaction is deleted.\n",
         "operationId": "onTransaction_deletedWebhook",
         "requestBody": {
           "description": "Payload for transaction_deleted event",
@@ -42699,10 +42699,10 @@
       }
     },
     "subscription_trial_ending": {
-      "description": "<p class=\"mb-2\">Triggered 6 days prior to the trial period&#x27;s end date.</p>",
+      "description": "Triggered 6 days prior to the trial period's end date.\n",
       "post": {
         "summary": "Triggered 6 days prior to the trial period's end date.",
-        "description": "<p class=\"mb-2\">Triggered 6 days prior to the trial period&#x27;s end date.</p>",
+        "description": "Triggered 6 days prior to the trial period's end date.\n",
         "operationId": "onSubscription_trial_endingWebhook",
         "requestBody": {
           "description": "Payload for subscription_trial_ending event",
@@ -42723,10 +42723,10 @@
       }
     },
     "payment_initiated": {
-      "description": "<p class=\"mb-2\">Triggered when a payment is initiated via direct debit.</p>",
+      "description": "Triggered when a payment is initiated via direct debit.\n",
       "post": {
         "summary": "Triggered when a payment is initiated via direct debit.",
-        "description": "<p class=\"mb-2\">Triggered when a payment is initiated via direct debit.</p>",
+        "description": "Triggered when a payment is initiated via direct debit.\n",
         "operationId": "onPayment_initiatedWebhook",
         "requestBody": {
           "description": "Payload for payment_initiated event",
@@ -42747,10 +42747,10 @@
       }
     },
     "customer_deleted": {
-      "description": "<p class=\"mb-2\">Triggered when a customer is deleted.</p>",
+      "description": "Triggered when a customer is deleted.\n",
       "post": {
         "summary": "Triggered when a customer is deleted.",
-        "description": "<p class=\"mb-2\">Triggered when a customer is deleted.</p>",
+        "description": "Triggered when a customer is deleted.\n",
         "operationId": "onCustomer_deletedWebhook",
         "requestBody": {
           "description": "Payload for customer_deleted event",
@@ -42771,10 +42771,10 @@
       }
     },
     "subscription_activated": {
-      "description": "<p class=\"mb-2\">Triggered after the subscription has been moved from &quot;Trial&quot; to &quot;Active&quot; state.</p>",
+      "description": "Triggered after the subscription has been moved from \"Trial\" to \"Active\" state.\n",
       "post": {
         "summary": "Triggered after the subscription has been moved from \"Trial\" to \"Active\" state.",
-        "description": "<p class=\"mb-2\">Triggered after the subscription has been moved from &quot;Trial&quot; to &quot;Active&quot; state.</p>",
+        "description": "Triggered after the subscription has been moved from \"Trial\" to \"Active\" state.\n",
         "operationId": "onSubscription_activatedWebhook",
         "requestBody": {
           "description": "Payload for subscription_activated event",
@@ -42795,10 +42795,10 @@
       }
     },
     "card_added": {
-      "description": "<p class=\"mb-2\">Triggered when a card is added for a customer.</p>",
+      "description": "Triggered when a card is added for a customer.\n",
       "post": {
         "summary": "Triggered when a card is added for a customer.",
-        "description": "<p class=\"mb-2\">Triggered when a card is added for a customer.</p>",
+        "description": "Triggered when a card is added for a customer.\n",
         "operationId": "onCard_addedWebhook",
         "requestBody": {
           "description": "Payload for card_added event",
@@ -42819,10 +42819,10 @@
       }
     },
     "refund_initiated": {
-      "description": "<p class=\"mb-2\">Triggered when a refund is initiated via direct debit.</p>",
+      "description": "Triggered when a refund is initiated via direct debit.\n",
       "post": {
         "summary": "Triggered when a refund is initiated via direct debit.",
-        "description": "<p class=\"mb-2\">Triggered when a refund is initiated via direct debit.</p>",
+        "description": "Triggered when a refund is initiated via direct debit.\n",
         "operationId": "onRefund_initiatedWebhook",
         "requestBody": {
           "description": "Payload for refund_initiated event",

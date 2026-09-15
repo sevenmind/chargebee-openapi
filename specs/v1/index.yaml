@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-11.5d374f51c83bd976cff827deca437b11747619a6
+  version: 2026-09-14.0f830d3436101884131b387e074f951a612e056b
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -201,13 +201,16 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                   - subscription
@@ -413,13 +416,16 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                   - subscription
@@ -601,14 +607,16 @@ paths:
                       properties:
                         subscription:
                           $ref: '#/components/schemas/Subscription'
-                          description: <p class="mb-2">Resource object representing subscription</p>
+                          description: |
+                            Resource object representing subscription
                       required:
                         - subscription
                       example: null
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -1078,16 +1086,20 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - customer
                   - subscription
@@ -1276,13 +1288,16 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                   - subscription
@@ -1490,13 +1505,16 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                   - subscription
@@ -1652,13 +1670,16 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                   - subscription
@@ -1916,16 +1937,20 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - customer
                   - subscription
@@ -2073,13 +2098,16 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                   - subscription
@@ -3008,16 +3036,20 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - customer
                   - subscription
@@ -3232,7 +3264,8 @@ paths:
                 properties:
                   estimate:
                     $ref: '#/components/schemas/Estimate'
-                    description: <p class="mb-2">Resource object representing estimate</p>
+                    description: |
+                      Resource object representing estimate
                 required:
                   - estimate
                 example: null
@@ -3418,7 +3451,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -4438,16 +4472,20 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - customer
                   - subscription
@@ -4654,16 +4692,20 @@ paths:
                 properties:
                   subscription:
                     $ref: '#/components/schemas/Subscription'
-                    description: <p class="mb-2">Resource object representing subscription</p>
+                    description: |
+                      Resource object representing subscription
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - customer
                   - subscription
@@ -4877,7 +4919,8 @@ paths:
                 properties:
                   estimate:
                     $ref: '#/components/schemas/Estimate'
-                    description: <p class="mb-2">Resource object representing estimate</p>
+                    description: |
+                      Resource object representing estimate
                 required:
                   - estimate
                 example: null
@@ -5428,10 +5471,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -5648,7 +5693,8 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                 required:
                   - customer
                 example: null
@@ -5865,7 +5911,8 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                 required:
                   - customer
                 example: null
@@ -6081,10 +6128,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -6376,10 +6425,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -6526,10 +6577,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -6815,10 +6868,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -7091,10 +7146,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -7311,7 +7368,8 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                 required:
                   - customer
                 example: null
@@ -7641,10 +7699,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -7825,7 +7885,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -8580,10 +8641,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -8856,10 +8919,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - customer
                 example: null
@@ -9006,7 +9071,8 @@ paths:
                 properties:
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - card
                 example: null
@@ -9233,10 +9299,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - card
                   - customer
@@ -9485,10 +9553,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - card
                   - customer
@@ -9680,7 +9750,8 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                 required:
                   - customer
                 example: null
@@ -10067,10 +10138,12 @@ paths:
                 properties:
                   customer:
                     $ref: '#/components/schemas/Customer'
-                    description: <p class="mb-2">Resource object representing customer</p>
+                    description: |
+                      Resource object representing customer
                   card:
                     $ref: '#/components/schemas/Card'
-                    description: <p class="mb-2">Resource object representing card</p>
+                    description: |
+                      Resource object representing card
                 required:
                   - card
                   - customer
@@ -10303,7 +10376,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -10492,7 +10566,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -10706,7 +10781,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -10894,7 +10970,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -11111,7 +11188,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -11327,7 +11405,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -11539,7 +11618,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -11744,10 +11824,12 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                   transaction:
                     $ref: '#/components/schemas/Transaction'
-                    description: <p class="mb-2">Resource object representing transaction</p>
+                    description: |
+                      Resource object representing transaction
                 required:
                   - invoice
                   - transaction
@@ -11949,7 +12031,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -12175,10 +12258,12 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                   transaction:
                     $ref: '#/components/schemas/Transaction'
-                    description: <p class="mb-2">Resource object representing transaction</p>
+                    description: |
+                      Resource object representing transaction
                 required:
                   - invoice
                   - transaction
@@ -12370,7 +12455,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -12811,7 +12897,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -13083,10 +13170,12 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                   transaction:
                     $ref: '#/components/schemas/Transaction'
-                    description: <p class="mb-2">Resource object representing transaction</p>
+                    description: |
+                      Resource object representing transaction
                 required:
                   - invoice
                 example: null
@@ -13279,7 +13368,8 @@ paths:
                 properties:
                   download:
                     $ref: '#/components/schemas/Download'
-                    description: <p class="mb-2">Resource object representing download</p>
+                    description: |
+                      Resource object representing download
                 required:
                   - download
                 example: null
@@ -13426,7 +13516,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -13614,7 +13705,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -13849,7 +13941,8 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                 required:
                   - invoice
                 example: null
@@ -14027,7 +14120,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -14284,7 +14378,8 @@ paths:
                 properties:
                   order:
                     $ref: '#/components/schemas/Order'
-                    description: <p class="mb-2">Resource object representing order</p>
+                    description: |
+                      Resource object representing order
                 required:
                   - order
                 example: null
@@ -14472,7 +14567,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -14621,7 +14717,8 @@ paths:
                 properties:
                   order:
                     $ref: '#/components/schemas/Order'
-                    description: <p class="mb-2">Resource object representing order</p>
+                    description: |
+                      Resource object representing order
                 required:
                   - order
                 example: null
@@ -14984,7 +15081,8 @@ paths:
                 properties:
                   order:
                     $ref: '#/components/schemas/Order'
-                    description: <p class="mb-2">Resource object representing order</p>
+                    description: |
+                      Resource object representing order
                 required:
                   - order
                 example: null
@@ -15165,14 +15263,16 @@ paths:
                       properties:
                         transaction:
                           $ref: '#/components/schemas/Transaction'
-                          description: <p class="mb-2">Resource object representing transaction</p>
+                          description: |
+                            Resource object representing transaction
                       required:
                         - transaction
                       example: null
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -15355,14 +15455,16 @@ paths:
                       properties:
                         transaction:
                           $ref: '#/components/schemas/Transaction'
-                          description: <p class="mb-2">Resource object representing transaction</p>
+                          description: |
+                            Resource object representing transaction
                       required:
                         - transaction
                       example: null
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -15535,14 +15637,16 @@ paths:
                       properties:
                         transaction:
                           $ref: '#/components/schemas/Transaction'
-                          description: <p class="mb-2">Resource object representing transaction</p>
+                          description: |
+                            Resource object representing transaction
                       required:
                         - transaction
                       example: null
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -15795,10 +15899,12 @@ paths:
                 properties:
                   invoice:
                     $ref: '#/components/schemas/Invoice'
-                    description: <p class="mb-2">Resource object representing invoice</p>
+                    description: |
+                      Resource object representing invoice
                   transaction:
                     $ref: '#/components/schemas/Transaction'
-                    description: <p class="mb-2">Resource object representing transaction</p>
+                    description: |
+                      Resource object representing transaction
                 required:
                   - invoice
                   - transaction
@@ -15946,7 +16052,8 @@ paths:
                 properties:
                   transaction:
                     $ref: '#/components/schemas/Transaction'
-                    description: <p class="mb-2">Resource object representing transaction</p>
+                    description: |
+                      Resource object representing transaction
                 required:
                   - transaction
                 example: null
@@ -16127,14 +16234,16 @@ paths:
                       properties:
                         transaction:
                           $ref: '#/components/schemas/Transaction'
-                          description: <p class="mb-2">Resource object representing transaction</p>
+                          description: |
+                            Resource object representing transaction
                       required:
                         - transaction
                       example: null
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -16643,7 +16752,8 @@ paths:
                 properties:
                   hosted_page:
                     $ref: '#/components/schemas/HostedPage'
-                    description: <p class="mb-2">Resource object representing hosted_page</p>
+                    description: |
+                      Resource object representing hosted_page
                 required:
                   - hosted_page
                 example: null
@@ -16963,7 +17073,8 @@ paths:
                 properties:
                   hosted_page:
                     $ref: '#/components/schemas/HostedPage'
-                    description: <p class="mb-2">Resource object representing hosted_page</p>
+                    description: |
+                      Resource object representing hosted_page
                 required:
                   - hosted_page
                 example: null
@@ -17259,7 +17370,8 @@ paths:
                 properties:
                   hosted_page:
                     $ref: '#/components/schemas/HostedPage'
-                    description: <p class="mb-2">Resource object representing hosted_page</p>
+                    description: |
+                      Resource object representing hosted_page
                 required:
                   - hosted_page
                 example: null
@@ -17406,7 +17518,8 @@ paths:
                 properties:
                   hosted_page:
                     $ref: '#/components/schemas/HostedPage'
-                    description: <p class="mb-2">Resource object representing hosted_page</p>
+                    description: |
+                      Resource object representing hosted_page
                 required:
                   - hosted_page
                 example: null
@@ -17851,7 +17964,8 @@ paths:
                 properties:
                   hosted_page:
                     $ref: '#/components/schemas/HostedPage'
-                    description: <p class="mb-2">Resource object representing hosted_page</p>
+                    description: |
+                      Resource object representing hosted_page
                 required:
                   - hosted_page
                 example: null
@@ -18030,7 +18144,8 @@ paths:
                 properties:
                   estimate:
                     $ref: '#/components/schemas/Estimate'
-                    description: <p class="mb-2">Resource object representing estimate</p>
+                    description: |
+                      Resource object representing estimate
                 required:
                   - estimate
                 example: null
@@ -18345,7 +18460,8 @@ paths:
                 properties:
                   estimate:
                     $ref: '#/components/schemas/Estimate'
-                    description: <p class="mb-2">Resource object representing estimate</p>
+                    description: |
+                      Resource object representing estimate
                 required:
                   - estimate
                 example: null
@@ -18812,7 +18928,8 @@ paths:
                 properties:
                   estimate:
                     $ref: '#/components/schemas/Estimate'
-                    description: <p class="mb-2">Resource object representing estimate</p>
+                    description: |
+                      Resource object representing estimate
                 required:
                   - estimate
                 example: null
@@ -19227,7 +19344,8 @@ paths:
                 properties:
                   estimate:
                     $ref: '#/components/schemas/Estimate'
-                    description: <p class="mb-2">Resource object representing estimate</p>
+                    description: |
+                      Resource object representing estimate
                 required:
                   - estimate
                 example: null
@@ -19702,7 +19820,8 @@ paths:
                 properties:
                   estimate:
                     $ref: '#/components/schemas/Estimate'
-                    description: <p class="mb-2">Resource object representing estimate</p>
+                    description: |
+                      Resource object representing estimate
                 required:
                   - estimate
                 example: null
@@ -19897,7 +20016,8 @@ paths:
                 properties:
                   plan:
                     $ref: '#/components/schemas/Plan'
-                    description: <p class="mb-2">Resource object representing plan</p>
+                    description: |
+                      Resource object representing plan
                 required:
                   - plan
                 example: null
@@ -20075,7 +20195,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -20431,7 +20552,8 @@ paths:
                 properties:
                   plan:
                     $ref: '#/components/schemas/Plan'
-                    description: <p class="mb-2">Resource object representing plan</p>
+                    description: |
+                      Resource object representing plan
                 required:
                   - plan
                 example: null
@@ -20578,7 +20700,8 @@ paths:
                 properties:
                   plan:
                     $ref: '#/components/schemas/Plan'
-                    description: <p class="mb-2">Resource object representing plan</p>
+                    description: |
+                      Resource object representing plan
                 required:
                   - plan
                 example: null
@@ -20942,7 +21065,8 @@ paths:
                 properties:
                   plan:
                     $ref: '#/components/schemas/Plan'
-                    description: <p class="mb-2">Resource object representing plan</p>
+                    description: |
+                      Resource object representing plan
                 required:
                   - plan
                 example: null
@@ -21089,7 +21213,8 @@ paths:
                 properties:
                   addon:
                     $ref: '#/components/schemas/Addon'
-                    description: <p class="mb-2">Resource object representing addon</p>
+                    description: |
+                      Resource object representing addon
                 required:
                   - addon
                 example: null
@@ -21425,7 +21550,8 @@ paths:
                 properties:
                   addon:
                     $ref: '#/components/schemas/Addon'
-                    description: <p class="mb-2">Resource object representing addon</p>
+                    description: |
+                      Resource object representing addon
                 required:
                   - addon
                 example: null
@@ -21603,7 +21729,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -21938,7 +22065,8 @@ paths:
                 properties:
                   addon:
                     $ref: '#/components/schemas/Addon'
-                    description: <p class="mb-2">Resource object representing addon</p>
+                    description: |
+                      Resource object representing addon
                 required:
                   - addon
                 example: null
@@ -22133,7 +22261,8 @@ paths:
                 properties:
                   addon:
                     $ref: '#/components/schemas/Addon'
-                    description: <p class="mb-2">Resource object representing addon</p>
+                    description: |
+                      Resource object representing addon
                 required:
                   - addon
                 example: null
@@ -22311,7 +22440,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -22697,7 +22827,8 @@ paths:
                 properties:
                   coupon:
                     $ref: '#/components/schemas/Coupon'
-                    description: <p class="mb-2">Resource object representing coupon</p>
+                    description: |
+                      Resource object representing coupon
                 required:
                   - coupon
                 example: null
@@ -22844,7 +22975,8 @@ paths:
                 properties:
                   coupon:
                     $ref: '#/components/schemas/Coupon'
-                    description: <p class="mb-2">Resource object representing coupon</p>
+                    description: |
+                      Resource object representing coupon
                 required:
                   - coupon
                 example: null
@@ -23056,7 +23188,8 @@ paths:
                 properties:
                   coupon_code:
                     $ref: '#/components/schemas/CouponCode'
-                    description: <p class="mb-2">Resource object representing coupon_code</p>
+                    description: |
+                      Resource object representing coupon_code
                 required:
                   - coupon_code
                 example: null
@@ -23203,7 +23336,8 @@ paths:
                 properties:
                   coupon_code:
                     $ref: '#/components/schemas/CouponCode'
-                    description: <p class="mb-2">Resource object representing coupon_code</p>
+                    description: |
+                      Resource object representing coupon_code
                 required:
                   - coupon_code
                 example: null
@@ -23366,7 +23500,8 @@ paths:
                 properties:
                   address:
                     $ref: '#/components/schemas/Address'
-                    description: <p class="mb-2">Resource object representing address</p>
+                    description: |
+                      Resource object representing address
                 required:
                   - address
                 example: null
@@ -23672,7 +23807,8 @@ paths:
                 properties:
                   address:
                     $ref: '#/components/schemas/Address'
-                    description: <p class="mb-2">Resource object representing address</p>
+                    description: |
+                      Resource object representing address
                 required:
                   - address
                 example: null
@@ -23994,7 +24130,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -24143,7 +24280,8 @@ paths:
                 properties:
                   event:
                     $ref: '#/components/schemas/Event'
-                    description: <p class="mb-2">Resource object representing event</p>
+                    description: |
+                      Resource object representing event
                 required:
                   - event
                 example: null
@@ -24334,7 +24472,8 @@ paths:
                 properties:
                   comment:
                     $ref: '#/components/schemas/Comment'
-                    description: <p class="mb-2">Resource object representing comment</p>
+                    description: |
+                      Resource object representing comment
                 required:
                   - comment
                 example: null
@@ -24481,7 +24620,8 @@ paths:
                 properties:
                   comment:
                     $ref: '#/components/schemas/Comment'
-                    description: <p class="mb-2">Resource object representing comment</p>
+                    description: |
+                      Resource object representing comment
                 required:
                   - comment
                 example: null
@@ -24702,7 +24842,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: <p class="mb-2">This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">offset</code>.</p>
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -24937,7 +25078,8 @@ paths:
                 properties:
                   comment:
                     $ref: '#/components/schemas/Comment'
-                    description: <p class="mb-2">Resource object representing comment</p>
+                    description: |
+                      Resource object representing comment
                 required:
                   - comment
                 example: null
@@ -25150,7 +25292,8 @@ paths:
                 properties:
                   portal_session:
                     $ref: '#/components/schemas/PortalSession'
-                    description: <p class="mb-2">Resource object representing portal_session</p>
+                    description: |
+                      Resource object representing portal_session
                 required:
                   - portal_session
                 example: null
@@ -25361,7 +25504,8 @@ paths:
                 properties:
                   portal_session:
                     $ref: '#/components/schemas/PortalSession'
-                    description: <p class="mb-2">Resource object representing portal_session</p>
+                    description: |
+                      Resource object representing portal_session
                 required:
                   - portal_session
                 example: null
@@ -25556,7 +25700,8 @@ paths:
                 properties:
                   portal_session:
                     $ref: '#/components/schemas/PortalSession'
-                    description: <p class="mb-2">Resource object representing portal_session</p>
+                    description: |
+                      Resource object representing portal_session
                 required:
                   - portal_session
                 example: null
@@ -25704,7 +25849,8 @@ paths:
                 properties:
                   portal_session:
                     $ref: '#/components/schemas/PortalSession'
-                    description: <p class="mb-2">Resource object representing portal_session</p>
+                    description: |
+                      Resource object representing portal_session
                 required:
                   - portal_session
                 example: null
@@ -25851,7 +25997,8 @@ paths:
                 properties:
                   payment_intent:
                     $ref: '#/components/schemas/PaymentIntent'
-                    description: <p class="mb-2">Resource object representing payment_intent</p>
+                    description: |
+                      Resource object representing payment_intent
                 required:
                   - payment_intent
                 example: null
@@ -26093,7 +26240,8 @@ paths:
                 properties:
                   payment_intent:
                     $ref: '#/components/schemas/PaymentIntent'
-                    description: <p class="mb-2">Resource object representing payment_intent</p>
+                    description: |
+                      Resource object representing payment_intent
                 required:
                   - payment_intent
                 example: null
@@ -26344,7 +26492,8 @@ paths:
                 properties:
                   payment_intent:
                     $ref: '#/components/schemas/PaymentIntent'
-                    description: <p class="mb-2">Resource object representing payment_intent</p>
+                    description: |
+                      Resource object representing payment_intent
                 required:
                   - payment_intent
                 example: null
@@ -34163,15 +34312,13 @@ components:
     Prefer:
       name: Prefer
       in: header
-      description: |
-        Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.
+      description: Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.
       required: true
       style: simple
       explode: false
       schema:
         type: string
-        description: |
-          Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.
+        description: Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.
         example: respond-async
       x-cb-async-header: true
     reason-code-id:
@@ -34274,16 +34421,14 @@ components:
     chargebee-async-callback-url:
       name: chargebee-async-callback-url
       in: header
-      description: |
-        The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
+      description: The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
       required: true
       style: simple
       explode: false
       schema:
         type: string
         format: uri
-        description: |
-          The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
+        description: The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
         example: https://username:password@example.com
       x-cb-async-header: true
     subscription-id:
@@ -34313,15 +34458,13 @@ components:
     chargebee-request-id:
       name: chargebee-request-id
       in: header
-      description: |
-        A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.
+      description: A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.
       required: true
       style: simple
       explode: false
       schema:
         type: string
-        description: |
-          A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.
+        description: A client-generated unique identifier (UUID recommended) for this request. Echoed back as `request.id` in the async callback payload, allowing you to correlate each callback to its originating request.
         example: 7c9e2f4a-8b1d-4e6f-9a0c-3d5e7f9b1c2d
         maxLength: 100
       x-cb-async-header: true
@@ -34439,10 +34582,12 @@ components:
 jsonSchemaDialect: https://spec.openapis.org/oas/3.1/dialect/base
 webhooks:
   subscription_reactivated:
-    description: <p class="mb-2">Triggered when the subscription is moved from <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">cancelled</code> <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">status</code> to <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">active</code> or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">in_trial</code>.</p>
+    description: |
+      Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.
     post:
       summary: Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.
-      description: <p class="mb-2">Triggered when the subscription is moved from <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">cancelled</code> <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">status</code> to <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">active</code> or <code class="bg-gray-100 text-gray-800 font-medium border border-gray-300 rounded px-1.5 py-0.5 mx-1 text-sm font-mono whitespace-nowrap">in_trial</code>.</p>
+      description: |
+        Triggered when the subscription is moved from `cancelled` `status` to `active` or `in_trial`.
       operationId: onSubscription_reactivatedWebhook
       requestBody:
         description: Payload for subscription_reactivated event
@@ -34455,10 +34600,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   transaction_updated:
-    description: <p class="mb-2">Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.</p>
+    description: |
+      Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.
     post:
       summary: Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.
-      description: <p class="mb-2">Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.</p>
+      description: |
+        Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.
       operationId: onTransaction_updatedWebhook
       requestBody:
         description: Payload for transaction_updated event
@@ -34471,10 +34618,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_created:
-    description: <p class="mb-2">Triggered when a new subscription is created.</p>
+    description: |
+      Triggered when a new subscription is created.
     post:
       summary: Triggered when a new subscription is created.
-      description: <p class="mb-2">Triggered when a new subscription is created.</p>
+      description: |
+        Triggered when a new subscription is created.
       operationId: onSubscription_createdWebhook
       requestBody:
         description: Payload for subscription_created event
@@ -34487,10 +34636,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_cancellation_scheduled:
-    description: <p class="mb-2">Triggered when subscription is scheduled to cancel at end of current term.</p>
+    description: |
+      Triggered when subscription is scheduled to cancel at end of current term.
     post:
       summary: Triggered when subscription is scheduled to cancel at end of current term.
-      description: <p class="mb-2">Triggered when subscription is scheduled to cancel at end of current term.</p>
+      description: |
+        Triggered when subscription is scheduled to cancel at end of current term.
       operationId: onSubscription_cancellation_scheduledWebhook
       requestBody:
         description: Payload for subscription_cancellation_scheduled event
@@ -34503,10 +34654,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_trial_extended:
-    description: <p class="mb-2">Trial Extension</p>
+    description: |
+      Trial Extension
     post:
       summary: Trial Extension
-      description: <p class="mb-2">Trial Extension</p>
+      description: |
+        Trial Extension
       operationId: onSubscription_trial_extendedWebhook
       requestBody:
         description: Payload for subscription_trial_extended event
@@ -34519,10 +34672,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_deleted:
-    description: <p class="mb-2">Triggered when a subscription is deleted.</p>
+    description: |
+      Triggered when a subscription is deleted.
     post:
       summary: Triggered when a subscription is deleted.
-      description: <p class="mb-2">Triggered when a subscription is deleted.</p>
+      description: |
+        Triggered when a subscription is deleted.
       operationId: onSubscription_deletedWebhook
       requestBody:
         description: Payload for subscription_deleted event
@@ -34535,10 +34690,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   invoice_generated:
-    description: <p class="mb-2">Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.</p>
+    description: |
+      Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.
     post:
       summary: Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.
-      description: <p class="mb-2">Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.</p>
+      description: |
+        Event triggered when a new invoice is created except when created with status as pending. For pending invoices, this event is triggered when the invoice is closed.
       operationId: onInvoice_generatedWebhook
       requestBody:
         description: Payload for invoice_generated event
@@ -34551,10 +34708,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_cancelling:
-    description: <p class="mb-2">Triggered 6 days prior to the scheduled cancellation date.</p>
+    description: |
+      Triggered 6 days prior to the scheduled cancellation date.
     post:
       summary: Triggered 6 days prior to the scheduled cancellation date.
-      description: <p class="mb-2">Triggered 6 days prior to the scheduled cancellation date.</p>
+      description: |
+        Triggered 6 days prior to the scheduled cancellation date.
       operationId: onSubscription_cancellingWebhook
       requestBody:
         description: Payload for subscription_cancelling event
@@ -34567,10 +34726,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_renewed:
-    description: <p class="mb-2">Triggered when the subscription is renewed from the current term.</p>
+    description: |
+      Triggered when the subscription is renewed from the current term.
     post:
       summary: Triggered when the subscription is renewed from the current term.
-      description: <p class="mb-2">Triggered when the subscription is renewed from the current term.</p>
+      description: |
+        Triggered when the subscription is renewed from the current term.
       operationId: onSubscription_renewedWebhook
       requestBody:
         description: Payload for subscription_renewed event
@@ -34583,10 +34744,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_scheduled_cancellation_removed:
-    description: <p class="mb-2">Triggered when scheduled cancellation is removed for the subscription.</p>
+    description: |
+      Triggered when scheduled cancellation is removed for the subscription.
     post:
       summary: Triggered when scheduled cancellation is removed for the subscription.
-      description: <p class="mb-2">Triggered when scheduled cancellation is removed for the subscription.</p>
+      description: |
+        Triggered when scheduled cancellation is removed for the subscription.
       operationId: onSubscription_scheduled_cancellation_removedWebhook
       requestBody:
         description: Payload for subscription_scheduled_cancellation_removed event
@@ -34599,10 +34762,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   payment_refunded:
-    description: <p class="mb-2">Triggered when a payment refund is made.</p>
+    description: |
+      Triggered when a payment refund is made.
     post:
       summary: Triggered when a payment refund is made.
-      description: <p class="mb-2">Triggered when a payment refund is made.</p>
+      description: |
+        Triggered when a payment refund is made.
       operationId: onPayment_refundedWebhook
       requestBody:
         description: Payload for payment_refunded event
@@ -34615,10 +34780,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_changed:
-    description: <p class="mb-2">Triggered when the subscription&#x27;s recurring items are changed.</p>
+    description: |
+      Triggered when the subscription's recurring items are changed.
     post:
       summary: Triggered when the subscription's recurring items are changed.
-      description: <p class="mb-2">Triggered when the subscription&#x27;s recurring items are changed.</p>
+      description: |
+        Triggered when the subscription's recurring items are changed.
       operationId: onSubscription_changedWebhook
       requestBody:
         description: Payload for subscription_changed event
@@ -34631,10 +34798,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   invoice_created:
-    description: <p class="mb-2">Event triggered (in the case of metered billing) when a &quot;Pending&quot; invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the &quot;Notify for Pending Invoices&quot; option is enabled.</p>
+    description: |
+      Event triggered (in the case of metered billing) when a "Pending" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the "Notify for Pending Invoices" option is enabled.
     post:
       summary: Event triggered (in the case of metered billing) when a "Pending" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the “Notify for Pending Invoices” option is enabled.
-      description: <p class="mb-2">Event triggered (in the case of metered billing) when a &quot;Pending&quot; invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the &quot;Notify for Pending Invoices&quot; option is enabled.</p>
+      description: |
+        Event triggered (in the case of metered billing) when a "Pending" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the "Notify for Pending Invoices" option is enabled.
       operationId: onInvoice_createdWebhook
       requestBody:
         description: Payload for invoice_created event
@@ -34647,10 +34816,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   transaction_created:
-    description: <p class="mb-2">Triggered when a transaction is recorded.</p>
+    description: |
+      Triggered when a transaction is recorded.
     post:
       summary: Triggered when a transaction is recorded.
-      description: <p class="mb-2">Triggered when a transaction is recorded.</p>
+      description: |
+        Triggered when a transaction is recorded.
       operationId: onTransaction_createdWebhook
       requestBody:
         description: Payload for transaction_created event
@@ -34663,10 +34834,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_cancelled:
-    description: <p class="mb-2">Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as &#x27;cancel_reason&#x27;.</p>
+    description: |
+      Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.
     post:
       summary: Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.
-      description: <p class="mb-2">Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as &#x27;cancel_reason&#x27;.</p>
+      description: |
+        Triggered when the subscription is cancelled. If it is cancelled due to non payment or because the card details are not present, the subscription will have the possible reason as 'cancel_reason'.
       operationId: onSubscription_cancelledWebhook
       requestBody:
         description: Payload for subscription_cancelled event
@@ -34679,10 +34852,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   invoice_deleted:
-    description: <p class="mb-2">Event triggered when an invoice is deleted.</p>
+    description: |
+      Event triggered when an invoice is deleted.
     post:
       summary: Event triggered when an invoice is deleted.
-      description: <p class="mb-2">Event triggered when an invoice is deleted.</p>
+      description: |
+        Event triggered when an invoice is deleted.
       operationId: onInvoice_deletedWebhook
       requestBody:
         description: Payload for invoice_deleted event
@@ -34695,10 +34870,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   payment_failed:
-    description: <p class="mb-2">Triggered when the payment collection fails.</p>
+    description: |
+      Triggered when the payment collection fails.
     post:
       summary: Triggered when the payment collection fails.
-      description: <p class="mb-2">Triggered when the payment collection fails.</p>
+      description: |
+        Triggered when the payment collection fails.
       operationId: onPayment_failedWebhook
       requestBody:
         description: Payload for payment_failed event
@@ -34711,10 +34888,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   card_expired:
-    description: <p class="mb-2">Triggered when the card for a customer has expired.</p>
+    description: |
+      Triggered when the card for a customer has expired.
     post:
       summary: Triggered when the card for a customer has expired.
-      description: <p class="mb-2">Triggered when the card for a customer has expired.</p>
+      description: |
+        Triggered when the card for a customer has expired.
       operationId: onCard_expiredWebhook
       requestBody:
         description: Payload for card_expired event
@@ -34727,10 +34906,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   invoice_updated:
-    description: <p class="mb-2">Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.</p>
+    description: |
+      Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.
     post:
       summary: Triggered when you make the following changes to a pending invoice - add a charge, add a non-recurring addon, or delete a line item.
-      description: <p class="mb-2">Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.</p>
+      description: |
+        Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.
       operationId: onInvoice_updatedWebhook
       requestBody:
         description: Payload for invoice_updated event
@@ -34743,10 +34924,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   payment_succeeded:
-    description: <p class="mb-2">Triggered when the payment is successfully collected.</p>
+    description: |
+      Triggered when the payment is successfully collected.
     post:
       summary: Triggered when the payment is successfully collected.
-      description: <p class="mb-2">Triggered when the payment is successfully collected.</p>
+      description: |
+        Triggered when the payment is successfully collected.
       operationId: onPayment_succeededWebhook
       requestBody:
         description: Payload for payment_succeeded event
@@ -34759,10 +34942,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   card_updated:
-    description: <p class="mb-2">Triggered when the card is updated for a customer.</p>
+    description: |
+      Triggered when the card is updated for a customer.
     post:
       summary: Triggered when the card is updated for a customer.
-      description: <p class="mb-2">Triggered when the card is updated for a customer.</p>
+      description: |
+        Triggered when the card is updated for a customer.
       operationId: onCard_updatedWebhook
       requestBody:
         description: Payload for card_updated event
@@ -34775,10 +34960,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   card_expiring:
-    description: <p class="mb-2">Triggered when the customer&#x27;s credit card is expiring soon. Triggered 30 days before the expiry date.</p>
+    description: |
+      Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.
     post:
       summary: Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.
-      description: <p class="mb-2">Triggered when the customer&#x27;s credit card is expiring soon. Triggered 30 days before the expiry date.</p>
+      description: |
+        Triggered when the customer's credit card is expiring soon. Triggered 30 days before the expiry date.
       operationId: onCard_expiringWebhook
       requestBody:
         description: Payload for card_expiring event
@@ -34791,10 +34978,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   card_deleted:
-    description: <p class="mb-2">Triggered when a card is deleted for a customer.</p>
+    description: |
+      Triggered when a card is deleted for a customer.
     post:
       summary: Triggered when a card is deleted for a customer.
-      description: <p class="mb-2">Triggered when a card is deleted for a customer.</p>
+      description: |
+        Triggered when a card is deleted for a customer.
       operationId: onCard_deletedWebhook
       requestBody:
         description: Payload for card_deleted event
@@ -34807,10 +34996,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   customer_created:
-    description: <p class="mb-2">Triggered when a customer is created.</p>
+    description: |
+      Triggered when a customer is created.
     post:
       summary: Triggered when a customer is created.
-      description: <p class="mb-2">Triggered when a customer is created.</p>
+      description: |
+        Triggered when a customer is created.
       operationId: onCustomer_createdWebhook
       requestBody:
         description: Payload for customer_created event
@@ -34823,10 +35014,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_shipping_address_updated:
-    description: <p class="mb-2">Triggered when shipping address is added or updated for a subscription.</p>
+    description: |
+      Triggered when shipping address is added or updated for a subscription.
     post:
       summary: Triggered when shipping address is added or updated for a subscription.
-      description: <p class="mb-2">Triggered when shipping address is added or updated for a subscription.</p>
+      description: |
+        Triggered when shipping address is added or updated for a subscription.
       operationId: onSubscription_shipping_address_updatedWebhook
       requestBody:
         description: Payload for subscription_shipping_address_updated event
@@ -34839,10 +35032,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   customer_changed:
-    description: <p class="mb-2">Triggered when a customer is changed.</p>
+    description: |
+      Triggered when a customer is changed.
     post:
       summary: Triggered when a customer is changed.
-      description: <p class="mb-2">Triggered when a customer is changed.</p>
+      description: |
+        Triggered when a customer is changed.
       operationId: onCustomer_changedWebhook
       requestBody:
         description: Payload for customer_changed event
@@ -34855,10 +35050,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_renewal_reminder:
-    description: <p class="mb-2">Triggered 3 days before each subscription&#x27;s renewal.</p>
+    description: |
+      Triggered 3 days before each subscription's renewal.
     post:
       summary: Triggered 3 days before each subscription's renewal.
-      description: <p class="mb-2">Triggered 3 days before each subscription&#x27;s renewal.</p>
+      description: |
+        Triggered 3 days before each subscription's renewal.
       operationId: onSubscription_renewal_reminderWebhook
       requestBody:
         description: Payload for subscription_renewal_reminder event
@@ -34871,10 +35068,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_started:
-    description: <p class="mb-2">Triggered when a &#x27;future&#x27; subscription gets started.</p>
+    description: |
+      Triggered when a 'future' subscription gets started.
     post:
       summary: Triggered when a 'future' subscription gets started.
-      description: <p class="mb-2">Triggered when a &#x27;future&#x27; subscription gets started.</p>
+      description: |
+        Triggered when a 'future' subscription gets started.
       operationId: onSubscription_startedWebhook
       requestBody:
         description: Payload for subscription_started event
@@ -34887,10 +35086,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   transaction_deleted:
-    description: <p class="mb-2">Triggered when a transaction is deleted.</p>
+    description: |
+      Triggered when a transaction is deleted.
     post:
       summary: Triggered when a transaction is deleted.
-      description: <p class="mb-2">Triggered when a transaction is deleted.</p>
+      description: |
+        Triggered when a transaction is deleted.
       operationId: onTransaction_deletedWebhook
       requestBody:
         description: Payload for transaction_deleted event
@@ -34903,10 +35104,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_trial_ending:
-    description: <p class="mb-2">Triggered 6 days prior to the trial period&#x27;s end date.</p>
+    description: |
+      Triggered 6 days prior to the trial period's end date.
     post:
       summary: Triggered 6 days prior to the trial period's end date.
-      description: <p class="mb-2">Triggered 6 days prior to the trial period&#x27;s end date.</p>
+      description: |
+        Triggered 6 days prior to the trial period's end date.
       operationId: onSubscription_trial_endingWebhook
       requestBody:
         description: Payload for subscription_trial_ending event
@@ -34919,10 +35122,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   payment_initiated:
-    description: <p class="mb-2">Triggered when a payment is initiated via direct debit.</p>
+    description: |
+      Triggered when a payment is initiated via direct debit.
     post:
       summary: Triggered when a payment is initiated via direct debit.
-      description: <p class="mb-2">Triggered when a payment is initiated via direct debit.</p>
+      description: |
+        Triggered when a payment is initiated via direct debit.
       operationId: onPayment_initiatedWebhook
       requestBody:
         description: Payload for payment_initiated event
@@ -34935,10 +35140,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   customer_deleted:
-    description: <p class="mb-2">Triggered when a customer is deleted.</p>
+    description: |
+      Triggered when a customer is deleted.
     post:
       summary: Triggered when a customer is deleted.
-      description: <p class="mb-2">Triggered when a customer is deleted.</p>
+      description: |
+        Triggered when a customer is deleted.
       operationId: onCustomer_deletedWebhook
       requestBody:
         description: Payload for customer_deleted event
@@ -34951,10 +35158,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   subscription_activated:
-    description: <p class="mb-2">Triggered after the subscription has been moved from &quot;Trial&quot; to &quot;Active&quot; state.</p>
+    description: |
+      Triggered after the subscription has been moved from "Trial" to "Active" state.
     post:
       summary: Triggered after the subscription has been moved from "Trial" to "Active" state.
-      description: <p class="mb-2">Triggered after the subscription has been moved from &quot;Trial&quot; to &quot;Active&quot; state.</p>
+      description: |
+        Triggered after the subscription has been moved from "Trial" to "Active" state.
       operationId: onSubscription_activatedWebhook
       requestBody:
         description: Payload for subscription_activated event
@@ -34967,10 +35176,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   card_added:
-    description: <p class="mb-2">Triggered when a card is added for a customer.</p>
+    description: |
+      Triggered when a card is added for a customer.
     post:
       summary: Triggered when a card is added for a customer.
-      description: <p class="mb-2">Triggered when a card is added for a customer.</p>
+      description: |
+        Triggered when a card is added for a customer.
       operationId: onCard_addedWebhook
       requestBody:
         description: Payload for card_added event
@@ -34983,10 +35194,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   refund_initiated:
-    description: <p class="mb-2">Triggered when a refund is initiated via direct debit.</p>
+    description: |
+      Triggered when a refund is initiated via direct debit.
     post:
       summary: Triggered when a refund is initiated via direct debit.
-      description: <p class="mb-2">Triggered when a refund is initiated via direct debit.</p>
+      description: |
+        Triggered when a refund is initiated via direct debit.
       operationId: onRefund_initiatedWebhook
       requestBody:
         description: Payload for refund_initiated event
