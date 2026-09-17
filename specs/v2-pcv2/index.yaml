@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-15.e59cf96f5a3daf9d3db3eb6f59e5600f3f7a0a5b
-  x-cb-product-catalog-version: 2
+  version: 2026-09-16.64e45c01503bc48e74ce25f1d69ab514bbbfda67
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -1097,7 +1097,7 @@ paths:
                     type:
                       type: string
                       deprecated: false
-                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* kakao_pay - Payments made via Kakao Pay.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* touch_n_go - Payments made via Touch 'n Go.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
+                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* nequi - Payments made via Nequi.\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* rakuten_pay - Payments made via Rakuten Pay.\n* ovo - Payments made via OVO.\n* mercado_pago - Payments made via Mercado Pago.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* picpay - Payments made via PicPay.\n* kakao_pay - Payments made via Kakao Pay.\n* fpx - Payments made via FPX.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* p24 - Payments made via Przelewy24 (P24).\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* affirm_pay - Payments made via Affirm Pay.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* thai_qr - Payments made via Thai QR.\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* wero - Payments made via Wero.\n* touch_n_go - Payments made via Touch 'n Go.\n* momo - Payments made via MoMo.\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* nupay - Payments made via NuPay.\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
                       enum:
                         - card
                         - paypal_express_checkout
@@ -1278,7 +1278,7 @@ paths:
                     payment_method_type:
                       type: string
                       deprecated: false
-                      description: "The payment method type.  \n**Default value**\n\n* `card`\n\n* card - card\n* twint - Payments made via Twint\n* dotpay - dotpay\n* faster_payments - Faster Payments\n* upi - upi\n* kbc_payment_button - KBC Payment Button\n* klarna - Payments made via Klarna.\n* payme - Payments made via PayMe\n* google_pay - google_pay\n* paypal_express_checkout - paypal_express_checkout\n* pix - Pix\n* klarna_pay_now - Klarna Pay Now\n* ideal - ideal\n* boleto - boleto\n* wechat_pay - Payments made via WeChat Pay.\n* after_pay - Payments made via Afterpay\n* grab_pay - Payments made via GrabPay\n* direct_debit - direct_debit\n* sepa_instant_transfer - Sepa Instant Transfer\n* bancontact - bancontact\n* touch_n_go - Payments made via Touch 'n Go.\n* qpay - Payments made via Qpay.\n* kakao_pay - Payments made via Kakao Pay.\n* dana - Payments made via Dana.\n* south_korean_cards - Payments made via South Korean Cards\n* swish - Payments made via Swish\n* go_pay - Payments made via GoPay\n* trustly - Trustly\n* naver_pay - Payments made via Naver Pay.\n* stablecoin - Payments made via Stablecoin.\n* venmo - Venmo\n* alipay - Payments made via Alipay.\n* tamara - Payments made via Tamara.\n* pay_to - PayTo\n* pay_co - Payments made via PayCo\n* cash_app_pay - Payments made via Cash App Pay.\n* alipay_hk - Payments made via Alipay HK.\n* netbanking_emandates - netbanking_emandates\n* paypay - PayPay\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* electronic_payment_standard - Electronic Payment Standard\n* pay_by_bank - Pay By Bank\n* apple_pay - apple_pay\n* online_banking_poland - Online Banking Poland\n* gcash - Payments made via GCash.\n* giropay - giropay\n* sofort - sofort\n* amazon_payments - Amazon Payments\n* revolut_pay - Payments made via Revolut Pay.\n"
+                      description: "The payment method type.  \n**Default value**\n\n* `card`\n\n* card - card\n* twint - Payments made via Twint\n* dotpay - dotpay\n* faster_payments - Faster Payments\n* upi - upi\n* kbc_payment_button - KBC Payment Button\n* klarna - Payments made via Klarna.\n* payme - Payments made via PayMe\n* google_pay - google_pay\n* paypal_express_checkout - paypal_express_checkout\n* pix - Pix\n* klarna_pay_now - Klarna Pay Now\n* ideal - ideal\n* picpay - Payments made via PicPay.\n* ovo - Payments made via OVO.\n* boleto - boleto\n* wechat_pay - Payments made via WeChat Pay.\n* after_pay - Payments made via Afterpay\n* grab_pay - Payments made via GrabPay\n* mercado_pago - Payments made via Mercado Pago.\n* direct_debit - direct_debit\n* sepa_instant_transfer - Sepa Instant Transfer\n* bancontact - bancontact\n* touch_n_go - Payments made via Touch 'n Go.\n* qpay - Payments made via Qpay.\n* momo - Payments made via MoMo.\n* affirm_pay - Payments made via Affirm Pay.\n* kakao_pay - Payments made via Kakao Pay.\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* south_korean_cards - Payments made via South Korean Cards\n* swish - Payments made via Swish\n* thai_qr - Payments made via Thai QR.\n* go_pay - Payments made via GoPay\n* trustly - Trustly\n* naver_pay - Payments made via Naver Pay.\n* stablecoin - Payments made via Stablecoin.\n* venmo - Venmo\n* alipay - Payments made via Alipay.\n* tamara - Payments made via Tamara.\n* pay_to - PayTo\n* pay_co - Payments made via PayCo\n* cash_app_pay - Payments made via Cash App Pay.\n* rakuten_pay - Payments made via Rakuten Pay.\n* alipay_hk - Payments made via Alipay HK.\n* netbanking_emandates - netbanking_emandates\n* nequi - Payments made via Nequi.\n* paypay - PayPay\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* p24 - Payments made via Przelewy24 (P24).\n* electronic_payment_standard - Electronic Payment Standard\n* wero - Payments made via Wero.\n* pay_by_bank - Pay By Bank\n* apple_pay - apple_pay\n* online_banking_poland - Online Banking Poland\n* gcash - Payments made via GCash.\n* nupay - Payments made via NuPay.\n* giropay - giropay\n* sofort - sofort\n* amazon_payments - Amazon Payments\n* fpx - Payments made via FPX.\n* revolut_pay - Payments made via Revolut Pay.\n"
                       enum:
                         - card
                         - ideal
@@ -2959,11 +2959,14 @@ paths:
                         * swish - Payments made via Swish
                         * after_pay - Payments made via Afterpay
                         * netbanking_emandates - netbanking_emandates
+                        * nequi - Payments made via Nequi.
                         * grab_pay - Payments made via GrabPay
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
                         * dotpay - dotpay
+                        * mercado_pago - Payments made via Mercado Pago.
                         * faster_payments - Faster Payments
+                        * p24 - Payments made via Przelewy24 (P24).
                         * upi - upi
                         * kbc_payment_button - KBC Payment Button
                         * electronic_payment_standard - Electronic Payment Standard
@@ -2972,7 +2975,9 @@ paths:
                         * direct_debit - direct_debit
                         * sepa_instant_transfer - Sepa Instant Transfer
                         * bancontact - bancontact
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Payments made via GoPay
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * touch_n_go - Payments made via Touch 'n Go.
                         * google_pay - google_pay
@@ -2982,19 +2987,26 @@ paths:
                         * trustly - Trustly
                         * gcash - Payments made via GCash.
                         * naver_pay - Payments made via Naver Pay.
+                        * nupay - Payments made via NuPay.
                         * stablecoin - Payments made via Stablecoin.
                         * giropay - giropay
                         * paypal_express_checkout - paypal_express_checkout
                         * pix - Pix
                         * venmo - Venmo
                         * klarna_pay_now - Klarna Pay Now
+                        * momo - Payments made via MoMo.
                         * alipay - Payments made via Alipay.
                         * sofort - sofort
                         * amazon_payments - Amazon Payments
+                        * affirm_pay - Payments made via Affirm Pay.
                         * tamara - Payments made via Tamara.
                         * ideal - ideal
                         * kakao_pay - Payments made via Kakao Pay.
+                        * picpay - Payments made via PicPay.
+                        * fpx - Payments made via FPX.
+                        * blik - Payments made via BLIK.
                         * pay_to - PayTo
+                        * ovo - Payments made via OVO.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * boleto - boleto
@@ -3002,6 +3014,7 @@ paths:
                         * revolut_pay - Payments made via Revolut Pay.
                         * wechat_pay - Payments made via WeChat Pay.
                         * cash_app_pay - Payments made via Cash App Pay.
+                        * rakuten_pay - Payments made via Rakuten Pay.
                       enum:
                         - card
                         - ideal
@@ -6003,7 +6016,6 @@ paths:
                         - fpx
                         - wero
                         - p24
-                        - affirm_pay
                       example: null
                     reference_number:
                       type: string
@@ -7615,7 +7627,7 @@ paths:
                     payment_method_type:
                       type: string
                       deprecated: false
-                      description: "The payment method type.  \n**Default value**\n\n* `card`\n\n* alipay_hk - Payments made via Alipay HK.\n* card - card\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* after_pay - Payments made via Afterpay\n* netbanking_emandates - netbanking_emandates\n* grab_pay - Payments made via GrabPay\n* paypay - PayPay\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* dotpay - dotpay\n* faster_payments - Faster Payments\n* upi - upi\n* kbc_payment_button - KBC Payment Button\n* electronic_payment_standard - Electronic Payment Standard\n* klarna - Payments made via Klarna.\n* payme - Payments made via PayMe\n* direct_debit - direct_debit\n* sepa_instant_transfer - Sepa Instant Transfer\n* bancontact - bancontact\n* go_pay - Payments made via GoPay\n* pay_by_bank - Pay By Bank\n* touch_n_go - Payments made via Touch 'n Go.\n* google_pay - google_pay\n* apple_pay - apple_pay\n* qpay - Payments made via Qpay.\n* online_banking_poland - Online Banking Poland\n* trustly - Trustly\n* gcash - Payments made via GCash.\n* naver_pay - Payments made via Naver Pay.\n* stablecoin - Payments made via Stablecoin.\n* giropay - giropay\n* paypal_express_checkout - paypal_express_checkout\n* pix - Pix\n* venmo - Venmo\n* klarna_pay_now - Klarna Pay Now\n* alipay - Payments made via Alipay.\n* sofort - sofort\n* amazon_payments - Amazon Payments\n* tamara - Payments made via Tamara.\n* ideal - ideal\n* kakao_pay - Payments made via Kakao Pay.\n* pay_to - PayTo\n* dana - Payments made via Dana.\n* south_korean_cards - Payments made via South Korean Cards\n* boleto - boleto\n* pay_co - Payments made via PayCo\n* revolut_pay - Payments made via Revolut Pay.\n* wechat_pay - Payments made via WeChat Pay.\n* cash_app_pay - Payments made via Cash App Pay.\n"
+                      description: "The payment method type.  \n**Default value**\n\n* `card`\n\n* alipay_hk - Payments made via Alipay HK.\n* card - card\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* after_pay - Payments made via Afterpay\n* netbanking_emandates - netbanking_emandates\n* nequi - Payments made via Nequi.\n* grab_pay - Payments made via GrabPay\n* paypay - PayPay\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* dotpay - dotpay\n* mercado_pago - Payments made via Mercado Pago.\n* faster_payments - Faster Payments\n* p24 - Payments made via Przelewy24 (P24).\n* upi - upi\n* kbc_payment_button - KBC Payment Button\n* electronic_payment_standard - Electronic Payment Standard\n* klarna - Payments made via Klarna.\n* payme - Payments made via PayMe\n* direct_debit - direct_debit\n* sepa_instant_transfer - Sepa Instant Transfer\n* bancontact - bancontact\n* thai_qr - Payments made via Thai QR.\n* go_pay - Payments made via GoPay\n* wero - Payments made via Wero.\n* pay_by_bank - Pay By Bank\n* touch_n_go - Payments made via Touch 'n Go.\n* google_pay - google_pay\n* apple_pay - apple_pay\n* qpay - Payments made via Qpay.\n* online_banking_poland - Online Banking Poland\n* trustly - Trustly\n* gcash - Payments made via GCash.\n* naver_pay - Payments made via Naver Pay.\n* nupay - Payments made via NuPay.\n* stablecoin - Payments made via Stablecoin.\n* giropay - giropay\n* paypal_express_checkout - paypal_express_checkout\n* pix - Pix\n* venmo - Venmo\n* klarna_pay_now - Klarna Pay Now\n* momo - Payments made via MoMo.\n* alipay - Payments made via Alipay.\n* sofort - sofort\n* amazon_payments - Amazon Payments\n* affirm_pay - Payments made via Affirm Pay.\n* tamara - Payments made via Tamara.\n* ideal - ideal\n* kakao_pay - Payments made via Kakao Pay.\n* picpay - Payments made via PicPay.\n* fpx - Payments made via FPX.\n* blik - Payments made via BLIK.\n* pay_to - PayTo\n* ovo - Payments made via OVO.\n* dana - Payments made via Dana.\n* south_korean_cards - Payments made via South Korean Cards\n* boleto - boleto\n* pay_co - Payments made via PayCo\n* revolut_pay - Payments made via Revolut Pay.\n* wechat_pay - Payments made via WeChat Pay.\n* cash_app_pay - Payments made via Cash App Pay.\n* rakuten_pay - Payments made via Rakuten Pay.\n"
                       enum:
                         - card
                         - ideal
@@ -9767,19 +9779,26 @@ paths:
                         * pix - Pix
                         * klarna_pay_now - Klarna Pay Now
                         * ideal - ideal
+                        * picpay - Payments made via PicPay.
+                        * ovo - Payments made via OVO.
                         * boleto - boleto
                         * wechat_pay - Payments made via WeChat Pay.
                         * after_pay - Payments made via Afterpay
                         * grab_pay - Payments made via GrabPay
+                        * mercado_pago - Payments made via Mercado Pago.
                         * direct_debit - direct_debit
                         * sepa_instant_transfer - Sepa Instant Transfer
                         * bancontact - bancontact
                         * touch_n_go - Payments made via Touch 'n Go.
                         * qpay - Payments made via Qpay.
+                        * momo - Payments made via MoMo.
+                        * affirm_pay - Payments made via Affirm Pay.
                         * kakao_pay - Payments made via Kakao Pay.
+                        * blik - Payments made via BLIK.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * swish - Payments made via Swish
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Payments made via GoPay
                         * trustly - Trustly
                         * naver_pay - Payments made via Naver Pay.
@@ -9790,18 +9809,24 @@ paths:
                         * pay_to - PayTo
                         * pay_co - Payments made via PayCo
                         * cash_app_pay - Payments made via Cash App Pay.
+                        * rakuten_pay - Payments made via Rakuten Pay.
                         * alipay_hk - Payments made via Alipay HK.
                         * netbanking_emandates - netbanking_emandates
+                        * nequi - Payments made via Nequi.
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
+                        * p24 - Payments made via Przelewy24 (P24).
                         * electronic_payment_standard - Electronic Payment Standard
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * apple_pay - apple_pay
                         * online_banking_poland - Online Banking Poland
                         * gcash - Payments made via GCash.
+                        * nupay - Payments made via NuPay.
                         * giropay - giropay
                         * sofort - sofort
                         * amazon_payments - Amazon Payments
+                        * fpx - Payments made via FPX.
                         * revolut_pay - Payments made via Revolut Pay.
                       enum:
                         - card
@@ -15610,7 +15635,7 @@ paths:
                     type:
                       type: string
                       deprecated: false
-                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* touch_n_go - Payments made via Touch 'n Go.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* go_pay - Payments made via GoPay\n* dana - Payments made via Dana.\n* bancontact - Payments made via Bancontact Card.\n* dotpay - Payments made via Dotpay.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* upi - UPI Payments.\n* google_pay - Payments made via Google Pay.\n* revolut_pay - Payments made via Revolut Pay.\n* amazon_payments - Payments made via Amazon Payments.\n* klarna - Payments made via Klarna.\n* gcash - Payments made via GCash.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* ideal - Payments made via iDEAL.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* stablecoin - Payments made via Stablecoin.\n* sofort - Payments made via Sofort.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* twint - Payments made via Twint\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* payme - Payments made via PayMe\n* online_banking_poland - Payments made via Online Banking Poland\n* pay_to - Payments made via PayTo\n* unionpay - Payments made via UnionPay.\n* faster_payments - Payments made via Faster Payments\n* pay_co - Payments made via PayCo\n* swish - Payments made via Swish\n* trustly - Trustly\n* venmo - Payments made via Venmo\n* kbc_payment_button - KBC Payment Button\n* giropay - Payments made via giropay.\n* kakao_pay - Payments made via Kakao Pay.\n* alipay_hk - Payments made via Alipay HK.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* cash_app_pay - Payments made via Cash App Pay.\n"
+                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* touch_n_go - Payments made via Touch 'n Go.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* rakuten_pay - Payments made via Rakuten Pay.\n* ovo - Payments made via OVO.\n* momo - Payments made via MoMo.\n* mercado_pago - Payments made via Mercado Pago.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* blik - Payments made via BLIK.\n* go_pay - Payments made via GoPay\n* dana - Payments made via Dana.\n* bancontact - Payments made via Bancontact Card.\n* dotpay - Payments made via Dotpay.\n* p24 - Payments made via Przelewy24 (P24).\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* nequi - Payments made via Nequi.\n* upi - UPI Payments.\n* google_pay - Payments made via Google Pay.\n* revolut_pay - Payments made via Revolut Pay.\n* amazon_payments - Payments made via Amazon Payments.\n* klarna - Payments made via Klarna.\n* gcash - Payments made via GCash.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* ideal - Payments made via iDEAL.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* stablecoin - Payments made via Stablecoin.\n* sofort - Payments made via Sofort.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* twint - Payments made via Twint\n* affirm_pay - Payments made via Affirm Pay.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* payme - Payments made via PayMe\n* online_banking_poland - Payments made via Online Banking Poland\n* pay_to - Payments made via PayTo\n* unionpay - Payments made via UnionPay.\n* faster_payments - Payments made via Faster Payments\n* nupay - Payments made via NuPay.\n* pay_co - Payments made via PayCo\n* thai_qr - Payments made via Thai QR.\n* swish - Payments made via Swish\n* picpay - Payments made via PicPay.\n* trustly - Trustly\n* venmo - Payments made via Venmo\n* kbc_payment_button - KBC Payment Button\n* giropay - Payments made via giropay.\n* kakao_pay - Payments made via Kakao Pay.\n* alipay_hk - Payments made via Alipay HK.\n* fpx - Payments made via FPX.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* wero - Payments made via Wero.\n* cash_app_pay - Payments made via Cash App Pay.\n"
                       enum:
                         - card
                         - paypal_express_checkout
@@ -18894,7 +18919,7 @@ paths:
                     type:
                       type: string
                       deprecated: false
-                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* kakao_pay - Payments made via Kakao Pay.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* touch_n_go - Payments made via Touch 'n Go.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
+                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* nequi - Payments made via Nequi.\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* rakuten_pay - Payments made via Rakuten Pay.\n* ovo - Payments made via OVO.\n* mercado_pago - Payments made via Mercado Pago.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* picpay - Payments made via PicPay.\n* kakao_pay - Payments made via Kakao Pay.\n* fpx - Payments made via FPX.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* p24 - Payments made via Przelewy24 (P24).\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* affirm_pay - Payments made via Affirm Pay.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* thai_qr - Payments made via Thai QR.\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* wero - Payments made via Wero.\n* touch_n_go - Payments made via Touch 'n Go.\n* momo - Payments made via MoMo.\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* nupay - Payments made via NuPay.\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
                       enum:
                         - card
                         - paypal_express_checkout
@@ -19076,7 +19101,7 @@ paths:
                     payment_method_type:
                       type: string
                       deprecated: false
-                      description: "The payment method type.  \n**Default value**\n\n* `card`\n\n* card - card\n* twint - Payments made via Twint\n* dotpay - dotpay\n* faster_payments - Faster Payments\n* upi - upi\n* kbc_payment_button - KBC Payment Button\n* klarna - Payments made via Klarna.\n* payme - Payments made via PayMe\n* google_pay - google_pay\n* paypal_express_checkout - paypal_express_checkout\n* pix - Pix\n* klarna_pay_now - Klarna Pay Now\n* ideal - ideal\n* boleto - boleto\n* wechat_pay - Payments made via WeChat Pay.\n* after_pay - Payments made via Afterpay\n* grab_pay - Payments made via GrabPay\n* direct_debit - direct_debit\n* sepa_instant_transfer - Sepa Instant Transfer\n* bancontact - bancontact\n* touch_n_go - Payments made via Touch 'n Go.\n* qpay - Payments made via Qpay.\n* kakao_pay - Payments made via Kakao Pay.\n* dana - Payments made via Dana.\n* south_korean_cards - Payments made via South Korean Cards\n* swish - Payments made via Swish\n* go_pay - Payments made via GoPay\n* trustly - Trustly\n* naver_pay - Payments made via Naver Pay.\n* stablecoin - Payments made via Stablecoin.\n* venmo - Venmo\n* alipay - Payments made via Alipay.\n* tamara - Payments made via Tamara.\n* pay_to - PayTo\n* pay_co - Payments made via PayCo\n* cash_app_pay - Payments made via Cash App Pay.\n* alipay_hk - Payments made via Alipay HK.\n* netbanking_emandates - netbanking_emandates\n* paypay - PayPay\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* electronic_payment_standard - Electronic Payment Standard\n* pay_by_bank - Pay By Bank\n* apple_pay - apple_pay\n* online_banking_poland - Online Banking Poland\n* gcash - Payments made via GCash.\n* giropay - giropay\n* sofort - sofort\n* amazon_payments - Amazon Payments\n* revolut_pay - Payments made via Revolut Pay.\n"
+                      description: "The payment method type.  \n**Default value**\n\n* `card`\n\n* card - card\n* twint - Payments made via Twint\n* dotpay - dotpay\n* faster_payments - Faster Payments\n* upi - upi\n* kbc_payment_button - KBC Payment Button\n* klarna - Payments made via Klarna.\n* payme - Payments made via PayMe\n* google_pay - google_pay\n* paypal_express_checkout - paypal_express_checkout\n* pix - Pix\n* klarna_pay_now - Klarna Pay Now\n* ideal - ideal\n* picpay - Payments made via PicPay.\n* ovo - Payments made via OVO.\n* boleto - boleto\n* wechat_pay - Payments made via WeChat Pay.\n* after_pay - Payments made via Afterpay\n* grab_pay - Payments made via GrabPay\n* mercado_pago - Payments made via Mercado Pago.\n* direct_debit - direct_debit\n* sepa_instant_transfer - Sepa Instant Transfer\n* bancontact - bancontact\n* touch_n_go - Payments made via Touch 'n Go.\n* qpay - Payments made via Qpay.\n* momo - Payments made via MoMo.\n* affirm_pay - Payments made via Affirm Pay.\n* kakao_pay - Payments made via Kakao Pay.\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* south_korean_cards - Payments made via South Korean Cards\n* swish - Payments made via Swish\n* thai_qr - Payments made via Thai QR.\n* go_pay - Payments made via GoPay\n* trustly - Trustly\n* naver_pay - Payments made via Naver Pay.\n* stablecoin - Payments made via Stablecoin.\n* venmo - Venmo\n* alipay - Payments made via Alipay.\n* tamara - Payments made via Tamara.\n* pay_to - PayTo\n* pay_co - Payments made via PayCo\n* cash_app_pay - Payments made via Cash App Pay.\n* rakuten_pay - Payments made via Rakuten Pay.\n* alipay_hk - Payments made via Alipay HK.\n* netbanking_emandates - netbanking_emandates\n* nequi - Payments made via Nequi.\n* paypay - PayPay\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* p24 - Payments made via Przelewy24 (P24).\n* electronic_payment_standard - Electronic Payment Standard\n* wero - Payments made via Wero.\n* pay_by_bank - Pay By Bank\n* apple_pay - apple_pay\n* online_banking_poland - Online Banking Poland\n* gcash - Payments made via GCash.\n* nupay - Payments made via NuPay.\n* giropay - giropay\n* sofort - sofort\n* amazon_payments - Amazon Payments\n* fpx - Payments made via FPX.\n* revolut_pay - Payments made via Revolut Pay.\n"
                       enum:
                         - card
                         - ideal
@@ -20611,7 +20636,7 @@ paths:
                     type:
                       type: string
                       deprecated: false
-                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* go_pay - Payments made via GoPay\n* dotpay - Payments made via Dotpay.\n* google_pay - Payments made via Google Pay.\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* ideal - Payments made via iDEAL.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* faster_payments - Payments made via Faster Payments\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* giropay - Payments made via giropay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* touch_n_go - Payments made via Touch 'n Go.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* dana - Payments made via Dana.\n* bancontact - Payments made via Bancontact Card.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* online_banking_poland - Payments made via Online Banking Poland\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* kakao_pay - Payments made via Kakao Pay.\n* alipay_hk - Payments made via Alipay HK.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* cash_app_pay - Payments made via Cash App Pay.\n"
+                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* go_pay - Payments made via GoPay\n* dotpay - Payments made via Dotpay.\n* p24 - Payments made via Przelewy24 (P24).\n* nequi - Payments made via Nequi.\n* google_pay - Payments made via Google Pay.\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* ideal - Payments made via iDEAL.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* affirm_pay - Payments made via Affirm Pay.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* faster_payments - Payments made via Faster Payments\n* thai_qr - Payments made via Thai QR.\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* giropay - Payments made via giropay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* wero - Payments made via Wero.\n* touch_n_go - Payments made via Touch 'n Go.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* rakuten_pay - Payments made via Rakuten Pay.\n* ovo - Payments made via OVO.\n* momo - Payments made via MoMo.\n* mercado_pago - Payments made via Mercado Pago.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* bancontact - Payments made via Bancontact Card.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* online_banking_poland - Payments made via Online Banking Poland\n* pay_to - Payments made via PayTo\n* nupay - Payments made via NuPay.\n* pay_co - Payments made via PayCo\n* picpay - Payments made via PicPay.\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* kakao_pay - Payments made via Kakao Pay.\n* alipay_hk - Payments made via Alipay HK.\n* fpx - Payments made via FPX.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* cash_app_pay - Payments made via Cash App Pay.\n"
                       enum:
                         - card
                         - paypal_express_checkout
@@ -20954,6 +20979,7 @@ paths:
                         * kbc_payment_button - KBC Payment Button
                         * klarna - Payments made via Klarna.
                         * payme - Payments made via PayMe
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Payments made via GoPay
                         * google_pay - google_pay
                         * trustly - Trustly
@@ -20966,31 +20992,43 @@ paths:
                         * alipay - Payments made via Alipay.
                         * tamara - Payments made via Tamara.
                         * ideal - ideal
+                        * picpay - Payments made via PicPay.
                         * pay_to - PayTo
+                        * ovo - Payments made via OVO.
                         * boleto - boleto
                         * pay_co - Payments made via PayCo
                         * wechat_pay - Payments made via WeChat Pay.
                         * cash_app_pay - Payments made via Cash App Pay.
+                        * rakuten_pay - Payments made via Rakuten Pay.
                         * alipay_hk - Payments made via Alipay HK.
                         * after_pay - Payments made via Afterpay
                         * netbanking_emandates - netbanking_emandates
+                        * nequi - Payments made via Nequi.
                         * grab_pay - Payments made via GrabPay
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
+                        * mercado_pago - Payments made via Mercado Pago.
+                        * p24 - Payments made via Przelewy24 (P24).
                         * electronic_payment_standard - Electronic Payment Standard
                         * direct_debit - direct_debit
                         * sepa_instant_transfer - Sepa Instant Transfer
                         * bancontact - bancontact
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * touch_n_go - Payments made via Touch 'n Go.
                         * apple_pay - apple_pay
                         * qpay - Payments made via Qpay.
                         * online_banking_poland - Online Banking Poland
                         * gcash - Payments made via GCash.
+                        * nupay - Payments made via NuPay.
                         * giropay - giropay
+                        * momo - Payments made via MoMo.
                         * sofort - sofort
                         * amazon_payments - Amazon Payments
+                        * affirm_pay - Payments made via Affirm Pay.
                         * kakao_pay - Payments made via Kakao Pay.
+                        * fpx - Payments made via FPX.
+                        * blik - Payments made via BLIK.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * revolut_pay - Payments made via Revolut Pay.
@@ -21421,7 +21459,6 @@ paths:
                         - fpx
                         - wero
                         - p24
-                        - affirm_pay
                       example: null
                     reference_number:
                       type: string
@@ -23015,7 +23052,7 @@ paths:
                 payment_method_type:
                   type: string
                   deprecated: false
-                  description: "Type of payment method of the token.\n\n* google_pay - Payments made via Google Pay.\n* pay_co - Payments made via PayCo\n* tamara - Payments made via Tamara.\n* alipay_hk - Payments made via Alipay HK.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* ideal - Payments made via iDEAL.\n* bancontact - Payments made via Bancontact Card.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* trustly - Trustly\n* after_pay - Payments made via Afterpay\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* dotpay - Payments made via Dotpay.\n* giropay - Payments made via giropay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* dana - Payments made via Dana.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* touch_n_go - Payments made via Touch 'n Go.\n* qpay - Payments made via Qpay.\n* amazon_payments - Payments made via Amazon Payments.\n* electronic_payment_standard - Electronic Payment Standard\n* grab_pay - Payments made via GrabPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* upi - UPI Payments.\n* pay_by_bank - Pay By Bank\n* go_pay - Payments made via GoPay\n* swish - Payments made via Swish\n* twint - Payments made via Twint\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* kbc_payment_button - KBC Payment Button\n"
+                  description: "Type of payment method of the token.\n\n* google_pay - Payments made via Google Pay.\n* pay_co - Payments made via PayCo\n* tamara - Payments made via Tamara.\n* alipay_hk - Payments made via Alipay HK.\n* ovo - Payments made via OVO.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* ideal - Payments made via iDEAL.\n* bancontact - Payments made via Bancontact Card.\n* nequi - Payments made via Nequi.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* trustly - Trustly\n* after_pay - Payments made via Afterpay\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* picpay - Payments made via PicPay.\n* dotpay - Payments made via Dotpay.\n* giropay - Payments made via giropay.\n* fpx - Payments made via FPX.\n* sofort - Payments made via Sofort.\n* momo - Payments made via MoMo.\n* gcash - Payments made via GCash.\n* mercado_pago - Payments made via Mercado Pago.\n* nupay - Payments made via NuPay.\n* blik - Payments made via BLIK.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* dana - Payments made via Dana.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* touch_n_go - Payments made via Touch 'n Go.\n* rakuten_pay - Payments made via Rakuten Pay.\n* qpay - Payments made via Qpay.\n* amazon_payments - Payments made via Amazon Payments.\n* electronic_payment_standard - Electronic Payment Standard\n* grab_pay - Payments made via GrabPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* upi - UPI Payments.\n* affirm_pay - Payments made via Affirm Pay.\n* p24 - Payments made via Przelewy24 (P24).\n* thai_qr - Payments made via Thai QR.\n* wero - Payments made via Wero.\n* pay_by_bank - Pay By Bank\n* go_pay - Payments made via GoPay\n* swish - Payments made via Swish\n* twint - Payments made via Twint\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* kbc_payment_button - KBC Payment Button\n"
                   enum:
                     - card
                     - paypal_express_checkout
@@ -24063,7 +24100,7 @@ paths:
                 type:
                   type: string
                   deprecated: false
-                  description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* unionpay - Payments made via UnionPay.\n* google_pay - Payments made via Google Pay.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* pay_to - Payments made via PayTo\n* klarna - Payments made via Klarna.\n* revolut_pay - Payments made via Revolut Pay.\n* naver_pay - Payments made via Naver Pay.\n* giropay - Payments made via giropay.\n* grab_pay - Payments made via GrabPay\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* bancontact - Payments made via Bancontact Card.\n* go_pay - Payments made via GoPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* amazon_payments - Payments made via Amazon Payments.\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* touch_n_go - Payments made via Touch 'n Go.\n* after_pay - Payments made via Afterpay\n* faster_payments - Payments made via Faster Payments\n* alipay_hk - Payments made via Alipay HK.\n* paypay - Payments made via PayPay\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* venmo - Payments made via Venmo\n* ideal - Payments made via iDEAL.\n* trustly - Trustly\n* upi - UPI Payments.\n* kbc_payment_button - KBC Payment Button\n* cash_app_pay - Payments made via Cash App Pay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* south_korean_cards - Payments made via South Korean Cards\n* qpay - Payments made via Qpay.\n* apple_pay - Payments made via Apple Pay.\n* electronic_payment_standard - Electronic Payment Standard\n"
+                  description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* unionpay - Payments made via UnionPay.\n* ovo - Payments made via OVO.\n* google_pay - Payments made via Google Pay.\n* mercado_pago - Payments made via Mercado Pago.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* pay_to - Payments made via PayTo\n* klarna - Payments made via Klarna.\n* revolut_pay - Payments made via Revolut Pay.\n* thai_qr - Payments made via Thai QR.\n* naver_pay - Payments made via Naver Pay.\n* giropay - Payments made via giropay.\n* grab_pay - Payments made via GrabPay\n* rakuten_pay - Payments made via Rakuten Pay.\n* blik - Payments made via BLIK.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* p24 - Payments made via Przelewy24 (P24).\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* nupay - Payments made via NuPay.\n* picpay - Payments made via PicPay.\n* bancontact - Payments made via Bancontact Card.\n* go_pay - Payments made via GoPay\n* nequi - Payments made via Nequi.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* amazon_payments - Payments made via Amazon Payments.\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* touch_n_go - Payments made via Touch 'n Go.\n* after_pay - Payments made via Afterpay\n* faster_payments - Payments made via Faster Payments\n* alipay_hk - Payments made via Alipay HK.\n* momo - Payments made via MoMo.\n* fpx - Payments made via FPX.\n* paypay - Payments made via PayPay\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* venmo - Payments made via Venmo\n* ideal - Payments made via iDEAL.\n* trustly - Trustly\n* upi - UPI Payments.\n* wero - Payments made via Wero.\n* kbc_payment_button - KBC Payment Button\n* cash_app_pay - Payments made via Cash App Pay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* south_korean_cards - Payments made via South Korean Cards\n* qpay - Payments made via Qpay.\n* affirm_pay - Payments made via Affirm Pay.\n* apple_pay - Payments made via Apple Pay.\n* electronic_payment_standard - Electronic Payment Standard\n"
                   enum:
                     - card
                     - paypal_express_checkout
@@ -25751,7 +25788,7 @@ paths:
           description: |
             optional, enumerated string filter
 
-            Type of payment source. Possible values are : card, paypal_express_checkout, amazon_payments, direct_debit, generic, alipay, alipay_hk, gcash, dana, touch_n_go, tamara, qpay, unionpay, apple_pay, wechat_pay, ideal, google_pay, sofort, bancontact, giropay, dotpay, upi, netbanking_emandates.
+            Type of payment source. Possible values are : card, paypal_express_checkout, amazon_payments, direct_debit, generic, alipay, alipay_hk, gcash, ovo, momo, mercado_pago, nequi, nupay, picpay, thai_qr, blik, fpx, wero, p24, affirm_pay, rakuten_pay, dana, touch_n_go, tamara, qpay, unionpay, apple_pay, wechat_pay, ideal, google_pay, sofort, bancontact, giropay, dotpay, upi, netbanking_emandates.
 
             **Supported operators :**
             is, is_not, in, not_in
@@ -27016,11 +27053,14 @@ paths:
                         * swish - Payments made via Swish
                         * after_pay - Payments made via Afterpay
                         * netbanking_emandates - netbanking_emandates
+                        * nequi - Payments made via Nequi.
                         * grab_pay - Payments made via GrabPay
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
                         * dotpay - dotpay
+                        * mercado_pago - Payments made via Mercado Pago.
                         * faster_payments - Faster Payments
+                        * p24 - Payments made via Przelewy24 (P24).
                         * upi - upi
                         * kbc_payment_button - KBC Payment Button
                         * electronic_payment_standard - Electronic Payment Standard
@@ -27029,7 +27069,9 @@ paths:
                         * direct_debit - direct_debit
                         * sepa_instant_transfer - Sepa Instant Transfer
                         * bancontact - bancontact
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Payments made via GoPay
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * touch_n_go - Payments made via Touch 'n Go.
                         * google_pay - google_pay
@@ -27039,19 +27081,26 @@ paths:
                         * trustly - Trustly
                         * gcash - Payments made via GCash.
                         * naver_pay - Payments made via Naver Pay.
+                        * nupay - Payments made via NuPay.
                         * stablecoin - Payments made via Stablecoin.
                         * giropay - giropay
                         * paypal_express_checkout - paypal_express_checkout
                         * pix - Pix
                         * venmo - Venmo
                         * klarna_pay_now - Klarna Pay Now
+                        * momo - Payments made via MoMo.
                         * alipay - Payments made via Alipay.
                         * sofort - sofort
                         * amazon_payments - Amazon Payments
+                        * affirm_pay - Payments made via Affirm Pay.
                         * tamara - Payments made via Tamara.
                         * ideal - ideal
                         * kakao_pay - Payments made via Kakao Pay.
+                        * picpay - Payments made via PicPay.
+                        * fpx - Payments made via FPX.
+                        * blik - Payments made via BLIK.
                         * pay_to - PayTo
+                        * ovo - Payments made via OVO.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * boleto - boleto
@@ -27059,6 +27108,7 @@ paths:
                         * revolut_pay - Payments made via Revolut Pay.
                         * wechat_pay - Payments made via WeChat Pay.
                         * cash_app_pay - Payments made via Cash App Pay.
+                        * rakuten_pay - Payments made via Rakuten Pay.
                       enum:
                         - card
                         - ideal
@@ -27845,7 +27895,7 @@ paths:
                 type:
                   type: string
                   deprecated: false
-                  description: "Type of payment source.\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* touch_n_go - Payments made via Touch 'n Go.\n* unionpay - Payments made via UnionPay.\n* after_pay - Payments made via Afterpay\n* faster_payments - Payments made via Faster Payments\n* google_pay - Payments made via Google Pay.\n* alipay_hk - Payments made via Alipay HK.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* pay_to - Payments made via PayTo\n* klarna - Payments made via Klarna.\n* revolut_pay - Payments made via Revolut Pay.\n* naver_pay - Payments made via Naver Pay.\n* paypay - Payments made via PayPay\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* giropay - Payments made via giropay.\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* grab_pay - Payments made via GrabPay\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* stablecoin - Payments made via Stablecoin.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* venmo - Payments made via Venmo\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* ideal - Payments made via iDEAL.\n* trustly - Trustly\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* upi - UPI Payments.\n* bancontact - Payments made via Bancontact Card.\n* go_pay - Payments made via GoPay\n* kbc_payment_button - KBC Payment Button\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* cash_app_pay - Payments made via Cash App Pay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* amazon_payments - Payments made via Amazon Payments.\n* south_korean_cards - Payments made via South Korean Cards\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* qpay - Payments made via Qpay.\n* apple_pay - Payments made via Apple Pay.\n* electronic_payment_standard - Electronic Payment Standard\n"
+                  description: "Type of payment source.\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* touch_n_go - Payments made via Touch 'n Go.\n* unionpay - Payments made via UnionPay.\n* ovo - Payments made via OVO.\n* after_pay - Payments made via Afterpay\n* faster_payments - Payments made via Faster Payments\n* google_pay - Payments made via Google Pay.\n* alipay_hk - Payments made via Alipay HK.\n* momo - Payments made via MoMo.\n* mercado_pago - Payments made via Mercado Pago.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* fpx - Payments made via FPX.\n* dotpay - Payments made via Dotpay.\n* pay_to - Payments made via PayTo\n* klarna - Payments made via Klarna.\n* revolut_pay - Payments made via Revolut Pay.\n* thai_qr - Payments made via Thai QR.\n* naver_pay - Payments made via Naver Pay.\n* paypay - Payments made via PayPay\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* giropay - Payments made via giropay.\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* grab_pay - Payments made via GrabPay\n* rakuten_pay - Payments made via Rakuten Pay.\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* blik - Payments made via BLIK.\n* stablecoin - Payments made via Stablecoin.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* venmo - Payments made via Venmo\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* p24 - Payments made via Przelewy24 (P24).\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* ideal - Payments made via iDEAL.\n* trustly - Trustly\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* upi - UPI Payments.\n* nupay - Payments made via NuPay.\n* picpay - Payments made via PicPay.\n* bancontact - Payments made via Bancontact Card.\n* go_pay - Payments made via GoPay\n* nequi - Payments made via Nequi.\n* wero - Payments made via Wero.\n* kbc_payment_button - KBC Payment Button\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* cash_app_pay - Payments made via Cash App Pay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* amazon_payments - Payments made via Amazon Payments.\n* south_korean_cards - Payments made via South Korean Cards\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* qpay - Payments made via Qpay.\n* affirm_pay - Payments made via Affirm Pay.\n* apple_pay - Payments made via Apple Pay.\n* electronic_payment_standard - Electronic Payment Standard\n"
                   enum:
                     - card
                     - paypal_express_checkout
@@ -40301,7 +40351,7 @@ paths:
                     type:
                       type: string
                       deprecated: false
-                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* kakao_pay - Payments made via Kakao Pay.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* touch_n_go - Payments made via Touch 'n Go.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
+                      description: "The type of payment method. For more details refer [Update payment method for a customer](/docs/api/customers/update-payment-method-for-a-customer)\nAPI under Customer resource.\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* nequi - Payments made via Nequi.\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* rakuten_pay - Payments made via Rakuten Pay.\n* ovo - Payments made via OVO.\n* mercado_pago - Payments made via Mercado Pago.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* picpay - Payments made via PicPay.\n* kakao_pay - Payments made via Kakao Pay.\n* fpx - Payments made via FPX.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* p24 - Payments made via Przelewy24 (P24).\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* affirm_pay - Payments made via Affirm Pay.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* thai_qr - Payments made via Thai QR.\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* wero - Payments made via Wero.\n* touch_n_go - Payments made via Touch 'n Go.\n* momo - Payments made via MoMo.\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* nupay - Payments made via NuPay.\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
                       enum:
                         - card
                         - paypal_express_checkout
@@ -40499,19 +40549,26 @@ paths:
                         * pix - Pix
                         * klarna_pay_now - Klarna Pay Now
                         * ideal - ideal
+                        * picpay - Payments made via PicPay.
+                        * ovo - Payments made via OVO.
                         * boleto - boleto
                         * wechat_pay - Payments made via WeChat Pay.
                         * after_pay - Payments made via Afterpay
                         * grab_pay - Payments made via GrabPay
+                        * mercado_pago - Payments made via Mercado Pago.
                         * direct_debit - direct_debit
                         * sepa_instant_transfer -
                         * bancontact - bancontact
                         * touch_n_go - Payments made via Touch 'n Go.
                         * qpay - Payments made via Qpay.
+                        * momo - Payments made via MoMo.
+                        * affirm_pay - Payments made via Affirm Pay.
                         * kakao_pay - Payments made via Kakao Pay.
+                        * blik - Payments made via BLIK.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * swish - Payments made via Swish
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Payments made via GoPay
                         * trustly - Trustly
                         * naver_pay - Payments made via Naver Pay.
@@ -40522,18 +40579,24 @@ paths:
                         * pay_to -
                         * pay_co - Payments made via PayCo
                         * cash_app_pay - Payments made via Cash App Pay.
+                        * rakuten_pay - Payments made via Rakuten Pay.
                         * alipay_hk - Payments made via Alipay HK.
                         * netbanking_emandates - netbanking_emandates
+                        * nequi - Payments made via Nequi.
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
+                        * p24 - Payments made via Przelewy24 (P24).
                         * electronic_payment_standard - Electronic Payment Standard
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * apple_pay - apple_pay
                         * online_banking_poland - Online Banking Poland
                         * gcash - Payments made via GCash.
+                        * nupay - Payments made via NuPay.
                         * giropay - giropay
                         * sofort - sofort
                         * amazon_payments - amazon_payments
+                        * fpx - Payments made via FPX.
                         * revolut_pay - Payments made via Revolut Pay.
                       enum:
                         - card
@@ -42034,7 +42097,6 @@ paths:
                         - fpx
                         - wero
                         - p24
-                        - affirm_pay
                       example: null
                     reference_number:
                       type: string
@@ -43433,6 +43495,22 @@ paths:
                         minimum: 0
                         example: null
                       example: null
+                    is_partial_tax_applied:
+                      type: array
+                      items:
+                        type: boolean
+                        deprecated: false
+                        example: null
+                      example: null
+                    taxable_amount:
+                      type: array
+                      items:
+                        type: integer
+                        format: int64
+                        deprecated: false
+                        minimum: 0
+                        example: null
+                      example: null
                     proration_mode:
                       type: array
                       items:
@@ -43884,7 +43962,6 @@ paths:
                           - fpx
                           - wero
                           - p24
-                          - affirm_pay
                         example: null
                       example: null
                     date:
@@ -45313,13 +45390,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: payment_reference_number
           in: query
@@ -45342,13 +45419,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  in:
-                    type: string
-                    pattern: ^\[(.*)(,.*)*\]$
-                    example: null
                   is:
                     type: string
                     minLength: 1
+                    example: null
+                  in:
+                    type: string
+                    pattern: ^\[(.*)(,.*)*\]$
                     example: null
             example: null
       responses:
@@ -46373,7 +46450,6 @@ paths:
                         - fpx
                         - wero
                         - p24
-                        - affirm_pay
                       example: null
                     reference_number:
                       type: string
@@ -47439,7 +47515,6 @@ paths:
                         - fpx
                         - wero
                         - p24
-                        - affirm_pay
                       example: null
                     reference_number:
                       type: string
@@ -48204,6 +48279,22 @@ paths:
                         minimum: 0
                         example: null
                       example: null
+                    is_partial_tax_applied:
+                      type: array
+                      items:
+                        type: boolean
+                        deprecated: false
+                        example: null
+                      example: null
+                    taxable_amount:
+                      type: array
+                      items:
+                        type: integer
+                        format: int64
+                        deprecated: false
+                        minimum: 0
+                        example: null
+                      example: null
                     proration_mode:
                       type: array
                       items:
@@ -48597,7 +48688,6 @@ paths:
                           - fpx
                           - wero
                           - p24
-                          - affirm_pay
                         example: null
                       example: null
                     date:
@@ -58842,6 +58932,7 @@ paths:
                         * kbc_payment_button - KBC Payment Button
                         * klarna - Payments made via Klarna.
                         * payme - Payments made via PayMe
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Payments made via GoPay
                         * google_pay - google_pay
                         * trustly - Trustly
@@ -58854,31 +58945,43 @@ paths:
                         * alipay - Payments made via Alipay.
                         * tamara - Payments made via Tamara.
                         * ideal - ideal
+                        * picpay - Payments made via PicPay.
                         * pay_to - PayTo
+                        * ovo - Payments made via OVO.
                         * boleto - boleto
                         * pay_co - Payments made via PayCo
                         * wechat_pay - Payments made via WeChat Pay.
                         * cash_app_pay - Payments made via Cash App Pay.
+                        * rakuten_pay - Payments made via Rakuten Pay.
                         * alipay_hk - Payments made via Alipay HK.
                         * after_pay - Payments made via Afterpay
                         * netbanking_emandates - netbanking_emandates
+                        * nequi - Payments made via Nequi.
                         * grab_pay - Payments made via GrabPay
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
+                        * mercado_pago - Payments made via Mercado Pago.
+                        * p24 - Payments made via Przelewy24 (P24).
                         * electronic_payment_standard - Electronic Payment Standard
                         * direct_debit - direct_debit
                         * sepa_instant_transfer - Sepa Instant Transfer
                         * bancontact - bancontact
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * touch_n_go - Payments made via Touch 'n Go.
                         * apple_pay - apple_pay
                         * qpay - Payments made via Qpay.
                         * online_banking_poland - Online Banking Poland
                         * gcash - Payments made via GCash.
+                        * nupay - Payments made via NuPay.
                         * giropay - giropay
+                        * momo - Payments made via MoMo.
                         * sofort - sofort
                         * amazon_payments - Amazon Payments
+                        * affirm_pay - Payments made via Affirm Pay.
                         * kakao_pay - Payments made via Kakao Pay.
+                        * fpx - Payments made via FPX.
+                        * blik - Payments made via BLIK.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * revolut_pay - Payments made via Revolut Pay.
@@ -60867,7 +60970,7 @@ paths:
           description: |
             optional, enumerated string filter
 
-            The payment method of this transaction. Possible values are : card, cash, check, chargeback, bank_transfer, amazon_payments, paypal_express_checkout, direct_debit, alipay, alipay_hk, gcash, dana, touch_n_go, tamara, qpay, unionpay, apple_pay, wechat_pay, ach_credit, sepa_credit, ideal, google_pay, sofort, bancontact, giropay, dotpay, other, upi, netbanking_emandates.
+            The payment method of this transaction. Possible values are : card, cash, check, chargeback, bank_transfer, amazon_payments, paypal_express_checkout, direct_debit, alipay, alipay_hk, gcash, ovo, momo, mercado_pago, nequi, nupay, picpay, thai_qr, blik, fpx, wero, p24, affirm_pay, rakuten_pay, dana, touch_n_go, tamara, qpay, unionpay, apple_pay, wechat_pay, ach_credit, sepa_credit, ideal, google_pay, sofort, bancontact, giropay, dotpay, other, upi, netbanking_emandates.
 
             **Supported operators :**
             is, is_not, in, not_in
@@ -63202,7 +63305,6 @@ paths:
                     - fpx
                     - wero
                     - p24
-                    - affirm_pay
                   example: null
                 date:
                   type: integer
@@ -75545,6 +75647,7 @@ paths:
                         * kbc_payment_button - KBC Payment Button
                         * klarna - Payments made via Klarna.
                         * payme - Payments made via PayMe
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Payments made via GoPay
                         * google_pay - google_pay
                         * trustly - Trustly
@@ -75557,31 +75660,43 @@ paths:
                         * alipay - Payments made via Alipay.
                         * tamara - Payments made via Tamara.
                         * ideal - ideal
+                        * picpay - Payments made via PicPay.
                         * pay_to - PayTo
+                        * ovo - Payments made via OVO.
                         * boleto - boleto
                         * pay_co - Payments made via PayCo
                         * wechat_pay - Payments made via WeChat Pay.
                         * cash_app_pay - Payments made via Cash App Pay.
+                        * rakuten_pay - Payments made via Rakuten Pay.
                         * alipay_hk - Payments made via Alipay HK.
                         * after_pay - Payments made via Afterpay
                         * netbanking_emandates - netbanking_emandates
+                        * nequi - Payments made via Nequi.
                         * grab_pay - Payments made via GrabPay
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
+                        * mercado_pago - Payments made via Mercado Pago.
+                        * p24 - Payments made via Przelewy24 (P24).
                         * electronic_payment_standard - Electronic Payment Standard
                         * direct_debit - direct_debit
                         * sepa_instant_transfer - Sepa Instant Transfer
                         * bancontact - bancontact
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * touch_n_go - Payments made via Touch 'n Go.
                         * apple_pay - apple_pay
                         * qpay - Payments made via Qpay.
                         * online_banking_poland - Online Banking Poland
                         * gcash - Payments made via GCash.
+                        * nupay - Payments made via NuPay.
                         * giropay - giropay
+                        * momo - Payments made via MoMo.
                         * sofort - sofort
                         * amazon_payments - Amazon Payments
+                        * affirm_pay - Payments made via Affirm Pay.
                         * kakao_pay - Payments made via Kakao Pay.
+                        * fpx - Payments made via FPX.
+                        * blik - Payments made via BLIK.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * revolut_pay - Payments made via Revolut Pay.
@@ -90616,13 +90731,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -104989,6 +105104,15 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
+                        is:
+                          type: string
+                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                         in:
                           type: string
                           description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -104999,15 +105123,6 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
-                        is:
-                          type: string
-                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -105015,13 +105130,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        in:
-                          type: string
-                          pattern: ^\[(.*)(,.*)*\]$
-                          example: null
                         is:
                           type: string
                           minLength: 1
+                          example: null
+                        in:
+                          type: string
+                          pattern: ^\[(.*)(,.*)*\]$
                           example: null
                     effective_from:
                       type: object
@@ -113474,13 +113589,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: ^\[(.*)(,.*)*\]$
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: ^\[(.*)(,.*)*\]$
                       example: null
                 coupon:
                   type: object
@@ -117129,29 +117244,38 @@ paths:
                     * pay_co - Payments made via PayCo
                     * tamara - Payments made via Tamara.
                     * alipay_hk - Payments made via Alipay HK.
+                    * ovo - Payments made via OVO.
                     * apple_pay - apple_pay
                     * cash_app_pay - Payments made via Cash App Pay.
                     * ideal - ideal
                     * bancontact - bancontact
+                    * nequi - Payments made via Nequi.
                     * netbanking_emandates - netbanking_emandates
                     * pay_to - PayTo
                     * trustly - Trustly
                     * venmo - Venmo
                     * after_pay - Payments made via Afterpay
                     * alipay - Payments made via Alipay.
+                    * picpay - Payments made via PicPay.
                     * dotpay - dotpay
                     * giropay - giropay
+                    * fpx - Payments made via FPX.
                     * sofort - sofort
+                    * momo - Payments made via MoMo.
                     * sepa_instant_transfer - Sepa Instant Transfer
                     * paypay - PayPay
                     * gcash - Payments made via GCash.
+                    * mercado_pago - Payments made via Mercado Pago.
+                    * nupay - Payments made via NuPay.
                     * kakao_pay - Payments made via Kakao Pay.
+                    * blik - Payments made via BLIK.
                     * direct_debit - direct_debit
                     * dana - Payments made via Dana.
                     * paypal_express_checkout - paypal_express_checkout
                     * touch_n_go - Payments made via Touch 'n Go.
                     * boleto - boleto
                     * faster_payments - Faster Payments
+                    * rakuten_pay - Payments made via Rakuten Pay.
                     * pix - Pix
                     * qpay - Payments made via Qpay.
                     * klarna_pay_now - Klarna Pay Now
@@ -117163,9 +117287,13 @@ paths:
                     * grab_pay - Payments made via GrabPay
                     * card - card
                     * upi - upi
+                    * affirm_pay - Payments made via Affirm Pay.
+                    * p24 - Payments made via Przelewy24 (P24).
                     * south_korean_cards - Payments made via South Korean Cards
+                    * thai_qr - Payments made via Thai QR.
                     * online_banking_poland - Online Banking Poland
                     * klarna - Payments made via Klarna.
+                    * wero - Payments made via Wero.
                     * pay_by_bank - Pay By Bank
                     * go_pay - Payments made via GoPay
                     * swish - Payments made via Swish
@@ -117550,58 +117678,7 @@ paths:
                   type: string
                   default: card
                   deprecated: false
-                  description: |
-                    The payment method of this intent.
-
-                    * google_pay - google_pay
-                    * pay_co - Payments made via PayCo
-                    * tamara - Payments made via Tamara.
-                    * alipay_hk - Payments made via Alipay HK.
-                    * apple_pay - apple_pay
-                    * cash_app_pay - Payments made via Cash App Pay.
-                    * ideal - ideal
-                    * bancontact - bancontact
-                    * netbanking_emandates - netbanking_emandates
-                    * pay_to - PayTo
-                    * trustly - Trustly
-                    * venmo - Venmo
-                    * after_pay - Payments made via Afterpay
-                    * alipay - Payments made via Alipay.
-                    * dotpay - dotpay
-                    * giropay - giropay
-                    * sofort - sofort
-                    * sepa_instant_transfer - Sepa Instant Transfer
-                    * paypay - PayPay
-                    * gcash - Payments made via GCash.
-                    * kakao_pay - Payments made via Kakao Pay.
-                    * direct_debit - direct_debit
-                    * dana - Payments made via Dana.
-                    * paypal_express_checkout - paypal_express_checkout
-                    * touch_n_go - Payments made via Touch 'n Go.
-                    * boleto - boleto
-                    * faster_payments - Faster Payments
-                    * pix - Pix
-                    * qpay - Payments made via Qpay.
-                    * klarna_pay_now - Klarna Pay Now
-                    * revolut_pay - Payments made via Revolut Pay.
-                    * naver_pay - Payments made via Naver Pay.
-                    * amazon_payments - Amazon Payments
-                    * electronic_payment_standard - Electronic Payment Standard
-                    * stablecoin - Payments made via Stablecoin.
-                    * grab_pay - Payments made via GrabPay
-                    * card - card
-                    * upi - upi
-                    * south_korean_cards - Payments made via South Korean Cards
-                    * online_banking_poland - Online Banking Poland
-                    * klarna - Payments made via Klarna.
-                    * pay_by_bank - Pay By Bank
-                    * go_pay - Payments made via GoPay
-                    * swish - Payments made via Swish
-                    * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
-                    * twint - Payments made via Twint
-                    * payme - Payments made via PayMe
-                    * wechat_pay - Payments made via WeChat Pay.
-                    * kbc_payment_button - KBC Payment Button
+                  description: "The payment method of this intent.\n\n* google_pay - google_pay\n* pay_co - Payments made via PayCo\n* tamara - Payments made via Tamara.\n* alipay_hk - Payments made via Alipay HK.\n* ovo - Payments made via OVO.\n* apple_pay - apple_pay\n* cash_app_pay - Payments made via Cash App Pay.\n* ideal - ideal\n* bancontact - bancontact\n* nequi - Payments made via Nequi.\n* netbanking_emandates - netbanking_emandates\n* pay_to - PayTo\n* trustly - Trustly\n* venmo - Venmo\n* after_pay - Payments made via Afterpay\n* alipay - Payments made via Alipay.\n* picpay - Payments made via PicPay.\n* dotpay - dotpay\n* giropay - giropay\n* fpx - Payments made via FPX.\n* sofort - sofort\n* momo -\n  Payments made via MoMo.  \n  **Constraints**\n\n  * The payment intent currency must be `VND`.\n* sepa_instant_transfer - Sepa Instant Transfer\n* paypay - PayPay\n* gcash - Payments made via GCash.\n* mercado_pago - Payments made via Mercado Pago.\n* nupay - Payments made via NuPay.\n* kakao_pay - Payments made via Kakao Pay.\n* blik - Payments made via BLIK.\n* direct_debit - direct_debit\n* dana - Payments made via Dana.\n* paypal_express_checkout - paypal_express_checkout\n* touch_n_go - Payments made via Touch 'n Go.\n* boleto - boleto\n* faster_payments - Faster Payments\n* rakuten_pay -\n  Payments made via Rakuten Pay.  \n  **Constraints**\n\n  * The payment intent currency must be `JPY`.\n* pix - Pix\n* qpay - Payments made via Qpay.\n* klarna_pay_now - Klarna Pay Now\n* revolut_pay - Payments made via Revolut Pay.\n* naver_pay - Payments made via Naver Pay.\n* amazon_payments - Amazon Payments\n* electronic_payment_standard - Electronic Payment Standard\n* stablecoin - Payments made via Stablecoin.\n* grab_pay - Payments made via GrabPay\n* card - card\n* upi - upi\n* affirm_pay - Payments made via Affirm Pay.\n* p24 - Payments made via Przelewy24 (P24).\n* south_korean_cards - Payments made via South Korean Cards\n* thai_qr - Payments made via Thai QR.\n* online_banking_poland - Online Banking Poland\n* klarna - Payments made via Klarna.\n* wero - Payments made via Wero.\n* pay_by_bank - Pay By Bank\n* go_pay - Payments made via GoPay\n* swish - Payments made via Swish\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* twint - Payments made via Twint\n* payme - Payments made via PayMe\n* wechat_pay - Payments made via WeChat Pay.\n* kbc_payment_button - KBC Payment Button\n"
                   enum:
                     - card
                     - ideal
@@ -135661,6 +135738,15 @@ paths:
             deprecated: false
             example: active
             properties:
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
+                example: null
               in:
                 type: string
                 description: |-
@@ -135670,15 +135756,6 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
                 example: null
         - name: id
           in: query
@@ -135700,13 +135777,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -138507,13 +138584,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: entity_type
           in: query
@@ -138538,6 +138615,21 @@ paths:
             deprecated: false
             example: plan_price
             properties:
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
+                example: null
               in:
                 type: string
                 description: |-
@@ -138553,21 +138645,6 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -138591,13 +138668,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -141948,6 +142025,7 @@ paths:
                         * kbc_payment_button - KBC Payment Button
                         * klarna - Klarna
                         * payme - PayMe
+                        * thai_qr - Payments made via Thai QR.
                         * go_pay - Go Pay
                         * google_pay - Payments made via Google Pay.
                         * trustly - Trustly
@@ -141960,31 +142038,43 @@ paths:
                         * alipay - Alipay
                         * tamara - Payments made via Tamara.
                         * ideal - Payments made via iDEAL.
+                        * picpay - Payments made via PicPay.
                         * pay_to - PayTo
+                        * ovo - Payments made via OVO.
                         * boleto - Payments made via Boleto.
                         * pay_co - Pay Co
                         * wechat_pay - WeChat Pay
                         * cash_app_pay - Cash App Pay
+                        * rakuten_pay - Payments made via Rakuten Pay.
                         * alipay_hk - Payments made via Alipay HK.
                         * after_pay - After Pay
                         * netbanking_emandates - Netbanking (eMandates) Payments.
+                        * nequi - Payments made via Nequi.
                         * grab_pay - Grab Pay
                         * paypay - PayPay
                         * payconiq_by_bancontact - Payconiq by Bancontact
+                        * mercado_pago - Payments made via Mercado Pago.
+                        * p24 - Payments made via Przelewy24 (P24).
                         * electronic_payment_standard - Electronic Payment Standard
                         * direct_debit - Payments made via Direct Debit.
                         * sepa_instant_transfer - Sepa Instant Transfer
                         * bancontact - Payments made via Bancontact Card.
+                        * wero - Payments made via Wero.
                         * pay_by_bank - Pay By Bank
                         * touch_n_go - Payments made via Touch 'n Go.
                         * apple_pay - Payments made via Apple Pay.
                         * qpay - Payments made via Qpay.
                         * online_banking_poland - Online Banking Poland
                         * gcash - Payments made via GCash.
+                        * nupay - Payments made via NuPay.
                         * giropay - Payments made via giropay.
+                        * momo - Payments made via MoMo.
                         * sofort - Payments made via Sofort.
                         * amazon_payments - Amazon Payments
+                        * affirm_pay - Payments made via Affirm Pay.
                         * kakao_pay - Kakao Pay
+                        * fpx - Payments made via FPX.
+                        * blik - Payments made via BLIK.
                         * dana - Payments made via Dana.
                         * south_korean_cards - Payments made via South Korean Cards
                         * revolut_pay - Revolut Pay
@@ -147812,6 +147902,15 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
+              is:
+                type: string
+                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
+                example: null
               in:
                 type: string
                 description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -147821,15 +147920,6 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
-                example: null
-              is:
-                type: string
-                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -147843,13 +147933,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: effective_from
           in: query
@@ -156628,17 +156718,7 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              "on":
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               after:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -156646,6 +156726,16 @@ paths:
               between:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
         - name: purchased_at
           in: query
@@ -156668,17 +156758,7 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              "on":
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               after:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -156686,6 +156766,16 @@ paths:
               between:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
         - name: sort_by
           in: query
@@ -160613,13 +160703,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: reference_id
           in: query
@@ -160641,13 +160731,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: updated_at
           in: query
@@ -172286,6 +172376,31 @@ paths:
             type: object
             deprecated: false
             properties:
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
+                example: null
               in:
                 type: string
                 description: |-
@@ -172311,31 +172426,6 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -184821,7 +184911,7 @@ components:
             type:
               type: string
               deprecated: false
-              description: "Type of payment source\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* kakao_pay - Payments made via Kakao Pay.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* touch_n_go - Payments made via Touch 'n Go.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
+              description: "Type of payment source\n\n* grab_pay - Payments made via GrabPay\n* go_pay - Payments made via GoPay\n* nequi - Payments made via Nequi.\n* google_pay - Payments made via Google Pay.\n* after_pay - Payments made via Afterpay\n* qpay - Payments made via Qpay.\n* pix - Payments made via Pix\n* pay_by_bank - Pay By Bank\n* sofort - Payments made via Sofort.\n* twint - Payments made via Twint\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* apple_pay - Payments made via Apple Pay.\n* unionpay - Payments made via UnionPay.\n* giropay - Payments made via giropay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* rakuten_pay - Payments made via Rakuten Pay.\n* ovo - Payments made via OVO.\n* mercado_pago - Payments made via Mercado Pago.\n* paypay - Payments made via PayPay\n* south_korean_cards - Payments made via South Korean Cards\n* bancontact - Payments made via Bancontact Card.\n* upi - UPI Payments.\n* revolut_pay - Payments made via Revolut Pay.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* tamara - Payments made via Tamara.\n* payme - Payments made via PayMe\n* pay_to - Payments made via PayTo\n* pay_co - Payments made via PayCo\n* picpay - Payments made via PicPay.\n* kakao_pay - Payments made via Kakao Pay.\n* fpx - Payments made via FPX.\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* p24 - Payments made via Przelewy24 (P24).\n* klarna - Payments made via Klarna.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* ideal - Payments made via iDEAL.\n* affirm_pay - Payments made via Affirm Pay.\n* electronic_payment_standard - Electronic Payment Standard\n* generic - Payments made via Generic Payment Method.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* faster_payments - Payments made via Faster Payments\n* thai_qr - Payments made via Thai QR.\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* naver_pay - Payments made via Naver Pay.\n* wero - Payments made via Wero.\n* touch_n_go - Payments made via Touch 'n Go.\n* momo - Payments made via MoMo.\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* amazon_payments - Payments made via Amazon Payments.\n* gcash - Payments made via GCash.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* online_banking_poland - Payments made via Online Banking Poland\n* nupay - Payments made via NuPay.\n* trustly - Trustly\n* kbc_payment_button - KBC Payment Button\n* alipay_hk - Payments made via Alipay HK.\n* cash_app_pay - Payments made via Cash App Pay.\n"
               enum:
                 - card
                 - paypal_express_checkout
@@ -190555,6 +190645,12 @@ components:
                         The total maximum amount that this payment schedule is allowed to collect.
                       minimum: 0
                       example: null
+                    scheduled_amount:
+                      type: integer
+                      format: int64
+                      deprecated: false
+                      minimum: 0
+                      example: null
                     status:
                       type: string
                       deprecated: false
@@ -190573,6 +190669,7 @@ components:
                     - amount
                     - date
                     - id
+                    - scheduled_amount
                     - status
                   example: null
                 example: null
@@ -204898,6 +204995,7 @@ components:
                   - billing_error
                   - product_not_available
                   - other
+                  - subscription_not_found_in_source
                 example: null
               cancelled_at:
                 type: integer
@@ -205639,6 +205737,7 @@ components:
             - billing_error
             - product_not_available
             - other
+            - subscription_not_found_in_source
           example: null
         cancelled_at:
           type: integer
@@ -209921,6 +210020,8 @@ components:
             * venmo - Venmo
             * after_pay - Payments made via Afterpay
             * giropay - giropay
+            * momo - Payments made via MoMo.
+            * blik - Payments made via BLIK.
             * dana - Payments made via Dana.
             * paypal_express_checkout - paypal_express_checkout
             * touch_n_go - Payments made via Touch 'n Go.
@@ -209928,14 +210029,18 @@ components:
             * amazon_payments - amazon_payments
             * grab_pay - Payments made via GrabPay
             * card - card
+            * affirm_pay - Payments made via Affirm Pay.
             * go_pay - Payments made via GoPay
             * google_pay - google_pay
             * cash_app_pay - Payments made via Cash App Pay.
             * ideal - ideal
+            * nequi - Payments made via Nequi.
             * dotpay - dotpay
             * sofort - sofort
             * gcash - Payments made via GCash.
+            * nupay - Payments made via NuPay.
             * faster_payments - Faster Payments
+            * rakuten_pay - Payments made via Rakuten Pay.
             * qpay - Payments made via Qpay.
             * online_banking_poland - Online Banking Poland
             * klarna - Payments made via Klarna.
@@ -209943,23 +210048,30 @@ components:
             * kbc_payment_button - KBC Payment Button
             * bancontact - bancontact
             * trustly - Trustly
+            * fpx - Payments made via FPX.
             * paypay - PayPay
             * kakao_pay - Payments made via Kakao Pay.
             * boleto - boleto
             * revolut_pay - Payments made via Revolut Pay.
             * naver_pay - Payments made via Naver Pay.
             * electronic_payment_standard - Electronic Payment Standard
+            * p24 - Payments made via Przelewy24 (P24).
+            * thai_qr - Payments made via Thai QR.
             * pay_by_bank - Pay By Bank
             * payme - Payments made via PayMe
             * pay_co - Payments made via PayCo
+            * ovo - Payments made via OVO.
             * pay_to - PayTo
             * alipay - Payments made via Alipay.
+            * picpay - Payments made via PicPay.
             * sepa_instant_transfer - SEPA Instant Transfer
+            * mercado_pago - Payments made via Mercado Pago.
             * direct_debit - direct_debit
             * klarna_pay_now - Klarna Pay Now
             * stablecoin - Payments made via Stablecoin.
             * upi - upi
             * south_korean_cards - Payments made via South Korean Cards
+            * wero - Payments made via Wero.
             * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
             * twint - Payments made via Twint
             * wechat_pay - Payments made via WeChat Pay.
@@ -210169,6 +210281,7 @@ components:
                 * stablecoin - Payments made via Stablecoin.
                 * venmo - Venmo
                 * sofort - sofort
+                * blik - Payments made via BLIK.
                 * alipay - Payments made via Alipay.
                 * paypal_express_checkout - paypal_express_checkout
                 * giropay - giropay
@@ -210183,18 +210296,26 @@ components:
                 * south_korean_cards - Payments made via South Korean Cards
                 * qpay - Payments made via Qpay.
                 * kbc_payment_button - KBC Payment Button
+                * nupay - Payments made via NuPay.
+                * momo - Payments made via MoMo.
                 * ideal - ideal
                 * sepa_instant_transfer - SEPA Instant Transfer
                 * gcash - Payments made via GCash.
+                * nequi - Payments made via Nequi.
+                * wero - Payments made via Wero.
                 * pay_by_bank - Pay By Bank
                 * klarna - Payments made via Klarna.
                 * online_banking_poland - Online Banking Poland
+                * p24 - Payments made via Przelewy24 (P24).
                 * swish - Payments made via Swish
                 * electronic_payment_standard - Electronic Payment Standard
                 * boleto - boleto
                 * wechat_pay - Payments made via WeChat Pay.
                 * cash_app_pay - Payments made via Cash App Pay.
                 * revolut_pay - Payments made via Revolut Pay.
+                * rakuten_pay - Payments made via Rakuten Pay.
+                * fpx - Payments made via FPX.
+                * thai_qr - Payments made via Thai QR.
                 * grab_pay - Payments made via GrabPay
                 * trustly - Trustly
                 * payme - Payments made via PayMe
@@ -210204,11 +210325,15 @@ components:
                 * amazon_payments - amazon_payments
                 * direct_debit - direct_debit
                 * after_pay - Payments made via Afterpay
+                * mercado_pago - Payments made via Mercado Pago.
                 * dotpay - dotpay
                 * apple_pay - apple_pay
                 * netbanking_emandates - netbanking_emandates
+                * affirm_pay - Payments made via Affirm Pay.
                 * klarna_pay_now - Klarna Pay Now
                 * google_pay - google_pay
+                * ovo - Payments made via OVO.
+                * picpay - Payments made via PicPay.
                 * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
                 * pay_co - Payments made via PayCo
                 * twint - Payments made via Twint
@@ -210506,7 +210631,9 @@ components:
                   * swish - Payments made via Swish
                   * stablecoin - Payments made via Stablecoin.
                   * revolut_pay - Payments made via Revolut Pay.
+                  * rakuten_pay - Payments made via Rakuten Pay.
                   * alipay - Payments made via Alipay.
+                  * nupay - Payments made via NuPay.
                   * sofort - sofort
                   * giropay - giropay
                   * electronic_payment_standard - Electronic Payment Standard
@@ -210518,6 +210645,7 @@ components:
                   * faster_payments - Faster Payments
                   * paypal_express_checkout - paypal_express_checkout
                   * go_pay - Payments made via GoPay
+                  * ovo - Payments made via OVO.
                   * pay_by_bank - Pay By Bank
                   * klarna - Payments made via Klarna.
                   * after_pay - Payments made via Afterpay
@@ -210525,27 +210653,37 @@ components:
                   * trustly - Trustly
                   * wechat_pay - Payments made via WeChat Pay.
                   * twint - Payments made via Twint
+                  * wero - Payments made via Wero.
                   * upi - upi
                   * cash_app_pay - Payments made via Cash App Pay.
                   * direct_debit - direct_debit
+                  * thai_qr - Payments made via Thai QR.
+                  * mercado_pago - Payments made via Mercado Pago.
                   * netbanking_emandates - netbanking_emandates
                   * amazon_payments - amazon_payments
                   * sepa_instant_transfer - SEPA Instant Transfer
                   * klarna_pay_now - Klarna Pay Now
                   * online_banking_poland - Online Banking Poland
                   * touch_n_go - Payments made via Touch 'n Go.
+                  * fpx - Payments made via FPX.
                   * dotpay - dotpay
                   * google_pay - google_pay
                   * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
                   * payme - Payments made via PayMe
                   * card - card
+                  * affirm_pay - Payments made via Affirm Pay.
                   * naver_pay - Payments made via Naver Pay.
+                  * blik - Payments made via BLIK.
+                  * nequi - Payments made via Nequi.
                   * dana - Payments made via Dana.
                   * alipay_hk - Payments made via Alipay HK.
                   * south_korean_cards - Payments made via South Korean Cards
                   * ideal - ideal
+                  * p24 - Payments made via Przelewy24 (P24).
                   * grab_pay - Payments made via GrabPay
                   * pay_co - Payments made via PayCo
+                  * picpay - Payments made via PicPay.
+                  * momo - Payments made via MoMo.
                   * venmo - Venmo
                   * gcash - Payments made via GCash.
                   * apple_pay - apple_pay
@@ -210968,7 +211106,6 @@ components:
         - fpx
         - wero
         - p24
-        - affirm_pay
         - chargeback
         - card
         - amazon_payments
@@ -211031,6 +211168,7 @@ components:
         - nupay
         - picpay
         - thai_qr
+        - affirm_pay
         - rakuten_pay
       example: null
     PaymentMethodSavePolicy:
@@ -211342,6 +211480,12 @@ components:
                   Maximum amount that this payment schedule is allowed to collect.
                 minimum: 0
                 example: null
+              scheduled_amount:
+                type: integer
+                format: int64
+                deprecated: false
+                minimum: 0
+                example: null
               status:
                 type: string
                 deprecated: false
@@ -211360,7 +211504,59 @@ components:
               - amount
               - date
               - id
+              - scheduled_amount
               - status
+            example: null
+          example: null
+        reference_transactions:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              schedule_entry_id:
+                type: string
+                deprecated: false
+                maxLength: 40
+                example: null
+              applied_amount:
+                type: integer
+                format: int64
+                deprecated: false
+                minimum: 0
+                example: null
+              txn_id:
+                type: string
+                deprecated: false
+                maxLength: 40
+                example: null
+              txn_status:
+                type: string
+                deprecated: false
+                enum:
+                  - in_progress
+                  - success
+                  - voided
+                  - failure
+                  - timeout
+                  - needs_attention
+                  - late_failure
+                example: null
+              txn_date:
+                type: integer
+                format: unix-time
+                deprecated: false
+                example: null
+              txn_amount:
+                type: integer
+                format: int64
+                deprecated: false
+                minimum: 0
+                example: null
+            required:
+              - schedule_entry_id
+              - txn_id
             example: null
           example: null
       required:
@@ -211428,6 +211624,12 @@ components:
                 deprecated: false
                 minimum: 0
                 example: null
+              scheduled_amount:
+                type: integer
+                format: int64
+                deprecated: false
+                minimum: 0
+                example: null
               status:
                 type: string
                 deprecated: false
@@ -211440,6 +211642,7 @@ components:
               - amount
               - date
               - id
+              - scheduled_amount
               - status
             example: null
           example: null
@@ -211806,7 +212009,7 @@ components:
         type:
           type: string
           deprecated: false
-          description: "Type of payment source\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* unionpay - Payments made via UnionPay.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* klarna - Payments made via Klarna.\n* giropay - Payments made via giropay.\n* grab_pay - Payments made via GrabPay\n* stablecoin - Payments made via Stablecoin.\n* bancontact - Payments made via Bancontact Card.\n* amazon_payments - Payments made via Amazon Payments.\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* touch_n_go - Payments made via Touch 'n Go.\n* after_pay - Payments made via Afterpay\n* paypay - Payments made via PayPay\n* generic - Payments made via Generic Payment Method.\n* twint - Payments made via Twint\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* trustly - Trustly\n* upi - UPI Payments.\n* cash_app_pay - Payments made via Cash App Pay.\n* south_korean_cards - Payments made via South Korean Cards\n* qpay - Payments made via Qpay.\n* electronic_payment_standard - Electronic Payment Standard\n* google_pay - Payments made via Google Pay.\n* pay_to - Payments made via PayTo\n* revolut_pay - Payments made via Revolut Pay.\n* naver_pay - Payments made via Naver Pay.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* go_pay - Payments made via GoPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* faster_payments - Payments made via Faster Payments\n* alipay_hk - Payments made via Alipay HK.\n* payme - Payments made via PayMe\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* ideal - Payments made via iDEAL.\n* kbc_payment_button - KBC Payment Button\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* apple_pay - Payments made via Apple Pay.\n"
+          description: "Type of payment source\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* unionpay - Payments made via UnionPay.\n* mercado_pago - Payments made via Mercado Pago.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* klarna - Payments made via Klarna.\n* giropay - Payments made via giropay.\n* grab_pay - Payments made via GrabPay\n* stablecoin - Payments made via Stablecoin.\n* p24 - Payments made via Przelewy24 (P24).\n* nupay - Payments made via NuPay.\n* picpay - Payments made via PicPay.\n* bancontact - Payments made via Bancontact Card.\n* nequi - Payments made via Nequi.\n* amazon_payments - Payments made via Amazon Payments.\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* touch_n_go - Payments made via Touch 'n Go.\n* after_pay - Payments made via Afterpay\n* momo - Payments made via MoMo.\n* fpx - Payments made via FPX.\n* paypay - Payments made via PayPay\n* generic - Payments made via Generic Payment Method.\n* twint - Payments made via Twint\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* trustly - Trustly\n* upi - UPI Payments.\n* cash_app_pay - Payments made via Cash App Pay.\n* south_korean_cards - Payments made via South Korean Cards\n* qpay - Payments made via Qpay.\n* affirm_pay - Payments made via Affirm Pay.\n* electronic_payment_standard - Electronic Payment Standard\n* ovo - Payments made via OVO.\n* google_pay - Payments made via Google Pay.\n* pay_to - Payments made via PayTo\n* revolut_pay - Payments made via Revolut Pay.\n* thai_qr - Payments made via Thai QR.\n* naver_pay - Payments made via Naver Pay.\n* rakuten_pay - Payments made via Rakuten Pay.\n* blik - Payments made via BLIK.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* go_pay - Payments made via GoPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* faster_payments - Payments made via Faster Payments\n* alipay_hk - Payments made via Alipay HK.\n* payme - Payments made via PayMe\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* swish - Payments made via Swish\n* venmo - Payments made via Venmo\n* ideal - Payments made via iDEAL.\n* wero - Payments made via Wero.\n* kbc_payment_button - KBC Payment Button\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* apple_pay - Payments made via Apple Pay.\n"
           enum:
             - card
             - paypal_express_checkout
@@ -228734,7 +228937,7 @@ components:
           type: string
           default: card
           deprecated: false
-          description: "Type of the payment method.\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* unionpay - Payments made via UnionPay.\n* google_pay - Payments made via Google Pay.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* pay_to - Payments made via PayTo\n* klarna - Payments made via Klarna.\n* revolut_pay - Payments made via Revolut Pay.\n* naver_pay - Payments made via Naver Pay.\n* giropay - Payments made via giropay.\n* grab_pay - Payments made via GrabPay\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* bancontact - Payments made via Bancontact Card.\n* go_pay - Payments made via GoPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* amazon_payments - Payments made via Amazon Payments.\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* touch_n_go - Payments made via Touch 'n Go.\n* after_pay - Payments made via Afterpay\n* faster_payments - Payments made via Faster Payments\n* alipay_hk - Payments made via Alipay HK.\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* venmo - Payments made via Venmo\n* ideal - Payments made via iDEAL.\n* trustly - Trustly\n* upi - UPI Payments.\n* kbc_payment_button - KBC Payment Button\n* cash_app_pay - Payments made via Cash App Pay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* qpay - Payments made via Qpay.\n* apple_pay - Payments made via Apple Pay.\n* electronic_payment_standard - Electronic Payment Standard\n"
+          description: "Type of the payment method.\n\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* unionpay - Payments made via UnionPay.\n* ovo - Payments made via OVO.\n* google_pay - Payments made via Google Pay.\n* mercado_pago - Payments made via Mercado Pago.\n* sepa_instant_transfer - Payments made via Sepa Instant Transfer\n* dotpay - Payments made via Dotpay.\n* pay_to - Payments made via PayTo\n* klarna - Payments made via Klarna.\n* revolut_pay - Payments made via Revolut Pay.\n* thai_qr - Payments made via Thai QR.\n* naver_pay - Payments made via Naver Pay.\n* giropay - Payments made via giropay.\n* grab_pay - Payments made via GrabPay\n* rakuten_pay - Payments made via Rakuten Pay.\n* blik - Payments made via BLIK.\n* stablecoin - Payments made via Stablecoin.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* kakao_pay - Payments made via Kakao Pay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* dana - Payments made via Dana.\n* pix - Payments made via Pix\n* p24 - Payments made via Przelewy24 (P24).\n* pay_co - Payments made via PayCo\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* nupay - Payments made via NuPay.\n* picpay - Payments made via PicPay.\n* bancontact - Payments made via Bancontact Card.\n* go_pay - Payments made via GoPay\n* nequi - Payments made via Nequi.\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* amazon_payments - Payments made via Amazon Payments.\n* pay_by_bank - Pay By Bank\n* online_banking_poland - Payments made via Online Banking Poland\n* touch_n_go - Payments made via Touch 'n Go.\n* after_pay - Payments made via Afterpay\n* faster_payments - Payments made via Faster Payments\n* alipay_hk - Payments made via Alipay HK.\n* momo - Payments made via MoMo.\n* fpx - Payments made via FPX.\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* tamara - Payments made via Tamara.\n* klarna_pay_now - Payments made via Klarna Pay Now\n* twint - Payments made via Twint\n* swish - Payments made via Swish\n* automated_bank_transfer - Represents virtual bank account using which the payment will be done.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* venmo - Payments made via Venmo\n* ideal - Payments made via iDEAL.\n* trustly - Trustly\n* upi - UPI Payments.\n* wero - Payments made via Wero.\n* kbc_payment_button - KBC Payment Button\n* cash_app_pay - Payments made via Cash App Pay.\n* payconiq_by_bancontact - Payments made via Payconiq by Bancontact.\n* qpay - Payments made via Qpay.\n* affirm_pay - Payments made via Affirm Pay.\n* apple_pay - Payments made via Apple Pay.\n* electronic_payment_standard - Electronic Payment Standard\n"
           enum:
             - card
             - paypal_express_checkout
@@ -229721,7 +229924,7 @@ components:
         payment_method_type:
           type: string
           deprecated: false
-          description: "Type of payment method of the token.\n\n* tamara - Payments made via Tamara.\n* alipay_hk - Payments made via Alipay HK.\n* apple_pay - Payments made via Apple Pay.\n* bancontact - Payments made via Bancontact Card.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* trustly - Trustly\n* after_pay - Payments made via Afterpay\n* giropay - Payments made via giropay.\n* dana - Payments made via Dana.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* touch_n_go - Payments made via Touch 'n Go.\n* amazon_payments - Payments made via Amazon Payments.\n* electronic_payment_standard - Electronic Payment Standard\n* grab_pay - Payments made via GrabPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* pay_by_bank - Pay By Bank\n* go_pay - Payments made via GoPay\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* google_pay - Payments made via Google Pay.\n* pay_co - Payments made via PayCo\n* unionpay - Payments made via UnionPay.\n* ideal - Payments made via iDEAL.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* dotpay - Payments made via Dotpay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* qpay - Payments made via Qpay.\n* upi - UPI Payments.\n* swish - Payments made via Swish\n* twint - Payments made via Twint\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* kbc_payment_button - KBC Payment Button\n"
+          description: "Type of payment method of the token.\n\n* tamara - Payments made via Tamara.\n* alipay_hk - Payments made via Alipay HK.\n* apple_pay - Payments made via Apple Pay.\n* bancontact - Payments made via Bancontact Card.\n* netbanking_emandates - Netbanking (eMandates) Payments.\n* trustly - Trustly\n* after_pay - Payments made via Afterpay\n* giropay - Payments made via giropay.\n* fpx - Payments made via FPX.\n* momo - Payments made via MoMo.\n* blik - Payments made via BLIK.\n* dana - Payments made via Dana.\n* paypal_express_checkout - Payments made via PayPal Express Checkout.\n* touch_n_go - Payments made via Touch 'n Go.\n* amazon_payments - Payments made via Amazon Payments.\n* electronic_payment_standard - Electronic Payment Standard\n* grab_pay - Payments made via GrabPay\n* card - Card based payment including credit cards and debit cards. Details about the card can be obtained from the card resource.\n* affirm_pay - Payments made via Affirm Pay.\n* p24 - Payments made via Przelewy24 (P24).\n* thai_qr - Payments made via Thai QR.\n* pay_by_bank - Pay By Bank\n* go_pay - Payments made via GoPay\n* generic - Payments made via Generic Payment Method.\n* payme - Payments made via PayMe\n* google_pay - Payments made via Google Pay.\n* pay_co - Payments made via PayCo\n* ovo - Payments made via OVO.\n* unionpay - Payments made via UnionPay.\n* ideal - Payments made via iDEAL.\n* nequi - Payments made via Nequi.\n* alipay -\n  Payments made via Alipay.  \n  This payment source is deprecated.\n* picpay - Payments made via PicPay.\n* dotpay - Payments made via Dotpay.\n* sofort - Payments made via Sofort.\n* gcash - Payments made via GCash.\n* mercado_pago - Payments made via Mercado Pago.\n* nupay - Payments made via NuPay.\n* direct_debit - Represents bank account for which the direct debit or ACH agreement/mandate is created.\n* rakuten_pay - Payments made via Rakuten Pay.\n* qpay - Payments made via Qpay.\n* upi - UPI Payments.\n* wero - Payments made via Wero.\n* swish - Payments made via Swish\n* twint - Payments made via Twint\n* wechat_pay -\n  Payments made via WeChat Pay.  \n  This payment source is deprecated.\n* kbc_payment_button - KBC Payment Button\n"
           enum:
             - card
             - paypal_express_checkout
@@ -230069,6 +230272,7 @@ components:
           description: |
             The payment method of this transaction
 
+            * fpx - Payments made via FPX.
             * naver_pay - Payments made via Naver Pay.
             * qpay - Payments made via Qpay.
             * unionpay - Unionpay
@@ -230077,17 +230281,21 @@ components:
             * upi - upi
             * payconiq_by_bancontact - Payments made via Payconiq by Bancontact.
             * kakao_pay - Payments made via Kakao Pay.
+            * momo - Payments made via MoMo.
             * check - Check
             * payme - Payments made via PayMe
             * cash_app_pay - Payments made via Cash App Pay.
             * custom - Custom
+            * mercado_pago - Payments made via Mercado Pago.
             * amazon_payments - Amazon Payments
             * boleto - boleto
             * klarna - Payments made via Klarna.
             * direct_debit - Direct Debit
             * klarna_pay_now - Klarna Pay Now
             * sepa_instant_transfer - Sepa Instant Transfer
+            * p24 - Payments made via Przelewy24 (P24).
             * apple_pay - Apple Pay
+            * thai_qr - Payments made via Thai QR.
             * wechat_pay - Payments made via WeChat Pay.
             * twint - Payments made via Twint
             * kbc_payment_button - KBC Payment Button
@@ -230096,6 +230304,7 @@ components:
             * go_pay - Payments made via GoPay
             * stablecoin - Payments made via Stablecoin.
             * venmo - Venmo
+            * wero - Payments made via Wero.
             * touch_n_go - Payments made via Touch 'n Go.
             * bank_transfer - Bank Transfer
             * paypal_express_checkout - Paypal Express Checkout
@@ -230106,9 +230315,12 @@ components:
             * ach_credit - ACH Credit
             * sepa_credit - SEPA Credit
             * alipay_hk - Payments made via Alipay HK.
+            * affirm_pay - Payments made via Affirm Pay.
+            * rakuten_pay - Payments made via Rakuten Pay.
             * card - Card
             * gcash - Payments made via GCash.
             * ideal - IDEAL
+            * nupay - Payments made via NuPay.
             * chargeback -
               Only applicable for a transaction of [type](/docs/api/transactions/transaction-object#type)
               = `refund`.
@@ -230116,9 +230328,12 @@ components:
               occurs. You can also set this explicitly when [recording a refund](/docs/api/transactions/record-an-offline-refund)
               .
             * automated_bank_transfer - Automated Bank Transfer
+            * ovo - Payments made via OVO.
             * google_pay - Google Pay
             * dana - Payments made via Dana.
+            * nequi - Payments made via Nequi.
             * netbanking_emandates - netbanking_emandates
+            * blik - Payments made via BLIK.
             * pay_to - PayTo
             * pay_by_bank - Pay By Bank
             * dotpay - Dotpay
@@ -230133,6 +230348,7 @@ components:
             * cash - Cash
             * after_pay - Payments made via Afterpay
             * south_korean_cards - Payments made via South Korean Cards
+            * picpay - Payments made via PicPay.
           enum:
             - card
             - cash
@@ -233548,7 +233764,6 @@ components:
               * record_purchase_failed - Triggered when an omnichannel record purchase fails.
               * subscription_changes_scheduled - Sent when subscription changes are scheduled for later. The changes are applied at the end of the current term.
               * feature_created - Triggered when a feature is created.
-              * applied_business_rules - Triggered when [business rules](/docs/api/business_rules) are applied to an entity as part of a change to it, such as a quote being created or updated. The event carries a single `applied_business_rules` object that identifies the entity the rules were applied to, the `operation` that triggered them, and each rule that matched along with its version and the actions it produced. No event is sent when a change matches none of the rules.
               * coupon_set_deleted - Sent when a coupon set is deleted.
               * item_deleted - Triggered when an item is deleted.
               * coupon_set_updated - Sent when a coupon set is changed.
@@ -233692,6 +233907,7 @@ components:
               * omnichannel_subscription_item_paused - Triggered when an omnichannel subscription item is paused.
               * omnichannel_subscription_item_scheduled_cancellation_removed - Triggered when a scheduled cancellation for an omnichannel subscription item is removed.
               * payment_schedules_created - Event triggered when new payment schedules are created for an invoice.
+              * business_rules_applied - Triggered when [business rules](/docs/api/business_rules) are applied to an entity as part of a change to it, such as a quote being created or updated. The event carries a single `business_rules_applied` object that identifies the entity the rules were applied to, the `operation` that triggered them, and each rule that matched along with its version and the actions it produced. No event is sent when a change matches none of the rules.
               * subscription_advance_invoice_schedule_updated - Triggered when a scheduled advance invoice is updated for a subscription.
               * credit_note_created_with_backdating - Sent when a credit note is created with a past date as the credit note date.
               * unbilled_charges_created - Triggered when unbilled charges are created.
