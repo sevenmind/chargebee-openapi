@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-16.64e45c01503bc48e74ce25f1d69ab514bbbfda67",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-09-17.0d51fb7f4463881325eb344df11986adab166cb6",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -49783,7 +49783,7 @@
           "invoices"
         ],
         "summary": "Import invoice",
-        "description": "Imports an invoice into Chargebee Billing.\n\nUse this API to import invoices from your other billing or accounting system into Chargebee Billing. You can import both current-term and historical invoices.  \n**Caution: Importing current-term invoices**\nTo ensure accurate [proration](https://www.chargebee.com/docs/billing/2.0/subscriptions/proration#proration) for any changes to the subscription in the current term, import only one current-term invoice. Chargebee considers only the first imported invoice for the current term when calculating proration. If you have multiple invoices for the current term in the source system, consolidate them into a single invoice before importing it into Chargebee.  \n\n### Impacts\n\n**RevenueStory**  \n* You must run the [MRR History Builder](https://www.chargebee.com/docs/billing/2.0/reports-and-analytics/monthly-recurring-revenue#how-are-the-metrics-calculated-from-historical-data) to update Revenue Story metrics after importing invoices. [Contact Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to do this.  \n**Accounting Integrations**  \n* Chargebee Billing [accounting integrations](https://www.chargebee.com/docs/billing/2.0/integrations/finance-integration-index) sync imported invoices, unless you disable them from syncing.  \n\n### Implementation Notes\n\n* If discounts are present on the invoice, then the following parameters must be passed:\n  * `discounts[entity_type][]`\n  * `discounts[amount][]`\n  * `discounts[line_item_id][i]` if `discounts[entity_type][i]` is `item_level_coupon` or `document_level_coupon`.\n* If taxes are present on the invoice, then the following parameters must be passed:\n  * `taxes[name][]`\n  * `taxes[rate][]`\n  * `line_items[tax*_name][]`\n  * `line_items[tax*_amount][]`\n",
+        "description": "Imports an invoice into Chargebee Billing.\n\nUse this API to import invoices from your other billing or accounting system into Chargebee Billing. You can import both current-term and historical invoices.  \n**Caution: Importing current-term invoices**\nTo ensure accurate [proration](https://www.chargebee.com/docs/billing/2.0/subscriptions/proration#proration) for any changes to the subscription in the current term, import only one current-term invoice. Chargebee considers only the first imported invoice for the current term when calculating proration. If you have multiple invoices for the current term in the source system, consolidate them into a single invoice before importing it into Chargebee.  \n\n### Impacts\n\n**RevenueStory**  \n* You must run the [MRR History Builder](https://www.chargebee.com/docs/billing/2.0/reports-and-analytics/monthly-recurring-revenue#how-are-the-metrics-calculated-from-historical-data) to update Revenue Story metrics after importing invoices. [Contact Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to do this.  \n**Accounting Integrations**  \n* Chargebee Billing [accounting integrations](https://www.chargebee.com/docs/billing/2.0/integrations/finance-integration-index) sync imported invoices, unless you disable them from syncing.  \n\n### Implementation Notes\n\n* If discounts are present on the invoice, then the following parameters must be passed:\n  * `discounts[entity_type][]`\n  * `discounts[amount][]`\n  * `discounts[line_item_id][i]` if `discounts[entity_type][i]` is `item_level_coupon` or `document_level_coupon`.\n* If taxes are present on the invoice, then the following parameters must be passed:\n  * `taxes[name][]`\n  * `taxes[rate][]`\n  * `line_items[tax*_name][]`\n  * `line_items[tax*_amount][]`\n  * `line_items[is_partial_tax_applied][]` and `line_items[taxable_amount][]` when tax applies to only a portion of the line item amount. When `line_items[is_partial_tax_applied][]` is `true`, `line_items[taxable_amount][]` is required.\n",
         "operationId": "import_invoice",
         "parameters": [
           {
@@ -50788,6 +50788,7 @@
                       },
                       "is_partial_tax_applied": {
                         "type": "array",
+                        "description": "Indicates whether tax is applied only to a portion of the line item amount.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "boolean",
                           "deprecated": false,
@@ -50797,6 +50798,7 @@
                       },
                       "taxable_amount": {
                         "type": "array",
+                        "description": "The portion of the line item amount, in cents, that is taxable.\nChargebee stores this on import so later credit notes tax this amount instead of the full line item amount.  \n**Required if**\n\n* `line_items[is_partial_tax_applied]` is `true`.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "integer",
                           "format": "int64",
@@ -56739,6 +56741,7 @@
                       },
                       "is_partial_tax_applied": {
                         "type": "array",
+                        "description": "Indicates whether tax is applied only to a portion of the line item amount.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "boolean",
                           "deprecated": false,
@@ -56748,6 +56751,7 @@
                       },
                       "taxable_amount": {
                         "type": "array",
+                        "description": "The portion of the line item amount, in cents, that is taxable.\nChargebee stores this amount with the imported credit note.  \n**Required if**\n\n* `line_items[is_partial_tax_applied]` is `true`.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "integer",
                           "format": "int64",
@@ -121942,11 +121946,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_family`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -121954,6 +121953,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -123615,11 +123619,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `price_variant`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -123627,6 +123626,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -124127,11 +124131,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -124139,6 +124138,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -132433,11 +132437,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_price`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -132445,6 +132444,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -136595,11 +136599,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -136607,6 +136606,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -142316,11 +142320,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -142328,6 +142327,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -144898,11 +144902,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -144910,6 +144909,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -148773,11 +148777,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -148785,6 +148784,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -182990,18 +182994,13 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -183011,6 +183010,11 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -183029,18 +183033,13 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -183050,6 +183049,11 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -185230,12 +185234,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -202956,11 +202960,23 @@
                     "maxLength": 50,
                     "example": null
                   },
+                  "id": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
                   "amount": {
                     "type": "string",
                     "deprecated": false,
                     "description": "The number of credit grants to allocate as part of this operation.\nPass this value as a decimal string.  \n**Constraints**\n\nMaximum supported value: `9999999999999999999999999.9999999999` (up to 25 digits before the decimal and up to 10 digits after).  \n**Behavior**\n\n* Must be a positive value greater than zero.\n* Allocated to the subscription's provisioned balance for the given `unit_id`.  \n**Example**\n\nIf `amount = \"500\"`, then 500 credit grants are added to the subscription's total as well as usable balance and recorded as a new grant block.\n",
                     "maxLength": 36,
+                    "example": null
+                  },
+                  "effective_from": {
+                    "type": "integer",
+                    "format": "unix-time",
+                    "deprecated": false,
                     "example": null
                   },
                   "expires_at": {
@@ -205193,10 +205209,22 @@
                     "maxLength": 50,
                     "example": null
                   },
+                  "id": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
                   "amount": {
                     "type": "string",
                     "deprecated": false,
                     "maxLength": 36,
+                    "example": null
+                  },
+                  "effective_from": {
+                    "type": "integer",
+                    "format": "unix-time",
+                    "deprecated": false,
                     "example": null
                   },
                   "expires_at": {
@@ -253429,6 +253457,12 @@
                   "format": "unix-time",
                   "deprecated": false,
                   "description": "End date of the discount.\n",
+                  "example": null
+                },
+                "apply_till": {
+                  "type": "integer",
+                  "format": "unix-time",
+                  "deprecated": false,
                   "example": null
                 }
               },
