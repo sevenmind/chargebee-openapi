@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-16.64e45c01503bc48e74ce25f1d69ab514bbbfda67",
+    "version": "2026-09-17.0d51fb7f4463881325eb344df11986adab166cb6",
     "x-cb-api-version": 2,
     "x-cb-product-catalog-version": 1
   },
@@ -51468,6 +51468,7 @@
                       },
                       "is_partial_tax_applied": {
                         "type": "array",
+                        "description": "Indicates whether tax is applied only to a portion of the line item amount.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "boolean",
                           "deprecated": false,
@@ -51477,6 +51478,7 @@
                       },
                       "taxable_amount": {
                         "type": "array",
+                        "description": "The portion of the line item amount, in cents, that is taxable.\nChargebee stores this on import so later credit notes tax this amount instead of the full line item amount.  \n**Required if**\n\n* `line_items[is_partial_tax_applied]` is `true`.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "integer",
                           "format": "int64",
@@ -56821,6 +56823,7 @@
                       },
                       "is_partial_tax_applied": {
                         "type": "array",
+                        "description": "Indicates whether tax is applied only to a portion of the line item amount.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "boolean",
                           "deprecated": false,
@@ -56830,6 +56833,7 @@
                       },
                       "taxable_amount": {
                         "type": "array",
+                        "description": "The portion of the line item amount, in cents, that is taxable.\nChargebee stores this amount with the imported credit note.  \n**Required if**\n\n* `line_items[is_partial_tax_applied]` is `true`.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n",
                         "items": {
                           "type": "integer",
                           "format": "int64",
