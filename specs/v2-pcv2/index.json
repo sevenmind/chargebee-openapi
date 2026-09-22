@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-18.0d51fb7f4463881325eb344df11986adab166cb6",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-09-21.510cfd4d70914e493313392b54ff023f323f45c2",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -18766,7 +18766,8 @@
                     "description": "Specifies whether taxes are applicable to invoices generated for this customer.\n\n* taxable -\n  Taxes are calculated for this customer based on the [site's tax configuration](https://www.chargebee.com/docs/tax.html).\n  In some regions, [shipping_address](/docs/api/customers) is required for tax computation.\n  If a shipping address is not provided, the [billing_address](/docs/api/customers) is used. If neither address is available, no tax is applied.\n* exempt -\n  The customer is exempt from tax.\n\n  * If you use Chargebee [Taxes](https://www.chargebee.com/docs/tax.html) or the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no additional action is required.\n  * If you use the [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally specify the `entity_code` or `exempt_number` attributes with [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption), or the `exemption_details` attribute with [AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html). Avalara may still apply tax depending on the values of `entity_code`, `exempt_number`, or `exemption_details`, and the jurisdiction (state, region, or province) of the taxable address.\n",
                     "enum": [
                       "taxable",
-                      "exempt"
+                      "exempt",
+                      "zero_rated"
                     ],
                     "example": null
                   },
@@ -20189,40 +20190,44 @@
               "properties": {
                 "is": {
                   "type": "string",
-                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                   "enum": [
                     "taxable",
-                    "exempt"
+                    "exempt",
+                    "zero_rated"
                   ],
                   "example": null
                 },
                 "is_not": {
                   "type": "string",
-                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                   "enum": [
                     "taxable",
-                    "exempt"
+                    "exempt",
+                    "zero_rated"
                   ],
                   "example": null
                 },
                 "in": {
                   "type": "string",
-                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                   "enum": [
                     "taxable",
-                    "exempt"
+                    "exempt",
+                    "zero_rated"
                   ],
-                  "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                  "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                   "example": null
                 },
                 "not_in": {
                   "type": "string",
-                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                  "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                   "enum": [
                     "taxable",
-                    "exempt"
+                    "exempt",
+                    "zero_rated"
                   ],
-                  "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                  "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                   "example": null
                 }
               }
@@ -21061,7 +21066,8 @@
                     "description": "Specifies if the customer is liable for tax.\n\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
                     "enum": [
                       "taxable",
-                      "exempt"
+                      "exempt",
+                      "zero_rated"
                     ],
                     "example": null
                   },
@@ -76006,7 +76012,8 @@
                         "description": "Specifies if the customer is liable for tax\n\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "enum": [
                           "taxable",
-                          "exempt"
+                          "exempt",
+                          "zero_rated"
                         ],
                         "example": null
                       },
@@ -80087,7 +80094,8 @@
                         "description": "Specifies if the customer is liable for tax\n\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "enum": [
                           "taxable",
-                          "exempt"
+                          "exempt",
+                          "zero_rated"
                         ],
                         "example": null
                       },
@@ -84808,7 +84816,8 @@
                         "description": "Specifies if the customer is liable for tax\n\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "enum": [
                           "taxable",
-                          "exempt"
+                          "exempt",
+                          "zero_rated"
                         ],
                         "example": null
                       },
@@ -118415,40 +118424,44 @@
                         "properties": {
                           "is": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
                             "example": null
                           },
                           "is_not": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
                             "example": null
                           },
                           "in": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
-                            "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                            "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                             "example": null
                           },
                           "not_in": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
-                            "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                            "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                             "example": null
                           }
                         }
@@ -121946,6 +121959,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_family`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -121953,11 +121971,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -123619,6 +123632,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `price_variant`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -123626,11 +123644,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -124131,6 +124144,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -124138,11 +124156,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -126586,40 +126599,44 @@
                         "properties": {
                           "is": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
                             "example": null
                           },
                           "is_not": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
                             "example": null
                           },
                           "in": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
-                            "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                            "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                             "example": null
                           },
                           "not_in": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
-                            "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                            "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                             "example": null
                           }
                         }
@@ -128922,40 +128939,44 @@
                         "properties": {
                           "is": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
                             "example": null
                           },
                           "is_not": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
                             "example": null
                           },
                           "in": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
-                            "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                            "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                             "example": null
                           },
                           "not_in": {
                             "type": "string",
-                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                            "description": "* `taxable` - Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html). In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* `exempt` -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n",
                             "enum": [
                               "taxable",
-                              "exempt"
+                              "exempt",
+                              "zero_rated"
                             ],
-                            "pattern": "^\\[(taxable|exempt)(,(taxable|exempt))*\\]$",
+                            "pattern": "^\\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\\]$",
                             "example": null
                           }
                         }
@@ -132437,6 +132458,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_price`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -132444,11 +132470,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -136599,6 +136620,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -136606,11 +136632,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -142320,6 +142341,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -142327,11 +142353,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -144902,6 +144923,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -144909,11 +144935,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -148777,6 +148798,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -148784,11 +148810,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -165819,7 +165840,8 @@
                         "description": "Specifies if the customer is liable for tax\n\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n",
                         "enum": [
                           "taxable",
-                          "exempt"
+                          "exempt",
+                          "zero_rated"
                         ],
                         "example": null
                       },
@@ -182994,6 +183016,17 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
+                "on": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "example": null
+                },
                 "before": {
                   "type": "string",
                   "format": "unix-time",
@@ -183004,17 +183037,6 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "on": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -183033,6 +183055,17 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
+                "on": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "example": null
+                },
                 "before": {
                   "type": "string",
                   "format": "unix-time",
@@ -183043,17 +183076,6 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "on": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -185234,12 +185256,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -216527,7 +216549,8 @@
             "description": "Specifies if the customer is liable for tax\n\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
             "enum": [
               "taxable",
-              "exempt"
+              "exempt",
+              "zero_rated"
             ],
             "example": null
           },
@@ -260537,7 +260560,8 @@
         "deprecated": false,
         "enum": [
           "taxable",
-          "exempt"
+          "exempt",
+          "zero_rated"
         ],
         "example": null
       },

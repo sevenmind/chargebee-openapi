@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-18.0d51fb7f4463881325eb344df11986adab166cb6
-  x-cb-product-catalog-version: 2
+  version: 2026-09-21.510cfd4d70914e493313392b54ff023f323f45c2
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -16255,6 +16255,7 @@ paths:
                   enum:
                     - taxable
                     - exempt
+                    - zero_rated
                   example: null
                 exemption_details:
                   type: array
@@ -17505,9 +17506,11 @@ paths:
                   * `exempt` -
                     * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                     * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                  * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                 enum:
                   - taxable
                   - exempt
+                  - zero_rated
                 example: null
               is_not:
                 type: string
@@ -17516,9 +17519,11 @@ paths:
                   * `exempt` -
                     * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                     * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                  * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                 enum:
                   - taxable
                   - exempt
+                  - zero_rated
                 example: null
               in:
                 type: string
@@ -17527,10 +17532,12 @@ paths:
                   * `exempt` -
                     * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                     * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                  * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                 enum:
                   - taxable
                   - exempt
-                pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                  - zero_rated
+                pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                 example: null
               not_in:
                 type: string
@@ -17539,10 +17546,12 @@ paths:
                   * `exempt` -
                     * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                     * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                  * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                 enum:
                   - taxable
                   - exempt
-                pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                  - zero_rated
+                pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                 example: null
         - name: created_at
           in: query
@@ -18384,6 +18393,7 @@ paths:
                   enum:
                     - taxable
                     - exempt
+                    - zero_rated
                   example: null
                 exemption_details:
                   type: array
@@ -64575,6 +64585,7 @@ paths:
                       enum:
                         - taxable
                         - exempt
+                        - zero_rated
                       example: null
                     vat_number:
                       type: string
@@ -68171,6 +68182,7 @@ paths:
                       enum:
                         - taxable
                         - exempt
+                        - zero_rated
                       example: null
                     vat_number:
                       type: string
@@ -72554,6 +72566,7 @@ paths:
                       enum:
                         - taxable
                         - exempt
+                        - zero_rated
                       example: null
                     entity_code:
                       type: string
@@ -102397,9 +102410,11 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
+                            - zero_rated
                           example: null
                         is_not:
                           type: string
@@ -102408,9 +102423,11 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
+                            - zero_rated
                           example: null
                         in:
                           type: string
@@ -102419,10 +102436,12 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
-                          pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                            - zero_rated
+                          pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                           example: null
                         not_in:
                           type: string
@@ -102431,10 +102450,12 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
-                          pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                            - zero_rated
+                          pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                           example: null
                     created_at:
                       type: object
@@ -105753,16 +105774,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -107101,16 +107122,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -107521,16 +107542,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -109825,9 +109846,11 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
+                            - zero_rated
                           example: null
                         is_not:
                           type: string
@@ -109836,9 +109859,11 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
+                            - zero_rated
                           example: null
                         in:
                           type: string
@@ -109847,10 +109872,12 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
-                          pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                            - zero_rated
+                          pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                           example: null
                         not_in:
                           type: string
@@ -109859,10 +109886,12 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
-                          pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                            - zero_rated
+                          pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                           example: null
                     created_at:
                       type: object
@@ -112042,9 +112071,11 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
+                            - zero_rated
                           example: null
                         is_not:
                           type: string
@@ -112053,9 +112084,11 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
+                            - zero_rated
                           example: null
                         in:
                           type: string
@@ -112064,10 +112097,12 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
-                          pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                            - zero_rated
+                          pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                           example: null
                         not_in:
                           type: string
@@ -112076,10 +112111,12 @@ paths:
                             * `exempt` -
                               * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                               * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                            * `zero_rated` - With [Chargebee Taxes](https://www.chargebee.com/docs/tax.html), otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                           enum:
                             - taxable
                             - exempt
-                          pattern: ^\[(taxable|exempt)(,(taxable|exempt))*\]$
+                            - zero_rated
+                          pattern: ^\[(taxable|exempt|zero_rated)(,(taxable|exempt|zero_rated))*\]$
                           example: null
                     created_at:
                       type: object
@@ -115153,16 +115190,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -118763,16 +118800,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -123386,16 +123423,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -125605,16 +125642,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -128942,16 +128979,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -143086,6 +143123,7 @@ paths:
                       enum:
                         - taxable
                         - exempt
+                        - zero_rated
                       example: null
                     entity_code:
                       type: string
@@ -156722,6 +156760,15 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
               before:
                 type: string
                 format: unix-time
@@ -156731,15 +156778,6 @@ paths:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
-                example: null
-              "on":
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: purchased_at
           in: query
@@ -156762,6 +156800,15 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
               before:
                 type: string
                 format: unix-time
@@ -156771,15 +156818,6 @@ paths:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
-                example: null
-              "on":
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: sort_by
           in: query
@@ -158519,11 +158557,11 @@ paths:
             type: object
             deprecated: false
             properties:
-              starts_with:
+              is:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              starts_with:
                 type: string
                 minLength: 1
                 example: null
@@ -184213,6 +184251,7 @@ components:
           enum:
             - taxable
             - exempt
+            - zero_rated
           example: null
         entity_code:
           type: string
@@ -228948,6 +228987,7 @@ components:
       enum:
         - taxable
         - exempt
+        - zero_rated
       example: null
     TaxjarExemptionCategory:
       type: string
