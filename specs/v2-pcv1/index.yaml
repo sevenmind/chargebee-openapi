@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-21.510cfd4d70914e493313392b54ff023f323f45c2
-  x-cb-api-version: 2
+  version: 2026-09-22.0a6b18f8dea29943cd4ecc060e85f011a0635ef0
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -3091,6 +3091,7 @@ paths:
                       description: |
                         Specifies if the customer is liable for tax
 
+                        * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                         * taxable -
                           Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                           In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -10012,6 +10013,7 @@ paths:
                         * exempt -
                           * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                           * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                        * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                         * taxable -
                           Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                           In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -19092,6 +19094,7 @@ paths:
                     * taxable -
                       Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                       In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
+                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                     * exempt -
                       * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                       * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
@@ -20287,7 +20290,7 @@ paths:
           description: |
             optional, enumerated string filter
 
-            Specifies if the customer is liable for tax. Possible values are : taxable, exempt.
+            Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
 
             **Supported operators :**
             is, is_not, in, not_in
@@ -21182,6 +21185,7 @@ paths:
                   description: |
                     Specifies if the customer is liable for tax.
 
+                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                     * taxable -
                       Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                       In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -47297,13 +47301,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -47326,13 +47330,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -76215,6 +76219,7 @@ paths:
                         * exempt -
                           * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                           * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                        * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                         * taxable -
                           Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                           In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -92344,13 +92349,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -101531,7 +101536,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Specifies if the customer is liable for tax
+                        Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
                       example: taxable
                       properties:
                         is:
@@ -106260,7 +106265,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Specifies if the customer is liable for tax
+                        Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
                       example: taxable
                       properties:
                         is:
@@ -108418,7 +108423,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Specifies if the customer is liable for tax
+                        Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
                       example: taxable
                       properties:
                         is:
@@ -109953,13 +109958,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -123505,13 +123510,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -123533,13 +123538,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -135046,6 +135051,7 @@ components:
           description: |
             Specifies if the customer is liable for tax
 
+            * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
             * taxable -
               Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
               In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -140197,6 +140203,8 @@ components:
                       type: integer
                       format: int64
                       deprecated: false
+                      description: |
+                        The planned installment amount for this schedule entry. Since an estimate has not collected any payment yet, this is the same as `amount`.
                       minimum: 0
                       example: null
                     status:
@@ -152170,6 +152178,8 @@ components:
       description: |
         Payment schedules for an invoice refer to a payment structure where the `amount_due`
         on an invoice is divided into smaller, more manageable parts, each of which is paid over a specified period.
+
+        `reference_transactions[]` lists the payment attempts referenced against those installments.
       properties:
         id:
           type: string
@@ -152268,13 +152278,15 @@ components:
                 format: int64
                 deprecated: false
                 description: |
-                  total maximum amount that this payment schedule is allowed to collect
+                  The remaining amount due on this schedule entry. Decreases as payments are applied. When this value reaches `0`, `status` is `paid`.
                 minimum: 0
                 example: null
               scheduled_amount:
                 type: integer
                 format: int64
                 deprecated: false
+                description: |
+                  The original installment amount for this schedule entry. This value does not change when payments are applied.
                 minimum: 0
                 example: null
               status:
@@ -152302,6 +152314,8 @@ components:
         reference_transactions:
           type: array
           deprecated: false
+          description: |
+            The list of transactions referenced against the schedule entries of this payment schedule, most recent first. A transaction referenced against more than one schedule entry appears once per entry.
           items:
             type: object
             deprecated: false
@@ -152309,22 +152323,29 @@ components:
               schedule_entry_id:
                 type: string
                 deprecated: false
+                description: |
+                  The identifier of the [`schedule_entries[]`](/docs/api/v2/pcv-1/payment_schedules#payment_schedule_schedule_entries) item this transaction is linked to.
                 maxLength: 40
                 example: null
               applied_amount:
                 type: integer
                 format: int64
                 deprecated: false
+                description: |
+                  The amount of this transaction applied to this schedule entry. `0` for failed and in-progress transactions until the payment settles.
                 minimum: 0
                 example: null
               txn_id:
                 type: string
                 deprecated: false
+                description: |
+                  Uniquely identifies the transaction.
                 maxLength: 40
                 example: null
               txn_status:
                 type: string
                 deprecated: false
+                description: "The status of this transaction.\n\n* timeout - Transaction failed because of Gateway not accepting the connection.\n* voided - The transaction got voided or authorization expired at gateway.\n* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure\n* in_progress -\n  Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html)\n  or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method.\n* success - The transaction is successful.\n* late_failure - Indicates that a successful payment transaction has failed now due to a late failure notification from the payment gateway, typically caused by issues like insufficient funds or a closed bank account.\n* needs_attention -\n  When connection with the Gateway gets terminated abruptly. For `needs_attention`\n  status Chargebee automatically reconcile the transaction for few gateways, for rest of the gateways you have to use the [Reconcile transaction API](/docs/api/v2/pcv-1/transactions/reconcile-transaction).\n  You can use this API to update the `id_at_gateway`\n  (Gateway Transaction ID) and `status`\n  for a [`needs_attention`](/docs/api/v2/pcv-1/transactions#transaction_status)\n  transaction to be reconciled at par with the gateway.  \n  [Learn more](https://www.chargebee.com/docs/payments/2.0/needs-attention-transactions.html)\n  about `needs_attention`\n  transaction status\n"
                 enum:
                   - in_progress
                   - success
@@ -152338,11 +152359,15 @@ components:
                 type: integer
                 format: unix-time
                 deprecated: false
+                description: |
+                  Indicates when this transaction occurred.
                 example: null
               txn_amount:
                 type: integer
                 format: int64
                 deprecated: false
+                description: |
+                  Total amount of the transaction.
                 minimum: 0
                 example: null
             required:
@@ -160040,6 +160065,10 @@ components:
         - immediate
         - specific_dates
         - fixed_intervals
+      example: null
+    SettingsPreferenceDefinition:
+      type: object
+      properties: {}
       example: null
     Site:
       type: object
