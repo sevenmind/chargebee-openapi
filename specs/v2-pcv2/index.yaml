@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-21.510cfd4d70914e493313392b54ff023f323f45c2
+  version: 2026-09-22.0a6b18f8dea29943cd4ecc060e85f011a0635ef0
   x-cb-api-version: 2
   x-cb-product-catalog-version: 2
 servers:
@@ -16247,6 +16247,7 @@ paths:
                       Taxes are calculated for this customer based on the [site's tax configuration](https://www.chargebee.com/docs/tax.html).
                       In some regions, [shipping_address](/docs/api/customers) is required for tax computation.
                       If a shipping address is not provided, the [billing_address](/docs/api/customers) is used. If neither address is available, no tax is applied.
+                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                     * exempt -
                       The customer is exempt from tax.
 
@@ -17483,7 +17484,7 @@ paths:
           description: |
             optional, enumerated string filter
 
-            Specifies if the customer is liable for tax. Possible values are : taxable, exempt.
+            Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
 
             **Supported operators :**
             is, is_not, in, not_in
@@ -18384,6 +18385,7 @@ paths:
                   description: |
                     Specifies if the customer is liable for tax.
 
+                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). Third-party tax providers and integrations are not supported. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
                     * taxable -
                       Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                       In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -34751,7 +34753,7 @@ paths:
       tags:
         - invoices
       summary: Apply payments for an invoice
-      description: "Applies payment to a single invoice. You can either specify individual payment [transactions](/docs/api/transactions) as parameters, or Chargebee applies any available [excess payments](/docs/api/customers/customer-object#excess_payments) for that customer. If you specify individual transactions then any [un-applied amount](/docs/api/transactions/transaction-object#amount_unused) in those transactions will be used.  \n\n### Prerequisites \\& Constraints\n\n* The invoice's `status` must be `payment_due`, `posted`, or `not_paid`.\n* The customer must have excess payments available.  \n\n### Impacts\n\n**Invoice**  \nInvoice's [`amount_due`](/docs/api/invoices/invoice-object#amount_due) is updated to reflect the applied payment. If no amount remains, the invoice `status` becomes `paid`.  \n**Transactions**  \nWhen a payment is applied to an invoice, the [`amount_unused`](/docs/api/transactions/transaction-object#amount_unused) field of the associated transaction(s) is reduced accordingly.  \n**Accounting Integrations**  \nSynchronization to the accounting system will not proceed if the linked transaction contains a surplus balance.  \n\n### Implementation Notes\n\nBefore calling this API, ensure the following:\n\n* The `invoice` status is `not_paid`, `payment_due`, or `posted`.\n* Customer has [excess_payments](/docs/api/customers/customer-object#excess_payments) .\n"
+      description: "Applies payment to a single invoice. You can either specify individual payment [transactions](/docs/api/transactions) as parameters, or Chargebee applies any available [excess payments](/docs/api/customers/customer-object#excess_payments) for that customer. If you specify individual transactions then any [un-applied amount](/docs/api/transactions/transaction-object#amount_unused) in those transactions will be used.  \n\n### Prerequisites \\& Constraints\n\n* The invoice's `status` must be `payment_due`, `posted`, or `not_paid`.\n* The customer must have excess payments available.  \n\n### Impacts\n\n**Invoice**  \nInvoice's [`amount_due`](/docs/api/invoices/invoice-object#amount_due) is updated to reflect the applied payment. If no amount remains, the invoice `status` becomes `paid`.  \n**Transactions**  \nWhen a payment is applied to an invoice, the [`amount_unused`](/docs/api/transactions/transaction-object#amount_unused) field of the associated transaction(s) is reduced accordingly.  \n**Payment Schedules**  \nIf a [`payment_schedule`](/docs/api/payment_schedules) exists for the invoice:\n\n* Chargebee reduces [`schedule_entries[].amount`](/docs/api/payment_schedules/payment_schedule-object#schedule_entries) for the entries the payment covers. An entry whose remaining amount reaches `0` is marked `paid`.\n* Chargebee adds the payment to [`reference_transactions[]`](/docs/api/payment_schedules/payment_schedule-object#reference_transactions).  \n**Accounting Integrations**  \nSynchronization to the accounting system will not proceed if the linked transaction contains a surplus balance.  \n\n### Implementation Notes\n\nBefore calling this API, ensure the following:\n\n* The `invoice` status is `not_paid`, `payment_due`, or `posted`.\n* Customer has [excess_payments](/docs/api/customers/customer-object#excess_payments) .\n"
       operationId: apply_payments_for_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -41946,7 +41948,7 @@ paths:
       tags:
         - invoices
       summary: Record an invoice payment
-      description: "Records an [offline payment](https://www.chargebee.com/docs/payments/2.0/offline-checkout/offline_payments) for an [invoice](/docs/api/invoices).\n\nUse this API to record payments that you receive outside Chargebee, such as bank transfers or checks, so that you can reconcile them against invoices.  \n\n### Prerequisites \\& Constraints\n\n* The invoice [`status`](/docs/api/invoices/invoice-object#status) must be `payment_due`, `posted`, or `not_paid`.  \n\n### Impacts\n\n**Invoice**  \n* The `amount_due` on the invoice decreases by `transaction[amount]` when the `transaction[status]` is `success`.\n* The invoice `status` changes to `paid` if the `amount_due` on the invoice becomes zero because of this payment. Otherwise, the `status` remains unchanged.  \n**Customer**  \nIf the recorded payment exceeds the invoice's `amount_due`, the excess is added to the customer's [`excess_payments`](/docs/api/customers/customer-object#excess_payments) balance.  \n\n### Implementation Notes\n\nBefore calling this API, ensure the following:\n\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n"
+      description: "Records an [offline payment](https://www.chargebee.com/docs/payments/2.0/offline-checkout/offline_payments) for an [invoice](/docs/api/invoices).\n\nUse this API to record payments that you receive outside Chargebee, such as bank transfers or checks, so that you can reconcile them against invoices.  \n\n### Prerequisites \\& Constraints\n\n* The invoice [`status`](/docs/api/invoices/invoice-object#status) must be `payment_due`, `posted`, or `not_paid`.  \n\n### Impacts\n\n**Invoice**  \n* The `amount_due` on the invoice decreases by `transaction[amount]` when the `transaction[status]` is `success`.\n* The invoice `status` changes to `paid` if the `amount_due` on the invoice becomes zero because of this payment. Otherwise, the `status` remains unchanged.  \n**Customer**  \nIf the recorded payment exceeds the invoice's `amount_due`, the excess is added to the customer's [`excess_payments`](/docs/api/customers/customer-object#excess_payments) balance.  \n**Payment Schedules**  \nIf a [`payment_schedule`](/docs/api/payment_schedules) exists for the invoice:\n\n* For a successful payment, Chargebee reduces [`schedule_entries[].amount`](/docs/api/payment_schedules/payment_schedule-object#schedule_entries) for the entries the payment covers. An entry whose remaining amount reaches `0` is marked `paid`.\n* Chargebee adds the payment to [`reference_transactions[]`](/docs/api/payment_schedules/payment_schedule-object#reference_transactions), including failed and in-progress attempts with `applied_amount` `0`.  \n\n### Implementation Notes\n\nBefore calling this API, ensure the following:\n\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n"
       operationId: record_an_invoice_payment
       parameters:
         - name: chargebee-request-origin-device
@@ -45537,7 +45539,7 @@ paths:
       tags:
         - invoices
       summary: Collect payment for an invoice
-      description: "Collects a specified amount of payment for an invoice, via a specified online payment method.  \n\n#### Offline payments\n\nWhen there is no payment method available, and if you wish to record an offline payment, use the [Record an offline payment API](/docs/api/invoices/record-an-invoice-payment) instead.  \n\n### Prerequisites \\& Constraints\n\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n* The invoice `channel` must not be `app_store` or `play_store`.\n* The invoice's [`amount_to_collect`](/docs/api/invoices/invoice-object#amount_to_collect) must be greater than 0.\n* A valid `payment_source` must be associated with the customer.  \n\n### Impacts\n\n**Invoice**  \n* The invoice `status` changes to `paid` if the `amount_due` on the invoice becomes zero because of this payment. Otherwise, the `status` remains unchanged.  \n**Payment Schedules**  \nIf a [`payment_schedule`](/docs/api/payment_schedules) exists for the invoice, then the `status` of the appropriate `schedule_entries[].status` is updated to `paid`.  \n\n#### Related APIs\n\n[Record an offline payment](/docs/api/invoices?prod_cat_ver=2#record_an_invoice_payment)\n"
+      description: "Collects a specified amount of payment for an invoice, via a specified online payment method.  \n\n#### Offline payments\n\nWhen there is no payment method available, and if you wish to record an offline payment, use the [Record an offline payment API](/docs/api/invoices/record-an-invoice-payment) instead.  \n\n### Prerequisites \\& Constraints\n\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n* The invoice `channel` must not be `app_store` or `play_store`.\n* The invoice's [`amount_to_collect`](/docs/api/invoices/invoice-object#amount_to_collect) must be greater than 0.\n* A valid `payment_source` must be associated with the customer.  \n\n### Impacts\n\n**Invoice**  \n* The invoice `status` changes to `paid` if the `amount_due` on the invoice becomes zero because of this payment. Otherwise, the `status` remains unchanged.  \n**Payment Schedules**  \nIf a [`payment_schedule`](/docs/api/payment_schedules) exists for the invoice:\n\n* For a successful payment, Chargebee reduces [`schedule_entries[].amount`](/docs/api/payment_schedules/payment_schedule-object#schedule_entries) for the entries the payment covers. An entry whose remaining amount reaches `0` is marked `paid`.\n* Chargebee adds the payment to [`reference_transactions[]`](/docs/api/payment_schedules/payment_schedule-object#reference_transactions), including failed and in-progress attempts with `applied_amount` `0`.  \n\n#### Related APIs\n\n[Record an offline payment](/docs/api/invoices?prod_cat_ver=2#record_an_invoice_payment)\n"
       operationId: collect_payment_for_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -72560,6 +72562,7 @@ paths:
                         * exempt -
                           * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                           * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                        * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                         * taxable -
                           Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                           In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -102400,7 +102403,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Specifies if the customer is liable for tax
+                        Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
                       example: taxable
                       properties:
                         is:
@@ -109836,7 +109839,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Specifies if the customer is liable for tax
+                        Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
                       example: taxable
                       properties:
                         is:
@@ -112061,7 +112064,7 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        Specifies if the customer is liable for tax
+                        Specifies if the customer is liable for tax. Possible values are : taxable, exempt, zero_rated.
                       example: taxable
                       properties:
                         is:
@@ -143117,6 +143120,7 @@ paths:
                         * exempt -
                           * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                           * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
+                        * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
                         * taxable -
                           Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                           In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -156760,7 +156764,7 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -156769,12 +156773,12 @@ paths:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -156800,7 +156804,7 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -156809,12 +156813,12 @@ paths:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -167086,6 +167090,207 @@ paths:
       deprecated: false
       security:
         - BasicAuth: []
+  /business_rulesets/{business-ruleset-id}/delete:
+    post:
+      tags:
+        - business_rulesets
+      summary: Delete a business ruleset
+      operationId: delete_a_business_ruleset
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-event-actions
+          in: header
+          description: skip all actions to be done on the events
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-actions'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip all actions to be done on the events
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-email
+          in: header
+          description: skip only emails
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-email'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip only emails
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-webhook
+          in: header
+          description: ' skip only webhooks'
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-webhook'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: ' skip only webhooks'
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: business-ruleset-id
+          in: path
+          required: true
+          deprecated: false
+          $ref: '#/components/parameters/business-ruleset-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business_ruleset:
+                    $ref: '#/components/schemas/BusinessRuleset'
+                    description: |
+                      The business ruleset with the rules added to its membership. Its `name`, `description`, `execute_mode`, and `active` attributes are unchanged.
+                required:
+                  - business_ruleset
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
   /business_rulesets/{business-ruleset-id}/deactivate:
     post:
       tags:
@@ -171806,6 +172011,7 @@ paths:
                 id:
                   type: string
                   deprecated: false
+                  description: "Optional client-supplied identifier for this allocate operation.  \n**Behavior**\n\n* When provided, must uniquely identify this operation across the entire ledger.\n* Should not conflict with any other operation, regardless of type.\n* Reusing the same value is treated as a replay of the original allocation rather than a conflict, so a retry does not create a second grant block.  \n**Constraints**\n\n* Maximum length: 50 characters.  \n**Default value**\n\n* When omitted, Chargebee generates an identifier for the operation.  \n**Usage**\n\n* Supply a value that you can reproduce, such as your own allocation reference, and send that same value when retrying after an unexpected response.\n"
                   maxLength: 50
                   example: null
                 amount:
@@ -171818,6 +172024,7 @@ paths:
                   type: integer
                   format: unix-time
                   deprecated: false
+                  description: "Optional Unix timestamp (in seconds) at which the allocated credit grants become usable. Sets [`effective_from`](/docs/api/grant_blocks#effective_from) on the grant block created by this allocation.  \n**Behavior**\n\n* When set to a future timestamp, the grant block is created with [`status`](/docs/api/grant_blocks#status) `scheduled` and its credit grants stay out of the usable balance until that time.\n* At `effective_from`, the grant block becomes `available` and its credit grants are included in the usable balance.  \n**Default value**\n\n* When omitted, the credit grants become usable at the time of the request.  \n**Note**\n\n`effective_from` is inclusive. A capture operation with a timestamp exactly equal to `effective_from` is eligible to consume credit grants from this grant block.\n"
                   example: null
                 expires_at:
                   type: integer
@@ -176481,6 +176688,11 @@ components:
           type: integer
           format: int64
           deprecated: false
+          example: null
+        credit_note_reason_code:
+          type: string
+          deprecated: false
+          maxLength: 100
           example: null
       required:
         - billing_doc_type
@@ -184242,6 +184454,7 @@ components:
           description: |
             Specifies if the customer is liable for tax
 
+            * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
             * taxable -
               Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
               In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -190712,6 +190925,8 @@ components:
                       type: integer
                       format: int64
                       deprecated: false
+                      description: |
+                        The planned installment amount for this schedule entry. Since an estimate has not collected any payment yet, this is the same as `amount`.
                       minimum: 0
                       example: null
                     status:
@@ -211439,6 +211654,8 @@ components:
       description: |
         Payment schedules for an invoice refer to a payment structure where the `amount_due`
         on an invoice is divided into smaller, more manageable parts, each of which is paid over a specified period.
+
+        `reference_transactions[]` lists the payment attempts referenced against those installments.
       properties:
         id:
           type: string
@@ -211540,13 +211757,15 @@ components:
                 format: int64
                 deprecated: false
                 description: |
-                  Maximum amount that this payment schedule is allowed to collect.
+                  The remaining amount due on this schedule entry. Decreases as payments are applied. When this value reaches `0`, `status` is `paid`.
                 minimum: 0
                 example: null
               scheduled_amount:
                 type: integer
                 format: int64
                 deprecated: false
+                description: |
+                  The original installment amount for this schedule entry. This value does not change when payments are applied.
                 minimum: 0
                 example: null
               status:
@@ -211574,6 +211793,8 @@ components:
         reference_transactions:
           type: array
           deprecated: false
+          description: |
+            The list of transactions referenced against the schedule entries of this payment schedule, most recent first. A transaction referenced against more than one schedule entry appears once per entry.
           items:
             type: object
             deprecated: false
@@ -211581,22 +211802,29 @@ components:
               schedule_entry_id:
                 type: string
                 deprecated: false
+                description: |
+                  The identifier of the [`schedule_entries[]`](/docs/api/payment_schedules/payment_schedule-object#schedule_entries) item this transaction is linked to.
                 maxLength: 40
                 example: null
               applied_amount:
                 type: integer
                 format: int64
                 deprecated: false
+                description: |
+                  The amount of this transaction applied to this schedule entry. `0` for failed and in-progress transactions until the payment settles.
                 minimum: 0
                 example: null
               txn_id:
                 type: string
                 deprecated: false
+                description: |
+                  Uniquely identifies the transaction.
                 maxLength: 40
                 example: null
               txn_status:
                 type: string
                 deprecated: false
+                description: "The status of this transaction.\n\n* timeout - Transaction failed because of Gateway not accepting the connection.\n* voided - The transaction got voided or authorization expired at gateway.\n* failure - Transaction failed. Refer the 'error_code' and 'error_text' fields to know the reason for failure\n* in_progress -\n  Transaction is being processed by the gateway. This typically happens for [direct debit transactions](https://www.chargebee.com/docs/direct-debit-payments.html)\n  or, in case of cards, refund transactions. Such transactions can take 2-7 days to complete, depending on the gateway and payment method.\n* success - The transaction is successful.\n* late_failure - Indicates that a successful payment transaction has failed now due to a late failure notification from the payment gateway, typically caused by issues like insufficient funds or a closed bank account.\n* needs_attention -\n  When connection with the Gateway gets terminated abruptly. For `needs_attention`\n  status Chargebee automatically reconcile the transaction for few gateways, for rest of the gateways you have to use the [Reconcile transaction API](/docs/api/transactions/reconcile-transaction).\n  You can use this API to update the `id_at_gateway`\n  (Gateway Transaction ID) and `status`\n  for a [`needs_attention`](/docs/api/transactions/transaction-object#status)\n  transaction to be reconciled at par with the gateway.  \n  [Learn more](https://www.chargebee.com/docs/payments/2.0/needs-attention-transactions.html)\n  about `needs_attention`\n  transaction status\n"
                 enum:
                   - in_progress
                   - success
@@ -211610,11 +211838,15 @@ components:
                 type: integer
                 format: unix-time
                 deprecated: false
+                description: |
+                  Indicates when this transaction occurred.
                 example: null
               txn_amount:
                 type: integer
                 format: int64
                 deprecated: false
+                description: |
+                  Total amount of the transaction.
                 minimum: 0
                 example: null
             required:
@@ -223165,6 +223397,14 @@ components:
         - immediate
         - specific_dates
         - fixed_intervals
+      example: null
+    SettingsPreference:
+      type: object
+      properties: {}
+      example: null
+    SettingsPreferenceDefinition:
+      type: object
+      properties: {}
       example: null
     Site:
       type: object
