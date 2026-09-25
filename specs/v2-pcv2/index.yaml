@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-23.45abdfac1c04355a547f968e3dbd6bf1ce5e6f4e
-  x-cb-product-catalog-version: 2
+  version: 2026-09-24.93482a957c049e6f63061693bca06a1cea498912
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -45419,13 +45419,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: payment_reference_number
           in: query
@@ -45448,13 +45448,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  in:
-                    type: string
-                    pattern: ^\[(.*)(,.*)*\]$
-                    example: null
                   is:
                     type: string
                     minLength: 1
+                    example: null
+                  in:
+                    type: string
+                    pattern: ^\[(.*)(,.*)*\]$
                     example: null
             example: null
       responses:
@@ -91419,13 +91419,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -96679,8 +96679,33 @@ paths:
                   required:
                     - id
                   example: null
+                group_by:
+                  type: object
+                  deprecated: false
+                  properties:
+                    feature_id:
+                      type: array
+                      items:
+                        type: string
+                        deprecated: false
+                        maxLength: 100
+                        example: null
+                      example: null
+                    attributes:
+                      type: array
+                      items:
+                        type: array
+                        deprecated: false
+                        items:
+                          example: null
+                        example: null
+                      example: null
+                  example: null
               example: null
             encoding:
+              group_by:
+                style: deepObject
+                explode: true
               invoice:
                 style: deepObject
                 explode: true
@@ -105800,6 +105825,15 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
+                        is:
+                          type: string
+                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                         in:
                           type: string
                           description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -105810,15 +105844,6 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
-                        is:
-                          type: string
-                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -105826,13 +105851,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        in:
-                          type: string
-                          pattern: ^\[(.*)(,.*)*\]$
-                          example: null
                         is:
                           type: string
                           minLength: 1
+                          example: null
+                        in:
+                          type: string
+                          pattern: ^\[(.*)(,.*)*\]$
                           example: null
                     effective_from:
                       type: object
@@ -114301,13 +114326,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: ^\[(.*)(,.*)*\]$
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: ^\[(.*)(,.*)*\]$
                       example: null
                 coupon:
                   type: object
@@ -136450,6 +136475,15 @@ paths:
             deprecated: false
             example: active
             properties:
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
+                example: null
               in:
                 type: string
                 description: |-
@@ -136459,15 +136493,6 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
                 example: null
         - name: id
           in: query
@@ -136489,13 +136514,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -139296,13 +139321,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: entity_type
           in: query
@@ -139327,6 +139352,21 @@ paths:
             deprecated: false
             example: plan_price
             properties:
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
+                example: null
               in:
                 type: string
                 description: |-
@@ -139342,21 +139382,6 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -139380,13 +139405,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -148616,6 +148641,15 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
+              is:
+                type: string
+                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
+                example: null
               in:
                 type: string
                 description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -148625,15 +148659,6 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
-                example: null
-              is:
-                type: string
-                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -148647,13 +148672,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: effective_from
           in: query
@@ -157432,16 +157457,6 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              before:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              after:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               "on":
                 type: string
                 format: unix-time
@@ -157450,6 +157465,16 @@ paths:
               between:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
         - name: purchased_at
           in: query
@@ -157472,16 +157497,6 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              before:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              after:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               "on":
                 type: string
                 format: unix-time
@@ -157490,6 +157505,16 @@ paths:
               between:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
         - name: sort_by
           in: query
@@ -159229,11 +159254,11 @@ paths:
             type: object
             deprecated: false
             properties:
-              starts_with:
+              is:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              starts_with:
                 type: string
                 minLength: 1
                 example: null
@@ -161417,13 +161442,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: reference_id
           in: query
@@ -161445,13 +161470,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: updated_at
           in: query
@@ -167763,6 +167788,7 @@ paths:
       tags:
         - business_rulesets
       summary: Delete a business ruleset
+      description: "Permanently deletes a business ruleset.  \n\n### Prerequisites \\& Constraints\n\n* The business ruleset must not contain any business rules. If it does, [remove the business rules from the ruleset](/docs/api/business_rulesets/remove-business-rules-from-a-ruleset) before deleting it.  \n\n### Impacts\n\n**Business ruleset**  \nChargebee permanently deletes the business ruleset. This operation can't be undone. To stop evaluating a business ruleset without deleting it, use [Deactivate a business ruleset](/docs/api/business_rulesets/deactivate-a-business-ruleset).  \n**Business rules**  \nDeleting a ruleset **does not** delete the business rules associated with it. To delete the business rules, use [Delete a business rule](/docs/api/business_rules/delete-a-business-rule).\n"
       operationId: delete_a_business_ruleset
       parameters:
         - name: chargebee-request-origin-device
@@ -169439,6 +169465,51 @@ paths:
             format: unix-time
             deprecated: false
             example: null
+        - name: group_by
+          in: query
+          required: false
+          deprecated: false
+          style: form
+          explode: true
+          schema:
+            type: array
+            deprecated: false
+            items:
+              type: string
+              deprecated: false
+              x-cb-parameter-blank-option: as_null
+              x-cb-attribute-meta-comment: optional
+              x-cb-is-api-column: true
+              maxLength: 100
+              example: null
+            example: null
+        - name: attributes
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            example: us-east
+            properties:
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
       responses:
         "200":
           description: OK
@@ -173303,6 +173374,31 @@ paths:
             type: object
             deprecated: false
             properties:
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
+                example: null
               in:
                 type: string
                 description: |-
@@ -173328,31 +173424,6 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -198133,6 +198204,17 @@ components:
       required:
         - subscription_id
       example: null
+    Integration:
+      type: object
+      properties:
+        integration_name:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+      required:
+        - integration_name
+      example: null
     Invoice:
       type: object
       additionalProperties: true
@@ -204575,6 +204657,15 @@ components:
           description: |
             When the meter was last updated.
           example: null
+        group_by:
+          type: array
+          deprecated: false
+          items:
+            type: string
+            deprecated: false
+            maxLength: 100
+            example: null
+          example: null
         column_definitions:
           type: array
           deprecated: false
@@ -204825,6 +204916,15 @@ components:
           deprecated: false
           description: "The SQL query used to measure usage from [`usage_event`](/docs/api/usage_events) properties. For example: `SELECT SUM(api_calls) FROM events`.  \n**Constraint**:\n\n* The properties referenced in the query are always one of `column_definitions.column_name`.\n"
           maxLength: 1000
+          example: null
+        group_by:
+          type: array
+          deprecated: false
+          items:
+            type: string
+            deprecated: false
+            maxLength: 100
+            example: null
           example: null
         column_definitions:
           type: array
@@ -233719,6 +233819,12 @@ components:
           description: |
             The end timestamp (exclusive) of the aggregation window in UTC.
           example: null
+        attributes:
+          type: array
+          deprecated: false
+          items:
+            example: null
+          example: null
       required:
         - aggregated_from
         - aggregated_to
@@ -235318,22 +235424,6 @@ components:
       explode: false
       schema:
         type: string
-    metered-feature-id:
-      name: metered-feature-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    differential-price-id:
-      name: differential-price-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     tax-withheld-id:
       name: tax-withheld-id
       in: path
@@ -235344,6 +235434,373 @@ components:
         type: string
     custom-data-schema-id:
       name: custom-data-schema-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    credit-unit-id:
+      name: credit-unit-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    dispute-id:
+      name: dispute-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    integration-integration-name:
+      name: integration-integration-name
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    chargebee-business-entity-id:
+      name: chargebee-business-entity-id
+      in: header
+      description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+        maxLength: 50
+    chargebee-async-callback-url:
+      name: chargebee-async-callback-url
+      in: header
+      description: The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uri
+        description: The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
+        example: https://username:password@example.com
+      x-cb-async-header: true
+    hosted-page-id:
+      name: hosted-page-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    credit-note-id:
+      name: credit-note-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    e-invoicing-country-country:
+      name: e-invoicing-country-country
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    non-subscription-app-id:
+      name: non-subscription-app-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    business-entity-transfer-id:
+      name: business-entity-transfer-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    portal-session-id:
+      name: portal-session-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    attached-item-id:
+      name: attached-item-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    chargebee-request-origin-user-encoded:
+      name: chargebee-request-origin-user-encoded
+      in: header
+      description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: email
+        description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+        example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+    business-entity-id:
+      name: business-entity-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    item-id:
+      name: item-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    customer-id:
+      name: customer-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    cust-payment-source-id:
+      name: cust-payment-source-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    site-currency-id:
+      name: site-currency-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    chargebee-request-origin-device:
+      name: chargebee-request-origin-device
+      in: header
+      description: The device from which the customer has made the request
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: The device from which the customer has made the request
+        example: Android
+    payment-schedule-scheme-id:
+      name: payment-schedule-scheme-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    site-owner-id:
+      name: site-owner-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    item-family-id:
+      name: item-family-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    omnichannel-subscription-item-id:
+      name: omnichannel-subscription-item-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    site-id:
+      name: site-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    invoice-id:
+      name: invoice-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    feature-id:
+      name: feature-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    transaction-id:
+      name: transaction-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    offer-fulfillment-id:
+      name: offer-fulfillment-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    ledger-operation-id:
+      name: ledger-operation-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    omnichannel-subscription-id:
+      name: omnichannel-subscription-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    approval-id:
+      name: approval-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    webhook-endpoint-id:
+      name: webhook-endpoint-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    usage-file-id:
+      name: usage-file-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    alert-id:
+      name: alert-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    recorded-purchase-id:
+      name: recorded-purchase-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    order-id:
+      name: order-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    product-variant-id:
+      name: product-variant-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    account-credit-id:
+      name: account-credit-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    pc2-migration-id:
+      name: pc2-migration-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    async-api-request-id:
+      name: async-api-request-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    gift-id:
+      name: gift-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    unbilled-charge-id:
+      name: unbilled-charge-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    metered-feature-id:
+      name: metered-feature-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    differential-price-id:
+      name: differential-price-id
       in: path
       required: true
       style: simple
@@ -235398,14 +235855,6 @@ components:
         type: boolean
         default: false
         description: Indicates whether to include deleted objects in the list. The deleted objects have the attribute `deleted` as `true`.
-    credit-unit-id:
-      name: credit-unit-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     chargebee-request-origin-ip:
       name: chargebee-request-origin-ip
       in: header
@@ -235420,14 +235869,6 @@ components:
         pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
     coupon-code-code:
       name: coupon-code-code
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    dispute-id:
-      name: dispute-id
       in: path
       required: true
       style: simple
@@ -235450,17 +235891,6 @@ components:
       explode: false
       schema:
         type: string
-    chargebee-business-entity-id:
-      name: chargebee-business-entity-id
-      in: header
-      description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
-        maxLength: 50
     offset:
       name: offset
       in: query
@@ -235472,19 +235902,6 @@ components:
         description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
         x-cb-is-pagination-parameter: true
         maxLength: 1000
-    chargebee-async-callback-url:
-      name: chargebee-async-callback-url
-      in: header
-      description: The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        format: uri
-        description: The callback URL where Chargebee will `POST` the async result. Must be an `https://` URL and may embed basic-auth credentials, e.g. `https://username:password@example.com`.
-        example: https://username:password@example.com
-      x-cb-async-header: true
     entitlement-override-id:
       name: entitlement-override-id
       in: path
@@ -235495,22 +235912,6 @@ components:
         type: string
     subscription-id:
       name: subscription-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    hosted-page-id:
-      name: hosted-page-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    credit-note-id:
-      name: credit-note-id
       in: path
       required: true
       style: simple
@@ -235537,48 +235938,8 @@ components:
         description: ' skip only webhooks'
         enum:
           - all-disabled
-    e-invoicing-country-country:
-      name: e-invoicing-country-country
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     coupon-set-id:
       name: coupon-set-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    non-subscription-app-id:
-      name: non-subscription-app-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    business-entity-transfer-id:
-      name: business-entity-transfer-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    portal-session-id:
-      name: portal-session-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    attached-item-id:
-      name: attached-item-id
       in: path
       required: true
       style: simple
@@ -235593,36 +235954,8 @@ components:
       explode: false
       schema:
         type: string
-    chargebee-request-origin-user-encoded:
-      name: chargebee-request-origin-user-encoded
-      in: header
-      description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        format: email
-        description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
-        example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
     meter-id:
       name: meter-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    business-entity-id:
-      name: business-entity-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    item-id:
-      name: item-id
       in: path
       required: true
       style: simple
@@ -235645,41 +235978,6 @@ components:
       explode: false
       schema:
         type: string
-    customer-id:
-      name: customer-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    cust-payment-source-id:
-      name: cust-payment-source-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    site-currency-id:
-      name: site-currency-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    chargebee-request-origin-device:
-      name: chargebee-request-origin-device
-      in: header
-      description: The device from which the customer has made the request
-      required: false
-      style: simple
-      explode: false
-      schema:
-        type: string
-        description: The device from which the customer has made the request
-        example: Android
     thunking-plan-id:
       name: thunking-plan-id
       in: path
@@ -235690,14 +235988,6 @@ components:
         type: string
     tp-site-user-domain:
       name: tp-site-user-domain
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    payment-schedule-scheme-id:
-      name: payment-schedule-scheme-id
       in: path
       required: true
       style: simple
@@ -235720,14 +236010,6 @@ components:
       explode: false
       schema:
         type: string
-    site-owner-id:
-      name: site-owner-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     rule-id:
       name: rule-id
       in: path
@@ -235738,22 +236020,6 @@ components:
         type: string
     time-machine-name:
       name: time-machine-name
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    item-family-id:
-      name: item-family-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    omnichannel-subscription-item-id:
-      name: omnichannel-subscription-item-id
       in: path
       required: true
       style: simple
@@ -235788,14 +236054,6 @@ components:
         description: Must be set to `respond-async`. Instructs Chargebee to process the request asynchronously and return `202 Accepted` immediately.
         example: respond-async
       x-cb-async-header: true
-    site-id:
-      name: site-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     einvoice-id:
       name: einvoice-id
       in: path
@@ -235804,40 +236062,8 @@ components:
       explode: false
       schema:
         type: string
-    invoice-id:
-      name: invoice-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    feature-id:
-      name: feature-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    transaction-id:
-      name: transaction-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     business-rule-id:
       name: business-rule-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    offer-fulfillment-id:
-      name: offer-fulfillment-id
       in: path
       required: true
       style: simple
@@ -235860,14 +236086,6 @@ components:
       explode: false
       schema:
         type: string
-    ledger-operation-id:
-      name: ledger-operation-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     chargebee-event-email:
       name: chargebee-event-email
       in: header
@@ -235880,22 +236098,6 @@ components:
         description: skip only emails
         enum:
           - all-disabled
-    omnichannel-subscription-id:
-      name: omnichannel-subscription-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    approval-id:
-      name: approval-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     price-variant-id:
       name: price-variant-id
       in: path
@@ -235912,14 +236114,6 @@ components:
       explode: false
       schema:
         type: string
-    webhook-endpoint-id:
-      name: webhook-endpoint-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     pc2-migration-item-id:
       name: pc2-migration-item-id
       in: path
@@ -235928,32 +236122,8 @@ components:
       explode: false
       schema:
         type: string
-    usage-file-id:
-      name: usage-file-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     coupon-id:
       name: coupon-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    alert-id:
-      name: alert-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    recorded-purchase-id:
-      name: recorded-purchase-id
       in: path
       required: true
       style: simple
@@ -235989,32 +236159,8 @@ components:
       explode: false
       schema:
         type: string
-    order-id:
-      name: order-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     pc2-migration-item-price-id:
       name: pc2-migration-item-price-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    product-variant-id:
-      name: product-variant-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    account-credit-id:
-      name: account-credit-id
       in: path
       required: true
       style: simple
@@ -236041,22 +236187,6 @@ components:
         description: skip all actions to be done on the events
         enum:
           - all-disabled
-    pc2-migration-id:
-      name: pc2-migration-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    async-api-request-id:
-      name: async-api-request-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
     chargebee-request-origin-user:
       name: chargebee-request-origin-user
       in: header
@@ -236087,22 +236217,6 @@ components:
         type: string
     export-id:
       name: export-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    gift-id:
-      name: gift-id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-    unbilled-charge-id:
-      name: unbilled-charge-id
       in: path
       required: true
       style: simple
