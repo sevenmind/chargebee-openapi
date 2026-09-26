@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-24.93482a957c049e6f63061693bca06a1cea498912
+  version: 2026-09-25.8a712d778f182445fa46dadc91665375b07246a2
   x-cb-api-version: 2
   x-cb-product-catalog-version: 2
 servers:
@@ -21585,7 +21585,7 @@ paths:
       tags:
         - customers
       summary: Send Payment Request Email
-      description: "Sends a request payment email to the customer using the site's published **Collect Payment Email** Engage notification template.\n\nUse this operation to manually trigger a payment request email when you want the customer to pay outstanding invoices.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Collect Payment Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer must have a valid email address.\n* The customer must have at least one unpaid invoice.\n"
+      description: "Sends a request payment email to the customer using the site's published **Collect Payment Email** Engage notification template.\n\nUse this operation to manually trigger a payment request email when you want the customer to pay outstanding invoices.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Collect Payment Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer must have a valid email address.\n* The customer must have at least one unpaid invoice.  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)\n"
       operationId: send_payment_request_email
       parameters:
         - name: chargebee-request-origin-device
@@ -28138,7 +28138,7 @@ paths:
       tags:
         - payment_sources
       summary: Update a card payment source
-      description: "Merchants look to update card details when:\n\n* The billing address of a customer has changed. In such a case, modify the billing address in the Chargebee and the payment gateway.\n* The expiration date of the card has been extended by the bank. (This usually happens when the date of card expiry is in near future).\n\nMultiple parameters such as address, expiry date, month, and so on, can be updated through this API.\n\nMeta data can also be added additionally(supported in Stripe only). Metadata is a JSON object. It is used to store additional information about customers.\n\nIn **Stripe** and **Braintree** payment gateways, changes in card details are auto-updated. This feature can also be used for other payment gateways in which auto-update is not enabled or is not supported by Chargebee.  \n**Note**\n: This endpoint supports Chargebee Test Gateway, [Stripe](https://www.chargebee.com/docs/2.0/stripe.html)\n, [Braintree](https://www.chargebee.com/docs/2.0/braintree.html)\n, [Authorize.net](https://www.chargebee.com/docs/2.0/authorize-index.html)\n, [Worldpay US eCom](https://www.chargebee.com/docs/2.0/vantiv_worldpay.html)\n, and [WorldPay Direct Integration](https://www.chargebee.com/docs/2.0/worldpay-direct.html)\n. For all other gateways, your customers must re-enter the full [card details](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nto update existing card details. For example, consider a customer not using the gateways mentioned above and wants to update the [card\\[billing_addr1\\]](/docs/api/payment_sources/update-a-card-payment-source#card_billing_addr1)\nparameter. In such a case, the customer must re-enter the value of all the parameters present in the [card](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nobject.\n"
+      description: "Merchants look to update card details when:\n\n* The billing address of a customer has changed. In such a case, modify the billing address in the Chargebee and the payment gateway.\n* The expiration date of the card has been extended by the bank. (This usually happens when the date of card expiry is in near future).\n\nMultiple parameters such as address, expiry date, month, and so on, can be updated through this API.\n\nYou can also pass `network_transaction_reference` to store or replace the original network transaction identifier on the payment source. When it is sent with other card fields, Chargebee calls the gateway first and persists the identifier only after a successful update. When it is the only parameter in the request, Chargebee updates it locally, does not call the gateway, and does not apply the gateway-support restriction in the note below.\n\nMeta data can also be added additionally(supported in Stripe only). Metadata is a JSON object. It is used to store additional information about customers.\n\nIn **Stripe** and **Braintree** payment gateways, changes in card details are auto-updated. This feature can also be used for other payment gateways in which auto-update is not enabled or is not supported by Chargebee.  \n**Note**\n: This endpoint supports Chargebee Test Gateway, [Stripe](https://www.chargebee.com/docs/2.0/stripe.html)\n, [Braintree](https://www.chargebee.com/docs/2.0/braintree.html)\n, [Authorize.net](https://www.chargebee.com/docs/2.0/authorize-index.html)\n, [Worldpay US eCom](https://www.chargebee.com/docs/2.0/vantiv_worldpay.html)\n, and [WorldPay Direct Integration](https://www.chargebee.com/docs/2.0/worldpay-direct.html)\n. For all other gateways, your customers must re-enter the full [card details](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nto update existing card details. For example, consider a customer not using the gateways mentioned above and wants to update the [card\\[billing_addr1\\]](/docs/api/payment_sources/update-a-card-payment-source#card_billing_addr1)\nparameter. In such a case, the customer must re-enter the value of all the parameters present in the [card](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nobject.\n"
       operationId: update_a_card_payment_source
       parameters:
         - name: chargebee-request-origin-device
@@ -28386,10 +28386,14 @@ paths:
                 network_transaction_reference:
                   type: object
                   deprecated: false
+                  description: |
+                    Updates the original network transaction identifier stored on this payment source. Pass `network_transaction_reference[original_network_transaction_id]`. When sent with other card fields, Chargebee calls the gateway first and persists the identifier only after a successful update. When this is the only parameter in the request, Chargebee updates it locally with no gateway call. The updated value is returned on the payment source as `network_transaction_reference`.
                   properties:
                     original_network_transaction_id:
                       type: string
                       deprecated: false
+                      description: |
+                        The identifier the card network assigned to the original customer-initiated transaction. Chargebee stores it on the payment source and sends it on later merchant-initiated (MIT) payments when the gateway requires it.
                       maxLength: 100
                       example: null
                   example: null
@@ -39213,7 +39217,7 @@ paths:
       tags:
         - invoices
       summary: Send Invoice Email
-      description: "Sends the invoice email to the customer using the site's published **Send Invoice Email** Engage notification template.\n\nUse this operation to resend or manually trigger the invoice email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Invoice Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the invoice must have a valid email address.\n* The invoice `status` must be `paid`, `payment_due`, `not_paid`, or `posted`.\n"
+      description: "Sends the invoice email to the customer using the site's published **Send Invoice Email** Engage notification template.\n\nUse this operation to resend or manually trigger the invoice email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Invoice Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the invoice must have a valid email address.\n* The invoice `status` must be `paid`, `payment_due`, `not_paid`, or `posted`.  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)\n"
       operationId: send_invoice_email
       parameters:
         - name: chargebee-request-origin-device
@@ -52745,7 +52749,7 @@ paths:
       tags:
         - credit_notes
       summary: Send Credit Note Email
-      description: "Sends the credit note email to the customer using the site's published **Send Credit Note Email** Engage notification template.\n\nUse this operation to resend or manually trigger the credit note email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Credit Note Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the credit note must have a valid email address.\n* The credit note `status` must not be `voided`.\n* The credit note `reason_code` must not be `write_off`.\n"
+      description: "Sends the credit note email to the customer using the site's published **Send Credit Note Email** Engage notification template.\n\nUse this operation to resend or manually trigger the credit note email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Credit Note Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the credit note must have a valid email address.\n* The credit note `status` must not be `voided`.\n* The credit note `reason_code` must not be `write_off`.  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)\n"
       operationId: send_credit_note_email
       parameters:
         - name: chargebee-request-origin-device
@@ -147741,10 +147745,13 @@ paths:
                 billing_configuration:
                   type: object
                   deprecated: false
+                  description: |
+                    Billing-related settings to update when this ramp is executed.
                   properties:
                     po_number:
                       type: string
                       deprecated: false
+                      description: "[Purchase order number](/docs/api/subscriptions/subscription-object#po_number) to update on the subscription when this ramp is executed.  \n**Note:**\n\n* Applicable only when Ramp Billing Configuration Scheduling is enabled.\n* Ramp Billing Configuration Scheduling is currently in **Private Beta** . Please reach out to [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable this feature.\n"
                       maxLength: 100
                       example: null
                   example: null
@@ -149067,10 +149074,13 @@ paths:
                 billing_configuration:
                   type: object
                   deprecated: false
+                  description: |
+                    Billing-related settings to update when this ramp is executed.
                   properties:
                     po_number:
                       type: string
                       deprecated: false
+                      description: "[Purchase order number](/docs/api/subscriptions/subscription-object#po_number) to update on the subscription when this ramp is executed.  \n**Note:**\n\n* Applicable only when Ramp Billing Configuration Scheduling is enabled.\n* Ramp Billing Configuration Scheduling is currently in **Private Beta** . Please reach out to [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable this feature.\n"
                       maxLength: 100
                       example: null
                   example: null
@@ -188209,9 +188219,9 @@ components:
     EmailLog:
       type: object
       description: |
-        Email logs represent emails sent through Chargebee notification APIs, including [send invoice email](/docs/api/invoices#send_invoice_email), [send credit note email](/docs/api/credit_notes#send_credit_note_email), and [send payment request email](/docs/api/customers#send_payment_request_email).
+        Email logs represent emails sent through Chargebee, including [send invoice email](/docs/api/invoices#send_invoice_email), [send credit note email](/docs/api/credit_notes#send_credit_note_email), and [send payment request email](/docs/api/customers#send_payment_request_email).
 
-        These objects are returned in the async `result.email_logs` array when a send-email operation completes successfully. There is no standalone retrieve or list API for email logs.
+        These objects are returned in the async `result.email_logs` array when a send-email operation completes successfully. Use [List email logs for a customer](/docs/api/email_logs/list-email-logs-for-a-customer) to retrieve emails already sent for a customer. There is no standalone retrieve API for a single email log.
       properties:
         id:
           type: string
@@ -188252,11 +188262,16 @@ components:
           type: string
           deprecated: false
           description: |
-            Status of the email send request.
+            Status of the email.
 
-            * failed - Sending the email failed.
             * deferred - The email was deferred.
             * succeeded - The email was sent successfully.
+            * bounced - The email bounced.
+            * rescheduled - The email was rescheduled for delivery.
+            * failed - Sending the email failed.
+            * opened - The recipient opened the email.
+            * dropped - The email was dropped and not delivered.
+            * delivered - The email was delivered to the recipient.
             * scheduled - The email has been scheduled for delivery.
           enum:
             - scheduled
@@ -188275,7 +188290,7 @@ components:
           type: string
           deprecated: false
           description: |
-            Error message when the email could not be sent or was deferred.
+            Error message when the email could not be sent, was deferred, bounced, or dropped.
           maxLength: 1500
           example: null
       required:
@@ -214017,10 +214032,14 @@ components:
         network_transaction_reference:
           type: object
           deprecated: false
+          description: |
+            The original network transaction identifier stored on this payment source. Returned for card-based payment methods, such as cards, Apple Pay, and Google Pay. Chargebee sends it on merchant-initiated (MIT) payment requests when the gateway requires it. Some gateways manage the stored-credential chain internally, so not every MIT payment needs this value from Chargebee. Contains `original_network_transaction_id`. Omitted when none is stored.
           properties:
             original_network_transaction_id:
               type: string
               deprecated: false
+              description: |
+                The identifier the card network (for example Visa or Mastercard) assigned to the original customer-initiated transaction that established this stored-credential chain.
               maxLength: 100
               example: null
           example: null
@@ -222157,10 +222176,13 @@ components:
         billing_configuration:
           type: object
           deprecated: false
+          description: |
+            Billing-related settings to update when this ramp is executed.
           properties:
             po_number:
               type: string
               deprecated: false
+              description: "[Purchase order number](/docs/api/subscriptions/subscription-object#po_number) to update on the subscription when this ramp is executed.  \n**Note:**\n\n* Applicable only when Ramp Billing Configuration Scheduling is enabled.\n* Ramp Billing Configuration Scheduling is currently in **Private Beta** . Please reach out to [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable this feature.\n"
               maxLength: 100
               example: null
           example: null
@@ -232415,15 +232437,21 @@ components:
         network_transaction_details:
           type: object
           deprecated: false
+          description: |
+            Network identifiers associated with this gateway transaction. Returned only when Chargebee has persisted at least one network identifier.
           properties:
             network_transaction_id:
               type: string
               deprecated: false
+              description: |
+                The network transaction identifier returned by the card network or gateway for this transaction.
               maxLength: 100
               example: null
             original_network_transaction_id:
               type: string
               deprecated: false
+              description: |
+                Applicable for merchant-initiated (MIT) transactions. Returned only when the gateway confirms that this identifier was used as the original network transaction identifier.
               maxLength: 100
               example: null
           example: null
