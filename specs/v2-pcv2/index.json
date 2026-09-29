@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-25.8a712d778f182445fa46dadc91665375b07246a2",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-09-28.5cd1f61db0ed51203324215a1eb5ae4b5b0aaf50",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -171812,6 +171812,16 @@
                           "example": null
                         },
                         "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 500,
+                          "example": null
+                        },
+                        "example": null
                       }
                     },
                     "required": [
@@ -171942,6 +171952,16 @@
                             "immediately",
                             "on_event"
                           ],
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 500,
                           "example": null
                         },
                         "example": null
@@ -173238,6 +173258,16 @@
                           "example": null
                         },
                         "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 500,
+                          "example": null
+                        },
+                        "example": null
                       }
                     },
                     "required": [
@@ -173368,6 +173398,16 @@
                             "immediately",
                             "on_event"
                           ],
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 500,
                           "example": null
                         },
                         "example": null
@@ -183920,7 +183960,7 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "on": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -183931,13 +183971,13 @@
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -183959,7 +183999,7 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "on": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -183970,13 +184010,13 @@
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -186160,12 +186200,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -199942,9 +199982,9 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "is_not": {
@@ -199952,12 +199992,12 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "in": {
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -252922,6 +252962,12 @@
                   ],
                   "example": null
                 },
+                "description": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 500,
+                  "example": null
+                },
                 "charge_on_event": {
                   "type": "string",
                   "deprecated": false,
@@ -253067,6 +253113,12 @@
                     "immediately",
                     "on_event"
                   ],
+                  "example": null
+                },
+                "description": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 500,
                   "example": null
                 },
                 "charge_on_event": {
@@ -263928,6 +263980,19 @@
                 "id"
               ],
               "example": null
+            },
+            "example": null
+          },
+          "gateway_metadata": {
+            "type": "object",
+            "deprecated": false,
+            "properties": {
+              "acquirer_reference_id": {
+                "type": "string",
+                "deprecated": false,
+                "maxLength": 255,
+                "example": null
+              }
             },
             "example": null
           },
