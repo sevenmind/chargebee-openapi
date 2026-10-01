@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-09-29.dc1783d22397d2a18028e4ff79034961674dcd0b",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-09-30.a52c16abb514939938abc40280dabffd0783b0d8",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -53111,14 +53111,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -53142,14 +53142,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -104832,14 +104832,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -111323,7 +111323,7 @@
           "usages"
         ],
         "summary": "Retrieve usages for an invoice as PDF",
-        "description": "**Advanced Usage-Based Billing**\n\nFor high-scale usage ingestion, use [Advanced Usage-Based Billing](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/understanding-usages) with the [Usage Events API](/docs/api/usage_events). The Usage Events API supports schemaless event ingestion at scale, including [individual events](/docs/api/usage_events/create-a-usage-event), [batch ingestion](/docs/api/usage_events/ingest-usages-in-batch), and [usage file ingestion](/docs/api/usage_files/usage-file-object).\n\nRetrieves usages record for an invoice in PDF file format. This endpoint is part of the [Usages API](/docs/api/usages) for **Automated Metered Billing**.\n",
+        "description": "**Advanced Usage-Based Billing**\n\nFor high-scale usage ingestion, use [Advanced Usage-Based Billing](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/understanding-usages) with the [Usage Events API](/docs/api/usage_events). The Usage Events API supports schemaless event ingestion at scale, including [individual events](/docs/api/usage_events/create-a-usage-event), [batch ingestion](/docs/api/usage_events/ingest-usages-in-batch), and [usage file ingestion](/docs/api/usage_files/usage-file-object).\n\nRetrieves usages record for an invoice in PDF file format. This endpoint is part of the [Usages API](/docs/api/usages) for **Automated Metered Billing**.\n\nFor Usage-Based Billing invoices, you can optionally group a metered feature's usage by its configured group-by attributes. Automated Metered Billing continues to render the existing ungrouped usage PDF.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n\n### Use Cases\n\n##### Group usage events in the PDF\n\nThis capability applies to Usage-Based Billing. The metered feature's `query` must include a `GROUP BY` clause, such as `SELECT SUM(hours) FROM events GROUP BY gpu_type, region`.\n\nUse `group_by` to show how usage events are distributed across group-by attributes such as GPU type and region.\n\nFor example, group the `gpu_cloud` metered feature by `gpu_type` and `region`. Specify the group-by attributes as a JSON array:\n\n```bash\n-d \"group_by[feature_id][0]\"=\"gpu_cloud\" \\\n-d 'group_by[attributes][0]'='[\"gpu_type\",\"region\"]'\n```\n\nEach distinct set of selected group-by attribute values forms a separate usage section in the PDF:\n\n```text\ngpu_type = \"h100\", region = \"us-east\"  60 hours\ngpu_type = \"a100\", region = \"eu-west\"  40 hours\n```\n\nThe order of names in the `group_by[attributes]` array determines their display order. A metered feature that is not included in `group_by[feature_id]` is displayed with a single usage total.\n\n**Null and empty group-by attribute values**\n\nWhen usage is grouped by `region`, the PDF combines the following usage into one null group:\n\n* Usage recorded before `region` was added to the metered feature's `GROUP BY` clause.\n* Events that do not contain `region`.\n* Events where `region` is JSON `null`, such as `\"region\": null`.\n* Events where the attribute is the exact string `\"null\"`, irrespective of capitalization, such as `\"region\": \"null\"`, `\"region\": \"NULL\"`, or `\"region\": \"nULL\"`.\n\nThe comparison with `\"null\"` is case-insensitive, but the entire value must match. Values containing leading or trailing whitespace, such as `\"region\": \" null\"` and `\"region\": \"null \"`, retain their original values and appear as separate groups.\n\nAn event containing `\"region\": \"\"` belongs to a separate empty-string group. The PDF displays the null group using an em dash (`---`) and displays the empty-string group as a blank value.  \n**Grouped usage and invoice total**\n\nFor `SUM` and `COUNT`, all grouped values, including the null and empty-string groups, add up to the overall usage for the same metered feature on the invoice:\n\n```text\nregion = \"us-east\"  60 hours\nregion = \"eu-west\"  40 hours\nOverall usage       100 hours\n```\n\nThis does not apply to `MIN`, `MAX`, `AVG`, or `COUNT(DISTINCT ...)`. For these functions, each group is calculated separately.\n\nThe API response continues to return a `download` object. The grouped usage appears in the PDF, not in the API response.  \n**Constraints**\n\n* Provide both `group_by[feature_id]` and `group_by[attributes]` for each entry.\n* Each `group_by[feature_id]` value must identify a metered feature billed on the invoice.\n* Each `group_by[attributes]` value must be a nonempty JSON array. Exact duplicate names are not allowed.\n* Group-by attribute names are case-sensitive and must match the names in that metered feature's `group_by` attribute. For example, `region, region` is invalid, while `region, Region` identifies two different attributes.\n* You can specify up to 5 group-by attributes per metered feature.\n* The same metered feature cannot be listed more than once.\n\n**Usage line limit**\n\nBy default, the PDF can contain up to 1,000 usage lines in total across all metered features.\n\nIf the request exceeds the limit, it fails with `invalid_request` and the error code `exceeds_max_allowed_breakdown_rows`.\n",
         "operationId": "retrieve_usages_for_an_invoice_as_pdf",
         "parameters": [
           {
@@ -111501,6 +111501,7 @@
                     "properties": {
                       "feature_id": {
                         "type": "array",
+                        "description": "The unique identifier of the metered feature whose usage is grouped in the PDF.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n**Constraints**\n\n* The identifier must belong to a metered feature billed on the invoice.\n* Each entry must have a corresponding `group_by[attributes]` entry at the same position.\n* The same metered feature cannot be listed twice.\n",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -111511,6 +111512,7 @@
                       },
                       "attributes": {
                         "type": "array",
+                        "description": "A JSON array of group-by attribute names used to group the metered feature at the corresponding position in `group_by[feature_id]`. The order of the names determines their display order in the PDF.\n\nEach distinct set of selected group-by attribute values forms a separate usage section in the PDF.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n**Prerequisites**\n\n* Usage-Based Billing is enabled for the site.\n* The metered feature's `query` includes a `GROUP BY` clause.  \n**Constraints**\n\n* The array must contain at least one group-by attribute name.\n* Each name is case-sensitive and must match a value in the metered feature's `group_by` attribute.\n* Exact duplicate names are not allowed. Names are case-sensitive, so `region, region` is invalid, while `region, Region` identifies two different attributes.\n* You can specify up to 5 group-by attributes per metered feature.\n",
                         "items": {
                           "type": "array",
                           "deprecated": false,
@@ -122019,17 +122021,6 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -122041,6 +122032,17 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
                           }
                         }
                       },
@@ -122050,14 +122052,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -131582,14 +131584,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -157729,15 +157731,6 @@
               "deprecated": false,
               "example": "active",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -157746,6 +157739,15 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
                   "example": null
                 }
               }
@@ -157764,14 +157766,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -161497,14 +161499,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -161523,18 +161525,6 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -161546,6 +161536,18 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
                   "example": null
                 }
               }
@@ -161564,14 +161566,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -165881,6 +165883,16 @@
                           "example": null
                         },
                         "example": null
+                      },
+                      "trial_end": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "unix-time",
+                          "deprecated": false,
+                          "example": null
+                        },
+                        "example": null
                       }
                     },
                     "required": [
@@ -166288,6 +166300,16 @@
                           "deprecated": false,
                           "maximum": 100,
                           "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "trial_end": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "unix-time",
+                          "deprecated": false,
                           "example": null
                         },
                         "example": null
@@ -166943,6 +166965,16 @@
                           "example": null
                         },
                         "example": null
+                      },
+                      "trial_end": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "unix-time",
+                          "deprecated": false,
+                          "example": null
+                        },
+                        "example": null
                       }
                     },
                     "required": [
@@ -167350,6 +167382,16 @@
                           "deprecated": false,
                           "maximum": 100,
                           "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "trial_end": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "unix-time",
+                          "deprecated": false,
                           "example": null
                         },
                         "example": null
@@ -172555,17 +172597,6 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -172576,6 +172607,17 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
                   "example": null
                 }
               }
@@ -172594,14 +172636,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -183956,6 +183998,18 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
+                "on": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "before": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
                 "after": {
                   "type": "string",
                   "format": "unix-time",
@@ -183965,18 +184019,6 @@
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "on": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
                   "example": null
                 }
               }
@@ -183995,6 +184037,18 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
+                "on": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "before": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
                 "after": {
                   "type": "string",
                   "format": "unix-time",
@@ -184004,18 +184058,6 @@
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "on": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
                   "example": null
                 }
               }
@@ -186071,7 +186113,7 @@
           "meters"
         ],
         "summary": "List all available meters",
-        "description": "Retrieves the list of meters configured for the site.\n",
+        "description": "Retrieves the list of meters configured for the site.\n\nThe sample responses show meters with and without group-by attributes.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n",
         "operationId": "list_all_available_meters",
         "parameters": [
           {
@@ -187199,7 +187241,7 @@
           "metered_features"
         ],
         "summary": "Reactivate a metered feature",
-        "description": "Restores a previously archived metered feature `status` back to `active`.  \n\n### Prerequisites \\& Constraints\n\n* The metered feature `status` must be `archived`.  \n\n### Impacts\n\n**Metered feature**  \n* The metered feature `status` is changed to `active`.\n* The meter `status` is changed to `active`.  \n**Entitlements and subscription entitlements**  \n* New [entitlements](/docs/api/entitlements) and [subscription entitlements](/docs/api/subscription_entitlements) can be created for the feature when it's reactivated.\n",
+        "description": "Restores a previously archived metered feature `status` back to `active`.\n\nThe sample responses show metered features with and without group-by attributes.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n\n### Prerequisites \\& Constraints\n\n* The metered feature `status` must be `archived`.  \n\n### Impacts\n\n**Metered feature**  \n* The metered feature `status` is changed to `active`.\n* The meter `status` is changed to `active`.\n* The meter's `query` and `column_definitions` remain unchanged. When `query` includes a `GROUP BY` clause, `group_by` also remains unchanged.  \n**Entitlements and subscription entitlements**  \n* New [entitlements](/docs/api/entitlements) and [subscription entitlements](/docs/api/subscription_entitlements) can be created for the feature when it's reactivated.\n",
         "operationId": "reactivate_a_metered_feature",
         "parameters": [
           {
@@ -187485,7 +187527,7 @@
           "metered_features"
         ],
         "summary": "Delete a metered feature",
-        "description": "Permanently deletes a metered feature.  \n\n### Prerequisites \\& Constraints\n\n* The metered feature `status` must not be `active`.  \n\n### Impacts\n\n**Entitlements and subscription entitlements**  \nAny [entitlements](/docs/api/entitlements) and [subscription entitlements](/docs/api/subscription_entitlements) defined for the feature are removed.\n",
+        "description": "Permanently deletes a metered feature.\n\nThe sample responses show metered features with and without group-by attributes.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n\n### Prerequisites \\& Constraints\n\n* The metered feature `status` must not be `active`.  \n\n### Impacts\n\n**Entitlements and subscription entitlements**  \nAny [entitlements](/docs/api/entitlements) and [subscription entitlements](/docs/api/subscription_entitlements) defined for the feature are removed.  \n**Feature and meter**  \n* The feature and meter `status` are changed to `deleted`.\n* The response retains the meter's `query` and `column_definitions`. When `query` includes a `GROUP BY` clause, the response also retains `group_by`.\n",
         "operationId": "delete_a_metered_feature",
         "parameters": [
           {
@@ -187771,7 +187813,7 @@
           "metered_features"
         ],
         "summary": "Create a metered feature",
-        "description": "Creates a metered feature.\n",
+        "description": "Creates a metered feature.\n\nUse `query` to define how Chargebee measures usage for the metered feature. The result is a single aggregate across all matching usage events. To report grouped usage, include attributes in a `GROUP BY` clause. Each distinct set of values forms one usage group. These attributes are the metered feature's group-by attributes.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n\n### Use Cases\n\n##### Create a metered feature with grouped usage\n\nUse group-by attributes when customers need to view how usage is distributed across properties such as GPU type and region.\n\nFor example, the following query measures completed GPU hours and groups them by `gpu_type` and `region`:\n\n```sql\nSELECT SUM(hours)\nFROM events\nWHERE status = 'completed'\nGROUP BY gpu_type, region;\n```\n\nChargebee creates a separate usage group for each distinct set of `gpu_type` and `region` values. For example:\n\n```text\ngpu_type = \"h100\", region = \"us-east\"  60 hours\ngpu_type = \"a100\", region = \"eu-west\"  40 hours\n```\n\nThese groups can be displayed in [Retrieve usage summary for a subscription](/docs/api/usage_summary/retrieve-usage-summary-for-a-subscription) and [Retrieve usages for an invoice as PDF](/docs/api/usages/retrieve-usages-for-an-invoice-as-pdf). Subscription billing uses the overall aggregate of 100 hours.\n\n**Null and empty group-by attribute values**\n\nChargebee stores usage in the null group in the following cases:\n\n* Usage recorded before the group-by attribute was added to the metered feature's `GROUP BY` clause. For example, if `region` is added to the `GROUP BY` clause later, usage recorded before `region` was added belongs to the null group for `region`.\n* Events that do not contain the group-by attribute. For example, an event without `region` belongs to the null group.\n* Events where the group-by attribute is JSON `null`, such as `\"region\": null`.\n* Events where the attribute is the exact string `\"null\"`, irrespective of capitalization, such as `\"region\": \"null\"`, `\"region\": \"NULL\"`, or `\"region\": \"nULL\"`.\n\nThe comparison with `\"null\"` is case-insensitive, but the entire value must match. Chargebee does not remove leading or trailing whitespace. Therefore, `\"region\": \" null\"` and `\"region\": \"null \"` remain separate string groups.\n\nAn explicit empty string is also kept separate. For example, `\"region\": \"\"` belongs to the empty-string group and not the null group.\n",
         "operationId": "create_a_metered_feature",
         "parameters": [
           {
@@ -187938,7 +187980,7 @@
                   "query": {
                     "type": "string",
                     "deprecated": false,
-                    "description": "The SQL query used to measure usage from [`usage_event`](/docs/api/usage_events) properties. For example: `SELECT SUM(api_calls) FROM events`.  \n**Constraint**:\n\n* The properties referenced in the query must be one of `column_definitions.column_name`.\n",
+                    "description": "The SQL query used to calculate usage from [`usage_event`](/docs/api/usage_events) properties. For example: `SELECT SUM(api_calls) FROM events WHERE status = 'completed'`.\n\nTo group usage by attribute values, include a `GROUP BY` clause. Each distinct set of group-by attribute values forms a separate usage group. For example: `SELECT SUM(hours) FROM events WHERE status = 'completed' GROUP BY gpu_type, region`. The response returns the group-by attribute names in [`group_by`](/docs/api/metered_features/metered-feature-object#group_by), in the same order.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n**Constraints**\n\n* Properties used in the aggregate expression or `WHERE` clause must be listed in `column_definitions.column_name`.\n* A group-by attribute used only in the `GROUP BY` clause does not require a `column_definitions` entry. Its value is treated as a string.\n* The `GROUP BY` clause can contain up to 5 group-by attributes.\n* Exact duplicate group-by attribute names are not allowed. Names are case-sensitive, so `region, region` is invalid, while `region, Region` identifies two different attributes.  \n**Usage reporting and subscription billing**\n\nFor a metered feature whose `query` includes a `GROUP BY` clause, grouped usage is available in [Retrieve usage summary for a subscription](/docs/api/usage_summary/retrieve-usage-summary-for-a-subscription) and [Retrieve usages for an invoice as PDF](/docs/api/usages/retrieve-usages-for-an-invoice-as-pdf). These groups are for reporting only. Subscription billing uses the overall aggregate for the metered feature and does not bill each group separately.\n\nFor example, a `SUM` query can return 60 hours for `region=us-east` and 40 hours for `region=eu-west`. The reporting operations can display both groups. Subscription billing uses the overall aggregate of 100 hours.\n",
                     "maxLength": 1000,
                     "example": null
                   },
@@ -188132,7 +188174,7 @@
           "metered_features"
         ],
         "summary": "Archive a metered feature",
-        "description": "Archives a metered [feature](/docs/api/metered_features) and its associated [meter](/docs/api/meters).  \n\n### Prerequisites \\& Constraints\n\n* The metered feature must be `active`.  \n\n### Impacts\n\n**Entitlements and subscription entitlements**  \n* New entitlements and subscription entitlements cannot be created for the feature when it's archived.\n* Pre-existing entitlements and subscription entitlements remain effective.  \n**Feature and meter**  \n* The feature and meter `status` are changed to `archived`.\n",
+        "description": "Archives a metered [feature](/docs/api/metered_features) and its associated [meter](/docs/api/meters).\n\nThe sample responses show metered features with and without group-by attributes.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n\n### Prerequisites \\& Constraints\n\n* The metered feature must be `active`.  \n\n### Impacts\n\n**Entitlements and subscription entitlements**  \n* New entitlements and subscription entitlements cannot be created for the feature when it's archived.\n* Pre-existing entitlements and subscription entitlements remain effective.  \n**Feature and meter**  \n* The feature and meter `status` are changed to `archived`.\n* The meter's `query` and `column_definitions` remain unchanged. When `query` includes a `GROUP BY` clause, `group_by` also remains unchanged.\n",
         "operationId": "archive_a_metered_feature",
         "parameters": [
           {
@@ -189196,14 +189238,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -189222,14 +189264,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -199750,7 +199792,7 @@
           "subscriptions"
         ],
         "summary": "Retrieve usage summary for a subscription",
-        "description": "Retrieves aggregated usage data for a metered feature in a subscription over a specified reporting window.\n\nUnlike [Retrieve Current Usage Charges for a Subscription](/docs/api/usage_charges/retrieve-usage-charges-for-a-subscription) API, which returns the current unbilled usage snapshot including charges, this endpoint returns aggregated usage for a requested timeframe.\n\nUse this endpoint to power experiences such as:\n\n* plotting daily, weekly, or monthly usage trends\n* analyzing feature adoption over time\n* comparing recent usage against earlier periods\n* showing historical usage summaries to subscribers\n\n### What this endpoint returns\n\nReturns usage summary entries for the requested feature within the specified timeframe.\n\nIf `timeframe_start` and `timeframe_end` are not provided, the reporting range **defaults to the start of the subscription's current term for `timeframe_start` and the current time for `timeframe_end`.**\n\n### How aggregation works\n\n* If `window_size` is omitted, the response returns a single aggregate for the full reporting range.\n* If `window_size` is provided, the response returns one aggregated entry for each window in the reporting range.\n\nAggregation windows begin at `timeframe_start` and continue consecutively until `timeframe_end`.\n\nThe usages in the window will be bucketed into **rolling windows** aligned to `timeframe_start`, **not to calendar boundaries**.\n\n#### Example\n\nIf:\n\n* `timeframe_start` is `May 10 10:00:00 UTC`\n* `timeframe_end` is `June 10 10:00:00 UTC`\n* `window_size` is `day`\n\nThe response returns windows such as:\n\n* `May 10 10:00:00 UTC` → `May 11 10:00:00 UTC`\n* `May 11 10:00:00 UTC` → `May 12 10:00:00 UTC`\n\nand continues in the same pattern until the final window:\n\n* `June 9 10:00:00 UTC` → `June 10 10:00:00 UTC`\n\nIf you need calendar-aligned reporting, set `timeframe_start` to the required boundary. For example, use `00:00:00 UTC` for daily reporting aligned to calendar days, or the first day of the month at `00:00:00 UTC` for monthly reporting aligned to calendar months.\n\nEach aggregation window follows inclusive-exclusive semantics:\n\n* `aggregated_from` is inclusive\n* `aggregated_till` is exclusive\n\nIn other words, each window is represented as `aggregated_from` and `aggregated_till`.\n\nThis means:\n\n* an event with a timestamp exactly equal to `aggregated_from` is included in that window\n* an event with a timestamp exactly equal to `aggregated_till` is excluded from that window and counted in the next window, if one exists\n* an event with a timestamp exactly equal to `timeframe_end` is excluded\n\nThese inclusive-exclusive boundaries ensure that windows do not overlap and that events on boundaries are never double-counted.  \n\n### Distinct-count behavior\n\nIf a feature uses distinct-count aggregation, the distinct count is evaluated separately within each returned window.\n\nThis means the same entity can be counted once in multiple windows if it appears in each of them.\n\n#### Example\n\nIf the same user appears in both:\n\n* one daily window on **Jan 1**\n* another daily window on **Jan 2**\n\nThat user is counted once in the Jan 1 aggregate and once in the Jan 2 aggregate.\n",
+        "description": "Retrieves aggregated usage data for a metered feature in a subscription over a specified reporting window.\n\nUnlike [Retrieve Current Usage Charges for a Subscription](/docs/api/usage_charges/retrieve-usage-charges-for-a-subscription) API, which returns the current unbilled usage snapshot including charges, this endpoint returns aggregated usage for a requested timeframe.\n\nUse this endpoint to power experiences such as:\n\n* plotting daily, weekly, or monthly usage trends\n* analyzing feature adoption over time\n* comparing recent usage against earlier periods\n* showing historical usage summaries to subscribers\n\n### What this endpoint returns\n\nReturns usage summary entries for the requested feature within the specified timeframe.\n\nIf `timeframe_start` and `timeframe_end` are not provided, the reporting range **defaults to the start of the subscription's current term for `timeframe_start` and the current time for `timeframe_end`.**\n\n### How aggregation works\n\n* If `window_size` is omitted, the response returns a single aggregate for the full reporting range.\n* If `window_size` is provided, the response returns one aggregated entry for each window in the reporting range.\n\nAggregation windows begin at `timeframe_start` and continue consecutively until `timeframe_end`.\n\nThe usages in the window will be bucketed into **rolling windows** aligned to `timeframe_start`, **not to calendar boundaries**.\n\n#### Example\n\nIf:\n\n* `timeframe_start` is `May 10 10:00:00 UTC`\n* `timeframe_end` is `June 10 10:00:00 UTC`\n* `window_size` is `day`\n\nThe response returns windows such as:\n\n* `May 10 10:00:00 UTC` → `May 11 10:00:00 UTC`\n* `May 11 10:00:00 UTC` → `May 12 10:00:00 UTC`\n\nand continues in the same pattern until the final window:\n\n* `June 9 10:00:00 UTC` → `June 10 10:00:00 UTC`\n\nIf you need calendar-aligned reporting, set `timeframe_start` to the required boundary. For example, use `00:00:00 UTC` for daily reporting aligned to calendar days, or the first day of the month at `00:00:00 UTC` for monthly reporting aligned to calendar months.\n\nEach aggregation window follows inclusive-exclusive semantics:\n\n* `aggregated_from` is inclusive\n* `aggregated_till` is exclusive\n\nIn other words, each window is represented as `aggregated_from` and `aggregated_till`.\n\nThis means:\n\n* an event with a timestamp exactly equal to `aggregated_from` is included in that window\n* an event with a timestamp exactly equal to `aggregated_till` is excluded from that window and counted in the next window, if one exists\n* an event with a timestamp exactly equal to `timeframe_end` is excluded\n\nThese inclusive-exclusive boundaries ensure that windows do not overlap and that events on boundaries are never double-counted.  \n\n### Distinct-count behavior\n\nIf a feature uses distinct-count aggregation, the distinct count is evaluated separately within each returned window.\n\nThis means the same entity can be counted once in multiple windows if it appears in each of them.\n\n#### Example\n\nIf the same user appears in both:\n\n* one daily window on **Jan 1**\n* another daily window on **Jan 2**\n\nThat user is counted once in the Jan 1 aggregate and once in the Jan 2 aggregate.  \n\n### Use Cases\n\n##### Retrieve grouped usage and apply filters\n\n**Prerequisites**\n\n* The metered feature's `query` includes a `GROUP BY` clause, such as `SELECT SUM(hours) FROM events GROUP BY gpu_type, region`.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n\nUse `group_by` to form one group for each distinct set of group-by attribute values in an aggregation window. The response returns each group as a separate `usage_summary` object and identifies it in the `attributes` list.\n\nThe order of names in `group_by` is preserved in each `attributes` list. For example, specifying `region` before `gpu_type` returns `region` first and `gpu_type` second. This does not determine the order of the `usage_summary` objects.\n\nUse optional `attributes` filters to restrict usage before it is grouped for the response. Attribute filtering is available only for grouped usage requests, so include at least one `group_by` value. Each filtered attribute and each `group_by` attribute must be configured on the metered feature, but they do not have to be the same. For example, you can filter usage to `region=us-east` and group the filtered result by `gpu_type`.  \n**Constraints**\n\n* You can specify up to 5 group-by attributes.\n* Each name is case-sensitive and must match a value in the metered feature's [`group_by`](/docs/api/metered_features/metered-feature-object#group_by) attribute.\n\nSupported operators:\n\n* `is` and `is_not` take a single value, for example `attributes[region][is]=us-east`.\n* `in` and `not_in` take a JSON-encoded array, for example `attributes[gpu_type][in]=[\"h100\",\"a100\"]`.\n\nGroup-by attribute values are also case-sensitive. For example, the value `\"us\"` is different from `\"US\"`. Filters on different group-by attributes are combined using `AND`.\n\n**Null and empty group-by attribute values**\n\nWhen usage is grouped by `region`, the response returns `\"value\": null` for the combined null group. This group includes:\n\n* Usage recorded before `region` was added to the metered feature's `GROUP BY` clause.\n* Events that do not contain `region`.\n* Events where `region` is JSON `null`, such as `\"region\": null`.\n* Events where the attribute is the exact string `\"null\"`, irrespective of capitalization, such as `\"region\": \"null\"`, `\"region\": \"NULL\"`, or `\"region\": \"nULL\"`.\n\nThe comparison with `\"null\"` is case-insensitive, but the entire value must match. Values containing leading or trailing whitespace, such as `\"region\": \" null\"` and `\"region\": \"null \"`, retain their original values and are returned as separate groups.\n\nAn event containing `\"region\": \"\"` is returned separately with `\"value\": \"\"`.\n\nTo select the complete null group, use the unquoted uppercase value `NULL`: `attributes[region][is]=NULL`. This filter includes historical usage, missing attributes, JSON-null values, and exact textual null values in any capitalization.\n\nUse uppercase `NULL` exactly as shown. Lowercase `null` is not the documented null-group selector. Similarly, `attributes[region][is]=\"NULL\"` is not equivalent because the quotation marks become part of the filter value.\n\nTo select the empty-string group, pass an empty filter value: `attributes[region][is]=`.\n\nThe `is_not` and `not_in` operators include the null and empty-string groups when they do not match the excluded values. For example, `attributes[region][is_not]=us-east` includes both groups.\n",
         "operationId": "retrieve_usage_summary_for_a_subscription",
         "parameters": [
           {
@@ -199945,6 +199987,7 @@
           {
             "name": "group_by",
             "in": "query",
+            "description": "The group-by attributes used to group usage in each aggregation window. Each distinct set of group-by attribute values forms one group. The response returns each group as a separate `usage_summary` object and identifies it in the `attributes` list.\n\nThe order of names in `group_by` is preserved in each `attributes` list. For example, specifying `region` before `gpu_type` returns `region` first and `gpu_type` second. This does not determine the order of the `usage_summary` objects.\n\nUse optional `attributes` filters to restrict usage before it is grouped for the response. Attribute filtering is available only for grouped usage requests, so include at least one `group_by` value. Each filtered attribute and each `group_by` attribute must be configured on the metered feature, but they do not have to be the same.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n**Prerequisites**\n\n* The metered feature's `query` includes a `GROUP BY` clause.  \n**Constraints**\n\n* You can specify up to 5 group-by attributes.\n* Each name is case-sensitive and must match a value in the metered feature's [`group_by`](/docs/api/metered_features/metered-feature-object#group_by) attribute.\n",
             "required": false,
             "deprecated": false,
             "style": "form",
@@ -199976,9 +200019,9 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is": {
+                "in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -199986,9 +200029,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -205058,23 +205101,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -205091,6 +205117,23 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
                   "example": null
                 }
               },
@@ -236114,7 +236157,7 @@
       },
       "Meter": {
         "type": "object",
-        "description": "A **meter** captures the usage measurement configuration of a [metered feature](/docs/api/metered_features).\n",
+        "description": "A **meter** captures the usage measurement configuration of a [metered feature](/docs/api/metered_features).\n\n### Meter configuration examples\n\nThe following response excerpts show how `query`, `column_definitions`, and `group_by` represent the metering configuration.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n\nWhen `query` includes a `GROUP BY` clause, the response includes `group_by` as an ordered list of the group-by attributes. Their order matches the order in the `GROUP BY` clause. The `group_by` attribute is not returned when the query does not include a `GROUP BY` clause.\n\n#### Without group-by attributes\n\n```json\n{\n  \"query\": \"SELECT SUM(request_count) FROM events WHERE status = 'completed'\",\n  \"column_definitions\": [\n    {\n      \"column_name\": \"request_count\",\n      \"data_type\": \"number\"\n    },\n    {\n      \"column_name\": \"status\",\n      \"data_type\": \"string\"\n    }\n  ]\n}\n```\n\n#### With group-by attributes\n\n```json\n{\n  \"query\": \"SELECT SUM(hours) FROM events WHERE status = 'completed' GROUP BY gpu_type, region\",\n  \"column_definitions\": [\n    {\n      \"column_name\": \"hours\",\n      \"data_type\": \"number\"\n    },\n    {\n      \"column_name\": \"status\",\n      \"data_type\": \"string\"\n    }\n  ],\n  \"group_by\": [\n    \"gpu_type\",\n    \"region\"\n  ]\n}\n```\n\nGroup-by attributes used only in the `GROUP BY` clause are returned in `group_by` and do not require `column_definitions` entries.\n",
         "properties": {
           "id": {
             "type": "string",
@@ -236161,7 +236204,7 @@
           "query": {
             "type": "string",
             "deprecated": false,
-            "description": "The SQL query used to measure usage from [`usage_event`](/docs/api/usage_events) properties. For example: `SELECT SUM(api_calls) FROM events`.\n",
+            "description": "The SQL query used to calculate usage from [`usage_event`](/docs/api/usage_events) properties. For example: `SELECT SUM(api_calls) FROM events WHERE status = 'completed'`.\n\nTo group usage by attribute values, include a `GROUP BY` clause. Each distinct set of group-by attribute values forms a separate usage group. For example: `SELECT SUM(hours) FROM events WHERE status = 'completed' GROUP BY gpu_type, region`. The response returns the group-by attribute names in `group_by`, in the same order.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n**Constraints**\n\n* Properties used in the aggregate expression or `WHERE` clause must be listed in `column_definitions.column_name`.\n* A group-by attribute used only in the `GROUP BY` clause does not require a `column_definitions` entry. Its value is treated as a string.\n* The `GROUP BY` clause can contain up to 5 group-by attributes.\n* Exact duplicate group-by attribute names are not allowed. Names are case-sensitive, so `region, region` is invalid, while `region, Region` identifies two different attributes.\n",
             "maxLength": 500,
             "example": null
           },
@@ -236182,6 +236225,7 @@
           "group_by": {
             "type": "array",
             "deprecated": false,
+            "description": "An ordered list of the group-by attributes in the `GROUP BY` clause of `query`. This attribute is returned only when `query` includes a `GROUP BY` clause.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n\nFor example, when `query` is `SELECT SUM(hours) FROM events WHERE status = 'completed' GROUP BY gpu_type, region`, `group_by` is `[\"gpu_type\", \"region\"]`.\n",
             "items": {
               "type": "string",
               "deprecated": false,
@@ -236387,7 +236431,7 @@
       },
       "MeteredFeature": {
         "type": "object",
-        "description": "A metered feature object represents two things:\n\n* the [feature](/docs/api/features) whose entitlement is consumed based on measured usage.\n* the configuration that measures that usage.\n",
+        "description": "A metered feature object represents two things:\n\n* the [feature](/docs/api/features) whose entitlement is consumed based on measured usage.\n* the configuration that measures that usage.\n\n### Meter configuration examples\n\nThe following response excerpts show how `query`, `column_definitions`, and `group_by` represent the metering configuration.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n\nWhen `query` includes a `GROUP BY` clause, the response includes `group_by` as an ordered list of the group-by attributes. Their order matches the order in the `GROUP BY` clause. The `group_by` attribute is not returned when the query does not include a `GROUP BY` clause.\n\n#### Without group-by attributes\n\n```json\n{\n  \"query\": \"SELECT SUM(request_count) FROM events WHERE status = 'completed'\",\n  \"column_definitions\": [\n    {\n      \"column_name\": \"request_count\",\n      \"data_type\": \"number\"\n    },\n    {\n      \"column_name\": \"status\",\n      \"data_type\": \"string\"\n    }\n  ]\n}\n```\n\n#### With group-by attributes\n\n```json\n{\n  \"query\": \"SELECT SUM(hours) FROM events WHERE status = 'completed' GROUP BY gpu_type, region\",\n  \"column_definitions\": [\n    {\n      \"column_name\": \"hours\",\n      \"data_type\": \"number\"\n    },\n    {\n      \"column_name\": \"status\",\n      \"data_type\": \"string\"\n    }\n  ],\n  \"group_by\": [\n    \"gpu_type\",\n    \"region\"\n  ]\n}\n```\n\nGroup-by attributes used only in the `GROUP BY` clause are returned in `group_by` and do not require `column_definitions` entries.\n",
         "properties": {
           "id": {
             "type": "string",
@@ -236434,13 +236478,14 @@
           "query": {
             "type": "string",
             "deprecated": false,
-            "description": "The SQL query used to measure usage from [`usage_event`](/docs/api/usage_events) properties. For example: `SELECT SUM(api_calls) FROM events`.  \n**Constraint**:\n\n* The properties referenced in the query are always one of `column_definitions.column_name`.\n",
+            "description": "The SQL query used to calculate usage from [`usage_event`](/docs/api/usage_events) properties. For example: `SELECT SUM(api_calls) FROM events WHERE status = 'completed'`.\n\nTo group usage by attribute values, include a `GROUP BY` clause. Each distinct set of group-by attribute values forms a separate usage group. For example: `SELECT SUM(hours) FROM events WHERE status = 'completed' GROUP BY gpu_type, region`. The response returns the group-by attribute names in `group_by`, in the same order.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.  \n**Constraints**\n\n* Properties used in the aggregate expression or `WHERE` clause must be listed in `column_definitions.column_name`.\n* A group-by attribute used only in the `GROUP BY` clause does not require a `column_definitions` entry. Its value is treated as a string.\n* The `GROUP BY` clause can contain up to 5 group-by attributes.\n* Exact duplicate group-by attribute names are not allowed. Names are case-sensitive, so `region, region` is invalid, while `region, Region` identifies two different attributes.  \n**Usage reporting and subscription billing**\n\nFor a metered feature whose `query` includes a `GROUP BY` clause, grouped usage is available in [Retrieve usage summary for a subscription](/docs/api/usage_summary/retrieve-usage-summary-for-a-subscription) and [Retrieve usages for an invoice as PDF](/docs/api/usages/retrieve-usages-for-an-invoice-as-pdf). These groups are for reporting only. Subscription billing uses the overall aggregate for the metered feature and does not bill each group separately.\n\nFor example, a `SUM` query can return 60 hours for `region=us-east` and 40 hours for `region=eu-west`. The reporting operations can display both groups. Subscription billing uses the overall aggregate of 100 hours.\n",
             "maxLength": 1000,
             "example": null
           },
           "group_by": {
             "type": "array",
             "deprecated": false,
+            "description": "An ordered list of the group-by attributes in the `GROUP BY` clause of `query`. This attribute is returned only when `query` includes a `GROUP BY` clause.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n\nFor example, when `query` is `SELECT SUM(hours) FROM events WHERE status = 'completed' GROUP BY gpu_type, region`, `group_by` is `[\"gpu_type\", \"region\"]`.\n",
             "items": {
               "type": "string",
               "deprecated": false,
@@ -265391,7 +265436,7 @@
       },
       "UsageSummary": {
         "type": "object",
-        "description": "Usage summary represents aggregated usage data for a metered [feature](/docs/api/features/feature-object) in a [subscription](/docs/api/subscriptions/subscription-object) over a specific reporting period. The aggregation is performed based on the [aggregation method](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/defining-metered-features) configured in Billing.\n\nUse this resource to analyze feature-level usage for reporting or analytics purposes, independent of usage billing or invoicing.\n",
+        "description": "Usage summary represents aggregated usage data for a metered [feature](/docs/api/features/feature-object) in a [subscription](/docs/api/subscriptions/subscription-object) over a specific reporting period. The aggregation is performed based on the [aggregation method](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/defining-metered-features) configured in Billing.\n\nUse this resource to analyze feature-level usage for reporting or analytics purposes, independent of usage billing or invoicing.\n\n### Group-by attributes\n\n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n\nWhen usage is grouped, each distinct set of group-by attribute values forms one group. The response returns each group as a separate `usage_summary` object with an `attributes` list containing:\n\n* `name`: The group-by attribute name.\n* `value`: The group-by attribute value for that group. A null group is returned as JSON `null`, and an empty-string group is returned as `\"\"`.\n\nFor example:\n\n```json\n{\n  \"attributes\": [\n    {\n      \"name\": \"gpu_type\",\n      \"value\": \"h100\"\n    },\n    {\n      \"name\": \"region\",\n      \"value\": \"us-east\"\n    }\n  ]\n}\n```\n\nThe `attributes` list is not returned when usage is not grouped.\n\nThe order of entries in `attributes` matches the order of the names specified in `group_by`.\n",
         "properties": {
           "subscription_id": {
             "type": "string",
@@ -265431,6 +265476,7 @@
           "attributes": {
             "type": "array",
             "deprecated": false,
+            "description": "The group-by attributes that identify the usage group. Each entry contains the group-by attribute's `name` and `value`. A null group is returned with `value` set to JSON `null`, while an empty-string group has `value` set to `\"\"`.  \n**Availability**\n\nSupport for adding `GROUP BY` to metered features and retrieving usage grouped by attributes is an upcoming capability and is not generally available yet. It will be made available in the coming weeks.\n\nThis list is returned only when the request includes `group_by`. Its order matches the group-by attribute order specified in `group_by`.\n",
             "items": {
               "example": null
             },
