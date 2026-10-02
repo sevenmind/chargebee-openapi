@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-30.a52c16abb514939938abc40280dabffd0783b0d8
-  x-cb-product-catalog-version: 2
+  version: 2026-10-01.9c3c4b80e83d1ddb015abefde4a08ae0039ae0c7
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -83,7 +83,7 @@ tags:
   - name: differential_prices
     description: Differential pricing helps implement a pricing strategy for addons and charges based on the plans they're purchased with.
   - name: disputes
-    description: Operations on the `disputes` resource.
+    description: This resource represents a [dispute](https://www.chargebee.com/docs/payments/2.0/others/chargeback) raised against a payment collected on your site.
   - name: einvoices
     description: An e-invoice record associated with an invoice or credit note.
   - name: entitlements
@@ -844,7 +844,7 @@ paths:
                 change_option:
                   type: string
                   deprecated: false
-                  description: "Specifies when the subscription change takes effect.  \n\n**Constraints**\nRegardless of the value of the `change_option` parameter, the following parameters always take effect immediately:\n\n\n* `auto_collection`\n* `shipping_address`\n* `po_number`\n* Any subscription-level [custom field](/docs/api/advanced-features#custom-fields) parameters  \n**See also**\n\n* [Impacts on existing scheduled changes](/docs/api/subscriptions/update-subscription-for-items#impact-scheduled-changes).\n\n* end_of_term -\n  **Deprecated**\n\n  This option is deprecated; use the [Create a ramp API](/docs/api/ramps/create-a-ramp) instead.\n\n  The change is carried out at the end of the current billing cycle of the subscription.\n* specific_date -\n  **Deprecated for scheduling changes**\n\n  This option is deprecated for scheduling changes to occur at a future date-time, use the [Create a ramp API](/docs/api/ramps/create-a-ramp) instead.\n\n  Executes the change on a specified date. The change occurs as of the date-time defined in `changes_scheduled_at`.\n* immediately - The subscription change takes effect immediately.\n"
+                  description: "Specifies when the subscription change takes effect.  \n\n**Constraints**\nRegardless of the value of the `change_option` parameter, the following parameters always take effect immediately:\n\n\n* `auto_collection`\n* `shipping_address`\n* `po_number`\n* Any subscription-level [custom field](/docs/api/advanced-features#custom-fields) parameters  \n**Constraints**\n\n* When `change_option` is `end_of_term` or `specific_date`, you cannot reduce `quantity` (or `quantity_in_decimal`) and change `unit_price` (or `unit_price_in_decimal`) for the same per-unit addon in one request. Split the changes into separate API calls. If both are included in one scheduled update, Chargebee returns an `invalid_request` error when the scheduled change is applied.  \n**See also**\n\n* [Impacts on existing scheduled changes](/docs/api/subscriptions/update-subscription-for-items#impact-scheduled-changes).\n\n* end_of_term -\n  **Deprecated**\n\n  This option is deprecated; use the [Create a ramp API](/docs/api/ramps/create-a-ramp) instead.\n\n  The change is carried out at the end of the current billing cycle of the subscription.\n* specific_date -\n  **Deprecated for scheduling changes**\n\n  This option is deprecated for scheduling changes to occur at a future date-time, use the [Create a ramp API](/docs/api/ramps/create-a-ramp) instead.\n\n  Executes the change on a specified date. The change occurs as of the date-time defined in `changes_scheduled_at`.\n* immediately - The subscription change takes effect immediately.\n"
                   enum:
                     - immediately
                     - end_of_term
@@ -1849,7 +1849,7 @@ paths:
                       example: null
                     quantity:
                       type: array
-                      description: "The quantity of the item price purchased.  \n**Prerequisites**\n\n* The item price `pricing_model` must be `per_unit`, `stairstep`, or `tiered`.\n"
+                      description: "The quantity of the item price purchased.  \n**Prerequisites**\n\n* The item price `pricing_model` must be `per_unit`, `stairstep`, or `tiered`.  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot reduce `quantity` and change `unit_price` (or `unit_price_in_decimal`) in the same API call. Split the changes into separate API calls. This restriction also applies when a scheduled subscription change is applied.\n"
                       items:
                         type: integer
                         format: int32
@@ -1868,7 +1868,7 @@ paths:
                       example: null
                     unit_price:
                       type: array
-                      description: "The price or per-unit price of the item. Overrides the price set for the item price.  \n**Prerequisites**\n\n* The `pricing_model` of the item price must be `flat_fee` or `per_unit`.\n* [Price overriding](https://www.chargebee.com/docs/price-override.html) must be enabled for the site.  \n**Default value**\n\n* The value set for the [item price](item_prices/item-price-object) is used when not provided.\n* If `changes_scheduled_at` is in the past and `unit_price` is not passed, the item price's current unit price is considered even if the item price did not exist on the date.\n"
+                      description: "The price or per-unit price of the item. Overrides the price set for the item price.  \n**Prerequisites**\n\n* The `pricing_model` of the item price must be `flat_fee` or `per_unit`.\n* [Price overriding](https://www.chargebee.com/docs/price-override.html) must be enabled for the site.  \n**Default value**\n\n* The value set for the [item price](item_prices/item-price-object) is used when not provided.\n* If `changes_scheduled_at` is in the past and `unit_price` is not passed, the item price's current unit price is considered even if the item price did not exist on the date.  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot change `unit_price` and reduce `quantity` (or `quantity_in_decimal`) in the same API call. Split the changes into separate API calls. This restriction also applies when a scheduled subscription change is applied.\n"
                       items:
                         type: integer
                         format: int64
@@ -45423,13 +45423,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: payment_reference_number
           in: query
@@ -45452,13 +45452,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  in:
-                    type: string
-                    pattern: ^\[(.*)(,.*)*\]$
-                    example: null
                   is:
                     type: string
                     minLength: 1
+                    example: null
+                  in:
+                    type: string
+                    pattern: ^\[(.*)(,.*)*\]$
                     example: null
             example: null
       responses:
@@ -64316,7 +64316,11 @@ paths:
     get:
       tags:
         - disputes
-      summary: Retrieve a dispute
+      summary: Retrieve A Dispute
+      description: |
+        Retrieves a dispute identified by its unique id.
+
+        Use this operation to check the current [`status`](/docs/api/disputes/dispute-object#status) of a dispute, the amount under dispute, and the transaction and customer it relates to. To find disputes when you don't have the dispute id, use the [List disputes](/docs/api/disputes/list-disputes) operation.
       operationId: retrieve_a_dispute
       parameters:
         - name: chargebee-request-origin-device
@@ -64403,7 +64407,8 @@ paths:
                 properties:
                   dispute:
                     $ref: '#/components/schemas/Dispute'
-                    description: Resource object representing dispute
+                    description: |
+                      Resource object representing dispute
                 required:
                   - dispute
                 example: null
@@ -64474,7 +64479,13 @@ paths:
     get:
       tags:
         - disputes
-      summary: List disputes
+      summary: List Disputes
+      description: |
+        Lists the disputes raised against the transactions on your site, with the most recently created dispute first.
+
+        Use the filter parameters to narrow the list to the disputes you want to act on. For example, filter on `status` to work through the disputes that are still open, or on `customer_id` to review every dispute raised by one customer.
+
+        This operation does not support a `sort_by` parameter. The results are always ordered by `created_at` in descending order.
       operationId: list_disputes
       parameters:
         - name: chargebee-request-origin-device
@@ -64543,33 +64554,44 @@ paths:
             example: null
         - name: limit
           in: query
+          description: |
+            The number of resources to be returned.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/limit'
           style: form
           explode: true
           schema:
             type: integer
             format: int32
             default: 10
-            description: The number of resources to be returned.
             maximum: 100
             minimum: 1
             example: null
         - name: offset
           in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset`
+            to the value of `next_offset`
+            obtained in the previous iteration of the API call.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/offset'
           style: form
           explode: true
           schema:
             type: string
-            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
             maxLength: 1000
             example: null
         - name: id
           in: query
+          description: |
+            optional, string filter
+
+            Uniquely identifies the dispute.
+            **Supported operators :**
+            is, is_not, starts_with, in, not_in
+
+            **Example →**
+            *id\[is\] = "dspt_16BdDXSlbu4uV1Ee6"*
           required: false
           deprecated: false
           style: deepObject
@@ -64577,7 +64599,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier for Dispute.
             example: dspt_16BdDXSlbu4uV1Ee6
             properties:
               is:
@@ -64602,6 +64623,16 @@ paths:
                 example: null
         - name: status
           in: query
+          description: |
+            optional, enumerated string filter
+
+            The current state of the dispute. Possible values are : initiated, funds_withdrawn, in_review, cancelled, lost, won.
+
+            **Supported operators :**
+            is, is_not, in, not_in
+
+            **Example →**
+            *status\[is\] = "initiated"*
           required: false
           deprecated: false
           style: deepObject
@@ -64609,7 +64640,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: The current state of the dispute.
             example: initiated
             properties:
               is:
@@ -64684,6 +64714,16 @@ paths:
                 example: null
         - name: type
           in: query
+          description: |
+            optional, enumerated string filter
+
+            The nature of the dispute raised against the payment. Possible values are : chargeback, inquiry.
+
+            **Supported operators :**
+            is, is_not, in, not_in
+
+            **Example →**
+            *type\[is\] = "chargeback"*
           required: false
           deprecated: false
           style: deepObject
@@ -64691,7 +64731,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: The nature of the dispute raised against the payment.
             example: chargeback
             properties:
               is:
@@ -64734,6 +64773,15 @@ paths:
                 example: null
         - name: customer_id
           in: query
+          description: |
+            optional, string filter
+
+            Identifier of the customer whose payment was disputed.
+            **Supported operators :**
+            is, is_not, starts_with, in, not_in
+
+            **Example →**
+            *customer_id\[is\] = "4gmiXbsjdm"*
           required: false
           deprecated: false
           style: deepObject
@@ -64741,7 +64789,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier of the customer whose payment was disputed.
             example: 4gmiXbsjdm
             properties:
               is:
@@ -64766,6 +64813,15 @@ paths:
                 example: null
         - name: transaction_id
           in: query
+          description: |
+            optional, string filter
+
+            Identifier of the transaction that was disputed.
+            **Supported operators :**
+            is, is_not, starts_with, in, not_in
+
+            **Example →**
+            *transaction_id\[is\] = "txn_16BdDXSlbu4uV1Ee6"*
           required: false
           deprecated: false
           style: deepObject
@@ -64773,7 +64829,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier of the transaction that was disputed.
             example: txn_16BdDXSlbu4uV1Ee6
             properties:
               is:
@@ -64798,6 +64853,15 @@ paths:
                 example: null
         - name: amount
           in: query
+          description: |
+            optional, in cents filter
+
+            To filter based on the amount under dispute.
+            **Supported operators :**
+            is, is_not, lt, lte, gt, gte, between
+
+            **Example →**
+            *amount\[gt\] = "1200"*
           required: false
           deprecated: false
           style: deepObject
@@ -64805,8 +64869,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: |
-              The amount under dispute. The unit depends on the [type of currency](/docs/api#md_disabled).
             example: "1200"
             properties:
               is:
@@ -64845,6 +64907,15 @@ paths:
                 example: null
         - name: created_at
           in: query
+          description: |
+            optional, timestamp(UTC) in seconds filter
+
+            To filter based on the time at which the dispute was created. Use this filter when listing disputes for better query performance.
+            **Supported operators :**
+            after, before, on, between
+
+            **Example →**
+            *created_at\[after\] = "1435054328"*
           required: false
           deprecated: false
           style: deepObject
@@ -64852,7 +64923,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Timestamp indicating when the dispute was created.
             example: "1435054328"
             properties:
               after:
@@ -64896,7 +64966,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -91423,13 +91494,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -105822,6 +105893,15 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
+                        is:
+                          type: string
+                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                         in:
                           type: string
                           description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -105832,15 +105912,6 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
-                        is:
-                          type: string
-                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -105848,13 +105919,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        in:
-                          type: string
-                          pattern: ^\[(.*)(,.*)*\]$
-                          example: null
                         is:
                           type: string
                           minLength: 1
+                          example: null
+                        in:
+                          type: string
+                          pattern: ^\[(.*)(,.*)*\]$
                           example: null
                     effective_from:
                       type: object
@@ -106467,16 +106538,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -107815,16 +107886,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -108235,16 +108306,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -114323,13 +114394,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: ^\[(.*)(,.*)*\]$
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: ^\[(.*)(,.*)*\]$
                       example: null
                 coupon:
                   type: object
@@ -115883,16 +115954,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -119493,16 +119564,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -124116,16 +124187,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -126335,16 +126406,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -129672,16 +129743,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -136472,6 +136543,15 @@ paths:
             deprecated: false
             example: active
             properties:
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
+                example: null
               in:
                 type: string
                 description: |-
@@ -136481,15 +136561,6 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
                 example: null
         - name: id
           in: query
@@ -136511,13 +136582,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -139318,13 +139389,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: entity_type
           in: query
@@ -139349,6 +139420,21 @@ paths:
             deprecated: false
             example: plan_price
             properties:
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
+                example: null
               in:
                 type: string
                 description: |-
@@ -139364,21 +139450,6 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -139402,13 +139473,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -148008,8 +148079,7 @@ paths:
                       example: null
                     quantity:
                       type: array
-                      description: |
-                        The quantity of the item purchased
+                      description: "The quantity of the item purchased  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot reduce `quantity` and change `unit_price` (or `unit_price_in_decimal`) in the same ramp. Split the changes into separate API calls. If both are included in one ramp, Chargebee returns an `invalid_request` error when the scheduled change is applied.\n"
                       items:
                         type: integer
                         format: int32
@@ -148030,14 +148100,7 @@ paths:
                       example: null
                     unit_price:
                       type: array
-                      description: |
-                        The price/per unit price of the item. When not provided, [the value set](/docs/api/item_prices/item-price-object)
-                        for the item price is used. This is only applicable when the `pricing_model`
-                        of the item price is `flat_fee`
-                        or `per_unit`.
-                        Also, it is only allowed when [price overriding](https://www.chargebee.com/docs/price-override.html)
-                        is enabled for the site. The value depends on the [type of currency](/docs/api/currencies)
-                        .
+                      description: "The price/per unit price of the item. When not provided, [the value set](/docs/api/item_prices/item-price-object)\nfor the item price is used. This is only applicable when the `pricing_model`\nof the item price is `flat_fee`\nor `per_unit`.\nAlso, it is only allowed when [price overriding](https://www.chargebee.com/docs/price-override.html)\nis enabled for the site. The value depends on the [type of currency](/docs/api/currencies)\n.  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot change `unit_price` and reduce `quantity` (or `quantity_in_decimal`) in the same ramp. Split the changes into separate API calls. If both are included in one ramp, Chargebee returns an `invalid_request` error when the scheduled change is applied.\n"
                       items:
                         type: integer
                         format: int64
@@ -148689,6 +148752,15 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
+              is:
+                type: string
+                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
+                example: null
               in:
                 type: string
                 description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -148698,15 +148770,6 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
-                example: null
-              is:
-                type: string
-                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -148720,13 +148783,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: effective_from
           in: query
@@ -149355,8 +149418,7 @@ paths:
                       example: null
                     quantity:
                       type: array
-                      description: |
-                        The quantity of the item purchased
+                      description: "The quantity of the item purchased  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot reduce `quantity` and change `unit_price` (or `unit_price_in_decimal`) in the same ramp. Split the changes into separate API calls. If both are included in one ramp, Chargebee returns an `invalid_request` error when the scheduled change is applied.\n"
                       items:
                         type: integer
                         format: int32
@@ -149377,14 +149439,7 @@ paths:
                       example: null
                     unit_price:
                       type: array
-                      description: |
-                        The price/per unit price of the item. When not provided, [the value set](/docs/api/item_prices/item-price-object)
-                        for the item price is used. This is only applicable when the `pricing_model`
-                        of the item price is `flat_fee`
-                        or `per_unit`.
-                        Also, it is only allowed when [price overriding](https://www.chargebee.com/docs/price-override.html)
-                        is enabled for the site. The value depends on the [type of currency](/docs/api/currencies)
-                        .
+                      description: "The price/per unit price of the item. When not provided, [the value set](/docs/api/item_prices/item-price-object)\nfor the item price is used. This is only applicable when the `pricing_model`\nof the item price is `flat_fee`\nor `per_unit`.\nAlso, it is only allowed when [price overriding](https://www.chargebee.com/docs/price-override.html)\nis enabled for the site. The value depends on the [type of currency](/docs/api/currencies)\n.  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot change `unit_price` and reduce `quantity` (or `quantity_in_decimal`) in the same ramp. Split the changes into separate API calls. If both are included in one ramp, Chargebee returns an `invalid_request` error when the scheduled change is applied.\n"
                       items:
                         type: integer
                         format: int64
@@ -157529,11 +157584,6 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              before:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               after:
                 type: string
                 format: unix-time
@@ -157542,6 +157592,11 @@ paths:
               between:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
         - name: purchased_at
           in: query
@@ -157569,11 +157624,6 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              before:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               after:
                 type: string
                 format: unix-time
@@ -157582,6 +157632,11 @@ paths:
               between:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
         - name: sort_by
           in: query
@@ -159320,11 +159375,11 @@ paths:
             type: object
             deprecated: false
             properties:
-              starts_with:
+              is:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              starts_with:
                 type: string
                 minLength: 1
                 example: null
@@ -161507,13 +161562,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: reference_id
           in: query
@@ -161535,13 +161590,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: updated_at
           in: query
@@ -169558,19 +169613,19 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              in:
+              not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is_not:
-                type: string
-                minLength: 1
                 example: null
               is:
                 type: string
                 minLength: 1
                 example: null
-              not_in:
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
@@ -173438,6 +173493,31 @@ paths:
             type: object
             deprecated: false
             properties:
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
+                example: null
               in:
                 type: string
                 description: |-
@@ -173463,31 +173543,6 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -177457,6 +177512,97 @@ components:
         - line_item_id
         - line_item_type
         - total_amount
+        - updated_at
+      example: null
+    BillingMetricEntitlement:
+      type: object
+      properties:
+        unit_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        unit_type:
+          type: string
+          deprecated: false
+          maxLength: 20
+          example: null
+        entitlement_value:
+          type: string
+          deprecated: false
+          maxLength: 255
+          example: null
+        entitlement_name:
+          type: string
+          deprecated: false
+          maxLength: 255
+          example: null
+        entitlement_lineage_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        effective_from:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        effective_to:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        deleted:
+          type: string
+          deprecated: false
+          maxLength: 20
+          example: null
+        subscription_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        item_price_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        customer_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        line_lineage_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        version:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        occurred_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - entitlement_lineage_id
+        - entitlement_value
+        - unit_id
+        - unit_type
         - updated_at
       example: null
     BillingMetricLine:
@@ -187500,51 +187646,87 @@ components:
       example: null
     Dispute:
       type: object
+      description: |
+        This resource represents a [dispute](https://www.chargebee.com/docs/payments/2.0/others/chargeback) raised against a payment collected on your site. A dispute is created when a cardholder questions a payment with their card issuer, either as a formal `chargeback` or as a pre-chargeback `inquiry`.
+
+        Chargebee records each dispute against the [transaction](/docs/api/transactions/transaction-object) that was disputed, the [customer](/docs/api/customers/customer-object) who made the payment, and the gateway account that processed it. As the payment gateway moves the dispute toward a resolution, Chargebee updates the dispute [`status`](/docs/api/disputes/dispute-object#status).
+
+        Disputes are read-only through the API. Chargebee creates and updates them from the notifications it receives from the payment gateway, so there are no operations to create, update, or delete a dispute.
       properties:
         id:
           type: string
           deprecated: false
+          description: |
+            Uniquely identifies the dispute.
           maxLength: 150
           example: null
         customer_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the [customer](/docs/api/customers/customer-object)
+            whose payment was disputed.
           maxLength: 50
           example: null
         transaction_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the [transaction](/docs/api/transactions/transaction-object)
+            that was disputed.
           maxLength: 40
           example: null
         gateway_account_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the gateway account that processed the disputed payment.
           maxLength: 50
           example: null
         id_at_gateway:
           type: string
           deprecated: false
+          description: |
+            The id with which this dispute is referred in the gateway. Use this value to reconcile the dispute with the corresponding record in the gateway.
           maxLength: 200
           example: null
         currency_code:
           type: string
           deprecated: false
+          description: |
+            The currency code ([ISO 4217 format](https://www.chargebee.com/docs/supported-currencies.html)) of the disputed amount.
           maxLength: 3
           example: null
         amount:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The amount under dispute. The unit depends on the [type of currency](/docs/api/getting-started)
+            .
+            When `is_partial_dispute`
+            is `true`, this is only the disputed part of the transaction amount.
           minimum: 0
           example: null
         reason:
           type: string
           deprecated: false
+          description: |
+            The reason for which the payment was disputed, as reported by the gateway. The set of values depends on the gateway and the card network.
           maxLength: 250
           example: null
         status:
           type: string
           deprecated: false
+          description: |
+            The current state of the dispute.
+
+            * won - The dispute was resolved in the merchant's favor.
+            * cancelled - The dispute was withdrawn before it was resolved.
+            * funds_withdrawn - The gateway has withdrawn the disputed amount pending resolution.
+            * in_review - Evidence has been submitted and the dispute is being reviewed.
+            * lost - The dispute was resolved in the cardholder's favor.
+            * initiated - The dispute has been raised by the cardholder and the funds are yet to be withdrawn.
           enum:
             - initiated
             - funds_withdrawn
@@ -187556,6 +187738,11 @@ components:
         type:
           type: string
           deprecated: false
+          description: |
+            The nature of the dispute raised against the payment.
+
+            * inquiry - A pre-dispute inquiry raised by the issuer before a chargeback.
+            * chargeback - A formal reversal of the payment raised through the card network.
           enum:
             - chargeback
             - inquiry
@@ -187564,21 +187751,30 @@ components:
           type: boolean
           default: false
           deprecated: false
+          description: |
+            Indicates that only a part of the transaction amount is under dispute.
           example: null
         created_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            Timestamp indicating when the dispute was created.
           example: null
         resource_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            Version number of this resource. The `resource_version`
+            is updated with a new timestamp in milliseconds for every change made to the resource.
           example: null
         updated_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            Timestamp indicating when this dispute was last updated.
           example: null
       required:
         - amount
