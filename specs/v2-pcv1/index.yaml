@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-09-30.a52c16abb514939938abc40280dabffd0783b0d8
-  x-cb-product-catalog-version: 1
+  version: 2026-10-01.9c3c4b80e83d1ddb015abefde4a08ae0039ae0c7
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -69,7 +69,7 @@ tags:
   - name: customers
     description: Represents a customer, which can be an individual or organization that subscribes to your products or services.
   - name: disputes
-    description: Operations on the `disputes` resource.
+    description: This resource represents a [dispute](https://www.chargebee.com/docs/payments/2.0/others/chargeback) raised against a payment collected on your site.
   - name: einvoices
     description: An e-invoice record associated with an invoice or credit note.
   - name: estimates
@@ -12673,14 +12673,7 @@ paths:
                 change_option:
                   type: string
                   deprecated: false
-                  description: |
-                    When the quote is converted, this attribute determines the date/time as of when the subscription change is to be carried out.
-
-                    * end_of_term - The change is carried out at the end of the current billing cycle of the subscription.
-                    * specific_date -
-                      The change is carried out as of the date specified under `changes_scheduled_at`
-                      .
-                    * immediately - The change is carried out immediately.
+                  description: "When the quote is converted, this attribute determines the date/time as of when the subscription change is to be carried out.  \n**Constraints**\n\n* When `change_option` is `end_of_term` or `specific_date`, you cannot reduce `quantity` (or `quantity_in_decimal`) and change `unit_price` (or `unit_price_in_decimal`) for the same per-unit addon in one request. Split the changes into separate API calls. If both are included in one scheduled update, Chargebee returns an `invalid_request` error when the scheduled change is applied.\n\n* end_of_term - The change is carried out at the end of the current billing cycle of the subscription.\n* specific_date -\n  The change is carried out as of the date specified under `changes_scheduled_at`\n  .\n* immediately - The change is carried out immediately.\n"
                   enum:
                     - immediately
                     - end_of_term
@@ -13699,10 +13692,7 @@ paths:
                       example: null
                     quantity:
                       type: array
-                      description: |
-                        Quantity of the addon. Applicable for addons with `pricing_model`
-                        other than `flat_fee`
-                        .
+                      description: "Quantity of the addon. Applicable for addons with `pricing_model`\nother than `flat_fee`\n.  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot reduce `quantity` and change `unit_price` (or `unit_price_in_decimal`) in the same API call. Split the changes into separate API calls. This restriction also applies when a scheduled subscription change is applied.\n"
                       items:
                         type: integer
                         format: int32
@@ -13713,11 +13703,7 @@ paths:
                       example: null
                     unit_price:
                       type: array
-                      description: |
-                        Amount that will override the Addon's default price. The unit depends on the [type of currency](/docs/api/getting-started).
-                        The Plan's billing frequency will not be considered for overriding. E.g. If the Plan's billing frequency is every 3 months, and if the price override amount is $10, $10 will be used, and not $30 (i.e $10 x 3). If `changes_scheduled_at`
-                        is in the past and `addons[unit_price][i]`
-                        is not passed, then the addon's current unit price is considered even if the addon did not exist on the date as of when the change is scheduled.
+                      description: "Amount that will override the Addon's default price. The unit depends on the [type of currency](/docs/api/getting-started).\nThe Plan's billing frequency will not be considered for overriding. E.g. If the Plan's billing frequency is every 3 months, and if the price override amount is $10, $10 will be used, and not $30 (i.e $10 x 3). If `changes_scheduled_at`\nis in the past and `addons[unit_price][i]`\nis not passed, then the addon's current unit price is considered even if the addon did not exist on the date as of when the change is scheduled.  \n**Constraints**\n\n* For an addon whose `pricing_model` is `per_unit`, you cannot change `unit_price` and reduce `quantity` (or `quantity_in_decimal`) in the same API call. Split the changes into separate API calls. This restriction also applies when a scheduled subscription change is applied.\n"
                       items:
                         type: integer
                         format: int64
@@ -65170,7 +65156,11 @@ paths:
     get:
       tags:
         - disputes
-      summary: Retrieve a dispute
+      summary: Retrieve A Dispute
+      description: |
+        Retrieves a dispute identified by its unique id.
+
+        Use this operation to check the current [`status`](/docs/api/v2/pcv-1/disputes/dispute-object#status) of a dispute, the amount under dispute, and the transaction and customer it relates to. To find disputes when you don't have the dispute id, use the [List disputes](/docs/api/v2/pcv-1/disputes/list-disputes) operation.
       operationId: retrieve_a_dispute
       parameters:
         - name: chargebee-request-origin-device
@@ -65244,7 +65234,8 @@ paths:
                 properties:
                   dispute:
                     $ref: '#/components/schemas/Dispute'
-                    description: Resource object representing dispute
+                    description: |
+                      Resource object representing dispute
                 required:
                   - dispute
                 example: null
@@ -65315,7 +65306,13 @@ paths:
     get:
       tags:
         - disputes
-      summary: List disputes
+      summary: List Disputes
+      description: |
+        Lists the disputes raised against the transactions on your site, with the most recently created dispute first.
+
+        Use the filter parameters to narrow the list to the disputes you want to act on. For example, filter on `status` to work through the disputes that are still open, or on `customer_id` to review every dispute raised by one customer.
+
+        This operation does not support a `sort_by` parameter. The results are always ordered by `created_at` in descending order.
       operationId: list_disputes
       parameters:
         - name: chargebee-request-origin-device
@@ -65371,33 +65368,44 @@ paths:
             pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
         - name: limit
           in: query
+          description: |
+            The number of resources to be returned.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/limit'
           style: form
           explode: true
           schema:
             type: integer
             format: int32
             default: 10
-            description: The number of resources to be returned.
             maximum: 100
             minimum: 1
             example: null
         - name: offset
           in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset`
+            to the value of `next_offset`
+            obtained in the previous iteration of the API call.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/offset'
           style: form
           explode: true
           schema:
             type: string
-            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
             maxLength: 1000
             example: null
         - name: id
           in: query
+          description: |
+            optional, string filter
+
+            Uniquely identifies the dispute.
+            **Supported operators :**
+            is, is_not, starts_with, in, not_in
+
+            **Example →**
+            *id\[is\] = "dspt_16BdDXSlbu4uV1Ee6"*
           required: false
           deprecated: false
           style: deepObject
@@ -65405,7 +65413,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier for Dispute.
             example: dspt_16BdDXSlbu4uV1Ee6
             properties:
               is:
@@ -65430,6 +65437,16 @@ paths:
                 example: null
         - name: status
           in: query
+          description: |
+            optional, enumerated string filter
+
+            The current state of the dispute. Possible values are : initiated, funds_withdrawn, in_review, cancelled, lost, won.
+
+            **Supported operators :**
+            is, is_not, in, not_in
+
+            **Example →**
+            *status\[is\] = "initiated"*
           required: false
           deprecated: false
           style: deepObject
@@ -65437,7 +65454,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: The current state of the dispute.
             example: initiated
             properties:
               is:
@@ -65512,6 +65528,16 @@ paths:
                 example: null
         - name: type
           in: query
+          description: |
+            optional, enumerated string filter
+
+            The nature of the dispute raised against the payment. Possible values are : chargeback, inquiry.
+
+            **Supported operators :**
+            is, is_not, in, not_in
+
+            **Example →**
+            *type\[is\] = "chargeback"*
           required: false
           deprecated: false
           style: deepObject
@@ -65519,7 +65545,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: The nature of the dispute raised against the payment.
             example: chargeback
             properties:
               is:
@@ -65562,6 +65587,15 @@ paths:
                 example: null
         - name: customer_id
           in: query
+          description: |
+            optional, string filter
+
+            Identifier of the customer whose payment was disputed.
+            **Supported operators :**
+            is, is_not, starts_with, in, not_in
+
+            **Example →**
+            *customer_id\[is\] = "4gmiXbsjdm"*
           required: false
           deprecated: false
           style: deepObject
@@ -65569,7 +65603,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier of the customer whose payment was disputed.
             example: 4gmiXbsjdm
             properties:
               is:
@@ -65594,6 +65627,15 @@ paths:
                 example: null
         - name: transaction_id
           in: query
+          description: |
+            optional, string filter
+
+            Identifier of the transaction that was disputed.
+            **Supported operators :**
+            is, is_not, starts_with, in, not_in
+
+            **Example →**
+            *transaction_id\[is\] = "txn_16BdDXSlbu4uV1Ee6"*
           required: false
           deprecated: false
           style: deepObject
@@ -65601,7 +65643,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier of the transaction that was disputed.
             example: txn_16BdDXSlbu4uV1Ee6
             properties:
               is:
@@ -65626,6 +65667,15 @@ paths:
                 example: null
         - name: amount
           in: query
+          description: |
+            optional, in cents filter
+
+            To filter based on the amount under dispute.
+            **Supported operators :**
+            is, is_not, lt, lte, gt, gte, between
+
+            **Example →**
+            *amount\[gt\] = "1200"*
           required: false
           deprecated: false
           style: deepObject
@@ -65633,8 +65683,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: |
-              The amount under dispute. The unit depends on the [type of currency](/docs/api#md_disabled).
             example: "1200"
             properties:
               is:
@@ -65673,6 +65721,15 @@ paths:
                 example: null
         - name: created_at
           in: query
+          description: |
+            optional, timestamp(UTC) in seconds filter
+
+            To filter based on the time at which the dispute was created. Use this filter when listing disputes for better query performance.
+            **Supported operators :**
+            after, before, on, between
+
+            **Example →**
+            *created_at\[after\] = "1435054328"*
           required: false
           deprecated: false
           style: deepObject
@@ -65680,7 +65737,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Timestamp indicating when the dispute was created.
             example: "1435054328"
             properties:
               after:
@@ -65724,7 +65780,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -137230,51 +137287,87 @@ components:
       example: null
     Dispute:
       type: object
+      description: |
+        This resource represents a [dispute](https://www.chargebee.com/docs/payments/2.0/others/chargeback) raised against a payment collected on your site. A dispute is created when a cardholder questions a payment with their card issuer, either as a formal `chargeback` or as a pre-chargeback `inquiry`.
+
+        Chargebee records each dispute against the [transaction](/docs/api/v2/pcv-1/transactions/transaction-object) that was disputed, the [customer](/docs/api/v2/pcv-1/customers/customer-object) who made the payment, and the gateway account that processed it. As the payment gateway moves the dispute toward a resolution, Chargebee updates the dispute [`status`](/docs/api/v2/pcv-1/disputes/dispute-object#status).
+
+        Disputes are read-only through the API. Chargebee creates and updates them from the notifications it receives from the payment gateway, so there are no operations to create, update, or delete a dispute.
       properties:
         id:
           type: string
           deprecated: false
+          description: |
+            Uniquely identifies the dispute.
           maxLength: 150
           example: null
         customer_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the [customer](/docs/api/v2/pcv-1/customers/customer-object)
+            whose payment was disputed.
           maxLength: 50
           example: null
         transaction_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the [transaction](/docs/api/v2/pcv-1/transactions/transaction-object)
+            that was disputed.
           maxLength: 40
           example: null
         gateway_account_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the gateway account that processed the disputed payment.
           maxLength: 50
           example: null
         id_at_gateway:
           type: string
           deprecated: false
+          description: |
+            The id with which this dispute is referred in the gateway. Use this value to reconcile the dispute with the corresponding record in the gateway.
           maxLength: 200
           example: null
         currency_code:
           type: string
           deprecated: false
+          description: |
+            The currency code ([ISO 4217 format](https://www.chargebee.com/docs/supported-currencies.html)) of the disputed amount.
           maxLength: 3
           example: null
         amount:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The amount under dispute. The unit depends on the [type of currency](/docs/api/getting-started)
+            .
+            When `is_partial_dispute`
+            is `true`, this is only the disputed part of the transaction amount.
           minimum: 0
           example: null
         reason:
           type: string
           deprecated: false
+          description: |
+            The reason for which the payment was disputed, as reported by the gateway. The set of values depends on the gateway and the card network.
           maxLength: 250
           example: null
         status:
           type: string
           deprecated: false
+          description: |
+            The current state of the dispute.
+
+            * won - The dispute was resolved in the merchant's favor.
+            * cancelled - The dispute was withdrawn before it was resolved.
+            * funds_withdrawn - The gateway has withdrawn the disputed amount pending resolution.
+            * in_review - Evidence has been submitted and the dispute is being reviewed.
+            * lost - The dispute was resolved in the cardholder's favor.
+            * initiated - The dispute has been raised by the cardholder and the funds are yet to be withdrawn.
           enum:
             - initiated
             - funds_withdrawn
@@ -137286,6 +137379,11 @@ components:
         type:
           type: string
           deprecated: false
+          description: |
+            The nature of the dispute raised against the payment.
+
+            * inquiry - A pre-dispute inquiry raised by the issuer before a chargeback.
+            * chargeback - A formal reversal of the payment raised through the card network.
           enum:
             - chargeback
             - inquiry
@@ -137294,21 +137392,30 @@ components:
           type: boolean
           default: false
           deprecated: false
+          description: |
+            Indicates that only a part of the transaction amount is under dispute.
           example: null
         created_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            Timestamp indicating when the dispute was created.
           example: null
         resource_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            Version number of this resource. The `resource_version`
+            is updated with a new timestamp in milliseconds for every change made to the resource.
           example: null
         updated_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            Timestamp indicating when this dispute was last updated.
           example: null
       required:
         - amount
