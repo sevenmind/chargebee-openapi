@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-03.ca50ca5c0a28d64fe682ba452cdd1d810f54d980
-  x-cb-api-version: 2
+  version: 2026-10-05.8c8170d5e4ed6d71c60808a15224512a496991cb
   x-cb-product-catalog-version: 2
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -157398,38 +157398,54 @@ paths:
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
+                  - roku
+                  - amazon_app_store
                 example: null
               is_not:
                 type: string
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
+                  - roku
+                  - amazon_app_store
                 example: null
               in:
                 type: string
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
-                pattern: ^\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\]$
+                  - roku
+                  - amazon_app_store
+                pattern: ^\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\]$
                 example: null
               not_in:
                 type: string
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
-                pattern: ^\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\]$
+                  - roku
+                  - amazon_app_store
+                pattern: ^\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\]$
                 example: null
         - name: customer_id
           in: query
@@ -157579,12 +157595,12 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -157593,7 +157609,7 @@ paths:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -157619,12 +157635,12 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -157633,7 +157649,7 @@ paths:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -158774,38 +158790,54 @@ paths:
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
+                  - roku
+                  - amazon_app_store
                 example: null
               is_not:
                 type: string
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
+                  - roku
+                  - amazon_app_store
                 example: null
               in:
                 type: string
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
-                pattern: ^\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\]$
+                  - roku
+                  - amazon_app_store
+                pattern: ^\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\]$
                 example: null
               not_in:
                 type: string
                 description: |-
                   * `apple_app_store` - Source of the app is apple app store
                   * `google_play_store` - Source of the app is google play store
+                  * `roku` - Source of the app is roku
+                  * `amazon_app_store` - Source of the app is amazon app store
                 enum:
                   - apple_app_store
                   - google_play_store
-                pattern: ^\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\]$
+                  - roku
+                  - amazon_app_store
+                pattern: ^\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\]$
                 example: null
         - name: customer_id
           in: query
@@ -159375,11 +159407,11 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
+              starts_with:
                 type: string
                 minLength: 1
                 example: null
-              starts_with:
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -169613,17 +169645,17 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              not_in:
+              is_not:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               is:
                 type: string
                 minLength: 1
                 example: null
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
@@ -205633,6 +205665,8 @@ components:
           enum:
             - apple_app_store
             - google_play_store
+            - roku
+            - amazon_app_store
           example: null
         created_at:
           type: integer
@@ -206130,6 +206164,8 @@ components:
           enum:
             - apple_app_store
             - google_play_store
+            - roku
+            - amazon_app_store
           example: null
         customer_id:
           type: string
@@ -206303,6 +206339,11 @@ components:
                   - other
                   - subscription_not_found_in_source
                 example: null
+              expiration_reason_at_source:
+                type: string
+                deprecated: false
+                maxLength: 500
+                example: null
               cancelled_at:
                 type: integer
                 format: unix-time
@@ -206354,6 +206395,12 @@ components:
                   - refunded_due_to_app_issue
                   - refunded_for_other_reason
                   - merchant_revoked
+                  - other
+                example: null
+              cancellation_reason_at_source:
+                type: string
+                deprecated: false
+                maxLength: 500
                 example: null
               grace_period_expires_at:
                 type: integer
@@ -207045,6 +207092,11 @@ components:
             - other
             - subscription_not_found_in_source
           example: null
+        expiration_reason_at_source:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
         cancelled_at:
           type: integer
           format: unix-time
@@ -207094,6 +207146,12 @@ components:
             - refunded_due_to_app_issue
             - refunded_for_other_reason
             - merchant_revoked
+            - other
+          example: null
+        cancellation_reason_at_source:
+          type: string
+          deprecated: false
+          maxLength: 500
           example: null
         grace_period_expires_at:
           type: integer
@@ -222656,6 +222714,8 @@ components:
           enum:
             - apple_app_store
             - google_play_store
+            - roku
+            - amazon_app_store
           example: null
         status:
           type: string

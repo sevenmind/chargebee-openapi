@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-03.ca50ca5c0a28d64fe682ba452cdd1d810f54d980",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-10-05.8c8170d5e4ed6d71c60808a15224512a496991cb",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -183823,40 +183823,48 @@
               "properties": {
                 "is": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
                   "example": null
                 },
                 "is_not": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
                   "example": null
                 },
                 "in": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
-                  "pattern": "^\\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\\]$",
+                  "pattern": "^\\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\\]$",
                   "example": null
                 },
                 "not_in": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
-                  "pattern": "^\\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\\]$",
+                  "pattern": "^\\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\\]$",
                   "example": null
                 }
               }
@@ -183998,13 +184006,13 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "on": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -184015,7 +184023,7 @@
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -184037,13 +184045,13 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "on": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -184054,7 +184062,7 @@
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -185424,40 +185432,48 @@
               "properties": {
                 "is": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
                   "example": null
                 },
                 "is_not": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
                   "example": null
                 },
                 "in": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
-                  "pattern": "^\\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\\]$",
+                  "pattern": "^\\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\\]$",
                   "example": null
                 },
                 "not_in": {
                   "type": "string",
-                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store",
+                  "description": "* `apple_app_store` - Source of the app is apple app store\n* `google_play_store` - Source of the app is google play store\n* `roku` - Source of the app is roku\n* `amazon_app_store` - Source of the app is amazon app store",
                   "enum": [
                     "apple_app_store",
-                    "google_play_store"
+                    "google_play_store",
+                    "roku",
+                    "amazon_app_store"
                   ],
-                  "pattern": "^\\[(apple_app_store|google_play_store)(,(apple_app_store|google_play_store))*\\]$",
+                  "pattern": "^\\[(apple_app_store|google_play_store|roku|amazon_app_store)(,(apple_app_store|google_play_store|roku|amazon_app_store))*\\]$",
                   "example": null
                 }
               }
@@ -186238,12 +186254,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -200019,9 +200035,9 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "not_in": {
+                "is_not": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "is": {
@@ -200029,9 +200045,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -237170,7 +237186,9 @@
             "description": "The storefront where the one-time order was originally made and managed (`apple_app_store` or `google_play_store`).\n\n* google_play_store - The source of the app is `google_play_store`.\n* apple_app_store - The source of the app is `apple_app_store`.\n",
             "enum": [
               "apple_app_store",
-              "google_play_store"
+              "google_play_store",
+              "roku",
+              "amazon_app_store"
             ],
             "example": null
           },
@@ -237655,7 +237673,9 @@
             "description": "The storefront where the purchase is originally made and managed (`apple_app_store` or `google_play_store`).\n\n* google_play_store - The purchase originated from the Google Play Store.\n* apple_app_store - The purchase originated from the Apple App Store.\n",
             "enum": [
               "apple_app_store",
-              "google_play_store"
+              "google_play_store",
+              "roku",
+              "amazon_app_store"
             ],
             "example": null
           },
@@ -237780,6 +237800,12 @@
                   ],
                   "example": null
                 },
+                "expiration_reason_at_source": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 500,
+                  "example": null
+                },
                 "cancelled_at": {
                   "type": "integer",
                   "format": "unix-time",
@@ -237796,8 +237822,15 @@
                     "customer_did_not_consent_to_price_increase",
                     "refunded_due_to_app_issue",
                     "refunded_for_other_reason",
-                    "merchant_revoked"
+                    "merchant_revoked",
+                    "other"
                   ],
+                  "example": null
+                },
+                "cancellation_reason_at_source": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 500,
                   "example": null
                 },
                 "grace_period_expires_at": {
@@ -238417,6 +238450,12 @@
             ],
             "example": null
           },
+          "expiration_reason_at_source": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
           "cancelled_at": {
             "type": "integer",
             "format": "unix-time",
@@ -238433,8 +238472,15 @@
               "customer_did_not_consent_to_price_increase",
               "refunded_due_to_app_issue",
               "refunded_for_other_reason",
-              "merchant_revoked"
+              "merchant_revoked",
+              "other"
             ],
+            "example": null
+          },
+          "cancellation_reason_at_source": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
             "example": null
           },
           "grace_period_expires_at": {
@@ -253810,7 +253856,9 @@
             "description": "The source where the purchase is originally made and managed.\n\n* google_play_store - The purchase originated from the Google Play Store.\n* apple_app_store - The purchase originated from the Apple App Store.\n",
             "enum": [
               "apple_app_store",
-              "google_play_store"
+              "google_play_store",
+              "roku",
+              "amazon_app_store"
             ],
             "example": null
           },
