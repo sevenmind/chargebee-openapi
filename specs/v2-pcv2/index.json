@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-05.8c8170d5e4ed6d71c60808a15224512a496991cb",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-10-06.16d0b91a1c29f16fd211292195c5d575af9f44be",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -39547,6 +39547,369 @@
         ]
       }
     },
+    "/customers/{customer-id}/email_logs": {
+      "get": {
+        "tags": [
+          "customers"
+        ],
+        "summary": "List email logs for a customer",
+        "description": "Retrieves the emails sent for a [customer](/docs/api/customers), newest first.\n\nUse this operation to inspect delivery status, recipient, and template for emails Chargebee sent to a customer, including those triggered by [send invoice email](/docs/api/invoices#send_invoice_email), [send credit note email](/docs/api/credit_notes#send_credit_note_email), and [send payment request email](/docs/api/customers#send_payment_request_email).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.  \n\n### Implementation Notes\n\n* Results are sorted by `sent_on` descending, so the most recent emails appear first.\n* If you omit `sent_on`, the response includes emails from the last 24 hours.\n* Any `sent_on` filter must fall within the last 7 days.\n* `sent_on[between]` and combined `sent_on[after]` / `sent_on[before]` can span at most 24 hours.\n* `sent_on[after]` alone returns the following 24 hours from that timestamp.\n* `sent_on[before]` alone returns the preceding 24 hours from that timestamp.\n* Pass `business_entity_id` only when Multi Business Entity is enabled. Pass `brand_id` only when Multi Brand is enabled. Otherwise the API returns an `invalid_request` error.\n",
+        "operationId": "list_email_logs_for_a_customer",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-business-entity-id",
+            "in": "header",
+            "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+              "maxLength": 50,
+              "example": null
+            }
+          },
+          {
+            "name": "customer-id",
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "$ref": "#/components/parameters/customer-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of resources to be returned.\n",
+            "required": false,
+            "deprecated": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "example": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset`\nto the value of `next_offset`\nobtained in the previous iteration of the API call.\n",
+            "required": false,
+            "deprecated": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 1000,
+              "example": null
+            }
+          },
+          {
+            "name": "sent_on",
+            "in": "query",
+            "description": "optional, timestamp(UTC) in seconds filter\n\nFilter by when the email was scheduled to be sent. Pass a Unix timestamp in seconds.\n**Supported operators :**\nafter, before, between, on\n\n**Example →**\n*sent_on\\[after\\] = \"1435054328\"*  \n**Default behavior**\n\n* If omitted, emails from the last 24 hours are returned.  \n**Constraints**\n\n* Must be within the last 7 days.\n* `between` and combined `after` / `before` can span at most 24 hours.\n* `after` alone returns the following 24 hours.\n* `before` alone returns the preceding 24 hours.\n",
+            "required": false,
+            "deprecated": false,
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "deprecated": false,
+              "example": "1435054328",
+              "properties": {
+                "after": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "before": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "on": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "example": null
+                }
+              }
+            }
+          },
+          {
+            "name": "business_entity_id",
+            "in": "query",
+            "description": "optional, string filter\n\nFilter by the unique ID of the [business entity](/docs/api/advanced-features) associated with the email.\n\n**Supported operators :**\nis\n\n**Example →**\n*business_entity_id\\[is\\] = \"business_entity_id\"*  \n**Prerequisites**\n\n* Multi Business Entity must be enabled for the site.\n",
+            "required": false,
+            "deprecated": false,
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "deprecated": false,
+              "example": "business_entity_id",
+              "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                }
+              }
+            }
+          },
+          {
+            "name": "brand_id",
+            "in": "query",
+            "description": "optional, string filter\n\nFilter by the unique ID of the [brand](/docs/api/brands) associated with the email.\n\n**Supported operators :**\nis\n\n**Example →**\n*brand_id\\[is\\] = \"brand_id\"*  \n**Prerequisites**\n\n* Multi Brand must be enabled for the site.\n",
+            "required": false,
+            "deprecated": false,
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "deprecated": false,
+              "example": "brand_id",
+              "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "email_log": {
+                            "$ref": "#/components/schemas/EmailLog",
+                            "description": "Resource object representing email_log"
+                          }
+                        },
+                        "required": [
+                          "email_log"
+                        ],
+                        "example": null
+                      },
+                      "example": null
+                    },
+                    "next_offset": {
+                      "type": "string",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
+                      "maxLength": 1000,
+                      "example": null
+                    }
+                  },
+                  "required": [
+                    "list"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
     "/invoices/{invoice-id}/delete_line_items": {
       "post": {
         "tags": [
@@ -41494,7 +41857,7 @@
           "invoices"
         ],
         "summary": "Void an invoice",
-        "description": "Voids the specified invoice.\n\nUse this operation when:\n\n* The invoice was generated in error.\n* The invoice amount is incorrect.\n* The customer requests a change to the invoice.\n* The customer cancels the order.\n\nVoiding preserves the audit trail and allows for future reference and compliance without removing the original record.\n\n#### Regenerate or import an invoice\n\n* If the invoice is for the current term of a subscription, you can regenerate it using the [Regenerate an invoice API](/docs/api/subscriptions/regenerate-an-invoice).\n* If the invoice is not for the current term of a subscription, you can import it using the [Import an invoice API](/docs/api/invoices/import-invoice) or the UI [bulk import](https://www.chargebee.com/docs/2.0/bulk-operations.html#overview_available-bulk-operations) action.  \n\n### Prerequisites \\& Constraints\n\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n* The invoice must not have any [`linked_payments`](/docs/api/invoices/invoice-object#linked_payments) with `txn_status` set to `success` or `in_progress`.\n* The `amount_adjusted` on the invoice must be zero.\n* The invoice must not have any [`applied_credits`](/docs/api/invoices/invoice-object#applied_credits) with `cn_status` set to `refunded` or `refund_due`.\n* The invoice must not have any [`issued_credit_notes`](/docs/api/invoices/invoice-object#issued_credit_notes) with `cn_status` set to `refunded` or `refund_due`.\n* The invoice must not have any [`linked_taxes_withheld`](/docs/api/invoices/invoice-object#linked_taxes_withheld).  \n\n### Impacts\n\n**Invoices**  \n* Chargebee sets the invoice `status` to `voided`.  \n**Subscription**  \n* If the invoice is for the current term of a subscription and you change the subscription later within the same term with [proration](/docs/api/subscriptions/update-subscription-for-items#prorate) enabled, Chargebee does not issue prorated credits.  \n**Customer**  \n* Chargebee adds back any promotional credits that were applied to the invoice to [`customer.balances.promotional_credits`](/docs/api/customers/customer-object#balances).  \n**Credit Note**  \n* If the [**Void invoices with credit note**](https://www.chargebee.com/docs/billing/2.0/kb/billing/how-to-enable-void-invoice-with-credit-note-setting) setting is enabled, Chargebee creates a credit note for the voided invoice:\n  * The credit note `type` is `adjustment`.\n  * The credit note `status` is `adjusted`.\n* The credit note `create_reason_code` is `Invoice Void`.  \n**Usages**  \n* Chargebee delinks the [`usage`](/docs/api/usages) resources associated with the invoice by clearing the `invoice_id` attribute.  \n**Integrations**  \n* Review how voiding an invoice impacts your [accounting](https://www.chargebee.com/docs/billing/2.0/integrations/finance-integration-index) integrations.  \n\n### Implementation Notes\n\nBefore calling this API, ensure the following:\n\n* The invoice `status` is `payment_due`, `posted`, or `not_paid`.\n* [Remove](/docs/api/invoices/remove-payment-from-an-invoice) any `linked_payments` with `txn_status` set to `success` or `in_progress`.\n* [Remove](/docs/api/invoices/remove-credit-note-from-an-invoice) the following credits:\n  * any `applied_credits` with `cn_status` set to `refunded` or `refund_due`\n  * any `issued_credit_notes` with `cn_status` set to `refunded` or `refund_due`\n  * any `adjustment_credit_notes` with `cn_status` set to `adjusted`\n* [Remove](/docs/api/invoices/remove-tax-withheld-for-an-invoice) any `linked_taxes_withheld`.\n",
+        "description": "Voids the specified invoice.\n\nUse this operation when:\n\n* The invoice was generated in error.\n* The invoice amount is incorrect.\n* The customer requests a change to the invoice.\n* The customer cancels the order.\n\nVoiding preserves the audit trail and allows for future reference and compliance without removing the original record.\n\n#### Regenerate or import an invoice\n\n* If the invoice is for the current term of a subscription, you can regenerate it using the [Regenerate an invoice API](/docs/api/subscriptions/regenerate-an-invoice).\n* If the invoice is not for the current term of a subscription, you can import it using the [Import an invoice API](/docs/api/invoices/import-invoice) or the UI [bulk import](https://www.chargebee.com/docs/2.0/bulk-operations.html#overview_available-bulk-operations) action.  \n\n### Prerequisites \\& Constraints\n\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n* The invoice must not have any [`linked_payments`](/docs/api/invoices/invoice-object#linked_payments) with `txn_status` set to `success` or `in_progress`.\n* The `amount_adjusted` on the invoice must be zero.\n* The invoice must not have any [`applied_credits`](/docs/api/invoices/invoice-object#applied_credits) with `cn_status` set to `refunded` or `refund_due`.\n* The invoice must not have any [`issued_credit_notes`](/docs/api/invoices/invoice-object#issued_credit_notes) with `cn_status` set to `refunded` or `refund_due`.\n* The invoice must not have any [`linked_taxes_withheld`](/docs/api/invoices/invoice-object#linked_taxes_withheld).  \n\n### Impacts\n\n**Invoices**  \n* Chargebee sets the invoice `status` to `voided`.  \n**Subscription**  \n* If the invoice is for the current term of a subscription and you change the subscription later within the same term with [proration](/docs/api/subscriptions/update-subscription-for-items#prorate) enabled, Chargebee does not issue prorated credits.  \n**Customer**  \n* Chargebee adds back any promotional credits that were applied to the invoice to [`customer.balances.promotional_credits`](/docs/api/customers/customer-object#balances).  \n**Credit Note**  \n* If the [**Void invoices with credit note**](https://www.chargebee.com/docs/billing/2.0/kb/billing/how-to-enable-void-invoice-with-credit-note-setting) setting is enabled, Chargebee creates a credit note for the voided invoice:\n  * The credit note `type` is `adjustment`.\n  * The credit note `status` is `adjusted`.\n* The credit note `create_reason_code` is `Invoice Void`.  \n**Usages**  \n* Chargebee delinks the [`usage`](/docs/api/usages) resources associated with the invoice by clearing the `invoice_id` attribute.  \n**Integrations**  \n* Review how voiding an invoice impacts your [accounting](https://www.chargebee.com/docs/billing/2.0/integrations/finance-integration-index) integrations.  \n**Email**  \n* Voiding an invoice does not send a customer email. After the invoice is `voided`, send it with the [Send invoice email](/docs/api/invoices/send-invoice-email) API, from invoice details (**Send Email**), or from the Invoices index (bulk custom email).  \n\n### Implementation Notes\n\nBefore calling this API, ensure the following:\n\n* The invoice `status` is `payment_due`, `posted`, or `not_paid`.\n* [Remove](/docs/api/invoices/remove-payment-from-an-invoice) any `linked_payments` with `txn_status` set to `success` or `in_progress`.\n* [Remove](/docs/api/invoices/remove-credit-note-from-an-invoice) the following credits:\n  * any `applied_credits` with `cn_status` set to `refunded` or `refund_due`\n  * any `issued_credit_notes` with `cn_status` set to `refunded` or `refund_due`\n  * any `adjustment_credit_notes` with `cn_status` set to `adjusted`\n* [Remove](/docs/api/invoices/remove-tax-withheld-for-an-invoice) any `linked_taxes_withheld`.\n",
         "operationId": "void_an_invoice",
         "parameters": [
           {
@@ -46266,7 +46629,7 @@
           "invoices"
         ],
         "summary": "Send Invoice Email",
-        "description": "Sends the invoice email to the customer using the site's published **Send Invoice Email** Engage notification template.\n\nUse this operation to resend or manually trigger the invoice email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Invoice Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the invoice must have a valid email address.\n* The invoice `status` must be `paid`, `payment_due`, `not_paid`, or `posted`.  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)\n",
+        "description": "Sends the invoice email to the customer using the site's published **Send Invoice Email** Engage notification template.\n\nUse this operation to resend or manually trigger the invoice email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Invoice Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the invoice must have a valid email address.\n* The invoice `status` must be `paid`, `payment_due`, `not_paid`, `posted`, or `voided`.  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=2#list_email_logs_for_a_customer)\n",
         "operationId": "send_invoice_email",
         "parameters": [
           {
@@ -53111,14 +53474,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -53142,14 +53505,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -104832,14 +105195,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -122021,17 +122384,6 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -122043,6 +122395,17 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
                           }
                         }
                       },
@@ -122052,14 +122415,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -131584,14 +131947,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -157731,15 +158094,6 @@
               "deprecated": false,
               "example": "active",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -157748,6 +158102,15 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
                   "example": null
                 }
               }
@@ -157766,14 +158129,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -161499,14 +161862,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -161525,18 +161888,6 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -161548,6 +161899,18 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
                   "example": null
                 }
               }
@@ -161566,14 +161929,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -165469,7 +165832,7 @@
           "purchases"
         ],
         "summary": "Create a purchase",
-        "description": "**Deprecated.** The Purchase API is deprecated. It still works and existing integrations are unaffected, but it's no longer recommended for new integrations. Support for purchasing multiple plans in a single subscription is planned for the [Subscriptions API](/docs/api/subscriptions).\n\nCreates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. To create multiple subscriptions, provide multiple subscription groups.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. The following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                     **`discounts[index][i]` is not provided**                                                                                      |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon is applied to all the invoices immediately generated upon invoking this API. * The coupon is not applied to subsequent invoices, such as those generated upon subscription renewal.                   |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied to all the invoices immediately generated upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal. |\n\n",
+        "description": "**Deprecated.** The Purchase API is deprecated. It still works and existing integrations are unaffected, but it's no longer recommended for new integrations. Support for purchasing multiple plans in a single subscription is planned for the [Subscriptions API](/docs/api/subscriptions).\n\nCreates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n. The exception is a subscription group whose subscription starts in trial, which is possible when trial support for purchases is enabled for the site. No charges are raised for such a group until the trial ends. When no group in the purchase raises charges, no invoice is created and `purchase.invoice_ids` is empty.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. To create multiple subscriptions, provide multiple subscription groups.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. The following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                     **`discounts[index][i]` is not provided**                                                                                      |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon is applied to all the invoices immediately generated upon invoking this API. * The coupon is not applied to subsequent invoices, such as those generated upon subscription renewal.                   |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied to all the invoices immediately generated upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal. |\n\n**Note**\n\nFor a subscription group whose subscription is in trial, no invoice is created for the group when this API is invoked. A discount with `discounts[index][i]` set to that group is kept on the subscription and applied when the subscription is first invoiced. A discount without `discounts[index][i]` applies only to the invoices created immediately, so it cannot be passed when the purchase creates no invoice.\n",
         "operationId": "create_a_purchase",
         "parameters": [
           {
@@ -165886,6 +166249,7 @@
                       },
                       "trial_end": {
                         "type": "array",
+                        "description": "The date/time when the trial period of the addon-item price ends. Set it to `0` to add the addon-item without a trial period.  \n**Prerequisites**\n\n* Trial support for purchases must be enabled for the site. Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable it.\n* [Addon trials](https://www.chargebee.com/docs/2.0/addons-trial.html) must be enabled for the site.  \n**Constraints**\n\n* Applicable only for addon-item prices. To set the trial period for the subscription, use `subscription_info[trial_end]` instead.\n* Not applicable for plan-item prices or charge-item prices.\n* The value must be a future timestamp or `0`.\n",
                         "items": {
                           "type": "integer",
                           "format": "unix-time",
@@ -166306,6 +166670,7 @@
                       },
                       "trial_end": {
                         "type": "array",
+                        "description": "End of the trial period for the subscription created for the [subscription group](/docs/api/purchases). This overrides the trial period set for the plan-item price. The value must be in the future, or set it to `0` to have no trial period.  \n**Prerequisites**\n\n* Trial support for purchases must be enabled for the site. Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable it.  \n**Note**\n\n* No charges are raised for the group while its subscription is in trial, so a charge-item price cannot be added to the group.\n* When no group in the purchase raises charges, no invoice is created, discounts without `discounts[index]` cannot be passed.\n",
                         "items": {
                           "type": "integer",
                           "format": "unix-time",
@@ -166968,6 +167333,7 @@
                       },
                       "trial_end": {
                         "type": "array",
+                        "description": "The date/time when the trial period of the addon-item price ends. Set it to `0` to add the addon-item without a trial period.  \n**Prerequisites**\n\n* Trial support for purchases must be enabled for the site. Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable it.\n* [Addon trials](https://www.chargebee.com/docs/2.0/addons-trial.html) must be enabled for the site.  \n**Constraints**\n\n* Applicable only for addon-item prices. To set the trial period for the subscription, use `subscription_info[trial_end]` instead.\n* Not applicable for plan-item prices or charge-item prices.\n* The value must be a future timestamp or `0`.\n",
                         "items": {
                           "type": "integer",
                           "format": "unix-time",
@@ -167388,6 +167754,7 @@
                       },
                       "trial_end": {
                         "type": "array",
+                        "description": "End of the trial period for the subscription estimated for the [subscription group](/docs/api/purchases). This overrides the trial period set for the plan-item price. The value must be in the future, or set it to `0` to have no trial period.  \n**Prerequisites**\n\n* Trial support for purchases must be enabled for the site. Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable it.  \n**Note**\n\n* Charges for the group are not included in the invoice estimate while its subscription is in trial, so a charge-item price cannot be added to the group.\n* When no group in the purchase raises charges, the invoice estimate is empty and discounts without `discounts[index]` cannot be passed.\n",
                         "items": {
                           "type": "integer",
                           "format": "unix-time",
@@ -172597,17 +172964,6 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -172618,6 +172974,17 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
                   "example": null
                 }
               }
@@ -172636,14 +173003,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -184006,6 +184373,11 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "example": null
+                },
                 "after": {
                   "type": "string",
                   "format": "unix-time",
@@ -184016,11 +184388,6 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
                 "on": {
@@ -184045,6 +184412,11 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "example": null
+                },
                 "after": {
                   "type": "string",
                   "format": "unix-time",
@@ -184055,11 +184427,6 @@
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
-                  "example": null
-                },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
                 "on": {
@@ -189254,14 +189621,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -189280,14 +189647,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -200040,11 +200407,6 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -200053,6 +200415,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -205117,23 +205484,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -205150,6 +205500,23 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
                   "example": null
                 }
               },
@@ -220965,16 +221332,49 @@
             "description": "Status of the email.\n\n* deferred - The email was deferred.\n* succeeded - The email was sent successfully.\n* bounced - The email bounced.\n* rescheduled - The email was rescheduled for delivery.\n* failed - Sending the email failed.\n* opened - The recipient opened the email.\n* dropped - The email was dropped and not delivered.\n* delivered - The email was delivered to the recipient.\n* scheduled - The email has been scheduled for delivery.\n",
             "enum": [
               "scheduled",
+              "rescheduled",
               "succeeded",
               "failed",
-              "deferred"
+              "deferred",
+              "delivered",
+              "opened",
+              "bounced",
+              "dropped"
             ],
+            "example": null
+          },
+          "sent_on": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "description": "The time the email was scheduled to be sent, as a Unix timestamp in seconds.\n",
             "example": null
           },
           "customer_id": {
             "type": "string",
             "deprecated": false,
             "description": "The unique identifier of the customer associated with this email.\n",
+            "maxLength": 50,
+            "example": null
+          },
+          "site_id": {
+            "type": "string",
+            "deprecated": false,
+            "description": "Unique identifier of the Chargebee [site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro) where this email was sent. This value does not change if the site is renamed.\n",
+            "maxLength": 60,
+            "example": null
+          },
+          "business_entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "description": "The unique ID of the [business entity](/docs/api/advanced-features) this email was sent under. Returned only when Multi Business Entity is enabled for the site.\n",
+            "maxLength": 50,
+            "example": null
+          },
+          "brand_id": {
+            "type": "string",
+            "deprecated": false,
+            "description": "The unique ID of the [brand](/docs/api/brands) this email was sent as. Returned only when Multi Brand is enabled for the site.\n",
             "maxLength": 50,
             "example": null
           },
@@ -256053,9 +256453,14 @@
         "deprecated": false,
         "enum": [
           "scheduled",
+          "rescheduled",
           "succeeded",
           "failed",
           "deferred",
+          "delivered",
+          "opened",
+          "bounced",
+          "dropped",
           "active",
           "archived",
           "deleted",
