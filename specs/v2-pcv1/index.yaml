@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-05.8c8170d5e4ed6d71c60808a15224512a496991cb
-  x-cb-product-catalog-version: 1
+  version: 2026-10-06.16d0b91a1c29f16fd211292195c5d575af9f44be
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -36123,6 +36123,259 @@ paths:
       deprecated: false
       security:
         - BasicAuth: []
+  /customers/{customer-id}/email_logs:
+    get:
+      tags:
+        - customers
+      summary: List email logs for a customer
+      description: "Retrieves the emails sent for a [customer](/docs/api/v2/pcv-1/customers), newest first.\n\nUse this operation to inspect delivery status, recipient, and template for emails Chargebee sent to a customer, including those triggered by [send invoice email](/docs/api/v2/pcv-1/invoices#send_invoice_email), [send credit note email](/docs/api/v2/pcv-1/credit_notes#send_credit_note_email), and [send payment request email](/docs/api/v2/pcv-1/customers#send_payment_request_email).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.  \n\n### Implementation Notes\n\n* Results are sorted by `sent_on` descending, so the most recent emails appear first.\n* If you omit `sent_on`, the response includes emails from the last 24 hours.\n* Any `sent_on` filter must fall within the last 7 days.\n* `sent_on[between]` and combined `sent_on[after]` / `sent_on[before]` can span at most 24 hours.\n* `sent_on[after]` alone returns the following 24 hours from that timestamp.\n* `sent_on[before]` alone returns the preceding 24 hours from that timestamp.\n* Pass `business_entity_id` only when Multi Business Entity is enabled. Pass `brand_id` only when Multi Brand is enabled. Otherwise the API returns an `invalid_request` error.\n"
+      operationId: list_email_logs_for_a_customer
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: customer-id
+          in: path
+          required: true
+          deprecated: false
+          $ref: '#/components/parameters/customer-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: null
+        - name: limit
+          in: query
+          description: |
+            The number of resources to be returned.
+          required: false
+          deprecated: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 10
+            maximum: 100
+            minimum: 1
+            example: null
+        - name: offset
+          in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset`
+            to the value of `next_offset`
+            obtained in the previous iteration of the API call.
+          required: false
+          deprecated: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            maxLength: 1000
+            example: null
+        - name: sent_on
+          in: query
+          description: "optional, timestamp(UTC) in seconds filter\n\nFilter by when the email was scheduled to be sent. Pass a Unix timestamp in seconds.\n**Supported operators :**\nafter, before, between, on\n\n**Example →**\n*sent_on\\[after\\] = \"1435054328\"*  \n**Default behavior**\n\n* If omitted, emails from the last 24 hours are returned.  \n**Constraints**\n\n* Must be within the last 7 days.\n* `between` and combined `after` / `before` can span at most 24 hours.\n* `after` alone returns the following 24 hours.\n* `before` alone returns the preceding 24 hours.\n"
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            example: "1435054328"
+            properties:
+              after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
+        - name: business_entity_id
+          in: query
+          description: "optional, string filter\n\nFilter by the unique ID of the [business entity](/docs/api/v2/pcv-1/advanced-features) associated with the email.\n\n**Supported operators :**\nis\n\n**Example →**\n*business_entity_id\\[is\\] = \"business_entity_id\"*  \n**Prerequisites**\n\n* Multi Business Entity must be enabled for the site.\n"
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            example: business_entity_id
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+        - name: brand_id
+          in: query
+          description: "optional, string filter\n\nFilter by the unique ID of the [brand](/docs/api/v2/pcv-1/brands) associated with the email.\n\n**Supported operators :**\nis\n\n**Example →**\n*brand_id\\[is\\] = \"brand_id\"*  \n**Prerequisites**\n\n* Multi Brand must be enabled for the site.\n"
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            example: brand_id
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        email_log:
+                          $ref: '#/components/schemas/EmailLog'
+                          description: Resource object representing email_log
+                      required:
+                        - email_log
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
   /invoices/{invoice-id}/delete_line_items:
     post:
       tags:
@@ -37834,6 +38087,7 @@ paths:
 
         * Any [promotional credits](/docs/api/promotional_credits) or [credit notes](/docs/api/credit_notes) applied to the invoice are removed.
         * If an invoice for the current term of a subscription is voided and the subscription is changed later with `proration` enabled, no prorated credits are issued.
+        * Voiding does not send a customer email. After the invoice is `voided`, send it with the [Send invoice email](/docs/api/v2/pcv-1/invoices/send-invoice-email) API, from invoice details (**Send Email**), or from the Invoices index (bulk custom email).
       operationId: void_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -42607,7 +42861,7 @@ paths:
       tags:
         - invoices
       summary: Send Invoice Email
-      description: "Sends the invoice email to the customer using the site's published **Send Invoice Email** Engage notification template.\n\nUse this operation to resend or manually trigger the invoice email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/v2/pcv-1/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Invoice Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the invoice must have a valid email address.\n* The invoice `status` must be `paid`, `payment_due`, `not_paid`, or `posted`.  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=1#list_email_logs_for_a_customer)\n"
+      description: "Sends the invoice email to the customer using the site's published **Send Invoice Email** Engage notification template.\n\nUse this operation to resend or manually trigger the invoice email for a customer outside the normal notification schedule.  \n**Async-only**\nThis operation is [asynchronous only](/docs/api/async_response). You must send `Prefer: respond-async`, a unique `chargebee-request-id`, and a `chargebee-async-callback-url`. The HTTP response is `202 Accepted` with an empty body. When processing completes, Chargebee delivers the outcome to your [async callback URL](/docs/api/async_response) --- a successful `result` contains [`email_logs`](/docs/api/v2/pcv-1/email_logs).  \n\n### Prerequisites \\& Constraints\n\n* Email Engage V2 must be enabled for the site.\n* The **Send Invoice Email** notification template must be published and enabled.\n* The from address configured for the notification template must be verified.\n* The customer associated with the invoice must have a valid email address.\n* The invoice `status` must be `paid`, `payment_due`, `not_paid`, `posted`, or `voided`.  \n\n#### Related APIs\n\n[List email logs for a customer](/docs/api/email_logs?prod_cat_ver=1#list_email_logs_for_a_customer)\n"
       operationId: send_invoice_email
       parameters:
         - name: chargebee-request-origin-device
@@ -47306,13 +47560,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -47335,13 +47589,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -93052,13 +93306,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -110661,13 +110915,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -124213,13 +124467,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -124241,13 +124495,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -138059,15 +138313,48 @@ components:
             * scheduled - The email has been scheduled for delivery.
           enum:
             - scheduled
+            - rescheduled
             - succeeded
             - failed
             - deferred
+            - delivered
+            - opened
+            - bounced
+            - dropped
+          example: null
+        sent_on:
+          type: integer
+          format: unix-time
+          deprecated: false
+          description: |
+            The time the email was scheduled to be sent, as a Unix timestamp in seconds.
           example: null
         customer_id:
           type: string
           deprecated: false
           description: |
             The unique identifier of the customer associated with this email.
+          maxLength: 50
+          example: null
+        site_id:
+          type: string
+          deprecated: false
+          description: |
+            Unique identifier of the Chargebee [site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro) where this email was sent. This value does not change if the site is renamed.
+          maxLength: 60
+          example: null
+        business_entity_id:
+          type: string
+          deprecated: false
+          description: |
+            The unique ID of the [business entity](/docs/api/v2/pcv-1/advanced-features) this email was sent under. Returned only when Multi Business Entity is enabled for the site.
+          maxLength: 50
+          example: null
+        brand_id:
+          type: string
+          deprecated: false
+          description: |
+            The unique ID of the [brand](/docs/api/v2/pcv-1/brands) this email was sent as. Returned only when Multi Brand is enabled for the site.
           maxLength: 50
           example: null
         error_message:
@@ -161291,9 +161578,14 @@ components:
       deprecated: false
       enum:
         - scheduled
+        - rescheduled
         - succeeded
         - failed
         - deferred
+        - delivered
+        - opened
+        - bounced
+        - dropped
         - active
         - archived
         - deleted
