@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-05.8c8170d5e4ed6d71c60808a15224512a496991cb
-  x-cb-product-catalog-version: 1
+  version: 2026-10-06.16d0b91a1c29f16fd211292195c5d575af9f44be
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -11055,6 +11055,7 @@ paths:
 
         * Please note that, if the current term invoice is voided and if the subscription is changed with the 'proration' enabled, the pro-rated credits will not be created for the subscription.
         * If the invoice that is voided has [Promotional Credits](https://www.chargebee.com/docs/account-credits.html) applied to it, the same will be reclaimed.
+        * Voiding does not send a customer email. After the invoice is voided, you can email it from invoice details (**Send Email**) or from the Invoices index (bulk custom email).
       operationId: void_an_invoice
       parameters:
         - name: chargebee-request-origin-device
