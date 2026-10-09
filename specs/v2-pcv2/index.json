@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-07.07bbd68b384d7704a4b6e74c4c4f0cf589b2009a",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-10-08.f188f26e48332dec22f8f41a58b8374e0d96dc2f",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -53474,14 +53474,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -53505,14 +53505,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "in": {
-                      "type": "string",
-                      "pattern": "^\\[(.*)(,.*)*\\]$",
-                      "example": null
-                    },
                     "is": {
                       "type": "string",
                       "minLength": 1,
+                      "example": null
+                    },
+                    "in": {
+                      "type": "string",
+                      "pattern": "^\\[(.*)(,.*)*\\]$",
                       "example": null
                     }
                   }
@@ -105195,14 +105195,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -122384,6 +122384,17 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
+                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -122395,17 +122406,6 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
-                          },
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
                           }
                         }
                       },
@@ -122415,14 +122415,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "in": {
-                            "type": "string",
-                            "pattern": "^\\[(.*)(,.*)*\\]$",
-                            "example": null
-                          },
                           "is": {
                             "type": "string",
                             "minLength": 1,
+                            "example": null
+                          },
+                          "in": {
+                            "type": "string",
+                            "pattern": "^\\[(.*)(,.*)*\\]$",
                             "example": null
                           }
                         }
@@ -131947,14 +131947,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "in": {
-                        "type": "string",
-                        "pattern": "^\\[(.*)(,.*)*\\]$",
-                        "example": null
-                      },
                       "is": {
                         "type": "string",
                         "minLength": 1,
+                        "example": null
+                      },
+                      "in": {
+                        "type": "string",
+                        "pattern": "^\\[(.*)(,.*)*\\]$",
                         "example": null
                       }
                     }
@@ -158094,6 +158094,15 @@
               "deprecated": false,
               "example": "active",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -158102,15 +158111,6 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
                   "example": null
                 }
               }
@@ -158129,14 +158129,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -161862,14 +161862,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -161888,6 +161888,18 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -161899,18 +161911,6 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
                   "example": null
                 }
               }
@@ -161929,14 +161929,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -172964,6 +172964,17 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -172974,17 +172985,6 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
                   "example": null
                 }
               }
@@ -173003,14 +173003,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -184373,17 +184373,6 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "after": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
                 "before": {
                   "type": "string",
                   "format": "unix-time",
@@ -184391,6 +184380,17 @@
                   "example": null
                 },
                 "on": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "example": null
+                },
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -184412,17 +184412,6 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "after": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
                 "before": {
                   "type": "string",
                   "format": "unix-time",
@@ -184430,6 +184419,17 @@
                   "example": null
                 },
                 "on": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "example": null
+                },
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -186621,12 +186621,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -189621,14 +189621,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -189647,14 +189647,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -200407,6 +200407,11 @@
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -200415,11 +200420,6 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -203495,6 +203495,347 @@
         ]
       }
     },
+    "/ledger_account_balances/update_overdraft_limit": {
+      "post": {
+        "tags": [
+          "ledger_account_balances"
+        ],
+        "summary": "Update overdraft limit",
+        "operationId": "update_overdraft_limit",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-event-actions",
+            "in": "header",
+            "description": "skip all actions to be done on the events",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-actions",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip all actions to be done on the events",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-email",
+            "in": "header",
+            "description": "skip only emails",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-email",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip only emails",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-webhook",
+            "in": "header",
+            "description": " skip only webhooks",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-webhook",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": " skip only webhooks",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-business-entity-id",
+            "in": "header",
+            "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+              "maxLength": 50,
+              "example": null
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subscription_id": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
+                  "unit_id": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
+                  "is_unlimited": {
+                    "type": "boolean",
+                    "deprecated": false,
+                    "example": null
+                  },
+                  "limit": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 36,
+                    "example": null
+                  },
+                  "change_reason": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 255,
+                    "example": null
+                  }
+                },
+                "required": [
+                  "is_unlimited",
+                  "subscription_id",
+                  "unit_id"
+                ],
+                "example": null
+              },
+              "encoding": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subscription_id": {
+                      "type": "string",
+                      "deprecated": false,
+                      "maxLength": 50,
+                      "example": null
+                    },
+                    "unit_id": {
+                      "type": "string",
+                      "deprecated": false,
+                      "maxLength": 50,
+                      "example": null
+                    },
+                    "change_reason": {
+                      "type": "string",
+                      "deprecated": false,
+                      "maxLength": 255,
+                      "example": null
+                    },
+                    "overdraft_balance": {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "deprecated": false,
+                      "example": null
+                    }
+                  },
+                  "required": [
+                    "overdraft_balance",
+                    "subscription_id",
+                    "unit_id"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
     "/ledger_account_balances": {
       "get": {
         "tags": [
@@ -205484,6 +205825,23 @@
               "type": "object",
               "deprecated": false,
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -205500,23 +205858,6 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
                   "example": null
                 }
               },
@@ -217298,6 +217639,277 @@
           "prorate",
           "full",
           "consumption_based"
+        ],
+        "example": null
+      },
+      "CreditRate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "metered_feature_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "credit_unit_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "unit": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "example": null
+          },
+          "conversion_model": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "unit",
+              "package"
+            ],
+            "example": null
+          },
+          "credit_quantity": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 0,
+            "example": null
+          },
+          "package_size": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 1e-09,
+            "example": null
+          },
+          "change_option": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "grandfathered",
+              "end_of_term",
+              "immediately"
+            ],
+            "example": null
+          },
+          "effective_from": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "note": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "created_by": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_by": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "deleted": {
+            "type": "boolean",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "credit_unit_id",
+          "id",
+          "metered_feature_id"
+        ],
+        "example": null
+      },
+      "CreditRateOverride": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "metered_feature_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "credit_unit_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "unit": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "example": null
+          },
+          "conversion_model": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "unit",
+              "package"
+            ],
+            "example": null
+          },
+          "credit_quantity": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 0,
+            "example": null
+          },
+          "package_size": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 1e-09,
+            "example": null
+          },
+          "change_option": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "grandfathered",
+              "end_of_term",
+              "immediately"
+            ],
+            "example": null
+          },
+          "effective_from": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "note": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "created_by": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_by": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "deleted": {
+            "type": "boolean",
+            "deprecated": false,
+            "example": null
+          },
+          "subscription_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          }
+        },
+        "required": [
+          "credit_unit_id",
+          "id",
+          "metered_feature_id",
+          "subscription_id"
         ],
         "example": null
       },
@@ -238044,7 +238656,7 @@
       },
       "OmnichannelSubscription": {
         "type": "object",
-        "description": "Represents a subscription purchased and managed in an external app marketplace (`apple_app_store` or `google_play_store`), normalized into Chargebee's omnichannel model.\n\nOmnichannel subscriptions are typically created when you [record a purchase](/docs/api/recorded_purchases/record-a-purchase) and are kept in sync via store server notifications. They are store-managed: lifecycle changes come from Apple or Google, not from the Chargebee Subscriptions API.\n\nUse [omnichannel statuses](/docs/api/omnichannel_statuses) for how store statuses map to `omnichannel_subscription_item.status`, and [omnichannel events](/docs/api/omnichannel_events) for notification-to-webhook mappings.  \n**Identifier tip:** Parent `id_at_source` is the Apple **Transaction ID** or Google **purchase token** . Nested `initial_purchase_transaction.id_at_source` is the Apple **Transaction ID** or Google **Order ID** (`GPA....`). See attribute descriptions below.  \n**Note:**\nThis resource represents in-app subscriptions made on Apple App Store and Google Play Store.\n",
+        "description": "Represents a subscription purchased and managed in an external app marketplace (`apple_app_store` or `google_play_store`), normalized into Chargebee's omnichannel model.\n\nOmnichannel subscriptions are typically created when you [record a purchase](/docs/api/recorded_purchases/record-a-purchase) and are kept in sync via store server notifications. They are store-managed: lifecycle changes come from Apple or Google, not from the Chargebee Subscriptions API.\n\nUse [omnichannel statuses](/docs/api/omnichannel_statuses) for how store statuses map to `omnichannel_subscription_item.status`, and [omnichannel events](/docs/api/omnichannel_events) for notification-to-webhook mappings.\n\nChargebee records introductory and promotional offers on [`omnichannel_subscription_item_offers`](/docs/api/omnichannel_subscriptions/omnichannel_subscription-object#omnichannel_subscription_items_omnichannel_subscription_item_offers). Win-back offers and offer codes are not supported.  \n**Identifier tip:** Parent `id_at_source` is the Apple **Transaction ID** or Google **purchase token** . Nested `initial_purchase_transaction.id_at_source` is the Apple **Transaction ID** or Google **Order ID** (`GPA....`). See attribute descriptions below.  \n**Note:**\nThis resource represents in-app subscriptions made on Apple App Store and Google Play Store.\n",
         "properties": {
           "id": {
             "type": "string",
@@ -238271,7 +238883,7 @@
                 "omnichannel_subscription_item_offers": {
                   "type": "array",
                   "deprecated": false,
-                  "description": "Represents the `omnichannel_subscription_item_offers`\nassociated with the `omnichannel_subscription_item`\n.\n",
+                  "description": "Represents the `omnichannel_subscription_item_offers`\nassociated with the `omnichannel_subscription_item`.\nChargebee supports introductory and promotional offers.\nWin-back offers and offer codes are not supported.\n",
                   "items": {
                     "type": "object",
                     "deprecated": false,
@@ -238293,7 +238905,7 @@
                       "category": {
                         "type": "string",
                         "deprecated": false,
-                        "description": "Indicates functional purpose of the offer. For example, `introductory`\nindicates a first-time offer for new subscribers.\n\n* introductory - Introductory offer for first-time subscribers, typically providing special pricing or terms for the first billing cycle.\n* promotional - Promotional offer that may be available to both new and existing subscribers, often featuring limited-time pricing or terms.\n* developer_determined -\n  Offer terms are determined by the developer and may include unique pricing or features.\n  **Note:** Support for this category is planned for a future update.\n",
+                        "description": "Indicates the functional purpose of the offer. Chargebee supports `introductory` and `promotional`.\nWin-back offers and offer codes are not supported.\n\n* introductory - Introductory offer for first-time subscribers, typically providing special pricing or terms for the first billing cycle.\n* promotional - Promotional offer that may be available to both new and existing subscribers, often featuring limited-time pricing or terms.\n* developer_determined -\n  Offer terms are determined by the developer and may include unique pricing or features.\n  **Note:** Support for this category is planned for a future update.\n",
                         "enum": [
                           "introductory",
                           "promotional",
@@ -238770,7 +239382,7 @@
       },
       "OmnichannelSubscriptionItem": {
         "type": "object",
-        "description": "Represents a product entitlement (item) within an [`omnichannel_subscription`](/docs/api/omnichannel_subscriptions) purchased on Apple App Store or Google Play Store.\n\nStatus, auto-renew, term dates, and cancel/expire reasons live on this resource. See [omnichannel statuses](/docs/api/omnichannel_statuses) for store mappings.\n\nWhen `has_scheduled_changes` is `true`, use [List scheduled changes](/docs/api/omnichannel_subscription_items/list-scheduled-changes-for-omnichannel-subscription-item) to retrieve deferred product or pause changes.  \n**Note:**\nThis resource represents in-app subscription items made on Apple App Store and Google Play Store.\n",
+        "description": "Represents a product entitlement (item) within an [`omnichannel_subscription`](/docs/api/omnichannel_subscriptions) purchased on Apple App Store or Google Play Store.\n\nStatus, auto-renew, term dates, and cancel/expire reasons live on this resource. See [omnichannel statuses](/docs/api/omnichannel_statuses) for store mappings.\n\nChargebee records introductory and promotional offers on [`omnichannel_subscription_item_offers`](/docs/api/omnichannel_subscription_items/omnichannel_subscription_item-object#omnichannel_subscription_item_offers). Win-back offers and offer codes are not supported.\n\nWhen `has_scheduled_changes` is `true`, use [List scheduled changes](/docs/api/omnichannel_subscription_items/list-scheduled-changes-for-omnichannel-subscription-item) to retrieve deferred product or pause changes.  \n**Note:**\nThis resource represents in-app subscription items made on Apple App Store and Google Play Store.\n",
         "properties": {
           "id": {
             "type": "string",
@@ -238921,7 +239533,7 @@
           "omnichannel_subscription_item_offers": {
             "type": "array",
             "deprecated": false,
-            "description": "Represents the `omnichannel_subscription_item_offers`\nassociated with the `omnichannel_subscription_item`.\n",
+            "description": "Represents the `omnichannel_subscription_item_offers`\nassociated with the `omnichannel_subscription_item`.\nChargebee supports introductory and promotional offers.\nWin-back offers and offer codes are not supported.\n",
             "items": {
               "type": "object",
               "deprecated": false,
@@ -238943,7 +239555,7 @@
                 "category": {
                   "type": "string",
                   "deprecated": false,
-                  "description": "Indicates functional purpose of the offer. For example, `introductory`\nindicates a first-time offer for new subscribers.\n\n* developer_determined -\n  Offer terms are determined by the developer and may include unique pricing or features.\n  **Note**: Support for this category is planned for a future update.\n* promotional - Promotional offer that may be available to both new and existing subscribers, often featuring limited-time pricing or terms.\n* introductory - Introductory offer for first-time subscribers, typically providing special pricing or terms for the first billing cycle.\n",
+                  "description": "Indicates the functional purpose of the offer. Chargebee supports `introductory` and `promotional`.\nWin-back offers and offer codes are not supported.\n\n* developer_determined -\n  Offer terms are determined by the developer and may include unique pricing or features.\n  **Note**: Support for this category is planned for a future update.\n* promotional - Promotional offer that may be available to both new and existing subscribers, often featuring limited-time pricing or terms.\n* introductory - Introductory offer for first-time subscribers, typically providing special pricing or terms for the first billing cycle.\n",
                   "enum": [
                     "introductory",
                     "promotional",
@@ -259122,6 +259734,175 @@
           "occurred_at",
           "source",
           "webhook_status"
+        ],
+        "example": null
+      },
+      "SubscriptionCreditRate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "metered_feature_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "credit_unit_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "unit": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "example": null
+          },
+          "conversion_model": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "unit",
+              "package"
+            ],
+            "example": null
+          },
+          "credit_quantity": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 0,
+            "example": null
+          },
+          "package_size": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 1e-09,
+            "example": null
+          },
+          "change_option": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "grandfathered",
+              "end_of_term",
+              "immediately"
+            ],
+            "example": null
+          },
+          "effective_from": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "note": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "created_by": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_by": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "deleted": {
+            "type": "boolean",
+            "deprecated": false,
+            "example": null
+          },
+          "subscription_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "is_overridden": {
+            "type": "boolean",
+            "deprecated": false,
+            "example": null
+          },
+          "overridden_conversion_model": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "unit",
+              "package"
+            ],
+            "example": null
+          },
+          "overridden_credit_quantity": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 0,
+            "example": null
+          },
+          "overridden_package_size": {
+            "type": "number",
+            "format": "decimal",
+            "deprecated": false,
+            "maximum": 1000000000,
+            "minimum": 1e-09,
+            "example": null
+          }
+        },
+        "required": [
+          "credit_unit_id",
+          "id",
+          "metered_feature_id",
+          "subscription_id"
         ],
         "example": null
       },
