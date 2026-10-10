@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-08.f188f26e48332dec22f8f41a58b8374e0d96dc2f",
+    "version": "2026-10-09.8eee5d4512aa3b26775aa5fdb6311cda481cf8e2",
     "x-cb-product-catalog-version": 2,
     "x-cb-api-version": 2
   },
@@ -337,6 +337,10 @@
     {
       "name": "resource_migrations",
       "description": "Resource Migration is used for finding the status of customer migration between Chargebee sites."
+    },
+    {
+      "name": "retry_segments",
+      "description": "Operations on the `retry_segments` resource."
     },
     {
       "name": "rules",
@@ -53474,14 +53478,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -53505,14 +53509,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -105195,14 +105199,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -122384,17 +122388,6 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -122406,6 +122399,17 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
                           }
                         }
                       },
@@ -122415,14 +122419,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -123220,11 +123224,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_family`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -123232,6 +123231,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -124893,11 +124897,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `price_variant`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -124905,6 +124904,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -125405,11 +125409,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -125417,6 +125416,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -131947,14 +131951,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -133719,11 +133723,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_price`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -133731,6 +133730,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -137881,11 +137885,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -137893,6 +137892,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -143602,11 +143606,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -143614,6 +143613,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -146184,11 +146188,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -146196,6 +146195,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -150059,11 +150063,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -150071,6 +150070,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -158094,15 +158098,6 @@
               "deprecated": false,
               "example": "active",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -158111,6 +158106,15 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
                   "example": null
                 }
               }
@@ -158129,14 +158133,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -161862,14 +161866,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -161888,18 +161892,6 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -161911,6 +161903,18 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
                   "example": null
                 }
               }
@@ -161929,14 +161933,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -172964,17 +172968,6 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -172985,6 +172978,17 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
                   "example": null
                 }
               }
@@ -173003,14 +173007,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -184385,15 +184389,15 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
                 "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -184424,15 +184428,15 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
                 "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -186490,6 +186494,251 @@
         ]
       }
     },
+    "/retry_segments/{retry-segment-id}": {
+      "get": {
+        "tags": [
+          "retry_segments"
+        ],
+        "summary": "Retrieve a retry segment",
+        "operationId": "retrieve_a_retry_segment",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "deprecated": false,
+              "maxLength": 50,
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-business-entity-id",
+            "in": "header",
+            "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+              "maxLength": 50,
+              "example": null
+            }
+          },
+          {
+            "name": "retry-segment-id",
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "$ref": "#/components/parameters/retry-segment-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "retry_segment": {
+                      "$ref": "#/components/schemas/RetrySegment",
+                      "description": "Resource object representing retry_segment"
+                    }
+                  },
+                  "required": [
+                    "retry_segment"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
     "/meters": {
       "get": {
         "tags": [
@@ -186621,12 +186870,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -189621,14 +189870,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -189647,14 +189896,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -200402,16 +200651,6 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -200420,6 +200659,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -205825,23 +206074,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -205858,6 +206090,23 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
                   "example": null
                 }
               },
@@ -231500,6 +231749,12 @@
             "minimum": 0,
             "example": null
           },
+          "retry_segment_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
           "void_reason_code": {
             "type": "string",
             "deprecated": false,
@@ -255239,6 +255494,68 @@
         ],
         "example": null
       },
+      "RetrySegment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "name": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 1000,
+            "example": null
+          },
+          "invoice_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "enabled": {
+            "type": "boolean",
+            "deprecated": false,
+            "example": null
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32",
+            "deprecated": false,
+            "example": null
+          },
+          "condition_logic": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "and",
+              "or"
+            ],
+            "example": null
+          },
+          "criteria": {
+            "type": "array",
+            "deprecated": false,
+            "items": {
+              "example": null
+            },
+            "example": null
+          },
+          "retry_settings": {
+            "type": "object",
+            "additionalProperties": true,
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "enabled",
+          "id"
+        ],
+        "example": null
+      },
       "Role": {
         "type": "string",
         "deprecated": false,
@@ -269381,6 +269698,16 @@
       },
       "export-id": {
         "name": "export-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "retry-segment-id": {
+        "name": "retry-segment-id",
         "in": "path",
         "required": true,
         "style": "simple",
