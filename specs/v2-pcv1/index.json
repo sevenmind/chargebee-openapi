@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-09.8eee5d4512aa3b26775aa5fdb6311cda481cf8e2",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 1
+    "version": "2026-10-12.cc71070cab051f8587d41914d5c20dcf2748a411",
+    "x-cb-product-catalog-version": 1,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -56692,6 +56692,12 @@
                     "format": "unix-time",
                     "deprecated": false,
                     "description": "The date the Credit Note is issued.\n",
+                    "example": null
+                  },
+                  "customer_notes": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 2000,
                     "example": null
                   },
                   "status": {
@@ -165106,75 +165112,6 @@
         },
         "example": null
       },
-      "GatewayName": {
-        "type": "string",
-        "deprecated": false,
-        "enum": [
-          "chargebee",
-          "chargebee_payments",
-          "adyen",
-          "stripe",
-          "wepay",
-          "braintree",
-          "authorize_net",
-          "paypal_pro",
-          "pin",
-          "eway",
-          "eway_rapid",
-          "worldpay",
-          "balanced_payments",
-          "beanstream",
-          "bluepay",
-          "elavon",
-          "first_data_global",
-          "hdfc",
-          "migs",
-          "nmi",
-          "ogone",
-          "paymill",
-          "paypal_payflow_pro",
-          "sage_pay",
-          "tco",
-          "wirecard",
-          "amazon_payments",
-          "paypal_express_checkout",
-          "gocardless",
-          "orbital",
-          "moneris_us",
-          "moneris",
-          "bluesnap",
-          "cybersource",
-          "vantiv",
-          "checkout_com",
-          "paypal",
-          "ingenico_direct",
-          "exact",
-          "mollie",
-          "quickbooks",
-          "razorpay",
-          "global_payments",
-          "bank_of_america",
-          "ecentric",
-          "metrics_global",
-          "windcave",
-          "pay_com",
-          "ebanx",
-          "dlocal",
-          "nuvei",
-          "solidgate",
-          "paystack",
-          "jp_morgan",
-          "deutsche_bank",
-          "ezidebit",
-          "twikey",
-          "tempus",
-          "moyasar",
-          "payway",
-          "payu",
-          "not_applicable"
-        ],
-        "example": null
-      },
       "GatewayPaymentMethodToken": {
         "type": "object",
         "properties": {
@@ -165190,7 +165127,7 @@
             "maxLength": 50,
             "example": null
           },
-          "gateway_name": {
+          "gateway": {
             "type": "string",
             "deprecated": false,
             "enum": [
@@ -165273,11 +165210,11 @@
           },
           "status": {
             "type": "string",
-            "default": "active",
+            "default": "valid",
             "deprecated": false,
             "enum": [
-              "active",
-              "inactive",
+              "valid",
+              "invalid",
               "pending_verification"
             ],
             "example": null
@@ -165297,8 +165234,8 @@
         },
         "required": [
           "created_at",
+          "gateway",
           "gateway_account_id",
-          "gateway_name",
           "gateway_token",
           "id",
           "status"
@@ -170302,7 +170239,7 @@
           "offer_id_at_source": {
             "type": "string",
             "deprecated": false,
-            "maxLength": 100,
+            "maxLength": 500,
             "example": null
           },
           "category": {
@@ -180093,7 +180030,7 @@
                   "type": "integer",
                   "format": "int32",
                   "deprecated": false,
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 },

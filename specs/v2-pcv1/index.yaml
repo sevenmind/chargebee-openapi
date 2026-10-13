@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-09.8eee5d4512aa3b26775aa5fdb6311cda481cf8e2
-  x-cb-api-version: 2
+  version: 2026-10-12.cc71070cab051f8587d41914d5c20dcf2748a411
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -49588,6 +49588,11 @@ paths:
                   deprecated: false
                   description: |
                     The date the Credit Note is issued.
+                  example: null
+                customer_notes:
+                  type: string
+                  deprecated: false
+                  maxLength: 2000
                   example: null
                 status:
                   type: string
@@ -144920,73 +144925,6 @@ components:
           maxLength: 100
           example: null
       example: null
-    GatewayName:
-      type: string
-      deprecated: false
-      enum:
-        - chargebee
-        - chargebee_payments
-        - adyen
-        - stripe
-        - wepay
-        - braintree
-        - authorize_net
-        - paypal_pro
-        - pin
-        - eway
-        - eway_rapid
-        - worldpay
-        - balanced_payments
-        - beanstream
-        - bluepay
-        - elavon
-        - first_data_global
-        - hdfc
-        - migs
-        - nmi
-        - ogone
-        - paymill
-        - paypal_payflow_pro
-        - sage_pay
-        - tco
-        - wirecard
-        - amazon_payments
-        - paypal_express_checkout
-        - gocardless
-        - orbital
-        - moneris_us
-        - moneris
-        - bluesnap
-        - cybersource
-        - vantiv
-        - checkout_com
-        - paypal
-        - ingenico_direct
-        - exact
-        - mollie
-        - quickbooks
-        - razorpay
-        - global_payments
-        - bank_of_america
-        - ecentric
-        - metrics_global
-        - windcave
-        - pay_com
-        - ebanx
-        - dlocal
-        - nuvei
-        - solidgate
-        - paystack
-        - jp_morgan
-        - deutsche_bank
-        - ezidebit
-        - twikey
-        - tempus
-        - moyasar
-        - payway
-        - payu
-        - not_applicable
-      example: null
     GatewayPaymentMethodToken:
       type: object
       properties:
@@ -145000,7 +144938,7 @@ components:
           deprecated: false
           maxLength: 50
           example: null
-        gateway_name:
+        gateway:
           type: string
           deprecated: false
           enum:
@@ -145079,11 +145017,11 @@ components:
           example: null
         status:
           type: string
-          default: active
+          default: valid
           deprecated: false
           enum:
-            - active
-            - inactive
+            - valid
+            - invalid
             - pending_verification
           example: null
         created_at:
@@ -145098,8 +145036,8 @@ components:
           example: null
       required:
         - created_at
+        - gateway
         - gateway_account_id
-        - gateway_name
         - gateway_token
         - id
         - status
@@ -150160,7 +150098,7 @@ components:
         offer_id_at_source:
           type: string
           deprecated: false
-          maxLength: 100
+          maxLength: 500
           example: null
         category:
           type: string
@@ -160099,7 +160037,7 @@ components:
                 type: integer
                 format: int32
                 deprecated: false
-                maximum: 730
+                maximum: 4000
                 minimum: 1
                 example: null
               charge_on_event:
