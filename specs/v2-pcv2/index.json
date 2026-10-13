@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-09.8eee5d4512aa3b26775aa5fdb6311cda481cf8e2",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-10-12.cc71070cab051f8587d41914d5c20dcf2748a411",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -1995,7 +1995,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -3721,7 +3721,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -6478,7 +6478,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -10921,7 +10921,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -56626,6 +56626,12 @@
                     "description": "The date when the credit note was issued.  \n**Constraints**\n\n* Must be a date in the past.\n* Must be after the [`date`](/docs/api/invoices/invoice-object#invoice_date) of the reference invoice.\n",
                     "example": null
                   },
+                  "customer_notes": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 2000,
+                    "example": null
+                  },
                   "status": {
                     "type": "string",
                     "deprecated": false,
@@ -81742,7 +81748,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -83192,7 +83198,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -86232,7 +86238,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -87401,7 +87407,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -90538,7 +90544,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -92233,7 +92239,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -94476,7 +94482,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -96780,7 +96786,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -99509,7 +99515,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -100918,7 +100924,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -102424,7 +102430,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -103752,7 +103758,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -158466,7 +158472,7 @@
                   "overdraft_amount": {
                     "type": "string",
                     "deprecated": false,
-                    "description": "The amount up to which grace consumption is allowed after the allocated grants are exhausted. A positive decimal value that applies only when `is_unlimited` is `false`.\n",
+                    "description": "The amount up to which grace consumption is allowed after the allocated grants are exhausted. A non-negative decimal value that applies only when `is_unlimited` is `false`; zero is accepted.\n",
                     "maxLength": 50,
                     "example": null
                   },
@@ -172176,7 +172182,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -172319,7 +172325,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -173622,7 +173628,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -173765,7 +173771,7 @@
                           "type": "integer",
                           "format": "int32",
                           "deprecated": false,
-                          "maximum": 730,
+                          "maximum": 4000,
                           "minimum": 1,
                           "example": null
                         },
@@ -203749,7 +203755,8 @@
         "tags": [
           "ledger_account_balances"
         ],
-        "summary": "Update overdraft limit",
+        "summary": "Update the overdraft limit",
+        "description": "Updates the [overdraft limit](/docs/api/ledger_account_balances#overdraft_balance_limit) for a subscription and credit unit.\n\nBy default, the overdraft limit for a credit unit is a single, site-wide value applied to every subscription. Use this operation to manually override that default for one `subscription_id`-`unit_id` pair --- for example, to raise the ceiling for a trusted high-value customer, or to let customers self-configure their own spending limit after credits are granted.  \n**Behavior**\n\n* Applies the new limit synchronously and returns the outcome in the same response --- there's no pending or asynchronous state.\n* Rejects the request immediately if the new limit is below what's already committed (`used_amount` + `hold_amount`) on the active overdraft balance. The limit isn't scheduled or retried later; the caller must resubmit once the balance permits it.\n* Requires that an overdraft balance already exists for the subscription and credit unit.\n* Leaves the [`provisioned_balance`](/docs/api/ledger_account_balances#provisioned_balance) and the site-level default untouched. Other subscriptions on the same credit unit continue to use the site default until they get their own override.  \n**Usage**\n\nUse this operation to raise or lower the overdraft ceiling for a specific subscription without changing the site-wide default --- for instance, extending more runway to an enterprise customer, or letting an end customer raise their own limit after receiving promotional credits.\n\nThe response echoes the `subscription_id`, `unit_id`, and `change_reason` inputs, and returns the resulting [`overdraft_balance`](/docs/api/ledger_account_balances#overdraft_balance) snapshot as well.\n",
         "operationId": "update_overdraft_limit",
         "parameters": [
           {
@@ -203895,29 +203902,34 @@
                   "subscription_id": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "A unique, immutable identifier for the [subscription](/docs/api/subscriptions/subscription-object#id) whose overdraft limit is being changed.\n",
                     "maxLength": 50,
                     "example": null
                   },
                   "unit_id": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "Identifier of the [credit unit](/docs/api/credit_units) linked to the subscription. For example, a credit unit id such as `ai_credits`.  \n**Prerequisites**\n\nAn [overdraft balance](/docs/api/ledger_account_balances#overdraft_balance) must already exist for this `(subscription_id, unit_id)` pair.\n",
                     "maxLength": 50,
                     "example": null
                   },
                   "is_unlimited": {
                     "type": "boolean",
                     "deprecated": false,
+                    "description": "Whether the overdraft limit for this credit unit is unlimited.  \n**Behavior**\n\n* When `true`, requests unlimited overdraft and [`limit`](#limit) must not be passed.\n* When `false`, requests a finite overdraft and [`limit`](#limit) is required.\n",
                     "example": null
                   },
                   "limit": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The new maximum overdraft allowed for this credit unit.\nPass this value as a decimal string.  \n**Required if**\n\n[`is_unlimited`](#is_unlimited) is `false`.  \n**Constraints**\n\n* Must not be passed when [`is_unlimited`](#is_unlimited) is `true`.\n* Must be zero or a positive value; negative values are not allowed.\n* Maximum supported value: `9999999999999999999999999.9999999999` (up to 25 digits before the decimal and up to 10 digits after).\n* Must be greater than or equal to the sum of `used_amount` and `hold_amount` on the active [overdraft balance](/docs/api/ledger_account_balances#overdraft_balance). Any limit that would drop below the already committed amount is rejected.\n",
                     "maxLength": 36,
                     "example": null
                   },
                   "change_reason": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The reason for this overdraft limit change, for your reference. Recorded for audit purposes.\n",
                     "maxLength": 255,
                     "example": null
                   }
@@ -203944,18 +203956,21 @@
                     "subscription_id": {
                       "type": "string",
                       "deprecated": false,
+                      "description": "A unique, immutable identifier for the [subscription](/docs/api/subscriptions/subscription-object#id) whose overdraft limit was changed. Echoes the value passed in the request.\n",
                       "maxLength": 50,
                       "example": null
                     },
                     "unit_id": {
                       "type": "string",
                       "deprecated": false,
+                      "description": "Identifier of the [credit unit](/docs/api/credit_units) linked to the subscription. Echoes the value passed in the request.\n",
                       "maxLength": 50,
                       "example": null
                     },
                     "change_reason": {
                       "type": "string",
                       "deprecated": false,
+                      "description": "The reason for this overdraft limit change. Echoes the value passed in the request. This field is omitted from the response when the request does not include it.\n",
                       "maxLength": 255,
                       "example": null
                     },
@@ -203963,6 +203978,7 @@
                       "type": "object",
                       "additionalProperties": true,
                       "deprecated": false,
+                      "description": "The resulting [`overdraft_balance`](/docs/api/ledger_account_balances#overdraft_balance) for the subscription and credit unit, reflecting the newly applied limit.\n",
                       "example": null
                     }
                   },
@@ -218252,7 +218268,7 @@
           "overdraft_amount": {
             "type": "string",
             "deprecated": false,
-            "description": "The amount up to which grace consumption is allowed after the allocated grants are exhausted. A positive decimal value that applies only when `is_unlimited` is `false`.\n",
+            "description": "The amount up to which grace consumption is allowed after the allocated grants are exhausted. A non-negative decimal value that applies only when `is_unlimited` is `false`; zero is accepted.\n",
             "maxLength": 50,
             "example": null
           }
@@ -229166,75 +229182,6 @@
         },
         "example": null
       },
-      "GatewayName": {
-        "type": "string",
-        "deprecated": false,
-        "enum": [
-          "chargebee",
-          "chargebee_payments",
-          "adyen",
-          "stripe",
-          "wepay",
-          "braintree",
-          "authorize_net",
-          "paypal_pro",
-          "pin",
-          "eway",
-          "eway_rapid",
-          "worldpay",
-          "balanced_payments",
-          "beanstream",
-          "bluepay",
-          "elavon",
-          "first_data_global",
-          "hdfc",
-          "migs",
-          "nmi",
-          "ogone",
-          "paymill",
-          "paypal_payflow_pro",
-          "sage_pay",
-          "tco",
-          "wirecard",
-          "amazon_payments",
-          "paypal_express_checkout",
-          "gocardless",
-          "orbital",
-          "moneris_us",
-          "moneris",
-          "bluesnap",
-          "cybersource",
-          "vantiv",
-          "checkout_com",
-          "paypal",
-          "ingenico_direct",
-          "exact",
-          "mollie",
-          "quickbooks",
-          "razorpay",
-          "global_payments",
-          "bank_of_america",
-          "ecentric",
-          "metrics_global",
-          "windcave",
-          "pay_com",
-          "ebanx",
-          "dlocal",
-          "nuvei",
-          "solidgate",
-          "paystack",
-          "jp_morgan",
-          "deutsche_bank",
-          "ezidebit",
-          "twikey",
-          "tempus",
-          "moyasar",
-          "payway",
-          "payu",
-          "not_applicable"
-        ],
-        "example": null
-      },
       "GatewayPaymentMethodToken": {
         "type": "object",
         "properties": {
@@ -229250,7 +229197,7 @@
             "maxLength": 50,
             "example": null
           },
-          "gateway_name": {
+          "gateway": {
             "type": "string",
             "deprecated": false,
             "enum": [
@@ -229333,11 +229280,11 @@
           },
           "status": {
             "type": "string",
-            "default": "active",
+            "default": "valid",
             "deprecated": false,
             "enum": [
-              "active",
-              "inactive",
+              "valid",
+              "invalid",
               "pending_verification"
             ],
             "example": null
@@ -229357,8 +229304,8 @@
         },
         "required": [
           "created_at",
+          "gateway",
           "gateway_account_id",
-          "gateway_name",
           "gateway_token",
           "id",
           "status"
@@ -237334,7 +237281,7 @@
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
-            "description": "Unix timestamp (in seconds) representing when the business event occurred in the upstream system. Used for period attribution, grace-period eligibility, and reporting accuracy.  \n**Note**\n\nLate or out-of-order submissions appear in arrival order, while attribution and eligibility logic rely on `ledger_operation_timestamp`.  \n**Constraints**\n\n* The `ledger_operation_timestamp` must be within the last 10 minutes from the time of the request.\n* Grant blocks outside their active window (including those in the grace period) are not eligible for authorization and are excluded from balance checks for this ledger operation.\n",
+            "description": "Unix timestamp (in seconds) representing when the business event occurred in the upstream system. Used for period attribution, grace-period eligibility, and reporting accuracy.  \n**Note**\n\nLate or out-of-order submissions appear in arrival order, while attribution and eligibility logic rely on `ledger_operation_timestamp`.  \n**Constraints**\n\n* For `authorize`, the `ledger_operation_timestamp` must be within the last 10 minutes from the time of the request.\n* Grant blocks in the grace period are not eligible for authorization and are excluded from authorization balance checks.\n* For `capture`, older timestamps are allowed if they fall within the grant block's original validity window (`effective_from` inclusive, `expires_at` exclusive) and the block is still active or in the grace period.\n* Grant blocks outside their active window (including those in the grace period) are not eligible for authorization and are excluded from balance checks for this ledger operation.\n",
             "example": null
           },
           "auto_release_timestamp": {
@@ -238569,7 +238516,7 @@
                 "type": "string",
                 "deprecated": false,
                 "description": "The store-native identifier for this transaction.\n\n**Apple App Store** : **Transaction ID** for this purchase.\n\n**Google Play Store** : **Order ID** for this purchase (typically `GPA....`). This is not the parent one-time order purchase token (`omnichannel_one_time_order.id_at_source`).\n",
-                "maxLength": 100,
+                "maxLength": 500,
                 "example": null
               },
               "app_id": {
@@ -239154,7 +239101,7 @@
                         "type": "string",
                         "deprecated": false,
                         "description": "Identifier of the offer on the source platform (for example, Apple App Store or Google Play Store). Used to map Chargebee's record to the source.\n",
-                        "maxLength": 100,
+                        "maxLength": 500,
                         "example": null
                       },
                       "category": {
@@ -239355,7 +239302,7 @@
                 "type": "string",
                 "deprecated": false,
                 "description": "The store-native identifier for this transaction.\n\n**Apple App Store** : **Transaction ID** for this transaction.\n\n**Google Play Store** : **Order ID** for this transaction (typically `GPA....`). This is not the subscription purchase token (that is the parent `omnichannel_subscription.id_at_source`).\n",
-                "maxLength": 100,
+                "maxLength": 500,
                 "example": null
               },
               "app_id": {
@@ -239804,7 +239751,7 @@
                   "type": "string",
                   "deprecated": false,
                   "description": "Identifier of the offer on the source platform (for example, Apple App Store or Google Play Store). Used to map Chargebee's record to the source.\n\n**Apple App Store**: Offer identifier from App Store Connect / StoreKit.\n\n**Google Play Store**: Offer / base-plan offer identifier from Play Console when applicable.\n",
-                  "maxLength": 100,
+                  "maxLength": 500,
                   "example": null
                 },
                 "category": {
@@ -240964,7 +240911,7 @@
           "offer_id_at_source": {
             "type": "string",
             "deprecated": false,
-            "maxLength": 100,
+            "maxLength": 500,
             "example": null
           },
           "category": {
@@ -242138,7 +242085,7 @@
             "type": "string",
             "deprecated": false,
             "description": "The store-native identifier for this transaction.\n\n**Apple App Store** : The App Store **Transaction ID** for this purchase or renewal.\n\n**Google Play Store** : The Google Play **Order ID** (typically `GPA....`) --- not the subscription or one-time-order **purchase token** (those live on `omnichannel_subscription.id_at_source` / `omnichannel_one_time_order.id_at_source`).\n",
-            "maxLength": 100,
+            "maxLength": 500,
             "example": null
           },
           "app_id": {
@@ -252510,7 +252457,7 @@
                   "format": "int32",
                   "deprecated": false,
                   "description": "Defines service period of the item in days from the day of charge.\n",
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 }
@@ -252944,7 +252891,7 @@
                   "format": "int32",
                   "deprecated": false,
                   "description": "The service period of the item in days from the day of charge.\n",
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 },
@@ -253839,7 +253786,7 @@
                   "format": "int32",
                   "deprecated": false,
                   "description": "The service period of the item in days from the day of charge.\n",
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 },
@@ -254281,7 +254228,7 @@
                   "format": "int32",
                   "deprecated": false,
                   "description": "The service period of the item in days from the day of charge.\n",
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 },
@@ -254434,7 +254381,7 @@
                   "format": "int32",
                   "deprecated": false,
                   "description": "The service period of the item in days from the day of charge.\n",
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 },
@@ -256060,7 +256007,7 @@
                   "format": "int32",
                   "deprecated": false,
                   "description": "The service period of the item in days from the day of charge.\n",
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 },
@@ -258013,7 +257960,7 @@
                   "format": "int32",
                   "deprecated": false,
                   "description": "The service period of the item in days from the day of charge.\n",
-                  "maximum": 730,
+                  "maximum": 4000,
                   "minimum": 1,
                   "example": null
                 },
