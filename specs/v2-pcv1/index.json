@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-13.5c07e09cd907f3c8c2b3ef42adfcef4a5064a4f3",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 2
+    "version": "2026-10-14.9ab82c3961b11463ef6b176db2991f9393beb4e0",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -29532,6 +29532,82 @@
                     },
                     "example": null
                   },
+                  "bank_account": {
+                    "type": "object",
+                    "deprecated": false,
+                    "properties": {
+                      "account_type": {
+                        "type": "string",
+                        "deprecated": false,
+                        "enum": [
+                          "checking",
+                          "savings",
+                          "business_checking",
+                          "current"
+                        ],
+                        "example": null
+                      },
+                      "account_holder_type": {
+                        "type": "string",
+                        "deprecated": false,
+                        "enum": [
+                          "individual",
+                          "company"
+                        ],
+                        "example": null
+                      },
+                      "first_name": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 150,
+                        "example": null
+                      },
+                      "last_name": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 150,
+                        "example": null
+                      },
+                      "company": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 250,
+                        "example": null
+                      },
+                      "scheme": {
+                        "type": "string",
+                        "deprecated": false,
+                        "enum": [
+                          "ach",
+                          "bacs",
+                          "sepa_core",
+                          "autogiro",
+                          "becs",
+                          "becs_nz",
+                          "pad"
+                        ],
+                        "example": null
+                      },
+                      "last4": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 4,
+                        "minLength": 4,
+                        "example": null
+                      },
+                      "echeck_type": {
+                        "type": "string",
+                        "deprecated": false,
+                        "enum": [
+                          "web",
+                          "ppd",
+                          "ccd"
+                        ],
+                        "example": null
+                      }
+                    },
+                    "example": null
+                  },
                   "billing_address": {
                     "type": "object",
                     "deprecated": false,
@@ -29626,6 +29702,10 @@
                 "example": null
               },
               "encoding": {
+                "bank_account": {
+                  "style": "deepObject",
+                  "explode": true
+                },
                 "billing_address": {
                   "style": "deepObject",
                   "explode": true
@@ -54068,14 +54148,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -54099,14 +54179,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -106051,14 +106131,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -126558,14 +126638,14 @@
                     "description": "List of itemPrice ids for which these coupons are applicable.\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -144171,14 +144251,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -144197,14 +144277,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -164216,7 +164296,8 @@
                         "enum": [
                           "posted",
                           "payment_due",
-                          "paid"
+                          "paid",
+                          "voided"
                         ],
                         "example": null
                       }
@@ -175669,7 +175750,8 @@
                   "enum": [
                     "posted",
                     "payment_due",
-                    "paid"
+                    "paid",
+                    "voided"
                   ],
                   "example": null
                 }
@@ -175845,7 +175927,8 @@
                   "enum": [
                     "posted",
                     "payment_due",
-                    "paid"
+                    "paid",
+                    "voided"
                   ],
                   "example": null
                 }
