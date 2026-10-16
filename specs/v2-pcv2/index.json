@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-14.9ab82c3961b11463ef6b176db2991f9393beb4e0",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-10-15.4f7a75dce205d72919a26aa7c8afc6d9638d0588",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -53566,14 +53566,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -53597,14 +53597,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "in": {
-                      "type": "string",
-                      "pattern": "^\\[(.*)(,.*)*\\]$",
-                      "example": null
-                    },
                     "is": {
                       "type": "string",
                       "minLength": 1,
+                      "example": null
+                    },
+                    "in": {
+                      "type": "string",
+                      "pattern": "^\\[(.*)(,.*)*\\]$",
                       "example": null
                     }
                   }
@@ -105599,14 +105599,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -122864,6 +122864,17 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
+                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -122875,17 +122886,6 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
-                          },
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
                           }
                         }
                       },
@@ -122895,14 +122895,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "in": {
-                            "type": "string",
-                            "pattern": "^\\[(.*)(,.*)*\\]$",
-                            "example": null
-                          },
                           "is": {
                             "type": "string",
                             "minLength": 1,
+                            "example": null
+                          },
+                          "in": {
+                            "type": "string",
+                            "pattern": "^\\[(.*)(,.*)*\\]$",
                             "example": null
                           }
                         }
@@ -132427,14 +132427,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "in": {
-                        "type": "string",
-                        "pattern": "^\\[(.*)(,.*)*\\]$",
-                        "example": null
-                      },
                       "is": {
                         "type": "string",
                         "minLength": 1,
+                        "example": null
+                      },
+                      "in": {
+                        "type": "string",
+                        "pattern": "^\\[(.*)(,.*)*\\]$",
                         "example": null
                       }
                     }
@@ -160381,6 +160381,15 @@
               "deprecated": false,
               "example": "active",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -160389,15 +160398,6 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
                   "example": null
                 }
               }
@@ -160416,14 +160416,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -164149,14 +164149,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -164175,6 +164175,18 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -164186,18 +164198,6 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
                   "example": null
                 }
               }
@@ -164216,14 +164216,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -175251,6 +175251,17 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -175261,17 +175272,6 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
                   "example": null
                 }
               }
@@ -175290,14 +175290,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -186660,6 +186660,12 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
+                "after": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
                 "before": {
                   "type": "string",
                   "format": "unix-time",
@@ -186675,12 +186681,6 @@
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "after": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
                   "example": null
                 }
               }
@@ -186699,6 +186699,12 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
+                "after": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
                 "before": {
                   "type": "string",
                   "format": "unix-time",
@@ -186714,12 +186720,6 @@
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "after": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
                   "example": null
                 }
               }
@@ -192153,14 +192153,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -192179,14 +192179,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -202972,14 +202972,14 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "in": {
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "is_not": {
@@ -202987,9 +202987,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -209901,6 +209901,23 @@
               "type": "object",
               "deprecated": false,
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -209917,23 +209934,6 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
                   "example": null
                 }
               },
