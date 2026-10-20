@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-16.4891feed9da50babe1fc354f68e26f143344c152",
+    "version": "2026-10-19.5edee8ade7ac6c5ffd9ba231a4f8711f85fb35f7",
     "x-cb-product-catalog-version": 1,
     "x-cb-api-version": 2
   },
@@ -158296,6 +158296,11 @@
         "properties": {},
         "example": null
       },
+      "CriteriaSchema": {
+        "type": "object",
+        "properties": {},
+        "example": null
+      },
       "CsvTaxRule": {
         "type": "object",
         "properties": {
@@ -158616,6 +158621,64 @@
         ],
         "example": null
       },
+      "CustomData": {
+        "type": "object",
+        "properties": {
+          "entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "customer"
+            ],
+            "example": null
+          },
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "schema_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "schema_values": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65532,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "modified_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "created_at",
+          "entity_type",
+          "id",
+          "modified_at",
+          "schema_id",
+          "schema_values"
+        ],
+        "example": null
+      },
       "CustomDataSchema": {
         "type": "object",
         "properties": {
@@ -158635,47 +158698,7 @@
             "type": "string",
             "deprecated": false,
             "enum": [
-              "customer",
-              "subscription",
-              "invoice",
-              "quote",
-              "credit_note",
-              "transaction",
-              "plan",
-              "addon",
-              "coupon",
-              "order",
-              "plan_item",
-              "addon_item",
-              "charge_item",
-              "plan_price",
-              "addon_price",
-              "charge_price",
-              "differential_price",
-              "attached_item",
-              "feature",
-              "subscription_entitlement",
-              "item_entitlement",
-              "business_entity",
-              "omnichannel_subscription",
-              "omnichannel_subscription_item",
-              "omnichannel_transaction",
-              "recorded_purchase",
-              "omnichannel_subscription_item_scheduled_change",
-              "sales_order",
-              "omnichannel_one_time_order",
-              "omnichannel_one_time_order_item",
-              "usage_file",
-              "business_rule",
-              "business_ruleset",
-              "alert_status",
-              "omnichannel_subscription_item_metric",
-              "price_ramp",
-              "collections_reminder_sequence",
-              "collections_payment_promise",
-              "collections_dispute",
-              "email_message",
-              "private_note"
+              "customer"
             ],
             "example": null
           },
@@ -161740,12 +161763,7 @@
           "alert_status",
           "omnichannel_subscription_item_metric",
           "price_ramp",
-          "charge",
-          "collections_reminder_sequence",
-          "collections_payment_promise",
-          "collections_dispute",
-          "email_message",
-          "private_note"
+          "charge"
         ],
         "example": null
       },
@@ -183731,11 +183749,6 @@
         ],
         "example": null
       },
-      "SettingsPreferenceDefinition": {
-        "type": "object",
-        "properties": {},
-        "example": null
-      },
       "Site": {
         "type": "object",
         "description": "Represents a platform site in Chargebee.\nEach platform site includes a unique `id`, the associated `site_id`, and a `domain`, along with its `site_type` and `created_at` timestamp.\n",
@@ -191836,11 +191849,6 @@
         "properties": {},
         "example": null
       },
-      "VariantCriteria": {
-        "type": "object",
-        "properties": {},
-        "example": null
-      },
       "VaultTokenCreatedEvent": {
         "type": "object",
         "properties": {
@@ -193698,6 +193706,16 @@
       },
       "alert-id": {
         "name": "alert-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "custom-data-id": {
+        "name": "custom-data-id",
         "in": "path",
         "required": true,
         "style": "simple",
