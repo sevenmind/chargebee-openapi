@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-16.4891feed9da50babe1fc354f68e26f143344c152
-  x-cb-api-version: 2
+  version: 2026-10-19.5edee8ade7ac6c5ffd9ba231a4f8711f85fb35f7
   x-cb-product-catalog-version: 2
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -145545,6 +145545,14 @@ paths:
                         deprecated: false
                         example: null
                       example: null
+                    start_date:
+                      type: array
+                      items:
+                        type: integer
+                        format: unix-time
+                        deprecated: false
+                        example: null
+                      example: null
                     meta_data:
                       type: array
                       description: "A collection of key-value pairs that provides extra information about the purchase.  \n**Note:**\nThere's a character limit of 65,535.\n\n[Learn more](/docs/api/advanced-features)\n.\n"
@@ -146615,6 +146623,14 @@ paths:
                     trial_end:
                       type: array
                       description: "End of the trial period for the subscription estimated for the [subscription group](/docs/api/purchases). This overrides the trial period set for the plan-item price. The value must be in the future, or set it to `0` to have no trial period.  \n**Prerequisites**\n\n* Trial support for purchases must be enabled for the site. Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable it.  \n**Note**\n\n* Charges for the group are not included in the invoice estimate while its subscription is in trial, so a charge-item price cannot be added to the group.\n* When no group in the purchase raises charges, the invoice estimate is empty and discounts without `discounts[index]` cannot be passed.\n"
+                      items:
+                        type: integer
+                        format: unix-time
+                        deprecated: false
+                        example: null
+                      example: null
+                    start_date:
+                      type: array
                       items:
                         type: integer
                         format: unix-time
@@ -159623,12 +159639,16 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              before:
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -159637,10 +159657,6 @@ paths:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
-                example: null
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: purchased_at
           in: query
@@ -159663,12 +159679,16 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              before:
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -159677,10 +159697,6 @@ paths:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
-                example: null
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: sort_by
           in: query
@@ -171880,15 +171896,15 @@ paths:
             deprecated: false
             example: us-east
             properties:
+              is_not:
+                type: string
+                minLength: 1
+                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
               is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -189275,6 +189291,10 @@ components:
       type: object
       properties: {}
       example: null
+    CriteriaSchema:
+      type: object
+      properties: {}
+      example: null
     CsvTaxRule:
       type: object
       properties:
@@ -189563,6 +189583,53 @@ components:
         - id
         - is_base_currency
       example: null
+    CustomData:
+      type: object
+      properties:
+        entity_type:
+          type: string
+          deprecated: false
+          enum:
+            - customer
+          example: null
+        id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        schema_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        schema_values:
+          type: string
+          deprecated: false
+          maxLength: 65532
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        modified_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - entity_type
+        - id
+        - modified_at
+        - schema_id
+        - schema_values
+      example: null
     CustomDataSchema:
       type: object
       properties:
@@ -189581,50 +189648,6 @@ components:
           deprecated: false
           enum:
             - customer
-            - subscription
-            - invoice
-            - quote
-            - credit_note
-            - transaction
-            - plan
-            - addon
-            - coupon
-            - order
-            - item_family
-            - item
-            - item_price
-            - plan_item
-            - addon_item
-            - charge_item
-            - plan_price
-            - addon_price
-            - charge_price
-            - differential_price
-            - attached_item
-            - feature
-            - subscription_entitlement
-            - item_entitlement
-            - business_entity
-            - price_variant
-            - omnichannel_subscription
-            - omnichannel_subscription_item
-            - omnichannel_transaction
-            - recorded_purchase
-            - omnichannel_subscription_item_scheduled_change
-            - sales_order
-            - omnichannel_one_time_order
-            - omnichannel_one_time_order_item
-            - usage_file
-            - business_rule
-            - business_ruleset
-            - alert_status
-            - omnichannel_subscription_item_metric
-            - price_ramp
-            - collections_reminder_sequence
-            - collections_payment_promise
-            - collections_dispute
-            - email_message
-            - private_note
           example: null
         schema_definition:
           type: string
@@ -194056,11 +194079,6 @@ components:
         - alert_status
         - omnichannel_subscription_item_metric
         - price_ramp
-        - collections_reminder_sequence
-        - collections_payment_promise
-        - collections_dispute
-        - email_message
-        - private_note
       example: null
     Estimate:
       type: object
@@ -221013,6 +221031,14 @@ components:
         - status
         - token
       example: null
+    Preference:
+      type: object
+      properties: {}
+      example: null
+    PreferenceDefinition:
+      type: object
+      properties: {}
+      example: null
     PreferenceVariant:
       type: object
       properties: {}
@@ -230097,14 +230123,6 @@ components:
         - immediate
         - specific_dates
         - fixed_intervals
-      example: null
-    SettingsPreference:
-      type: object
-      properties: {}
-      example: null
-    SettingsPreferenceDefinition:
-      type: object
-      properties: {}
       example: null
     Site:
       type: object
@@ -240037,10 +240055,6 @@ components:
         - source
         - webhook_status
       example: null
-    VariantCriteria:
-      type: object
-      properties: {}
-      example: null
     VariantDeletedEvent:
       type: object
       properties:
@@ -241783,6 +241797,14 @@ components:
         type: string
     recorded-purchase-id:
       name: recorded-purchase-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    custom-data-id:
+      name: custom-data-id
       in: path
       required: true
       style: simple
