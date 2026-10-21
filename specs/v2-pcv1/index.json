@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-19.5edee8ade7ac6c5ffd9ba231a4f8711f85fb35f7",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 2
+    "version": "2026-10-20.3b2ed2ba4c4741282a0fd1376f20594f6e42fdc4",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -76187,7 +76187,7 @@
           "hosted_pages"
         ],
         "summary": "Extend subscription",
-        "description": "This API generates a hosted page URL to extend the billing cycle of a subscription.\n\nUse one of the following methods to open the hosted page:\n\n* **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options) to open the hosted page in a modal popup in your website or application.\n* **Standalone page** : Redirect the customer to the hosted page `url`.\n\nDo not embed the hosted page in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).\n",
+        "description": "This API generates a hosted page URL to extend the billing cycle of a subscription.\n\nUse one of the following methods to open the hosted page:\n\n* **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/docs/js/cbinstanceobj-api-ref#opencheckout-options) to open the hosted page in a modal popup in your website or application.\n* **Standalone page** : Redirect the customer to the hosted page `url`.\n\nDo not embed the hosted page in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).\n",
         "operationId": "extend_subscription",
         "parameters": [
           {
@@ -79633,7 +79633,7 @@
           "hosted_pages"
         ],
         "summary": "Collect now",
-        "description": "This API generates a hosted page URL to collect due payments for the customer.\n\nOpen the hosted page in a new browser tab or window using the `url` from this API's response. Do not embed it in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).  \n**`openCheckout()` not supported**\n\nThe Chargebee.js [`openCheckout()`](https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options) function does not support Collect Now hosted pages. To open a Collect Now page, open the `url` from this API's response in a new browser tab or window (for example, `window.open(response.hosted_page.url, '_blank')`).\n",
+        "description": "This API generates a hosted page URL to collect due payments for the customer.\n\nOpen the hosted page in a new browser tab or window using the `url` from this API's response. Do not embed it in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).  \n**`openCheckout()` not supported**\n\nThe Chargebee.js [`openCheckout()`](https://www.chargebee.com/docs/js/cbinstanceobj-api-ref#opencheckout-options) function does not support Collect Now hosted pages. To open a Collect Now page, open the `url` from this API's response in a new browser tab or window (for example, `window.open(response.hosted_page.url, '_blank')`).\n",
         "operationId": "collect_now",
         "parameters": [
           {
@@ -81131,7 +81131,7 @@
                   "pass_thru_content": {
                     "type": "string",
                     "deprecated": false,
-                    "description": "Additional data to be passed to Chargebee Growth. Only the value of `pass_thru_content.custom` is sent to Chargebee Growth. It is sent as the value of the [`custom`](https://www.chargebee.com/checkout-portal-docs/cancel-page-api-ref.html#parameters) property. The fields provided in `pass_thru_content.custom` must be preconfigured in Chargebee Growth.\n\nAlthough only `pass_thru_content.custom` is sent to Chargebee Growth, all of `pass_thru_content` is stored by Chargebee Billing and is retrievable as an [attribute](/docs/api/hosted_pages/hosted_page-object#pass_thru_content) of the `hosted_page`.\n.\n",
+                    "description": "Additional data to be passed to Chargebee Growth. Only the value of `pass_thru_content.custom` is sent to Chargebee Growth. It is sent as the value of the [`custom`](https://www.chargebee.com/docs/js/cancel-page-api-ref#parameters) property. The fields provided in `pass_thru_content.custom` must be preconfigured in Chargebee Growth.\n\nAlthough only `pass_thru_content.custom` is sent to Chargebee Growth, all of `pass_thru_content` is stored by Chargebee Billing and is retrievable as an [attribute](/docs/api/hosted_pages/hosted_page-object#pass_thru_content) of the `hosted_page`.\n.\n",
                     "maxLength": 2048,
                     "example": null
                   },
@@ -82087,7 +82087,7 @@
           "hosted_pages"
         ],
         "summary": "Manage payment sources",
-        "description": "This API generates a hosted page URL to add new or update existing payment sources for the customer.\n\nUse one of the following methods to open the hosted page:\n\n* **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options) to open the hosted page in a modal popup in your website or application.\n* **Standalone page** : Redirect the customer to the hosted page `url`.\n\nDo not embed the hosted page in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).\n",
+        "description": "This API generates a hosted page URL to add new or update existing payment sources for the customer.\n\nUse one of the following methods to open the hosted page:\n\n* **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/docs/js/cbinstanceobj-api-ref#opencheckout-options) to open the hosted page in a modal popup in your website or application.\n* **Standalone page** : Redirect the customer to the hosted page `url`.\n\nDo not embed the hosted page in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).\n",
         "operationId": "manage_payment_sources",
         "parameters": [
           {
@@ -168531,7 +168531,6 @@
           }
         },
         "required": [
-          "content",
           "embed"
         ],
         "example": null
