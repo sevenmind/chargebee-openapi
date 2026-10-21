@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-19.5edee8ade7ac6c5ffd9ba231a4f8711f85fb35f7
+  version: 2026-10-20.3b2ed2ba4c4741282a0fd1376f20594f6e42fdc4
   x-cb-product-catalog-version: 2
   x-cb-api-version: 2
 servers:
@@ -59,7 +59,7 @@ tags:
   - name: cards
     description: '#### Deprecated The [Payment Sources API](/docs/api/payment_sources) , with its additional options and improvements, obsoletes the Cards APIs.'
   - name: collections_payment_promises
-    description: Operations on the `collections_payment_promises` resource.
+    description: Tracks a customer's commitment to pay a promised amount.
   - name: comments
     description: Comments are additional information that you can add to your resources.
   - name: configurations
@@ -66906,7 +66906,7 @@ paths:
 
         Use one of the following methods to open the hosted page:
 
-        * **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options) to open the hosted page in a modal popup in your website or application.
+        * **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/docs/js/cbinstanceobj-api-ref#opencheckout-options) to open the hosted page in a modal popup in your website or application.
         * **Standalone page** : Redirect the customer to the hosted page `url`.
 
         Do not embed the hosted page in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).
@@ -68536,7 +68536,7 @@ paths:
       tags:
         - hosted_pages
       summary: Collect now
-      description: "This API generates a hosted page URL to collect due payments for the customer.\n\nOpen the hosted page in a new browser tab or window using the `url` from this API's response. Do not embed it in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).  \n**`openCheckout()` not supported**\n\nThe Chargebee.js [`openCheckout()`](https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options) function does not support Collect Now hosted pages. To open a Collect Now page, open the `url` from this API's response in a new browser tab or window (for example, `window.open(response.hosted_page.url, '_blank')`).\n"
+      description: "This API generates a hosted page URL to collect due payments for the customer.\n\nOpen the hosted page in a new browser tab or window using the `url` from this API's response. Do not embed it in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).  \n**`openCheckout()` not supported**\n\nThe Chargebee.js [`openCheckout()`](https://www.chargebee.com/docs/js/cbinstanceobj-api-ref#opencheckout-options) function does not support Collect Now hosted pages. To open a Collect Now page, open the `url` from this API's response in a new browser tab or window (for example, `window.open(response.hosted_page.url, '_blank')`).\n"
       operationId: collect_now
       parameters:
         - name: chargebee-request-origin-device
@@ -69059,7 +69059,7 @@ paths:
       tags:
         - hosted_pages
       summary: Create checkout for a new subscription
-      description: "Create a Chargebee hosted page to accept payment details from a customer and checkout a new subscription.\nThe following steps describe how best to use this API:\nCall this endpoint, providing [item prices](/docs/api/item_prices), [coupons](/docs/api/coupons) and a host of other details such as billing and shipping addresses to be prefilled for the customer on the checkout page. You may also provide `pass_thru_content` containing information and IDs from your systems that must be associated with the checkout page.  \n**Warning**\nThe first item price in the list (parameter `subscription_items[item_price_id][0]`) must be an `item_price` of [item_type](/docs/api/item_prices/item_price-object#item_type) `plan`.\n\n* Send the customer to the Checkout `url` received in the response.\n* Once they complete checkout, a new subscription is automatically created and the customer is redirected to the `redirect_url` with the `id` and `state` attributes passed as query string parameters. Although the customer will be redirected to the `redirect_url` after successful checkout, we do not recommend relying on it for completing critical post-checkout actions. This is because redirection may not happen due to unforeseen reasons. Chargebee recommends listening to appropriate webhooks such as [subscription_created](/docs/api/events) or [invoice_generated](/docs/api/events) to verify a successful checkout.\n* [Retrieve the hosted page](/docs/api/hosted_pages/retrieve-a-hosted-page) at this stage to get the subscription and invoice details.\n\n#### Customer resource lookup and creation\n\nWhen the [customer[id]](/docs/api/hosted_pages/create-checkout-for-a-new-subscription#customer_id) parameter is provided and if a customer resource with the ID is found to be already created in Chargebee, the subscription is created under that customer resource. If not found, then a new customer resource is created with an autogenarated ID and the subscription is created under it.\n\n##### Multiple business entities\n\nIf multiple [business entities](/docs/api/advanced-features#mbe-header-main) are created for the site, the customer resource lookup and creation happen within the [context](/docs/api/business_entities#mbe-terms) of the business entity [specified](/docs/api/advanced-features#mbe-header-main) in this API call. If no business entity is specified, the customer resource lookup is performed within the [site context](/docs/api/business_entities#mbe-terms), and if not found, the resource is created for the [default business entity](/docs/api/business_entities#mbe-terms) of the site.  \n\n### Use Cases\n\n#### Billing address editing\n\nThe `billing_address` cannot be edited by the user during the Checkout session in either of the following cases:\n\n* When the [`billing_address`](/docs/api/customers#billing_address) attribute for the `customer` resource is already set.\n* You pass all mandatory `billing_address` fields via this API.\n\nIn such cases, to allow customers to update their billing address, use one of the following options:\n\n##### Chargebee Hosted Pages\n\n* Integrate [Chargebee.js](https://www.chargebee.com/checkout-portal-docs/cbportal-api-ref.html) into your website or application. Use the [`openSection()`](https://www.chargebee.com/checkout-portal-docs/cbportal-api-ref.html#opensection-options-callbacks) function with `options.sectionType` set to `ADDRESS` to display the Customer Portal's address section.\n* Integrate the [Customer Portal](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/portal-integration) into your website or application. The Portal enables customers to manage their address information.\n\n##### Customer API\n\n* Use the [Update billing info API](/docs/api/customers/update-billing-info-for-a-customer) and provide the appropriate `billing_address` parameters.\n"
+      description: "Create a Chargebee hosted page to accept payment details from a customer and checkout a new subscription.\nThe following steps describe how best to use this API:\nCall this endpoint, providing [item prices](/docs/api/item_prices), [coupons](/docs/api/coupons) and a host of other details such as billing and shipping addresses to be prefilled for the customer on the checkout page. You may also provide `pass_thru_content` containing information and IDs from your systems that must be associated with the checkout page.  \n**Warning**\nThe first item price in the list (parameter `subscription_items[item_price_id][0]`) must be an `item_price` of [item_type](/docs/api/item_prices/item_price-object#item_type) `plan`.\n\n* Send the customer to the Checkout `url` received in the response.\n* Once they complete checkout, a new subscription is automatically created and the customer is redirected to the `redirect_url` with the `id` and `state` attributes passed as query string parameters. Although the customer will be redirected to the `redirect_url` after successful checkout, we do not recommend relying on it for completing critical post-checkout actions. This is because redirection may not happen due to unforeseen reasons. Chargebee recommends listening to appropriate webhooks such as [subscription_created](/docs/api/events) or [invoice_generated](/docs/api/events) to verify a successful checkout.\n* [Retrieve the hosted page](/docs/api/hosted_pages/retrieve-a-hosted-page) at this stage to get the subscription and invoice details.\n\n#### Customer resource lookup and creation\n\nWhen the [customer[id]](/docs/api/hosted_pages/create-checkout-for-a-new-subscription#customer_id) parameter is provided and if a customer resource with the ID is found to be already created in Chargebee, the subscription is created under that customer resource. If not found, then a new customer resource is created with an autogenarated ID and the subscription is created under it.\n\n##### Multiple business entities\n\nIf multiple [business entities](/docs/api/advanced-features#mbe-header-main) are created for the site, the customer resource lookup and creation happen within the [context](/docs/api/business_entities#mbe-terms) of the business entity [specified](/docs/api/advanced-features#mbe-header-main) in this API call. If no business entity is specified, the customer resource lookup is performed within the [site context](/docs/api/business_entities#mbe-terms), and if not found, the resource is created for the [default business entity](/docs/api/business_entities#mbe-terms) of the site.  \n\n### Use Cases\n\n#### Billing address editing\n\nThe `billing_address` cannot be edited by the user during the Checkout session in either of the following cases:\n\n* When the [`billing_address`](/docs/api/customers#billing_address) attribute for the `customer` resource is already set.\n* You pass all mandatory `billing_address` fields via this API.\n\nIn such cases, to allow customers to update their billing address, use one of the following options:\n\n##### Chargebee Hosted Pages\n\n* Integrate [Chargebee.js](https://www.chargebee.com/docs/js/cbportal-api-ref) into your website or application. Use the [`openSection()`](https://www.chargebee.com/docs/js/cbportal-api-ref#opensection-options-callbacks) function with `options.sectionType` set to `ADDRESS` to display the Customer Portal's address section.\n* Integrate the [Customer Portal](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/portal-integration) into your website or application. The Portal enables customers to manage their address information.\n\n##### Customer API\n\n* Use the [Update billing info API](/docs/api/customers/update-billing-info-for-a-customer) and provide the appropriate `billing_address` parameters.\n"
       operationId: create_checkout_for_a_new_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -70763,7 +70763,7 @@ paths:
       tags:
         - hosted_pages
       summary: Create checkout to update a subscription
-      description: "Create a Chargebee hosted page to accept payment details from a customer and checkout to update the subscription.\n\nThe following steps describe how best to use this API:\n\nProvide [item prices](/docs/api/item_prices), [coupons](/docs/api/coupons) and a host of other details such as billing and shipping addresses to be prefilled for the customer on the checkout page. You may also provide `pass_thru_content` containing information and IDs from your systems that must be associated with the checkout page.  \n**Warning**\nThe first item price in the list (parameter `subscription_items[item_price_id][0]`) must be an `item_price` of [item_type](/docs/api/item_prices/item_price-object#item_type) `plan`.\n\n* Send the customer to the Checkout `url` received in the response. They can now add a payment method or use an existing one, to complete the checkout.\n\n* The subscription is updated and the customer is redirected to the `redirect_url` with the `id` and `state` attributes passed as query string parameters.\n\n  Although the customer will be redirected to the `redirect_url` after successful checkout, we do not recommend relying on it for completing critical post-checkout actions. This is because redirection may not happen due to unforeseen reasons. Chargebee recommends listening to appropriate webhooks such as [subscription_created](/docs/api/events) or [invoice_generated](/docs/api/events) to verify a successful checkout.\n\n* [Retrieve the hosted page](/docs/api/hosted_pages/retrieve-a-hosted-page) at this stage to get the subscription and invoice details.\n\n### Impacts\n\n**#### Subscription and Ramps: Impact on existing scheduled changes**  \n* If the subscription has existing scheduled changes, the behavior depends on whether [Ramps](/docs/api/ramps) are enabled:\n  * **Ramps disabled**: Any existing scheduled change on the subscription is deleted.\n  * **Ramps enabled with compatibility mode** :\n    * If only one ramp is present:\n      * If the ramp was created using this API, the ramp is deleted.\n      * If the ramp was created using the [Create a ramp API](/docs/api/ramps/create-a-ramp), and the date-time of the new change is before the date-time of the ramp, then the ramp is moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n    * If multiple ramps are present: all ramps after the date-time of the new change are moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n* For more details, see [Ramps API compatibility mode](/docs/api/subscriptions#ramps-compat-mode).  \n\n### Use Cases\n\n#### Edit billing address\n\nIf the [`billing_address`](/docs/api/customers#billing_address) attribute for the `customer` resource is already set, then the `billing_address` cannot be edited by the user during the Checkout session. To allow customers to update their billing address, use one of the following options:\n\n##### Chargebee Hosted Pages\n\n* Integrate [Chargebee.js](https://www.chargebee.com/checkout-portal-docs/cbportal-api-ref.html) into your website or application. Use the [`openSection()`](https://www.chargebee.com/checkout-portal-docs/cbportal-api-ref.html#opensection-options-callbacks) function with `options.sectionType` set to `ADDRESS` to display the Customer Portal's address section.\n* Integrate the [Customer Portal](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/portal-integration) into your website or application. The Portal enables customers to manage their address information.\n\n##### Customer API\n\n* Use the [Update billing info API](/docs/api/customers/update-billing-info-for-a-customer) and provide the appropriate `billing_address` parameters.\n"
+      description: "Create a Chargebee hosted page to accept payment details from a customer and checkout to update the subscription.\n\nThe following steps describe how best to use this API:\n\nProvide [item prices](/docs/api/item_prices), [coupons](/docs/api/coupons) and a host of other details such as billing and shipping addresses to be prefilled for the customer on the checkout page. You may also provide `pass_thru_content` containing information and IDs from your systems that must be associated with the checkout page.  \n**Warning**\nThe first item price in the list (parameter `subscription_items[item_price_id][0]`) must be an `item_price` of [item_type](/docs/api/item_prices/item_price-object#item_type) `plan`.\n\n* Send the customer to the Checkout `url` received in the response. They can now add a payment method or use an existing one, to complete the checkout.\n\n* The subscription is updated and the customer is redirected to the `redirect_url` with the `id` and `state` attributes passed as query string parameters.\n\n  Although the customer will be redirected to the `redirect_url` after successful checkout, we do not recommend relying on it for completing critical post-checkout actions. This is because redirection may not happen due to unforeseen reasons. Chargebee recommends listening to appropriate webhooks such as [subscription_created](/docs/api/events) or [invoice_generated](/docs/api/events) to verify a successful checkout.\n\n* [Retrieve the hosted page](/docs/api/hosted_pages/retrieve-a-hosted-page) at this stage to get the subscription and invoice details.\n\n### Impacts\n\n**#### Subscription and Ramps: Impact on existing scheduled changes**  \n* If the subscription has existing scheduled changes, the behavior depends on whether [Ramps](/docs/api/ramps) are enabled:\n  * **Ramps disabled**: Any existing scheduled change on the subscription is deleted.\n  * **Ramps enabled with compatibility mode** :\n    * If only one ramp is present:\n      * If the ramp was created using this API, the ramp is deleted.\n      * If the ramp was created using the [Create a ramp API](/docs/api/ramps/create-a-ramp), and the date-time of the new change is before the date-time of the ramp, then the ramp is moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n    * If multiple ramps are present: all ramps after the date-time of the new change are moved to `draft` status if the [auto-draft conditions](/docs/api/ramps/ramp-object#auto-draft) are met.\n* For more details, see [Ramps API compatibility mode](/docs/api/subscriptions#ramps-compat-mode).  \n\n### Use Cases\n\n#### Edit billing address\n\nIf the [`billing_address`](/docs/api/customers#billing_address) attribute for the `customer` resource is already set, then the `billing_address` cannot be edited by the user during the Checkout session. To allow customers to update their billing address, use one of the following options:\n\n##### Chargebee Hosted Pages\n\n* Integrate [Chargebee.js](https://www.chargebee.com/docs/js/cbportal-api-ref) into your website or application. Use the [`openSection()`](https://www.chargebee.com/docs/js/cbportal-api-ref#opensection-options-callbacks) function with `options.sectionType` set to `ADDRESS` to display the Customer Portal's address section.\n* Integrate the [Customer Portal](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/portal-integration) into your website or application. The Portal enables customers to manage their address information.\n\n##### Customer API\n\n* Use the [Update billing info API](/docs/api/customers/update-billing-info-for-a-customer) and provide the appropriate `billing_address` parameters.\n"
       operationId: create_checkout_to_update_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -72115,7 +72115,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Additional data to be passed to Chargebee Growth. Only the value of `pass_thru_content.custom` is sent to Chargebee Growth. It is sent as the value of the [`custom`](https://www.chargebee.com/checkout-portal-docs/cancel-page-api-ref.html#parameters) property. The fields provided in `pass_thru_content.custom` must be preconfigured in Chargebee Growth.
+                    Additional data to be passed to Chargebee Growth. Only the value of `pass_thru_content.custom` is sent to Chargebee Growth. It is sent as the value of the [`custom`](https://www.chargebee.com/docs/js/cancel-page-api-ref#parameters) property. The fields provided in `pass_thru_content.custom` must be preconfigured in Chargebee Growth.
 
                     Although only `pass_thru_content.custom` is sent to Chargebee Growth, all of `pass_thru_content` is stored by Chargebee Billing and is retrievable as an [attribute](/docs/api/hosted_pages/hosted_page-object#pass_thru_content) of the `hosted_page`.
                     .
@@ -72834,7 +72834,7 @@ paths:
 
         Use one of the following methods to open the hosted page:
 
-        * **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/checkout-portal-docs/cbinstanceobj-api-ref.html#opencheckout-options) to open the hosted page in a modal popup in your website or application.
+        * **In-app modal** : Use Chargebee.js [`openCheckout()`](https://www.chargebee.com/docs/js/cbinstanceobj-api-ref#opencheckout-options) to open the hosted page in a modal popup in your website or application.
         * **Standalone page** : Redirect the customer to the hosted page `url`.
 
         Do not embed the hosted page in your own [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe).
@@ -144609,7 +144609,7 @@ paths:
       tags:
         - purchases
       summary: Create a purchase
-      description: "Creates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n. The exception is a subscription group whose subscription starts in trial, which is possible when trial support for purchases is enabled for the site. No charges are raised for such a group until the trial ends. When no group in the purchase raises charges, no invoice is created and `purchase.invoice_ids` is empty.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. To create multiple subscriptions, provide multiple subscription groups.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. The following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                     **`discounts[index][i]` is not provided**                                                                                      |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon is applied to all the invoices immediately generated upon invoking this API. * The coupon is not applied to subsequent invoices, such as those generated upon subscription renewal.                   |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied to all the invoices immediately generated upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal. |\n\n**Note**\n\nFor a subscription group whose subscription is in trial, no invoice is created for the group when this API is invoked. A discount with `discounts[index][i]` set to that group is kept on the subscription and applied when the subscription is first invoiced. A discount without `discounts[index][i]` applies only to the invoices created immediately, so it cannot be passed when the purchase creates no invoice.\n"
+      description: "Creates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n. The exception is a subscription group whose subscription starts in trial, which is possible when trial support for purchases is enabled for the site. No charges are raised for such a group until the trial ends. When no group in the purchase raises charges, no invoice is created and `purchase.invoice_ids` is empty.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. Multi-plan subscriptions are not supported: a group cannot contain more than one plan item price. To create multiple subscriptions, provide multiple subscription groups. Plans in different groups can belong to different [item families](/docs/api/item_families). When item families are enabled, item prices in one group must belong to the same item family as that group's plan.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. You cannot target one item price in a group. A manual discount applies to the invoice for the group. A coupon with [apply_on](/docs/api/coupons/coupon-object#apply_on) set to `invoice_amount` applies to the invoice `sub_total`. A coupon configured for specific item prices applies only to those item prices.\n\nThe following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                                                                                                                                                 **`discounts[index][i]` is not provided**                                                                                                                                                                                                                  |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon must have [apply_on](/docs/api/coupons/coupon-object#apply_on) set to `invoice_amount`. A coupon configured for specific item prices is rejected unless you pass `discounts[index][i]`. * The coupon is applied to the first invoice only, irrespective of [coupon.duration_type](/docs/api/coupons/coupon-object#duration_type) or [coupon.max_redemptions](/docs/api/coupons/coupon-object#max_redemptions). * The coupon is not applied to later invoices. |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied only to the first invoice for the purchase. * The manual discount is not applied to later invoices.                                                                                                                                                                                                                                                                                                                                       |\n\n**Note**\n\nFor a subscription group whose subscription is in trial, no invoice is created for the group when this API is invoked. A discount with `discounts[index][i]` set to that group is kept on the subscription and applied when the subscription is first invoiced. A discount without `discounts[index][i]` applies only to the first invoice, so it cannot be passed when the purchase creates no invoice.\n\n### Limitations\n\nItem prices in a subscription group are validated the same way as in [Create a subscription](/docs/api/subscriptions/create-subscription-for-items). This operation also has the following limitations.\n\n#### Item prices\n\n* A subscription group contains exactly one item price of `type` `plan`. You cannot create one subscription with more than one plan item price. Multi-plan subscriptions are not supported.\n* Plans in different subscription groups can belong to different [item families](/docs/api/item_families). When item families are enabled, item prices in one group must belong to the same item family as that group's plan.\n* You cannot set a service period for a charge. This operation has no equivalent of [subscription_items[service_period_days]](/docs/api/subscriptions/create-subscription-for-items#subscription_items_service_period_days).\n\n#### Subscriptions\n\n* You cannot set [free_period](/docs/api/subscriptions/create-subscription-for-items#free_period).\n* You cannot set [start_date](/docs/api/subscriptions/create-subscription-for-items#start_date). Each subscription starts immediately. A group can start in trial only when trial support for purchases is enabled and you set `subscription_info[trial_end]`.\n* [Calendar billing](https://www.chargebee.com/docs/calendar-billing.html#alignment-of-billing-date) settings for the site apply. You cannot override them with [billing_alignment_mode](/docs/api/subscriptions/create-subscription-for-items#billing_alignment_mode).\n* Each subscription uses the customer's [auto_collection](/docs/api/customers/customer-object#auto_collection). You cannot override it for the subscription.\n* Only the current term is charged. You cannot set [terms_to_charge](/docs/api/subscriptions/create-subscription-for-items#terms_to_charge).\n* You cannot create [ramps](/docs/api/ramps) or schedule a subscription change in this request. After the subscriptions are created, use [Create a subscription ramp](/docs/api/ramps/create-a-ramp) or [Update a subscription](/docs/api/subscriptions/update-subscription-for-items).\n* The `purchase` resource cannot be changed after it is created. Update each subscription with the subscription operations.\n\n#### Multiple business entities\n\nThis operation does not accept [business_entity_id](/docs/api/subscriptions/create-subscription-for-items#business_entity_id). Calling it on a site where [multiple business entities](https://www.chargebee.com/docs/2.0/mbe.html) are enabled returns an error.\n\n#### Invoices\n\n* When the purchase raises invoiceable charges and [consolidated invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html) is enabled for the customer, Chargebee consolidates those charges. Subscription differences can still produce more than one invoice. When consolidated invoicing is disabled, each subscription gets its own invoice. A trial-only purchase, where every subscription group starts in trial and no one-time charges are raised, creates no invoice and `purchase.invoice_ids` is empty.\n* Invoices for subscriptions and one-time charges are created immediately and are not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately). A subscription group that starts in trial is the exception: no charges are raised for that group until the trial ends.\n* This operation does not accept a net-term parameter. Net terms already set on the customer still apply. When those terms are greater than zero, the invoice is posted and payment collection waits until the due date. When the terms are zero and the customer's [auto_collection](/docs/api/customers/customer-object#auto_collection) is `on`, Chargebee attempts to collect payment while closing the invoice. The operation fails if the customer has no valid payment method, or if collection fails. When `auto_collection` is `off`, the invoice is closed with payment due.\n"
       operationId: create_a_purchase
       parameters:
         - name: chargebee-request-origin-device
@@ -145414,7 +145414,7 @@ paths:
                   properties:
                     index:
                       type: array
-                      description: "The index or identifier of the [group](/docs/api/purchases)\nto which this discount or coupon information belongs. This must be a value from the `purchase_items[index]` array. When not provided, the coupon is applied to the first invoice only; irrespective of the values set for [coupon.duration_type](/docs/api/coupons/coupon-object#duration_type)or [coupon.max_redemptions](/docs/api/coupons/coupon-object#max_redemptions).  \n**See also:**\n[Applying discounts](/docs/api/purchases)\n"
+                      description: "The index or identifier of the [group](/docs/api/purchases)\nto which this discount or coupon information belongs. This must be a value from the `purchase_items[index]` array. When not provided, the coupon is applied to the first invoice only, irrespective of the values set for [coupon.duration_type](/docs/api/coupons/coupon-object#duration_type) or [coupon.max_redemptions](/docs/api/coupons/coupon-object#max_redemptions). Manual discounts are applied only to the first invoice for the purchase.  \n**See also:**\n[Applying discounts](/docs/api/purchases)\n"
                       items:
                         type: integer
                         format: int32
@@ -145741,7 +145741,7 @@ paths:
         - purchases
       summary: Estimates for purchase
       description: |
-        Returns an estimate for creating a `purchase` resource. The operation works exactly like [Create a purchase](/docs/api/purchases/create-a-purchase), except that only an [estimate](/docs/api/estimates) resource is returned without an actual `purchase` resource being created.
+        Returns an estimate for creating a `purchase` resource. The operation works exactly like [Create a purchase](/docs/api/purchases/create-a-purchase), except that only an [estimate](/docs/api/estimates) resource is returned without an actual `purchase` resource being created. The limitations of that operation apply here as well, including the error returned when [multiple business entities](https://www.chargebee.com/docs/2.0/mbe.html) are enabled for the site.
       operationId: estimates_for_purchase
       parameters:
         - name: chargebee-request-origin-device
@@ -146498,7 +146498,7 @@ paths:
                   properties:
                     index:
                       type: array
-                      description: "The index or identifier of the [group](/docs/api/purchases)\nto which this discount or coupon information belongs. This must be a value from the `purchase_items[index]` array. When not provided, the coupon is applied to the first invoice only; irrespective of the values set for [coupon.duration_type](/docs/api/coupons/coupon-object#duration_type)or [coupon.max_redemptions](/docs/api/coupons/coupon-object#max_redemptions).  \n**See also:**\n[Applying discounts](/docs/api/purchases)\n"
+                      description: "The index or identifier of the [group](/docs/api/purchases)\nto which this discount or coupon information belongs. This must be a value from the `purchase_items[index]` array. When not provided, the coupon is applied to the first invoice only, irrespective of the values set for [coupon.duration_type](/docs/api/coupons/coupon-object#duration_type) or [coupon.max_redemptions](/docs/api/coupons/coupon-object#max_redemptions). Manual discounts are applied only to the first invoice for the purchase.  \n**See also:**\n[Applying discounts](/docs/api/purchases)\n"
                       items:
                         type: integer
                         format: int32
@@ -174250,6 +174250,8 @@ paths:
       tags:
         - collections_payment_promises
       summary: List collections payment promises
+      description: |
+        Lists collections payment promises for your site. Use filter parameters to narrow results by customer, invoice, or status.
       operationId: list_collections_payment_promises
       parameters:
         - name: chargebee-request-origin-device
@@ -174318,33 +174320,44 @@ paths:
             example: null
         - name: limit
           in: query
+          description: |
+            The number of resources to be returned.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/limit'
           style: form
           explode: true
           schema:
             type: integer
             format: int32
             default: 10
-            description: The number of resources to be returned.
             maximum: 100
             minimum: 1
             example: null
         - name: offset
           in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset`
+            to the value of `next_offset`
+            obtained in the previous iteration of the API call.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/offset'
           style: form
           explode: true
           schema:
             type: string
-            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
             maxLength: 1000
             example: null
         - name: customer_id
           in: query
+          description: |
+            optional, string filter
+
+            Filters promises by customer identifier.
+            **Supported operators :**
+            is
+
+            **Example →**
+            *customer_id\[is\] = "cbdemo_alicia"*
           required: false
           deprecated: false
           style: deepObject
@@ -174360,6 +174373,15 @@ paths:
             example: null
         - name: invoice_id
           in: query
+          description: |
+            optional, string filter
+
+            Filters promises by invoice identifier.
+            **Supported operators :**
+            is
+
+            **Example →**
+            *invoice_id\[is\] = "__demo_inv__4"*
           required: false
           deprecated: false
           style: deepObject
@@ -174375,6 +174397,16 @@ paths:
             example: null
         - name: status
           in: query
+          description: |
+            optional, enumerated string filter
+
+            Filters promises by status. Possible values are : active, fulfilled, broken, cancelled.
+
+            **Supported operators :**
+            is
+
+            **Example →**
+            *status\[is\] = "active"*
           required: false
           deprecated: false
           style: deepObject
@@ -174419,7 +174451,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -174491,7 +174524,9 @@ paths:
     post:
       tags:
         - collections_payment_promises
-      summary: Create a collections_payment_promise
+      summary: Create a collections payment promise
+      description: |
+        Creates a collections payment promise for a customer, with the promised amount and the date payment was promised. Include `invoice_id` when the promise applies to a specific invoice.
       operationId: create_a_collections_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -174609,36 +174644,50 @@ paths:
                 customer_id:
                   type: string
                   deprecated: false
+                  description: |
+                    Identifier of the customer for whom the payment promise is being created. This field is required.
                   maxLength: 100
                   example: null
                 invoice_id:
                   type: string
                   deprecated: false
+                  description: |
+                    Identifier of the invoice associated with this promise. This field is optional.
                   maxLength: 100
                   example: null
                 amount:
                   type: integer
                   format: int64
                   deprecated: false
+                  description: |
+                    Amount promised by the customer, in the smallest currency unit (for example, cents for USD). This field is required.
                   example: null
                 currency_code:
                   type: string
                   deprecated: false
+                  description: |
+                    Currency code for `amount` in ISO 4217 format. If omitted, the site's base currency is used.
                   maxLength: 3
                   example: null
                 promised_on:
                   type: integer
                   format: unix-time
                   deprecated: false
+                  description: |
+                    Timestamp in UTC seconds for the date on which the customer promised payment. This field is required.
                   example: null
                 reason:
                   type: string
                   deprecated: false
+                  description: |
+                    Optional context about why or how this promise was recorded.
                   maxLength: 500
                   example: null
                 promised_by:
                   type: string
                   deprecated: false
+                  description: |
+                    Name or identifier of the person who captured this promise.
                   maxLength: 254
                   example: null
               required:
@@ -174657,7 +174706,8 @@ paths:
                 properties:
                   collections_payment_promise:
                     $ref: '#/components/schemas/CollectionsPaymentPromise'
-                    description: Resource object representing collections_payment_promise
+                    description: |
+                      The updated `collections_payment_promise` resource.
                 required:
                   - collections_payment_promise
                 example: null
@@ -174728,7 +174778,9 @@ paths:
     post:
       tags:
         - collections_payment_promises
-      summary: Cancel a collections_payment_promise
+      summary: Cancel a collections payment promise
+      description: |
+        Cancels an active collections payment promise that is no longer expected to be fulfilled.
       operationId: cancel_a_collections_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -174857,7 +174909,8 @@ paths:
                 properties:
                   collections_payment_promise:
                     $ref: '#/components/schemas/CollectionsPaymentPromise'
-                    description: Resource object representing collections_payment_promise
+                    description: |
+                      The updated `collections_payment_promise` resource.
                 required:
                   - collections_payment_promise
                 example: null
@@ -174929,6 +174982,8 @@ paths:
       tags:
         - collections_payment_promises
       summary: Retrieve a payment promise
+      description: |
+        Returns a collections payment promise by its ID, including the promised amount, promise date, and current status.
       operationId: retrieve_a_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -175015,7 +175070,8 @@ paths:
                 properties:
                   collections_payment_promise:
                     $ref: '#/components/schemas/CollectionsPaymentPromise'
-                    description: Resource object representing collections_payment_promise
+                    description: |
+                      The updated `collections_payment_promise` resource.
                 required:
                   - collections_payment_promise
                 example: null
@@ -175085,7 +175141,9 @@ paths:
     post:
       tags:
         - collections_payment_promises
-      summary: Update a collections_payment_promise
+      summary: Update a collections payment promise
+      description: |
+        Updates an existing collections payment promise. Use this to revise promise details such as `promised_by`, `promised_on`, or `reason`.
       operationId: update_a_collections_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -175214,15 +175272,21 @@ paths:
                   type: integer
                   format: unix-time
                   deprecated: false
+                  description: |
+                    Updated promised payment date as a UTC timestamp in seconds.
                   example: null
                 reason:
                   type: string
                   deprecated: false
+                  description: |
+                    Optional note describing the reason for this update.
                   maxLength: 500
                   example: null
                 promised_by:
                   type: string
                   deprecated: false
+                  description: |
+                    Name or identifier of the user or agent updating this payment promise.
                   maxLength: 254
                   example: null
               example: null
@@ -175237,7 +175301,8 @@ paths:
                 properties:
                   collections_payment_promise:
                     $ref: '#/components/schemas/CollectionsPaymentPromise'
-                    description: Resource object representing collections_payment_promise
+                    description: |
+                      The updated `collections_payment_promise` resource.
                 required:
                   - collections_payment_promise
                 example: null
@@ -183814,25 +183879,42 @@ components:
       example: null
     CollectionsPaymentPromise:
       type: object
+      description: |
+        Tracks a customer's commitment to pay a promised amount. Each payment promise records the amount, currency, promise date, and status (`active`, `fulfilled`, `broken`, or `cancelled`).
+
+        Receivables must be enabled for the site. If it is not, these operations are rejected.
       properties:
         id:
           type: string
           deprecated: false
+          description: |
+            Unique identifier of the collections payment promise.
           maxLength: 40
           example: null
         customer_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the customer who made this payment promise.
           maxLength: 100
           example: null
         invoice_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the invoice linked to this promise, when the promise is invoice-specific.
           maxLength: 100
           example: null
         status:
           type: string
           deprecated: false
+          description: |
+            Current lifecycle state of the payment promise.
+
+            * active - The promise is active and awaiting payment.
+            * cancelled - The payment promise was cancelled.
+            * fulfilled - The promised payment has been received.
+            * broken - The promised payment was not received by the promised date.
           enum:
             - active
             - fulfilled
@@ -183842,41 +183924,57 @@ components:
         reason:
           type: string
           deprecated: false
+          description: |
+            Optional note describing the context or reason for capturing this promise.
           maxLength: 500
           example: null
         promised_by:
           type: string
           deprecated: false
+          description: |
+            Name or identifier of the user or agent who captured this promise.
           maxLength: 254
           example: null
         promised_on:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            Timestamp in UTC seconds representing when the customer committed to pay.
           example: null
         created_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            Timestamp in UTC seconds when this collections payment promise was created.
           example: null
         updated_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            Timestamp in UTC seconds when this collections payment promise was last updated.
           example: null
         resource_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            Version number of this resource. The `resource_version` is updated with a new timestamp in milliseconds for every change made to the resource.
           example: null
         amount:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            Promised amount in the smallest currency unit (for example, cents for USD).
           example: null
         currency_code:
           type: string
           deprecated: false
+          description: |
+            Three-letter ISO currency code for the promise amount.
           maxLength: 3
           example: null
       required:
@@ -193411,6 +193509,8 @@ components:
         email_conversation_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the email conversation associated with this email log, when available.
           maxLength: 40
           example: null
         site_id:
@@ -199448,7 +199548,7 @@ components:
               The event was triggered by an operation performed through the [public API](/docs/api/getting-started)
               .
             * js_api -
-              The event was triggered by an operation performed through [Chargebee.js](https://www.chargebee.com/checkout-portal-docs/)
+              The event was triggered by an operation performed through [Chargebee.js](https://www.chargebee.com/docs/js)
               .
           enum:
             - admin_console
@@ -203162,8 +203262,6 @@ components:
             The unique ID of the [brand](/docs/api/brands) this hosted page belongs to. Unless a brand was specified in the request, this is the brand of the customer or subscription the hosted page was created for.
           maxLength: 50
           example: null
-      required:
-        - content
       example: null
     ImpactedCustomer:
       type: object
@@ -211220,6 +211318,8 @@ components:
         origin:
           type: string
           deprecated: false
+          description: |
+            The two-letter [ISO 3166 alpha-2](https://www.iso.org/iso-3166-country-codes.html) country code of the store where the subscription was purchased, such as `US` for the United States. For Apple App Store, this is the storefront country. For Google Play, this is the subscription region code. The attribute may be absent when the store does not provide a country.
           maxLength: 3
           example: null
         created_at:
@@ -222416,7 +222516,7 @@ components:
       example: null
     Purchase:
       type: object
-      description: "The `purchase` resource represents a collection of [item prices](/docs/api/item_prices) bought together. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\n**Prerequisite**\n\nPurchases must be enabled explicitly for the site. If not already enabled, contact eap@chargebee.com. Purchases require the following features to work so they're automatically enabled along with them:\n\n* [Consolidated Invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html)\n* [Manual discounts](https://www.chargebee.com/docs/2.0/subscription-manual-discounts.html)\n* [Multiple coupon support](https://www.chargebee.com/docs/2.0/coupons.html#applying-multiple-coupons-to-a-subscription)\n* [Multi-decimal pricing and quantities](https://www.chargebee.com/docs/2.0/multi-decimal-support.html)  \n**Note**\n\nOnce created, Chargebee never modifies a `purchase` resource; it cannot be modified via API either.\n"
+      description: "The `purchase` resource represents a collection of [item prices](/docs/api/item_prices) bought together. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\n**Prerequisite**\n\nPurchases must be enabled explicitly for the site. If not already enabled, contact eap@chargebee.com. Purchases require the following features to work so they're automatically enabled along with them:\n\n* [Consolidated Invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html)\n* [Manual discounts](https://www.chargebee.com/docs/2.0/subscription-manual-discounts.html)\n* [Multiple coupon support](https://www.chargebee.com/docs/2.0/coupons.html#applying-multiple-coupons-to-a-subscription)\n* [Multi-decimal pricing and quantities](https://www.chargebee.com/docs/2.0/multi-decimal-support.html)  \n**Note**\n\nOnce created, Chargebee never modifies a `purchase` resource; it cannot be modified via API either. Change the subscriptions it created with the [subscription](/docs/api/subscriptions) operations.\n"
       properties:
         id:
           type: string
@@ -222463,8 +222563,8 @@ components:
           type: array
           deprecated: false
           description: |
-            The unique identifier of the [invoice(s)](/docs/api/invoices)
-            created immediately as part of this purchase.
+            The unique identifiers of the [invoices](/docs/api/invoices)
+            created immediately as part of this purchase. This list is empty when the purchase raises no invoiceable charges, such as a trial-only purchase. When [consolidated invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html) is enabled for the customer, charges are consolidated where the subscriptions allow it. Subscription differences can still leave more than one invoice in this list. When consolidated invoicing is disabled, each subscription with invoiceable charges has its own invoice.
           items:
             type: string
             deprecated: false
