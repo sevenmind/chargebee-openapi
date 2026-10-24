@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-22.e27abaf8a2f1791472d5e2a815ef7ecf13f13d28",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-10-23.5ecfa5fa4aa1bb8585dd3b34d740e135481958c2",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -123700,6 +123700,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_family`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -123707,11 +123712,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -125373,6 +125373,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `price_variant`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -125380,11 +125385,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -125885,6 +125885,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -125892,11 +125897,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -134199,6 +134199,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_price`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -134206,11 +134211,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -138361,6 +138361,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -138368,11 +138373,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -144082,6 +144082,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -144089,11 +144094,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -146664,6 +146664,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -146671,11 +146676,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -150539,6 +150539,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -150546,11 +150551,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -155873,6 +155873,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -155880,11 +155885,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -186680,6 +186680,12 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
+                "before": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
                 "on": {
                   "type": "string",
                   "format": "unix-time",
@@ -186689,12 +186695,6 @@
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
                   "example": null
                 },
                 "after": {
@@ -186719,6 +186719,12 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
+                "before": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
                 "on": {
                   "type": "string",
                   "format": "unix-time",
@@ -186728,12 +186734,6 @@
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
                   "example": null
                 },
                 "after": {
@@ -189173,12 +189173,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -202992,7 +202992,7 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is_not": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -203002,14 +203002,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
