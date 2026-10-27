@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-23.5ecfa5fa4aa1bb8585dd3b34d740e135481958c2
-  x-cb-product-catalog-version: 1
+  version: 2026-10-26.2be9bd3d4fbbd02b3e150be72f9bb72bae446532
   x-cb-api-version: 1
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v1'
     variables:
@@ -28087,6 +28087,49 @@ components:
         - source
         - webhook_status
       example: null
+    Citation:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        param_name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        author_name:
+          type: string
+          deprecated: false
+          maxLength: 150
+          example: null
+        confidence_level:
+          type: string
+          deprecated: false
+          enum:
+            - low
+            - medium
+            - high
+            - not_provided
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        content:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+      required:
+        - author_name
+        - content
+        - created_at
+        - id
+      example: null
     Comment:
       type: object
       description: |
@@ -29418,6 +29461,45 @@ components:
         - download_url
         - valid_till
       example: null
+    DraftEstimate:
+      type: object
+      properties:
+        status:
+          type: string
+          deprecated: false
+          enum:
+            - success
+            - failed
+          example: null
+        http_status:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        result:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        error_detail:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        revision_version:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - status
+      example: null
     EntityType:
       type: string
       deprecated: false
@@ -30032,6 +30114,40 @@ components:
         - card_expiring
         - card_expired
         - card_deleted
+      example: null
+    Execution:
+      type: object
+      properties:
+        status:
+          type: string
+          deprecated: false
+          enum:
+            - success
+            - failed
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        result:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        error_detail:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+        revision_version:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - status
       example: null
     Gateway:
       type: string
