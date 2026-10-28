@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-26.2be9bd3d4fbbd02b3e150be72f9bb72bae446532",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-10-27.f8b1d2e92e7aa8b1fa11651b9cfe6c16eafe36bc",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -53586,14 +53586,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -53617,14 +53617,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -105619,14 +105619,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -115256,7 +115256,7 @@
               "properties": {
                 "is": {
                   "type": "string",
-                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n",
+                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n* `mcp` - Operation made through the Chargebee MCP server\n* `copilot` - Operation made through Chargebee Copilot\n* `agent` - Operation made by a Chargebee AI agent\n",
                   "enum": [
                     "admin_console",
                     "api",
@@ -115268,13 +115268,16 @@
                     "js_api",
                     "migration",
                     "bulk_operation",
-                    "external_service"
+                    "external_service",
+                    "mcp",
+                    "copilot",
+                    "agent"
                   ],
                   "example": null
                 },
                 "is_not": {
                   "type": "string",
-                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n",
+                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n* `mcp` - Operation made through the Chargebee MCP server\n* `copilot` - Operation made through Chargebee Copilot\n* `agent` - Operation made by a Chargebee AI agent\n",
                   "enum": [
                     "admin_console",
                     "api",
@@ -115286,13 +115289,16 @@
                     "js_api",
                     "migration",
                     "bulk_operation",
-                    "external_service"
+                    "external_service",
+                    "mcp",
+                    "copilot",
+                    "agent"
                   ],
                   "example": null
                 },
                 "in": {
                   "type": "string",
-                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n",
+                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n* `mcp` - Operation made through the Chargebee MCP server\n* `copilot` - Operation made through Chargebee Copilot\n* `agent` - Operation made by a Chargebee AI agent\n",
                   "enum": [
                     "admin_console",
                     "api",
@@ -115304,14 +115310,17 @@
                     "js_api",
                     "migration",
                     "bulk_operation",
-                    "external_service"
+                    "external_service",
+                    "mcp",
+                    "copilot",
+                    "agent"
                   ],
-                  "pattern": "^\\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service))*\\]$",
+                  "pattern": "^\\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent))*\\]$",
                   "example": null
                 },
                 "not_in": {
                   "type": "string",
-                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n",
+                  "description": "* `admin_console` - Operation made through the Chargebee admin UI\n* `api` - Operation made through the API\n* `scheduled_job` - Operation made through the Scheduled Jobs\n* `hosted_page` - Operation made through the Hosted Pages\n* `portal` - Operation made through [Self-Serve Portal](https://www.chargebee.com/docs/2.0/inapp-self-serve-portal.html)\n* `system` - Operation that are triggered by ChargeBee System\n* `none` - If no source can be identified for an operation\n* `js_api` - Operation made through the JS API\n* `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).\n* `bulk_operation` - Operation that are triggerd through bulk operation.\n* `external_service` - Operation that are triggered via webhook\n* `mcp` - Operation made through the Chargebee MCP server\n* `copilot` - Operation made through Chargebee Copilot\n* `agent` - Operation made by a Chargebee AI agent\n",
                   "enum": [
                     "admin_console",
                     "api",
@@ -115323,9 +115332,12 @@
                     "js_api",
                     "migration",
                     "bulk_operation",
-                    "external_service"
+                    "external_service",
+                    "mcp",
+                    "copilot",
+                    "agent"
                   ],
-                  "pattern": "^\\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service))*\\]$",
+                  "pattern": "^\\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent))*\\]$",
                   "example": null
                 }
               }
@@ -116444,7 +116456,8 @@
                 "item_family",
                 "item",
                 "item_price",
-                "price_variant"
+                "price_variant",
+                "task"
               ],
               "example": null
             }
@@ -116848,7 +116861,8 @@
                       "item_family",
                       "item",
                       "item_price",
-                      "price_variant"
+                      "price_variant",
+                      "task"
                     ],
                     "example": null
                   },
@@ -122900,17 +122914,6 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -122922,6 +122925,17 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
                           }
                         }
                       },
@@ -122931,14 +122945,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -132463,14 +132477,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -160417,15 +160431,6 @@
               "deprecated": false,
               "example": "active",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -160434,6 +160439,15 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
                   "example": null
                 }
               }
@@ -160452,14 +160466,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -164185,14 +164199,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -164211,18 +164225,6 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -164234,6 +164236,18 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
                   "example": null
                 }
               }
@@ -164252,14 +164266,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -175307,17 +175321,6 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -175328,6 +175331,17 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
                   "example": null
                 }
               }
@@ -175346,14 +175360,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -186722,9 +186736,10 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
+                "after": {
                   "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
                   "example": null
                 },
                 "before": {
@@ -186733,10 +186748,9 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "after": {
+                "between": {
                   "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -186761,9 +186775,10 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
+                "after": {
                   "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
                   "example": null
                 },
                 "before": {
@@ -186772,10 +186787,9 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "after": {
+                "between": {
                   "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -192209,14 +192223,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -192235,14 +192249,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -203036,11 +203050,6 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -203049,6 +203058,11 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "is_not": {
@@ -206259,14 +206273,14 @@
             "schema": {
               "type": "object",
               "deprecated": false,
+              "example": "Azq8CVnhdtD7C1xD",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 }
-              },
-              "example": null
+              }
             }
           },
           {
@@ -206280,14 +206294,14 @@
             "schema": {
               "type": "object",
               "deprecated": false,
+              "example": "inv_123",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 }
-              },
-              "example": null
+              }
             }
           },
           {
@@ -206683,13 +206697,17 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "collections_payment_promise": {
-                      "$ref": "#/components/schemas/CollectionsPaymentPromise",
-                      "description": "The updated `collections_payment_promise` resource.\n"
+                    "collections_payment_promises": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CollectionsPaymentPromise",
+                        "description": "Resource object representing collections_payment_promise"
+                      },
+                      "example": null
                     }
                   },
                   "required": [
-                    "collections_payment_promise"
+                    "collections_payment_promises"
                   ],
                   "example": null
                 }
@@ -209981,23 +209999,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -210014,6 +210015,23 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
                   "example": null
                 }
               },
@@ -212814,7 +212832,10 @@
               "js_api",
               "migration",
               "bulk_operation",
-              "external_service"
+              "external_service",
+              "mcp",
+              "copilot",
+              "agent"
             ],
             "example": null
           },
@@ -217831,6 +217852,12 @@
             "format": "int64",
             "deprecated": false,
             "example": null
+          },
+          "undisputed_amount": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
           }
         },
         "required": [
@@ -218181,20 +218208,6 @@
             "format": "int64",
             "deprecated": false,
             "description": "Version number of this resource. The `resource_version` is updated with a new timestamp in milliseconds for every change made to the resource.\n",
-            "example": null
-          },
-          "amount": {
-            "type": "integer",
-            "format": "int64",
-            "deprecated": false,
-            "description": "Promised amount in the smallest currency unit (for example, cents for USD).\n",
-            "example": null
-          },
-          "currency_code": {
-            "type": "string",
-            "deprecated": false,
-            "description": "Three-letter ISO currency code for the promise amount.\n",
-            "maxLength": 3,
             "example": null
           }
         },
@@ -218982,7 +218995,8 @@
               "item_family",
               "item",
               "item_price",
-              "price_variant"
+              "price_variant",
+              "task"
             ],
             "example": null
           },
@@ -227954,6 +227968,24 @@
             "maxLength": 100,
             "example": null
           },
+          "file_name": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 512,
+            "example": null
+          },
+          "content_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 255,
+            "example": null
+          },
+          "size_bytes": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
           "content_disposition": {
             "type": "string",
             "deprecated": false,
@@ -228007,10 +228039,35 @@
             "maxLength": 100,
             "example": null
           },
+          "subject": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 1024,
+            "example": null
+          },
+          "last_message_preview": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 1024,
+            "example": null
+          },
+          "message_count": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "deprecated": false,
+            "example": null
+          },
           "status": {
             "type": "string",
             "deprecated": false,
             "maxLength": 50,
+            "example": null
+          },
+          "last_message_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
             "example": null
           },
           "created_at": {
@@ -228035,6 +228092,7 @@
         "required": [
           "created_at",
           "id",
+          "message_count",
           "updated_at"
         ],
         "example": null
@@ -228175,6 +228233,39 @@
             "maxLength": 50,
             "example": null
           },
+          "author_type": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "contact",
+              "site_user",
+              "agent",
+              "other"
+            ],
+            "example": null
+          },
+          "send_status": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "pending",
+              "sent",
+              "failed"
+            ],
+            "example": null
+          },
+          "content_html": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65000,
+            "example": null
+          },
+          "content_text": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65000,
+            "example": null
+          },
           "created_at": {
             "type": "integer",
             "format": "unix-time",
@@ -228191,6 +228282,123 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "example": null
+          },
+          "mailbox_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "author_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 254,
+            "example": null
+          },
+          "author_name": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 255,
+            "example": null
+          },
+          "from_email": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 254,
+            "example": null
+          },
+          "to_emails": {
+            "type": "array",
+            "deprecated": false,
+            "items": {
+              "type": "string",
+              "deprecated": false,
+              "maxLength": 254,
+              "example": null
+            },
+            "example": null
+          },
+          "cc_emails": {
+            "type": "array",
+            "deprecated": false,
+            "items": {
+              "type": "string",
+              "deprecated": false,
+              "maxLength": 254,
+              "example": null
+            },
+            "example": null
+          },
+          "attachments": {
+            "type": "array",
+            "deprecated": false,
+            "items": {
+              "type": "object",
+              "deprecated": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 40,
+                  "example": null
+                },
+                "email_message_id": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 100,
+                  "example": null
+                },
+                "file_name": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 512,
+                  "example": null
+                },
+                "content_type": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 255,
+                  "example": null
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "format": "int64",
+                  "deprecated": false,
+                  "example": null
+                },
+                "content_disposition": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 50,
+                  "example": null
+                },
+                "created_at": {
+                  "type": "integer",
+                  "format": "unix-time",
+                  "deprecated": false,
+                  "example": null
+                },
+                "updated_at": {
+                  "type": "integer",
+                  "format": "unix-time",
+                  "deprecated": false,
+                  "example": null
+                },
+                "resource_version": {
+                  "type": "integer",
+                  "format": "int64",
+                  "deprecated": false,
+                  "example": null
+                }
+              },
+              "required": [
+                "created_at",
+                "id",
+                "updated_at"
+              ],
+              "example": null
+            },
             "example": null
           }
         },
@@ -233437,7 +233645,10 @@
               "js_api",
               "migration",
               "bulk_operation",
-              "external_service"
+              "external_service",
+              "mcp",
+              "copilot",
+              "agent"
             ],
             "example": null
           },
@@ -264196,7 +264407,10 @@
           "none",
           "js_api",
           "migration",
-          "external_service"
+          "external_service",
+          "mcp",
+          "copilot",
+          "agent"
         ],
         "example": null
       },
@@ -270149,6 +270363,475 @@
         ],
         "example": null
       },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "value": {
+            "type": "string",
+            "default": "",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "created_at",
+          "entity_type",
+          "id",
+          "value"
+        ],
+        "example": null
+      },
+      "TagConfig": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "name": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "allowed_entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "default": "active",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "allowed_entity_type",
+          "created_at",
+          "id",
+          "name",
+          "status",
+          "updated_at"
+        ],
+        "example": null
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "title": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "summary": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65000,
+            "example": null
+          },
+          "task_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "owner_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "default": "open",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "start_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "due_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "priority": {
+            "type": "string",
+            "default": "medium",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "creator_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "creator_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 255,
+            "example": null
+          },
+          "completed_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "cancelled_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "created_at",
+          "creator_id",
+          "creator_type",
+          "id",
+          "priority",
+          "status",
+          "task_type",
+          "title",
+          "updated_at"
+        ],
+        "example": null
+      },
+      "TaskAction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "label": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "description": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65000,
+            "example": null
+          },
+          "action_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "action_role": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "action_entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "action_entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "execution_order": {
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "deprecated": false,
+            "example": null
+          },
+          "additional_metadata": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65000,
+            "example": null
+          },
+          "output": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65000,
+            "example": null
+          },
+          "completed_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "action_role",
+          "action_type",
+          "created_at",
+          "execution_order",
+          "id",
+          "label",
+          "status",
+          "updated_at"
+        ],
+        "example": null
+      },
+      "TaskContextEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 255,
+            "example": null
+          },
+          "label": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "description": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 65000,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "created_at",
+          "entity_id",
+          "entity_type",
+          "id",
+          "label",
+          "updated_at"
+        ],
+        "example": null
+      },
+      "TaskDependency": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "dependent_entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "dependent_entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "depends_on_entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "depends_on_entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "dependency_reason": {
+            "type": "string",
+            "default": "dependency",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "status": {
+            "type": "string",
+            "default": "active",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "resolved_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "created_at",
+          "dependency_reason",
+          "dependent_entity_id",
+          "dependent_entity_type",
+          "depends_on_entity_id",
+          "depends_on_entity_type",
+          "id",
+          "status",
+          "updated_at"
+        ],
+        "example": null
+      },
       "TaxExemptReason": {
         "type": "string",
         "deprecated": false,
@@ -275595,6 +276278,16 @@
           "type": "string"
         }
       },
+      "task-dependency-id": {
+        "name": "task-dependency-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
       "credit-unit-id": {
         "name": "credit-unit-id",
         "in": "path",
@@ -275810,6 +276503,16 @@
           "example": "Android"
         }
       },
+      "task-id": {
+        "name": "task-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
       "payment-schedule-scheme-id": {
         "name": "payment-schedule-scheme-id",
         "in": "path",
@@ -275892,6 +276595,16 @@
       },
       "transaction-id": {
         "name": "transaction-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "tag-id": {
+        "name": "tag-id",
         "in": "path",
         "required": true,
         "style": "simple",
@@ -276062,6 +276775,16 @@
       },
       "unbilled-charge-id": {
         "name": "unbilled-charge-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "task-action-id": {
+        "name": "task-action-id",
         "in": "path",
         "required": true,
         "style": "simple",
@@ -276272,6 +276995,16 @@
       },
       "plan-id": {
         "name": "plan-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "tag-config-id": {
+        "name": "tag-config-id",
         "in": "path",
         "required": true,
         "style": "simple",

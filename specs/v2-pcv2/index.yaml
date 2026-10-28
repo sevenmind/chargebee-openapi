@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-26.2be9bd3d4fbbd02b3e150be72f9bb72bae446532
-  x-cb-product-catalog-version: 2
+  version: 2026-10-27.f8b1d2e92e7aa8b1fa11651b9cfe6c16eafe36bc
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -45777,13 +45777,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -45806,13 +45806,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -92094,13 +92094,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -100015,6 +100015,9 @@ paths:
                   * `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).
                   * `bulk_operation` - Operation that are triggerd through bulk operation.
                   * `external_service` - Operation that are triggered via webhook
+                  * `mcp` - Operation made through the Chargebee MCP server
+                  * `copilot` - Operation made through Chargebee Copilot
+                  * `agent` - Operation made by a Chargebee AI agent
                 enum:
                   - admin_console
                   - api
@@ -100027,6 +100030,9 @@ paths:
                   - migration
                   - bulk_operation
                   - external_service
+                  - mcp
+                  - copilot
+                  - agent
                 example: null
               is_not:
                 type: string
@@ -100042,6 +100048,9 @@ paths:
                   * `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).
                   * `bulk_operation` - Operation that are triggerd through bulk operation.
                   * `external_service` - Operation that are triggered via webhook
+                  * `mcp` - Operation made through the Chargebee MCP server
+                  * `copilot` - Operation made through Chargebee Copilot
+                  * `agent` - Operation made by a Chargebee AI agent
                 enum:
                   - admin_console
                   - api
@@ -100054,6 +100063,9 @@ paths:
                   - migration
                   - bulk_operation
                   - external_service
+                  - mcp
+                  - copilot
+                  - agent
                 example: null
               in:
                 type: string
@@ -100069,6 +100081,9 @@ paths:
                   * `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).
                   * `bulk_operation` - Operation that are triggerd through bulk operation.
                   * `external_service` - Operation that are triggered via webhook
+                  * `mcp` - Operation made through the Chargebee MCP server
+                  * `copilot` - Operation made through Chargebee Copilot
+                  * `agent` - Operation made by a Chargebee AI agent
                 enum:
                   - admin_console
                   - api
@@ -100081,7 +100096,10 @@ paths:
                   - migration
                   - bulk_operation
                   - external_service
-                pattern: ^\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service))*\]$
+                  - mcp
+                  - copilot
+                  - agent
+                pattern: ^\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent))*\]$
                 example: null
               not_in:
                 type: string
@@ -100097,6 +100115,9 @@ paths:
                   * `migration` - Operation that was triggered triggered by the migration of customer data into Chargebee Billing, either from an external system or from another [Chargebee Billing site](https://www.chargebee.com/docs/billing/2.0/getting-started/sites-intro.html) (such as test, live, or sandbox).
                   * `bulk_operation` - Operation that are triggerd through bulk operation.
                   * `external_service` - Operation that are triggered via webhook
+                  * `mcp` - Operation made through the Chargebee MCP server
+                  * `copilot` - Operation made through Chargebee Copilot
+                  * `agent` - Operation made by a Chargebee AI agent
                 enum:
                   - admin_console
                   - api
@@ -100109,7 +100130,10 @@ paths:
                   - migration
                   - bulk_operation
                   - external_service
-                pattern: ^\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service))*\]$
+                  - mcp
+                  - copilot
+                  - agent
+                pattern: ^\[(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent)(,(admin_console|api|scheduled_job|hosted_page|portal|system|none|js_api|migration|bulk_operation|external_service|mcp|copilot|agent))*\]$
                 example: null
         - name: occurred_at
           in: query
@@ -100949,6 +100973,7 @@ paths:
               - item
               - item_price
               - price_variant
+              - task
             example: null
         - name: entity_id
           in: query
@@ -101285,6 +101310,7 @@ paths:
                     - item
                     - item_price
                     - price_variant
+                    - task
                   example: null
                 entity_id:
                   type: string
@@ -106585,15 +106611,6 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
-                        is:
-                          type: string
-                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                         in:
                           type: string
                           description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -106604,6 +106621,15 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
+                        is:
+                          type: string
+                          description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -106611,13 +106637,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        is:
-                          type: string
-                          minLength: 1
-                          example: null
                         in:
                           type: string
                           pattern: ^\[(.*)(,.*)*\]$
+                          example: null
+                        is:
+                          type: string
+                          minLength: 1
                           example: null
                     effective_from:
                       type: object
@@ -115086,13 +115112,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -138602,15 +138628,6 @@ paths:
             deprecated: false
             example: active
             properties:
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
-                example: null
               in:
                 type: string
                 description: |-
@@ -138620,6 +138637,15 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
                 example: null
         - name: id
           in: query
@@ -138641,13 +138667,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -141448,13 +141474,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: entity_type
           in: query
@@ -141479,21 +141505,6 @@ paths:
             deprecated: false
             example: plan_price
             properties:
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
-                example: null
               in:
                 type: string
                 description: |-
@@ -141509,6 +141520,21 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -141532,13 +141558,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -150829,15 +150855,6 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
-              is:
-                type: string
-                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
-                example: null
               in:
                 type: string
                 description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
@@ -150847,6 +150864,15 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
+                example: null
+              is:
+                type: string
+                description: "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft"
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -150860,13 +150886,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: effective_from
           in: query
@@ -159677,19 +159703,19 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              between:
+              after:
                 type: string
-                pattern: ^\[\d{10},\d{10}\]$
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
               before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              between:
                 type: string
-                format: unix-time
-                pattern: ^\d{10}$
+                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: purchased_at
           in: query
@@ -159717,19 +159743,19 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              between:
+              after:
                 type: string
-                pattern: ^\[\d{10},\d{10}\]$
+                format: unix-time
+                pattern: ^\d{10}$
                 example: null
               before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              between:
                 type: string
-                format: unix-time
-                pattern: ^\d{10}$
+                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: sort_by
           in: query
@@ -163840,13 +163866,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -163868,13 +163894,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -171937,10 +171963,6 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -171948,6 +171970,10 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               is_not:
                 type: string
@@ -174406,12 +174432,12 @@ paths:
           schema:
             type: object
             deprecated: false
+            example: Azq8CVnhdtD7C1xD
             properties:
               is:
                 type: string
                 minLength: 1
                 example: null
-            example: null
         - name: invoice_id
           in: query
           description: |
@@ -174430,12 +174456,12 @@ paths:
           schema:
             type: object
             deprecated: false
+            example: inv_123
             properties:
               is:
                 type: string
                 minLength: 1
                 example: null
-            example: null
         - name: status
           in: query
           description: |
@@ -174745,12 +174771,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  collections_payment_promise:
-                    $ref: '#/components/schemas/CollectionsPaymentPromise'
-                    description: |
-                      The updated `collections_payment_promise` resource.
+                  collections_payment_promises:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CollectionsPaymentPromise'
+                      description: Resource object representing collections_payment_promise
+                    example: null
                 required:
-                  - collections_payment_promise
+                  - collections_payment_promises
                 example: null
         "400":
           description: on error
@@ -177202,31 +177230,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
-                example: null
               in:
                 type: string
                 description: |-
@@ -177252,6 +177255,31 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -179565,6 +179593,9 @@ components:
             - migration
             - bulk_operation
             - external_service
+            - mcp
+            - copilot
+            - agent
           example: null
         user:
           type: string
@@ -183926,6 +183957,11 @@ components:
           format: int64
           deprecated: false
           example: null
+        undisputed_amount:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
       required:
         - billed_amount
         - claimed_deduction
@@ -184224,20 +184260,6 @@ components:
           deprecated: false
           description: |
             Version number of this resource. The `resource_version` is updated with a new timestamp in milliseconds for every change made to the resource.
-          example: null
-        amount:
-          type: integer
-          format: int64
-          deprecated: false
-          description: |
-            Promised amount in the smallest currency unit (for example, cents for USD).
-          example: null
-        currency_code:
-          type: string
-          deprecated: false
-          description: |
-            Three-letter ISO currency code for the promise amount.
-          maxLength: 3
           example: null
       required:
         - created_at
@@ -184885,6 +184907,7 @@ components:
             - item
             - item_price
             - price_variant
+            - task
           example: null
         added_by:
           type: string
@@ -193819,6 +193842,21 @@ components:
           deprecated: false
           maxLength: 100
           example: null
+        file_name:
+          type: string
+          deprecated: false
+          maxLength: 512
+          example: null
+        content_type:
+          type: string
+          deprecated: false
+          maxLength: 255
+          example: null
+        size_bytes:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
         content_disposition:
           type: string
           deprecated: false
@@ -193862,10 +193900,31 @@ components:
           deprecated: false
           maxLength: 100
           example: null
+        subject:
+          type: string
+          deprecated: false
+          maxLength: 1024
+          example: null
+        last_message_preview:
+          type: string
+          deprecated: false
+          maxLength: 1024
+          example: null
+        message_count:
+          type: integer
+          format: int32
+          default: 0
+          deprecated: false
+          example: null
         status:
           type: string
           deprecated: false
           maxLength: 50
+          example: null
+        last_message_at:
+          type: integer
+          format: unix-time
+          deprecated: false
           example: null
         created_at:
           type: integer
@@ -193885,6 +193944,7 @@ components:
       required:
         - created_at
         - id
+        - message_count
         - updated_at
       example: null
     EmailLog:
@@ -194029,6 +194089,33 @@ components:
           deprecated: false
           maxLength: 50
           example: null
+        author_type:
+          type: string
+          deprecated: false
+          enum:
+            - contact
+            - site_user
+            - agent
+            - other
+          example: null
+        send_status:
+          type: string
+          deprecated: false
+          enum:
+            - pending
+            - sent
+            - failed
+          example: null
+        content_html:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        content_text:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
         created_at:
           type: integer
           format: unix-time
@@ -194043,6 +194130,102 @@ components:
           type: integer
           format: int64
           deprecated: false
+          example: null
+        mailbox_id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        author_id:
+          type: string
+          deprecated: false
+          maxLength: 254
+          example: null
+        author_name:
+          type: string
+          deprecated: false
+          maxLength: 255
+          example: null
+        from_email:
+          type: string
+          deprecated: false
+          maxLength: 254
+          example: null
+        to_emails:
+          type: array
+          deprecated: false
+          items:
+            type: string
+            deprecated: false
+            maxLength: 254
+            example: null
+          example: null
+        cc_emails:
+          type: array
+          deprecated: false
+          items:
+            type: string
+            deprecated: false
+            maxLength: 254
+            example: null
+          example: null
+        attachments:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              id:
+                type: string
+                deprecated: false
+                maxLength: 40
+                example: null
+              email_message_id:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
+              file_name:
+                type: string
+                deprecated: false
+                maxLength: 512
+                example: null
+              content_type:
+                type: string
+                deprecated: false
+                maxLength: 255
+                example: null
+              size_bytes:
+                type: integer
+                format: int64
+                deprecated: false
+                example: null
+              content_disposition:
+                type: string
+                deprecated: false
+                maxLength: 50
+                example: null
+              created_at:
+                type: integer
+                format: unix-time
+                deprecated: false
+                example: null
+              updated_at:
+                type: integer
+                format: unix-time
+                deprecated: false
+                example: null
+              resource_version:
+                type: integer
+                format: int64
+                deprecated: false
+                example: null
+            required:
+              - created_at
+              - id
+              - updated_at
+            example: null
           example: null
       required:
         - created_at
@@ -200026,6 +200209,9 @@ components:
             - migration
             - bulk_operation
             - external_service
+            - mcp
+            - copilot
+            - agent
           example: null
         user:
           type: string
@@ -231210,6 +231396,9 @@ components:
         - js_api
         - migration
         - external_service
+        - mcp
+        - copilot
+        - agent
       example: null
     Status:
       type: string
@@ -236577,6 +236766,395 @@ components:
         - occurred_at
         - source
         - webhook_status
+      example: null
+    Tag:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        entity_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        value:
+          type: string
+          default: ""
+          deprecated: false
+          maxLength: 500
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        resource_version:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - entity_type
+        - id
+        - value
+      example: null
+    TagConfig:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        allowed_entity_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        status:
+          type: string
+          default: active
+          deprecated: false
+          maxLength: 50
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        resource_version:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - allowed_entity_type
+        - created_at
+        - id
+        - name
+        - status
+        - updated_at
+      example: null
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        title:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        summary:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        task_type:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        owner_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        status:
+          type: string
+          default: open
+          deprecated: false
+          maxLength: 50
+          example: null
+        start_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        due_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        priority:
+          type: string
+          default: medium
+          deprecated: false
+          maxLength: 50
+          example: null
+        creator_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        creator_id:
+          type: string
+          deprecated: false
+          maxLength: 255
+          example: null
+        completed_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        cancelled_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        resource_version:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - creator_id
+        - creator_type
+        - id
+        - priority
+        - status
+        - task_type
+        - title
+        - updated_at
+      example: null
+    TaskAction:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        label:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        description:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        action_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        action_role:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        action_entity_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        action_entity_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        status:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        execution_order:
+          type: integer
+          format: int32
+          default: 1
+          deprecated: false
+          example: null
+        additional_metadata:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        output:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        completed_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        resource_version:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - action_role
+        - action_type
+        - created_at
+        - execution_order
+        - id
+        - label
+        - status
+        - updated_at
+      example: null
+    TaskContextEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        entity_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        entity_id:
+          type: string
+          deprecated: false
+          maxLength: 255
+          example: null
+        label:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        description:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        resource_version:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - entity_id
+        - entity_type
+        - id
+        - label
+        - updated_at
+      example: null
+    TaskDependency:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        dependent_entity_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        dependent_entity_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        depends_on_entity_type:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        depends_on_entity_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        dependency_reason:
+          type: string
+          default: dependency
+          deprecated: false
+          maxLength: 50
+          example: null
+        status:
+          type: string
+          default: active
+          deprecated: false
+          maxLength: 50
+          example: null
+        resolved_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        resource_version:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+        updated_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - dependency_reason
+        - dependent_entity_id
+        - dependent_entity_type
+        - depends_on_entity_id
+        - depends_on_entity_type
+        - id
+        - status
+        - updated_at
       example: null
     TaxExemptReason:
       type: string
@@ -242258,6 +242836,14 @@ components:
       explode: false
       schema:
         type: string
+    task-dependency-id:
+      name: task-dependency-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
     credit-unit-id:
       name: credit-unit-id
       in: path
@@ -242433,6 +243019,14 @@ components:
         type: string
         description: The device from which the customer has made the request
         example: Android
+    task-id:
+      name: task-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
     payment-schedule-scheme-id:
       name: payment-schedule-scheme-id
       in: path
@@ -242499,6 +243093,14 @@ components:
         type: string
     transaction-id:
       name: transaction-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    tag-id:
+      name: tag-id
       in: path
       required: true
       style: simple
@@ -242635,6 +243237,14 @@ components:
         type: string
     unbilled-charge-id:
       name: unbilled-charge-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    task-action-id:
+      name: task-action-id
       in: path
       required: true
       style: simple
@@ -242806,6 +243416,14 @@ components:
         type: string
     plan-id:
       name: plan-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    tag-config-id:
+      name: tag-config-id
       in: path
       required: true
       style: simple
