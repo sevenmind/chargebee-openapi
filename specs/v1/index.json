@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-26.2be9bd3d4fbbd02b3e150be72f9bb72bae446532",
-    "x-cb-api-version": 1,
-    "x-cb-product-catalog-version": 1
+    "version": "2026-10-27.f8b1d2e92e7aa8b1fa11651b9cfe6c16eafe36bc",
+    "x-cb-product-catalog-version": 1,
+    "x-cb-api-version": 1
   },
   "servers": [
     {
@@ -37174,7 +37174,10 @@
               "none",
               "js_api",
               "migration",
-              "bulk_operation"
+              "bulk_operation",
+              "mcp",
+              "copilot",
+              "agent"
             ],
             "example": null
           },
@@ -39707,7 +39710,10 @@
           "none",
           "js_api",
           "migration",
-          "bulk_operation"
+          "bulk_operation",
+          "mcp",
+          "copilot",
+          "agent"
         ],
         "example": null
       },
