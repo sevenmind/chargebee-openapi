@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-27.f8b1d2e92e7aa8b1fa11651b9cfe6c16eafe36bc
+  version: 2026-10-28.04cab42f60ee21dbf6354f95a959defd14814f90
   x-cb-product-catalog-version: 1
   x-cb-api-version: 2
 servers:
@@ -47646,13 +47646,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -47675,13 +47675,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -93397,13 +93397,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -111046,13 +111046,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -124754,13 +124754,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -124782,13 +124782,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -146220,6 +146220,7 @@ components:
             * pending_invoice_created - Event triggered (in the case of metered billing) when a "Pending" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the "Notify for Pending Invoices" option is enabled.
             * subscription_ramp_created - Triggered when a subscription ramp is created.
             * omnichannel_subscription_item_expired - Triggered when an omnichannel subscription item is expired
+            * refund_failed - Triggered when a refund attempt fails at the gateway.
             * authorization_succeeded - Triggered when a authorization transaction is created.
             * invoice_generated_with_backdating - Event triggered when a new invoice is generated with past date as invoice date.
             * omnichannel_subscription_item_change_scheduled - Triggered when an omnichannel subscription item change is scheduled
@@ -172784,6 +172785,7 @@ components:
               * omnichannel_subscription_item_expired - Triggered when an omnichannel subscription item is expired
               * hierarchy_created - Triggered when a hierarchy is created
               * order_cancelled - Triggered when an order is cancelled
+              * refund_failed - Triggered when a refund attempt fails at the gateway.
               * addon_deleted - Sent when an addon is deleted.
               * unbilled_charges_invoiced - Triggered when unbilled charges are invoiced
               * omnichannel_subscription_item_renewed - Triggered when an omnichannel subscription item is renewed
@@ -175085,8 +175087,12 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   refund_failed:
+    description: |
+      Triggered when a refund attempt fails at the gateway.
     post:
       summary: Triggered when a refund attempt fails at the gateway.
+      description: |
+        Triggered when a refund attempt fails at the gateway.
       operationId: onRefund_failedWebhook
       requestBody:
         description: Payload for refund_failed event
