@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-28.04cab42f60ee21dbf6354f95a959defd14814f90
-  x-cb-product-catalog-version: 2
+  version: 2026-10-29.bf910ce963a66761847f21436b04400f94483134
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -144108,6 +144108,823 @@ paths:
       deprecated: false
       security:
         - BasicAuth: []
+  /business_entities/{business-entity-id}:
+    get:
+      tags:
+        - business_entities
+      summary: Retrieve a business entity
+      operationId: retrieve_a_business_entity
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: business-entity-id
+          in: path
+          required: true
+          deprecated: false
+          $ref: '#/components/parameters/business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business_entity:
+                    $ref: '#/components/schemas/BusinessEntity'
+                    description: Resource object representing business_entity
+                required:
+                  - business_entity
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+    post:
+      tags:
+        - business_entities
+      summary: Update business entity
+      operationId: update_business_entity
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-event-actions
+          in: header
+          description: skip all actions to be done on the events
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-actions'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip all actions to be done on the events
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-email
+          in: header
+          description: skip only emails
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-email'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip only emails
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-webhook
+          in: header
+          description: ' skip only webhooks'
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-webhook'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: ' skip only webhooks'
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: business-entity-id
+          in: path
+          required: true
+          deprecated: false
+          $ref: '#/components/parameters/business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: null
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  deprecated: false
+                  maxLength: 100
+                  example: null
+                status:
+                  type: string
+                  deprecated: false
+                  enum:
+                    - active
+                    - inactive
+                  example: null
+              example: null
+            encoding: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business_entity:
+                    $ref: '#/components/schemas/BusinessEntity'
+                    description: Resource object representing business_entity
+                required:
+                  - business_entity
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+  /business_entities:
+    get:
+      tags:
+        - business_entities
+      summary: List business entities
+      operationId: list_business_entities
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: limit
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/limit'
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 10
+            description: The number of resources to be returned.
+            maximum: 100
+            minimum: 1
+            example: null
+        - name: offset
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/offset'
+          style: form
+          explode: true
+          schema:
+            type: string
+            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
+            maxLength: 1000
+            example: null
+        - name: include_deleted
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: boolean
+            default: false
+            example: null
+        - name: name
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            example: John
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              starts_with:
+                type: string
+                minLength: 1
+                example: null
+              is_present:
+                type: string
+                format: boolean
+                enum:
+                  - "true"
+                  - "false"
+                example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        business_entity:
+                          $ref: '#/components/schemas/BusinessEntity'
+                          description: Resource object representing business_entity
+                      required:
+                        - business_entity
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+    post:
+      tags:
+        - business_entities
+      summary: Create a business_entity
+      operationId: create_a_business_entity
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-event-actions
+          in: header
+          description: skip all actions to be done on the events
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-actions'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip all actions to be done on the events
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-email
+          in: header
+          description: skip only emails
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-email'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip only emails
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-webhook
+          in: header
+          description: ' skip only webhooks'
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-webhook'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: ' skip only webhooks'
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  deprecated: false
+                  maxLength: 100
+                  example: null
+                status:
+                  type: string
+                  deprecated: false
+                  enum:
+                    - active
+                    - inactive
+                  example: null
+              required:
+                - name
+                - status
+              example: null
+            encoding: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business_entity:
+                    $ref: '#/components/schemas/BusinessEntity'
+                    description: Resource object representing business_entity
+                required:
+                  - business_entity
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
   /business_entities/transfers:
     get:
       tags:
@@ -159698,7 +160515,7 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              "on":
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -159708,7 +160525,7 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -159738,7 +160555,7 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              "on":
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -159748,7 +160565,7 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -171963,17 +172780,17 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              in:
+              is_not:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               is:
                 type: string
@@ -194791,12 +195608,12 @@ components:
         - plan_price
         - addon_price
         - charge_price
+        - addon
         - invoice
         - quote
         - credit_note
         - transaction
         - plan
-        - addon
         - order
         - item_family
         - item
@@ -201122,6 +201939,21 @@ components:
       required:
         - created_at
         - status
+      example: null
+    ExpirationPeriodUnit:
+      type: string
+      deprecated: true
+      enum:
+        - day
+        - month
+        - year
+      example: null
+    ExpirationType:
+      type: string
+      deprecated: true
+      enum:
+        - none
+        - interval
       example: null
     Export:
       type: object
@@ -225021,6 +225853,70 @@ components:
         - is_enabled
         - modified_at
       example: null
+    QuoteGrant:
+      type: object
+      properties:
+        entity_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        entity_type:
+          type: string
+          deprecated: false
+          enum:
+            - plan_price
+            - addon
+            - addon_price
+            - charge
+            - charge_price
+          example: null
+        unit_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        unit_type:
+          type: string
+          deprecated: false
+          enum:
+            - feature
+            - custom_pricing_unit
+          example: null
+        is_enabled:
+          type: boolean
+          default: true
+          deprecated: false
+          example: null
+        start_date:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        end_date:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        modified_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - entity_id
+        - entity_type
+        - is_enabled
+        - modified_at
+        - unit_id
+        - unit_type
+      example: null
     QuoteLineGroup:
       type: object
       description: |
@@ -229624,6 +230520,22 @@ components:
         - primary
         - backup
         - none
+      example: null
+    RolloverCapType:
+      type: string
+      deprecated: true
+      enum:
+        - percentage
+        - absolute
+      example: null
+    RolloverType:
+      type: string
+      deprecated: true
+      enum:
+        - none
+        - unlimited
+        - time_limited
+        - capped
       example: null
     Rule:
       type: object
@@ -239932,6 +240844,21 @@ components:
         - activate_subscription
         - cancel_subscription
       example: null
+    TriggerPeriodUnit:
+      type: string
+      deprecated: true
+      enum:
+        - day
+        - month
+        - year
+      example: null
+    TriggerType:
+      type: string
+      deprecated: true
+      enum:
+        - interval
+        - one_time
+      example: null
     Type:
       type: string
       deprecated: false
@@ -240607,6 +241534,13 @@ components:
         - occurred_at
         - source
         - webhook_status
+      example: null
+    UnitType:
+      type: string
+      deprecated: true
+      enum:
+        - feature
+        - custom_pricing_unit
       example: null
     UnpaidInvoicesHandling:
       type: string
@@ -242798,6 +243732,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_voucher
+          attribute: id
     item-price-id:
       name: item-price-id
       in: path
@@ -242806,6 +243743,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: item_price
+          attribute: id
     reason-code-id:
       name: reason-code-id
       in: path
@@ -242814,6 +243754,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: reason_code
+          attribute: id
     tax-withheld-id:
       name: tax-withheld-id
       in: path
@@ -242822,6 +243765,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: tax_withheld
+          attribute: id
     custom-data-schema-id:
       name: custom-data-schema-id
       in: path
@@ -242830,6 +243776,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: custom_data_schema
+          attribute: id
     draft-request-id:
       name: draft-request-id
       in: path
@@ -242838,6 +243787,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: draft_request
+          attribute: id
     task-dependency-id:
       name: task-dependency-id
       in: path
@@ -242846,6 +243798,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: task_dependency
+          attribute: id
     credit-unit-id:
       name: credit-unit-id
       in: path
@@ -242854,6 +243809,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: credit_unit
+          attribute: id
     dispute-id:
       name: dispute-id
       in: path
@@ -242862,6 +243820,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: dispute
+          attribute: id
     integration-integration-name:
       name: integration-integration-name
       in: path
@@ -242870,6 +243831,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: integration
+          attribute: integration_name
     chargebee-business-entity-id:
       name: chargebee-business-entity-id
       in: header
@@ -242902,6 +243866,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: collections_dispute
+          attribute: id
     hosted-page-id:
       name: hosted-page-id
       in: path
@@ -242910,6 +243877,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: hosted_page
+          attribute: id
     credit-note-id:
       name: credit-note-id
       in: path
@@ -242918,6 +243888,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: credit_note
+          attribute: id
     e-invoicing-country-country:
       name: e-invoicing-country-country
       in: path
@@ -242926,6 +243899,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: e_invoicing_country
+          attribute: country
     non-subscription-app-id:
       name: non-subscription-app-id
       in: path
@@ -242934,6 +243910,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     business-entity-transfer-id:
       name: business-entity-transfer-id
       in: path
@@ -242942,6 +243919,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: business_entity_transfer
+          attribute: id
     portal-session-id:
       name: portal-session-id
       in: path
@@ -242950,6 +243930,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: portal_session
+          attribute: id
     attached-item-id:
       name: attached-item-id
       in: path
@@ -242958,6 +243941,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: attached_item
+          attribute: id
     chargebee-request-origin-user-encoded:
       name: chargebee-request-origin-user-encoded
       in: header
@@ -242978,6 +243964,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: business_entity
+          attribute: id
     item-id:
       name: item-id
       in: path
@@ -242986,6 +243975,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: item
+          attribute: id
     customer-id:
       name: customer-id
       in: path
@@ -242994,6 +243986,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: customer
+          attribute: id
     cust-payment-source-id:
       name: cust-payment-source-id
       in: path
@@ -243002,6 +243997,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_source
+          attribute: id
     site-currency-id:
       name: site-currency-id
       in: path
@@ -243010,6 +244008,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: currency
+          attribute: id
     chargebee-request-origin-device:
       name: chargebee-request-origin-device
       in: header
@@ -243029,6 +244030,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: task
+          attribute: id
     payment-schedule-scheme-id:
       name: payment-schedule-scheme-id
       in: path
@@ -243037,6 +244041,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_schedule_scheme
+          attribute: id
     site-owner-id:
       name: site-owner-id
       in: path
@@ -243045,6 +244052,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: site_owner
+          attribute: id
     item-family-id:
       name: item-family-id
       in: path
@@ -243053,6 +244063,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: item_family
+          attribute: id
     omnichannel-subscription-item-id:
       name: omnichannel-subscription-item-id
       in: path
@@ -243061,6 +244074,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: omnichannel_subscription_item
+          attribute: id
     price-ramp-id:
       name: price-ramp-id
       in: path
@@ -243069,6 +244085,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: price_ramp
+          attribute: id
     site-id:
       name: site-id
       in: path
@@ -243077,6 +244096,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: site
+          attribute: id
     invoice-id:
       name: invoice-id
       in: path
@@ -243085,6 +244107,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: invoice
+          attribute: id
     feature-id:
       name: feature-id
       in: path
@@ -243093,6 +244118,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: feature
+          attribute: id
     transaction-id:
       name: transaction-id
       in: path
@@ -243101,6 +244129,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: transaction
+          attribute: id
     tag-id:
       name: tag-id
       in: path
@@ -243109,6 +244140,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: tag
+          attribute: id
     offer-fulfillment-id:
       name: offer-fulfillment-id
       in: path
@@ -243117,6 +244151,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: offer_fulfillment
+          attribute: id
     ledger-operation-id:
       name: ledger-operation-id
       in: path
@@ -243125,6 +244162,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: ledger_operation
+          attribute: id
     omnichannel-subscription-id:
       name: omnichannel-subscription-id
       in: path
@@ -243133,6 +244173,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: omnichannel_subscription
+          attribute: id
     approval-id:
       name: approval-id
       in: path
@@ -243141,6 +244184,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: approval
+          attribute: id
     billing-desk-email-conversation-id:
       name: billing-desk-email-conversation-id
       in: path
@@ -243149,6 +244195,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: email_conversation
+          attribute: id
     webhook-endpoint-id:
       name: webhook-endpoint-id
       in: path
@@ -243157,6 +244206,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: webhook_endpoint
+          attribute: id
     usage-file-id:
       name: usage-file-id
       in: path
@@ -243165,6 +244217,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: usage_file
+          attribute: id
     alert-id:
       name: alert-id
       in: path
@@ -243173,6 +244228,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: alert
+          attribute: id
     recorded-purchase-id:
       name: recorded-purchase-id
       in: path
@@ -243181,6 +244239,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: recorded_purchase
+          attribute: id
     custom-data-id:
       name: custom-data-id
       in: path
@@ -243189,6 +244250,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: custom_data
+          attribute: id
     order-id:
       name: order-id
       in: path
@@ -243197,6 +244261,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: order
+          attribute: id
     product-variant-id:
       name: product-variant-id
       in: path
@@ -243205,6 +244272,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: variant
+          attribute: id
     account-credit-id:
       name: account-credit-id
       in: path
@@ -243213,6 +244283,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: promotional_credit
+          attribute: id
     pc2-migration-id:
       name: pc2-migration-id
       in: path
@@ -243221,6 +244294,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration
+          attribute: id
     async-api-request-id:
       name: async-api-request-id
       in: path
@@ -243229,6 +244305,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: async_request
+          attribute: id
     gift-id:
       name: gift-id
       in: path
@@ -243237,6 +244316,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: gift
+          attribute: id
     unbilled-charge-id:
       name: unbilled-charge-id
       in: path
@@ -243245,6 +244327,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: unbilled_charge
+          attribute: id
     task-action-id:
       name: task-action-id
       in: path
@@ -243253,6 +244338,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: task_action
+          attribute: id
     metered-feature-id:
       name: metered-feature-id
       in: path
@@ -243261,6 +244349,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: metered_feature
+          attribute: id
     differential-price-id:
       name: differential-price-id
       in: path
@@ -243269,6 +244360,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: differential_price
+          attribute: id
     billing-desk-email-attachment-id:
       name: billing-desk-email-attachment-id
       in: path
@@ -243277,6 +244371,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: email_attachment
+          attribute: id
     sales-order-id:
       name: sales-order-id
       in: path
@@ -243285,6 +244382,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: sales_order
+          attribute: id
     in-app-subscription-app-id:
       name: in-app-subscription-app-id
       in: path
@@ -243293,6 +244393,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     quote-id:
       name: quote-id
       in: path
@@ -243301,6 +244402,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: quote
+          attribute: id
     limit:
       name: limit
       in: query
@@ -243345,6 +244449,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon_code
+          attribute: code
     pc2-migration-item-family-id:
       name: pc2-migration-item-family-id
       in: path
@@ -243353,6 +244460,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration_item_family
+          attribute: id
     vaulted-payment-method-id:
       name: vaulted-payment-method-id
       in: path
@@ -243361,6 +244471,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: vaulted_payment_method
+          attribute: id
     offset:
       name: offset
       in: query
@@ -243380,6 +244493,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: entitlement_override
+          attribute: id
     subscription-id:
       name: subscription-id
       in: path
@@ -243388,6 +244504,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: subscription
+          attribute: id
     virtual-bank-account-id:
       name: virtual-bank-account-id
       in: path
@@ -243396,6 +244515,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: virtual_bank_account
+          attribute: id
     chargebee-event-webhook:
       name: chargebee-event-webhook
       in: header
@@ -243416,6 +244538,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon_set
+          attribute: id
     plan-id:
       name: plan-id
       in: path
@@ -243424,6 +244549,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     tag-config-id:
       name: tag-config-id
       in: path
@@ -243432,6 +244558,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: tag_config
+          attribute: id
     meter-id:
       name: meter-id
       in: path
@@ -243440,6 +244569,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: meter
+          attribute: id
     item-billing-metric-id:
       name: item-billing-metric-id
       in: path
@@ -243448,6 +244580,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: item_billing_metric
+          attribute: id
     subscription-entitlement-id:
       name: subscription-entitlement-id
       in: path
@@ -243456,6 +244591,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     collections-reminder-sequence-id:
       name: collections-reminder-sequence-id
       in: path
@@ -243464,6 +244600,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: collections_reminder_sequence
+          attribute: id
     thunking-plan-id:
       name: thunking-plan-id
       in: path
@@ -243472,6 +244611,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: thunking_plan
+          attribute: id
     tp-site-user-domain:
       name: tp-site-user-domain
       in: path
@@ -243480,6 +244622,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     event-id:
       name: event-id
       in: path
@@ -243488,6 +244631,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: event
+          attribute: id
     async-response-id:
       name: async-response-id
       in: path
@@ -243496,6 +244642,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: async_job
+          attribute: id
     rule-id:
       name: rule-id
       in: path
@@ -243504,6 +244653,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: rule
+          attribute: id
     time-machine-name:
       name: time-machine-name
       in: path
@@ -243512,6 +244664,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: time_machine
+          attribute: name
     product-id:
       name: product-id
       in: path
@@ -243520,6 +244675,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: product
+          attribute: id
     omnichannel-one-time-order-id:
       name: omnichannel-one-time-order-id
       in: path
@@ -243528,6 +244686,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: omnichannel_one_time_order
+          attribute: id
     Prefer:
       name: Prefer
       in: header
@@ -243548,6 +244709,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: einvoice
+          attribute: id
     collections-payment-promise-id:
       name: collections-payment-promise-id
       in: path
@@ -243556,6 +244720,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: collections_payment_promise
+          attribute: id
     business-rule-id:
       name: business-rule-id
       in: path
@@ -243564,6 +244731,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: business_rule
+          attribute: id
     cb-token-id:
       name: cb-token-id
       in: path
@@ -243572,6 +244742,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: token
+          attribute: id
     purchase-id:
       name: purchase-id
       in: path
@@ -243580,6 +244753,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: purchase
+          attribute: id
     chargebee-event-email:
       name: chargebee-event-email
       in: header
@@ -243600,6 +244776,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: price_variant
+          attribute: id
     comment-id:
       name: comment-id
       in: path
@@ -243608,6 +244787,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: comment
+          attribute: id
     pc2-migration-item-id:
       name: pc2-migration-item-id
       in: path
@@ -243616,6 +244798,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration_item
+          attribute: id
     coupon-id:
       name: coupon-id
       in: path
@@ -243624,6 +244809,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon
+          attribute: id
     payment-intent-id:
       name: payment-intent-id
       in: path
@@ -243632,6 +244820,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_intent
+          attribute: id
     chargebee-request-id:
       name: chargebee-request-id
       in: header
@@ -243653,6 +244844,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     pc2-migration-item-price-id:
       name: pc2-migration-item-price-id
       in: path
@@ -243661,6 +244853,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration_item_price
+          attribute: id
     business-ruleset-id:
       name: business-ruleset-id
       in: path
@@ -243669,6 +244864,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: business_ruleset
+          attribute: id
     chargebee-event-actions:
       name: chargebee-event-actions
       in: header
@@ -243701,6 +244899,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: ramp
+          attribute: id
     custom-pricing-unit-id:
       name: custom-pricing-unit-id
       in: path
@@ -243709,6 +244910,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: custom_pricing_unit
+          attribute: id
     export-id:
       name: export-id
       in: path
@@ -243717,6 +244921,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: export
+          attribute: id
     retry-segment-id:
       name: retry-segment-id
       in: path
@@ -243725,6 +244932,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: retry_segment
+          attribute: id
     addon-id:
       name: addon-id
       in: path
@@ -243733,6 +244943,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
   securitySchemes:
     BasicAuth:
       type: http

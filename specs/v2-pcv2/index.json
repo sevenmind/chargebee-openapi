@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-28.04cab42f60ee21dbf6354f95a959defd14814f90",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-10-29.bf910ce963a66761847f21436b04400f94483134",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -167438,6 +167438,1171 @@
         ]
       }
     },
+    "/business_entities/{business-entity-id}": {
+      "get": {
+        "tags": [
+          "business_entities"
+        ],
+        "summary": "Retrieve a business entity",
+        "operationId": "retrieve_a_business_entity",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-business-entity-id",
+            "in": "header",
+            "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+              "maxLength": 50,
+              "example": null
+            }
+          },
+          {
+            "name": "business-entity-id",
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "$ref": "#/components/parameters/business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "business_entity": {
+                      "$ref": "#/components/schemas/BusinessEntity",
+                      "description": "Resource object representing business_entity"
+                    }
+                  },
+                  "required": [
+                    "business_entity"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "business_entities"
+        ],
+        "summary": "Update business entity",
+        "operationId": "update_business_entity",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-event-actions",
+            "in": "header",
+            "description": "skip all actions to be done on the events",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-actions",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip all actions to be done on the events",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-email",
+            "in": "header",
+            "description": "skip only emails",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-email",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip only emails",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-webhook",
+            "in": "header",
+            "description": " skip only webhooks",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-webhook",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": " skip only webhooks",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-business-entity-id",
+            "in": "header",
+            "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+              "maxLength": 50,
+              "example": null
+            }
+          },
+          {
+            "name": "business-entity-id",
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "$ref": "#/components/parameters/business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": null
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 100,
+                    "example": null
+                  },
+                  "status": {
+                    "type": "string",
+                    "deprecated": false,
+                    "enum": [
+                      "active",
+                      "inactive"
+                    ],
+                    "example": null
+                  }
+                },
+                "example": null
+              },
+              "encoding": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "business_entity": {
+                      "$ref": "#/components/schemas/BusinessEntity",
+                      "description": "Resource object representing business_entity"
+                    }
+                  },
+                  "required": [
+                    "business_entity"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
+    "/business_entities": {
+      "get": {
+        "tags": [
+          "business_entities"
+        ],
+        "summary": "List business entities",
+        "operationId": "list_business_entities",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-business-entity-id",
+            "in": "header",
+            "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+              "maxLength": 50,
+              "example": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/limit",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10,
+              "description": "The number of resources to be returned.",
+              "maximum": 100,
+              "minimum": 1,
+              "example": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/offset",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.",
+              "maxLength": 1000,
+              "example": null
+            }
+          },
+          {
+            "name": "include_deleted",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "example": null
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "deprecated": false,
+              "example": "John",
+              "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "starts_with": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_present": {
+                  "type": "string",
+                  "format": "boolean",
+                  "enum": [
+                    "true",
+                    "false"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "business_entity": {
+                            "$ref": "#/components/schemas/BusinessEntity",
+                            "description": "Resource object representing business_entity"
+                          }
+                        },
+                        "required": [
+                          "business_entity"
+                        ],
+                        "example": null
+                      },
+                      "example": null
+                    },
+                    "next_offset": {
+                      "type": "string",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.",
+                      "maxLength": 1000,
+                      "example": null
+                    }
+                  },
+                  "required": [
+                    "list"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "business_entities"
+        ],
+        "summary": "Create a business_entity",
+        "operationId": "create_a_business_entity",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-event-actions",
+            "in": "header",
+            "description": "skip all actions to be done on the events",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-actions",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip all actions to be done on the events",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-email",
+            "in": "header",
+            "description": "skip only emails",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-email",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip only emails",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-webhook",
+            "in": "header",
+            "description": " skip only webhooks",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-webhook",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": " skip only webhooks",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-business-entity-id",
+            "in": "header",
+            "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-business-entity-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.",
+              "maxLength": 50,
+              "example": null
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 100,
+                    "example": null
+                  },
+                  "status": {
+                    "type": "string",
+                    "deprecated": false,
+                    "enum": [
+                      "active",
+                      "inactive"
+                    ],
+                    "example": null
+                  }
+                },
+                "required": [
+                  "name",
+                  "status"
+                ],
+                "example": null
+              },
+              "encoding": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "business_entity": {
+                      "$ref": "#/components/schemas/BusinessEntity",
+                      "description": "Resource object representing business_entity"
+                    }
+                  },
+                  "required": [
+                    "business_entity"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
     "/business_entities/transfers": {
       "get": {
         "tags": [
@@ -186730,7 +187895,7 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "on": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -186742,7 +187907,7 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -186769,7 +187934,7 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "on": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -186781,7 +187946,7 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -203050,9 +204215,9 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "in": {
+                "is_not": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -203060,9 +204225,9 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "is_not": {
+                "in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is": {
@@ -228997,12 +230162,12 @@
           "plan_price",
           "addon_price",
           "charge_price",
+          "addon",
           "invoice",
           "quote",
           "credit_note",
           "transaction",
           "plan",
-          "addon",
           "order",
           "item_family",
           "item",
@@ -234329,6 +235494,25 @@
         "required": [
           "created_at",
           "status"
+        ],
+        "example": null
+      },
+      "ExpirationPeriodUnit": {
+        "type": "string",
+        "deprecated": true,
+        "enum": [
+          "day",
+          "month",
+          "year"
+        ],
+        "example": null
+      },
+      "ExpirationType": {
+        "type": "string",
+        "deprecated": true,
+        "enum": [
+          "none",
+          "interval"
         ],
         "example": null
       },
@@ -258579,6 +259763,84 @@
         ],
         "example": null
       },
+      "QuoteGrant": {
+        "type": "object",
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "plan_price",
+              "addon",
+              "addon_price",
+              "charge",
+              "charge_price"
+            ],
+            "example": null
+          },
+          "unit_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "unit_type": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "feature",
+              "custom_pricing_unit"
+            ],
+            "example": null
+          },
+          "is_enabled": {
+            "type": "boolean",
+            "default": true,
+            "deprecated": false,
+            "example": null
+          },
+          "start_date": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "end_date": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "modified_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "created_at",
+          "entity_id",
+          "entity_type",
+          "is_enabled",
+          "modified_at",
+          "unit_id",
+          "unit_type"
+        ],
+        "example": null
+      },
       "QuoteLineGroup": {
         "type": "object",
         "description": "The line items of a quote are grouped by charge event. Each of these groups is called a quote line group. A quote would have at least one quote line group. Let's look at an example.\n\nConsider the following:\n\n* A monthly plan A for $500 per month.\n* A non-recurring addon B for $50. Now consider a quote that is created for 3 billing cycles of the plan with the addon applied immediately. This quote would be associated with a list of quote line groups: one for each charge event as shown below:\n\n#### Quote Line group 1\n\n**Plan A:**\n$500\n\n**Addon B:**\n$50\n\n**Total:**\n$550\n\n#### Quote Line group 2\n\n**Plan A:**\n$500\n\n**Total:**\n$500\n\n#### Quote Line group 3\n\n**Plan A:**\n$500\n\n**Total:**\n$500\n",
@@ -262607,6 +263869,26 @@
           "primary",
           "backup",
           "none"
+        ],
+        "example": null
+      },
+      "RolloverCapType": {
+        "type": "string",
+        "deprecated": true,
+        "enum": [
+          "percentage",
+          "absolute"
+        ],
+        "example": null
+      },
+      "RolloverType": {
+        "type": "string",
+        "deprecated": true,
+        "enum": [
+          "none",
+          "unlimited",
+          "time_limited",
+          "capped"
         ],
         "example": null
       },
@@ -273441,6 +274723,25 @@
         ],
         "example": null
       },
+      "TriggerPeriodUnit": {
+        "type": "string",
+        "deprecated": true,
+        "enum": [
+          "day",
+          "month",
+          "year"
+        ],
+        "example": null
+      },
+      "TriggerType": {
+        "type": "string",
+        "deprecated": true,
+        "enum": [
+          "interval",
+          "one_time"
+        ],
+        "example": null
+      },
       "Type": {
         "type": "string",
         "deprecated": false,
@@ -274133,6 +275434,15 @@
           "occurred_at",
           "source",
           "webhook_status"
+        ],
+        "example": null
+      },
+      "UnitType": {
+        "type": "string",
+        "deprecated": true,
+        "enum": [
+          "feature",
+          "custom_pricing_unit"
         ],
         "example": null
       },
@@ -276225,7 +277535,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_voucher",
+            "attribute": "id"
+          }
         }
       },
       "item-price-id": {
@@ -276235,7 +277549,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "item_price",
+            "attribute": "id"
+          }
         }
       },
       "reason-code-id": {
@@ -276245,7 +277563,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "reason_code",
+            "attribute": "id"
+          }
         }
       },
       "tax-withheld-id": {
@@ -276255,7 +277577,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "tax_withheld",
+            "attribute": "id"
+          }
         }
       },
       "custom-data-schema-id": {
@@ -276265,7 +277591,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "custom_data_schema",
+            "attribute": "id"
+          }
         }
       },
       "draft-request-id": {
@@ -276275,7 +277605,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "draft_request",
+            "attribute": "id"
+          }
         }
       },
       "task-dependency-id": {
@@ -276285,7 +277619,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "task_dependency",
+            "attribute": "id"
+          }
         }
       },
       "credit-unit-id": {
@@ -276295,7 +277633,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "credit_unit",
+            "attribute": "id"
+          }
         }
       },
       "dispute-id": {
@@ -276305,7 +277647,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "dispute",
+            "attribute": "id"
+          }
         }
       },
       "integration-integration-name": {
@@ -276315,7 +277661,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "integration",
+            "attribute": "integration_name"
+          }
         }
       },
       "chargebee-business-entity-id": {
@@ -276353,7 +277703,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "collections_dispute",
+            "attribute": "id"
+          }
         }
       },
       "hosted-page-id": {
@@ -276363,7 +277717,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "hosted_page",
+            "attribute": "id"
+          }
         }
       },
       "credit-note-id": {
@@ -276373,7 +277731,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "credit_note",
+            "attribute": "id"
+          }
         }
       },
       "e-invoicing-country-country": {
@@ -276383,7 +277745,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "e_invoicing_country",
+            "attribute": "country"
+          }
         }
       },
       "non-subscription-app-id": {
@@ -276393,7 +277759,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "business-entity-transfer-id": {
@@ -276403,7 +277770,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "business_entity_transfer",
+            "attribute": "id"
+          }
         }
       },
       "portal-session-id": {
@@ -276413,7 +277784,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "portal_session",
+            "attribute": "id"
+          }
         }
       },
       "attached-item-id": {
@@ -276423,7 +277798,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "attached_item",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-origin-user-encoded": {
@@ -276447,7 +277826,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "business_entity",
+            "attribute": "id"
+          }
         }
       },
       "item-id": {
@@ -276457,7 +277840,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "item",
+            "attribute": "id"
+          }
         }
       },
       "customer-id": {
@@ -276467,7 +277854,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "customer",
+            "attribute": "id"
+          }
         }
       },
       "cust-payment-source-id": {
@@ -276477,7 +277868,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_source",
+            "attribute": "id"
+          }
         }
       },
       "site-currency-id": {
@@ -276487,7 +277882,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "currency",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-origin-device": {
@@ -276510,7 +277909,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "task",
+            "attribute": "id"
+          }
         }
       },
       "payment-schedule-scheme-id": {
@@ -276520,7 +277923,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_schedule_scheme",
+            "attribute": "id"
+          }
         }
       },
       "site-owner-id": {
@@ -276530,7 +277937,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "site_owner",
+            "attribute": "id"
+          }
         }
       },
       "item-family-id": {
@@ -276540,7 +277951,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "item_family",
+            "attribute": "id"
+          }
         }
       },
       "omnichannel-subscription-item-id": {
@@ -276550,7 +277965,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "omnichannel_subscription_item",
+            "attribute": "id"
+          }
         }
       },
       "price-ramp-id": {
@@ -276560,7 +277979,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "price_ramp",
+            "attribute": "id"
+          }
         }
       },
       "site-id": {
@@ -276570,7 +277993,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "site",
+            "attribute": "id"
+          }
         }
       },
       "invoice-id": {
@@ -276580,7 +278007,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "invoice",
+            "attribute": "id"
+          }
         }
       },
       "feature-id": {
@@ -276590,7 +278021,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "feature",
+            "attribute": "id"
+          }
         }
       },
       "transaction-id": {
@@ -276600,7 +278035,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "transaction",
+            "attribute": "id"
+          }
         }
       },
       "tag-id": {
@@ -276610,7 +278049,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "tag",
+            "attribute": "id"
+          }
         }
       },
       "offer-fulfillment-id": {
@@ -276620,7 +278063,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "offer_fulfillment",
+            "attribute": "id"
+          }
         }
       },
       "ledger-operation-id": {
@@ -276630,7 +278077,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "ledger_operation",
+            "attribute": "id"
+          }
         }
       },
       "omnichannel-subscription-id": {
@@ -276640,7 +278091,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "omnichannel_subscription",
+            "attribute": "id"
+          }
         }
       },
       "approval-id": {
@@ -276650,7 +278105,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "approval",
+            "attribute": "id"
+          }
         }
       },
       "billing-desk-email-conversation-id": {
@@ -276660,7 +278119,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "email_conversation",
+            "attribute": "id"
+          }
         }
       },
       "webhook-endpoint-id": {
@@ -276670,7 +278133,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "webhook_endpoint",
+            "attribute": "id"
+          }
         }
       },
       "usage-file-id": {
@@ -276680,7 +278147,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "usage_file",
+            "attribute": "id"
+          }
         }
       },
       "alert-id": {
@@ -276690,7 +278161,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "alert",
+            "attribute": "id"
+          }
         }
       },
       "recorded-purchase-id": {
@@ -276700,7 +278175,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "recorded_purchase",
+            "attribute": "id"
+          }
         }
       },
       "custom-data-id": {
@@ -276710,7 +278189,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "custom_data",
+            "attribute": "id"
+          }
         }
       },
       "order-id": {
@@ -276720,7 +278203,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "order",
+            "attribute": "id"
+          }
         }
       },
       "product-variant-id": {
@@ -276730,7 +278217,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "variant",
+            "attribute": "id"
+          }
         }
       },
       "account-credit-id": {
@@ -276740,7 +278231,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "promotional_credit",
+            "attribute": "id"
+          }
         }
       },
       "pc2-migration-id": {
@@ -276750,7 +278245,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration",
+            "attribute": "id"
+          }
         }
       },
       "async-api-request-id": {
@@ -276760,7 +278259,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "async_request",
+            "attribute": "id"
+          }
         }
       },
       "gift-id": {
@@ -276770,7 +278273,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "gift",
+            "attribute": "id"
+          }
         }
       },
       "unbilled-charge-id": {
@@ -276780,7 +278287,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "unbilled_charge",
+            "attribute": "id"
+          }
         }
       },
       "task-action-id": {
@@ -276790,7 +278301,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "task_action",
+            "attribute": "id"
+          }
         }
       },
       "metered-feature-id": {
@@ -276800,7 +278315,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "metered_feature",
+            "attribute": "id"
+          }
         }
       },
       "differential-price-id": {
@@ -276810,7 +278329,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "differential_price",
+            "attribute": "id"
+          }
         }
       },
       "billing-desk-email-attachment-id": {
@@ -276820,7 +278343,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "email_attachment",
+            "attribute": "id"
+          }
         }
       },
       "sales-order-id": {
@@ -276830,7 +278357,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "sales_order",
+            "attribute": "id"
+          }
         }
       },
       "in-app-subscription-app-id": {
@@ -276840,7 +278371,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "quote-id": {
@@ -276850,7 +278382,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "quote",
+            "attribute": "id"
+          }
         }
       },
       "limit": {
@@ -276902,7 +278438,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon_code",
+            "attribute": "code"
+          }
         }
       },
       "pc2-migration-item-family-id": {
@@ -276912,7 +278452,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration_item_family",
+            "attribute": "id"
+          }
         }
       },
       "vaulted-payment-method-id": {
@@ -276922,7 +278466,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "vaulted_payment_method",
+            "attribute": "id"
+          }
         }
       },
       "offset": {
@@ -276945,7 +278493,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "entitlement_override",
+            "attribute": "id"
+          }
         }
       },
       "subscription-id": {
@@ -276955,7 +278507,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "subscription",
+            "attribute": "id"
+          }
         }
       },
       "virtual-bank-account-id": {
@@ -276965,7 +278521,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "virtual_bank_account",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-event-webhook": {
@@ -276990,7 +278550,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon_set",
+            "attribute": "id"
+          }
         }
       },
       "plan-id": {
@@ -277000,7 +278564,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "tag-config-id": {
@@ -277010,7 +278575,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "tag_config",
+            "attribute": "id"
+          }
         }
       },
       "meter-id": {
@@ -277020,7 +278589,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "meter",
+            "attribute": "id"
+          }
         }
       },
       "item-billing-metric-id": {
@@ -277030,7 +278603,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "item_billing_metric",
+            "attribute": "id"
+          }
         }
       },
       "subscription-entitlement-id": {
@@ -277040,7 +278617,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "collections-reminder-sequence-id": {
@@ -277050,7 +278628,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "collections_reminder_sequence",
+            "attribute": "id"
+          }
         }
       },
       "thunking-plan-id": {
@@ -277060,7 +278642,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "thunking_plan",
+            "attribute": "id"
+          }
         }
       },
       "tp-site-user-domain": {
@@ -277070,7 +278656,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "event-id": {
@@ -277080,7 +278667,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "event",
+            "attribute": "id"
+          }
         }
       },
       "async-response-id": {
@@ -277090,7 +278681,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "async_job",
+            "attribute": "id"
+          }
         }
       },
       "rule-id": {
@@ -277100,7 +278695,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "rule",
+            "attribute": "id"
+          }
         }
       },
       "time-machine-name": {
@@ -277110,7 +278709,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "time_machine",
+            "attribute": "name"
+          }
         }
       },
       "product-id": {
@@ -277120,7 +278723,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "product",
+            "attribute": "id"
+          }
         }
       },
       "omnichannel-one-time-order-id": {
@@ -277130,7 +278737,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "omnichannel_one_time_order",
+            "attribute": "id"
+          }
         }
       },
       "Prefer": {
@@ -277154,7 +278765,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "einvoice",
+            "attribute": "id"
+          }
         }
       },
       "collections-payment-promise-id": {
@@ -277164,7 +278779,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "collections_payment_promise",
+            "attribute": "id"
+          }
         }
       },
       "business-rule-id": {
@@ -277174,7 +278793,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "business_rule",
+            "attribute": "id"
+          }
         }
       },
       "cb-token-id": {
@@ -277184,7 +278807,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "token",
+            "attribute": "id"
+          }
         }
       },
       "purchase-id": {
@@ -277194,7 +278821,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "purchase",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-event-email": {
@@ -277219,7 +278850,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "price_variant",
+            "attribute": "id"
+          }
         }
       },
       "comment-id": {
@@ -277229,7 +278864,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "comment",
+            "attribute": "id"
+          }
         }
       },
       "pc2-migration-item-id": {
@@ -277239,7 +278878,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration_item",
+            "attribute": "id"
+          }
         }
       },
       "coupon-id": {
@@ -277249,7 +278892,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon",
+            "attribute": "id"
+          }
         }
       },
       "payment-intent-id": {
@@ -277259,7 +278906,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_intent",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-id": {
@@ -277284,7 +278935,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "pc2-migration-item-price-id": {
@@ -277294,7 +278946,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration_item_price",
+            "attribute": "id"
+          }
         }
       },
       "business-ruleset-id": {
@@ -277304,7 +278960,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "business_ruleset",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-event-actions": {
@@ -277343,7 +279003,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "ramp",
+            "attribute": "id"
+          }
         }
       },
       "custom-pricing-unit-id": {
@@ -277353,7 +279017,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "custom_pricing_unit",
+            "attribute": "id"
+          }
         }
       },
       "export-id": {
@@ -277363,7 +279031,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "export",
+            "attribute": "id"
+          }
         }
       },
       "retry-segment-id": {
@@ -277373,7 +279045,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "retry_segment",
+            "attribute": "id"
+          }
         }
       },
       "addon-id": {
@@ -277383,7 +279059,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       }
     },
