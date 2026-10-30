@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-28.04cab42f60ee21dbf6354f95a959defd14814f90
+  version: 2026-10-29.bf910ce963a66761847f21436b04400f94483134
   x-cb-product-catalog-version: 1
   x-cb-api-version: 2
 servers:
@@ -47646,13 +47646,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: payment_reference_number
           in: query
@@ -47675,13 +47675,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  in:
-                    type: string
-                    pattern: ^\[(.*)(,.*)*\]$
-                    example: null
                   is:
                     type: string
                     minLength: 1
+                    example: null
+                  in:
+                    type: string
+                    pattern: ^\[(.*)(,.*)*\]$
                     example: null
             example: null
       responses:
@@ -93397,13 +93397,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -111046,13 +111046,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: ^\[(.*)(,.*)*\]$
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: ^\[(.*)(,.*)*\]$
                       example: null
                 coupon:
                   type: object
@@ -124754,13 +124754,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: reference_id
           in: query
@@ -124782,13 +124782,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: updated_at
           in: query
@@ -161348,6 +161348,70 @@ components:
         - is_enabled
         - modified_at
       example: null
+    QuoteGrant:
+      type: object
+      properties:
+        entity_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        entity_type:
+          type: string
+          deprecated: false
+          enum:
+            - plan_price
+            - addon
+            - addon_price
+            - charge
+            - charge_price
+          example: null
+        unit_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        unit_type:
+          type: string
+          deprecated: false
+          enum:
+            - feature
+            - custom_pricing_unit
+          example: null
+        is_enabled:
+          type: boolean
+          default: true
+          deprecated: false
+          example: null
+        start_date:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        end_date:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        created_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        modified_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+      required:
+        - created_at
+        - entity_id
+        - entity_type
+        - is_enabled
+        - modified_at
+        - unit_id
+        - unit_type
+      example: null
     QuoteLineGroup:
       type: object
       description: |
@@ -173122,6 +173186,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_voucher
+          attribute: id
     item-price-id:
       name: item-price-id
       in: path
@@ -173130,6 +173197,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     task-action-id:
       name: task-action-id
       in: path
@@ -173138,6 +173206,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: task_action
+          attribute: id
     reason-code-id:
       name: reason-code-id
       in: path
@@ -173146,6 +173217,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: reason_code
+          attribute: id
     metered-feature-id:
       name: metered-feature-id
       in: path
@@ -173154,6 +173228,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     differential-price-id:
       name: differential-price-id
       in: path
@@ -173162,6 +173237,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     tax-withheld-id:
       name: tax-withheld-id
       in: path
@@ -173170,6 +173246,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: tax_withheld
+          attribute: id
     custom-data-schema-id:
       name: custom-data-schema-id
       in: path
@@ -173178,6 +173257,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: custom_data_schema
+          attribute: id
     billing-desk-email-attachment-id:
       name: billing-desk-email-attachment-id
       in: path
@@ -173186,6 +173268,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: email_attachment
+          attribute: id
     draft-request-id:
       name: draft-request-id
       in: path
@@ -173194,6 +173279,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: draft_request
+          attribute: id
     sales-order-id:
       name: sales-order-id
       in: path
@@ -173202,6 +173290,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     in-app-subscription-app-id:
       name: in-app-subscription-app-id
       in: path
@@ -173210,6 +173299,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     quote-id:
       name: quote-id
       in: path
@@ -173218,6 +173308,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: quote
+          attribute: id
     limit:
       name: limit
       in: query
@@ -173240,6 +173333,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: task_dependency
+          attribute: id
     include_deleted:
       name: include_deleted
       in: query
@@ -173258,6 +173354,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     chargebee-request-origin-ip:
       name: chargebee-request-origin-ip
       in: header
@@ -173278,6 +173375,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon_code
+          attribute: code
     dispute-id:
       name: dispute-id
       in: path
@@ -173286,6 +173386,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: dispute
+          attribute: id
     integration-integration-name:
       name: integration-integration-name
       in: path
@@ -173294,6 +173397,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: integration
+          attribute: integration_name
     pc2-migration-item-family-id:
       name: pc2-migration-item-family-id
       in: path
@@ -173302,6 +173408,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration_item_family
+          attribute: id
     vaulted-payment-method-id:
       name: vaulted-payment-method-id
       in: path
@@ -173310,6 +173419,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: vaulted_payment_method
+          attribute: id
     offset:
       name: offset
       in: query
@@ -173342,6 +173454,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: collections_dispute
+          attribute: id
     entitlement-override-id:
       name: entitlement-override-id
       in: path
@@ -173350,6 +173465,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     subscription-id:
       name: subscription-id
       in: path
@@ -173358,6 +173474,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: subscription
+          attribute: id
     hosted-page-id:
       name: hosted-page-id
       in: path
@@ -173366,6 +173485,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: hosted_page
+          attribute: id
     credit-note-id:
       name: credit-note-id
       in: path
@@ -173374,6 +173496,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: credit_note
+          attribute: id
     virtual-bank-account-id:
       name: virtual-bank-account-id
       in: path
@@ -173382,6 +173507,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: virtual_bank_account
+          attribute: id
     chargebee-event-webhook:
       name: chargebee-event-webhook
       in: header
@@ -173402,6 +173530,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: e_invoicing_country
+          attribute: country
     coupon-set-id:
       name: coupon-set-id
       in: path
@@ -173410,6 +173541,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon_set
+          attribute: id
     non-subscription-app-id:
       name: non-subscription-app-id
       in: path
@@ -173418,6 +173552,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     portal-session-id:
       name: portal-session-id
       in: path
@@ -173426,6 +173561,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: portal_session
+          attribute: id
     attached-item-id:
       name: attached-item-id
       in: path
@@ -173434,6 +173572,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     plan-id:
       name: plan-id
       in: path
@@ -173442,6 +173581,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: plan
+          attribute: id
     chargebee-request-origin-user-encoded:
       name: chargebee-request-origin-user-encoded
       in: header
@@ -173462,6 +173604,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: tag_config
+          attribute: id
     meter-id:
       name: meter-id
       in: path
@@ -173470,6 +173615,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     business-entity-id:
       name: business-entity-id
       in: path
@@ -173478,6 +173624,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     item-id:
       name: item-id
       in: path
@@ -173486,6 +173633,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     subscription-entitlement-id:
       name: subscription-entitlement-id
       in: path
@@ -173494,6 +173642,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     customer-id:
       name: customer-id
       in: path
@@ -173502,6 +173651,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: customer
+          attribute: id
     cust-payment-source-id:
       name: cust-payment-source-id
       in: path
@@ -173510,6 +173662,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_source
+          attribute: id
     site-currency-id:
       name: site-currency-id
       in: path
@@ -173518,6 +173673,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: currency
+          attribute: id
     chargebee-request-origin-device:
       name: chargebee-request-origin-device
       in: header
@@ -173537,6 +173695,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: collections_reminder_sequence
+          attribute: id
     thunking-plan-id:
       name: thunking-plan-id
       in: path
@@ -173545,6 +173706,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: thunking_plan
+          attribute: id
     tp-site-user-domain:
       name: tp-site-user-domain
       in: path
@@ -173553,6 +173717,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     task-id:
       name: task-id
       in: path
@@ -173561,6 +173726,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: task
+          attribute: id
     event-id:
       name: event-id
       in: path
@@ -173569,6 +173737,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: event
+          attribute: id
     async-response-id:
       name: async-response-id
       in: path
@@ -173577,6 +173748,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: async_job
+          attribute: id
     site-owner-id:
       name: site-owner-id
       in: path
@@ -173585,6 +173759,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: site_owner
+          attribute: id
     rule-id:
       name: rule-id
       in: path
@@ -173593,6 +173770,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: rule
+          attribute: id
     time-machine-name:
       name: time-machine-name
       in: path
@@ -173601,6 +173781,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: time_machine
+          attribute: name
     item-family-id:
       name: item-family-id
       in: path
@@ -173609,6 +173792,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     product-id:
       name: product-id
       in: path
@@ -173617,6 +173801,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     Prefer:
       name: Prefer
       in: header
@@ -173637,6 +173822,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: site
+          attribute: id
     einvoice-id:
       name: einvoice-id
       in: path
@@ -173645,6 +173833,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: einvoice
+          attribute: id
     collections-payment-promise-id:
       name: collections-payment-promise-id
       in: path
@@ -173653,6 +173844,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: collections_payment_promise
+          attribute: id
     invoice-id:
       name: invoice-id
       in: path
@@ -173661,6 +173855,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: invoice
+          attribute: id
     feature-id:
       name: feature-id
       in: path
@@ -173669,6 +173866,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     transaction-id:
       name: transaction-id
       in: path
@@ -173677,6 +173875,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: transaction
+          attribute: id
     tag-id:
       name: tag-id
       in: path
@@ -173685,6 +173886,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: tag
+          attribute: id
     offer-fulfillment-id:
       name: offer-fulfillment-id
       in: path
@@ -173693,6 +173897,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: offer_fulfillment
+          attribute: id
     cb-token-id:
       name: cb-token-id
       in: path
@@ -173701,6 +173908,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: token
+          attribute: id
     ledger-operation-id:
       name: ledger-operation-id
       in: path
@@ -173709,6 +173919,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     chargebee-event-email:
       name: chargebee-event-email
       in: header
@@ -173729,6 +173940,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: email_conversation
+          attribute: id
     comment-id:
       name: comment-id
       in: path
@@ -173737,6 +173951,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: comment
+          attribute: id
     webhook-endpoint-id:
       name: webhook-endpoint-id
       in: path
@@ -173745,6 +173962,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: webhook_endpoint
+          attribute: id
     pc2-migration-item-id:
       name: pc2-migration-item-id
       in: path
@@ -173753,6 +173973,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration_item
+          attribute: id
     usage-file-id:
       name: usage-file-id
       in: path
@@ -173761,6 +173984,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     coupon-id:
       name: coupon-id
       in: path
@@ -173769,6 +173993,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon
+          attribute: id
     alert-id:
       name: alert-id
       in: path
@@ -173777,6 +174004,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     custom-data-id:
       name: custom-data-id
       in: path
@@ -173785,6 +174013,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: custom_data
+          attribute: id
     payment-intent-id:
       name: payment-intent-id
       in: path
@@ -173793,6 +174024,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_intent
+          attribute: id
     chargebee-request-id:
       name: chargebee-request-id
       in: header
@@ -173814,6 +174048,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     order-id:
       name: order-id
       in: path
@@ -173822,6 +174057,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: order
+          attribute: id
     pc2-migration-item-price-id:
       name: pc2-migration-item-price-id
       in: path
@@ -173830,6 +174068,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration_item_price
+          attribute: id
     product-variant-id:
       name: product-variant-id
       in: path
@@ -173838,6 +174079,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     account-credit-id:
       name: account-credit-id
       in: path
@@ -173846,6 +174088,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: promotional_credit
+          attribute: id
     chargebee-event-actions:
       name: chargebee-event-actions
       in: header
@@ -173866,6 +174111,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: pc2_migration
+          attribute: id
     async-api-request-id:
       name: async-api-request-id
       in: path
@@ -173874,6 +174122,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: async_request
+          attribute: id
     chargebee-request-origin-user:
       name: chargebee-request-origin-user
       in: header
@@ -173894,6 +174145,7 @@ components:
       explode: false
       schema:
         type: string
+        example: null
     export-id:
       name: export-id
       in: path
@@ -173902,6 +174154,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: export
+          attribute: id
     retry-segment-id:
       name: retry-segment-id
       in: path
@@ -173910,6 +174165,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: retry_segment
+          attribute: id
     gift-id:
       name: gift-id
       in: path
@@ -173918,6 +174176,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: gift
+          attribute: id
     unbilled-charge-id:
       name: unbilled-charge-id
       in: path
@@ -173926,6 +174187,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: unbilled_charge
+          attribute: id
     addon-id:
       name: addon-id
       in: path
@@ -173934,6 +174198,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: addon
+          attribute: id
   securitySchemes:
     BasicAuth:
       type: http

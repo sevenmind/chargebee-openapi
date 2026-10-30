@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-28.04cab42f60ee21dbf6354f95a959defd14814f90",
+    "version": "2026-10-29.bf910ce963a66761847f21436b04400f94483134",
     "x-cb-product-catalog-version": 1,
     "x-cb-api-version": 2
   },
@@ -54168,14 +54168,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -54199,14 +54199,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "in": {
-                      "type": "string",
-                      "pattern": "^\\[(.*)(,.*)*\\]$",
-                      "example": null
-                    },
                     "is": {
                       "type": "string",
                       "minLength": 1,
+                      "example": null
+                    },
+                    "in": {
+                      "type": "string",
+                      "pattern": "^\\[(.*)(,.*)*\\]$",
                       "example": null
                     }
                   }
@@ -106151,14 +106151,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -126686,14 +126686,14 @@
                     "description": "List of itemPrice ids for which these coupons are applicable.\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "in": {
-                        "type": "string",
-                        "pattern": "^\\[(.*)(,.*)*\\]$",
-                        "example": null
-                      },
                       "is": {
                         "type": "string",
                         "minLength": 1,
+                        "example": null
+                      },
+                      "in": {
+                        "type": "string",
+                        "pattern": "^\\[(.*)(,.*)*\\]$",
                         "example": null
                       }
                     }
@@ -144299,14 +144299,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -144325,14 +144325,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -182187,6 +182187,84 @@
         ],
         "example": null
       },
+      "QuoteGrant": {
+        "type": "object",
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "entity_type": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "plan_price",
+              "addon",
+              "addon_price",
+              "charge",
+              "charge_price"
+            ],
+            "example": null
+          },
+          "unit_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "unit_type": {
+            "type": "string",
+            "deprecated": false,
+            "enum": [
+              "feature",
+              "custom_pricing_unit"
+            ],
+            "example": null
+          },
+          "is_enabled": {
+            "type": "boolean",
+            "default": true,
+            "deprecated": false,
+            "example": null
+          },
+          "start_date": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "end_date": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "modified_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          }
+        },
+        "required": [
+          "created_at",
+          "entity_id",
+          "entity_type",
+          "is_enabled",
+          "modified_at",
+          "unit_id",
+          "unit_type"
+        ],
+        "example": null
+      },
       "QuoteLineGroup": {
         "type": "object",
         "description": "The line items of a quote are grouped by charge event. Each of these groups is called a quote line group. A quote would have at least one quote line group. Let's look at an example.\n\nConsider the following:\n\n* A monthly plan A for $500 per month.\n* A non-recurring addon B for $50. Now consider a quote that is created for 3 billing cycles of the plan with the addon applied immediately. This quote would be associated with a list of quote line groups: one for each charge event as shown below:\n\n#### Quote Line group 1\n\n**Plan A:**\n$500\n\n**Addon B:**\n$50\n\n**Total:**\n$550\n\n#### Quote Line group 2\n\n**Plan A:**\n$500\n\n**Total:**\n$500\n\n#### Quote Line group 3\n\n**Plan A:**\n$500\n\n**Total:**\n$500\n",
@@ -194467,7 +194545,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_voucher",
+            "attribute": "id"
+          }
         }
       },
       "item-price-id": {
@@ -194477,7 +194559,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "task-action-id": {
@@ -194487,7 +194570,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "task_action",
+            "attribute": "id"
+          }
         }
       },
       "reason-code-id": {
@@ -194497,7 +194584,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "reason_code",
+            "attribute": "id"
+          }
         }
       },
       "metered-feature-id": {
@@ -194507,7 +194598,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "differential-price-id": {
@@ -194517,7 +194609,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "tax-withheld-id": {
@@ -194527,7 +194620,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "tax_withheld",
+            "attribute": "id"
+          }
         }
       },
       "custom-data-schema-id": {
@@ -194537,7 +194634,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "custom_data_schema",
+            "attribute": "id"
+          }
         }
       },
       "billing-desk-email-attachment-id": {
@@ -194547,7 +194648,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "email_attachment",
+            "attribute": "id"
+          }
         }
       },
       "draft-request-id": {
@@ -194557,7 +194662,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "draft_request",
+            "attribute": "id"
+          }
         }
       },
       "sales-order-id": {
@@ -194567,7 +194676,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "in-app-subscription-app-id": {
@@ -194577,7 +194687,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "quote-id": {
@@ -194587,7 +194698,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "quote",
+            "attribute": "id"
+          }
         }
       },
       "limit": {
@@ -194613,7 +194728,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "task_dependency",
+            "attribute": "id"
+          }
         }
       },
       "include_deleted": {
@@ -194635,7 +194754,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "chargebee-request-origin-ip": {
@@ -194659,7 +194779,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon_code",
+            "attribute": "code"
+          }
         }
       },
       "dispute-id": {
@@ -194669,7 +194793,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "dispute",
+            "attribute": "id"
+          }
         }
       },
       "integration-integration-name": {
@@ -194679,7 +194807,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "integration",
+            "attribute": "integration_name"
+          }
         }
       },
       "pc2-migration-item-family-id": {
@@ -194689,7 +194821,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration_item_family",
+            "attribute": "id"
+          }
         }
       },
       "vaulted-payment-method-id": {
@@ -194699,7 +194835,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "vaulted_payment_method",
+            "attribute": "id"
+          }
         }
       },
       "offset": {
@@ -194737,7 +194877,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "collections_dispute",
+            "attribute": "id"
+          }
         }
       },
       "entitlement-override-id": {
@@ -194747,7 +194891,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "subscription-id": {
@@ -194757,7 +194902,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "subscription",
+            "attribute": "id"
+          }
         }
       },
       "hosted-page-id": {
@@ -194767,7 +194916,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "hosted_page",
+            "attribute": "id"
+          }
         }
       },
       "credit-note-id": {
@@ -194777,7 +194930,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "credit_note",
+            "attribute": "id"
+          }
         }
       },
       "virtual-bank-account-id": {
@@ -194787,7 +194944,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "virtual_bank_account",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-event-webhook": {
@@ -194812,7 +194973,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "e_invoicing_country",
+            "attribute": "country"
+          }
         }
       },
       "coupon-set-id": {
@@ -194822,7 +194987,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon_set",
+            "attribute": "id"
+          }
         }
       },
       "non-subscription-app-id": {
@@ -194832,7 +195001,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "portal-session-id": {
@@ -194842,7 +195012,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "portal_session",
+            "attribute": "id"
+          }
         }
       },
       "attached-item-id": {
@@ -194852,7 +195026,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "plan-id": {
@@ -194862,7 +195037,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "plan",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-origin-user-encoded": {
@@ -194886,7 +195065,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "tag_config",
+            "attribute": "id"
+          }
         }
       },
       "meter-id": {
@@ -194896,7 +195079,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "business-entity-id": {
@@ -194906,7 +195090,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "item-id": {
@@ -194916,7 +195101,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "subscription-entitlement-id": {
@@ -194926,7 +195112,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "customer-id": {
@@ -194936,7 +195123,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "customer",
+            "attribute": "id"
+          }
         }
       },
       "cust-payment-source-id": {
@@ -194946,7 +195137,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_source",
+            "attribute": "id"
+          }
         }
       },
       "site-currency-id": {
@@ -194956,7 +195151,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "currency",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-origin-device": {
@@ -194979,7 +195178,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "collections_reminder_sequence",
+            "attribute": "id"
+          }
         }
       },
       "thunking-plan-id": {
@@ -194989,7 +195192,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "thunking_plan",
+            "attribute": "id"
+          }
         }
       },
       "tp-site-user-domain": {
@@ -194999,7 +195206,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "task-id": {
@@ -195009,7 +195217,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "task",
+            "attribute": "id"
+          }
         }
       },
       "event-id": {
@@ -195019,7 +195231,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "event",
+            "attribute": "id"
+          }
         }
       },
       "async-response-id": {
@@ -195029,7 +195245,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "async_job",
+            "attribute": "id"
+          }
         }
       },
       "site-owner-id": {
@@ -195039,7 +195259,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "site_owner",
+            "attribute": "id"
+          }
         }
       },
       "rule-id": {
@@ -195049,7 +195273,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "rule",
+            "attribute": "id"
+          }
         }
       },
       "time-machine-name": {
@@ -195059,7 +195287,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "time_machine",
+            "attribute": "name"
+          }
         }
       },
       "item-family-id": {
@@ -195069,7 +195301,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "product-id": {
@@ -195079,7 +195312,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "Prefer": {
@@ -195103,7 +195337,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "site",
+            "attribute": "id"
+          }
         }
       },
       "einvoice-id": {
@@ -195113,7 +195351,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "einvoice",
+            "attribute": "id"
+          }
         }
       },
       "collections-payment-promise-id": {
@@ -195123,7 +195365,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "collections_payment_promise",
+            "attribute": "id"
+          }
         }
       },
       "invoice-id": {
@@ -195133,7 +195379,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "invoice",
+            "attribute": "id"
+          }
         }
       },
       "feature-id": {
@@ -195143,7 +195393,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "transaction-id": {
@@ -195153,7 +195404,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "transaction",
+            "attribute": "id"
+          }
         }
       },
       "tag-id": {
@@ -195163,7 +195418,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "tag",
+            "attribute": "id"
+          }
         }
       },
       "offer-fulfillment-id": {
@@ -195173,7 +195432,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "offer_fulfillment",
+            "attribute": "id"
+          }
         }
       },
       "cb-token-id": {
@@ -195183,7 +195446,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "token",
+            "attribute": "id"
+          }
         }
       },
       "ledger-operation-id": {
@@ -195193,7 +195460,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "chargebee-event-email": {
@@ -195218,7 +195486,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "email_conversation",
+            "attribute": "id"
+          }
         }
       },
       "comment-id": {
@@ -195228,7 +195500,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "comment",
+            "attribute": "id"
+          }
         }
       },
       "webhook-endpoint-id": {
@@ -195238,7 +195514,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "webhook_endpoint",
+            "attribute": "id"
+          }
         }
       },
       "pc2-migration-item-id": {
@@ -195248,7 +195528,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration_item",
+            "attribute": "id"
+          }
         }
       },
       "usage-file-id": {
@@ -195258,7 +195542,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "coupon-id": {
@@ -195268,7 +195553,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon",
+            "attribute": "id"
+          }
         }
       },
       "alert-id": {
@@ -195278,7 +195567,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "custom-data-id": {
@@ -195288,7 +195578,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "custom_data",
+            "attribute": "id"
+          }
         }
       },
       "payment-intent-id": {
@@ -195298,7 +195592,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_intent",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-id": {
@@ -195323,7 +195621,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "order-id": {
@@ -195333,7 +195632,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "order",
+            "attribute": "id"
+          }
         }
       },
       "pc2-migration-item-price-id": {
@@ -195343,7 +195646,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration_item_price",
+            "attribute": "id"
+          }
         }
       },
       "product-variant-id": {
@@ -195353,7 +195660,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "account-credit-id": {
@@ -195363,7 +195671,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "promotional_credit",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-event-actions": {
@@ -195388,7 +195700,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "pc2_migration",
+            "attribute": "id"
+          }
         }
       },
       "async-api-request-id": {
@@ -195398,7 +195714,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "async_request",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-origin-user": {
@@ -195422,7 +195742,8 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": null
         }
       },
       "export-id": {
@@ -195432,7 +195753,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "export",
+            "attribute": "id"
+          }
         }
       },
       "retry-segment-id": {
@@ -195442,7 +195767,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "retry_segment",
+            "attribute": "id"
+          }
         }
       },
       "gift-id": {
@@ -195452,7 +195781,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "gift",
+            "attribute": "id"
+          }
         }
       },
       "unbilled-charge-id": {
@@ -195462,7 +195795,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "unbilled_charge",
+            "attribute": "id"
+          }
         }
       },
       "addon-id": {
@@ -195472,7 +195809,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "addon",
+            "attribute": "id"
+          }
         }
       }
     },
