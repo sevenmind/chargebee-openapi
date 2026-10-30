@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-28.04cab42f60ee21dbf6354f95a959defd14814f90
+  version: 2026-10-29.bf910ce963a66761847f21436b04400f94483134
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -34451,6 +34451,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: reason_code
+          attribute: id
     invoice-id:
       name: invoice-id
       in: path
@@ -34459,6 +34462,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: invoice
+          attribute: id
     transaction-id:
       name: transaction-id
       in: path
@@ -34467,6 +34473,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: transaction
+          attribute: id
     limit:
       name: limit
       in: query
@@ -34513,6 +34522,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon_code
+          attribute: code
     comment-id:
       name: comment-id
       in: path
@@ -34521,6 +34533,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: comment
+          attribute: id
     coupon-id:
       name: coupon-id
       in: path
@@ -34529,6 +34544,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: coupon
+          attribute: id
     offset:
       name: offset
       in: query
@@ -34561,6 +34579,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: subscription
+          attribute: id
     payment-intent-id:
       name: payment-intent-id
       in: path
@@ -34569,6 +34590,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: payment_intent
+          attribute: id
     hosted-page-id:
       name: hosted-page-id
       in: path
@@ -34577,6 +34601,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: hosted_page
+          attribute: id
     chargebee-request-id:
       name: chargebee-request-id
       in: header
@@ -34598,6 +34625,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: order
+          attribute: id
     chargebee-event-webhook:
       name: chargebee-event-webhook
       in: header
@@ -34618,6 +34648,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: portal_session
+          attribute: id
     plan-id:
       name: plan-id
       in: path
@@ -34626,6 +34659,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: plan
+          attribute: id
     chargebee-request-origin-user-encoded:
       name: chargebee-request-origin-user-encoded
       in: header
@@ -34670,6 +34706,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: customer
+          attribute: id
     chargebee-request-origin-device:
       name: chargebee-request-origin-device
       in: header
@@ -34689,6 +34728,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: addon
+          attribute: id
     event-id:
       name: event-id
       in: path
@@ -34697,6 +34739,9 @@ components:
       explode: false
       schema:
         type: string
+        x-cb-references:
+          resource: event
+          attribute: id
   securitySchemes:
     BasicAuth:
       type: http

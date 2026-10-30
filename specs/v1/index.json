@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-10-28.04cab42f60ee21dbf6354f95a959defd14814f90",
+    "version": "2026-10-29.bf910ce963a66761847f21436b04400f94483134",
     "x-cb-product-catalog-version": 1,
     "x-cb-api-version": 1
   },
@@ -41840,7 +41840,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "reason_code",
+            "attribute": "id"
+          }
         }
       },
       "invoice-id": {
@@ -41850,7 +41854,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "invoice",
+            "attribute": "id"
+          }
         }
       },
       "transaction-id": {
@@ -41860,7 +41868,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "transaction",
+            "attribute": "id"
+          }
         }
       },
       "limit": {
@@ -41915,7 +41927,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon_code",
+            "attribute": "code"
+          }
         }
       },
       "comment-id": {
@@ -41925,7 +41941,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "comment",
+            "attribute": "id"
+          }
         }
       },
       "coupon-id": {
@@ -41935,7 +41955,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "coupon",
+            "attribute": "id"
+          }
         }
       },
       "offset": {
@@ -41973,7 +41997,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "subscription",
+            "attribute": "id"
+          }
         }
       },
       "payment-intent-id": {
@@ -41983,7 +42011,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "payment_intent",
+            "attribute": "id"
+          }
         }
       },
       "hosted-page-id": {
@@ -41993,7 +42025,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "hosted_page",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-id": {
@@ -42018,7 +42054,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "order",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-event-webhook": {
@@ -42043,7 +42083,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "portal_session",
+            "attribute": "id"
+          }
         }
       },
       "plan-id": {
@@ -42053,7 +42097,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "plan",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-origin-user-encoded": {
@@ -42106,7 +42154,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "customer",
+            "attribute": "id"
+          }
         }
       },
       "chargebee-request-origin-device": {
@@ -42129,7 +42181,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "addon",
+            "attribute": "id"
+          }
         }
       },
       "event-id": {
@@ -42139,7 +42195,11 @@
         "style": "simple",
         "explode": false,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "x-cb-references": {
+            "resource": "event",
+            "attribute": "id"
+          }
         }
       }
     },
