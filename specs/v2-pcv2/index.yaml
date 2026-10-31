@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-29.bf910ce963a66761847f21436b04400f94483134
+  version: 2026-10-30.cb3d093ad931f2f4afcb3dcfd76caf9b6db37f79
   x-cb-api-version: 2
   x-cb-product-catalog-version: 2
 servers:
@@ -107256,16 +107256,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -108604,16 +108604,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -109024,16 +109024,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -116672,16 +116672,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -120282,16 +120282,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -124905,16 +124905,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -127124,16 +127124,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -130461,16 +130461,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -135073,16 +135073,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -160515,12 +160515,12 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              before:
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -160555,12 +160555,12 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              before:
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -162496,11 +162496,11 @@ paths:
             type: object
             deprecated: false
             properties:
-              starts_with:
+              is:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              starts_with:
                 type: string
                 minLength: 1
                 example: null
@@ -172780,14 +172780,6 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -172795,6 +172787,14 @@ paths:
               is:
                 type: string
                 minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -229837,6 +229837,144 @@ components:
               - entity_id
               - entity_type
               - feature_id
+            example: null
+          example: null
+        credit_unit_grants_to_add:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              entity_id:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
+              entity_type:
+                type: string
+                deprecated: false
+                enum:
+                  - plan_price
+                  - addon_price
+                  - charge_price
+                example: null
+              unit_id:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
+              unit_type:
+                type: string
+                deprecated: false
+                enum:
+                  - custom_pricing_unit
+                example: null
+              is_enabled:
+                type: boolean
+                default: true
+                deprecated: false
+                example: null
+              grant_policies:
+                type: array
+                deprecated: false
+                items:
+                  example: null
+                example: null
+            required:
+              - entity_id
+              - entity_type
+              - is_enabled
+              - unit_id
+              - unit_type
+            example: null
+          example: null
+        credit_unit_grants_to_update:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              entity_id:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
+              entity_type:
+                type: string
+                deprecated: false
+                enum:
+                  - plan_price
+                  - addon_price
+                  - charge_price
+                example: null
+              unit_id:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
+              unit_type:
+                type: string
+                deprecated: false
+                enum:
+                  - custom_pricing_unit
+                example: null
+              is_enabled:
+                type: boolean
+                default: true
+                deprecated: false
+                example: null
+              grant_policies:
+                type: array
+                deprecated: false
+                items:
+                  example: null
+                example: null
+            required:
+              - entity_id
+              - entity_type
+              - is_enabled
+              - unit_id
+              - unit_type
+            example: null
+          example: null
+        credit_unit_grants_to_remove:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              entity_id:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
+              entity_type:
+                type: string
+                deprecated: false
+                enum:
+                  - plan_price
+                  - addon_price
+                  - charge_price
+                example: null
+              unit_id:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
+              unit_type:
+                type: string
+                deprecated: false
+                enum:
+                  - custom_pricing_unit
+                example: null
+            required:
+              - entity_id
+              - entity_type
+              - unit_id
+              - unit_type
             example: null
           example: null
       required:
