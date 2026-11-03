@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-10-30.cb3d093ad931f2f4afcb3dcfd76caf9b6db37f79
+  version: 2026-11-02.1564e82f3eb98cef999305a0400a7cdcb25dcb90
   x-cb-product-catalog-version: 1
   x-cb-api-version: 2
 servers:
@@ -44773,7 +44773,7 @@ paths:
       tags:
         - invoices
       summary: Import invoice
-      description: "Imports an invoice into Chargebee Billing. This endpoint allows you to import an invoice from external systems, such as accounting software, into Chargebee.  \n**Caution: Importing Current-Term Invoices**\nTo ensure accurate [proration](https://www.chargebee.com/docs/1.0/proration.html#introduction_proration) for any changes to the subscription in the current term, only import one current term invoice. Chargebee considers only the first imported invoice for the current term when calculating proration. If there are multiple invoices for the current term in the source system, consolidate them into a single invoice before importing it into Chargebee.\n"
+      description: "Imports an invoice into Chargebee Billing. This endpoint allows you to import an invoice from external systems, such as accounting software, into Chargebee.  \n**Caution: Importing Current-Term Invoices**\nTo ensure accurate [proration](https://www.chargebee.com/docs/1.0/proration.html#introduction_proration) for any changes to the subscription in the current term, only import one current term invoice. Chargebee considers only the first imported invoice for the current term when calculating proration. If there are multiple invoices for the current term in the source system, consolidate them into a single invoice before importing it into Chargebee.  \n\n### Implementation Notes\n\n* To exempt one line, pass `line_items[tax_exempt_reason][]` and omit taxes for that line. Do not pass it together with `tax_override_reason`. `reverse_charge` requires `vat_number`. Omit this parameter when `status` is `pending`. Do not send `tax_not_configured`.\n* `zero_rated` may include line item taxes only when every matching `taxes[rate]` and `line_items[tax*_amount]` is `0`.\n* `line_items.is_taxed` depends on where `zero_rated` is set:\n  * `line_items[tax_exempt_reason][]` of `zero_rated` stores the line with tax rate `0`, tax amount `0`, and [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) set to `true`.\n  * `tax_override_reason` of `zero_rated` stores each line with [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) set to `false`.\n"
       operationId: import_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -44927,23 +44927,7 @@ paths:
                 tax_override_reason:
                   type: string
                   deprecated: false
-                  description: |
-                    The reason for exempting the invoice from tax. (Applicable only for exempted invoices.).
-
-                    * zero_rated - If the rate of tax is 0% and no Sales/ GST tax is collectable for that line item
-                    * export - The customer is from a non-taxable region or the billing address and shipping address are unavailable.
-                    * customer_exempt -
-                      The customer is [exempted](/docs/api/customers/customer-object#taxability)
-                      from tax.
-                    * tax_not_configured_external_provider - If the tax is not configured for the country in 3rd party tax provider.
-                    * id_exempt -
-                      The customer is from a different country than your business and they have a valid VAT number or, the customer is a business entity. (This reason is only applicable when [EU VAT](https://www.chargebee.com/docs/eu-vat.html)
-                      or [UK VAT](https://www.chargebee.com/docs/uk-vat.html)
-                      is enabled.)
-                    * high_value_physical_goods - If physical goods are sold from outside Australia to customers in Australia, and the price of all the physical good line items is greater than AUD 1000, then tax will not be applied
-                    * product_exempt - If the Plan or Addon is marked as Tax exempt
-                    * region_non_taxable - If the product sold is not taxable in this region, but it is taxable in other regions, hence this region is not part of the Taxable jurisdiction
-                    * zero_value_item - If the total invoice value/amount is equal to zero. E.g., If the total order value is $10 and a $10 coupon has been applied against that order, the total order value becomes $0. Hence the invoice value also becomes $0.
+                  description: "The reason for exempting the invoice from tax. The reason applies to every line item. Applicable only for exempt invoices.  \n**Constraints**\n\n* Must not be sent when `line_items[tax_exempt_reason]` is sent.\n\n* zero_rated -\n  If the rate of tax is 0% and no Sales/ GST tax is collectable for that line item.\n  Each line is stored with [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) set to `false`.\n* export - The customer is from a non-taxable region or the billing address and shipping address are unavailable.\n* customer_exempt -\n  The customer is [exempted](/docs/api/customers/customer-object#taxability)\n  from tax.\n* tax_not_configured_external_provider - If the tax is not configured for the country in 3rd party tax provider.\n* id_exempt -\n  The customer is from a different country than your business and they have a valid VAT number or, the customer is a business entity. (This reason is only applicable when [EU VAT](https://www.chargebee.com/docs/eu-vat.html)\n  or [UK VAT](https://www.chargebee.com/docs/uk-vat.html)\n  is enabled.)\n* high_value_physical_goods - If physical goods are sold from outside Australia to customers in Australia, and the price of all the physical good line items is greater than AUD 1000, then tax will not be applied\n* product_exempt - If the Plan or Addon is marked as Tax exempt\n* region_non_taxable - If the product sold is not taxable in this region, but it is taxable in other regions, hence this region is not part of the Taxable jurisdiction\n* zero_value_item - If the total invoice value/amount is equal to zero. E.g., If the total order value is $10 and a $10 coupon has been applied against that order, the total order value becomes $0. Hence the invoice value also becomes $0.\n"
                   enum:
                     - zero_rated
                     - id_exempt
@@ -44959,7 +44943,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Vat Number. Required if this invoice is VAT exempted.
+                    VAT number. Required when `tax_override_reason` is `id_exempt`. Also required when `line_items[tax_exempt_reason]` is `reverse_charge`.
                   maxLength: 20
                   example: null
                 vat_number_prefix:
@@ -45798,7 +45782,7 @@ paths:
                       example: null
                     is_partial_tax_applied:
                       type: array
-                      description: "Indicates whether tax is applied only to a portion of the line item amount.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n"
+                      description: "Indicates whether tax is applied only to a portion of the line item amount.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n* Must not be sent when `line_items[tax_exempt_reason]` is sent.\n"
                       items:
                         type: boolean
                         deprecated: false
@@ -45806,7 +45790,7 @@ paths:
                       example: null
                     taxable_amount:
                       type: array
-                      description: "The portion of the line item amount, in cents, that is taxable.\nChargebee stores this on import so later credit notes tax this amount instead of the full line item amount.  \n**Required if**\n\n* `line_items[is_partial_tax_applied]` is `true`.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n"
+                      description: "The portion of the line item amount, in cents, that is taxable.\nChargebee stores this on import so later credit notes tax this amount instead of the full line item amount.  \n**Required if**\n\n* `line_items[is_partial_tax_applied]` is `true`.  \n**Constraints**\n\n* Must not be provided when the line item has no taxes.\n* Must not be sent when `line_items[tax_exempt_reason]` is sent.\n"
                       items:
                         type: integer
                         format: int64
@@ -45819,6 +45803,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
+                        description: "The reason this line item is exempt from tax. Accepts the same values as [`line_items.tax_exempt_reason`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_tax_exempt_reason), including `reverse_charge`. Do not send `tax_not_configured`. That value is returned on invoices, and import invoice does not accept it.\n\nOmit line item taxes for this line. Use `tax_override_reason` when every line is exempt for the same reason other than `zero_rated`. For `zero_rated`, pass this parameter on each line to store [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) as `true`. Invoice-level `tax_override_reason` of `zero_rated` stores [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) as `false`. Line item taxes are allowed with `zero_rated` only when every matching `taxes[rate]` and `line_items[tax*_amount]` is `0`.  \n**Constraints**\n\n* Must not be sent when `tax_override_reason` is sent.\n* Must not be sent when `status` is `pending`.\n* Must not be sent with line item taxes (`line_items[tax*_name]` and `line_items[tax*_amount]`), except `zero_rated` when every matching `taxes[rate]` and `line_items[tax*_amount]` is `0`.\n* Must not be sent when `line_items[is_partial_tax_applied]` or `line_items[taxable_amount]` is sent.\n* `reverse_charge` requires `vat_number`.  \n**Impacts**\n\n* When this value is `zero_rated`, the line is stored with tax rate `0`, tax amount `0`, and [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) set to `true`. This matches a normal zero-rate tax calculation.\n* When the invoice is exempted with `tax_override_reason` set to `zero_rated`, [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) is `false`.\n\n* zero_value_item - The total invoice amount is zero. For example, a $10 order with a $10 coupon applied has an invoice total of $0.\n* reverse_charge - The customer is a B2B customer identified by a VAT number. Applicable for EU VAT. Requires `vat_number`.\n* high_value_physical_goods - Physical goods are sold from outside Australia to customers in Australia, and the price of all physical-goods line items is greater than AUD 1000, so tax is not applied.\n* tax_not_configured_external_provider - Tax is not configured for the country in the third-party tax provider.\n* customer_exempt - The customer is marked as tax exempt.\n* region_non_taxable - The product is not taxable in this region, so this region is outside the taxable jurisdiction.\n* product_exempt - The plan or addon is marked as tax exempt.\n* zero_rated -\n  The tax rate is 0% and no sales or GST tax is collectable for this line item.\n  Line item taxes are allowed only when every matching `taxes[rate]` and `line_items[tax*_amount]` is `0`.\n  The line is stored with tax rate `0`, tax amount `0`, and [`line_items.is_taxed`](/docs/api/v2/pcv-1/invoices/invoice-object#line_items_is_taxed) set to `true`.\n* export - You are not registered for tax in the customer's region. This is also the reason when both `billing_address` and `shipping_address` are missing.\n"
                         enum:
                           - region_non_taxable
                           - export
@@ -47646,13 +47631,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: payment_reference_number
           in: query
@@ -47675,13 +47660,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  in:
-                    type: string
-                    pattern: ^\[(.*)(,.*)*\]$
-                    example: null
                   is:
                     type: string
                     minLength: 1
+                    example: null
+                  in:
+                    type: string
+                    pattern: ^\[(.*)(,.*)*\]$
                     example: null
             example: null
       responses:
@@ -49506,6 +49491,13 @@ paths:
       summary: Import credit note
       description: |
         Use this api to import credit notes into your Chargebee site. Billing address, Shipping Address, Vat number will be copied from the reference invoice.
+
+        `line_items[tax_exempt_reason]` is not accepted. Chargebee copies the tax-exempt reason from the reference [invoice](/docs/api/v2/pcv-1/invoices).
+
+        * When every invoice line has the same tax-exempt reason, that reason applies to the credit note.
+        * Pass `line_items[reference_line_item_id][]` on every credit note line to keep each invoice line's tax-exempt reason. Chargebee copies each line's reason from that invoice line. If any tax on the invoice line has no exempt reason, the credit note line is not treated as exempt. By default, import fails when the invoice lines have different reasons and any credit note line omits that reference. When `app.tax.allow_multiple_tax_override_reason_on_cn_import` is enabled, that import is allowed and every credit note line uses the first invoice line's tax-exempt reason.
+        * For `zero_rated`, pass `line_items[reference_line_item_id][]` so [`line_items.is_taxed`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#line_items_is_taxed) matches the invoice line. A line imported with [`line_items[tax_exempt_reason]`](/docs/api/v2/pcv-1/invoices/import-invoice) of `zero_rated` has `is_taxed` set to `true`. The credit note line that references it does too, including when every invoice line is `zero_rated`. If that reference is omitted, the credit note line is stored with `is_taxed` set to `false`. An invoice imported with `tax_override_reason` of `zero_rated` has `is_taxed` set to `false`, and the credit note line does too.
+        * The reference invoice must already have `vat_number` when a copied reason is `reverse_charge`. Chargebee copies that number onto the credit note. This operation does not accept `vat_number`.
       operationId: import_credit_note
       parameters:
         - name: chargebee-request-origin-device
@@ -93397,13 +93389,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -111046,13 +111038,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: ^\[(.*)(,.*)*\]$
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: ^\[(.*)(,.*)*\]$
                       example: null
                 coupon:
                   type: object
@@ -124754,13 +124746,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: reference_id
           in: query
@@ -124782,13 +124774,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: updated_at
           in: query
@@ -148881,6 +148873,24 @@ components:
           deprecated: false
           description: |
             Boolean indicating any advance charge is present in this invoice.
+          example: null
+        offline_payment_method:
+          type: string
+          deprecated: false
+          enum:
+            - no_preference
+            - cash
+            - check
+            - bank_transfer
+            - ach_credit
+            - sepa_credit
+            - boleto
+            - us_automated_bank_transfer
+            - eu_automated_bank_transfer
+            - uk_automated_bank_transfer
+            - jp_automated_bank_transfer
+            - mx_automated_bank_transfer
+            - custom
           example: null
         term_finalized:
           type: boolean
