@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-03.6df0a63374d53dbf6bae25b900ebea22858928dc
+  version: 2026-11-04.ba205d0427f5dbc9bf8969b1b203a9999c114bc8
   x-cb-api-version: 2
   x-cb-product-catalog-version: 2
 servers:
@@ -100,6 +100,10 @@ tags:
     description: Subscriptions are created in Chargebee using items.
   - name: full_exports
     description: The Full Export API allows bulk download of various datasets from a secure location where data is loaded daily on a predefined schedule.
+  - name: gateway_request_logs
+    description: Operations on the `gateway_request_logs` resource.
+  - name: gateway_webhook_logs
+    description: Operations on the `gateway_webhook_logs` resource.
   - name: gifts
     description: Gift represents a subscription of a customer(**recipient** ) to a 'gift plan' which has been gifted by another customer(**gifter**).
   - name: grant_blocks
@@ -1985,7 +1989,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                     proration_type:
@@ -6018,12 +6022,6 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - tamara
-                        - qpay
-                        - blik
-                        - fpx
-                        - wero
-                        - p24
                       example: null
                     reference_number:
                       type: string
@@ -6315,7 +6313,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                   required:
@@ -10162,7 +10160,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                     charge_on_option:
@@ -18529,12 +18527,6 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - tamara
-                        - qpay
-                        - blik
-                        - fpx
-                        - wero
-                        - p24
                       example: null
                     reference_number:
                       type: string
@@ -34184,6 +34176,1617 @@ paths:
       deprecated: false
       security:
         - BasicAuth: []
+  /gateway_request_logs/{gateway-request-log-log-id}:
+    get:
+      tags:
+        - gateway_request_logs
+      summary: Retrieve a gateway request log
+      operationId: retrieve_a_gateway_request_log
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: gateway-request-log-log-id
+          in: path
+          required: true
+          deprecated: false
+          $ref: '#/components/parameters/gateway-request-log-log-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gateway_request_log:
+                    $ref: '#/components/schemas/GatewayRequestLog'
+                    description: Resource object representing gateway_request_log
+                required:
+                  - gateway_request_log
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+  /gateway_request_logs:
+    get:
+      tags:
+        - gateway_request_logs
+      summary: List gateway request logs
+      operationId: list_gateway_request_logs
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: limit
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/limit'
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 10
+            description: The number of resources to be returned.
+            maximum: 100
+            minimum: 1
+            example: null
+        - name: offset
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/offset'
+          style: form
+          explode: true
+          schema:
+            type: string
+            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
+            maxLength: 1000
+            example: null
+        - name: log_id
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: This is a unique identifier assigned by open search. It is used to track the request within the Chargebee open search system
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: gateway
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment Gateway through which the API call was made.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: status_code
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Http status code of the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: method
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Http Method of the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: url
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Third Party Gateway URL that was invoked.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: customer_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Customer handle used in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: invoice_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Invoice handle used in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: transaction_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Transaction handle used in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: payment_method_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment Method handle used in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: gateway_credential_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Gateway Credential used for the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: payment_attempt_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment Attempt handle used in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: payment_intent_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment Intent handle used in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: operation_name
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Name of the operation performed in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: operation_type
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Type of the operation performed in the API call.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: source
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Source of the API call (e.g., Chargebee App, OpenPay, etc.).
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: invocation_time
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: API invocation time in milliseconds.
+            properties:
+              after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
+            example: null
+        - name: response_received_at
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Timestamp when response was received from Gateway.
+            properties:
+              after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
+            example: null
+        - name: sort_by
+          in: query
+          required: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            additionalProperties: true
+            properties:
+              asc:
+                type: string
+                enum:
+                  - invocation_time
+                example: null
+              desc:
+                type: string
+                enum:
+                  - invocation_time
+                example: null
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        gateway_request_log:
+                          $ref: '#/components/schemas/GatewayRequestLog'
+                          description: Resource object representing gateway_request_log
+                      required:
+                        - gateway_request_log
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+  /gateway_webhook_logs/{gateway-webhook-log-webhook-id}:
+    get:
+      tags:
+        - gateway_webhook_logs
+      summary: Retrieve a gateway webhook log
+      operationId: retrieve_a_gateway_webhook_log
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: gateway-webhook-log-webhook-id
+          in: path
+          required: true
+          deprecated: false
+          $ref: '#/components/parameters/gateway-webhook-log-webhook-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gateway_webhook_log:
+                    $ref: '#/components/schemas/GatewayWebhookLog'
+                    description: Resource object representing gateway_webhook_log
+                required:
+                  - gateway_webhook_log
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+  /gateway_webhook_logs:
+    get:
+      tags:
+        - gateway_webhook_logs
+      summary: List gateway webhook logs
+      operationId: list_gateway_webhook_logs
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: limit
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/limit'
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 10
+            description: The number of resources to be returned.
+            maximum: 100
+            minimum: 1
+            example: null
+        - name: offset
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/offset'
+          style: form
+          explode: true
+          schema:
+            type: string
+            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
+            maxLength: 1000
+            example: null
+        - name: webhook_id
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Unique identifier for the webhook log in OpenSearch.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: gateway
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment gateway that sent the webhook.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: status_code
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: HTTP status code returned in the webhook response.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: method
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: HTTP method of the incoming webhook request.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: url
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: URL from which the webhook request was received.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: id_at_gateway
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Gateway transaction reference from webhook metadata (e.g. Adyen originalReference or pspReference) for linking to transactions.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: customer_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Customer handle resolved from the matched transaction or payment intent for UI deep links.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: invoice_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Invoice number from the matched transaction when available.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: transaction_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Chargebee transaction external_id resolved from id_at_gateway for UI deep links.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: payment_method_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment method external id from the matched transaction when available.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: gateway_credential_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Gateway credential external id from the matched transaction or payment intent.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: payment_attempt_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment attempt token or id resolved from id_at_gateway when no transaction match.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: payment_intent_handle
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Payment intent external id from the matched payment attempt when available.
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+            example: null
+        - name: received_at
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Timestamp when the webhook was received.
+            properties:
+              after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              "on":
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
+            example: null
+        - name: sort_by
+          in: query
+          required: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            additionalProperties: true
+            properties:
+              asc:
+                type: string
+                enum:
+                  - received_at
+                example: null
+              desc:
+                type: string
+                enum:
+                  - received_at
+                example: null
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        gateway_webhook_log:
+                          $ref: '#/components/schemas/GatewayWebhookLog'
+                          description: Resource object representing gateway_webhook_log
+                      required:
+                        - gateway_webhook_log
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
   /invoices/{invoice-id}/delete_line_items:
     post:
       tags:
@@ -39465,6 +41068,23 @@ paths:
                         maxLength: 50
                         example: null
                       example: null
+                    amount:
+                      type: array
+                      items:
+                        type: integer
+                        format: int64
+                        deprecated: false
+                        minimum: 1
+                        example: null
+                      example: null
+                    applied_at:
+                      type: array
+                      items:
+                        type: integer
+                        format: unix-time
+                        deprecated: false
+                        example: null
+                      example: null
                   example: null
               example: null
             encoding:
@@ -42477,12 +44097,6 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - tamara
-                        - qpay
-                        - blik
-                        - fpx
-                        - wero
-                        - p24
                       example: null
                     reference_number:
                       type: string
@@ -44346,12 +45960,6 @@ paths:
                           - bank_transfer
                           - other
                           - custom
-                          - tamara
-                          - qpay
-                          - blik
-                          - fpx
-                          - wero
-                          - p24
                         example: null
                       example: null
                     date:
@@ -47051,12 +48659,6 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - tamara
-                        - qpay
-                        - blik
-                        - fpx
-                        - wero
-                        - p24
                       example: null
                     reference_number:
                       type: string
@@ -48116,12 +49718,6 @@ paths:
                         - bank_transfer
                         - other
                         - custom
-                        - tamara
-                        - qpay
-                        - blik
-                        - fpx
-                        - wero
-                        - p24
                       example: null
                     reference_number:
                       type: string
@@ -49296,12 +50892,6 @@ paths:
                           - bank_transfer
                           - other
                           - custom
-                          - tamara
-                          - qpay
-                          - blik
-                          - fpx
-                          - wero
-                          - p24
                         example: null
                       example: null
                     date:
@@ -63913,12 +65503,6 @@ paths:
                     - bank_transfer
                     - other
                     - custom
-                    - tamara
-                    - qpay
-                    - blik
-                    - fpx
-                    - wero
-                    - p24
                   example: null
                 date:
                   type: integer
@@ -74164,7 +75748,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                     charge_on_option:
@@ -78421,7 +80005,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                     proration_type:
@@ -80007,7 +81591,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                     charge_on_option:
@@ -107259,16 +108843,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -108607,16 +110191,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -109027,16 +110611,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -116675,16 +118259,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -120285,16 +121869,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -124908,16 +126492,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -127127,16 +128711,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -130464,16 +132048,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -135076,16 +136660,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -151019,7 +152603,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                   required:
@@ -151172,7 +152756,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                   required:
@@ -152358,7 +153942,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                   required:
@@ -152511,7 +154095,7 @@ paths:
                       items:
                         type: string
                         deprecated: false
-                        maxLength: 500
+                        maxLength: 2000
                         example: null
                       example: null
                   required:
@@ -160559,21 +162143,21 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
               before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
-                example: null
-              after:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -160599,21 +162183,21 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
               before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
-                example: null
-              after:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -172824,15 +174408,15 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
                 example: null
               in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
@@ -203237,6 +204821,239 @@ components:
         - id
         - status
       example: null
+    GatewayRequestLog:
+      type: object
+      properties:
+        log_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        url:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        status_code:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        method:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        request_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        request_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        gateway:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        customer_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        invoice_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        transaction_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        gateway_credential_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_attempt_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_intent_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        operation_name:
+          type: string
+          deprecated: false
+          maxLength: 200
+          example: null
+        operation_type:
+          type: string
+          deprecated: false
+          maxLength: 200
+          example: null
+        action_type:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        source:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        trace_id_hash:
+          type: string
+          deprecated: false
+          maxLength: 300
+          example: null
+        invocation_time:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        response_received_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        response_time:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+      example: null
+    GatewayWebhookLog:
+      type: object
+      properties:
+        webhook_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        url:
+          type: string
+          deprecated: false
+          maxLength: 500
+          example: null
+        method:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        status_code:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        gateway:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        id_at_gateway:
+          type: string
+          deprecated: false
+          maxLength: 200
+          example: null
+        customer_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        invoice_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        transaction_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        gateway_credential_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_attempt_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_intent_handle:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        payment_method_name:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        request_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_body:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        request_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        response_headers:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        received_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        response_time:
+          type: integer
+          format: int64
+          deprecated: false
+          example: null
+      example: null
     Gift:
       type: object
       description: |
@@ -219288,12 +221105,6 @@ components:
         - bank_transfer
         - other
         - custom
-        - tamara
-        - qpay
-        - blik
-        - fpx
-        - wero
-        - p24
         - chargeback
         - card
         - amazon_payments
@@ -219349,6 +221160,8 @@ components:
         - promptpay
         - dana
         - touch_n_go
+        - tamara
+        - qpay
         - ovo
         - momo
         - mercado_pago
@@ -219356,6 +221169,10 @@ components:
         - nupay
         - picpay
         - thai_qr
+        - blik
+        - fpx
+        - wero
+        - p24
         - affirm_pay
         - rakuten_pay
       example: null
@@ -228671,7 +230488,7 @@ components:
                   The description stored for this item on this quoted subscription. It is used on the customer-facing invoice instead of the description configured for the item price, and is returned as `entity_description` on the invoice [line item](/docs/api/invoices/invoice-object#invoice_line_items).
 
                   This attribute is returned only when a description has been stored for the item. When it is absent, the description configured for the item price applies. Whether a description is shown on the invoice at all continues to be controlled by the item price's [show_description_in_invoices](/docs/api/item_prices#show_description_in_invoices) setting.
-                maxLength: 500
+                maxLength: 2000
                 example: null
             required:
               - item_price_id
@@ -229147,7 +230964,7 @@ components:
               description:
                 type: string
                 deprecated: false
-                maxLength: 500
+                maxLength: 2000
                 example: null
               charge_on_event:
                 type: string
@@ -229342,7 +231159,7 @@ components:
               description:
                 type: string
                 deprecated: false
-                maxLength: 500
+                maxLength: 2000
                 example: null
               charge_on_event:
                 type: string
@@ -233372,7 +235189,7 @@ components:
                   The description stored for this item on this subscription. It is used on the customer-facing invoice instead of the description configured for the item price, and is returned as `entity_description` on the invoice [line item](/docs/api/invoices/invoice-object#invoice_line_items).
 
                   This attribute is returned only when a description has been stored for the item on this subscription. When it is absent, the description configured for the item price applies. Whether a description is shown on the invoice at all continues to be controlled by the item price's [show_description_in_invoices](/docs/api/item_prices#show_description_in_invoices) setting.
-                maxLength: 500
+                maxLength: 2000
                 example: null
             required:
               - item_price_id
@@ -244565,6 +246382,17 @@ components:
         x-cb-references:
           resource: differential_price
           attribute: id
+    gateway-request-log-log-id:
+      name: gateway-request-log-log-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: gateway_request_log
+          attribute: log_id
     billing-desk-email-attachment-id:
       name: billing-desk-email-attachment-id
       in: path
@@ -245014,6 +246842,17 @@ components:
         x-cb-references:
           resource: coupon
           attribute: id
+    gateway-webhook-log-webhook-id:
+      name: gateway-webhook-log-webhook-id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        x-cb-references:
+          resource: gateway_webhook_log
+          attribute: webhook_id
     payment-intent-id:
       name: payment-intent-id
       in: path
