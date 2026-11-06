@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-04.ba205d0427f5dbc9bf8969b1b203a9999c114bc8
-  x-cb-api-version: 2
+  version: 2026-11-05.b37e0c65afb167bb9be0506becab9ab6443e6bfa
   x-cb-product-catalog-version: 2
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -59,7 +59,7 @@ tags:
   - name: cards
     description: '#### Deprecated The [Payment Sources API](/docs/api/payment_sources) , with its additional options and improvements, obsoletes the Cards APIs.'
   - name: collections_payment_promises
-    description: Tracks a customer's commitment to pay.
+    description: A collections payment promise represents a customer's commitment to pay a specific invoice by a promised date.
   - name: comments
     description: Comments are additional information that you can add to your resources.
   - name: configurations
@@ -34451,13 +34451,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -34479,13 +34479,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -34507,13 +34507,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -34535,13 +34535,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -34563,13 +34563,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -34591,13 +34591,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -34619,13 +34619,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -34647,13 +34647,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -34675,13 +34675,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -34703,13 +34703,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -34731,13 +34731,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -34759,13 +34759,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_name
@@ -34787,13 +34787,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_type
@@ -34815,13 +34815,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: source
@@ -34843,13 +34843,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invocation_time
@@ -35300,13 +35300,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -35328,13 +35328,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -35356,13 +35356,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -35384,13 +35384,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -35412,13 +35412,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: id_at_gateway
@@ -35440,13 +35440,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -35468,13 +35468,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -35496,13 +35496,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -35524,13 +35524,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -35552,13 +35552,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -35580,13 +35580,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -35608,13 +35608,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -35636,13 +35636,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: received_at
@@ -98959,6 +98959,16 @@ paths:
                           example: null
                         example: null
                       example: null
+                    window_size:
+                      type: array
+                      items:
+                        type: string
+                        deprecated: false
+                        enum:
+                          - day
+                          - none
+                        example: null
+                      example: null
                   example: null
               example: null
             encoding:
@@ -102532,6 +102542,7 @@ paths:
             * price_variant - Entity that represents a price variant
             * coupon - Entity that represents a discount coupon
             * subscription - Entity that represents a subscription of a customer
+            * task - Entity that represents a task
             * item_family - Entity that represents item family
             * transaction - Entity that represents a transaction.
             * addon - Entity that represents an addon
@@ -102876,6 +102887,7 @@ paths:
                     * price_variant - Entity that represents a price variant
                     * coupon - Entity that represents a discount coupon
                     * subscription - Entity that represents a subscription of a customer
+                    * task - Entity that represents a task
                     * item_family - Entity that represents item family
                     * transaction - Entity that represents a transaction.
                     * addon - Entity that represents an addon
@@ -162143,21 +162155,21 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
-                example: null
-              before:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
               after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -162183,21 +162195,21 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
-                example: null
-              before:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
               "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
+                example: null
               after:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -174416,13 +174428,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -176763,7 +176775,7 @@ paths:
         - collections_payment_promises
       summary: List collections payment promises
       description: |
-        Lists collections payment promises for your site. Use filter parameters to narrow results by customer, invoice, or status.
+        Lists collections payment promises. All filters are optional; without filters, promises are returned newest first.
       operationId: list_collections_payment_promises
       parameters:
         - name: chargebee-request-origin-device
@@ -176869,7 +176881,7 @@ paths:
             is
 
             **Example →**
-            *customer_id\[is\] = "cbdemo_alicia"*
+            *customer_id\[is\] = "Azq8CVnhdtD7C1xD"*
           required: false
           deprecated: false
           style: deepObject
@@ -176893,7 +176905,7 @@ paths:
             is
 
             **Example →**
-            *invoice_id\[is\] = "__demo_inv__4"*
+            *invoice_id\[is\] = "inv_123"*
           required: false
           deprecated: false
           style: deepObject
@@ -177038,7 +177050,11 @@ paths:
         - collections_payment_promises
       summary: Create a collections payment promise
       description: |
-        Creates a collections payment promise for a customer, with the promised amount and the date payment was promised. Include `invoice_id` when the promise applies to a specific invoice.
+        Creates a collections payment promise that records a customer's commitment to pay by `promised_on`. The response is a list with one promise for each covered invoice.
+
+        To cover one invoice, pass `invoice_id` and an `amount` equal to that invoice's amount due. That invoice must not already have an active promise. Without `invoice_id`, open invoices are covered oldest due date first, and invoices that already have an active promise are skipped. `amount` must equal the combined amount due of the invoices covered in that order. Any other amount is rejected. If open invoices span more than one currency, pass `currency_code`.
+
+        Each covered invoice's active reminder sequence is paused until you resume it. It does not resume when the promise ends. Without `invoice_id`, the request is rejected when the customer has more than 200 open invoices or active promises.
       operationId: create_a_collections_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -177157,14 +177173,14 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Identifier of the customer for whom the payment promise is being created. This field is required.
+                    Customer making the promise. This field is required.
                   maxLength: 100
                   example: null
                 invoice_id:
                   type: string
                   deprecated: false
                   description: |
-                    Identifier of the invoice associated with this promise. This field is optional.
+                    Invoice to cover. Leave out to cover the customer's open invoices, oldest due date first.
                   maxLength: 100
                   example: null
                 amount:
@@ -177172,13 +177188,15 @@ paths:
                   format: int64
                   deprecated: false
                   description: |
-                    Amount promised by the customer, in the smallest currency unit (for example, cents for USD). This field is required.
+                    Amount the customer promises to pay, in the currency's smallest unit (for example, cents).
+                    With `invoice_id`, it must equal that invoice's amount due. Without `invoice_id`, it must equal the combined amount due of whole open invoices, taken oldest due date first. Any other amount is rejected.
                   example: null
                 currency_code:
                   type: string
                   deprecated: false
                   description: |
-                    Currency code for `amount` in ISO 4217 format. If omitted, the site's base currency is used.
+                    ISO 4217 currency code. Without `invoice_id`, only open invoices in this currency are covered, and `currency_code` is required when the customer's open invoices are in more than one currency.
+                    Ignored when `invoice_id` is passed.
                   maxLength: 3
                   example: null
                 promised_on:
@@ -177199,7 +177217,7 @@ paths:
                   type: string
                   deprecated: false
                   description: |
-                    Name or identifier of the person who captured this promise.
+                    Name or identifier of the user or agent who captured this promise.
                   maxLength: 254
                   example: null
               required:
@@ -177219,7 +177237,7 @@ paths:
                   collections_payment_promises:
                     type: array
                     description: |
-                      The collections payment promises created by this request.
+                      One `collections_payment_promise` resource for each covered invoice.
                     items:
                       $ref: '#/components/schemas/CollectionsPaymentPromise'
                       description: Resource object representing collections_payment_promise
@@ -177296,7 +177314,9 @@ paths:
         - collections_payment_promises
       summary: Cancel a collections payment promise
       description: |
-        Cancels an active collections payment promise that is no longer expected to be fulfilled.
+        Cancels an active collections payment promise. Cancelling does not resume the invoice's reminder sequence.
+
+        A promise can also end automatically. When the invoice is paid, the promise becomes `fulfilled` or `broken`. When the invoice is voided, written off, or deleted, the promise becomes `cancelled`.
       operationId: cancel_a_collections_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -177499,7 +177519,7 @@ paths:
         - collections_payment_promises
       summary: Retrieve a payment promise
       description: |
-        Returns a collections payment promise by its ID, including the promise date and current status.
+        Retrieves a collections payment promise by ID.
       operationId: retrieve_a_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -177659,7 +177679,7 @@ paths:
         - collections_payment_promises
       summary: Update a collections payment promise
       description: |
-        Updates an existing collections payment promise. Use this to revise promise details such as `promised_by`, `promised_on`, or `reason`.
+        Updates an active collections payment promise. You can change `promised_on`, `reason`, or `promised_by`; omitted parameters remain unchanged.
       operationId: update_a_collections_payment_promise
       parameters:
         - name: chargebee-request-origin-device
@@ -177789,20 +177809,20 @@ paths:
                   format: unix-time
                   deprecated: false
                   description: |
-                    Updated promised payment date as a UTC timestamp in seconds.
+                    Updated promised payment date as a UTC timestamp in seconds. Must be in the future.
                   example: null
                 reason:
                   type: string
                   deprecated: false
                   description: |
-                    Optional note describing the reason for this update.
+                    Optional note describing the context or reason for capturing this promise. Replaces the stored value. If you leave out `reason`, the stored value is unchanged.
                   maxLength: 500
                   example: null
                 promised_by:
                   type: string
                   deprecated: false
                   description: |
-                    Name or identifier of the user or agent updating this payment promise.
+                    Name or identifier of the user or agent who captured this promise. Replaces the stored value.
                   maxLength: 254
                   example: null
               example: null
@@ -183695,6 +183715,58 @@ components:
         - using_defaults
         - manually_set
       example: null
+    BillingLineItem:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        invoice_number:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        quantity:
+          type: number
+          format: decimal
+          deprecated: false
+          example: null
+      example: null
+    BillingMetadata:
+      type: object
+      properties:
+        item_price_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        line_items:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              id:
+                type: string
+                deprecated: false
+                maxLength: 40
+                example: null
+              invoice_number:
+                type: string
+                deprecated: false
+                maxLength: 50
+                example: null
+              quantity:
+                type: number
+                format: decimal
+                deprecated: false
+                example: null
+            example: null
+          example: null
+      example: null
     BillingMetricBreakdown:
       type: object
       properties:
@@ -184554,7 +184626,7 @@ components:
       example: null
     BusinessRule:
       type: object
-      description: "A business rule pairs a condition with the actions to take when that condition is met. You supply the context to evaluate, and Chargebee returns the actions configured in `actions_on_success` when the condition evaluates to `true`.\n\nBusiness Rules APIs manage [CPQ Selling Rules](https://www.chargebee.com/docs/cpq/selling-rules).\n\nThe condition is defined in `structured_expression`, a JSON representation of the rule logic that visual editors and dynamic rule builders can both read and write. Chargebee validates and compiles the expression when the rule is created or updated, and evaluates the compiled form when you call [Apply business rules](/docs/api/business_rules/apply-business-rules).\n\nThe `field` of every condition is resolved against the context supplied at evaluation time, so the fields you reference must match the keys of the context the rule is evaluated against. A condition whose `field` is absent from the context never evaluates to `true`, which means the rule never matches.\n\nBusiness rules are versioned. Creating a rule releases its first version, so `latest_version` is `1` and `released_at` is set from the outset. Editing a rule leaves that released version untouched: the first edit creates a draft, and every later edit updates the same draft. [Releasing](/docs/api/business_rules/release-a-business-rule) the draft promotes it to the next version number, and that version becomes the latest released version and the one Chargebee evaluates. Until you release it, the previously released version stays in effect, so a rule can keep serving traffic while its next version is being prepared.\n\nThe `active` attribute is an independent switch that controls whether Chargebee evaluates the rule at all. A rule is created inactive, so it has to be [activated](/docs/api/business_rules/activate-a-business-rule) before it takes effect.\n\nRelated rules can be grouped into a [business ruleset](/docs/api/business_rulesets), which evaluates its member rules in priority order using the strategy configured in the ruleset's `execute_mode`.\n\nFor a walkthrough that creates, activates, and applies a rule in three calls, take a look at the [Business Rules quickstart](https://www.chargebee.com/tutorials/business-rules-quickstart/).  \n**Note:** Business rules are not enabled by default. Contact [Chargebee Support](https://www.chargebee.com/support/) to enable them for your site. Until they are enabled, these endpoints return an error.\n\nExpressions\n-----------\n\nThe `structured_expression` of a rule is a tree of nodes that evaluates to a single `true` or `false`. Every node carries a `type`, which determines the rest of the fields the node takes.\n\nThe following expression matches a quote from a customer whose language contains `en` and whose shipping country is India or the United States:\n\n```json\n{\n  \"type\": \"GROUP\",\n  \"operation\": \"AND\",\n  \"children\": [\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"customer.language\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"en\"\n    },\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"quote.shipping_address_country\",\n      \"operator\": \"ANY_OF\",\n      \"values\": [\"IN\", \"US\"]\n    }\n  ]\n}\n```\n\nEvery condition is compiled so that it first tests whether the field is present in the context. A condition on a field that the context doesn't carry evaluates to `false` instead of failing, so the rule that holds it never matches and no `error_message` is returned for it.  \n\n### GROUP node\n\nCombines the nodes in `children` into a single result. Use a `GROUP` as the root of any expression that has more than one condition, and nest groups to control precedence.\n\n* `operation`: **Required.** `AND` to match only if every child matches, or `OR` to match if any child matches.\n* `children`: **Required.** An array holding at least one node. Each entry is itself a `GROUP`, `CONDITION`, or `COLLECTION` node.\n\n```json\n{\n  \"type\": \"GROUP\",\n  \"operation\": \"OR\",\n  \"children\": [\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"quote.payment_terms\",\n      \"operator\": \"GREATER_THAN\",\n      \"value\": 30\n    },\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"customer.billing_address_country\",\n      \"operator\": \"EQUALS\",\n      \"value\": \"US\"\n    }\n  ]\n}\n```\n\n### CONDITION node\n\nCompares one field of the context against a value.\n\n* `field`: **Required.** The path of the field through the context, such as `customer.language`. See [Context](/docs/api/business_rules#context) for the paths available.\n* `operator`: **Required.** How the comparison is made. See [Operators](/docs/api/business_rules#operators) for the operators available and the field types each one compares.\n* `value`: The single value to compare against. Required for the single-value operators.\n* `values`: The array of values to compare against. Required for `BETWEEN`, `ANY_OF`, and `NONE_OF`.\n\n```json\n{\n  \"type\": \"CONDITION\",\n  \"field\": \"quote.contract_duration\",\n  \"operator\": \"BETWEEN\",\n  \"values\": [12, 36]\n}\n```\n\n### COLLECTION node\n\nTests the entries of an array in the context, such as the line items of a quote. All four fields are required.\n\n* `field`: **Required.** The array to iterate over, such as `items`.\n* `variable`: **Required.** The name each entry is bound to while the predicate is evaluated.\n* `mode`: **Required.** `ANY` to match if at least one entry satisfies the predicate, or `NONE` to match only if no entry does.\n* `predicate`: **Required.** The expression each entry is tested against, usually a `GROUP` node.\n\nInside the predicate, address the fields of an entry through the bound `variable`. The following node matches a quote that has at least one item discounted by more than 20:\n\n```json\n{\n  \"type\": \"COLLECTION\",\n  \"field\": \"items\",\n  \"variable\": \"item\",\n  \"mode\": \"ANY\",\n  \"predicate\": {\n    \"type\": \"GROUP\",\n    \"operation\": \"AND\",\n    \"children\": [\n      {\n        \"type\": \"CONDITION\",\n        \"field\": \"item.discount\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 20\n      }\n    ]\n  }\n}\n```\n\n### Operators\n\nThe following operators are available. The field type is the type the operator can compare, and the value column shows whether the condition takes `value` or `values`.  \n\n|                                   Operator                                   |       Field type        |                                        Value                                        |\n|------------------------------------------------------------------------------|-------------------------|-------------------------------------------------------------------------------------|\n| `EQUALS`, `NOT_EQUALS`                                                       | String, number, boolean | `value`                                                                             |\n| `GREATER_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN`, `LESS_THAN_OR_EQUALS` | Number                  | `value`                                                                             |\n| `BETWEEN`                                                                    | Number                  | `values`, holding exactly two entries, read as the inclusive lower and upper bounds |\n| `CONTAINS`, `NOT_CONTAINS`                                                   | String                  | `value`                                                                             |\n| `STARTS_WITH`                                                                | String                  | `value`                                                                             |\n| `ANY_OF`, `NONE_OF`                                                          | String, number, boolean | `values`, holding at least one entry                                                |\n\nAn operator used on a field of another type isn't rejected when the rule is saved, so the mismatch surfaces only when the rule is evaluated.\n\nContext\n-------\n\nThe `context` you pass to [Apply business rules](/docs/api/business_rules/apply-business-rules) isn't a free-form object. Its `type` selects the schema that the rest of the context is read as, and `CPQ` is the only type available, so a condition can reference only the fields of that schema. A key that falls outside the schema is dropped as the context is read, so a condition on it never evaluates to `true`. A misspelled or unsupported key therefore surfaces as an unmet condition rather than as an error.\n\nA `CPQ` context carries `items`, `quote`, `customer`, `user`, `site`, and `quote_subscription`, each of them optional. Pass only the parts the rules you're evaluating need:\n\n```json\n{\n  \"type\": \"CPQ\",\n  \"customer\": {\n    \"language\": \"en\",\n    \"billing_address_country\": \"US\"\n  },\n  \"quote\": {\n    \"shipping_address_country\": \"IN\",\n    \"payment_terms\": 30,\n    \"custom_fields\": { \"region\": \"apac\" }\n  },\n  \"items\": [\n    { \"reference_id\": \"item-1\", \"amount\": 5000, \"quantity\": 2, \"discount\": 10 },\n    { \"reference_id\": \"item-2\", \"amount\": 1200, \"quantity\": 1, \"discount\": 0 }\n  ]\n}\n```\n\nA condition addresses a field by its path through the context, so `customer.language` reads the `language` of the `customer`. A `COLLECTION` node on `items` iterates over the entries of that array.\n\nEach `custom_fields` object holds your own fields keyed by name, and every value must be a string, a number, or a boolean. A condition reads one through its key, as in `quote.custom_fields.region`.\n\nThe response returns the context back with `rule_ids` filled in on the quote and on each item, so you can see which rules applied where.  \n\n### quote\n\n* `type` and `contract_type`: strings.\n* `contract_duration` and `payment_terms`: numbers.\n* `billing_address_country` and `shipping_address_country`: strings.\n* `billing_frequency` and `billing_currency`: strings.\n* `creator_email` and `creator_role`: strings.\n* `custom_fields`: object.\n* `rule_ids`: array of strings. Returned in the response rather than passed, recording the rules that applied to the quote.  \n\n### customer\n\n* `billing_address_city`, `billing_address_state`, and `billing_address_country`: strings.\n* `language`: string.\n* `payment_terms`: number.\n* `custom_fields`: object.  \n\n### items\n\nAn array, with each entry holding the following.\n\n* `reference_id`: string, identifying the entry within the context.\n* `type`, `item_name`, and `product_family_name`: strings.\n* `billing_frequency` and `currency`: strings.\n* `billing_cycle`, `amount`, `quantity`, and `discount`: numbers.\n* `start_date` and `end_date`: timestamps.\n* `rule_ids`: array of strings. Returned in the response rather than passed, recording the rules that applied to that entry.  \n\n### user\n\n* `name`, `email`, and `phone`: strings.  \n\n### site\n\n* `name`, `domain`, and `currency`: strings.\n* `sandbox`: boolean.  \n\n### quote_subscription\n\n* `custom_fields`: object.\n\nActions\n-------\n\nEvery entry in `actions_on_success` is built from an **action template** , a built-in definition that fixes the kind of change an action makes and the parameters it accepts. An action names its template in `action_template_id` and passes that template's parameters in `input`:\n\n```json\n[\n  {\n    \"action_template_id\": \"action-apply-discount\",\n    \"input\": {\n      \"apply_on\": \"INVOICE_AMOUNT\",\n      \"discount\": 12.0,\n      \"discount_type\": \"PERCENTAGE\",\n      \"duration_type\": \"ONE_TIME\"\n    }\n  }\n]\n```\n\nThe `type` of an action is derived from its template, so it's returned with the action but you don't have to pass it. A parameter that the template doesn't define is rejected. The values of enumerated parameters are matched without regard to case, and are returned in the `input` of the action exactly as you passed them.\n\nAn action can also carry a `structured_expression` of its own, written in the same format as the expression of the rule. The rule decides whether the action runs at all, and the action's own expression then narrows it to the items of the context that satisfy that expression. One rule can therefore discount some of the items it matched rather than all of them. Only the apply discount, limit discount, and limit quantity templates accept an action-level expression.  \n\n### Apply discount\n\nApplies a discount to the invoice amount or to specific item prices. Built from `action_template_id` `action-apply-discount` and returned with `type` `APPLY_DISCOUNT`.\n\n* `apply_on`: **Required.** `INVOICE_AMOUNT` to discount the invoice total, or `SPECIFIC_ITEM_PRICE` to discount the item prices the action applies to.\n* `discount`: **Required.** The discount to apply, such as `12.0`.\n* `discount_type`: **Required.** `PERCENTAGE`, `FLAT_FEE`, or `OFFER_QUANTITY`, which fixes how `discount` is read.\n* `duration_type`: **Required.** How long the discount applies, as `ONE_TIME`, `FOREVER`, or `LIMITED_PERIOD`.\n* `period_unit`: `DAY`, `WEEK`, `MONTH`, or `YEAR`. Required if `duration_type` is `LIMITED_PERIOD`.\n* `period`: The number of `period_unit`s the discount applies for. Required if `period_unit` is passed.  \n\n### Apply coupon\n\nApplies existing [coupons](/docs/api/coupons). Built from `action_template_id` `action-apply-coupon` and returned with `type` `APPLY_COUPON`.\n\n* `apply_on`: **Required.** `INVOICE_AMOUNT` or `SPECIFIC_ITEM_PRICE`.\n* `coupon_ids`: **Required.** The coupons to apply, as an array of coupon identifiers. It must hold at least one identifier.  \n\n### Limit discount\n\nCaps the discount that can be given. Use this template to enforce a discount ceiling without an approval step.\n\nBuilt from `action_template_id` `action-limit-discount` and returned with `type` `LIMIT_DISCOUNT`.\n\n* `apply_on`: **Required.** `INVOICE_AMOUNT` or `SPECIFIC_ITEM_PRICE`.\n* `maximum_discount`: **Required.** The largest discount allowed, such as `20.0`.\n* `discount_type`: **Required.** `PERCENTAGE`, `FLAT_FEE`, or `OFFER_QUANTITY`, which fixes how `maximum_discount` is read.\n* `disable_price_override`: Pass `true` to disallow overriding the price outright.  \n\n### Limit quantity\n\nConstrains the quantities that can be selected. Built from `action_template_id` `action-limit-quantity` and returned with `type` `LIMIT_QUANTITY`. Every parameter is optional, so pass the ones you want to enforce.\n\n* `minimum_quantity`: The smallest quantity allowed.\n* `maximum_quantity`: The largest quantity allowed.\n* `quantity_step_count`: The increment the quantity can be changed in, so `5` allows 5, 10, 15, and so on.  \n\n### Error\n\nReturns an error message instead of a change. Use this template to block an operation when the rule matches.\n\nBuilt from `action_template_id` `action-error` and returned with `type` `ERROR`.\n\n* `error_message`: **Required.** The message returned with the action.\n\nEvaluation results\n------------------\n\n[Apply business rules](/docs/api/business_rules/apply-business-rules) returns an `apply_rule` object that echoes back the `context` you passed and carries one entry in `rules` for each rule it evaluated:\n\n```json\n{\n  \"apply_rule\": {\n    \"context\": {\n      \"type\": \"CPQ\",\n      \"customer\": { \"language\": \"en\" },\n      \"quote\": { \"shipping_address_country\": \"IN\" }\n    },\n    \"rules\": [\n      {\n        \"id\": \"quote-discount-en\",\n        \"version\": 1,\n        \"name\": \"Apply 12 percent discount at invoice level\",\n        \"evaluation_result\": true,\n        \"actions\": [\n          {\n            \"action_template_id\": \"action-apply-discount\",\n            \"type\": \"APPLY_DISCOUNT\",\n            \"input\": {\n              \"apply_on\": \"INVOICE_AMOUNT\",\n              \"discount\": 12.0,\n              \"discount_type\": \"PERCENTAGE\",\n              \"duration_type\": \"ONE_TIME\"\n            }\n          }\n        ],\n        \"object\": \"applied_rule\"\n      },\n      {\n        \"id\": \"quote-discount-uk\",\n        \"version\": 1,\n        \"name\": \"Apply 5 percent discount at invoice level for UK quotes\",\n        \"evaluation_result\": false,\n        \"object\": \"applied_rule\"\n      }\n    ],\n    \"object\": \"apply_rule\"\n  }\n}\n```\n\nRead the result of each rule from `evaluation_result`, and read what the rule produced from `actions`. Two things about the shape are worth knowing before you write code against it.\n\n* `actions` is absent, rather than empty, for a rule whose `evaluation_result` is `false`. The second entry above shows a rule that didn't match.\n* An entry for an ad hoc `structured_expression` carries only `evaluation_result`, because there's no stored rule to report an `id`, `name`, or `actions` for.\n\nA rule that couldn't be evaluated is returned with `error_message` set instead, but only if you passed `skip_failed_rules` as `true`. Otherwise the request fails. For the full list of fields, see the response of [Apply business rules](/docs/api/business_rules/apply-business-rules).\n"
+      description: "A business rule pairs a condition with the actions to take when that condition is met. You supply the context to evaluate, and Chargebee returns the actions configured in `actions_on_success` when the condition evaluates to `true`.\n\nBusiness Rules APIs manage [CPQ Selling Rules](https://www.chargebee.com/docs/cpq/selling-rules).\n\nThe condition is defined in `structured_expression`, a JSON representation of the rule logic that visual editors and dynamic rule builders can both read and write. Chargebee validates and compiles the expression when the rule is created or updated, and evaluates the compiled form when you call [Apply business rules](/docs/api/business_rules/apply-business-rules).\n\nThe `field` of every condition is resolved against the context supplied at evaluation time, so the fields you reference must match the keys of the context the rule is evaluated against. A condition whose `field` is absent from the context never evaluates to `true`, which means the rule never matches.\n\nBusiness rules are versioned. Creating a rule releases its first version, so `latest_version` is `1` and `released_at` is set from the outset. Editing a rule leaves that released version untouched: the first edit creates a draft, and every later edit updates the same draft. [Releasing](/docs/api/business_rules/release-a-business-rule) the draft promotes it to the next version number, and that version becomes the latest released version and the one Chargebee evaluates. Until you release it, the previously released version stays in effect, so a rule can keep serving traffic while its next version is being prepared.\n\nThe `active` attribute is an independent switch that controls whether Chargebee evaluates the rule at all. A rule is created inactive, so it has to be [activated](/docs/api/business_rules/activate-a-business-rule) before it takes effect.\n\nRelated rules can be grouped into a [business ruleset](/docs/api/business_rulesets), which evaluates its member rules in priority order using the strategy configured in the ruleset's `execute_mode`.\n\nFor a walkthrough that creates, activates, and applies a rule in three calls, take a look at the [Business Rules quickstart](https://www.chargebee.com/tutorials/business-rules-quickstart/).\n\nExpressions\n-----------\n\nThe `structured_expression` of a rule is a tree of nodes that evaluates to a single `true` or `false`. Every node carries a `type`, which determines the rest of the fields the node takes.\n\nThe following expression matches a quote from a customer whose language contains `en` and whose shipping country is India or the United States:\n\n```json\n{\n  \"type\": \"GROUP\",\n  \"operation\": \"AND\",\n  \"children\": [\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"customer.language\",\n      \"operator\": \"CONTAINS\",\n      \"value\": \"en\"\n    },\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"quote.shipping_address_country\",\n      \"operator\": \"ANY_OF\",\n      \"values\": [\"IN\", \"US\"]\n    }\n  ]\n}\n```\n\nEvery condition is compiled so that it first tests whether the field is present in the context. A condition on a field that the context doesn't carry evaluates to `false` instead of failing, so the rule that holds it never matches and no `error_message` is returned for it.  \n\n### GROUP node\n\nCombines the nodes in `children` into a single result. Use a `GROUP` as the root of any expression that has more than one condition, and nest groups to control precedence.\n\n* `operation`: **Required.** `AND` to match only if every child matches, or `OR` to match if any child matches.\n* `children`: **Required.** An array holding at least one node. Each entry is itself a `GROUP`, `CONDITION`, or `COLLECTION` node.\n\n```json\n{\n  \"type\": \"GROUP\",\n  \"operation\": \"OR\",\n  \"children\": [\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"quote.payment_terms\",\n      \"operator\": \"GREATER_THAN\",\n      \"value\": 30\n    },\n    {\n      \"type\": \"CONDITION\",\n      \"field\": \"customer.billing_address_country\",\n      \"operator\": \"EQUALS\",\n      \"value\": \"US\"\n    }\n  ]\n}\n```\n\n### CONDITION node\n\nCompares one field of the context against a value.\n\n* `field`: **Required.** The path of the field through the context, such as `customer.language`. See [Context](/docs/api/business_rules#context) for the paths available.\n* `operator`: **Required.** How the comparison is made. See [Operators](/docs/api/business_rules#operators) for the operators available and the field types each one compares.\n* `value`: The single value to compare against. Required for the single-value operators.\n* `values`: The array of values to compare against. Required for `BETWEEN`, `ANY_OF`, and `NONE_OF`.\n\n```json\n{\n  \"type\": \"CONDITION\",\n  \"field\": \"quote.contract_duration\",\n  \"operator\": \"BETWEEN\",\n  \"values\": [12, 36]\n}\n```\n\n### COLLECTION node\n\nTests the entries of an array in the context, such as the line items of a quote. All four fields are required.\n\n* `field`: **Required.** The array to iterate over, such as `items`.\n* `variable`: **Required.** The name each entry is bound to while the predicate is evaluated.\n* `mode`: **Required.** `ANY` to match if at least one entry satisfies the predicate, or `NONE` to match only if no entry does.\n* `predicate`: **Required.** The expression each entry is tested against, usually a `GROUP` node.\n\nInside the predicate, address the fields of an entry through the bound `variable`. The following node matches a quote that has at least one item discounted by more than 20:\n\n```json\n{\n  \"type\": \"COLLECTION\",\n  \"field\": \"items\",\n  \"variable\": \"item\",\n  \"mode\": \"ANY\",\n  \"predicate\": {\n    \"type\": \"GROUP\",\n    \"operation\": \"AND\",\n    \"children\": [\n      {\n        \"type\": \"CONDITION\",\n        \"field\": \"item.discount\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 20\n      }\n    ]\n  }\n}\n```\n\n### Operators\n\nThe following operators are available. The field type is the type the operator can compare, and the value column shows whether the condition takes `value` or `values`.  \n\n|                                   Operator                                   |       Field type        |                                        Value                                        |\n|------------------------------------------------------------------------------|-------------------------|-------------------------------------------------------------------------------------|\n| `EQUALS`, `NOT_EQUALS`                                                       | String, number, boolean | `value`                                                                             |\n| `GREATER_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN`, `LESS_THAN_OR_EQUALS` | Number                  | `value`                                                                             |\n| `BETWEEN`                                                                    | Number                  | `values`, holding exactly two entries, read as the inclusive lower and upper bounds |\n| `CONTAINS`, `NOT_CONTAINS`                                                   | String                  | `value`                                                                             |\n| `STARTS_WITH`                                                                | String                  | `value`                                                                             |\n| `ANY_OF`, `NONE_OF`                                                          | String, number, boolean | `values`, holding at least one entry                                                |\n\nAn operator used on a field of another type isn't rejected when the rule is saved, so the mismatch surfaces only when the rule is evaluated.\n\nContext\n-------\n\nThe `context` you pass to [Apply business rules](/docs/api/business_rules/apply-business-rules) isn't a free-form object. Its `type` selects the schema that the rest of the context is read as, and `CPQ` is the only type available, so a condition can reference only the fields of that schema. A key that falls outside the schema is dropped as the context is read, so a condition on it never evaluates to `true`. A misspelled or unsupported key therefore surfaces as an unmet condition rather than as an error.\n\nA `CPQ` context carries `items`, `quote`, `customer`, `user`, `site`, and `quote_subscription`, each of them optional. Pass only the parts the rules you're evaluating need:\n\n```json\n{\n  \"type\": \"CPQ\",\n  \"customer\": {\n    \"language\": \"en\",\n    \"billing_address_country\": \"US\"\n  },\n  \"quote\": {\n    \"shipping_address_country\": \"IN\",\n    \"payment_terms\": 30,\n    \"custom_fields\": { \"region\": \"apac\" }\n  },\n  \"items\": [\n    { \"reference_id\": \"item-1\", \"amount\": 5000, \"quantity\": 2, \"discount\": 10 },\n    { \"reference_id\": \"item-2\", \"amount\": 1200, \"quantity\": 1, \"discount\": 0 }\n  ]\n}\n```\n\nA condition addresses a field by its path through the context, so `customer.language` reads the `language` of the `customer`. A `COLLECTION` node on `items` iterates over the entries of that array.\n\nEach `custom_fields` object holds your own fields keyed by name, and every value must be a string, a number, or a boolean. A condition reads one through its key, as in `quote.custom_fields.region`.\n\nThe response returns the context back with `rule_ids` filled in on the quote and on each item, so you can see which rules applied where.  \n\n### quote\n\n* `type` and `contract_type`: strings.\n* `contract_duration` and `payment_terms`: numbers.\n* `billing_address_country` and `shipping_address_country`: strings.\n* `billing_frequency` and `billing_currency`: strings.\n* `creator_email` and `creator_role`: strings.\n* `custom_fields`: object.\n* `rule_ids`: array of strings. Returned in the response rather than passed, recording the rules that applied to the quote.  \n\n### customer\n\n* `billing_address_city`, `billing_address_state`, and `billing_address_country`: strings.\n* `language`: string.\n* `payment_terms`: number.\n* `custom_fields`: object.  \n\n### items\n\nAn array, with each entry holding the following.\n\n* `reference_id`: string, identifying the entry within the context.\n* `type`, `item_name`, and `product_family_name`: strings.\n* `billing_frequency` and `currency`: strings.\n* `billing_cycle`, `amount`, `quantity`, and `discount`: numbers.\n* `start_date` and `end_date`: timestamps.\n* `rule_ids`: array of strings. Returned in the response rather than passed, recording the rules that applied to that entry.  \n\n### user\n\n* `name`, `email`, and `phone`: strings.  \n\n### site\n\n* `name`, `domain`, and `currency`: strings.\n* `sandbox`: boolean.  \n\n### quote_subscription\n\n* `custom_fields`: object.\n\nActions\n-------\n\nEvery entry in `actions_on_success` is built from an **action template** , a built-in definition that fixes the kind of change an action makes and the parameters it accepts. An action names its template in `action_template_id` and passes that template's parameters in `input`:\n\n```json\n[\n  {\n    \"action_template_id\": \"action-apply-discount\",\n    \"input\": {\n      \"apply_on\": \"INVOICE_AMOUNT\",\n      \"discount\": 12.0,\n      \"discount_type\": \"PERCENTAGE\",\n      \"duration_type\": \"ONE_TIME\"\n    }\n  }\n]\n```\n\nThe `type` of an action is derived from its template, so it's returned with the action but you don't have to pass it. A parameter that the template doesn't define is rejected. The values of enumerated parameters are matched without regard to case, and are returned in the `input` of the action exactly as you passed them.\n\nAn action can also carry a `structured_expression` of its own, written in the same format as the expression of the rule. The rule decides whether the action runs at all, and the action's own expression then narrows it to the items of the context that satisfy that expression. One rule can therefore discount some of the items it matched rather than all of them. Only the apply discount, limit discount, and limit quantity templates accept an action-level expression.  \n\n### Apply discount\n\nApplies a discount to the invoice amount or to specific item prices. Built from `action_template_id` `action-apply-discount` and returned with `type` `APPLY_DISCOUNT`.\n\n* `apply_on`: **Required.** `INVOICE_AMOUNT` to discount the invoice total, or `SPECIFIC_ITEM_PRICE` to discount the item prices the action applies to.\n* `discount`: **Required.** The discount to apply, such as `12.0`.\n* `discount_type`: **Required.** `PERCENTAGE`, `FLAT_FEE`, or `OFFER_QUANTITY`, which fixes how `discount` is read.\n* `duration_type`: **Required.** How long the discount applies, as `ONE_TIME`, `FOREVER`, or `LIMITED_PERIOD`.\n* `period_unit`: `DAY`, `WEEK`, `MONTH`, or `YEAR`. Required if `duration_type` is `LIMITED_PERIOD`.\n* `period`: The number of `period_unit`s the discount applies for. Required if `period_unit` is passed.  \n\n### Apply coupon\n\nApplies existing [coupons](/docs/api/coupons). Built from `action_template_id` `action-apply-coupon` and returned with `type` `APPLY_COUPON`.\n\n* `apply_on`: **Required.** `INVOICE_AMOUNT` or `SPECIFIC_ITEM_PRICE`.\n* `coupon_ids`: **Required.** The coupons to apply, as an array of coupon identifiers. It must hold at least one identifier.  \n\n### Limit discount\n\nCaps the discount that can be given. Use this template to enforce a discount ceiling without an approval step.\n\nBuilt from `action_template_id` `action-limit-discount` and returned with `type` `LIMIT_DISCOUNT`.\n\n* `apply_on`: **Required.** `INVOICE_AMOUNT` or `SPECIFIC_ITEM_PRICE`.\n* `maximum_discount`: **Required.** The largest discount allowed, such as `20.0`.\n* `discount_type`: **Required.** `PERCENTAGE`, `FLAT_FEE`, or `OFFER_QUANTITY`, which fixes how `maximum_discount` is read.\n* `disable_price_override`: Pass `true` to disallow overriding the price outright.  \n\n### Limit quantity\n\nConstrains the quantities that can be selected. Built from `action_template_id` `action-limit-quantity` and returned with `type` `LIMIT_QUANTITY`. Every parameter is optional, so pass the ones you want to enforce.\n\n* `minimum_quantity`: The smallest quantity allowed.\n* `maximum_quantity`: The largest quantity allowed.\n* `quantity_step_count`: The increment the quantity can be changed in, so `5` allows 5, 10, 15, and so on.  \n\n### Error\n\nReturns an error message instead of a change. Use this template to block an operation when the rule matches.\n\nBuilt from `action_template_id` `action-error` and returned with `type` `ERROR`.\n\n* `error_message`: **Required.** The message returned with the action.\n\nEvaluation results\n------------------\n\n[Apply business rules](/docs/api/business_rules/apply-business-rules) returns an `apply_rule` object that echoes back the `context` you passed and carries one entry in `rules` for each rule it evaluated:\n\n```json\n{\n  \"apply_rule\": {\n    \"context\": {\n      \"type\": \"CPQ\",\n      \"customer\": { \"language\": \"en\" },\n      \"quote\": { \"shipping_address_country\": \"IN\" }\n    },\n    \"rules\": [\n      {\n        \"id\": \"quote-discount-en\",\n        \"version\": 1,\n        \"name\": \"Apply 12 percent discount at invoice level\",\n        \"evaluation_result\": true,\n        \"actions\": [\n          {\n            \"action_template_id\": \"action-apply-discount\",\n            \"type\": \"APPLY_DISCOUNT\",\n            \"input\": {\n              \"apply_on\": \"INVOICE_AMOUNT\",\n              \"discount\": 12.0,\n              \"discount_type\": \"PERCENTAGE\",\n              \"duration_type\": \"ONE_TIME\"\n            }\n          }\n        ],\n        \"object\": \"applied_rule\"\n      },\n      {\n        \"id\": \"quote-discount-uk\",\n        \"version\": 1,\n        \"name\": \"Apply 5 percent discount at invoice level for UK quotes\",\n        \"evaluation_result\": false,\n        \"object\": \"applied_rule\"\n      }\n    ],\n    \"object\": \"apply_rule\"\n  }\n}\n```\n\nRead the result of each rule from `evaluation_result`, and read what the rule produced from `actions`. Two things about the shape are worth knowing before you write code against it.\n\n* `actions` is absent, rather than empty, for a rule whose `evaluation_result` is `false`. The second entry above shows a rule that didn't match.\n* An entry for an ad hoc `structured_expression` carries only `evaluation_result`, because there's no stored rule to report an `id`, `name`, or `actions` for.\n\nA rule that couldn't be evaluated is returned with `error_message` set instead, but only if you passed `skip_failed_rules` as `true`. Otherwise the request fails. For the full list of fields, see the response of [Apply business rules](/docs/api/business_rules/apply-business-rules).\n"
       properties:
         id:
           type: string
@@ -184974,7 +185046,14 @@ components:
       example: null
     BusinessRuleset:
       type: object
-      description: "A business ruleset groups [business rules](/docs/api/business_rules) so that they can be evaluated together, in the priority order you assign, using the strategy set in `execute_mode`.\n\nRulesets let you apply a whole decision at once instead of calling each rule separately. Passing a `ruleset_id` to [Apply business rules](/docs/api/business_rules/apply-business-rules) evaluates the rules the ruleset contains in their priority order and returns a result for each one. The `execute_mode` decides whether evaluation runs through every rule or stops as soon as a rule evaluates to `true` or to `false`, and which of the results are returned.\n\nMembership is managed separately from the rules themselves. [Add business rules to a ruleset](/docs/api/business_rulesets/add-business-rules-to-a-ruleset) and [Remove business rules from a ruleset](/docs/api/business_rulesets/remove-business-rules-from-a-ruleset) change membership incrementally, while passing `rules` to [Update a business ruleset](/docs/api/business_rulesets/update-a-business-ruleset) replaces it entirely. A rule can belong to more than one ruleset, and removing it from a ruleset does not delete the rule.\n\nThe `active` attribute controls whether Chargebee evaluates the ruleset. A rule is evaluated through a ruleset only when both the ruleset and the rule are `active`.  \n**Note:** Business rules are not enabled by default. Contact [Chargebee Support](https://www.chargebee.com/support/) to enable them for your site. Until they are enabled, these endpoints return an error.\n"
+      description: |
+        A business ruleset groups [business rules](/docs/api/business_rules) so that they can be evaluated together, in the priority order you assign, using the strategy set in `execute_mode`.
+
+        Rulesets let you apply a whole decision at once instead of calling each rule separately. Passing a `ruleset_id` to [Apply business rules](/docs/api/business_rules/apply-business-rules) evaluates the rules the ruleset contains in their priority order and returns a result for each one. The `execute_mode` decides whether evaluation runs through every rule or stops as soon as a rule evaluates to `true` or to `false`, and which of the results are returned.
+
+        Membership is managed separately from the rules themselves. [Add business rules to a ruleset](/docs/api/business_rulesets/add-business-rules-to-a-ruleset) and [Remove business rules from a ruleset](/docs/api/business_rulesets/remove-business-rules-from-a-ruleset) change membership incrementally, while passing `rules` to [Update a business ruleset](/docs/api/business_rulesets/update-a-business-ruleset) replaces it entirely. A rule can belong to more than one ruleset, and removing it from a ruleset does not delete the rule.
+
+        The `active` attribute controls whether Chargebee evaluates the ruleset. A rule is evaluated through a ruleset only when both the ruleset and the rule are `active`.
       properties:
         id:
           type: string
@@ -186625,7 +186704,11 @@ components:
     CollectionsPaymentPromise:
       type: object
       description: |
-        Tracks a customer's commitment to pay. Pass `amount` and `currency_code` when creating the promise. The stored promise records the promise date, an optional invoice, and the status (`active`, `fulfilled`, `broken`, or `cancelled`).
+        A collections payment promise represents a customer's commitment to pay a specific invoice by a promised date. A promise is `active` until it ends:
+
+        * `fulfilled`: the invoice is paid on or before `promised_on`.
+        * `broken`: the invoice is paid after `promised_on`, or is still unpaid when `promised_on` passes.
+        * `cancelled`: you cancel the promise, or the invoice is voided, written off, or deleted.
 
         Receivables must be enabled for the site. If it is not, these operations are rejected.
       properties:
@@ -186647,7 +186730,7 @@ components:
           type: string
           deprecated: false
           description: |
-            Identifier of the invoice linked to this promise, when the promise is invoice-specific.
+            Identifier of the invoice this promise covers.
           maxLength: 100
           example: null
         status:
@@ -186657,8 +186740,8 @@ components:
             Current lifecycle state of the payment promise.
 
             * active - The promise is active and awaiting payment.
-            * cancelled - The payment promise was cancelled.
-            * fulfilled - The promised payment has been received.
+            * cancelled - The payment promise was cancelled, or its invoice was voided, written off, or deleted.
+            * fulfilled - The invoice was paid by `promised_on`.
             * broken - The promised payment was not received by the promised date.
           enum:
             - active
@@ -186685,7 +186768,7 @@ components:
           format: unix-time
           deprecated: false
           description: |
-            Timestamp in UTC seconds representing when the customer committed to pay.
+            Timestamp in UTC seconds of the date by which the customer promised to pay.
           example: null
         created_at:
           type: integer
@@ -187336,6 +187419,7 @@ components:
             * business_entity - Entity that represents item of type business entity
             * coupon - Entity that represents a discount coupon
             * subscription - Entity that represents a subscription of a customer
+            * task - Entity that represents a task
             * addon - Entity that represents an addon
             * credit_note - Credit note description
           enum:
@@ -202689,10 +202773,12 @@ components:
             * subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.
             * differential_price_created - Triggered when a differential price is created
             * subscription_created - Sent when a new subscription is created.
+            * collections_dispute_updated - Triggered when a collections dispute is updated.
             * payment_initiated - Sent when a payment is initiated via direct debit
             * quote_updated - Triggered when quote is updated
             * payment_source_added - Sent when a payment source is added for a customer.
             * contract_term_created - Triggered when new contract term is created
+            * collections_reminder_sequence_completed - Triggered when a collections reminder sequence is completed.
             * subscription_business_entity_changed - Sent when a subscription's business entity is changed.
             * subscription_deleted - Sent when a subscription has been deleted
             * differential_price_deleted - Triggered when a differential price is deleted
@@ -202717,8 +202803,10 @@ components:
             * item_updated - Triggered when an item is updated
             * coupon_set_updated - Sent when a coupon set is changed
             * subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state
+            * collections_payment_promise_created - Triggered when a collections payment promise is created.
             * subscription_scheduled_changes_removed - Sent when scheduled change for the subscription is removed.
             * customer_business_entity_changed - Sent when a customer's business entity is changed.
+            * collections_reminder_sequence_created - Triggered when a collections reminder sequence is created.
             * payment_refunded - Sent when a payment refund is made
             * omnichannel_subscription_item_mrr_updated - Triggered when an omnichannel subscription item's MRR is updated.
             * subscription_started - Sent when a 'future' subscription gets started at the scheduled date.
@@ -202755,6 +202843,7 @@ components:
             * subscription_moved_in - Triggered when a subscription moved from other customer
             * feature_archived - Triggered when a feature is archived.
             * subscription_ramp_deleted - Triggered when a subscription ramp is deleted.
+            * collections_reminder_sequence_paused - Triggered when a collections reminder sequence is paused.
             * payment_succeeded - Sent when the payment is successfully collected
             * voucher_expired - Triggered when a payment voucher is expired.
             * mrr_updated - Sent when either of MRR or CMRR of a subscription changes
@@ -202787,6 +202876,7 @@ components:
             * customer_deleted - Sent when a customer is deleted
             * subscription_items_renewed - Sent when one or more Subscription Items are renewed
             * coupon_deleted - Sent when a coupon is deleted.
+            * collections_payment_promise_broken - Triggered when a collections payment promise is marked as broken.
             * quote_deleted - Triggered when quote is deleted
             * card_updated - Sent when the card is updated for a customer.
             * coupon_created - Sent when a coupon is created.
@@ -202794,8 +202884,10 @@ components:
             * add_usages_reminder - Sent every month day before renewal date of plan's period
             * business_entity_updated - Sent when a business entity is updated.
             * subscription_changed - Sent after the subscription's recurring items have been changed
+            * collections_dispute_resolved - Triggered when a collections dispute is resolved.
             * customer_created - Sent when a new customer is created, either directly or automatically during subscription creation.
             * price_variant_created - Triggered when a price variant is created.
+            * collections_dispute_created - Triggered when a collections dispute is created.
             * coupon_set_deleted - Sent when a coupon set is deleted
             * refund_initiated - Sent when a refund is initiated via direct debit
             * order_cancelled - Triggered when order is cancelled
@@ -202833,8 +202925,10 @@ components:
             * order_deleted - Triggered when order is deleted
             * omnichannel_subscription_item_scheduled_cancellation_removed - Triggered when an omnichannel subscription item scheduled cancellation is removed
             * token_expired - Sent when a Token is expired
+            * collections_reminder_sequence_resumed - Triggered when a collections reminder sequence is resumed.
             * price_variant_deleted - Triggered when a price variant is deleted.
             * transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.
+            * email_message_received - Triggered when an email message is received.
             * subscription_cancellation_reminder - Sent when the customer's subscription is nearing its scheduled cancellation date.
             * rule_updated - Triggered when a rule is updated.
             * omnichannel_subscription_item_reactivated - Triggered when an omnichannel subscription item's refund is reversed
@@ -202866,6 +202960,7 @@ components:
             * attached_item_deleted - Triggered when an Attached item is deleted
             * unbilled_charges_invoiced - Triggered when unbilled charges are invoiced.
             * subscription_pause_scheduled - Sent when the subscription is scheduled to pause.
+            * collections_payment_promise_fulfilled - Triggered when a collections payment promise is fulfilled.
             * order_returned - Triggered when order is marked as returned
             * payment_source_expired - Sent when a payment source for a customer is expired
             * contract_term_terminated - Triggered when contract term is terminated
@@ -202873,6 +202968,7 @@ components:
             * pending_invoice_updated - Triggered when you make the following changes to a pending invoice: add a charge, add a non-recurring addon, or delete a line item.
             * omnichannel_subscription_item_grace_period_started - Triggered when an omnichannel subscription item's grace period has started
             * subscription_advance_invoice_schedule_removed - Triggered when scheduled advance invoice is removed for a subscription.
+            * collections_payment_promise_updated - Triggered when a collections payment promise is updated.
             * tax_withheld_deleted - Triggered when a tax withheld is deleted
             * omnichannel_subscription_item_dunning_started - Triggered when an omnichannel subscription item's dunning has started
             * business_entity_created - Sent when a business entity is created.
@@ -202882,6 +202978,7 @@ components:
             * credit_note_updated - Sent when a credit note is updated
             * subscription_scheduled_pause_removed - Triggered when scheduled pause is removed for the subscription.
             * card_expiry_reminder - Sent 30 days before the customer's credit card expires.
+            * private_note_added - Triggered when a private note is added.
             * coupon_set_created - Sent when a coupon set is created
             * virtual_bank_account_deleted - Sent when a virtual bank account is deleted for a customer.
             * omnichannel_one_time_order_created - Triggered when an omnichannel one time order is created
@@ -202907,6 +203004,8 @@ components:
             * invoice_updated - Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. `pending_invoice_updated` is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.
             * grant_blocks_updated - Triggered when one or more [grant_blocks](/docs/api/grant_blocks) are updated for a subscription unit.
             * payment_intent_updated - Sent when a Payment intent is updated
+            * collections_dispute_withdrawn - Triggered when a collections dispute is withdrawn.
+            * collections_payment_promise_cancelled - Triggered when a collections payment promise is cancelled.
             * payment_source_locally_deleted - Sent when a payment source for a customer removed from Chargebee
           enum:
             - coupon_created
@@ -205800,6 +205899,40 @@ components:
               example: null
           required:
             - is_unlimited
+          example: null
+        billing_metadata:
+          type: object
+          deprecated: false
+          properties:
+            item_price_id:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            line_items:
+              type: array
+              deprecated: false
+              items:
+                type: object
+                deprecated: false
+                properties:
+                  id:
+                    type: string
+                    deprecated: false
+                    maxLength: 40
+                    example: null
+                  invoice_number:
+                    type: string
+                    deprecated: false
+                    maxLength: 50
+                    example: null
+                  quantity:
+                    type: number
+                    format: decimal
+                    deprecated: false
+                    example: null
+                example: null
+              example: null
           example: null
       required:
         - account_type
@@ -214788,8 +214921,8 @@ components:
           description: |
             The storefront where the purchase is originally made and managed (`apple_app_store` or `google_play_store`).
 
-            * google_play_store - The purchase originated from the Google Play Store.
             * apple_app_store - The purchase originated from the Apple App Store.
+            * google_play_store - The purchase originated from the Google Play Store.
           enum:
             - apple_app_store
             - google_play_store
@@ -214951,21 +215084,21 @@ components:
                 type: string
                 deprecated: false
                 description: |
-                  Specifies the reason for the subscription expiration. Present when `status` is `expired`.
+                  Specifies the reason for the subscription expiration. Present when `status` is `expired`. When the value is `other`, see `expiration_reason_at_source` for the original store value when available.
 
                   **Apple App Store** : Commonly maps from Apple expiration intents such as `BILLING_ERROR`, `PRODUCT_NOT_AVAILABLE`, and `OTHER`.
 
                   **Google Play Store** : User-initiated and merchant-revoked expirations typically map to `cancelled` with a `cancellation_reason` instead of `expired`.
 
                   * subscription_not_found_in_source - Indicates that the subscription expired because it was not found in the [`source`](/docs/api/omnichannel_subscriptions/omnichannel_subscription-object#source).
+                  * other -
+                    The subscription associated with the item expired for an unspecified or marketplace-specific reason. See `expiration_reason_at_source` for the original store value when available.
+
+                    **Apple App Store** : Maps from expiration intent `OTHER`.
                   * product_not_available -
                     The product was unavailable for purchase at the time of renewal.
 
                     **Apple App Store** : Maps from expiration intent `PRODUCT_NOT_AVAILABLE`.
-                  * other -
-                    The subscription associated with the item expired for an unspecified reason.
-
-                    **Apple App Store** : Maps from expiration intent `OTHER`.
                   * billing_error -
                     Billing error, such as invalid customer payment information.
 
@@ -214979,6 +215112,8 @@ components:
               expiration_reason_at_source:
                 type: string
                 deprecated: false
+                description: |
+                  Expiration reason as reported by the source store (text or code). Present only when `expiration_reason` is `other`. Maximum length is 500 characters.
                 maxLength: 500
                 example: null
               cancelled_at:
@@ -214994,20 +215129,20 @@ components:
                 type: string
                 deprecated: false
                 description: |
-                  The reason the subscription item was cancelled. Present when `status` is `cancelled`. Store applicability varies by enum value.
+                  The reason the subscription item was cancelled. Present when `status` is `cancelled`. Store applicability varies by enum value. When the value is `other`, see `cancellation_reason_at_source` for the original store value when available.
 
-                  * customer_did_not_consent_to_price_increase -
-                    The customer did not consent to a price increase for the subscription item.
-
-                    **Apple App Store** : Maps from expiration intent `CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE`.
-
-                    **Google Play Store**: Not typically used for this reason code.
                   * merchant_revoked -
                     The merchant revoked access to the subscription.
 
                     **Apple App Store** : Can apply when access is revoked (for example, `REVOKED` / related refund revoke flows).
 
                     **Google Play Store** : Commonly maps from revoke / chargeback-style contexts (for example, `SUBSCRIPTION_REVOKED`).
+                  * customer_did_not_consent_to_price_increase -
+                    The customer did not consent to a price increase for the subscription item.
+
+                    **Apple App Store** : Maps from expiration intent `CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE`.
+
+                    **Google Play Store**: Not typically used for this reason code.
                   * customer_cancelled -
                     The customer voluntarily cancelled the subscription.
 
@@ -215020,6 +215155,7 @@ components:
                     **Apple App Store**: Commonly set for refund notifications with a non-app-issue refund reason.
 
                     **Google Play Store**: Not typically used for this reason code.
+                  * other - The subscription item was cancelled for a marketplace-specific or unmapped reason. See `cancellation_reason_at_source` for the original store value when available.
                   * refunded_due_to_app_issue -
                     The subscription was cancelled and refunded due to an app issue.
 
@@ -215037,6 +215173,8 @@ components:
               cancellation_reason_at_source:
                 type: string
                 deprecated: false
+                description: |
+                  Cancellation reason as reported by the source store (text or code). Present only when `cancellation_reason` is `other`. Maximum length is 500 characters.
                 maxLength: 500
                 example: null
               grace_period_expires_at:
@@ -215608,7 +215746,7 @@ components:
       example: null
     OmnichannelSubscriptionItem:
       type: object
-      description: "Represents a product entitlement (item) within an [`omnichannel_subscription`](/docs/api/omnichannel_subscriptions) purchased on Apple App Store or Google Play Store.\n\nStatus, auto-renew, term dates, and cancel/expire reasons live on this resource. See [omnichannel statuses](/docs/api/omnichannel_statuses) for store mappings.\n\nChargebee records introductory and promotional offers on [`omnichannel_subscription_item_offers`](/docs/api/omnichannel_subscription_items/omnichannel_subscription_item-object#omnichannel_subscription_item_offers). Win-back offers and offer codes are not supported.\n\nWhen `has_scheduled_changes` is `true`, use [List scheduled changes](/docs/api/omnichannel_subscription_items/list-scheduled-changes-for-omnichannel-subscription-item) to retrieve deferred product or pause changes.  \n**Note:**\nThis resource represents in-app subscription items made on Apple App Store and Google Play Store.\n"
+      description: "Represents a product entitlement (item) within an [`omnichannel_subscription`](/docs/api/omnichannel_subscriptions) purchased on Apple App Store or Google Play Store.\n\nStatus, auto-renew, term dates, and cancel/expire reasons live on this resource. See [omnichannel statuses](/docs/api/omnichannel_statuses) for store mappings.\n\nWhen a source store reports an unmapped cancellation or expiration reason, `cancellation_reason` or `expiration_reason` is `other`. When the store provides its original text or code, it's in `cancellation_reason_at_source` or `expiration_reason_at_source`.\n\nChargebee records introductory and promotional offers on [`omnichannel_subscription_item_offers`](/docs/api/omnichannel_subscription_items/omnichannel_subscription_item-object#omnichannel_subscription_item_offers). Win-back offers and offer codes are not supported.\n\nWhen `has_scheduled_changes` is `true`, use [List scheduled changes](/docs/api/omnichannel_subscription_items/list-scheduled-changes-for-omnichannel-subscription-item) to retrieve deferred product or pause changes.  \n**Note:**\nThis resource represents in-app subscription items made on Apple App Store and Google Play Store.\n"
       properties:
         id:
           type: string
@@ -215706,7 +215844,7 @@ components:
           type: string
           deprecated: false
           description: |
-            Specifies the reason for the subscription expiration. Present when `status` is `expired`.
+            Specifies the reason for the subscription expiration. Present when `status` is `expired`. When the value is `other`, see `expiration_reason_at_source` for the original store value when available.
 
             **Apple App Store** : Commonly maps from Apple expiration intents such as `BILLING_ERROR`, `PRODUCT_NOT_AVAILABLE`, and `OTHER`.
 
@@ -215714,7 +215852,7 @@ components:
 
             * subscription_not_found_in_source - Indicates that the subscription expired because it was not found in the [`source`](/docs/api/omnichannel_subscriptions/omnichannel_subscription-object#source).
             * other -
-              The subscription associated with the item expired for an unspecified reason.
+              The subscription associated with the item expired for an unspecified or marketplace-specific reason. See `expiration_reason_at_source` for the original store value when available.
 
               **Apple App Store** : Maps from expiration intent `OTHER`.
             * product_not_available -
@@ -215734,6 +215872,8 @@ components:
         expiration_reason_at_source:
           type: string
           deprecated: false
+          description: |
+            Expiration reason as reported by the source store (text or code). Present only when `expiration_reason` is `other`. Maximum length is 500 characters.
           maxLength: 500
           example: null
         cancelled_at:
@@ -215747,7 +215887,7 @@ components:
           type: string
           deprecated: false
           description: |
-            The reason the subscription item was cancelled. Present when `status` is `cancelled`. Store applicability varies by enum value.
+            The reason the subscription item was cancelled. Present when `status` is `cancelled`. Store applicability varies by enum value. When the value is `other`, see `cancellation_reason_at_source` for the original store value when available.
 
             * refunded_for_other_reason -
               The subscription was cancelled and refunded for another reason.
@@ -215767,6 +215907,7 @@ components:
               **Apple App Store** : Maps from expiration intent `CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE`.
 
               **Google Play Store**: Not typically used for this reason code.
+            * other - The subscription item was cancelled for a marketplace-specific or unmapped reason. See `cancellation_reason_at_source` for the original store value when available.
             * customer_cancelled -
               The customer voluntarily cancelled the subscription.
 
@@ -215790,6 +215931,8 @@ components:
         cancellation_reason_at_source:
           type: string
           deprecated: false
+          description: |
+            Cancellation reason as reported by the source store (text or code). Present only when `cancellation_reason` is `other`. Maximum length is 500 characters.
           maxLength: 500
           example: null
         grace_period_expires_at:
@@ -233735,6 +233878,11 @@ components:
               format: unix-time
               deprecated: false
               example: null
+            trial_end:
+              type: integer
+              format: unix-time
+              deprecated: false
+              example: null
             billing_cycles_to_invoice:
               type: integer
               format: int32
@@ -245233,6 +245381,7 @@ components:
               * order_ready_to_process - Triggered when an order reaches its order date.
               * price_variant_updated - Triggered when a price variant is updated.
               * subscription_scheduled_changes_removed - Sent when a scheduled change for the subscription is removed.
+              * collections_payment_promise_broken - Triggered when a collections payment promise is marked as broken.
               * payment_failed - Sent when an attempt to charge the customer's credit card fails.
               * coupon_codes_deleted - Sent when coupon codes are deleted from a coupon set.
               * customer_changed - Sent when a customer is changed.
@@ -245245,6 +245394,7 @@ components:
               * hierarchy_created - Triggered when a hierarchy is created.
               * order_cancelled - Triggered when an order is cancelled.
               * refund_failed - Triggered when a refund attempt fails at the gateway.
+              * collections_payment_promise_created - Triggered when a collections payment promise is created.
               * business_ruleset_activated - Triggered when a [business ruleset](/docs/api/business_rulesets) is [activated](/docs/api/business_rulesets/activate-a-business-ruleset), so Chargebee starts evaluating the rules it contains.
               * payment_schedules_cancelled - Event triggered when remaining unpaid payment schedules are cancelled for an invoice.
               * payment_due_reminder - Sent after scheduled days of payment failure
@@ -245263,12 +245413,14 @@ components:
               * order_created - Triggered when an order is created.
               * invoice_updated - Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. `pending_invoice_updated` is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.
               * unbilled_charges_deleted - Triggered when unbilled charges are deleted.
+              * collections_reminder_sequence_completed - Triggered when a collections reminder sequence is completed.
               * business_entity_updated - Sent when a business entity is updated.
               * feature_deleted - Triggered when a feature is deleted.
               * omnichannel_subscription_item_dunning_started - Triggered when an omnichannel subscription item's dunning has started.
               * payment_source_business_entity_changed -
               * feature_archived - Triggered when a feature is archived.
               * attached_item_created - Triggered when an attached item is created.
+              * collections_dispute_updated - Triggered when a collections dispute is updated.
               * card_updated - Sent when the card is updated for a customer.
               * gift_unclaimed - Triggered when a new gift is unclaimed and is ready to be claimed.
               * subscription_trial_end_reminder - Sent when the customer's trial period is about to end.
@@ -245284,7 +245436,9 @@ components:
               * omnichannel_subscription_item_cancellation_scheduled - Triggered when an omnichannel subscription item is scheduled for cancellation.
               * subscription_started - Sent when a `future` subscription starts on the scheduled date.
               * credit_note_deleted - Sent when a credit note is deleted.
+              * collections_payment_promise_cancelled - Triggered when a collections payment promise is cancelled.
               * credit_note_updated - Sent when a credit note is updated.
+              * collections_dispute_resolved - Triggered when a collections dispute is resolved.
               * item_family_created - Triggered when an item family is created.
               * contract_term_terminated - Triggered when a contract term is terminated.
               * contract_term_cancelled - Triggered when a contract term is cancelled.
@@ -245305,6 +245459,7 @@ components:
               * dunning_updated - Sent when dunning is paused for an invoice.
               * payment_source_added - Sent when a payment source is added for a customer.
               * customer_entitlements_updated - Triggered when entitlements for a list of customers are updated.
+              * private_note_added - Triggered when a private note is added.
               * subscription_moved_in - Triggered when a subscription is moved from another customer.
               * item_created - Triggered when an item is created.
               * record_purchase_failed - Triggered when an omnichannel record purchase fails.
@@ -245338,6 +245493,7 @@ components:
               * subscription_pause_scheduled - Sent when the subscription is scheduled to pause.
               * omnichannel_transaction_created - Triggered when an omnichannel transaction is created.
               * usage_file_ingested - Triggered when a usage file is ingested.
+              * collections_payment_promise_fulfilled - Triggered when a collections payment promise is fulfilled.
               * subscription_entitlements_updated - Triggered when subscription entitlements are updated because of a subscription change event.
               * voucher_created - Triggered when a payment voucher is created.
               * entitlement_overrides_removed - Triggered when an override entitlement is removed.
@@ -245371,6 +245527,7 @@ components:
               * price_variant_deleted - Triggered when a price variant is deleted.
               * token_created - Sent when a token is created.
               * voucher_expired - Triggered when a payment voucher expires.
+              * collections_payment_promise_updated - Triggered when a collections payment promise is updated.
               * omnichannel_subscription_item_expired - Triggered when an omnichannel subscription item expires.
               * item_updated - Triggered when an item is updated.
               * feature_activated - Triggered when a feature `status` transitions to `active` for the first time.
@@ -245380,6 +245537,7 @@ components:
               * gift_claimed - Triggered when a gift is claimed.
               * omnichannel_one_time_order_item_cancelled - Triggered when an omnichannel one-time order item is cancelled.
               * unbilled_charges_voided - Triggered when unbilled charges are voided.
+              * collections_reminder_sequence_created - Triggered when a collections reminder sequence is created.
               * omnichannel_subscription_item_scheduled_change_removed - Triggered when a scheduled change for an omnichannel subscription item is removed.
               * subscription_created_with_backdating - Sent when a new subscription is created with backdating.
               * subscription_reactivated - Sent when the subscription is moved from the cancelled state to the active or in_trial state.
@@ -245411,6 +245569,7 @@ components:
               * omnichannel_subscription_item_change_scheduled - Triggered when an omnichannel subscription item change is scheduled.
               * entitlement_overrides_updated - Triggered when an override entitlement is updated.
               * payment_refunded - Sent when a payment refund is made.
+              * collections_dispute_withdrawn - Triggered when a collections dispute is withdrawn.
               * item_entitlements_updated - Triggered when item entitlements are updated for a feature.
               * payment_source_updated - Sent when the payment source is updated for a customer, or when a role is assigned to the payment source.
               * quote_created - Triggered when a quote is created.
@@ -245440,7 +245599,9 @@ components:
               * subscription_cancellation_scheduled - Sent when a subscription is scheduled to be cancelled at the end of the current term.
               * subscription_deleted - Sent when a subscription has been deleted.
               * voucher_create_failed - Triggered when payment voucher creation fails.
+              * collections_reminder_sequence_resumed - Triggered when a collections reminder sequence is resumed.
               * omnichannel_subscription_item_dunning_expired - Triggered when an omnichannel subscription item's dunning has expired.
+              * collections_reminder_sequence_paused - Triggered when a collections reminder sequence is paused.
               * vault_token_deleted - Triggered when a vaulted payment method is deleted from the vault.
               * card_expiry_reminder - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.
               * subscription_resumption_scheduled - Triggered when the subscription resumption is scheduled.
@@ -245452,8 +245613,10 @@ components:
               * einvoice_updated - Triggered when an e-invoice is updated (for example when its status or provider responses change).
               * omnichannel_subscription_item_paused - Triggered when an omnichannel subscription item is paused.
               * omnichannel_subscription_item_scheduled_cancellation_removed - Triggered when a scheduled cancellation for an omnichannel subscription item is removed.
+              * collections_dispute_created - Triggered when a collections dispute is created.
               * payment_schedules_created - Event triggered when new payment schedules are created for an invoice.
               * subscription_advance_invoice_schedule_updated - Triggered when a scheduled advance invoice is updated for a subscription.
+              * email_message_received - Triggered when an email message is received.
               * credit_note_created_with_backdating - Sent when a credit note is created with a past date as the credit note date.
               * unbilled_charges_created - Triggered when unbilled charges are created.
               * rule_deleted - Triggered when a rule is deleted.
@@ -248322,8 +248485,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_payment_promise_fulfilled:
+    description: |
+      Triggered when a collections payment promise is fulfilled.
+      The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
     post:
       summary: Triggered when a collections payment promise is fulfilled.
+      description: |
+        Triggered when a collections payment promise is fulfilled.
+        The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
       operationId: onCollections_payment_promise_fulfilledWebhook
       requestBody:
         description: Payload for collections_payment_promise_fulfilled event
@@ -248408,8 +248577,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_dispute_resolved:
+    description: |
+      Triggered when a collections dispute is resolved.
+      The event content includes `collections_dispute`.
     post:
       summary: Triggered when a collections dispute is resolved.
+      description: |
+        Triggered when a collections dispute is resolved.
+        The event content includes `collections_dispute`.
       operationId: onCollections_dispute_resolvedWebhook
       requestBody:
         description: Payload for collections_dispute_resolved event
@@ -248616,8 +248791,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_dispute_updated:
+    description: |
+      Triggered when a collections dispute is updated.
+      The event content includes `collections_dispute`.
     post:
       summary: Triggered when a collections dispute is updated.
+      description: |
+        Triggered when a collections dispute is updated.
+        The event content includes `collections_dispute`.
       operationId: onCollections_dispute_updatedWebhook
       requestBody:
         description: Payload for collections_dispute_updated event
@@ -248856,8 +249037,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_payment_promise_updated:
+    description: |
+      Triggered when a collections payment promise is updated.
+      The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
     post:
       summary: Triggered when a collections payment promise is updated.
+      description: |
+        Triggered when a collections payment promise is updated.
+        The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
       operationId: onCollections_payment_promise_updatedWebhook
       requestBody:
         description: Payload for collections_payment_promise_updated event
@@ -249160,8 +249347,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_reminder_sequence_created:
+    description: |
+      Triggered when a collections reminder sequence is created.
+      The event content includes `collections_reminder_sequence`.
     post:
       summary: Triggered when a collections reminder sequence is created.
+      description: |
+        Triggered when a collections reminder sequence is created.
+        The event content includes `collections_reminder_sequence`.
       operationId: onCollections_reminder_sequence_createdWebhook
       requestBody:
         description: Payload for collections_reminder_sequence_created event
@@ -249332,8 +249525,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   email_message_received:
+    description: |
+      Triggered when an inbound email message is received in Billing Desk.
+      The event content includes `email_message`.
     post:
       summary: Triggered when an inbound email message is received in Billing Desk.
+      description: |
+        Triggered when an inbound email message is received in Billing Desk.
+        The event content includes `email_message`.
       operationId: onEmail_message_receivedWebhook
       requestBody:
         description: Payload for email_message_received event
@@ -249436,8 +249635,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_payment_promise_broken:
+    description: |
+      Triggered when a collections payment promise is marked as broken.
+      The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
     post:
       summary: Triggered when a collections payment promise is broken.
+      description: |
+        Triggered when a collections payment promise is marked as broken.
+        The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
       operationId: onCollections_payment_promise_brokenWebhook
       requestBody:
         description: Payload for collections_payment_promise_broken event
@@ -249556,8 +249761,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_payment_promise_created:
+    description: |
+      Triggered when a collections payment promise is created.
+      The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
     post:
       summary: Triggered when a collections payment promise is created.
+      description: |
+        Triggered when a collections payment promise is created.
+        The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
       operationId: onCollections_payment_promise_createdWebhook
       requestBody:
         description: Payload for collections_payment_promise_created event
@@ -249642,8 +249853,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   private_note_added:
+    description: |
+      Triggered when a private note is added in Billing Desk.
+      The event content includes `private_note`.
     post:
       summary: Triggered when a private note is added in Billing Desk.
+      description: |
+        Triggered when a private note is added in Billing Desk.
+        The event content includes `private_note`.
       operationId: onPrivate_note_addedWebhook
       requestBody:
         description: Payload for private_note_added event
@@ -249932,8 +250149,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_dispute_created:
+    description: |
+      Triggered when a collections dispute is created.
+      The event content includes `collections_dispute`.
     post:
       summary: Triggered when a collections dispute is created.
+      description: |
+        Triggered when a collections dispute is created.
+        The event content includes `collections_dispute`.
       operationId: onCollections_dispute_createdWebhook
       requestBody:
         description: Payload for collections_dispute_created event
@@ -250142,8 +250365,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_payment_promise_cancelled:
+    description: |
+      Triggered when a collections payment promise is cancelled.
+      The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
     post:
       summary: Triggered when a collections payment promise is cancelled.
+      description: |
+        Triggered when a collections payment promise is cancelled.
+        The event content includes [`collections_payment_promise`](/docs/api/collections_payment_promises).
       operationId: onCollections_payment_promise_cancelledWebhook
       requestBody:
         description: Payload for collections_payment_promise_cancelled event
@@ -250536,8 +250765,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_dispute_withdrawn:
+    description: |
+      Triggered when a collections dispute is withdrawn.
+      The event content includes `collections_dispute`.
     post:
       summary: Triggered when a collections dispute is withdrawn.
+      description: |
+        Triggered when a collections dispute is withdrawn.
+        The event content includes `collections_dispute`.
       operationId: onCollections_dispute_withdrawnWebhook
       requestBody:
         description: Payload for collections_dispute_withdrawn event
@@ -250748,8 +250983,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_reminder_sequence_paused:
+    description: |
+      Triggered when a collections reminder sequence is paused.
+      The event content includes `collections_reminder_sequence`.
     post:
       summary: Triggered when a collections reminder sequence is paused.
+      description: |
+        Triggered when a collections reminder sequence is paused.
+        The event content includes `collections_reminder_sequence`.
       operationId: onCollections_reminder_sequence_pausedWebhook
       requestBody:
         description: Payload for collections_reminder_sequence_paused event
@@ -251054,8 +251295,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_reminder_sequence_resumed:
+    description: |
+      Triggered when a collections reminder sequence is resumed.
+      The event content includes `collections_reminder_sequence`.
     post:
       summary: Triggered when a collections reminder sequence is resumed.
+      description: |
+        Triggered when a collections reminder sequence is resumed.
+        The event content includes `collections_reminder_sequence`.
       operationId: onCollections_reminder_sequence_resumedWebhook
       requestBody:
         description: Payload for collections_reminder_sequence_resumed event
@@ -251532,8 +251779,14 @@ webhooks:
           description: Webhook received successfully
       deprecated: false
   collections_reminder_sequence_completed:
+    description: |
+      Triggered when a collections reminder sequence is completed.
+      The event content includes `collections_reminder_sequence`.
     post:
       summary: Triggered when a collections reminder sequence is completed.
+      description: |
+        Triggered when a collections reminder sequence is completed.
+        The event content includes `collections_reminder_sequence`.
       operationId: onCollections_reminder_sequence_completedWebhook
       requestBody:
         description: Payload for collections_reminder_sequence_completed event
