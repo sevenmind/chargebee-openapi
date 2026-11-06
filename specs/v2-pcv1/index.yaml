@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-04.ba205d0427f5dbc9bf8969b1b203a9999c114bc8
+  version: 2026-11-05.b37e0c65afb167bb9be0506becab9ab6443e6bfa
   x-cb-product-catalog-version: 1
   x-cb-api-version: 2
 servers:
@@ -36680,13 +36680,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -36708,13 +36708,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -36736,13 +36736,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -36764,13 +36764,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -36792,13 +36792,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -36820,13 +36820,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -36848,13 +36848,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -36876,13 +36876,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -36904,13 +36904,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -36932,13 +36932,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -36960,13 +36960,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -36988,13 +36988,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_name
@@ -37016,13 +37016,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_type
@@ -37044,13 +37044,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: source
@@ -37072,13 +37072,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invocation_time
@@ -37503,13 +37503,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -37531,13 +37531,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -37559,13 +37559,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -37587,13 +37587,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -37615,13 +37615,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: id_at_gateway
@@ -37643,13 +37643,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -37671,13 +37671,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -37699,13 +37699,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -37727,13 +37727,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -37755,13 +37755,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -37783,13 +37783,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -37811,13 +37811,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -37839,13 +37839,13 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: received_at
@@ -132945,6 +132945,58 @@ components:
         - using_defaults
         - manually_set
       example: null
+    BillingLineItem:
+      type: object
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        invoice_number:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        quantity:
+          type: number
+          format: decimal
+          deprecated: false
+          example: null
+      example: null
+    BillingMetadata:
+      type: object
+      properties:
+        item_price_id:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        line_items:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              id:
+                type: string
+                deprecated: false
+                maxLength: 40
+                example: null
+              invoice_number:
+                type: string
+                deprecated: false
+                maxLength: 50
+                example: null
+              quantity:
+                type: number
+                format: decimal
+                deprecated: false
+                example: null
+            example: null
+          example: null
+      example: null
     BillingPeriodUnit:
       type: string
       deprecated: false
@@ -149768,6 +149820,40 @@ components:
               example: null
           required:
             - is_unlimited
+          example: null
+        billing_metadata:
+          type: object
+          deprecated: false
+          properties:
+            item_price_id:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            line_items:
+              type: array
+              deprecated: false
+              items:
+                type: object
+                deprecated: false
+                properties:
+                  id:
+                    type: string
+                    deprecated: false
+                    maxLength: 40
+                    example: null
+                  invoice_number:
+                    type: string
+                    deprecated: false
+                    maxLength: 50
+                    example: null
+                  quantity:
+                    type: number
+                    format: decimal
+                    deprecated: false
+                    example: null
+                example: null
+              example: null
           example: null
       required:
         - account_type
