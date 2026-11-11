@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-06.b37e0c65afb167bb9be0506becab9ab6443e6bfa",
+    "version": "2026-11-10.4138d6a3390859bdcadedcc17bf060529749acad",
     "x-cb-api-version": 2,
     "x-cb-product-catalog-version": 2
   },
@@ -40366,14 +40366,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40402,14 +40402,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40438,14 +40438,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40474,14 +40474,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40510,14 +40510,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40546,14 +40546,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40582,14 +40582,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40618,14 +40618,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40654,14 +40654,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40690,14 +40690,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40726,14 +40726,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40762,14 +40762,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40798,14 +40798,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40834,14 +40834,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -40870,14 +40870,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41513,14 +41513,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41549,14 +41549,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41585,14 +41585,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41621,14 +41621,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41657,14 +41657,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41693,14 +41693,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41729,14 +41729,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41765,14 +41765,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41801,14 +41801,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41837,14 +41837,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41873,14 +41873,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41909,14 +41909,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -41945,14 +41945,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -81685,6 +81685,37 @@
                     },
                     "example": null
                   },
+                  "show_billing_frequency_selector": {
+                    "type": "boolean",
+                    "deprecated": false,
+                    "example": null
+                  },
+                  "allowed_billing_frequencies[period]": {
+                    "type": "array",
+                    "deprecated": false,
+                    "items": {
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": 1,
+                      "example": null
+                    },
+                    "example": null
+                  },
+                  "allowed_billing_frequencies[period_unit]": {
+                    "type": "array",
+                    "deprecated": false,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "day",
+                        "week",
+                        "month",
+                        "year"
+                      ],
+                      "example": null
+                    },
+                    "example": null
+                  },
                   "gifter": {
                     "type": "object",
                     "deprecated": false,
@@ -83773,6 +83804,37 @@
                     "maxLength": 2048,
                     "example": null
                   },
+                  "show_billing_frequency_selector": {
+                    "type": "boolean",
+                    "deprecated": false,
+                    "example": null
+                  },
+                  "allowed_billing_frequencies[period]": {
+                    "type": "array",
+                    "deprecated": false,
+                    "items": {
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": 1,
+                      "example": null
+                    },
+                    "example": null
+                  },
+                  "allowed_billing_frequencies[period_unit]": {
+                    "type": "array",
+                    "deprecated": false,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "day",
+                        "week",
+                        "month",
+                        "year"
+                      ],
+                      "example": null
+                    },
+                    "example": null
+                  },
                   "allow_offline_payment_methods": {
                     "type": "boolean",
                     "deprecated": false,
@@ -85531,6 +85593,37 @@
                     "deprecated": false,
                     "description": "This attribute allows you to store custom information with the `hosted_page` object. You can use it to associate specific data with a hosted page session.\nFor example, you can store the ID of the marketing campaign that initiated the user session. After a successful checkout, when the customer is redirected, you can retrieve the hosted page ID from the [redirect URL](/docs/api/hosted_pages/create-checkout-to-update-a-subscription#redirect_url)'s query parameters. Using this ID, you can fetch the hosted page and perform actions related to the success of the marketing campaign.\n",
                     "maxLength": 2048,
+                    "example": null
+                  },
+                  "show_billing_frequency_selector": {
+                    "type": "boolean",
+                    "deprecated": false,
+                    "example": null
+                  },
+                  "allowed_billing_frequencies[period]": {
+                    "type": "array",
+                    "deprecated": false,
+                    "items": {
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": 1,
+                      "example": null
+                    },
+                    "example": null
+                  },
+                  "allowed_billing_frequencies[period_unit]": {
+                    "type": "array",
+                    "deprecated": false,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "day",
+                        "week",
+                        "month",
+                        "year"
+                      ],
+                      "example": null
+                    },
                     "example": null
                   },
                   "allow_offline_payment_methods": {
@@ -190098,15 +190191,16 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "on": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
+                "on": {
                   "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
                   "example": null
                 },
                 "after": {
@@ -190115,10 +190209,9 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "before": {
+                "between": {
                   "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -190137,15 +190230,16 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "on": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
+                "on": {
                   "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
                   "example": null
                 },
                 "after": {
@@ -190154,10 +190248,9 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "before": {
+                "between": {
                   "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -206423,14 +206516,14 @@
                   "minLength": 1,
                   "example": null
                 },
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "not_in": {
@@ -246610,6 +246703,17 @@
           "id",
           "name",
           "pricing_model"
+        ],
+        "example": null
+      },
+      "ItemPrice.PeriodUnit": {
+        "type": "string",
+        "deprecated": false,
+        "enum": [
+          "day",
+          "week",
+          "month",
+          "year"
         ],
         "example": null
       },
