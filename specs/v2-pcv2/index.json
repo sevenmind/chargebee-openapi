@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-10.4138d6a3390859bdcadedcc17bf060529749acad",
+    "version": "2026-11-11.a4dc98892f7c1caae57221a637475dc29284d843",
     "x-cb-api-version": 2,
     "x-cb-product-catalog-version": 2
   },
@@ -2246,6 +2246,16 @@
                           "type": "string",
                           "deprecated": false,
                           "maxLength": 50,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 100,
                           "example": null
                         },
                         "example": null
@@ -11126,6 +11136,16 @@
                           "format": "int32",
                           "deprecated": false,
                           "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 100,
                           "example": null
                         },
                         "example": null
@@ -40361,11 +40381,6 @@
               "deprecated": false,
               "description": "This is a unique identifier assigned by open search. It is used to track the request within the Chargebee open search system",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40374,6 +40389,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40397,11 +40417,6 @@
               "deprecated": false,
               "description": "Payment Gateway through which the API call was made.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40410,6 +40425,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40433,11 +40453,6 @@
               "deprecated": false,
               "description": "Http status code of the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40446,6 +40461,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40469,11 +40489,6 @@
               "deprecated": false,
               "description": "Http Method of the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40482,6 +40497,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40505,11 +40525,6 @@
               "deprecated": false,
               "description": "Third Party Gateway URL that was invoked.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40518,6 +40533,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40541,11 +40561,6 @@
               "deprecated": false,
               "description": "Customer handle used in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40554,6 +40569,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40577,11 +40597,6 @@
               "deprecated": false,
               "description": "Invoice handle used in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40590,6 +40605,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40613,11 +40633,6 @@
               "deprecated": false,
               "description": "Transaction handle used in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40626,6 +40641,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40649,11 +40669,6 @@
               "deprecated": false,
               "description": "Payment Method handle used in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40662,6 +40677,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40685,11 +40705,6 @@
               "deprecated": false,
               "description": "Gateway Credential used for the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40698,6 +40713,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40721,11 +40741,6 @@
               "deprecated": false,
               "description": "Payment Attempt handle used in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40734,6 +40749,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40757,11 +40777,6 @@
               "deprecated": false,
               "description": "Payment Intent handle used in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40770,6 +40785,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40793,11 +40813,6 @@
               "deprecated": false,
               "description": "Name of the operation performed in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40806,6 +40821,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40829,11 +40849,6 @@
               "deprecated": false,
               "description": "Type of the operation performed in the API call.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40842,6 +40857,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -40865,11 +40885,6 @@
               "deprecated": false,
               "description": "Source of the API call (e.g., Chargebee App, OpenPay, etc.).",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -40878,6 +40893,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41508,11 +41528,6 @@
               "deprecated": false,
               "description": "Unique identifier for the webhook log in OpenSearch.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41521,6 +41536,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41544,11 +41564,6 @@
               "deprecated": false,
               "description": "Payment gateway that sent the webhook.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41557,6 +41572,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41580,11 +41600,6 @@
               "deprecated": false,
               "description": "HTTP status code returned in the webhook response.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41593,6 +41608,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41616,11 +41636,6 @@
               "deprecated": false,
               "description": "HTTP method of the incoming webhook request.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41629,6 +41644,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41652,11 +41672,6 @@
               "deprecated": false,
               "description": "URL from which the webhook request was received.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41665,6 +41680,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41688,11 +41708,6 @@
               "deprecated": false,
               "description": "Gateway transaction reference from webhook metadata (e.g. Adyen originalReference or pspReference) for linking to transactions.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41701,6 +41716,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41724,11 +41744,6 @@
               "deprecated": false,
               "description": "Customer handle resolved from the matched transaction or payment intent for UI deep links.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41737,6 +41752,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41760,11 +41780,6 @@
               "deprecated": false,
               "description": "Invoice number from the matched transaction when available.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41773,6 +41788,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41796,11 +41816,6 @@
               "deprecated": false,
               "description": "Chargebee transaction external_id resolved from id_at_gateway for UI deep links.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41809,6 +41824,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41832,11 +41852,6 @@
               "deprecated": false,
               "description": "Payment method external id from the matched transaction when available.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41845,6 +41860,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41868,11 +41888,6 @@
               "deprecated": false,
               "description": "Gateway credential external id from the matched transaction or payment intent.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41881,6 +41896,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41904,11 +41924,6 @@
               "deprecated": false,
               "description": "Payment attempt token or id resolved from id_at_gateway when no transaction match.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41917,6 +41932,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -41940,11 +41960,6 @@
               "deprecated": false,
               "description": "Payment intent external id from the matched payment attempt when available.",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -41953,6 +41968,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -55795,14 +55815,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -55826,14 +55846,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -81690,32 +81710,6 @@
                     "deprecated": false,
                     "example": null
                   },
-                  "allowed_billing_frequencies[period]": {
-                    "type": "array",
-                    "deprecated": false,
-                    "items": {
-                      "type": "integer",
-                      "format": "int32",
-                      "minimum": 1,
-                      "example": null
-                    },
-                    "example": null
-                  },
-                  "allowed_billing_frequencies[period_unit]": {
-                    "type": "array",
-                    "deprecated": false,
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "day",
-                        "week",
-                        "month",
-                        "year"
-                      ],
-                      "example": null
-                    },
-                    "example": null
-                  },
                   "gifter": {
                     "type": "object",
                     "deprecated": false,
@@ -81891,11 +81885,48 @@
                       }
                     },
                     "example": null
+                  },
+                  "allowed_billing_frequencies": {
+                    "type": "object",
+                    "deprecated": false,
+                    "properties": {
+                      "period": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "int32",
+                          "deprecated": false,
+                          "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "period_unit": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "enum": [
+                            "day",
+                            "week",
+                            "month",
+                            "year"
+                          ],
+                          "example": null
+                        },
+                        "example": null
+                      }
+                    },
+                    "example": null
                   }
                 },
                 "example": null
               },
               "encoding": {
+                "allowed_billing_frequencies": {
+                  "style": "deepObject",
+                  "explode": true
+                },
                 "gifter": {
                   "style": "deepObject",
                   "explode": true
@@ -83809,32 +83840,6 @@
                     "deprecated": false,
                     "example": null
                   },
-                  "allowed_billing_frequencies[period]": {
-                    "type": "array",
-                    "deprecated": false,
-                    "items": {
-                      "type": "integer",
-                      "format": "int32",
-                      "minimum": 1,
-                      "example": null
-                    },
-                    "example": null
-                  },
-                  "allowed_billing_frequencies[period_unit]": {
-                    "type": "array",
-                    "deprecated": false,
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "day",
-                        "week",
-                        "month",
-                        "year"
-                      ],
-                      "example": null
-                    },
-                    "example": null
-                  },
                   "allow_offline_payment_methods": {
                     "type": "boolean",
                     "deprecated": false,
@@ -84771,11 +84776,48 @@
                       }
                     },
                     "example": null
+                  },
+                  "allowed_billing_frequencies": {
+                    "type": "object",
+                    "deprecated": false,
+                    "properties": {
+                      "period": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "int32",
+                          "deprecated": false,
+                          "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "period_unit": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "enum": [
+                            "day",
+                            "week",
+                            "month",
+                            "year"
+                          ],
+                          "example": null
+                        },
+                        "example": null
+                      }
+                    },
+                    "example": null
                   }
                 },
                 "example": null
               },
               "encoding": {
+                "allowed_billing_frequencies": {
+                  "style": "deepObject",
+                  "explode": true
+                },
                 "billing_address": {
                   "style": "deepObject",
                   "explode": true
@@ -85600,32 +85642,6 @@
                     "deprecated": false,
                     "example": null
                   },
-                  "allowed_billing_frequencies[period]": {
-                    "type": "array",
-                    "deprecated": false,
-                    "items": {
-                      "type": "integer",
-                      "format": "int32",
-                      "minimum": 1,
-                      "example": null
-                    },
-                    "example": null
-                  },
-                  "allowed_billing_frequencies[period_unit]": {
-                    "type": "array",
-                    "deprecated": false,
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "day",
-                        "week",
-                        "month",
-                        "year"
-                      ],
-                      "example": null
-                    },
-                    "example": null
-                  },
                   "allow_offline_payment_methods": {
                     "type": "boolean",
                     "deprecated": false,
@@ -86278,11 +86294,48 @@
                       }
                     },
                     "example": null
+                  },
+                  "allowed_billing_frequencies": {
+                    "type": "object",
+                    "deprecated": false,
+                    "properties": {
+                      "period": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "int32",
+                          "deprecated": false,
+                          "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "period_unit": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "enum": [
+                            "day",
+                            "week",
+                            "month",
+                            "year"
+                          ],
+                          "example": null
+                        },
+                        "example": null
+                      }
+                    },
+                    "example": null
                   }
                 },
                 "example": null
               },
               "encoding": {
+                "allowed_billing_frequencies": {
+                  "style": "deepObject",
+                  "explode": true
+                },
                 "card": {
                   "style": "deepObject",
                   "explode": true
@@ -89111,6 +89164,16 @@
                           "format": "int32",
                           "deprecated": false,
                           "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 100,
                           "example": null
                         },
                         "example": null
@@ -93460,6 +93523,16 @@
                           "example": null
                         },
                         "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 100,
+                          "example": null
+                        },
+                        "example": null
                       }
                     },
                     "required": [
@@ -95112,6 +95185,16 @@
                           "format": "int32",
                           "deprecated": false,
                           "minimum": 1,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 100,
                           "example": null
                         },
                         "example": null
@@ -107897,14 +107980,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -125202,17 +125285,6 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -125224,6 +125296,17 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
                           }
                         }
                       },
@@ -125233,14 +125316,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -126038,11 +126121,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_family`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -126050,6 +126128,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -127711,11 +127794,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `price_variant`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -127723,6 +127801,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -128223,11 +128306,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -128235,6 +128313,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -134765,14 +134848,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -136537,11 +136620,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_price`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -136549,6 +136627,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -140699,11 +140782,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -140711,6 +140789,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -146420,11 +146503,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -146432,6 +146510,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -149002,11 +149085,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -149014,6 +149092,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -152877,11 +152960,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -152889,6 +152967,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -158211,11 +158294,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -158223,6 +158301,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -162719,15 +162802,6 @@
               "deprecated": false,
               "example": "active",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -162736,6 +162810,15 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
                   "example": null
                 }
               }
@@ -162754,14 +162837,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -166487,14 +166570,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -166513,18 +166596,6 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -166536,6 +166607,18 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
                   "example": null
                 }
               }
@@ -166554,14 +166637,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -178782,17 +178865,6 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -178803,6 +178875,17 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
                   "example": null
                 }
               }
@@ -178821,14 +178904,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -190197,10 +190280,9 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "on": {
+                "between": {
                   "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
                 "after": {
@@ -190209,9 +190291,10 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
+                "on": {
                   "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
                   "example": null
                 }
               }
@@ -190236,10 +190319,9 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "on": {
+                "between": {
                   "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
                 "after": {
@@ -190248,9 +190330,10 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "between": {
+                "on": {
                   "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
                   "example": null
                 }
               }
@@ -195684,14 +195767,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -195710,14 +195793,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -206511,11 +206594,6 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
@@ -206524,6 +206602,11 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 },
                 "not_in": {
@@ -213461,23 +213544,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -213494,6 +213560,23 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
                   "example": null
                 }
               },
@@ -230305,6 +230388,12 @@
             "maxLength": 100,
             "example": null
           },
+          "description": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
           "type": {
             "type": "string",
             "default": "percentage",
@@ -246703,17 +246792,6 @@
           "id",
           "name",
           "pricing_model"
-        ],
-        "example": null
-      },
-      "ItemPrice.PeriodUnit": {
-        "type": "string",
-        "deprecated": false,
-        "enum": [
-          "day",
-          "week",
-          "month",
-          "year"
         ],
         "example": null
       },
@@ -263572,6 +263650,12 @@
                   "maxLength": 100,
                   "example": null
                 },
+                "description": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 100,
+                  "example": null
+                },
                 "type": {
                   "type": "string",
                   "default": "percentage",
@@ -264448,6 +264532,12 @@
                   "type": "string",
                   "deprecated": false,
                   "description": "The name of the discount as it should appear on customer-facing pages and documents such as [invoices](/docs/api/invoices)\nand [hosted pages](/docs/api/hosted_pages).\nThis is auto-generated based on the `type`\n, `amount`\n, and `currency_code`\nof the discount. For example, it can be `10% off`\nor `10$ off`\n.\n",
+                  "maxLength": 100,
+                  "example": null
+                },
+                "description": {
+                  "type": "string",
+                  "deprecated": false,
                   "maxLength": 100,
                   "example": null
                 },
@@ -269896,6 +269986,12 @@
                   "type": "string",
                   "deprecated": false,
                   "description": "The name of the discount as it should appear on customer-facing pages and documents such as [invoices](/docs/api/invoices)\nand [hosted pages](/docs/api/hosted_pages).\nThis is auto-generated based on the `type`\n, `amount`\n, and `currency_code`\nof the discount. For example, it can be `10% off`\nor `10$ off`\n.\n",
+                  "maxLength": 100,
+                  "example": null
+                },
+                "description": {
+                  "type": "string",
+                  "deprecated": false,
                   "maxLength": 100,
                   "example": null
                 },
