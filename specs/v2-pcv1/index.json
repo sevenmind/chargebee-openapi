@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-11.a4dc98892f7c1caae57221a637475dc29284d843",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 2
+    "version": "2026-11-12.14d525549766a03828adb4f2e873055673582a51",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -148,11 +148,11 @@
     },
     {
       "name": "gateway_request_logs",
-      "description": "Operations on the `gateway_request_logs` resource."
+      "description": "A gateway request log is a record of a single request that Chargebee sent to a payment gateway, such as a payment, refund, or payment method verification call, along with the gateway's response."
     },
     {
       "name": "gateway_webhook_logs",
-      "description": "Operations on the `gateway_webhook_logs` resource."
+      "description": "A gateway webhook log is a record of a single webhook that a payment gateway sent to Chargebee, along with the response Chargebee returned to the gateway."
     },
     {
       "name": "gifts",
@@ -189,6 +189,10 @@
     {
       "name": "orders",
       "description": "**Note:** This doc is for the latest version of Chargebee Orders."
+    },
+    {
+      "name": "organization_details",
+      "description": "Operations on the `organization_details` resource."
     },
     {
       "name": "payment_intents",
@@ -41093,6 +41097,7 @@
           "gateway_request_logs"
         ],
         "summary": "Retrieve a gateway request log",
+        "description": "Retrieves a gateway request log identified by its `log_id`.\n\nUse this operation to inspect the full request that Chargebee sent to a payment gateway and the gateway's response. Request and response payloads are returned as stored, with sensitive values already masked.  \n\n### Implementation Notes\n\n* If no log matches the `log_id` for the site, or the log belongs to a business entity other than the one in context, the API returns a `resource_not_found` error.\n",
         "operationId": "retrieve_a_gateway_request_log",
         "parameters": [
           {
@@ -41182,7 +41187,7 @@
                   "properties": {
                     "gateway_request_log": {
                       "$ref": "#/components/schemas/GatewayRequestLog",
-                      "description": "Resource object representing gateway_request_log"
+                      "description": "Resource object representing gateway_request_log\n"
                     }
                   },
                   "required": [
@@ -41308,6 +41313,7 @@
           "gateway_request_logs"
         ],
         "summary": "List gateway request logs",
+        "description": "Retrieves the requests that Chargebee sent to payment gateways for the site, newest first.\n\nUse this operation to investigate gateway activity, such as failed payment or refund calls, for a specific [customer](/docs/api/v2/pcv-1/customers), [invoice](/docs/api/v2/pcv-1/invoices), [transaction](/docs/api/v2/pcv-1/transactions), or gateway. Filter by `invocation_time` to limit the results to a time range.  \n\n### Implementation Notes\n\n* Results are sorted by `invocation_time` in descending order. Pass `sort_by[asc]` as `invocation_time` to list the oldest logs first.\n* Pagination can reach at most the first 10,000 matching logs: `offset` plus `limit` can't exceed 10,000. Once the next page would go past 10,000 logs, `next_offset` isn't returned, even if more logs match. To page further back, narrow the time range with the `invocation_time` filter.\n* Only the filters listed on this page are supported. Any other filter parameter returns an error instead of being ignored.\n* When Multi Business Entity is enabled and a business entity is in context, only logs for that business entity are returned.\n",
         "operationId": "list_gateway_request_logs",
         "parameters": [
           {
@@ -41376,16 +41382,15 @@
           {
             "name": "limit",
             "in": "query",
+            "description": "The number of resources to be returned.  \n**Constraints**\n\n* `offset` plus `limit` can't exceed 10,000.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/limit",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "integer",
               "format": "int32",
               "default": 10,
-              "description": "The number of resources to be returned.",
               "maximum": 100,
               "minimum": 1,
               "example": null
@@ -41394,14 +41399,13 @@
           {
             "name": "offset",
             "in": "query",
+            "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset` to the value of `next_offset` obtained in the previous iteration of the API call.  \n**Constraints**\n\n* `offset` plus `limit` can't exceed 10,000. To page further back, narrow the time range with the `invocation_time` filter.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/offset",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "string",
-              "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.",
               "maxLength": 1000,
               "example": null
             }
@@ -41409,6 +41413,7 @@
           {
             "name": "log_id",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the unique identifier of the gateway request log.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*log_id\\[is\\] = \"aBcD1234eFgH\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41416,11 +41421,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "This is a unique identifier assigned by open search. It is used to track the request within the Chargebee open search system",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41429,11 +41438,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41445,6 +41449,7 @@
           {
             "name": "gateway",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the payment gateway that received the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*gateway\\[is\\] = \"stripe\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41452,11 +41457,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment Gateway through which the API call was made.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41465,11 +41474,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41481,6 +41485,7 @@
           {
             "name": "status_code",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the HTTP status code returned by the gateway.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*status_code\\[is\\] = \"402\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41488,11 +41493,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Http status code of the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41501,11 +41510,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41517,6 +41521,7 @@
           {
             "name": "method",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the HTTP method of the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*method\\[is\\] = \"POST\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41524,11 +41529,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Http Method of the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41537,11 +41546,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41553,6 +41557,7 @@
           {
             "name": "url",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the gateway URL that Chargebee sent the request to.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*url\\[is\\] = \"https://api.stripe.com/v1/payment_intents\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41560,11 +41565,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Third Party Gateway URL that was invoked.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41573,11 +41582,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41589,6 +41593,7 @@
           {
             "name": "customer_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [customer](/docs/api/v2/pcv-1/customers) associated with the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*customer_handle\\[is\\] = \"16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41596,11 +41601,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Customer handle used in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41609,11 +41618,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41625,6 +41629,7 @@
           {
             "name": "invoice_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [invoice](/docs/api/v2/pcv-1/invoices) associated with the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*invoice_handle\\[is\\] = \"INV-123\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41632,11 +41637,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Invoice handle used in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41645,11 +41654,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41661,6 +41665,7 @@
           {
             "name": "transaction_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [transaction](/docs/api/v2/pcv-1/transactions) associated with the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*transaction_handle\\[is\\] = \"txn_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41668,11 +41673,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Transaction handle used in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41681,11 +41690,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41697,6 +41701,7 @@
           {
             "name": "payment_method_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [payment source](/docs/api/v2/pcv-1/payment_sources) used in the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*payment_method_handle\\[is\\] = \"pm_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41704,11 +41709,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment Method handle used in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41717,11 +41726,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41733,6 +41737,7 @@
           {
             "name": "gateway_credential_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the gateway account used for the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*gateway_credential_handle\\[is\\] = \"gw_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41740,11 +41745,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Gateway Credential used for the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41753,11 +41762,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41769,6 +41773,7 @@
           {
             "name": "payment_attempt_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the payment attempt associated with the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*payment_attempt_handle\\[is\\] = \"payment_attempt_id\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41776,11 +41781,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment Attempt handle used in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41789,11 +41798,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41805,6 +41809,7 @@
           {
             "name": "payment_intent_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [payment intent](/docs/api/v2/pcv-1/payment_intents) associated with the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*payment_intent_handle\\[is\\] = \"pi_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41812,11 +41817,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment Intent handle used in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41825,11 +41834,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41841,6 +41845,7 @@
           {
             "name": "operation_name",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the name of the gateway operation performed in the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*operation_name\\[is\\] = \"PAYMENT\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41848,11 +41853,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Name of the operation performed in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41861,11 +41870,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41877,6 +41881,7 @@
           {
             "name": "operation_type",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the type of the gateway operation performed in the request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*operation_type\\[is\\] = \"REFUND\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41884,11 +41889,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Type of the operation performed in the API call.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41897,11 +41906,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41913,6 +41917,7 @@
           {
             "name": "source",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the origin of the Chargebee request that triggered the gateway call.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*source\\[is\\] = \"API\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41920,11 +41925,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Source of the API call (e.g., Chargebee App, OpenPay, etc.).",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -41936,11 +41945,6 @@
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
                 }
               },
               "example": null
@@ -41949,6 +41953,7 @@
           {
             "name": "invocation_time",
             "in": "query",
+            "description": "optional, timestamp(UTC) in seconds filter\n\nFilter by when Chargebee sent the request to the gateway.\n**Supported operators :**\nafter, before, between, on\n\n**Example →**\n*invocation_time\\[after\\] = \"1435054328\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41956,7 +41961,6 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "API invocation time in milliseconds.",
               "properties": {
                 "after": {
                   "type": "string",
@@ -41988,6 +41992,7 @@
           {
             "name": "response_received_at",
             "in": "query",
+            "description": "optional, timestamp(UTC) in seconds filter\n\nFilter by when Chargebee received the response from the gateway.\n**Supported operators :**\nafter, before, between, on\n\n**Example →**\n*response_received_at\\[before\\] = \"1435054328\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -41995,7 +42000,6 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Timestamp when response was received from Gateway.",
               "properties": {
                 "after": {
                   "type": "string",
@@ -42027,6 +42031,7 @@
           {
             "name": "sort_by",
             "in": "query",
+            "description": "optional, string filter\n\nSorts based on the specified attribute.\n**Supported attributes :**\ninvocation_time\n\n**Supported sort-orders :**\nasc, desc\n\n**Example →**\n*sort_by\\[asc\\] = \"invocation_time\"*\n\nThis will sort the result based on the 'invocation_time' attribute in ascending(earliest first) order.  \n**Default behavior**\n\n* Results are sorted by `invocation_time` in descending order.\n",
             "required": false,
             "style": "deepObject",
             "explode": true,
@@ -42080,7 +42085,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.",
+                      "description": "Returned only when more resources are present and the next page stays within the first 10,000 matching logs. To fetch the next set of resources, use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -42208,6 +42213,7 @@
           "gateway_webhook_logs"
         ],
         "summary": "Retrieve a gateway webhook log",
+        "description": "Retrieves a gateway webhook log identified by its `webhook_id`.\n\nUse this operation to inspect the full webhook that a payment gateway sent to Chargebee and the response Chargebee returned. Payloads are returned as stored, with sensitive values already masked.  \n\n### Implementation Notes\n\n* If no log matches the `webhook_id` for the site, or the log belongs to a business entity other than the one in context, the API returns a `resource_not_found` error.\n",
         "operationId": "retrieve_a_gateway_webhook_log",
         "parameters": [
           {
@@ -42297,7 +42303,7 @@
                   "properties": {
                     "gateway_webhook_log": {
                       "$ref": "#/components/schemas/GatewayWebhookLog",
-                      "description": "Resource object representing gateway_webhook_log"
+                      "description": "Resource object representing gateway_webhook_log\n"
                     }
                   },
                   "required": [
@@ -42423,6 +42429,7 @@
           "gateway_webhook_logs"
         ],
         "summary": "List gateway webhook logs",
+        "description": "Retrieves the webhooks that payment gateways sent to Chargebee for the site, newest first.\n\nUse this operation to confirm that gateway notifications reached Chargebee and to trace them to a [customer](/docs/api/v2/pcv-1/customers), [invoice](/docs/api/v2/pcv-1/invoices), or [transaction](/docs/api/v2/pcv-1/transactions). Filter by `received_at` to limit the results to a time range.  \n\n### Implementation Notes\n\n* Results are sorted by `received_at` in descending order. Pass `sort_by[asc]` as `received_at` to list the oldest logs first.\n* Pagination can reach at most the first 10,000 matching logs: `offset` plus `limit` can't exceed 10,000. Once the next page would go past 10,000 logs, `next_offset` isn't returned, even if more logs match. To page further back, narrow the time range with the `received_at` filter.\n* Only the filters listed on this page are supported. Any other filter parameter returns an error instead of being ignored.\n* When Multi Business Entity is enabled and a business entity is in context, only logs for that business entity are returned.\n",
         "operationId": "list_gateway_webhook_logs",
         "parameters": [
           {
@@ -42491,16 +42498,15 @@
           {
             "name": "limit",
             "in": "query",
+            "description": "The number of resources to be returned.  \n**Constraints**\n\n* `offset` plus `limit` can't exceed 10,000.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/limit",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "integer",
               "format": "int32",
               "default": 10,
-              "description": "The number of resources to be returned.",
               "maximum": 100,
               "minimum": 1,
               "example": null
@@ -42509,14 +42515,13 @@
           {
             "name": "offset",
             "in": "query",
+            "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset` to the value of `next_offset` obtained in the previous iteration of the API call.  \n**Constraints**\n\n* `offset` plus `limit` can't exceed 10,000. To page further back, narrow the time range with the `received_at` filter.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/offset",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "string",
-              "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.",
               "maxLength": 1000,
               "example": null
             }
@@ -42524,6 +42529,7 @@
           {
             "name": "webhook_id",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the unique identifier of the gateway webhook log.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*webhook_id\\[is\\] = \"aBcD1234eFgH\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42531,11 +42537,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Unique identifier for the webhook log in OpenSearch.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42544,11 +42554,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42560,6 +42565,7 @@
           {
             "name": "gateway",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the payment gateway that sent the webhook.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*gateway\\[is\\] = \"adyen\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42567,11 +42573,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment gateway that sent the webhook.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42580,11 +42590,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42596,6 +42601,7 @@
           {
             "name": "status_code",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the HTTP status code that Chargebee returned to the gateway.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*status_code\\[is\\] = \"200\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42603,11 +42609,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "HTTP status code returned in the webhook response.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42616,11 +42626,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42632,6 +42637,7 @@
           {
             "name": "method",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the HTTP method of the webhook request.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*method\\[is\\] = \"POST\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42639,11 +42645,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "HTTP method of the incoming webhook request.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42652,11 +42662,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42668,6 +42673,7 @@
           {
             "name": "url",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the Chargebee URL at which the webhook was received.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*url\\[is\\] = \"https://acme-test.chargebee.com/adyen/webhook\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42675,11 +42681,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "URL from which the webhook request was received.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42688,11 +42698,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42704,6 +42709,7 @@
           {
             "name": "id_at_gateway",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the gateway's reference for the transaction that the webhook is about.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*id_at_gateway\\[is\\] = \"8835511210681327\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42711,11 +42717,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Gateway transaction reference from webhook metadata (e.g. Adyen originalReference or pspReference) for linking to transactions.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42724,11 +42734,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42740,6 +42745,7 @@
           {
             "name": "customer_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [customer](/docs/api/v2/pcv-1/customers) associated with the webhook.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*customer_handle\\[is\\] = \"16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42747,11 +42753,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Customer handle resolved from the matched transaction or payment intent for UI deep links.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42760,11 +42770,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42776,6 +42781,7 @@
           {
             "name": "invoice_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [invoice](/docs/api/v2/pcv-1/invoices) associated with the webhook.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*invoice_handle\\[is\\] = \"INV-123\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42783,11 +42789,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Invoice number from the matched transaction when available.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42796,11 +42806,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42812,6 +42817,7 @@
           {
             "name": "transaction_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [transaction](/docs/api/v2/pcv-1/transactions) that the webhook matched.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*transaction_handle\\[is\\] = \"txn_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42819,11 +42825,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Chargebee transaction external_id resolved from id_at_gateway for UI deep links.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42832,11 +42842,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42848,6 +42853,7 @@
           {
             "name": "payment_method_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [payment source](/docs/api/v2/pcv-1/payment_sources) associated with the webhook.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*payment_method_handle\\[is\\] = \"pm_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42855,11 +42861,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment method external id from the matched transaction when available.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42868,11 +42878,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42884,6 +42889,7 @@
           {
             "name": "gateway_credential_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the gateway account associated with the webhook.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*gateway_credential_handle\\[is\\] = \"gw_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42891,11 +42897,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Gateway credential external id from the matched transaction or payment intent.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42904,11 +42914,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42920,6 +42925,7 @@
           {
             "name": "payment_attempt_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the payment attempt associated with the webhook.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*payment_attempt_handle\\[is\\] = \"payment_attempt_id\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42927,11 +42933,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment attempt token or id resolved from id_at_gateway when no transaction match.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42940,11 +42950,6 @@
                   "example": null
                 },
                 "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
-                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -42956,6 +42961,7 @@
           {
             "name": "payment_intent_handle",
             "in": "query",
+            "description": "optional, string filter\n\nFilter by the ID of the [payment intent](/docs/api/v2/pcv-1/payment_intents) associated with the webhook.\n**Supported operators :**\nis, is_not, in, not_in\n\n**Example →**\n*payment_intent_handle\\[is\\] = \"pi_16BjoNSh3G0Tc1hk\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42963,11 +42969,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Payment intent external id from the matched payment attempt when available.",
               "properties": {
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "not_in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "is_not": {
@@ -42979,11 +42989,6 @@
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
                 }
               },
               "example": null
@@ -42992,6 +42997,7 @@
           {
             "name": "received_at",
             "in": "query",
+            "description": "optional, timestamp(UTC) in seconds filter\n\nFilter by when Chargebee received the webhook.\n**Supported operators :**\nafter, before, between, on\n\n**Example →**\n*received_at\\[after\\] = \"1435054328\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -42999,7 +43005,6 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Timestamp when the webhook was received.",
               "properties": {
                 "after": {
                   "type": "string",
@@ -43031,6 +43036,7 @@
           {
             "name": "sort_by",
             "in": "query",
+            "description": "optional, string filter\n\nSorts based on the specified attribute.\n**Supported attributes :**\nreceived_at\n\n**Supported sort-orders :**\nasc, desc\n\n**Example →**\n*sort_by\\[asc\\] = \"received_at\"*\n\nThis will sort the result based on the 'received_at' attribute in ascending(earliest first) order.  \n**Default behavior**\n\n* Results are sorted by `received_at` in descending order.\n",
             "required": false,
             "style": "deepObject",
             "explode": true,
@@ -43084,7 +43090,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.",
+                      "description": "Returned only when more resources are present and the next page stays within the first 10,000 matching logs. To fetch the next set of resources, use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -138399,6 +138405,861 @@
         ]
       }
     },
+    "/organization_details": {
+      "get": {
+        "tags": [
+          "organization_details"
+        ],
+        "summary": "List organization details",
+        "operationId": "list_organization_details",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/limit",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10,
+              "description": "The number of resources to be returned.",
+              "maximum": 100,
+              "minimum": 1,
+              "example": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/offset",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.",
+              "maxLength": 1000,
+              "example": null
+            }
+          },
+          {
+            "name": "business_entity_id",
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "deprecated": false,
+              "description": "The unique ID of the [business entity](/docs/api?prod_cat_ver=2#mbe) of this subscription. This is always the same as the [business entity](/docs/api/subscriptions?prod_cat_ver=2#subscription_customer_id) of the customer.  \nThe ID of the business entity created for the site. For Product Catalog 1.0, all the site data is tied to this business entity.  \n**Note**\n\n[Multiple Business Entities](/docs/api?prod_cat_ver=2#mbe) is a feature available only on Product Catalog 2.0.\n",
+              "example": "business_entity_id",
+              "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "organization_detail": {
+                            "$ref": "#/components/schemas/OrganizationDetail",
+                            "description": "Resource object representing organization_detail"
+                          }
+                        },
+                        "required": [
+                          "organization_detail"
+                        ],
+                        "example": null
+                      },
+                      "example": null
+                    },
+                    "next_offset": {
+                      "type": "string",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.",
+                      "maxLength": 1000,
+                      "example": null
+                    }
+                  },
+                  "required": [
+                    "list"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "organization_details"
+        ],
+        "summary": "Update organization details",
+        "operationId": "update_organization_details",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "chargebee-event-actions",
+            "in": "header",
+            "description": "skip all actions to be done on the events",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-actions",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip all actions to be done on the events",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-email",
+            "in": "header",
+            "description": "skip only emails",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-email",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "skip only emails",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          },
+          {
+            "name": "chargebee-event-webhook",
+            "in": "header",
+            "description": " skip only webhooks",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-event-webhook",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": " skip only webhooks",
+              "enum": [
+                "all-disabled"
+              ],
+              "example": null
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "organization_name": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 100,
+                    "example": null
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "deprecated": false,
+                    "maxLength": 70,
+                    "example": null
+                  },
+                  "address_line1": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 180,
+                    "example": null
+                  },
+                  "address_line2": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 150,
+                    "example": null
+                  },
+                  "address_line3": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 150,
+                    "example": null
+                  },
+                  "city": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
+                  "state_code": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
+                  "state": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
+                  "zip": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 20,
+                    "example": null
+                  },
+                  "country_code": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
+                  "phone": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 20,
+                    "example": null
+                  },
+                  "fax": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 20,
+                    "example": null
+                  },
+                  "website": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 200,
+                    "example": null
+                  },
+                  "is_vat_number_present": {
+                    "type": "boolean",
+                    "deprecated": false,
+                    "example": null
+                  },
+                  "vat_number": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 20,
+                    "example": null
+                  }
+                },
+                "required": [
+                  "address_line1",
+                  "city",
+                  "organization_name",
+                  "phone",
+                  "state",
+                  "zip"
+                ],
+                "example": null
+              },
+              "encoding": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "organization_detail": {
+                      "$ref": "#/components/schemas/OrganizationDetail",
+                      "description": "Resource object representing organization_detail"
+                    }
+                  },
+                  "required": [
+                    "organization_detail"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
+    "/organization_details/{organization-detail-id}": {
+      "get": {
+        "tags": [
+          "organization_details"
+        ],
+        "summary": "Retrieve organization details",
+        "operationId": "retrieve_organization_details",
+        "parameters": [
+          {
+            "name": "chargebee-request-origin-device",
+            "in": "header",
+            "description": "The device from which the customer has made the request",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-device",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The device from which the customer has made the request",
+              "example": "Android"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user",
+            "in": "header",
+            "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The email address of your customer/user. Use this when the email address has only ASCII characters.",
+              "example": "user@example.com"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-user-encoded",
+            "in": "header",
+            "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-user-encoded",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.",
+              "example": "dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t"
+            }
+          },
+          {
+            "name": "chargebee-request-origin-ip",
+            "in": "header",
+            "description": "The IP address of the customer where the request originated",
+            "required": false,
+            "deprecated": false,
+            "$ref": "#/components/parameters/chargebee-request-origin-ip",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The IP address of the customer where the request originated",
+              "example": "192.168.1.2",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\\-]*[a-fA-F0-9])\\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$"
+            }
+          },
+          {
+            "name": "organization-detail-id",
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "$ref": "#/components/parameters/organization-detail-id",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "organization_detail": {
+                      "$ref": "#/components/schemas/OrganizationDetail",
+                      "description": "Resource object representing organization_detail"
+                    }
+                  },
+                  "required": [
+                    "organization_detail"
+                  ],
+                  "example": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/429"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "on error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/503"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
     "/currencies/{site-currency-id}/add_schedule": {
       "post": {
         "tags": [
@@ -153687,6 +154548,11 @@
           "within_limit",
           "in_alarm"
         ],
+        "example": null
+      },
+      "AllowedValue": {
+        "type": "object",
+        "properties": {},
         "example": null
       },
       "Amendment": {
@@ -169305,7 +170171,7 @@
           "event_type": {
             "type": "string",
             "deprecated": false,
-            "description": "The types of event provided by chargebee. Refer [event types](/docs/api/v2/pcv-1/events/event-types)\nfor all the event types provided by us currently.\n\n* card_deleted - Sent when a card is deleted for a customer\n* rule_created - Triggered when a rule is created\n* subscription_cancelled - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* customer_changed - Sent when a customer is changed\n* invoice_deleted - Event triggered when an invoice is deleted.\n* omnichannel_subscription_item_changed - Triggered when an omnichannel subscription item is changed\n* subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.\n* subscription_created - Sent when a new subscription is created.\n* payment_initiated - Sent when a payment is initiated via direct debit\n* quote_updated - Triggered when quote is updated\n* payment_source_added - Sent when a payment source is added for a customer.\n* contract_term_created - Triggered when new contract term is created\n* subscription_deleted - Sent when a subscription has been deleted\n* voucher_created - Triggered when a payment voucher is created\n* omnichannel_subscription_created - Triggered when an omnichannel subscription is created\n* subscription_ramp_drafted - Triggered when a subscription ramp is moved to draft status.\n* rule_deleted - Triggered when a rule is deleted\n* transaction_deleted - Triggered when a transaction is deleted.\n* payment_failed - Sent when attempt to charge customer's credit card fails\n* subscription_reactivated_with_backdating - Sent when the subscription is moved from cancelled state to active or in_trial state with past date\n* omnichannel_subscription_item_cancellation_scheduled - Triggered when an omnichannel subscription item is scheduled for cancellation\n* payment_source_expiring - Sent when the customer's payment source is expiring soon. Sent 30 days before the expiry date.\n* omnichannel_subscription_item_resumed - Triggered when an omnichannel subscription item is resumed\n* omnichannel_subscription_item_dunning_expired - Triggered when an omnichannel subscription item's dunning has expired\n* order_ready_to_process - Triggered when order reaches it's order date\n* coupon_set_updated - Sent when a coupon set is changed\n* subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state\n* addon_updated - Sent when a addon is changed.\n* subscription_scheduled_changes_removed - Sent when scheduled change for the subscription is removed.\n* payment_refunded - Sent when a payment refund is made\n* subscription_started - Sent when a 'future' subscription gets started at the scheduled date.\n* token_created - Sent when a Token is created\n* subscription_created_with_backdating - Sent when a new subscription is created with backdating.\n* unbilled_charges_deleted - Triggered when unbilled charges are deleted\n* omnichannel_subscription_item_renewed - Triggered when an omnichannel subscription item is renewed\n* subscription_ramp_applied - Triggered when a subscription ramp is applied.\n* promotional_credits_added - Sent when a customer prmotion credits added\n* subscription_canceled_with_backdating - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* card_expired - Sent when a card for a customer is expired\n* payment_intent_created - Sent when a Payment intent is created\n* subscription_changed_with_backdating - Sent after the subscription's recurring items have been changed with backdated date\n* subscription_scheduled_cancellation_removed - Sent when scheduled cancellation is removed for the subscription.\n* omnichannel_subscription_item_resubscribed - Triggered when an omnichannel subscription item is resubscribed\n* plan_deleted - Sent when a plan is deleted.\n* omnichannel_subscription_imported - Triggered when an omnichannel subscription is imported\n* vault_token_created - Triggered when a payment method is tokenized and stored in the vault.\n* tax_withheld_refunded - Sent when a tax withheld refund is made\n* unbilled_charges_voided - Triggered when unbilled charges are voided\n* customer_moved_out - Sent when a customer is copied to another site\n* dunning_updated - Sent when dunning is paused for an invoice\n* record_purchase_failed - Triggered when an omnichannel record purchase fails\n* coupon_codes_deleted - Sent when coupon codes are deleted in coupon set\n* subscription_paused - Sent when the subscription is paused.\n* order_updated - Triggered when order is updated\n* subscription_movement_failed - Triggered when a subscription movement fails\n* unbilled_charges_created - Triggered when unbilled charges are created\n* subscription_moved_in - Triggered when a subscription is moved from another customer\n* subscription_ramp_deleted - Triggered when a subscription ramp is deleted.\n* payment_succeeded - Sent when the payment is successfully collected\n* voucher_expired - Triggered when a payment voucher is expired\n* mrr_updated - Sent when either of MRR or CMRR of a subscription changes\n* subscription_scheduled_resumption_removed - Triggered when scheduled resumption is removed for the subscription.\n* subscription_changes_scheduled - Sent when subscription changes are scheduled for later. Changes will be applied at the end of current term.\n* order_ready_to_ship - Triggered when order reaches it's shipping date\n* einvoice_created - Triggered when an e-invoice is created for an invoice or credit note.\n* omnichannel_subscription_item_cancelled - Triggered when an omnichannel subscription item is cancelled\n* subscription_trial_end_reminder - Sent when the customer's trial period is about to end.\n* subscription_renewed - Sent when the subscription is renewed from the current term.\n* vault_token_deleted - Triggered when a vaulted payment method is deleted from the vault.\n* plan_created - Sent when a plan is created.\n* coupon_codes_updated - Sent when coupon codes are updated\n* gift_unclaimed - Triggered when a new gift is unclaimed and is ready to be claimed\n* virtual_bank_account_added - Sent when a virtual bank account is added for a customer.\n* subscription_ramp_updated - Triggered when a subscription ramp is updated.\n* subscription_moved_out - Triggered when a subscription is moved to another customer\n* contract_term_completed - Triggered when contract term is completed\n* subscription_renewal_reminder - Sent before each subscription's renewal based on plan's period\n* coupon_updated - Sent when a coupon is changed.\n* token_consumed - Sent when a Token is consumed\n* omnichannel_subscription_item_upgraded - Triggered when an omnichannel subscription item is upgraded\n* transaction_created - Triggered when a transaction is recorded\n* customer_deleted - Sent when a customer is deleted\n* subscription_items_renewed - Sent when one or more Subscription Items are renewed\n* coupon_deleted - Sent when a coupon is deleted.\n* quote_deleted - Triggered when quote is deleted\n* card_updated - Sent when the card is updated for a customer.\n* coupon_created - Sent when a coupon is created.\n* quote_created - Triggered when quote is created\n* subscription_changed - Sent after the subscription's recurring items have been changed\n* customer_created - Sent when a customer is created. This event happens when only a new customer is created or when a customer is automatically created during new subscription creation.\n* coupon_set_deleted - Sent when a coupon set is deleted\n* refund_initiated - Sent when a refund is initiated via direct debit\n* order_cancelled - Triggered when order is cancelled\n* coupon_codes_added - Sent when coupon codes are added in coupon set\n* omnichannel_subscription_item_paused - Triggered when an omnichannel subscription item is paused\n* card_added - Sent when a card is added for a customer.\n* gift_cancelled - Triggered when a gift is cancelled.\n* omnichannel_subscription_item_downgraded - Triggered when an omnichannel subscription item is downgraded\n* payment_source_deleted - Sent when a payment source is deleted for a customer\n* credit_note_created - Sent when a credit note is created\n* subscription_resumption_scheduled - Triggered when the subscription resumption is scheduled.\n* subscription_advance_invoice_schedule_updated - Triggered when scheduled advance invoice is updated for a subscription.\n* omnichannel_one_time_order_item_cancelled - Triggered when an omnichannel one time order item is cancelled\n* gift_claimed - Triggered when a gift is claimed\n* vault_token_updated - Triggered when a vaulted payment method is updated.\n* subscription_activated - Sent after the subscription has been moved from trial to active state\n* subscription_resumed - Sent when the subscription is moved from paused state to active state\n* sales_order_updated - Triggered when a sales order is updated\n* credit_note_deleted - Sent when a credit note is deleted\n* subscription_advance_invoice_schedule_added - Triggered when advance invoice is scheduled for a subscription.\n* order_deleted - Triggered when order is deleted\n* token_expired - Sent when a Token is expired\n* omnichannel_subscription_item_scheduled_cancellation_removed - Triggered when an omnichannel subscription item scheduled cancellation is removed\n* transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n* subscription_cancellation_reminder - Sent when the customer's subscription is nearing it's scheduled cancellation date.\n* rule_updated - Triggered when a rule is updated\n* omnichannel_subscription_item_reactivated - Triggered when an omnichannel subscription item is reactivated\n* invoice_generated - Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \"Pending\" invoice is closed.\n* order_delivered - Triggered when order is marked as delivered\n* pending_invoice_created - Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.\n* subscription_ramp_created - Triggered when a subscription ramp is created.\n* omnichannel_subscription_item_expired - Triggered when an omnichannel subscription item is expired\n* refund_failed - Triggered when a refund attempt fails at the gateway.\n* authorization_succeeded - Triggered when a authorization transaction is created.\n* invoice_generated_with_backdating - Event triggered when a new invoice is generated with past date as invoice date.\n* omnichannel_subscription_item_change_scheduled - Triggered when an omnichannel subscription item change is scheduled\n* subscription_cancellation_scheduled - Sent when subscription is scheduled to cancel at end of current term\n* order_created - Triggered when order is created\n* hierarchy_deleted - Triggered when a hierarchy is deleted\n* subscription_activated_with_backdating - Sent after the subscription changes to `active` from another `status`, while the change is backdated.\n* plan_updated - Sent when a plan is changed.\n* tax_withheld_recorded - Triggered when a tax withheld is recorded for an invoice\n* einvoice_updated - Triggered when an e-invoice is updated (for example when its status or provider responses change).\n* credit_note_created_with_backdating - Sent when a credit note is created with past date as credit note date\n* omnichannel_subscription_item_pause_scheduled - Triggered when an omnichannel subscription item is scheduled for pause\n* gift_updated - Triggered when a gift is updated\n* order_resent - Triggered when order is resent\n* hierarchy_created - Triggered when a hierarchy is created\n* addon_deleted - Sent when a addon is deleted.\n* voucher_create_failed - Triggered when a payment voucher creation is failed\n* customer_moved_in - Sent when a customer is copied from another site\n* omnichannel_subscription_item_grace_period_expired - Triggered when an omnichannel subscription item's grace period has expired\n* unbilled_charges_invoiced - Triggered when unbilled charges are invoiced\n* subscription_pause_scheduled - Sent when the subscription is scheduled to pause.\n* order_returned - Triggered when order is marked as returned\n* payment_source_expired - Sent when a payment source for a customer is expired\n* contract_term_terminated - Triggered when contract term is terminated\n* payment_source_updated - Sent when the payment source is updated for a customer or when role is assigned to the payment source.\n* pending_invoice_updated - Triggered when you make the following changes to a pending invoice: add a charge, add a non-recurring addon, or delete a line item.\n* subscription_advance_invoice_schedule_removed - Triggered when scheduled advance invoice is removed for a subscription.\n* omnichannel_subscription_item_grace_period_started - Triggered when an omnichannel subscription item's grace period has started\n* tax_withheld_deleted - Triggered when a tax withheld is deleted\n* omnichannel_subscription_item_dunning_started - Triggered when an omnichannel subscription item's dunning has started\n* sales_order_created - Triggered when a sales order is created\n* virtual_bank_account_updated - Sent when the virtual bank account is updated for a customer.\n* credit_note_updated - Sent when a credit note is updated\n* subscription_scheduled_pause_removed - Triggered when scheduled pause is removed for the subscription.\n* card_expiry_reminder - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.\n* coupon_set_created - Sent when a coupon set is created\n* virtual_bank_account_deleted - Sent when a virtual bank account is deleted for a customer.\n* omnichannel_one_time_order_created - Triggered when an omnichannel one time order is created\n* gift_scheduled - Triggered when a new gift is created\n* promotional_credits_deducted - Sent when a customer prmotion credits deducted\n* contract_term_renewed - Triggered when new contract term is renewed\n* subscription_trial_extended - Trial Extension\n* gift_expired - Triggered when a gift expires\n* omnichannel_subscription_item_scheduled_change_removed - Triggered when an omnichannel subscription item scheduled change is removed\n* contract_term_cancelled - Triggered when contract term is cancelled\n* authorization_voided - Triggered when a authorization transaction is voided. Authorization can be voided either manually or when blocked funds are released by the gateway after a certain period of time.\n* addon_created - Sent when a addon is created.\n* invoice_updated - Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.\n* payment_intent_updated - Sent when a Payment intent is updated\n* payment_source_locally_deleted - Sent when a payment source for a customer removed from Chargebee\n",
+            "description": "The types of event provided by chargebee. Refer [event types](/docs/api/v2/pcv-1/events/event-types)\nfor all the event types provided by us currently.\n\n* card_deleted - Sent when a card is deleted for a customer\n* rule_created - Triggered when a rule is created\n* subscription_cancelled - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* customer_changed - Sent when a customer is changed\n* invoice_deleted - Event triggered when an invoice is deleted.\n* omnichannel_subscription_item_changed - Triggered when an omnichannel subscription item is changed\n* subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.\n* subscription_created - Sent when a new subscription is created.\n* payment_initiated - Sent when a payment is initiated via direct debit\n* quote_updated - Triggered when quote is updated\n* payment_source_added - Sent when a payment source is added for a customer.\n* contract_term_created - Triggered when new contract term is created\n* subscription_deleted - Sent when a subscription has been deleted\n* voucher_created - Triggered when a payment voucher is created\n* omnichannel_subscription_created - Triggered when an omnichannel subscription is created\n* subscription_ramp_drafted - Triggered when a subscription ramp is moved to draft status.\n* rule_deleted - Triggered when a rule is deleted\n* transaction_deleted - Triggered when a transaction is deleted.\n* payment_failed - Sent when attempt to charge customer's credit card fails\n* subscription_reactivated_with_backdating - Sent when the subscription is moved from cancelled state to active or in_trial state with past date\n* omnichannel_subscription_item_cancellation_scheduled - Triggered when an omnichannel subscription item is scheduled for cancellation\n* payment_source_expiring - Sent when the customer's payment source is expiring soon. Sent 30 days before the expiry date.\n* omnichannel_subscription_item_resumed - Triggered when an omnichannel subscription item is resumed\n* omnichannel_subscription_item_dunning_expired - Triggered when an omnichannel subscription item's dunning has expired\n* order_ready_to_process - Triggered when order reaches it's order date\n* coupon_set_updated - Sent when a coupon set is changed\n* subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state\n* addon_updated - Sent when a addon is changed.\n* chargeback_lost - Triggered when a chargeback is resolved in the cardholder's favor.\n* subscription_scheduled_changes_removed - Sent when scheduled change for the subscription is removed.\n* payment_refunded - Sent when a payment refund is made\n* subscription_started - Sent when a 'future' subscription gets started at the scheduled date.\n* token_created - Sent when a Token is created\n* subscription_created_with_backdating - Sent when a new subscription is created with backdating.\n* unbilled_charges_deleted - Triggered when unbilled charges are deleted\n* omnichannel_subscription_item_renewed - Triggered when an omnichannel subscription item is renewed\n* subscription_ramp_applied - Triggered when a subscription ramp is applied.\n* promotional_credits_added - Sent when a customer prmotion credits added\n* subscription_canceled_with_backdating - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* card_expired - Sent when a card for a customer is expired\n* payment_intent_created - Sent when a Payment intent is created\n* subscription_changed_with_backdating - Sent after the subscription's recurring items have been changed with backdated date\n* subscription_scheduled_cancellation_removed - Sent when scheduled cancellation is removed for the subscription.\n* omnichannel_subscription_item_resubscribed - Triggered when an omnichannel subscription item is resubscribed\n* plan_deleted - Sent when a plan is deleted.\n* omnichannel_subscription_imported - Triggered when an omnichannel subscription is imported\n* vault_token_created - Triggered when a payment method is tokenized and stored in the vault.\n* tax_withheld_refunded - Sent when a tax withheld refund is made\n* unbilled_charges_voided - Triggered when unbilled charges are voided\n* customer_moved_out - Sent when a customer is copied to another site\n* dunning_updated - Sent when dunning is paused for an invoice\n* record_purchase_failed - Triggered when an omnichannel record purchase fails\n* coupon_codes_deleted - Sent when coupon codes are deleted in coupon set\n* subscription_paused - Sent when the subscription is paused.\n* order_updated - Triggered when order is updated\n* subscription_movement_failed - Triggered when a subscription movement fails\n* unbilled_charges_created - Triggered when unbilled charges are created\n* subscription_moved_in - Triggered when a subscription is moved from another customer\n* subscription_ramp_deleted - Triggered when a subscription ramp is deleted.\n* payment_succeeded - Sent when the payment is successfully collected\n* voucher_expired - Triggered when a payment voucher is expired\n* mrr_updated - Sent when either of MRR or CMRR of a subscription changes\n* subscription_scheduled_resumption_removed - Triggered when scheduled resumption is removed for the subscription.\n* subscription_changes_scheduled - Sent when subscription changes are scheduled for later. Changes will be applied at the end of current term.\n* order_ready_to_ship - Triggered when order reaches it's shipping date\n* einvoice_created - Triggered when an e-invoice is created for an invoice or credit note.\n* omnichannel_subscription_item_cancelled - Triggered when an omnichannel subscription item is cancelled\n* subscription_trial_end_reminder - Sent when the customer's trial period is about to end.\n* subscription_renewed - Sent when the subscription is renewed from the current term.\n* vault_token_deleted - Triggered when a vaulted payment method is deleted from the vault.\n* plan_created - Sent when a plan is created.\n* coupon_codes_updated - Sent when coupon codes are updated\n* gift_unclaimed - Triggered when a new gift is unclaimed and is ready to be claimed\n* virtual_bank_account_added - Sent when a virtual bank account is added for a customer.\n* subscription_ramp_updated - Triggered when a subscription ramp is updated.\n* subscription_moved_out - Triggered when a subscription is moved to another customer\n* contract_term_completed - Triggered when contract term is completed\n* subscription_renewal_reminder - Sent before each subscription's renewal based on plan's period\n* coupon_updated - Sent when a coupon is changed.\n* token_consumed - Sent when a Token is consumed\n* omnichannel_subscription_item_upgraded - Triggered when an omnichannel subscription item is upgraded\n* transaction_created - Triggered when a transaction is recorded\n* customer_deleted - Sent when a customer is deleted\n* subscription_items_renewed - Sent when one or more Subscription Items are renewed\n* coupon_deleted - Sent when a coupon is deleted.\n* quote_deleted - Triggered when quote is deleted\n* card_updated - Sent when the card is updated for a customer.\n* coupon_created - Sent when a coupon is created.\n* quote_created - Triggered when quote is created\n* subscription_changed - Sent after the subscription's recurring items have been changed\n* customer_created - Sent when a customer is created. This event happens when only a new customer is created or when a customer is automatically created during new subscription creation.\n* chargeback_won - Triggered when a chargeback is resolved in the merchant's favor.\n* coupon_set_deleted - Sent when a coupon set is deleted\n* refund_initiated - Sent when a refund is initiated via direct debit\n* order_cancelled - Triggered when order is cancelled\n* coupon_codes_added - Sent when coupon codes are added in coupon set\n* omnichannel_subscription_item_paused - Triggered when an omnichannel subscription item is paused\n* card_added - Sent when a card is added for a customer.\n* gift_cancelled - Triggered when a gift is cancelled.\n* omnichannel_subscription_item_downgraded - Triggered when an omnichannel subscription item is downgraded\n* payment_source_deleted - Sent when a payment source is deleted for a customer\n* credit_note_created - Sent when a credit note is created\n* subscription_resumption_scheduled - Triggered when the subscription resumption is scheduled.\n* subscription_advance_invoice_schedule_updated - Triggered when scheduled advance invoice is updated for a subscription.\n* omnichannel_one_time_order_item_cancelled - Triggered when an omnichannel one time order item is cancelled\n* gift_claimed - Triggered when a gift is claimed\n* vault_token_updated - Triggered when a vaulted payment method is updated.\n* subscription_activated - Sent after the subscription has been moved from trial to active state\n* subscription_resumed - Sent when the subscription is moved from paused state to active state\n* sales_order_updated - Triggered when a sales order is updated\n* credit_note_deleted - Sent when a credit note is deleted\n* subscription_advance_invoice_schedule_added - Triggered when advance invoice is scheduled for a subscription.\n* order_deleted - Triggered when order is deleted\n* token_expired - Sent when a Token is expired\n* omnichannel_subscription_item_scheduled_cancellation_removed - Triggered when an omnichannel subscription item scheduled cancellation is removed\n* transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n* subscription_cancellation_reminder - Sent when the customer's subscription is nearing it's scheduled cancellation date.\n* rule_updated - Triggered when a rule is updated\n* omnichannel_subscription_item_reactivated - Triggered when an omnichannel subscription item is reactivated\n* invoice_generated - Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \"Pending\" invoice is closed.\n* chargeback_initiated - Triggered when a chargeback is raised against a payment.\n* order_delivered - Triggered when order is marked as delivered\n* pending_invoice_created - Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.\n* subscription_ramp_created - Triggered when a subscription ramp is created.\n* omnichannel_subscription_item_expired - Triggered when an omnichannel subscription item is expired\n* refund_failed - Triggered when a refund attempt fails at the gateway.\n* authorization_succeeded - Triggered when a authorization transaction is created.\n* invoice_generated_with_backdating - Event triggered when a new invoice is generated with past date as invoice date.\n* omnichannel_subscription_item_change_scheduled - Triggered when an omnichannel subscription item change is scheduled\n* subscription_cancellation_scheduled - Sent when subscription is scheduled to cancel at end of current term\n* order_created - Triggered when order is created\n* hierarchy_deleted - Triggered when a hierarchy is deleted\n* subscription_activated_with_backdating - Sent after the subscription changes to `active` from another `status`, while the change is backdated.\n* plan_updated - Sent when a plan is changed.\n* tax_withheld_recorded - Triggered when a tax withheld is recorded for an invoice\n* einvoice_updated - Triggered when an e-invoice is updated (for example when its status or provider responses change).\n* credit_note_created_with_backdating - Sent when a credit note is created with past date as credit note date\n* omnichannel_subscription_item_pause_scheduled - Triggered when an omnichannel subscription item is scheduled for pause\n* gift_updated - Triggered when a gift is updated\n* order_resent - Triggered when order is resent\n* hierarchy_created - Triggered when a hierarchy is created\n* addon_deleted - Sent when a addon is deleted.\n* voucher_create_failed - Triggered when a payment voucher creation is failed\n* customer_moved_in - Sent when a customer is copied from another site\n* omnichannel_subscription_item_grace_period_expired - Triggered when an omnichannel subscription item's grace period has expired\n* unbilled_charges_invoiced - Triggered when unbilled charges are invoiced\n* subscription_pause_scheduled - Sent when the subscription is scheduled to pause.\n* order_returned - Triggered when order is marked as returned\n* payment_source_expired - Sent when a payment source for a customer is expired\n* contract_term_terminated - Triggered when contract term is terminated\n* payment_source_updated - Sent when the payment source is updated for a customer or when role is assigned to the payment source.\n* pending_invoice_updated - Triggered when you make the following changes to a pending invoice: add a charge, add a non-recurring addon, or delete a line item.\n* subscription_advance_invoice_schedule_removed - Triggered when scheduled advance invoice is removed for a subscription.\n* omnichannel_subscription_item_grace_period_started - Triggered when an omnichannel subscription item's grace period has started\n* tax_withheld_deleted - Triggered when a tax withheld is deleted\n* omnichannel_subscription_item_dunning_started - Triggered when an omnichannel subscription item's dunning has started\n* sales_order_created - Triggered when a sales order is created\n* virtual_bank_account_updated - Sent when the virtual bank account is updated for a customer.\n* credit_note_updated - Sent when a credit note is updated\n* subscription_scheduled_pause_removed - Triggered when scheduled pause is removed for the subscription.\n* card_expiry_reminder - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.\n* coupon_set_created - Sent when a coupon set is created\n* virtual_bank_account_deleted - Sent when a virtual bank account is deleted for a customer.\n* omnichannel_one_time_order_created - Triggered when an omnichannel one time order is created\n* gift_scheduled - Triggered when a new gift is created\n* promotional_credits_deducted - Sent when a customer prmotion credits deducted\n* contract_term_renewed - Triggered when new contract term is renewed\n* subscription_trial_extended - Trial Extension\n* gift_expired - Triggered when a gift expires\n* omnichannel_subscription_item_scheduled_change_removed - Triggered when an omnichannel subscription item scheduled change is removed\n* contract_term_cancelled - Triggered when contract term is cancelled\n* authorization_voided - Triggered when a authorization transaction is voided. Authorization can be voided either manually or when blocked funds are released by the gateway after a certain period of time.\n* addon_created - Sent when a addon is created.\n* invoice_updated - Triggered when changes are made to a finalized invoice, including voiding, deletion, invoice address updates, status changes, and payment changes such as applying or removing a payment, applying or removing a credit, and credit note creation. pending_invoice_updated is triggered for changes specific to pending invoices; invoice_updated covers all other invoice changes.\n* payment_intent_updated - Sent when a Payment intent is updated\n* payment_source_locally_deleted - Sent when a payment source for a customer removed from Chargebee\n",
             "enum": [
               "plan_created",
               "plan_updated",
@@ -170403,136 +171269,159 @@
       },
       "GatewayRequestLog": {
         "type": "object",
+        "description": "A gateway request log is a record of a single request that Chargebee sent to a payment gateway, such as a payment, refund, or payment method verification call, along with the gateway's response. Use gateway request logs to investigate payment failures, reconcile Chargebee records with your gateway dashboard, or audit the calls made for a specific [customer](/docs/api/v2/pcv-1/customers), [invoice](/docs/api/v2/pcv-1/invoices), or [transaction](/docs/api/v2/pcv-1/transactions).\n\nRequest and response bodies and headers are returned as stored, with sensitive values such as card details and credentials already masked. Logs are retained for 60 days.\n",
         "properties": {
           "log_id": {
             "type": "string",
             "deprecated": false,
+            "description": "Uniquely identifies the gateway request log.\n",
             "maxLength": 100,
             "example": null
           },
           "url": {
             "type": "string",
             "deprecated": false,
+            "description": "The gateway URL that Chargebee sent the request to.\n",
             "maxLength": 500,
             "example": null
           },
           "status_code": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP status code returned by the gateway, as a string. For example, `\"200\"`.\n",
             "maxLength": 100,
             "example": null
           },
           "method": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP method of the request, for example `POST`.\n",
             "maxLength": 100,
             "example": null
           },
           "request_body": {
             "type": "string",
             "deprecated": false,
+            "description": "The body of the request sent to the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
           "response_body": {
             "type": "string",
             "deprecated": false,
+            "description": "The body of the response returned by the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
           "request_headers": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP headers of the request sent to the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
           "response_headers": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP headers of the response returned by the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
           "gateway": {
             "type": "string",
             "deprecated": false,
+            "description": "The payment gateway that received the request, for example `stripe` or `adyen`.\n",
             "maxLength": 100,
             "example": null
           },
           "customer_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [customer](/docs/api/v2/pcv-1/customers) associated with the request.\n",
             "maxLength": 100,
             "example": null
           },
           "invoice_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [invoice](/docs/api/v2/pcv-1/invoices) associated with the request.\n",
             "maxLength": 100,
             "example": null
           },
           "transaction_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [transaction](/docs/api/v2/pcv-1/transactions) associated with the request.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_method_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [payment source](/docs/api/v2/pcv-1/payment_sources) used in the request.\n",
             "maxLength": 100,
             "example": null
           },
           "gateway_credential_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the gateway account used for the request.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_attempt_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the payment attempt associated with the request.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_intent_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [payment intent](/docs/api/v2/pcv-1/payment_intents) associated with the request.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_method_name": {
             "type": "string",
             "deprecated": false,
+            "description": "The name of the payment method used in the request.\n",
             "maxLength": 100,
             "example": null
           },
           "operation_name": {
             "type": "string",
             "deprecated": false,
+            "description": "The gateway operation performed in the request, in uppercase. For example, `PAYMENT`, `REFUND`, `AUTHORIZE`, or `CREATE_PAYMENT_METHOD`.\n",
             "maxLength": 200,
             "example": null
           },
           "operation_type": {
             "type": "string",
             "deprecated": false,
+            "description": "The category of the gateway operation performed in the request. One of `PROFILE`, `PAYMENT_METHOD`, `PAYMENT`, `REFUND`, `AUTHORIZE`, `VOID`, or `CAPTURE`.\n",
             "maxLength": 200,
             "example": null
           },
           "action_type": {
             "type": "string",
             "deprecated": false,
+            "description": "The action performed in the request.\n",
             "maxLength": 500,
             "example": null
           },
           "source": {
             "type": "string",
             "deprecated": false,
+            "description": "The origin of the Chargebee request that triggered this gateway call, for example `API`, `ADMIN_CONSOLE`, or `SYSTEM`. The value is `UNKNOWN_SOURCE` when the origin isn't recorded. This attribute is omitted when the log has no source.\n",
             "maxLength": 100,
             "example": null
           },
           "trace_id_hash": {
             "type": "string",
             "deprecated": false,
+            "description": "A hashed trace identifier for the request.\n",
             "maxLength": 300,
             "example": null
           },
@@ -170540,18 +171429,21 @@
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
+            "description": "Timestamp indicating when Chargebee sent the request to the gateway.\n",
             "example": null
           },
           "response_received_at": {
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
+            "description": "Timestamp indicating when Chargebee received the response from the gateway.\n",
             "example": null
           },
           "response_time": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time the gateway took to respond to the request, in milliseconds.\n",
             "example": null
           }
         },
@@ -170559,112 +171451,131 @@
       },
       "GatewayWebhookLog": {
         "type": "object",
+        "description": "A gateway webhook log is a record of a single webhook that a payment gateway sent to Chargebee, along with the response Chargebee returned to the gateway. Use gateway webhook logs to confirm that gateway notifications, such as asynchronous payment or refund updates, reached Chargebee, and to trace them to the related [customer](/docs/api/v2/pcv-1/customers), [invoice](/docs/api/v2/pcv-1/invoices), or [transaction](/docs/api/v2/pcv-1/transactions).\n\nRequest and response bodies and headers are returned as stored, with sensitive values already masked. Logs are retained for 60 days.\n",
         "properties": {
           "webhook_id": {
             "type": "string",
             "deprecated": false,
+            "description": "Uniquely identifies the gateway webhook log.\n",
             "maxLength": 100,
             "example": null
           },
           "url": {
             "type": "string",
             "deprecated": false,
+            "description": "The Chargebee URL at which the webhook was received.\n",
             "maxLength": 500,
             "example": null
           },
           "method": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP method of the webhook request, for example `POST`.\n",
             "maxLength": 100,
             "example": null
           },
           "status_code": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP status code that Chargebee returned to the gateway, as a string. For example, `\"200\"`.\n",
             "maxLength": 100,
             "example": null
           },
           "gateway": {
             "type": "string",
             "deprecated": false,
+            "description": "The payment gateway that sent the webhook, for example `stripe` or `adyen`.\n",
             "maxLength": 100,
             "example": null
           },
           "id_at_gateway": {
             "type": "string",
             "deprecated": false,
+            "description": "The gateway's reference for the transaction that the webhook is about, for example Adyen's `pspReference`. Chargebee uses this value to match the webhook to a transaction.\n",
             "maxLength": 200,
             "example": null
           },
           "customer_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [customer](/docs/api/v2/pcv-1/customers) associated with the webhook, resolved from the matching transaction or payment intent.\n",
             "maxLength": 100,
             "example": null
           },
           "invoice_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [invoice](/docs/api/v2/pcv-1/invoices) associated with the webhook, resolved from the matching transaction.\n",
             "maxLength": 100,
             "example": null
           },
           "transaction_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [transaction](/docs/api/v2/pcv-1/transactions) that the webhook matched, resolved from `id_at_gateway`.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_method_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [payment source](/docs/api/v2/pcv-1/payment_sources) associated with the webhook, resolved from the matching transaction.\n",
             "maxLength": 100,
             "example": null
           },
           "gateway_credential_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the gateway account associated with the webhook, resolved from the matching transaction or payment intent.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_attempt_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the payment attempt associated with the webhook. Present when the webhook matches a payment attempt but not a transaction.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_intent_handle": {
             "type": "string",
             "deprecated": false,
+            "description": "The ID of the [payment intent](/docs/api/v2/pcv-1/payment_intents) associated with the webhook, resolved from the matching payment attempt.\n",
             "maxLength": 100,
             "example": null
           },
           "payment_method_name": {
             "type": "string",
             "deprecated": false,
+            "description": "The name of the payment method associated with the webhook.\n",
             "maxLength": 100,
             "example": null
           },
           "request_body": {
             "type": "string",
             "deprecated": false,
+            "description": "The body of the webhook request sent by the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
           "response_body": {
             "type": "string",
             "deprecated": false,
+            "description": "The body of the response that Chargebee returned to the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
           "request_headers": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP headers of the webhook request sent by the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
           "response_headers": {
             "type": "string",
             "deprecated": false,
+            "description": "The HTTP headers of the response that Chargebee returned to the gateway. Sensitive values are masked.\n",
             "maxLength": 65000,
             "example": null
           },
@@ -170672,12 +171583,14 @@
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
+            "description": "Timestamp indicating when Chargebee received the webhook.\n",
             "example": null
           },
           "response_time": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time Chargebee took to process the webhook, in milliseconds.\n",
             "example": null
           }
         },
@@ -177664,6 +178577,129 @@
           "occurred_at",
           "source",
           "webhook_status"
+        ],
+        "example": null
+      },
+      "OrganizationDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 40,
+            "example": null
+          },
+          "organization_name": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 100,
+            "example": null
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "deprecated": false,
+            "maxLength": 70,
+            "example": null
+          },
+          "address_line1": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 180,
+            "example": null
+          },
+          "address_line2": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 150,
+            "example": null
+          },
+          "address_line3": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 150,
+            "example": null
+          },
+          "city": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "state_code": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "state": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "country_code": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          },
+          "zip": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 20,
+            "example": null
+          },
+          "phone": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 20,
+            "example": null
+          },
+          "fax": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 20,
+            "example": null
+          },
+          "website": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 200,
+            "example": null
+          },
+          "is_vat_number_present": {
+            "type": "boolean",
+            "deprecated": false,
+            "example": null
+          },
+          "vat_number": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 20,
+            "example": null
+          },
+          "resource_version": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": false,
+            "example": null
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
+          "business_entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
+          }
+        },
+        "required": [
+          "id"
         ],
         "example": null
       },
@@ -187393,7 +188429,9 @@
             "enum": [
               "active",
               "disabled",
-              "cancelled"
+              "cancelled",
+              "unclaimed",
+              "claimed"
             ],
             "example": null
           },
@@ -187473,6 +188511,18 @@
             "maxLength": 50,
             "example": null
           },
+          "claim_url": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 500,
+            "example": null
+          },
+          "claim_expiry_at": {
+            "type": "integer",
+            "format": "unix-time",
+            "deprecated": false,
+            "example": null
+          },
           "linked_sites": {
             "type": "array",
             "deprecated": false,
@@ -187508,7 +188558,9 @@
                   "enum": [
                     "active",
                     "disabled",
-                    "cancelled"
+                    "cancelled",
+                    "unclaimed",
+                    "claimed"
                   ],
                   "example": null
                 },
@@ -196848,7 +197900,7 @@
             "items": {
               "type": "string",
               "deprecated": false,
-              "description": "The types of events that trigger this webhook. For a complete list, see [event types](/docs/api/v2/pcv-1/webhook_endpoints)\n.\n\n* order_ready_to_ship - Triggered when an order reaches its shipping date\n* omnichannel_subscription_imported - Triggered when an omnichannel subscription is imported\n* payment_source_expiring - Sent when the customer's payment source is expiring soon. Sent 30 days before the expiry date.\n* omnichannel_subscription_item_grace_period_started - Triggered when an omnichannel subscription item's grace period has started\n* plan_updated - Sent when a plan is changed.\n* subscription_advance_invoice_schedule_removed - Triggered when scheduled advance invoice is removed for a subscription.\n* plan_deleted - Sent when a plan is deleted.\n* card_added - Sent when a card is added for a customer.\n* customer_moved_out - Sent when a customer is copied to another site\n* gift_updated - Triggered when a gift is updated\n* payment_source_expired - Sent when a payment source for a customer is expired\n* invoice_generated - Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \"Pending\" invoice is closed.\n* customer_deleted - Sent when a customer is deleted\n* plan_created - Sent when a plan is created.\n* customer_moved_in - Sent when a customer is copied from another site\n* payment_succeeded - Sent when the payment is successfully collected\n* order_ready_to_process - Triggered when an order reaches its order date\n* subscription_scheduled_changes_removed - Sent when scheduled change for the subscription is removed.\n* contract_term_renewed - Triggered when new contract term is renewed\n* payment_failed - Sent when an attempt to charge the customer's credit card fails\n* coupon_codes_deleted - Sent when coupon codes are deleted in coupon set\n* token_created - Sent when a Token is created\n* customer_changed - Sent when a customer is changed\n* subscription_scheduled_resumption_removed - Triggered when scheduled resumption is removed for the subscription.\n* card_expired - Sent when a card for a customer is expired\n* voucher_expired - Triggered when a payment voucher is expired\n* omnichannel_one_time_order_created - Triggered when an omnichannel one time order is created\n* addon_created - Sent when an addon is created.\n* subscription_canceled_with_backdating - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* omnichannel_subscription_item_expired - Triggered when an omnichannel subscription item is expired\n* hierarchy_created - Triggered when a hierarchy is created\n* order_cancelled - Triggered when an order is cancelled\n* refund_failed - Triggered when a refund attempt fails at the gateway.\n* addon_deleted - Sent when an addon is deleted.\n* unbilled_charges_invoiced - Triggered when unbilled charges are invoiced\n* omnichannel_subscription_item_renewed - Triggered when an omnichannel subscription item is renewed\n* authorization_succeeded - Triggered when an authorization transaction is created.\n* gift_claimed - Triggered when a gift is claimed\n* omnichannel_one_time_order_item_cancelled - Triggered when an omnichannel one time order item is cancelled\n* order_deleted - Triggered when an order is deleted\n* payment_initiated - Sent when a payment is initiated via direct debit\n* unbilled_charges_voided - Triggered when unbilled charges are voided\n* omnichannel_subscription_item_scheduled_change_removed - Triggered when an omnichannel subscription item scheduled change is removed\n* order_resent - Triggered when an order is resent\n* subscription_created_with_backdating - Sent when a new subscription is created with backdating.\n* subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state\n* coupon_updated - Sent when a coupon is changed.\n* payment_source_locally_deleted - Sent when a payment source for a customer is removed from Chargebee\n* authorization_voided - Triggered when an authorization transaction is voided. Authorization can be voided either manually or when blocked funds are released by the gateway after a certain period of time.\n* coupon_set_created - Sent when a coupon set is created\n* einvoice_created - Triggered when an e-invoice is created for an invoice or credit note.\n* subscription_cancelled - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* subscription_paused - Sent when the subscription is paused.\n* token_expired - Sent when a Token is expired\n* transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n* omnichannel_subscription_item_reactivated - Triggered when an omnichannel subscription item is reactivated\n* subscription_activated_with_backdating - Sent after the subscription changes to `active` from another `status`, while the change is backdated.\n* invoice_deleted - Event triggered when an invoice is deleted.\n* omnichannel_subscription_created - Triggered when an omnichannel subscription is created\n* order_created - Triggered when an order is created\n* quote_deleted - Triggered when a quote is deleted\n* subscription_reactivated_with_backdating - Sent when the subscription is moved from cancelled state to active or in_trial state with past date\n* invoice_updated - Triggered when the invoice's shipping/billing address is updated, if the invoice is voided, or when the amount due is modified due to payments applied/removed.\n* unbilled_charges_deleted - Triggered when unbilled charges are deleted\n* subscription_moved_out - Triggered when a subscription is moved to another customer\n* subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.\n* token_consumed - Sent when a Token is consumed\n* transaction_deleted - Triggered when a transaction is deleted.\n* subscription_ramp_deleted - Triggered when a subscription ramp is deleted.\n* subscription_trial_extended - Trial Extension\n* coupon_codes_updated - Sent when coupon codes are updated\n* omnichannel_subscription_item_dunning_started - Triggered when an omnichannel subscription item's dunning has started\n* pending_invoice_created - Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.\n* card_updated - Sent when the card is updated for a customer.\n* gift_unclaimed - Triggered when a new gift is unclaimed and is ready to be claimed\n* subscription_advance_invoice_schedule_added - Triggered when advance invoice is scheduled for a subscription.\n* subscription_trial_end_reminder - Sent when the customer's trial period is about to end.\n* hierarchy_deleted - Triggered when a hierarchy is deleted\n* subscription_changed - Sent after the subscription's recurring items have been changed\n* vault_token_updated - Triggered when a vaulted payment method is updated.\n* gift_scheduled - Triggered when a new gift is created\n* invoice_generated_with_backdating - Event triggered when a new invoice is generated with past date as invoice date.\n* payment_intent_updated - Sent when a payment intent is updated\n* virtual_bank_account_added - Sent when a virtual bank account is added for a customer.\n* subscription_movement_failed - Triggered when a subscription movement fails\n* tax_withheld_deleted - Triggered when a tax withheld is deleted\n* omnichannel_subscription_item_change_scheduled - Triggered when an omnichannel subscription item change is scheduled\n* pending_invoice_updated - Event triggered when the option \"Notify and wait to close invoices\" is enabled, and the 'Pending' invoice is updated.\n* promotional_credits_deducted - Sent when promotional credits are deducted for a customer\n* payment_refunded - Sent when a payment refund is made\n* subscription_ramp_created - Triggered when a subscription ramp is created.\n* omnichannel_subscription_item_cancellation_scheduled - Triggered when an omnichannel subscription item is scheduled for cancellation\n* subscription_started - Sent when a 'future' subscription gets started at the scheduled date.\n* credit_note_deleted - Sent when a credit note is deleted\n* payment_source_updated - Sent when the payment source is updated for a customer or when role is assigned to the payment source.\n* credit_note_updated - Sent when a credit note is updated\n* quote_created - Triggered when a quote is created\n* credit_note_created - Sent when a credit note is created\n* gift_expired - Triggered when a gift expires\n* transaction_created - Triggered when a transaction is recorded\n* contract_term_terminated - Triggered when contract term is terminated\n* payment_source_deleted - Sent when a payment source is deleted for a customer\n* contract_term_cancelled - Triggered when contract term is cancelled\n* sales_order_created - Triggered when a sales order is created\n* subscription_cancellation_reminder - Sent when the customer's subscription is nearing its scheduled cancellation date.\n* coupon_codes_added - Sent when coupon codes are added in coupon set\n* order_returned - Triggered when an order is marked as returned\n* rule_created - Triggered when a rule is created\n* subscription_activated - Sent after the subscription has been moved from trial to active state\n* omnichannel_subscription_item_resumed - Triggered when an omnichannel subscription item is resumed\n* subscription_renewal_reminder - Sent before each subscription's renewal based on plan's period\n* omnichannel_subscription_item_changed - Triggered when an omnichannel subscription item is changed\n* omnichannel_subscription_item_grace_period_expired - Triggered when an omnichannel subscription item's grace period has expired\n* subscription_ramp_updated - Triggered when a subscription ramp is updated.\n* promotional_credits_added - Sent when promotional credits are added for a customer\n* virtual_bank_account_deleted - Sent when a virtual bank account is deleted for a customer.\n* dunning_updated - Sent when dunning is paused for an invoice\n* subscription_changed_with_backdating - Sent after the subscription's recurring items have been changed with backdated date\n* rule_updated - Triggered when a rule is updated\n* mrr_updated - Sent when either of MRR or CMRR of a subscription changes\n* payment_source_added - Sent when a payment source is added for a customer.\n* subscription_ramp_applied - Triggered when a subscription ramp is applied.\n* card_deleted - Sent when a card is deleted for a customer\n* omnichannel_subscription_item_pause_scheduled - Triggered when an omnichannel subscription item is scheduled for pause\n* sales_order_updated - Triggered when a sales order is updated\n* subscription_cancellation_scheduled - Sent when subscription is scheduled to cancel at end of current term\n* subscription_deleted - Sent when a subscription has been deleted\n* subscription_moved_in - Triggered when a subscription is moved from another customer\n* record_purchase_failed - Triggered when an omnichannel record purchase fails\n* subscription_changes_scheduled - Sent when subscription changes are scheduled for later. Changes will be applied at the end of current term.\n* voucher_create_failed - Triggered when payment voucher creation fails\n* omnichannel_subscription_item_dunning_expired - Triggered when an omnichannel subscription item's dunning has expired\n* vault_token_deleted - Triggered when a vaulted payment method is deleted from the vault.\n* coupon_set_deleted - Sent when a coupon set is deleted\n* coupon_set_updated - Sent when a coupon set is changed\n* addon_updated - Sent when an addon is changed.\n* subscription_items_renewed - Sent when one or more Subscription Items are renewed\n* subscription_scheduled_cancellation_removed - Sent when scheduled cancellation is removed for the subscription.\n* card_expiry_reminder - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.\n* coupon_created - Sent when a coupon is created.\n* subscription_resumption_scheduled - Triggered when the subscription resumption is scheduled.\n* omnichannel_subscription_item_upgraded - Triggered when an omnichannel subscription item is upgraded\n* order_updated - Triggered when an order is updated\n* vault_token_created - Triggered when a payment method is tokenized and stored in the vault.\n* omnichannel_subscription_item_resubscribed - Triggered when an omnichannel subscription item is resubscribed\n* refund_initiated - Sent when a refund is initiated via direct debit\n* omnichannel_subscription_item_downgraded - Triggered when an omnichannel subscription item is downgraded\n* einvoice_updated - Triggered when an e-invoice is updated (for example when its status or provider responses change).\n* gift_cancelled - Triggered when a gift is cancelled.\n* subscription_renewed - Sent when the subscription is renewed from the current term.\n* omnichannel_subscription_item_cancelled - Triggered when an omnichannel subscription item is cancelled\n* subscription_scheduled_pause_removed - Triggered when scheduled pause is removed for the subscription.\n* omnichannel_subscription_item_paused - Triggered when an omnichannel subscription item is paused\n* omnichannel_subscription_item_scheduled_cancellation_removed - Triggered when an omnichannel subscription item scheduled cancellation is removed\n* quote_updated - Triggered when a quote is updated\n* customer_created - Sent when a customer is created. This event happens when only a new customer is created or when a customer is automatically created during new subscription creation.\n* tax_withheld_refunded - Sent when a tax withheld refund is made\n* coupon_deleted - Sent when a coupon is deleted.\n* order_delivered - Triggered when an order is marked as delivered\n* subscription_pause_scheduled - Sent when the subscription is scheduled to pause.\n* subscription_advance_invoice_schedule_updated - Triggered when scheduled advance invoice is updated for a subscription.\n* voucher_created - Triggered when a payment voucher is created\n* credit_note_created_with_backdating - Sent when a credit note is created with past date as credit note date\n* unbilled_charges_created - Triggered when unbilled charges are created\n* subscription_ramp_drafted - Triggered when a subscription ramp is moved to draft status.\n* rule_deleted - Triggered when a rule is deleted\n* payment_intent_created - Sent when a payment intent is created\n* contract_term_created - Triggered when new contract term is created\n* contract_term_completed - Triggered when contract term is completed\n* tax_withheld_recorded - Triggered when a tax withheld is recorded for an invoice\n* subscription_resumed - Sent when the subscription is moved from paused state to active state\n* virtual_bank_account_updated - Sent when the virtual bank account is updated for a customer.\n* subscription_created - Sent when a new subscription is created.\n",
+              "description": "The types of events that trigger this webhook. For a complete list, see [event types](/docs/api/v2/pcv-1/webhook_endpoints)\n.\n\n* order_ready_to_ship - Triggered when an order reaches its shipping date\n* omnichannel_subscription_imported - Triggered when an omnichannel subscription is imported\n* payment_source_expiring - Sent when the customer's payment source is expiring soon. Sent 30 days before the expiry date.\n* omnichannel_subscription_item_grace_period_started - Triggered when an omnichannel subscription item's grace period has started\n* plan_updated - Sent when a plan is changed.\n* subscription_advance_invoice_schedule_removed - Triggered when scheduled advance invoice is removed for a subscription.\n* plan_deleted - Sent when a plan is deleted.\n* card_added - Sent when a card is added for a customer.\n* customer_moved_out - Sent when a customer is copied to another site\n* gift_updated - Triggered when a gift is updated\n* payment_source_expired - Sent when a payment source for a customer is expired\n* invoice_generated - Event triggered when a new invoice is generated. In case of metered billing, this event is triggered when a \"Pending\" invoice is closed.\n* customer_deleted - Sent when a customer is deleted\n* plan_created - Sent when a plan is created.\n* customer_moved_in - Sent when a customer is copied from another site\n* payment_succeeded - Sent when the payment is successfully collected\n* order_ready_to_process - Triggered when an order reaches its order date\n* subscription_scheduled_changes_removed - Sent when scheduled change for the subscription is removed.\n* contract_term_renewed - Triggered when new contract term is renewed\n* payment_failed - Sent when an attempt to charge the customer's credit card fails\n* coupon_codes_deleted - Sent when coupon codes are deleted in coupon set\n* token_created - Sent when a Token is created\n* customer_changed - Sent when a customer is changed\n* subscription_scheduled_resumption_removed - Triggered when scheduled resumption is removed for the subscription.\n* card_expired - Sent when a card for a customer is expired\n* voucher_expired - Triggered when a payment voucher is expired\n* omnichannel_one_time_order_created - Triggered when an omnichannel one time order is created\n* addon_created - Sent when an addon is created.\n* subscription_canceled_with_backdating - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* omnichannel_subscription_item_expired - Triggered when an omnichannel subscription item is expired\n* hierarchy_created - Triggered when a hierarchy is created\n* order_cancelled - Triggered when an order is cancelled\n* refund_failed - Triggered when a refund attempt fails at the gateway.\n* addon_deleted - Sent when an addon is deleted.\n* unbilled_charges_invoiced - Triggered when unbilled charges are invoiced\n* omnichannel_subscription_item_renewed - Triggered when an omnichannel subscription item is renewed\n* authorization_succeeded - Triggered when an authorization transaction is created.\n* gift_claimed - Triggered when a gift is claimed\n* omnichannel_one_time_order_item_cancelled - Triggered when an omnichannel one time order item is cancelled\n* order_deleted - Triggered when an order is deleted\n* payment_initiated - Sent when a payment is initiated via direct debit\n* unbilled_charges_voided - Triggered when unbilled charges are voided\n* omnichannel_subscription_item_scheduled_change_removed - Triggered when an omnichannel subscription item scheduled change is removed\n* order_resent - Triggered when an order is resent\n* subscription_created_with_backdating - Sent when a new subscription is created with backdating.\n* subscription_reactivated - Sent when the subscription is moved from cancelled state to active or in_trial state\n* coupon_updated - Sent when a coupon is changed.\n* payment_source_locally_deleted - Sent when a payment source for a customer is removed from Chargebee\n* authorization_voided - Triggered when an authorization transaction is voided. Authorization can be voided either manually or when blocked funds are released by the gateway after a certain period of time.\n* coupon_set_created - Sent when a coupon set is created\n* einvoice_created - Triggered when an e-invoice is created for an invoice or credit note.\n* subscription_cancelled - Sent when the subscription gets cancelled. If cancelled due to non payment or card not present, the subscription will have the possible reason as 'cancel_reason'.\n* subscription_paused - Sent when the subscription is paused.\n* token_expired - Sent when a Token is expired\n* transaction_updated - Triggered when a transaction is updated. E.g. (1) When a transaction is removed, (2) or when an excess payment is applied on an invoice, (3) or when amount_capturable gets updated.\n* omnichannel_subscription_item_reactivated - Triggered when an omnichannel subscription item is reactivated\n* subscription_activated_with_backdating - Sent after the subscription changes to `active` from another `status`, while the change is backdated.\n* invoice_deleted - Event triggered when an invoice is deleted.\n* omnichannel_subscription_created - Triggered when an omnichannel subscription is created\n* order_created - Triggered when an order is created\n* quote_deleted - Triggered when a quote is deleted\n* subscription_reactivated_with_backdating - Sent when the subscription is moved from cancelled state to active or in_trial state with past date\n* invoice_updated - Triggered when the invoice's shipping/billing address is updated, if the invoice is voided, or when the amount due is modified due to payments applied/removed.\n* unbilled_charges_deleted - Triggered when unbilled charges are deleted\n* subscription_moved_out - Triggered when a subscription is moved to another customer\n* subscription_shipping_address_updated - Triggered when shipping address is added or updated for a subscription.\n* token_consumed - Sent when a Token is consumed\n* transaction_deleted - Triggered when a transaction is deleted.\n* subscription_ramp_deleted - Triggered when a subscription ramp is deleted.\n* subscription_trial_extended - Trial Extension\n* coupon_codes_updated - Sent when coupon codes are updated\n* omnichannel_subscription_item_dunning_started - Triggered when an omnichannel subscription item's dunning has started\n* pending_invoice_created - Event triggered (in the case of metered billing) when a \"Pending\" invoice is created that has usage related charges or line items to be added, before being closed. This is triggered only when the \"Notify for Pending Invoices\" option is enabled.\n* card_updated - Sent when the card is updated for a customer.\n* gift_unclaimed - Triggered when a new gift is unclaimed and is ready to be claimed\n* subscription_advance_invoice_schedule_added - Triggered when advance invoice is scheduled for a subscription.\n* subscription_trial_end_reminder - Sent when the customer's trial period is about to end.\n* hierarchy_deleted - Triggered when a hierarchy is deleted\n* subscription_changed - Sent after the subscription's recurring items have been changed\n* vault_token_updated - Triggered when a vaulted payment method is updated.\n* gift_scheduled - Triggered when a new gift is created\n* invoice_generated_with_backdating - Event triggered when a new invoice is generated with past date as invoice date.\n* payment_intent_updated - Sent when a payment intent is updated\n* virtual_bank_account_added - Sent when a virtual bank account is added for a customer.\n* subscription_movement_failed - Triggered when a subscription movement fails\n* tax_withheld_deleted - Triggered when a tax withheld is deleted\n* omnichannel_subscription_item_change_scheduled - Triggered when an omnichannel subscription item change is scheduled\n* pending_invoice_updated - Event triggered when the option \"Notify and wait to close invoices\" is enabled, and the 'Pending' invoice is updated.\n* promotional_credits_deducted - Sent when promotional credits are deducted for a customer\n* payment_refunded - Sent when a payment refund is made\n* subscription_ramp_created - Triggered when a subscription ramp is created.\n* omnichannel_subscription_item_cancellation_scheduled - Triggered when an omnichannel subscription item is scheduled for cancellation\n* subscription_started - Sent when a 'future' subscription gets started at the scheduled date.\n* credit_note_deleted - Sent when a credit note is deleted\n* payment_source_updated - Sent when the payment source is updated for a customer or when role is assigned to the payment source.\n* credit_note_updated - Sent when a credit note is updated\n* quote_created - Triggered when a quote is created\n* credit_note_created - Sent when a credit note is created\n* gift_expired - Triggered when a gift expires\n* transaction_created - Triggered when a transaction is recorded\n* contract_term_terminated - Triggered when contract term is terminated\n* payment_source_deleted - Sent when a payment source is deleted for a customer\n* contract_term_cancelled - Triggered when contract term is cancelled\n* sales_order_created - Triggered when a sales order is created\n* subscription_cancellation_reminder - Sent when the customer's subscription is nearing its scheduled cancellation date.\n* coupon_codes_added - Sent when coupon codes are added in coupon set\n* order_returned - Triggered when an order is marked as returned\n* rule_created - Triggered when a rule is created\n* subscription_activated - Sent after the subscription has been moved from trial to active state\n* omnichannel_subscription_item_resumed - Triggered when an omnichannel subscription item is resumed\n* subscription_renewal_reminder - Sent before each subscription's renewal based on plan's period\n* omnichannel_subscription_item_changed - Triggered when an omnichannel subscription item is changed\n* omnichannel_subscription_item_grace_period_expired - Triggered when an omnichannel subscription item's grace period has expired\n* subscription_ramp_updated - Triggered when a subscription ramp is updated.\n* promotional_credits_added - Sent when promotional credits are added for a customer\n* virtual_bank_account_deleted - Sent when a virtual bank account is deleted for a customer.\n* chargeback_won - Triggered when a chargeback is resolved in the merchant's favor.\n* dunning_updated - Sent when dunning is paused for an invoice\n* subscription_changed_with_backdating - Sent after the subscription's recurring items have been changed with backdated date\n* rule_updated - Triggered when a rule is updated\n* mrr_updated - Sent when either of MRR or CMRR of a subscription changes\n* payment_source_added - Sent when a payment source is added for a customer.\n* subscription_ramp_applied - Triggered when a subscription ramp is applied.\n* card_deleted - Sent when a card is deleted for a customer\n* omnichannel_subscription_item_pause_scheduled - Triggered when an omnichannel subscription item is scheduled for pause\n* sales_order_updated - Triggered when a sales order is updated\n* subscription_cancellation_scheduled - Sent when subscription is scheduled to cancel at end of current term\n* subscription_deleted - Sent when a subscription has been deleted\n* subscription_moved_in - Triggered when a subscription is moved from another customer\n* record_purchase_failed - Triggered when an omnichannel record purchase fails\n* subscription_changes_scheduled - Sent when subscription changes are scheduled for later. Changes will be applied at the end of current term.\n* voucher_create_failed - Triggered when payment voucher creation fails\n* omnichannel_subscription_item_dunning_expired - Triggered when an omnichannel subscription item's dunning has expired\n* vault_token_deleted - Triggered when a vaulted payment method is deleted from the vault.\n* coupon_set_deleted - Sent when a coupon set is deleted\n* coupon_set_updated - Sent when a coupon set is changed\n* addon_updated - Sent when an addon is changed.\n* subscription_items_renewed - Sent when one or more Subscription Items are renewed\n* subscription_scheduled_cancellation_removed - Sent when scheduled cancellation is removed for the subscription.\n* card_expiry_reminder - Sent when the customer's credit card is expiring soon. Sent 30 days before the expiry date.\n* coupon_created - Sent when a coupon is created.\n* subscription_resumption_scheduled - Triggered when the subscription resumption is scheduled.\n* omnichannel_subscription_item_upgraded - Triggered when an omnichannel subscription item is upgraded\n* order_updated - Triggered when an order is updated\n* chargeback_initiated - Triggered when a chargeback is raised against a payment.\n* vault_token_created - Triggered when a payment method is tokenized and stored in the vault.\n* omnichannel_subscription_item_resubscribed - Triggered when an omnichannel subscription item is resubscribed\n* refund_initiated - Sent when a refund is initiated via direct debit\n* omnichannel_subscription_item_downgraded - Triggered when an omnichannel subscription item is downgraded\n* einvoice_updated - Triggered when an e-invoice is updated (for example when its status or provider responses change).\n* gift_cancelled - Triggered when a gift is cancelled.\n* subscription_renewed - Sent when the subscription is renewed from the current term.\n* omnichannel_subscription_item_cancelled - Triggered when an omnichannel subscription item is cancelled\n* subscription_scheduled_pause_removed - Triggered when scheduled pause is removed for the subscription.\n* omnichannel_subscription_item_paused - Triggered when an omnichannel subscription item is paused\n* omnichannel_subscription_item_scheduled_cancellation_removed - Triggered when an omnichannel subscription item scheduled cancellation is removed\n* quote_updated - Triggered when a quote is updated\n* customer_created - Sent when a customer is created. This event happens when only a new customer is created or when a customer is automatically created during new subscription creation.\n* tax_withheld_refunded - Sent when a tax withheld refund is made\n* coupon_deleted - Sent when a coupon is deleted.\n* order_delivered - Triggered when an order is marked as delivered\n* subscription_pause_scheduled - Sent when the subscription is scheduled to pause.\n* subscription_advance_invoice_schedule_updated - Triggered when scheduled advance invoice is updated for a subscription.\n* voucher_created - Triggered when a payment voucher is created\n* credit_note_created_with_backdating - Sent when a credit note is created with past date as credit note date\n* unbilled_charges_created - Triggered when unbilled charges are created\n* subscription_ramp_drafted - Triggered when a subscription ramp is moved to draft status.\n* rule_deleted - Triggered when a rule is deleted\n* payment_intent_created - Sent when a payment intent is created\n* contract_term_created - Triggered when new contract term is created\n* contract_term_completed - Triggered when contract term is completed\n* tax_withheld_recorded - Triggered when a tax withheld is recorded for an invoice\n* subscription_resumed - Sent when the subscription is moved from paused state to active state\n* virtual_bank_account_updated - Sent when the virtual bank account is updated for a customer.\n* chargeback_lost - Triggered when a chargeback is resolved in the cardholder's favor.\n* subscription_created - Sent when a new subscription is created.\n",
               "enum": [
                 "plan_created",
                 "plan_updated",
@@ -197531,6 +198583,20 @@
           "type": "string",
           "x-cb-references": {
             "resource": "webhook_endpoint",
+            "attribute": "id"
+          }
+        }
+      },
+      "organization-detail-id": {
+        "name": "organization-detail-id",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string",
+          "x-cb-references": {
+            "resource": "organization_detail",
             "attribute": "id"
           }
         }
@@ -198623,8 +199689,10 @@
       }
     },
     "chargeback_lost": {
+      "description": "Triggered when a chargeback is resolved in the cardholder's favor, that is, when the `status` of a [dispute](/docs/api/v2/pcv-1/disputes) whose `type` is `chargeback` changes to `lost`.\nThis can be the first event for a dispute if the gateway reports the chargeback as already lost when Chargebee first records it; `chargeback_initiated` isn't triggered in that case.\nThe event content includes the related `dispute`, `transaction`, and `customer`, and the `subscription` if the disputed payment belongs to one.\n",
       "post": {
         "summary": "Triggered when a chargeback is resolved in the customer's favour. This can be the first event for a dispute if the gateway reports it as already lost.",
+        "description": "Triggered when a chargeback is resolved in the cardholder's favor, that is, when the `status` of a [dispute](/docs/api/v2/pcv-1/disputes) whose `type` is `chargeback` changes to `lost`.\nThis can be the first event for a dispute if the gateway reports the chargeback as already lost when Chargebee first records it; `chargeback_initiated` isn't triggered in that case.\nThe event content includes the related `dispute`, `transaction`, and `customer`, and the `subscription` if the disputed payment belongs to one.\n",
         "operationId": "onChargeback_lostWebhook",
         "requestBody": {
           "description": "Payload for chargeback_lost event",
@@ -200243,8 +201311,10 @@
       }
     },
     "chargeback_initiated": {
+      "description": "Triggered when a chargeback is raised against a payment, that is, when Chargebee first records a [dispute](/docs/api/v2/pcv-1/disputes) whose `type` is `chargeback`. Disputes of `type` `inquiry` don't trigger this event.\nIf the gateway reports the chargeback as already `won` or `lost` when Chargebee first records it, only `chargeback_won` or `chargeback_lost` is triggered. Later changes to the dispute `status`, other than to `won` or `lost`, don't trigger an event.\nThe event content includes the related `dispute`, `transaction`, and `customer`, and the `subscription` if the disputed payment belongs to one.\n",
       "post": {
         "summary": "Triggered when a chargeback is raised against a payment.",
+        "description": "Triggered when a chargeback is raised against a payment, that is, when Chargebee first records a [dispute](/docs/api/v2/pcv-1/disputes) whose `type` is `chargeback`. Disputes of `type` `inquiry` don't trigger this event.\nIf the gateway reports the chargeback as already `won` or `lost` when Chargebee first records it, only `chargeback_won` or `chargeback_lost` is triggered. Later changes to the dispute `status`, other than to `won` or `lost`, don't trigger an event.\nThe event content includes the related `dispute`, `transaction`, and `customer`, and the `subscription` if the disputed payment belongs to one.\n",
         "operationId": "onChargeback_initiatedWebhook",
         "requestBody": {
           "description": "Payload for chargeback_initiated event",
@@ -201337,8 +202407,10 @@
       }
     },
     "chargeback_won": {
+      "description": "Triggered when a chargeback is resolved in the merchant's favor, that is, when the `status` of a [dispute](/docs/api/v2/pcv-1/disputes) whose `type` is `chargeback` changes to `won`.\nThis can be the first event for a dispute if the gateway reports the chargeback as already won when Chargebee first records it; `chargeback_initiated` isn't triggered in that case.\nThe event content includes the related `dispute`, `transaction`, and `customer`, and the `subscription` if the disputed payment belongs to one.\n",
       "post": {
         "summary": "Triggered when a chargeback is resolved in the merchant's favour. This can be the first event for a dispute if the gateway reports it as already won.",
+        "description": "Triggered when a chargeback is resolved in the merchant's favor, that is, when the `status` of a [dispute](/docs/api/v2/pcv-1/disputes) whose `type` is `chargeback` changes to `won`.\nThis can be the first event for a dispute if the gateway reports the chargeback as already won when Chargebee first records it; `chargeback_initiated` isn't triggered in that case.\nThe event content includes the related `dispute`, `transaction`, and `customer`, and the `subscription` if the disputed payment belongs to one.\n",
         "operationId": "onChargeback_wonWebhook",
         "requestBody": {
           "description": "Payload for chargeback_won event",
