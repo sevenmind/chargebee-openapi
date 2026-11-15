@@ -283,7 +283,17 @@ paths:
       tags:
         - subscriptions
       summary: Change term end
-      description: "Changes the subscription's current term end date. Depending on the \"status\" of the subscription, \"term end date\" has different effects.\n\n* If the Subscription is in **trial**, it affects trial end date.\n* If the Subscription is **active**, it affects the next billing date.\n* If the Subscription's status is **non_renewing**, this affects the upcoming cancellation date.\n\nWhen changing the current term there won't be any prorations calculated. All future renewals(if applicable) of the subscription will be shifted based on the new date.\n\n**Tip**: To cycle through a couple of billing cycles and test webhooks, you may use this API.  \nAdvance charges, if any, will be refunded as credits and a new invoice will be generated on renewal.\n"
+      description: |
+        Changes the subscription's current term end date. Depending on the "status" of the subscription, "term end date" has different effects.
+
+        * If the Subscription is in **trial**, it affects trial end date.
+        * If the Subscription is **active**, it affects the next billing date.
+        * If the Subscription's status is **non_renewing**, this affects the upcoming cancellation date.
+
+        When changing the current term there won't be any prorations calculated. All future renewals(if applicable) of the subscription will be shifted based on the new date.
+
+        **Tip**: To cycle through a couple of billing cycles and test webhooks, you may use this API.  
+        Advance charges, if any, will be refunded as credits and a new invoice will be generated on renewal.
       operationId: change_term_end
       parameters:
         - name: chargebee-request-origin-device
@@ -689,7 +699,15 @@ paths:
       tags:
         - customers
       summary: Create subscription for customer
-      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a new subscription for an existing customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.\n\nIf the plan does not have a trial period and if any of the recurring-item has charges, then the customer is charged immediately if auto_collection is turned 'on'. In that case, subscription is created only if the customer has a payment method on file and attempted payment is successful.  \nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n"
+      description: |
+        **Note:**
+        This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)
+        and pass it as input parameter to this API.
+
+        Creates a new subscription for an existing customer. You can attach a plan, plan quantity, one or more addons and coupon while creating this subscription.
+
+        If the plan does not have a trial period and if any of the recurring-item has charges, then the customer is charged immediately if auto_collection is turned 'on'. In that case, subscription is created only if the customer has a payment method on file and attempted payment is successful.  
+        If an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.
       operationId: create_subscription_for_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -992,7 +1010,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -1172,7 +1198,10 @@ paths:
       tags:
         - subscriptions
       summary: Delete a subscription
-      description: "Deletes the subscription resource.  \nThis operation is irreversible - all data related to the subscription, such as invoices, transactions, and reports, will be deleted.\n**Note:** This operation schedules the subscription resource for deletion. It will be deleted in a few minutes.\n"
+      description: |
+        Deletes the subscription resource.  
+        This operation is irreversible - all data related to the subscription, such as invoices, transactions, and reports, will be deleted.
+        **Note:** This operation schedules the subscription resource for deletion. It will be deleted in a few minutes.
       operationId: delete_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -1752,7 +1781,35 @@ paths:
       tags:
         - subscriptions
       summary: Reactivate a subscription
-      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nThis API is used to reactivate a **cancelled** subscription. You may also optionally specify a trial end date, to move the subscription to **In Trial** state. If trial end is not specified, the subscription will be activated and any applicable charges will be initiated.\n\nUnless the billing cycle is specified, it will be set to plan's default billing cycle.\n\nDuring an in-term reactivation++, unless the billing cycle is specified, the subscription's remaining billing cycles will be restored. If a trial end date is specified, then the plan's default billing cycle is used.\n\n**What is an \"in-term reactivation\"?**\n\nAn \"in-term reactivation\" happens when the billing term of the subscription is retained upon cancellation and reactivation is initiated within that term.\n\n**When is the 'billing term' retained for a cancelled subscription?**\n\nWhen dunning (payment failure retry settings) is configured with the last retry configured as\n\n* cancel subscription and mark invoice as 'Not Paid', or\n* cancel subscription and mark the invoice as 'Voided' and the case if any of the current term invoices is partially or fully paid, the invoice is not voided but instead Chargebee marks the invoices as 'Not Paid'.\n\n**Note :** In both cases, the billing term is retained and upon reactivation the subscription will be moved to active state (if the plan does not have a trial period) and no invoice will be generated. Ensure that you collect any unpaid invoices.\n\n**Example :** A Subscription was billed from 1st to 31st of a month and it was cancelled on the 20th due to one of the above cases (billing term is not reset). If the reactivation happens on 25th then it is considered an in-term reactivation.  \nReactivation of a subscription in **non_renewing** state has been deprecated. To remove a scheduled cancellation of a **non_renewing** Subscription, use [Remove Scheduled Cancellation](/docs/api/v1/subscriptions/remove-scheduled-cancellation) API.\nHowever, if you use reactivate API to remove scheduled cancellation for a **non_renewing** Subscription, then the status will be set to **active** and the billing cycle will be set to forever. If any value is passed for trial_end or billing cycle, an error will be thrown.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n**Additional Error Scenarios:** If there is a need to create an immediate charge and the collection fails, an error will be thrown.\n"
+      description: |
+        **Note:**
+        This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)
+        and pass it as input parameter to this API.
+
+        This API is used to reactivate a **cancelled** subscription. You may also optionally specify a trial end date, to move the subscription to **In Trial** state. If trial end is not specified, the subscription will be activated and any applicable charges will be initiated.
+
+        Unless the billing cycle is specified, it will be set to plan's default billing cycle.
+
+        During an in-term reactivation++, unless the billing cycle is specified, the subscription's remaining billing cycles will be restored. If a trial end date is specified, then the plan's default billing cycle is used.
+
+        **What is an "in-term reactivation"?**
+
+        An "in-term reactivation" happens when the billing term of the subscription is retained upon cancellation and reactivation is initiated within that term.
+
+        **When is the 'billing term' retained for a cancelled subscription?**
+
+        When dunning (payment failure retry settings) is configured with the last retry configured as
+
+        * cancel subscription and mark invoice as 'Not Paid', or
+        * cancel subscription and mark the invoice as 'Voided' and the case if any of the current term invoices is partially or fully paid, the invoice is not voided but instead Chargebee marks the invoices as 'Not Paid'.
+
+        **Note :** In both cases, the billing term is retained and upon reactivation the subscription will be moved to active state (if the plan does not have a trial period) and no invoice will be generated. Ensure that you collect any unpaid invoices.
+
+        **Example :** A Subscription was billed from 1st to 31st of a month and it was cancelled on the 20th due to one of the above cases (billing term is not reset). If the reactivation happens on 25th then it is considered an in-term reactivation.  
+        Reactivation of a subscription in **non_renewing** state has been deprecated. To remove a scheduled cancellation of a **non_renewing** Subscription, use [Remove Scheduled Cancellation](/docs/api/v1/subscriptions/remove-scheduled-cancellation) API.
+        However, if you use reactivate API to remove scheduled cancellation for a **non_renewing** Subscription, then the status will be set to **active** and the billing cycle will be set to forever. If any value is passed for trial_end or billing cycle, an error will be thrown.
+        If an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.
+        **Additional Error Scenarios:** If there is a need to create an immediate charge and the collection fails, an error will be thrown.
       operationId: reactivate_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -2179,7 +2236,41 @@ paths:
       tags:
         - subscriptions
       summary: Update a subscription
-      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nYou can modify the plan, plan quantity and add or remove addons for the subscription. By default the changes are applied immediately and the charges (/credits) are prorated and adjusted with the next billing term. You may also choose to effect the changes at the end of the current term by passing **end_of_term** as \"true\". In this case proration will not be done.\n\nOnly the parameters that are passed are modified for the subscription. Rest will reflect the existing values.\n\nBy default, the addons passed are appended to the existing list of addons for this subscription. In case a passed addon already exists for this subscription, quantity value is replaced. If you want to completely replace the addons for this subscription, pass **replace_addon_list** as \"true\".\n\n[Card](/docs/api/v1/cards/card-object) and 'vat_number' attributes can also be passed during subscription update. If they are passed, corresponding Billing Info attributes - the [Billing Address](/docs/api/v1/customers/customer-object) and 'vat_number' - will be replaced automatically.\n\nPassing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable\n\n* If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.\n* If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form.\n* You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.\n\n**Proration Scenario:**\nA customer changes from a $15 plan to $30 plan after 15 days of a monthly term. He will be billed a total of $7.50 immediately. Calculation will be as follows:  \n\n|---------------------------------------------|---------|\n| Prorated Charge(New Plan)                   | $15.00  |\n| Prorated Credit(Old Plan) for unused period | ($7.50) |\n| Total prorated amount                       | $7.50   |\n\nDowngrading will result in credit being created which will be applied when the subscription is charged on start of the next term.\n\n**Billing Cycle:** The billing period for a subscription does not change if the plans intervals of both old and new are same. However, if a customer changes to a plan that has different billing interval(say monthly to yearly), the billing period is reset. Customer is charged immediately for the modified subscription after applying credit for the unused period for the old subscription.\n\n**Card and VAT number Input:** If they are passed, corresponding [Billing Address](/docs/api/v1/customers/customer-object) attributes and [vat_number](/docs/api/v1/customers/customer-object) will be replaced. i.e existing values for Billing Address and 'vat_number' will be cleared and the new values will be set.\nIf an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.\n\n**Advance charges**, if any, will be refunded as credits and a new invoice will be generated on renewal.\n"
+      description: |
+        **Note:**
+        This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)
+        and pass it as input parameter to this API.
+
+        You can modify the plan, plan quantity and add or remove addons for the subscription. By default the changes are applied immediately and the charges (/credits) are prorated and adjusted with the next billing term. You may also choose to effect the changes at the end of the current term by passing **end_of_term** as "true". In this case proration will not be done.
+
+        Only the parameters that are passed are modified for the subscription. Rest will reflect the existing values.
+
+        By default, the addons passed are appended to the existing list of addons for this subscription. In case a passed addon already exists for this subscription, quantity value is replaced. If you want to completely replace the addons for this subscription, pass **replace_addon_list** as "true".
+
+        [Card](/docs/api/v1/cards/card-object) and 'vat_number' attributes can also be passed during subscription update. If they are passed, corresponding Billing Info attributes - the [Billing Address](/docs/api/v1/customers/customer-object) and 'vat_number' - will be replaced automatically.
+
+        Passing credit card details to this API involves PCI liability at your end as sensitive card info passes through your servers. If you wish to avoid that, you can use one of the following integration methodologies if applicable
+
+        * If you are using Stripe gateway, you can use [Stripe.js](https://stripe.com/docs/stripe.js) with your checkout form. Take a look at this [Stripe tutorial](https://stripe.com/docs/payments/accept-a-payment-charges) for more details.
+        * If you are using Braintree gateway, you can use [Braintree.js](https://www.braintreepayments.com/docs/javascript) with your checkout form.
+        * You can also use our [Hosted Pages](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-capabilities) based integration.
+
+        **Proration Scenario:**
+        A customer changes from a $15 plan to $30 plan after 15 days of a monthly term. He will be billed a total of $7.50 immediately. Calculation will be as follows:  
+
+        |---------------------------------------------|---------|
+        | Prorated Charge(New Plan)                   | $15.00  |
+        | Prorated Credit(Old Plan) for unused period | ($7.50) |
+        | Total prorated amount                       | $7.50   |
+
+        Downgrading will result in credit being created which will be applied when the subscription is charged on start of the next term.
+
+        **Billing Cycle:** The billing period for a subscription does not change if the plans intervals of both old and new are same. However, if a customer changes to a plan that has different billing interval(say monthly to yearly), the billing period is reset. Customer is charged immediately for the modified subscription after applying credit for the unused period for the old subscription.
+
+        **Card and VAT number Input:** If they are passed, corresponding [Billing Address](/docs/api/v1/customers/customer-object) attributes and [vat_number](/docs/api/v1/customers/customer-object) will be replaced. i.e existing values for Billing Address and 'vat_number' will be cleared and the new values will be set.
+        If an invoice gets generated during this operation, available Credits and Excess Payments will be automatically applied.
+
+        **Advance charges**, if any, will be refunded as credits and a new invoice will be generated on renewal.
       operationId: update_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -2355,7 +2446,13 @@ paths:
                 coupon:
                   type: string
                   deprecated: false
-                  description: "Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  \n**Note:**\n\nWhen the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.\n\n.\n"
+                  description: |
+                    Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  
+                    **Note:**
+
+                    When the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.
+
+                    .
                   maxLength: 100
                   example: null
                 po_number:
@@ -2577,7 +2674,15 @@ paths:
                     billing_country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                     ip_address:
@@ -2820,7 +2925,12 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)\n.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+                        .  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -2930,7 +3040,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -3122,7 +3240,11 @@ paths:
       tags:
         - subscriptions
       summary: Add charge at term end
-      description: "Adds a one time charge to the subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.\n\nTo collect a charge immediately, [use this API](/docs/api/v1/invoices/create-invoice-for-a-one-time-charge).  \nIf any subscription changes happen before the end of the current term, these charges will be collected along with it.\n"
+      description: |
+        Adds a one time charge to the subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.
+
+        To collect a charge immediately, [use this API](/docs/api/v1/invoices/create-invoice-for-a-one-time-charge).  
+        If any subscription changes happen before the end of the current term, these charges will be collected along with it.
       operationId: add_charge_at_term_end
       parameters:
         - name: chargebee-request-origin-device
@@ -4049,7 +4171,15 @@ paths:
                     billing_country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                     ip_address:
@@ -4292,7 +4422,12 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)\n.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+                        .  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -4402,7 +4537,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -4558,7 +4701,15 @@ paths:
       tags:
         - subscriptions
       summary: Cancel a subscription
-      description: "Cancelling a subscription will move the current state of the subscription to the **cancelled** state and will stop all recurring actions.\n\nYou could schedule the cancellation by passing **end_of_term** parameter as **true** . If scheduled, the subscription status will be set to **non_renewing** if it is in **active** state until the end of term and then **cancelled** . Subscription's state will not change if it is in **in_trial** state. However, cancellation will be scheduled at the trial end date.\n\nWhile cancelling a subscription, we try to collect all pending amount against the current and old invoices. No refund for the unused period is processed (let us know if you need have specific refund scenarios).\n\nIf the collection of pending charges fails while cancelling, it will still be moved to **cancelled** status. We will continue to retry collecting the payment based on the configured retry settings until it is manually overridden.  \nAdvance charges, if any, will be refunded as credits.\n"
+      description: |
+        Cancelling a subscription will move the current state of the subscription to the **cancelled** state and will stop all recurring actions.
+
+        You could schedule the cancellation by passing **end_of_term** parameter as **true** . If scheduled, the subscription status will be set to **non_renewing** if it is in **active** state until the end of term and then **cancelled** . Subscription's state will not change if it is in **in_trial** state. However, cancellation will be scheduled at the trial end date.
+
+        While cancelling a subscription, we try to collect all pending amount against the current and old invoices. No refund for the unused period is processed (let us know if you need have specific refund scenarios).
+
+        If the collection of pending charges fails while cancelling, it will still be moved to **cancelled** status. We will continue to retry collecting the payment based on the configured retry settings until it is manually overridden.  
+        Advance charges, if any, will be refunded as credits.
       operationId: cancel_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -4778,7 +4929,11 @@ paths:
       tags:
         - subscriptions
       summary: Charge addon at term end
-      description: "Adds a \"non-recurring addon\" charge to a subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.\n\nTo collect the charges for the non-recurring addon immediately, [use this API](/docs/api/v1/invoices/create-invoice-for-a-non-recurring-addon).  \nIf any subscription changes happen before the end of the current term, these charges will be collected along with it.\n"
+      description: |
+        Adds a "non-recurring addon" charge to a subscription which will be added to the invoice generated at the end of the current term. If there are any applicable coupons in the subscription, an appropriate discount will be applied.
+
+        To collect the charges for the non-recurring addon immediately, [use this API](/docs/api/v1/invoices/create-invoice-for-a-non-recurring-addon).  
+        If any subscription changes happen before the end of the current term, these charges will be collected along with it.
       operationId: charge_addon_at_term_end
       parameters:
         - name: chargebee-request-origin-device
@@ -5340,7 +5495,11 @@ paths:
       tags:
         - customers
       summary: Delete a customer
-      description: "Deletes the customer resource.  \nThis will delete the Payment Method from the gateway/vault. If you do not want the Payment Method to be deleted from the vault, set the value for the delete_payment_method parameter to false.\nThis operation is irreversible - all data related to the customer, such as subscriptions, invoices, transactions, and reports, will be deleted.\n**Note:** This operation schedules the customer resource for deletion. It will be deleted in a few minutes.\n"
+      description: |
+        Deletes the customer resource.  
+        This will delete the Payment Method from the gateway/vault. If you do not want the Payment Method to be deleted from the vault, set the value for the delete_payment_method parameter to false.
+        This operation is irreversible - all data related to the customer, such as subscriptions, invoices, transactions, and reports, will be deleted.
+        **Note:** This operation schedules the customer resource for deletion. It will be deleted in a few minutes.
       operationId: delete_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -6205,7 +6364,53 @@ paths:
       tags:
         - customers
       summary: Update payment method for a customer
-      description: "Updates payment method details for a customer.  \n**Note:**\nIf you wish to pass the card number, CVV, or the single-use card tokens provided by gateways like Stripe, then use the [Update card for a customer](/docs/api/cards/update-card-for-a-customer)\nAPI under Cards resource. This API is not supported for Chargebee Test Gateway, which is provided to help you understand the billing workflow in Chargebee.\n\n**PayPal Express Checkout**\n\nYou can use this API if you are directly integrating PayPal Express Checkout in your website instead of using Chargebee's hosted pages. When your customer updates his payment method using PayPal Express Checkout, you will be provided with the *Billing Agreement ID* by PayPal. You can update the payment method for that customer in Chargebee by passing `type` as `paypal_express_checkout` and `reference_id` with the *Billing Agreement ID*.\n\n**Login and Pay with Amazon**\n\nYou can use this API if you are directly integrating *Login and Pay with Amazon* in your website instead of using Chargebee's hosted pages. When your customer updates Amazon as a payment method, you will be provided with the *Billing Agreement ID* by Amazon. You can update the payment method for that customer in Chargebee by passing `type` as `amazon_payments` and `reference_id` with the *Billing Agreement ID*.\n\n**Card Payments**\n\nWhen the card details of your customer are stored in the vault of gateways such as Stripe or Braintree, you can use this API to update the *reference id* provided by them in Chargebee. To use this API, pass\n\n* `type` as `card`.\n* `gateway` with the gateway associated with the card. If the gateway is not specified, the default gateway will be used.\n* `reference_id` with the identifier provided by the gateway/Spreedly to reference that specific card.\n\n**Reference id format for Card Payments**\n\nThe format of reference_id will differ based on where the card is stored.\n\n**Stripe:** In case of Stripe, the reference_id consists of combination of Stripe Customer ID and Stripe Card ID separated by forward slash (e.g. *cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G* ). If you are passing Stripe Customer ID alone, then Chargebee will store the card marked as active for that customer in Stripe.\n\n**Braintree:** In case of Braintree, the reference_id consists of combination of Braintree Customer ID and Braintree Payment Method Token separated by forward slash (e.g. *cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G* ). If you are passing Braintree Customer ID alone, then Chargebee will store the card marked as default for that customer in Braintree.\n\n**Spreedly Card vault:** If the card details are stored in Spreedly vault, then you need to provide the Spreedly token as `reference_id`.\n\n**Direct Debit Payments**\n\nWhen the bank account details of your customer is stored in the vault of Authorize.Net, you can use this API to update the reference id provided by them in Chargebee. To use this API, pass\n\n* `type` as `direct_debit`.\n* `gateway` with the gateway where the bank account details are stored (e.g. *authorize_net*). If the gateway is not specified, the gateway supporting the direct debit will be used.\n* `reference_id` with the identifier provided by the gateway to reference the customer's bank account details.\n\n**Reference id format for Direct Debit Payments**\n\nThe reference_id consists of combination of Authorize.Net's Customer Profile ID and Payment Profile ID separated by forward slash (e.g. *2384383/34834382*). If you are passing Authorize.Net's Customer Profile ID alone, then Chargebee will store the first bank account details present in payment profile list of that customer in Authorize.Net.\n\n**Note:** While using this API to update payment method details, [Card Verification](https://www.chargebee.com/docs/cards.html#card-verification) will not happen even if it is enabled for that particular gateway.  \nStoring card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources/create-using-payment-intent)\nunder Payment source to store the card after successful 3DS flow completion.\n"
+      description: |
+        Updates payment method details for a customer.  
+        **Note:**
+        If you wish to pass the card number, CVV, or the single-use card tokens provided by gateways like Stripe, then use the [Update card for a customer](/docs/api/cards/update-card-for-a-customer)
+        API under Cards resource. This API is not supported for Chargebee Test Gateway, which is provided to help you understand the billing workflow in Chargebee.
+
+        **PayPal Express Checkout**
+
+        You can use this API if you are directly integrating PayPal Express Checkout in your website instead of using Chargebee's hosted pages. When your customer updates his payment method using PayPal Express Checkout, you will be provided with the *Billing Agreement ID* by PayPal. You can update the payment method for that customer in Chargebee by passing `type` as `paypal_express_checkout` and `reference_id` with the *Billing Agreement ID*.
+
+        **Login and Pay with Amazon**
+
+        You can use this API if you are directly integrating *Login and Pay with Amazon* in your website instead of using Chargebee's hosted pages. When your customer updates Amazon as a payment method, you will be provided with the *Billing Agreement ID* by Amazon. You can update the payment method for that customer in Chargebee by passing `type` as `amazon_payments` and `reference_id` with the *Billing Agreement ID*.
+
+        **Card Payments**
+
+        When the card details of your customer are stored in the vault of gateways such as Stripe or Braintree, you can use this API to update the *reference id* provided by them in Chargebee. To use this API, pass
+
+        * `type` as `card`.
+        * `gateway` with the gateway associated with the card. If the gateway is not specified, the default gateway will be used.
+        * `reference_id` with the identifier provided by the gateway/Spreedly to reference that specific card.
+
+        **Reference id format for Card Payments**
+
+        The format of reference_id will differ based on where the card is stored.
+
+        **Stripe:** In case of Stripe, the reference_id consists of combination of Stripe Customer ID and Stripe Card ID separated by forward slash (e.g. *cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G* ). If you are passing Stripe Customer ID alone, then Chargebee will store the card marked as active for that customer in Stripe.
+
+        **Braintree:** In case of Braintree, the reference_id consists of combination of Braintree Customer ID and Braintree Payment Method Token separated by forward slash (e.g. *cus_63MnDn0t6kfDW7/card_6WjCF20vT9WN1G* ). If you are passing Braintree Customer ID alone, then Chargebee will store the card marked as default for that customer in Braintree.
+
+        **Spreedly Card vault:** If the card details are stored in Spreedly vault, then you need to provide the Spreedly token as `reference_id`.
+
+        **Direct Debit Payments**
+
+        When the bank account details of your customer is stored in the vault of Authorize.Net, you can use this API to update the reference id provided by them in Chargebee. To use this API, pass
+
+        * `type` as `direct_debit`.
+        * `gateway` with the gateway where the bank account details are stored (e.g. *authorize_net*). If the gateway is not specified, the gateway supporting the direct debit will be used.
+        * `reference_id` with the identifier provided by the gateway to reference the customer's bank account details.
+
+        **Reference id format for Direct Debit Payments**
+
+        The reference_id consists of combination of Authorize.Net's Customer Profile ID and Payment Profile ID separated by forward slash (e.g. *2384383/34834382*). If you are passing Authorize.Net's Customer Profile ID alone, then Chargebee will store the first bank account details present in payment profile list of that customer in Authorize.Net.
+
+        **Note:** While using this API to update payment method details, [Card Verification](https://www.chargebee.com/docs/cards.html#card-verification) will not happen even if it is enabled for that particular gateway.  
+        Storing card after successful 3DS flow not supported in this API. Use [create using Payment Intent API](/docs/api/payment_sources/create-using-payment-intent)
+        under Payment source to store the card after successful 3DS flow completion.
       operationId: update_payment_method_for_a_customer
       parameters:
         - name: chargebee-request-origin-device
@@ -7680,7 +7885,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)\n.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.  \n**E-Invoicing**\n\nIf `country` is provided as different from the existing value and if `entity_identifier_scheme`, `entity_identifier_standard`, and `entity_identifier` already exist and are not provided for this operation, they're cleared.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+                        .  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.  
+                        **E-Invoicing**
+
+                        If `country` is provided as different from the existing value and if `entity_identifier_scheme`, `entity_identifier_standard`, and `entity_identifier` already exist and are not provided for this operation, they're cleared.
                       maxLength: 50
                       example: null
                   example: null
@@ -8370,7 +8583,15 @@ paths:
                     billing_country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                     ip_address:
@@ -8613,7 +8834,12 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)\n.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+                        .  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -9377,7 +9603,11 @@ paths:
       tags:
         - customers
       summary: Switch gateway
-      description: "Switches the gateway in which customer's card information is stored.\n\nThis is applicable only if the payment method is \"card\".  \nThis operation is not supported if the current gateway is Braintree or Stripe.\n"
+      description: |
+        Switches the gateway in which customer's card information is stored.
+
+        This is applicable only if the payment method is "card".  
+        This operation is not supported if the current gateway is Braintree or Stripe.
       operationId: switch_gateway
       parameters:
         - name: chargebee-request-origin-device
@@ -10112,7 +10342,17 @@ paths:
                 billing_country:
                   type: string
                   deprecated: false
-                  description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n\n.\n"
+                  description: |
+                    The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                    .
+
+                    **Note**:
+                    If you enter an invalid country code, the system will return an error.  
+                    **Brexit**
+
+                    If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
+
+                    .
                   maxLength: 50
                   example: null
                 ip_address:
@@ -12530,7 +12770,17 @@ paths:
       tags:
         - invoices
       summary: Create an invoice
-      description: "**Note:**\nThis operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)\nand pass it as input parameter to this API.\n\nCreates a one-off invoice for multiple 'Non Recurring' addon \\& ad-hoc charges for a customer. If the 'auto collection' has been turned 'on' for that customer then payment will be immediately collected using the payment method associated with the customer. The invoice will be generated only upon successful collection of payments. However if the 'auto collection' is turned 'off', no collection attempt will be made and the invoice generated would have a \"Payment Due\" status.\n\nThe Shipping Address can be passed, which will then be attached to the generated invoice.\n\nA 'One Time' coupon can be explicitly specified while creating this invoice.  \nAvailable Credits and Excess Payments will automatically be applied to this invoice.\n"
+      description: |
+        **Note:**
+        This operation optionally supports 3DS verification flow. To achieve the same, create the [Payment Intent](/docs/api/getting-started)
+        and pass it as input parameter to this API.
+
+        Creates a one-off invoice for multiple 'Non Recurring' addon \& ad-hoc charges for a customer. If the 'auto collection' has been turned 'on' for that customer then payment will be immediately collected using the payment method associated with the customer. The invoice will be generated only upon successful collection of payments. However if the 'auto collection' is turned 'off', no collection attempt will be made and the invoice generated would have a "Payment Due" status.
+
+        The Shipping Address can be passed, which will then be attached to the generated invoice.
+
+        A 'One Time' coupon can be explicitly specified while creating this invoice.  
+        Available Credits and Excess Payments will automatically be applied to this invoice.
       operationId: create_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -12774,7 +13024,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -15063,7 +15321,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -17846,7 +18112,11 @@ paths:
                     coupon:
                       type: string
                       deprecated: false
-                      description: "Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  \n**Note:**\n\nWhen the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.\n"
+                      description: |
+                        Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  
+                        **Note:**
+
+                        When the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.
                       maxLength: 100
                       example: null
                   required:
@@ -18349,7 +18619,15 @@ paths:
               country:
                 type: string
                 deprecated: false
-                description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                description: |
+                  The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                  .
+
+                  **Note**:
+                  If you enter an invalid country code, the system will return an error.  
+                  **Brexit**
+
+                  If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                 maxLength: 50
                 example: null
             example: null
@@ -18764,7 +19042,11 @@ paths:
                     coupon:
                       type: string
                       deprecated: false
-                      description: "Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  \n**Note:**\n\nWhen the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.\n"
+                      description: |
+                        Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  
+                        **Note:**
+
+                        When the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.
                       maxLength: 100
                       example: null
                   required:
@@ -18802,7 +19084,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -18838,7 +19128,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -19216,7 +19514,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -19252,7 +19558,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -19619,7 +19933,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -19727,7 +20049,15 @@ paths:
                     country:
                       type: string
                       deprecated: false
-                      description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+                      description: |
+                        The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                        .
+
+                        **Note**:
+                        If you enter an invalid country code, the system will return an error.  
+                        **Brexit**
+
+                        If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
                       maxLength: 50
                       example: null
                   example: null
@@ -22621,13 +22951,25 @@ paths:
                 id:
                   type: string
                   deprecated: false
-                  description: "Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  \n**Note:**\n\nWhen the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.\n\n.\n"
+                  description: |
+                    Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  
+                    **Note:**
+
+                    When the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.
+
+                    .
                   maxLength: 100
                   example: null
                 name:
                   type: string
                   deprecated: false
-                  description: "The display name used in web interface for identifying the coupon.  \n**Note:**\n\nWhen the name of the coupon set contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the name of the coupon set in the path parameter before making an API call.\n\n.\n"
+                  description: |
+                    The display name used in web interface for identifying the coupon.  
+                    **Note:**
+
+                    When the name of the coupon set contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the name of the coupon set in the path parameter before making an API call.
+
+                    .
                   maxLength: 50
                   example: null
                 invoice_name:
@@ -22743,7 +23085,13 @@ paths:
                   type: integer
                   format: int32
                   deprecated: false
-                  description: "Maximum number of times this coupon can be redeemed.  \n**Note:**\n\nIf not specified, the coupon can be redeemed an indefinite number of times.\n\n.\n"
+                  description: |
+                    Maximum number of times this coupon can be redeemed.  
+                    **Note:**
+
+                    If not specified, the coupon can be redeemed an indefinite number of times.
+
+                    .
                   minimum: 1
                   example: null
                 invoice_notes:
@@ -23790,7 +24138,17 @@ paths:
                 country:
                   type: string
                   deprecated: false
-                  description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n\n.\n"
+                  description: |
+                    The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                    .
+
+                    **Note**:
+                    If you enter an invalid country code, the system will return an error.  
+                    **Brexit**
+
+                    If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
+
+                    .
                   maxLength: 50
                   example: null
               required:
@@ -26422,7 +26780,12 @@ paths:
                 customer_id:
                   type: string
                   deprecated: false
-                  description: "The unique identifier of the customer for whom the `payment_intent` will be created. If specified, the `payment_intent` will be used exclusively for that customer. If not specified, the `payment_intent` won't be associated with any customer and will be available for any customer.  \n**See also**\n\n[Customer resource lookup and creation](/docs/api/payment_intents)\n.\n"
+                  description: |
+                    The unique identifier of the customer for whom the `payment_intent` will be created. If specified, the `payment_intent` will be used exclusively for that customer. If not specified, the `payment_intent` won't be associated with any customer and will be available for any customer.  
+                    **See also**
+
+                    [Customer resource lookup and creation](/docs/api/payment_intents)
+                    .
                   maxLength: 50
                   example: null
                 amount:
@@ -27071,7 +27434,9 @@ components:
           example: null
         api_error_code:
           type: string
-          description: "* `resource_not_found` - Returned when any of resource(s) referred in the request is not found. \n* `site_not_found` - Returned when the site is not found."
+          description: |-
+            * `resource_not_found` - Returned when any of resource(s) referred in the request is not found. 
+            * `site_not_found` - Returned when the site is not found.
           enum:
             - resource_not_found
             - site_not_found
@@ -27542,7 +27907,15 @@ components:
         country:
           type: string
           deprecated: false
-          description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+          description: |
+            The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+            .
+
+            **Note**:
+            If you enter an invalid country code, the system will return an error.  
+            **Brexit**
+
+            If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
           maxLength: 50
           example: null
         zip:
@@ -27782,7 +28155,15 @@ components:
         billing_country:
           type: string
           deprecated: false
-          description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+          description: |
+            The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+            .
+
+            **Note**:
+            If you enter an invalid country code, the system will return an error.  
+            **Brexit**
+
+            If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
           maxLength: 50
           example: null
         billing_zip:
@@ -28259,13 +28640,21 @@ components:
         id:
           type: string
           deprecated: false
-          description: "Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  \n**Note:**\n\nWhen the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.\n"
+          description: |
+            Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.  
+            **Note:**
+
+            When the coupon ID contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the coupon ID in the path parameter before making an API call.
           maxLength: 100
           example: null
         name:
           type: string
           deprecated: false
-          description: "The display name used in web interface for identifying the coupon.  \n**Note:**\n\nWhen the name of the coupon set contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the name of the coupon set in the path parameter before making an API call.\n"
+          description: |
+            The display name used in web interface for identifying the coupon.  
+            **Note:**
+
+            When the name of the coupon set contains a special character; for example: `#`, the API returns an error. Make sure that you [encode](https://www.urlencoder.org/) the name of the coupon set in the path parameter before making an API call.
           maxLength: 50
           example: null
         invoice_name:
@@ -28363,7 +28752,11 @@ components:
           type: integer
           format: int32
           deprecated: false
-          description: "Maximum number of times this coupon can be redeemed.  \n**Note:**\n\nIf not specified, the coupon can be redeemed an indefinite number of times.\n"
+          description: |
+            Maximum number of times this coupon can be redeemed.  
+            **Note:**
+
+            If not specified, the coupon can be redeemed an indefinite number of times.
           minimum: 1
           example: null
         status:
@@ -28975,7 +29368,15 @@ components:
             country:
               type: string
               deprecated: false
-              description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+              description: |
+                The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                .
+
+                **Note**:
+                If you enter an invalid country code, the system will return an error.  
+                **Brexit**
+
+                If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
               maxLength: 50
               example: null
             zip:
@@ -29770,7 +30171,29 @@ components:
       example: null
     Event:
       type: object
-      description: "Whenever any important changes happen in your Chargebee site, they are recorded as Events. Event contains data about affected resources and additional details such as when it occurred.\n\nYou could listen to the events in your application by configuring Webhook url and handle it based on the type of event. We post the event data as request body with content type set as **application/json** to your webhook url.\n\nFor example, when a subscription is cancelled due to non payment, an event **\"subscription_cancelled\"** is recorded and fired to your webhook url.\n\nTo mark a webhook notification successful, we expect the [HTTP status code](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to be 200 from your webhook url. If we don't receive 200 response code, we retry calling your webhook with exponential time interval for next 2 days. You could also try resending it from our admin console.  \n**API Version:**\nChargebee supports multiple API versions now. The *api_version* attribute indicates the API version based on which the event *content* is structured. While processing webhooks, ensure the *api_version* is same as the API version used by your webhook server's client library.\n\n#### Securing your Webhook URL:\n\nYou can have **basic authentication**\nfor the webhook url.\n\n* In the Webhook Settings page (*Settings \\> Webhooks* ), check the option *My webhook URL is protected by basic authentication*.\n* Enter *Username* and *Password* and click Update Webhook URL OR Generate a random key and have it as part of your webhook url eg. http://yourapp.com/chargebee-webhook/cuktqaem0i2fkd5jt9cdtojcn9cvb3Y\n\nIn addition to securing your webhook, you can always fetch the event from Chargebee using [Retrieve an Event](/docs/api/v1/events/retrieve-an-event)\nAPI call.\n\nEnsure that you keep the secrets secret :)\n"
+      description: |
+        Whenever any important changes happen in your Chargebee site, they are recorded as Events. Event contains data about affected resources and additional details such as when it occurred.
+
+        You could listen to the events in your application by configuring Webhook url and handle it based on the type of event. We post the event data as request body with content type set as **application/json** to your webhook url.
+
+        For example, when a subscription is cancelled due to non payment, an event **"subscription_cancelled"** is recorded and fired to your webhook url.
+
+        To mark a webhook notification successful, we expect the [HTTP status code](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to be 200 from your webhook url. If we don't receive 200 response code, we retry calling your webhook with exponential time interval for next 2 days. You could also try resending it from our admin console.  
+        **API Version:**
+        Chargebee supports multiple API versions now. The *api_version* attribute indicates the API version based on which the event *content* is structured. While processing webhooks, ensure the *api_version* is same as the API version used by your webhook server's client library.
+
+        #### Securing your Webhook URL:
+
+        You can have **basic authentication**
+        for the webhook url.
+
+        * In the Webhook Settings page (*Settings \> Webhooks* ), check the option *My webhook URL is protected by basic authentication*.
+        * Enter *Username* and *Password* and click Update Webhook URL OR Generate a random key and have it as part of your webhook url eg. http://yourapp.com/chargebee-webhook/cuktqaem0i2fkd5jt9cdtojcn9cvb3Y
+
+        In addition to securing your webhook, you can always fetch the event from Chargebee using [Retrieve an Event](/docs/api/v1/events/retrieve-an-event)
+        API call.
+
+        Ensure that you keep the secrets secret :)
       properties:
         id:
           type: string
@@ -30186,7 +30609,12 @@ components:
         layout:
           type: string
           deprecated: false
-          description: "Specifies the [UI layout](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-checkout#ui-layout-options) for the hosted page. The value is always `in_app` for this API version.  \nApplicable only when `type` is `checkout_new` or `checkout_existing`.\n\n* in_app - The hosted page is rendered in the in-app layout.\n* full_page - Not supported for this API version. Upgrade to the [latest](/docs/api/hosted_pages/hosted-page-object#layout) API version to use this layout.\n"
+          description: |
+            Specifies the [UI layout](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/hosted-checkout#ui-layout-options) for the hosted page. The value is always `in_app` for this API version.  
+            Applicable only when `type` is `checkout_new` or `checkout_existing`.
+
+            * in_app - The hosted page is rendered in the in-app layout.
+            * full_page - Not supported for this API version. Upgrade to the [latest](/docs/api/hosted_pages/hosted-page-object#layout) API version to use this layout.
           enum:
             - in_app
             - full_page
@@ -30206,7 +30634,19 @@ components:
     Invoice:
       type: object
       additionalProperties: true
-      description: "Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.\n\nGenerally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.\n\nWhen invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.  \n**Note:**\nIf *consolidated invoicing*\nis enabled, the attribute *invoice.subscription_id*\nshould **not**\nbe used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items](/docs/api/invoices/invoice-object#line_items)\n*subscription_id*\nattribute should be referred.\n"
+      description: |
+        Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term. For every subscription a draft invoice (upcoming invoice) is used to track all the charges, credits and adjustments for the current term.
+
+        Generally, an invoice is closed at start of the next term. However, cancellation and other such operations on subscription may trigger premature closing. While closing the invoice, in addition to recurring charges, credits and coupons are applied to calculate the final amount that is due.
+
+        When invoice is closed, an attempt to charge the credit card is made. If the payment succeeds, it is marked as **paid** . If the payment fails, the invoice is marked as **payment_due** and retry settings are taken into account. If no retry attempts are configured, the invoice is marked as **not_paid** . If the amount due is zero or negative, the invoice is immediately marked as **paid** and the balance if any is carried forward to the next term of the invoice.  
+        **Note:**
+        If *consolidated invoicing*
+        is enabled, the attribute *invoice.subscription_id*
+        should **not**
+        be used (as it will not be present if the invoice has lines from multiple subscriptions). Instead to know the related subscriptions, their [line_items](/docs/api/invoices/invoice-object#line_items)
+        *subscription_id*
+        attribute should be referred.
       properties:
         id:
           type: string
@@ -30950,7 +31390,15 @@ components:
             country:
               type: string
               deprecated: false
-              description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+              description: |
+                The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                .
+
+                **Note**:
+                If you enter an invalid country code, the system will return an error.  
+                **Brexit**
+
+                If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
               maxLength: 50
               example: null
             zip:
@@ -31059,7 +31507,15 @@ components:
             country:
               type: string
               deprecated: false
-              description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+              description: |
+                The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                .
+
+                **Note**:
+                If you enter an invalid country code, the system will return an error.  
+                **Brexit**
+
+                If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
               maxLength: 50
               example: null
             zip:
@@ -31629,7 +32085,10 @@ components:
         customer_id:
           type: string
           deprecated: false
-          description: "The unique identifier of the customer for whom the `payment_intent` will be created. If specified, the `payment_intent` will be used exclusively for that customer. If not specified, the `payment_intent` won't be associated with any customer and will be available for any customer.  \n**See also**\n[Customer resource lookup and creation](/docs/api/payment_intents)\n"
+          description: |
+            The unique identifier of the customer for whom the `payment_intent` will be created. If specified, the `payment_intent` will be used exclusively for that customer. If not specified, the `payment_intent` won't be associated with any customer and will be available for any customer.  
+            **See also**
+            [Customer resource lookup and creation](/docs/api/payment_intents)
           maxLength: 50
           example: null
         gateway:
@@ -32391,7 +32850,14 @@ components:
     Subscription:
       type: object
       additionalProperties: true
-      description: "Subscription represents the recurring items a customer has subscribed to. The recurring items can be - plan, addons. It may also contain the discount items like coupons.\n\nSubscriptions are invoiced at the start of every term based on the recurring items and charged immediately against the customer's credit card if 'auto_collection' is turned 'on', otherwise the resulting invoice will be created as 'Payment Due'.  \n**Note:**\nThe maximum number of subscriptions for any given [customer](/docs/api/v1/customers)\n([active](/docs/api/subscriptions/subscription-object#status)\nor not) is 900.\n"
+      description: |
+        Subscription represents the recurring items a customer has subscribed to. The recurring items can be - plan, addons. It may also contain the discount items like coupons.
+
+        Subscriptions are invoiced at the start of every term based on the recurring items and charged immediately against the customer's credit card if 'auto_collection' is turned 'on', otherwise the resulting invoice will be created as 'Payment Due'.  
+        **Note:**
+        The maximum number of subscriptions for any given [customer](/docs/api/v1/customers)
+        ([active](/docs/api/subscriptions/subscription-object#status)
+        or not) is 900.
       properties:
         id:
           type: string
@@ -32791,7 +33257,15 @@ components:
             country:
               type: string
               deprecated: false
-              description: "The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)\n.\n\n**Note**:\nIf you enter an invalid country code, the system will return an error.  \n**Brexit**\n\nIf you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.\n"
+              description: |
+                The billing address country of the customer. Must be one of [ISO 3166 alpha-2 country code](https://www.iso.org/iso-3166-country-codes.html)
+                .
+
+                **Note**:
+                If you enter an invalid country code, the system will return an error.  
+                **Brexit**
+
+                If you have enabled [EU VAT](https://www.chargebee.com/docs/eu-vat.html) in 2021 or later, or have [manually enable](https://www.chargebee.com/docs/brexit.html#what-needs-to-be-done-in-chargebee) the Brexit configuration, then `XI` (the code for **United Kingdom - Northern Ireland**) is available as an option.
               maxLength: 50
               example: null
             zip:
