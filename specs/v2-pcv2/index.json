@@ -7,7 +7,7 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-13.91bf610e22c1",
+    "version": "2026-11-16.52dc1be10d0d",
     "x-cb-api-version": 2,
     "x-cb-product-catalog-version": 2
   },
@@ -40385,22 +40385,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40421,22 +40421,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40457,22 +40457,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40493,22 +40493,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40529,22 +40529,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40565,22 +40565,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40601,22 +40601,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40637,22 +40637,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40673,22 +40673,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40709,22 +40709,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40745,22 +40745,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40781,22 +40781,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40817,22 +40817,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40853,22 +40853,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -40889,22 +40889,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41533,22 +41533,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41569,22 +41569,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41605,22 +41605,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41641,22 +41641,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41677,22 +41677,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41713,22 +41713,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41749,22 +41749,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41785,22 +41785,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41821,22 +41821,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41857,22 +41857,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41893,22 +41893,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41929,22 +41929,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -41965,22 +41965,22 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
@@ -191191,18 +191191,18 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "after": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
                 "before": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -191230,18 +191230,18 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "after": {
-                  "type": "string",
-                  "format": "unix-time",
-                  "pattern": "^\\d{10}$",
-                  "example": null
-                },
                 "between": {
                   "type": "string",
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
                 "before": {
+                  "type": "string",
+                  "format": "unix-time",
+                  "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -207515,22 +207515,22 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "not_in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is_not": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
