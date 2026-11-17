@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-13.91bf610e22c1
+  version: 2026-11-16.52dc1be10d0d
   x-cb-api-version: 2
   x-cb-product-catalog-version: 1
 servers:
@@ -38470,6 +38470,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38481,10 +38485,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -38506,6 +38506,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38517,10 +38521,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -38542,6 +38542,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38553,10 +38557,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -38578,6 +38578,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38589,10 +38593,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -38614,6 +38614,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38625,10 +38629,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -38650,6 +38650,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38661,10 +38665,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -38686,6 +38686,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38697,10 +38701,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -38722,6 +38722,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38733,10 +38737,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -38758,6 +38758,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38769,10 +38773,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -38794,6 +38794,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38805,10 +38809,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -38830,6 +38830,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38841,10 +38845,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -38866,6 +38866,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38877,10 +38881,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_name
@@ -38902,6 +38902,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38913,10 +38917,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_type
@@ -38938,6 +38938,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38949,10 +38953,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: source
@@ -38974,6 +38974,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -38985,10 +38989,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invocation_time
@@ -39473,6 +39473,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39484,10 +39488,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -39509,6 +39509,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39520,10 +39524,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -39545,6 +39545,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39556,10 +39560,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -39581,6 +39581,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39592,10 +39596,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -39617,6 +39617,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39628,10 +39632,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: id_at_gateway
@@ -39653,6 +39653,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39664,10 +39668,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -39689,6 +39689,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39700,10 +39704,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -39725,6 +39725,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39736,10 +39740,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -39761,6 +39761,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39772,10 +39776,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -39797,6 +39797,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39808,10 +39812,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -39833,6 +39833,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39844,10 +39848,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -39869,6 +39869,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39880,10 +39884,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -39905,6 +39905,10 @@ paths:
             type: object
             deprecated: false
             properties:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
               is:
                 type: string
                 minLength: 1
@@ -39916,10 +39920,6 @@ paths:
               is_not:
                 type: string
                 minLength: 1
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: received_at
@@ -51630,13 +51630,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -51659,13 +51659,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -98376,13 +98376,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -117451,13 +117451,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -132156,13 +132156,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -132184,13 +132184,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
