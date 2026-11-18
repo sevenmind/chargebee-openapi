@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-16.52dc1be10d0d
-  x-cb-api-version: 2
+  version: 2026-11-17.6cf4924f10b2
   x-cb-product-catalog-version: 2
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -26679,16 +26679,6 @@ paths:
                     Identifier of the customer with whom this payment source is associated.
                   maxLength: 50
                   example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the payment source is linked to the brand of the customer it is created for.
-                  maxLength: 50
-                  example: null
                 type:
                   type: string
                   deprecated: false
@@ -27675,16 +27665,6 @@ paths:
                   deprecated: false
                   description: |
                     Identifier of the customer with whom this payment source is associated.
-                  maxLength: 50
-                  example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the payment source is linked to the brand of the customer it is created for.
                   maxLength: 50
                   example: null
                 replace_primary_payment_source:
@@ -29806,16 +29786,6 @@ paths:
                     Identifier of the customer with whom this payment source is associated.
                   maxLength: 50
                   example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the payment source is linked to the brand of the customer it is created for.
-                  maxLength: 50
-                  example: null
                 replace_primary_payment_source:
                   type: boolean
                   default: false
@@ -30423,16 +30393,6 @@ paths:
                     Identifier of the customer with whom this payment source is associated.
                   maxLength: 50
                   example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the payment source is linked to the brand of the customer it is created for.
-                  maxLength: 50
-                  example: null
                 voucher_payment_source:
                   type: object
                   deprecated: false
@@ -30865,16 +30825,6 @@ paths:
                   deprecated: false
                   description: |
                     2-letter (alpha2) ISO country code. Indicates your customer's payment method country of issuance. Applicable for PayPal via Braintree.
-                  maxLength: 50
-                  example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the payment source is linked to the brand of the customer it is created for.
                   maxLength: 50
                   example: null
                 replace_primary_payment_source:
@@ -31790,16 +31740,6 @@ paths:
                     Identifier of the customer with whom this payment source is associated.
                   maxLength: 50
                   example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the payment source is linked to the brand of the customer it is created for.
-                  maxLength: 50
-                  example: null
                 replace_primary_payment_source:
                   type: boolean
                   default: false
@@ -32294,16 +32234,6 @@ paths:
                   deprecated: false
                   description: |
                     Identifier of the customer with whom this payment source is associated.
-                  maxLength: 50
-                  example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the payment source is linked to the brand of the customer it is created for.
                   maxLength: 50
                   example: null
                 issuing_country:
@@ -37626,21 +37556,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway
@@ -37662,21 +37592,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: status_code
@@ -37698,21 +37628,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: method
@@ -37734,21 +37664,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: url
@@ -37770,21 +37700,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: customer_handle
@@ -37806,21 +37736,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invoice_handle
@@ -37842,21 +37772,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: transaction_handle
@@ -37878,21 +37808,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_method_handle
@@ -37914,21 +37844,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -37950,21 +37880,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -37986,21 +37916,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_intent_handle
@@ -38022,21 +37952,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: operation_name
@@ -38058,21 +37988,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: operation_type
@@ -38094,21 +38024,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: source
@@ -38130,21 +38060,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invocation_time
@@ -38655,21 +38585,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway
@@ -38691,21 +38621,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: status_code
@@ -38727,21 +38657,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: method
@@ -38763,21 +38693,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: url
@@ -38799,21 +38729,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: id_at_gateway
@@ -38835,21 +38765,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: customer_handle
@@ -38871,21 +38801,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invoice_handle
@@ -38907,21 +38837,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: transaction_handle
@@ -38943,21 +38873,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_method_handle
@@ -38979,21 +38909,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -39015,21 +38945,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -39051,21 +38981,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_intent_handle
@@ -39087,21 +39017,21 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: received_at
@@ -51628,13 +51558,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -51657,13 +51587,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -79693,6 +79623,20 @@ paths:
                 locale:
                   type: string
                   deprecated: false
+                  description: |
+                    The locale tag for the language in which the retention experience should be rendered. The value must match the mapping rules of one of the languages configured in the Chargebee Growth app.
+
+                    Example: `en`, `pt`, `fr`, `it`  
+                    **Prerequisites**
+
+                    * The Chargebee Growth app's language resolution setting must be enabled and set to **API / JS** . If it's set to **Billing** , this parameter is ignored, and Growth resolves the language from [`customer.locale`](/docs/api/customers/customer-object#locale) in Chargebee Billing instead.
+                    * To enable the language resolution setting, [contact Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support).  
+                    **Default behavior**
+                    Growth uses the site's primary language for the retention experience when:
+
+                    * `locale` isn't passed.
+                    * `locale` is passed but doesn't match the mapping rules of any configured language.
+                    * `locale` is passed and matches a configured language, but that language has no translated variant for the specific experience.
                   maxLength: 50
                   example: null
                 subscription:
@@ -100465,13 +100409,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -116609,19 +116553,6 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
-                        is:
-                          type: string
-                          description: |-
-                            * `scheduled` - Status of the subscription schedule on creation. 
-                            * `succeeded` - The execution status of the schedule if success. 
-                            * `failed` - The execution status of the schedule if failed. 
-                            * `draft` - Status of the subscription schedule considering as draft
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                         in:
                           type: string
                           description: |-
@@ -116636,6 +116567,19 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
+                        is:
+                          type: string
+                          description: |-
+                            * `scheduled` - Status of the subscription schedule on creation. 
+                            * `succeeded` - The execution status of the schedule if success. 
+                            * `failed` - The execution status of the schedule if failed. 
+                            * `draft` - Status of the subscription schedule considering as draft
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -116643,13 +116587,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        is:
-                          type: string
-                          minLength: 1
-                          example: null
                         in:
                           type: string
                           pattern: ^\[(.*)(,.*)*\]$
+                          example: null
+                        is:
+                          type: string
+                          minLength: 1
                           example: null
                     effective_from:
                       type: object
@@ -117262,16 +117206,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -118686,16 +118630,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -119106,16 +119050,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -125418,13 +125362,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -127010,16 +126954,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -130747,16 +130691,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -135458,16 +135402,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -137693,16 +137637,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -141131,16 +141075,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -145857,16 +145801,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -149572,15 +149516,6 @@ paths:
             deprecated: false
             example: active
             properties:
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
-                example: null
               in:
                 type: string
                 description: |-
@@ -149590,6 +149525,15 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
                 example: null
         - name: id
           in: query
@@ -149611,13 +149555,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -152677,13 +152621,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: entity_type
           in: query
@@ -152708,21 +152652,6 @@ paths:
             deprecated: false
             example: plan_price
             properties:
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
-                example: null
               in:
                 type: string
                 description: |-
@@ -152738,6 +152667,21 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -152761,13 +152705,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -164309,19 +164253,6 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
-              is:
-                type: string
-                description: |-
-                  * `scheduled` - Status of the subscription schedule on creation. 
-                  * `succeeded` - The execution status of the schedule if success. 
-                  * `failed` - The execution status of the schedule if failed. 
-                  * `draft` - Status of the subscription schedule considering as draft
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
-                example: null
               in:
                 type: string
                 description: |-
@@ -164335,6 +164266,19 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `scheduled` - Status of the subscription schedule on creation. 
+                  * `succeeded` - The execution status of the schedule if success. 
+                  * `failed` - The execution status of the schedule if failed. 
+                  * `draft` - Status of the subscription schedule considering as draft
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -164360,13 +164304,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: effective_from
           in: query
@@ -171529,16 +171473,6 @@ paths:
                     Sets the [context](/docs/api/business_entities) for this operation to the [business entity](/docs/api/business_entities) specified. Applicable only when multiple business entities have been created for the site. When this parameter is provided, new subscription and customer resources are created within the business entity.
                   maxLength: 50
                   example: null
-                brand_id:
-                  type: string
-                  deprecated: false
-                  description: |
-                    The unique ID of the [brand](/docs/api/brands) this pricing page session should be linked to. Applicable only when multiple brands have been created for the site. The customer and subscription created through the session are linked to the same brand. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  
-                    **Default behavior**
-
-                    * When not provided, the default brand defined for the site is used.
-                  maxLength: 50
-                  example: null
                 auto_select_local_currency:
                   type: boolean
                   default: false
@@ -173351,11 +173285,7 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
-                example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -173365,10 +173295,14 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              "on":
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: purchased_at
           in: query
@@ -173391,11 +173325,7 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              between:
-                type: string
-                pattern: ^\[\d{10},\d{10}\]$
-                example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -173405,10 +173335,14 @@ paths:
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              "on":
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
+                example: null
+              between:
+                type: string
+                pattern: ^\[\d{10},\d{10}\]$
                 example: null
         - name: sort_by
           in: query
@@ -175335,11 +175269,11 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
+              starts_with:
                 type: string
                 minLength: 1
                 example: null
-              starts_with:
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -177689,13 +177623,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -177717,13 +177651,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -186319,21 +186253,21 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              is_not:
+              not_in:
                 type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -192100,31 +192034,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
-                example: null
               in:
                 type: string
                 description: |-
@@ -192150,6 +192059,31 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -205568,10 +205502,6 @@ components:
         - id
         - is_unlimited
         - name
-      example: null
-    Criteria:
-      type: object
-      properties: {}
       example: null
     CriteriaSchema:
       type: object
@@ -237745,13 +237675,6 @@ components:
             The unique ID of the [business entity](/docs/api/advanced-features)
             of this `payment_source`.
             This is always the same as the business entity of the [customer](/docs/api/payment_sources/payment_source-object#customer_id).
-          maxLength: 50
-          example: null
-        brand_id:
-          type: string
-          deprecated: false
-          description: |
-            The unique ID of the [brand](/docs/api/brands) this payment source belongs to. Unless a brand was specified in the request, this is the brand of the customer the payment source was created for.
           maxLength: 50
           example: null
         card:

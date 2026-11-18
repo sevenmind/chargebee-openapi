@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-16.52dc1be10d0d",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-11-17.6cf4924f10b2",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -27637,13 +27637,6 @@
                     "maxLength": 50,
                     "example": null
                   },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
                   "type": {
                     "type": "string",
                     "deprecated": false,
@@ -28636,13 +28629,6 @@
                     "type": "string",
                     "deprecated": false,
                     "description": "Identifier of the customer with whom this payment source is associated.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n",
                     "maxLength": 50,
                     "example": null
                   },
@@ -30841,13 +30827,6 @@
                     "maxLength": 50,
                     "example": null
                   },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
                   "replace_primary_payment_source": {
                     "type": "boolean",
                     "default": false,
@@ -31516,13 +31495,6 @@
                     "maxLength": 50,
                     "example": null
                   },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
                   "voucher_payment_source": {
                     "type": "object",
                     "deprecated": false,
@@ -31963,13 +31935,6 @@
                     "type": "string",
                     "deprecated": false,
                     "description": "2-letter (alpha2) ISO country code. Indicates your customer's payment method country of issuance. Applicable for PayPal via Braintree.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n",
                     "maxLength": 50,
                     "example": null
                   },
@@ -33040,13 +33005,6 @@
                     "maxLength": 50,
                     "example": null
                   },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
                   "replace_primary_payment_source": {
                     "type": "boolean",
                     "default": false,
@@ -33651,13 +33609,6 @@
                     "type": "string",
                     "deprecated": false,
                     "description": "Identifier of the customer with whom this payment source is associated.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this payment source should be linked to. Applicable only when multiple brands have been created for the site. This need not match the brand of the `customer_id`; when the two differ, the value provided here is used for the payment source. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the payment source is linked to the brand of the customer it is created for.\n",
                     "maxLength": 50,
                     "example": null
                   },
@@ -40385,14 +40336,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40400,9 +40346,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40421,14 +40372,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40436,9 +40382,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40457,14 +40408,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40472,9 +40418,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40493,14 +40444,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40508,9 +40454,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40529,14 +40480,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40544,9 +40490,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40565,14 +40516,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40580,9 +40526,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40601,14 +40552,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40616,9 +40562,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40637,14 +40588,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40652,9 +40598,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40673,14 +40624,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40688,9 +40634,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40709,14 +40660,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40724,9 +40670,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40745,14 +40696,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40760,9 +40706,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40781,14 +40732,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40796,9 +40742,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40817,14 +40768,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40832,9 +40778,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40853,14 +40804,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40868,9 +40814,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40889,14 +40840,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -40904,9 +40850,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41533,14 +41484,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41548,9 +41494,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41569,14 +41520,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41584,9 +41530,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41605,14 +41556,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41620,9 +41566,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41641,14 +41592,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41656,9 +41602,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41677,14 +41628,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41692,9 +41638,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41713,14 +41664,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41728,9 +41674,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41749,14 +41700,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41764,9 +41710,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41785,14 +41736,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41800,9 +41746,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41821,14 +41772,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41836,9 +41782,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41857,14 +41808,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41872,9 +41818,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41893,14 +41844,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41908,9 +41854,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41929,14 +41880,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41944,9 +41890,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41965,14 +41916,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -41980,9 +41926,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -55821,14 +55772,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -55852,14 +55803,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -86688,6 +86639,7 @@
                   "locale": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The locale tag for the language in which the retention experience should be rendered. The value must match the mapping rules of one of the languages configured in the Chargebee Growth app.\n\nExample: `en`, `pt`, `fr`, `it`  \n**Prerequisites**\n\n* The Chargebee Growth app's language resolution setting must be enabled and set to **API / JS** . If it's set to **Billing** , this parameter is ignored, and Growth resolves the language from [`customer.locale`](/docs/api/customers/customer-object#locale) in Chargebee Billing instead.\n* To enable the language resolution setting, [contact Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support).  \n**Default behavior**\nGrowth uses the site's primary language for the retention experience when:\n\n* `locale` isn't passed.\n* `locale` is passed but doesn't match the mapping rules of any configured language.\n* `locale` is passed and matches a configured language, but that language has no translated variant for the specific experience.\n",
                     "maxLength": 50,
                     "example": null
                   },
@@ -107986,14 +107938,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -125299,17 +125251,6 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -125321,6 +125262,17 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
                           }
                         }
                       },
@@ -125330,14 +125282,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -126135,11 +126087,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_family`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -126147,6 +126094,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -127808,11 +127760,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `price_variant`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -127820,6 +127767,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -128320,11 +128272,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -128332,6 +128279,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -134862,14 +134814,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -136634,11 +136586,6 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_price`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -136646,6 +136593,11 @@
                           "true",
                           "false"
                         ],
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -140796,11 +140748,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -140808,6 +140755,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -146517,11 +146469,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -146529,6 +146476,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -149099,11 +149051,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -149111,6 +149058,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -152974,11 +152926,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -152986,6 +152933,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -158308,11 +158260,6 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -158320,6 +158267,11 @@
                     "true",
                     "false"
                   ],
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -162816,15 +162768,6 @@
               "deprecated": false,
               "example": "active",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -162833,6 +162776,15 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
                   "example": null
                 }
               }
@@ -162851,14 +162803,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -166584,14 +166536,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -166610,18 +166562,6 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -166633,6 +166573,18 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
                   "example": null
                 }
               }
@@ -166651,14 +166603,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -179782,17 +179734,6 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -179803,6 +179744,17 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
                   "example": null
                 }
               }
@@ -179821,14 +179773,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -189111,13 +189063,6 @@
                     "maxLength": 50,
                     "example": null
                   },
-                  "brand_id": {
-                    "type": "string",
-                    "deprecated": false,
-                    "description": "The unique ID of the [brand](/docs/api/brands) this pricing page session should be linked to. Applicable only when multiple brands have been created for the site. The customer and subscription created through the session are linked to the same brand. An alternative way of passing this parameter is by means of the `chargebee-brand-id` custom HTTP header; when both are provided, they must specify the same brand.  \n**Default behavior**\n\n* When not provided, the default brand defined for the site is used.\n",
-                    "maxLength": 50,
-                    "example": null
-                  },
                   "auto_select_local_currency": {
                     "type": "boolean",
                     "default": false,
@@ -191191,12 +191136,7 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -191208,10 +191148,15 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "on": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -191230,12 +191175,7 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "between": {
-                  "type": "string",
-                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
-                  "example": null
-                },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -191247,10 +191187,15 @@
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "on": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
+                  "example": null
+                },
+                "between": {
+                  "type": "string",
+                  "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 }
               }
@@ -193684,12 +193629,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -196684,14 +196629,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -196710,14 +196655,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -207515,14 +207460,9 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is_not": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
                 "in": {
@@ -207530,9 +207470,14 @@
                   "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 },
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -214465,23 +214410,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -214498,6 +214426,23 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
                   "example": null
                 }
               },
@@ -228327,11 +228272,6 @@
           "is_unlimited",
           "name"
         ],
-        "example": null
-      },
-      "Criteria": {
-        "type": "object",
-        "properties": {},
         "example": null
       },
       "CriteriaSchema": {
@@ -258130,13 +258070,6 @@
             "type": "string",
             "deprecated": false,
             "description": "The unique ID of the [business entity](/docs/api/advanced-features)\nof this `payment_source`.\nThis is always the same as the business entity of the [customer](/docs/api/payment_sources/payment_source-object#customer_id).\n",
-            "maxLength": 50,
-            "example": null
-          },
-          "brand_id": {
-            "type": "string",
-            "deprecated": false,
-            "description": "The unique ID of the [brand](/docs/api/brands) this payment source belongs to. Unless a brand was specified in the request, this is the brand of the customer the payment source was created for.\n",
             "maxLength": 50,
             "example": null
           },
