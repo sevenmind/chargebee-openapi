@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-16.52dc1be10d0d
-  x-cb-api-version: 2
+  version: 2026-11-17.6cf4924f10b2
   x-cb-product-catalog-version: 1
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -38470,11 +38470,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38482,7 +38478,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38506,11 +38506,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38518,7 +38514,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38542,11 +38542,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38554,7 +38550,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38578,11 +38578,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38590,7 +38586,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38614,11 +38614,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38626,7 +38622,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38650,11 +38650,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38662,7 +38658,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38686,11 +38686,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38698,7 +38694,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38722,11 +38722,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38734,7 +38730,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38758,11 +38758,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38770,7 +38766,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38794,11 +38794,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38806,7 +38802,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38830,11 +38830,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38842,7 +38838,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38866,11 +38866,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38878,7 +38874,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38902,11 +38902,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38914,7 +38910,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38938,11 +38938,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38950,7 +38946,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -38974,11 +38974,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -38986,7 +38982,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39473,11 +39473,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39485,7 +39481,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39509,11 +39509,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39521,7 +39517,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39545,11 +39545,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39557,7 +39553,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39581,11 +39581,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39593,7 +39589,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39617,11 +39617,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39629,7 +39625,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39653,11 +39653,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39665,7 +39661,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39689,11 +39689,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39701,7 +39697,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39725,11 +39725,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39737,7 +39733,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39761,11 +39761,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39773,7 +39769,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39797,11 +39797,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39809,7 +39805,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39833,11 +39833,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39845,7 +39841,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39869,11 +39869,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39881,7 +39877,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -39905,11 +39905,7 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              is:
+              is_not:
                 type: string
                 minLength: 1
                 example: null
@@ -39917,7 +39913,11 @@ paths:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
-              is_not:
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -75126,6 +75126,20 @@ paths:
                 locale:
                   type: string
                   deprecated: false
+                  description: |
+                    The locale tag for the language in which the retention experience should be rendered. The value must match the mapping rules of one of the languages configured in the Chargebee Growth app.
+
+                    Example: `en`, `pt`, `fr`, `it`  
+                    **Prerequisites**
+
+                    * The Chargebee Growth app's language resolution setting must be enabled and set to **API / JS** . If it's set to **Billing** , this parameter is ignored, and Growth resolves the language from [`customer.locale`](/docs/api/v2/pcv-1/customers/customer-object#locale) in Chargebee Billing instead.
+                    * To enable the language resolution setting, [contact Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support).  
+                    **Default behavior**
+                    Growth uses the site's primary language for the retention experience when:
+
+                    * `locale` isn't passed.
+                    * `locale` is passed but doesn't match the mapping rules of any configured language.
+                    * `locale` is passed and matches a configured language, but that language has no translated variant for the specific experience.
                   maxLength: 50
                   example: null
                 subscription:
@@ -144883,10 +144897,6 @@ components:
         - referral_rewards
         - general
       example: null
-    Criteria:
-      type: object
-      properties: {}
-      example: null
     CriteriaSchema:
       type: object
       properties: {}
@@ -165305,13 +165315,6 @@ components:
             **Note**
 
             [Multiple Business Entities](/docs/api/getting-started) is a feature available only on Product Catalog 2.0.
-          maxLength: 50
-          example: null
-        brand_id:
-          type: string
-          deprecated: false
-          description: |
-            The unique ID of the [brand](/docs/api/brands) this payment source belongs to. Unless a brand was specified in the request, this is the brand of the customer the payment source was created for.
           maxLength: 50
           example: null
         card:
