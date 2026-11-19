@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-17.6cf4924f10b2
+  version: 2026-11-18.eabbda99b5dd
   x-cb-product-catalog-version: 2
   x-cb-api-version: 2
 servers:
@@ -112,6 +112,8 @@ tags:
     description: Hosted pages are the easiest way to integrate Chargebee with your website.
   - name: in_app_subscriptions
     description: '**Important:** * We''ve stopped giving access to the legacy solution due to the limitations mentioned [here](https://www.chargebee.com/docs/billing/2.0/mobile-subscriptions/mobile-subscriptions-limitations).'
+  - name: invoice_retry_contexts
+    description: Operations on the `invoice_retry_contexts` resource.
   - name: invoices
     description: An invoice is a commercial document representing a sale of products/services offered by you to a customer.
   - name: item_families
@@ -166,6 +168,8 @@ tags:
     description: A Personalized Offer represents the best possible offer for a subscriber at a given moment in their lifecycle.
   - name: portal_sessions
     description: Customer Portal lets your customers to manage their account and billing themselves.
+  - name: preferences
+    description: Operations on the `preferences` resource.
   - name: price_ramps
     description: Price ramp resource lets you define a stepped pricing schedule on an [item price](/docs/api/item_prices) in the Product Catalog.
   - name: price_variants
@@ -37556,14 +37560,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37571,6 +37567,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -37592,14 +37596,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37607,6 +37603,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -37628,14 +37632,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37643,6 +37639,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -37664,14 +37668,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37679,6 +37675,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -37700,14 +37704,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37715,6 +37711,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -37736,14 +37740,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37751,6 +37747,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -37772,14 +37776,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37787,6 +37783,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -37808,14 +37812,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37823,6 +37819,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -37844,14 +37848,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37859,6 +37855,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -37880,14 +37884,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37895,6 +37891,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -37916,14 +37920,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37931,6 +37927,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -37952,14 +37956,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -37967,6 +37963,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_name
@@ -37988,14 +37992,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38003,6 +37999,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_type
@@ -38024,14 +38028,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38039,6 +38035,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: source
@@ -38060,14 +38064,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38075,6 +38071,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invocation_time
@@ -38585,14 +38589,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38600,6 +38596,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -38621,14 +38625,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38636,6 +38632,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -38657,14 +38661,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38672,6 +38668,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -38693,14 +38697,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38708,6 +38704,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -38729,14 +38733,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38744,6 +38740,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: id_at_gateway
@@ -38765,14 +38769,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38780,6 +38776,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -38801,14 +38805,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38816,6 +38812,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -38837,14 +38841,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38852,6 +38848,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -38873,14 +38877,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38888,6 +38884,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -38909,14 +38913,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38924,6 +38920,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -38945,14 +38949,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38960,6 +38956,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -38981,14 +38985,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -38996,6 +38992,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -39017,14 +39021,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -39032,6 +39028,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: received_at
@@ -51558,13 +51562,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: payment_reference_number
           in: query
@@ -51587,13 +51591,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  in:
-                    type: string
-                    pattern: ^\[(.*)(,.*)*\]$
-                    example: null
                   is:
                     type: string
                     minLength: 1
+                    example: null
+                  in:
+                    type: string
+                    pattern: ^\[(.*)(,.*)*\]$
                     example: null
             example: null
       responses:
@@ -100409,13 +100413,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -107575,6 +107579,7 @@ paths:
                   * `payment_succeeded` - Sent when the payment is successfully collected
                   * `payment_failed` - Sent when attempt to charge customer's credit card fails
                   * `dunning_updated` - Sent when dunning is paused for an invoice
+                  * `retry_segment_assigned` - Sent when an invoice's retries start and it matches a retry segment
                   * `payment_refunded` - Sent when a payment refund is made
                   * `refund_failed` - Sent when a refund attempt fails at the gateway
                   * `payment_initiated` - Sent when a payment is initiated via direct debit
@@ -107845,6 +107850,7 @@ paths:
                   - payment_succeeded
                   - payment_failed
                   - dunning_updated
+                  - retry_segment_assigned
                   - payment_refunded
                   - refund_failed
                   - payment_initiated
@@ -108109,6 +108115,7 @@ paths:
                   * `payment_succeeded` - Sent when the payment is successfully collected
                   * `payment_failed` - Sent when attempt to charge customer's credit card fails
                   * `dunning_updated` - Sent when dunning is paused for an invoice
+                  * `retry_segment_assigned` - Sent when an invoice's retries start and it matches a retry segment
                   * `payment_refunded` - Sent when a payment refund is made
                   * `refund_failed` - Sent when a refund attempt fails at the gateway
                   * `payment_initiated` - Sent when a payment is initiated via direct debit
@@ -108379,6 +108386,7 @@ paths:
                   - payment_succeeded
                   - payment_failed
                   - dunning_updated
+                  - retry_segment_assigned
                   - payment_refunded
                   - refund_failed
                   - payment_initiated
@@ -108643,6 +108651,7 @@ paths:
                   * `payment_succeeded` - Sent when the payment is successfully collected
                   * `payment_failed` - Sent when attempt to charge customer's credit card fails
                   * `dunning_updated` - Sent when dunning is paused for an invoice
+                  * `retry_segment_assigned` - Sent when an invoice's retries start and it matches a retry segment
                   * `payment_refunded` - Sent when a payment refund is made
                   * `refund_failed` - Sent when a refund attempt fails at the gateway
                   * `payment_initiated` - Sent when a payment is initiated via direct debit
@@ -108913,6 +108922,7 @@ paths:
                   - payment_succeeded
                   - payment_failed
                   - dunning_updated
+                  - retry_segment_assigned
                   - payment_refunded
                   - refund_failed
                   - payment_initiated
@@ -109099,7 +109109,7 @@ paths:
                   - collections_dispute_withdrawn
                   - email_message_received
                   - private_note_added
-                pattern: ^\[(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added)(,(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added))*\]$
+                pattern: ^\[(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|retry_segment_assigned|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added)(,(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|retry_segment_assigned|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added))*\]$
                 example: null
               not_in:
                 type: string
@@ -109178,6 +109188,7 @@ paths:
                   * `payment_succeeded` - Sent when the payment is successfully collected
                   * `payment_failed` - Sent when attempt to charge customer's credit card fails
                   * `dunning_updated` - Sent when dunning is paused for an invoice
+                  * `retry_segment_assigned` - Sent when an invoice's retries start and it matches a retry segment
                   * `payment_refunded` - Sent when a payment refund is made
                   * `refund_failed` - Sent when a refund attempt fails at the gateway
                   * `payment_initiated` - Sent when a payment is initiated via direct debit
@@ -109448,6 +109459,7 @@ paths:
                   - payment_succeeded
                   - payment_failed
                   - dunning_updated
+                  - retry_segment_assigned
                   - payment_refunded
                   - refund_failed
                   - payment_initiated
@@ -109634,7 +109646,7 @@ paths:
                   - collections_dispute_withdrawn
                   - email_message_received
                   - private_note_added
-                pattern: ^\[(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added)(,(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added))*\]$
+                pattern: ^\[(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|retry_segment_assigned|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added)(,(coupon_created|coupon_updated|coupon_deleted|coupon_set_created|coupon_set_updated|coupon_set_deleted|coupon_codes_added|coupon_codes_deleted|coupon_codes_updated|customer_created|customer_changed|customer_deleted|customer_moved_out|customer_moved_in|promotional_credits_added|promotional_credits_deducted|subscription_created|subscription_created_with_backdating|subscription_started|subscription_trial_end_reminder|subscription_activated|subscription_activated_with_backdating|subscription_changed|subscription_trial_extended|mrr_updated|subscription_changed_with_backdating|subscription_cancellation_scheduled|subscription_cancellation_reminder|subscription_cancelled|subscription_canceled_with_backdating|subscription_reactivated|subscription_reactivated_with_backdating|subscription_renewed|subscription_items_renewed|subscription_scheduled_cancellation_removed|subscription_changes_scheduled|subscription_scheduled_changes_removed|subscription_shipping_address_updated|subscription_deleted|subscription_paused|subscription_pause_scheduled|subscription_scheduled_pause_removed|subscription_resumed|subscription_resumption_scheduled|subscription_scheduled_resumption_removed|subscription_advance_invoice_schedule_added|subscription_advance_invoice_schedule_updated|subscription_advance_invoice_schedule_removed|pending_invoice_created|pending_invoice_updated|invoice_generated|invoice_generated_with_backdating|invoice_updated|invoice_deleted|credit_note_created|credit_note_created_with_backdating|credit_note_updated|credit_note_deleted|einvoice_created|einvoice_updated|payment_schedules_created|payment_schedules_updated|payment_schedule_scheme_created|payment_schedule_scheme_deleted|payment_schedules_cancelled|subscription_renewal_reminder|add_usages_reminder|payment_due_reminder|transaction_created|transaction_updated|transaction_deleted|payment_succeeded|payment_failed|dunning_updated|retry_segment_assigned|payment_refunded|refund_failed|payment_initiated|refund_initiated|netd_payment_due_reminder|authorization_succeeded|authorization_voided|card_added|card_updated|card_expiry_reminder|card_expired|card_deleted|payment_source_added|payment_source_updated|payment_source_deleted|payment_source_expiring|payment_source_expired|payment_source_locally_deleted|virtual_bank_account_added|virtual_bank_account_updated|virtual_bank_account_deleted|token_created|token_consumed|token_expired|unbilled_charges_created|unbilled_charges_voided|unbilled_charges_deleted|unbilled_charges_invoiced|order_created|order_updated|order_cancelled|order_delivered|order_returned|order_ready_to_process|order_ready_to_ship|order_deleted|order_resent|quote_created|quote_updated|quote_deleted|tax_withheld_recorded|tax_withheld_deleted|tax_withheld_refunded|gift_scheduled|gift_unclaimed|gift_claimed|gift_expired|gift_cancelled|gift_updated|hierarchy_created|hierarchy_deleted|payment_intent_created|payment_intent_updated|contract_term_created|contract_term_renewed|contract_term_terminated|contract_term_completed|contract_term_cancelled|item_family_created|item_family_updated|item_family_deleted|item_created|item_updated|item_deleted|item_price_created|item_price_updated|item_price_deleted|attached_item_created|attached_item_updated|attached_item_deleted|differential_price_created|differential_price_updated|differential_price_deleted|feature_created|feature_updated|feature_deleted|feature_activated|feature_reactivated|feature_archived|item_entitlements_updated|entitlement_overrides_updated|entitlement_overrides_removed|item_entitlements_removed|entitlement_overrides_auto_removed|subscription_entitlements_created|subscription_entitlements_updated|business_entity_created|business_entity_updated|business_entity_deleted|customer_business_entity_changed|subscription_business_entity_changed|payment_source_business_entity_changed|organization_details_created|organization_details_updated|purchase_created|voucher_created|voucher_expired|voucher_create_failed|product_created|product_updated|product_deleted|variant_created|variant_updated|variant_deleted|item_price_entitlements_updated|item_price_entitlements_removed|subscription_ramp_created|subscription_ramp_deleted|subscription_ramp_applied|subscription_ramp_drafted|subscription_ramp_updated|price_variant_created|price_variant_updated|price_variant_deleted|customer_entitlements_updated|subscription_moved_in|subscription_moved_out|subscription_movement_failed|omnichannel_subscription_created|omnichannel_subscription_item_renewed|omnichannel_subscription_item_downgrade_scheduled|omnichannel_subscription_item_scheduled_downgrade_removed|omnichannel_subscription_item_downgraded|omnichannel_subscription_item_expired|omnichannel_subscription_item_cancellation_scheduled|omnichannel_subscription_item_scheduled_cancellation_removed|omnichannel_subscription_item_resubscribed|omnichannel_subscription_item_upgraded|omnichannel_subscription_item_cancelled|omnichannel_subscription_imported|omnichannel_subscription_item_grace_period_started|omnichannel_subscription_item_grace_period_expired|omnichannel_subscription_item_dunning_started|omnichannel_subscription_item_dunning_expired|rule_created|rule_updated|rule_deleted|record_purchase_failed|omnichannel_subscription_item_change_scheduled|omnichannel_subscription_item_scheduled_change_removed|omnichannel_subscription_item_reactivated|sales_order_created|sales_order_updated|omnichannel_subscription_item_changed|omnichannel_subscription_item_paused|omnichannel_subscription_item_resumed|omnichannel_one_time_order_created|omnichannel_one_time_order_item_cancelled|usage_file_ingested|omnichannel_subscription_item_pause_scheduled|omnichannel_subscription_moved_in|omnichannel_transaction_created|alert_status_changed|omnichannel_subscription_item_updated|omnichannel_subscription_item_recovered|price_ramp_created|price_ramp_updated|price_ramp_deleted|omnichannel_subscription_item_mrr_updated|ledger_account_balance_updated|grant_blocks_created|grant_blocks_updated|ledger_updated|business_rule_created|business_rule_updated|business_rule_activated|business_rule_deactivated|business_rule_deleted|business_rule_released|vault_token_created|vault_token_updated|vault_token_deleted|chargeback_initiated|chargeback_won|chargeback_lost|business_ruleset_created|business_ruleset_updated|business_ruleset_activated|business_ruleset_deactivated|business_ruleset_deleted|collections_reminder_sequence_created|collections_reminder_sequence_paused|collections_reminder_sequence_resumed|collections_reminder_sequence_completed|collections_payment_promise_created|collections_payment_promise_updated|collections_payment_promise_fulfilled|collections_payment_promise_cancelled|collections_payment_promise_broken|collections_dispute_created|collections_dispute_updated|collections_dispute_resolved|collections_dispute_withdrawn|email_message_received|private_note_added))*\]$
                 example: null
         - name: source
           in: query
@@ -116553,6 +116565,19 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
+                        is:
+                          type: string
+                          description: |-
+                            * `scheduled` - Status of the subscription schedule on creation. 
+                            * `succeeded` - The execution status of the schedule if success. 
+                            * `failed` - The execution status of the schedule if failed. 
+                            * `draft` - Status of the subscription schedule considering as draft
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                         in:
                           type: string
                           description: |-
@@ -116567,19 +116592,6 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
-                        is:
-                          type: string
-                          description: |-
-                            * `scheduled` - Status of the subscription schedule on creation. 
-                            * `succeeded` - The execution status of the schedule if success. 
-                            * `failed` - The execution status of the schedule if failed. 
-                            * `draft` - Status of the subscription schedule considering as draft
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -116587,13 +116599,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        in:
-                          type: string
-                          pattern: ^\[(.*)(,.*)*\]$
-                          example: null
                         is:
                           type: string
                           minLength: 1
+                          example: null
+                        in:
+                          type: string
+                          pattern: ^\[(.*)(,.*)*\]$
                           example: null
                     effective_from:
                       type: object
@@ -125362,13 +125374,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: ^\[(.*)(,.*)*\]$
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: ^\[(.*)(,.*)*\]$
                       example: null
                 coupon:
                   type: object
@@ -149516,6 +149528,15 @@ paths:
             deprecated: false
             example: active
             properties:
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
+                example: null
               in:
                 type: string
                 description: |-
@@ -149525,15 +149546,6 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
                 example: null
         - name: id
           in: query
@@ -149555,13 +149567,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -152621,13 +152633,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: entity_type
           in: query
@@ -152652,6 +152664,21 @@ paths:
             deprecated: false
             example: plan_price
             properties:
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
+                example: null
               in:
                 type: string
                 description: |-
@@ -152667,21 +152694,6 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -152705,13 +152717,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -161602,6 +161614,653 @@ paths:
       deprecated: false
       security:
         - BasicAuth: []
+  /preferences:
+    get:
+      tags:
+        - preferences
+      summary: List preferences
+      operationId: list_preferences
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: preference_group
+          in: query
+          required: true
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            example: subscription_reactivation
+            properties:
+              is:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - subscription_reactivation
+                  - trial_end_actions
+                example: null
+              in:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - subscription_reactivation
+                  - trial_end_actions
+                pattern: ^\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\]$
+                example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        preference:
+                          $ref: '#/components/schemas/Preference'
+                          description: Resource object representing preference
+                      required:
+                        - preference
+                      example: null
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+    post:
+      tags:
+        - preferences
+      summary: Update preferences
+      operationId: update_preferences
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-event-actions
+          in: header
+          description: skip all actions to be done on the events
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-actions'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip all actions to be done on the events
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-email
+          in: header
+          description: skip only emails
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-email'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: skip only emails
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-event-webhook
+          in: header
+          description: ' skip only webhooks'
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-event-webhook'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: ' skip only webhooks'
+            enum:
+              - all-disabled
+            example: null
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                preferences:
+                  type: object
+                  deprecated: false
+                  properties:
+                    id:
+                      type: array
+                      items:
+                        type: string
+                        deprecated: false
+                        maxLength: 150
+                        example: null
+                      example: null
+                    value:
+                      type: array
+                      items:
+                        type: string
+                        deprecated: false
+                        maxLength: 65000
+                        example: null
+                      example: null
+                    allow_override_in_interface:
+                      type: array
+                      items:
+                        type: boolean
+                        deprecated: false
+                        example: null
+                      example: null
+                    level:
+                      type: array
+                      items:
+                        type: integer
+                        format: int32
+                        deprecated: false
+                        example: null
+                      example: null
+                    criteria:
+                      type: array
+                      items:
+                        type: array
+                        deprecated: false
+                        items:
+                          example: null
+                        example: null
+                      example: null
+                  required:
+                    - id
+                    - value
+                  example: null
+              example: null
+            encoding:
+              preferences:
+                style: deepObject
+                explode: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        preference:
+                          $ref: '#/components/schemas/Preference'
+                          description: Resource object representing preference
+                      required:
+                        - preference
+                      example: null
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+  /preferences/definitions:
+    get:
+      tags:
+        - preferences
+      summary: List preference definitions
+      operationId: list_preference_definitions
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: preference_group
+          in: query
+          required: true
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            example: subscription_reactivation
+            properties:
+              is:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - subscription_reactivation
+                  - trial_end_actions
+                example: null
+              in:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - subscription_reactivation
+                  - trial_end_actions
+                pattern: ^\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\]$
+                example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        preference_definition:
+                          $ref: '#/components/schemas/PreferenceDefinition'
+                          description: Resource object representing preference_definition
+                      required:
+                        - preference_definition
+                      example: null
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
   /currencies/{site-currency-id}/add_schedule:
     post:
       tags:
@@ -164253,6 +164912,19 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
+              is:
+                type: string
+                description: |-
+                  * `scheduled` - Status of the subscription schedule on creation. 
+                  * `succeeded` - The execution status of the schedule if success. 
+                  * `failed` - The execution status of the schedule if failed. 
+                  * `draft` - Status of the subscription schedule considering as draft
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
+                example: null
               in:
                 type: string
                 description: |-
@@ -164266,19 +164938,6 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `scheduled` - Status of the subscription schedule on creation. 
-                  * `succeeded` - The execution status of the schedule if success. 
-                  * `failed` - The execution status of the schedule if failed. 
-                  * `draft` - Status of the subscription schedule considering as draft
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -164304,13 +164963,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: effective_from
           in: query
@@ -173285,17 +173944,17 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
               "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
               after:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -173325,17 +173984,17 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
+              before:
+                type: string
+                format: unix-time
+                pattern: ^\d{10}$
+                example: null
               "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
               after:
-                type: string
-                format: unix-time
-                pattern: ^\d{10}$
-                example: null
-              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -174978,6 +175637,195 @@ paths:
       deprecated: false
       security:
         - BasicAuth: []
+  /retry_segments:
+    get:
+      tags:
+        - retry_segments
+      summary: List retry segments
+      operationId: list_retry_segments
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: limit
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/limit'
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 10
+            description: The number of resources to be returned.
+            maximum: 100
+            minimum: 1
+            example: null
+        - name: offset
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/offset'
+          style: form
+          explode: true
+          schema:
+            type: string
+            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
+            maxLength: 1000
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        retry_segment:
+                          $ref: '#/components/schemas/RetrySegment'
+                          description: Resource object representing retry_segment
+                      required:
+                        - retry_segment
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                  - list
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
   /retry_segments/{retry-segment-id}:
     get:
       tags:
@@ -174985,17 +175833,6 @@ paths:
       summary: Retrieve a retry segment
       operationId: retrieve_a_retry_segment
       parameters:
-        - name: invoice_id
-          in: query
-          required: false
-          deprecated: false
-          style: form
-          explode: true
-          schema:
-            type: string
-            deprecated: false
-            maxLength: 50
-            example: null
         - name: chargebee-request-origin-device
           in: header
           description: The device from which the customer has made the request
@@ -175083,6 +175920,304 @@ paths:
                     description: Resource object representing retry_segment
                 required:
                   - retry_segment
+                example: null
+        "400":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400'
+        "401":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401'
+        "403":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403'
+        "404":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404'
+        "405":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/405'
+        "409":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/409'
+        "422":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422'
+        "429":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429'
+        "500":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500'
+        "503":
+          description: on error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503'
+      deprecated: false
+      security:
+        - BasicAuth: []
+  /invoice_retry_contexts:
+    get:
+      tags:
+        - invoice_retry_contexts
+      summary: List invoice retry contexts
+      operationId: list_invoice_retry_contexts
+      parameters:
+        - name: chargebee-request-origin-device
+          in: header
+          description: The device from which the customer has made the request
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-device'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The device from which the customer has made the request
+            example: Android
+        - name: chargebee-request-origin-user
+          in: header
+          description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The email address of your customer/user. Use this when the email address has only ASCII characters.
+            example: user@example.com
+        - name: chargebee-request-origin-user-encoded
+          in: header
+          description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-user-encoded'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: email
+            description: The Base64-encoded email address of your customer/user. Use this if the email address has UTF-8 characters. When this header is provided, the header chargebee-request-origin-user is ignored.
+            example: dXNlci7QutCy0ZbRgtC+0YfQutCwQGV4YW1wbGUuY29t
+        - name: chargebee-request-origin-ip
+          in: header
+          description: The IP address of the customer where the request originated
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-request-origin-ip'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The IP address of the customer where the request originated
+            example: 192.168.1.2
+            pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
+        - name: chargebee-business-entity-id
+          in: header
+          description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/chargebee-business-entity-id'
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: If the site has multiple business entities, you can use this custom HTTP header to specify the business entity for which Chargebee should perform the operation.
+            maxLength: 50
+            example: null
+        - name: limit
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/limit'
+          style: form
+          explode: true
+          schema:
+            type: integer
+            format: int32
+            default: 10
+            description: The number of resources to be returned.
+            maximum: 100
+            minimum: 1
+            example: null
+        - name: offset
+          in: query
+          required: false
+          deprecated: false
+          $ref: '#/components/parameters/offset'
+          style: form
+          explode: true
+          schema:
+            type: string
+            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
+            maxLength: 1000
+            example: null
+        - name: invoice_id
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Identifier of the invoice.
+            example: INV-001
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+        - name: retry_segment_id
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Identifier of the retry segment the invoice matched when its retries started.
+            example: rs_high_value
+            properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
+        - name: invoice
+          in: query
+          required: false
+          deprecated: false
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            deprecated: false
+            description: Parameters for invoice
+            properties:
+              dunning_status:
+                type: object
+                deprecated: false
+                description: Current dunning status of the invoice.
+                example: in_progress
+                properties:
+                  is:
+                    type: string
+                    description: |-
+                      * `in_progress` - Dunning is still in progress.
+                      * `exhausted` - Maximum number of attempts have been made.
+                      * `stopped` - Dunning has stopped for this invoice.
+                      * `success` - Payment successfully collected during dunning process.
+                    enum:
+                      - in_progress
+                      - exhausted
+                      - stopped
+                      - success
+                    example: null
+                  is_not:
+                    type: string
+                    description: |-
+                      * `in_progress` - Dunning is still in progress.
+                      * `exhausted` - Maximum number of attempts have been made.
+                      * `stopped` - Dunning has stopped for this invoice.
+                      * `success` - Payment successfully collected during dunning process.
+                    enum:
+                      - in_progress
+                      - exhausted
+                      - stopped
+                      - success
+                    example: null
+                  in:
+                    type: string
+                    description: |-
+                      * `in_progress` - Dunning is still in progress.
+                      * `exhausted` - Maximum number of attempts have been made.
+                      * `stopped` - Dunning has stopped for this invoice.
+                      * `success` - Payment successfully collected during dunning process.
+                    enum:
+                      - in_progress
+                      - exhausted
+                      - stopped
+                      - success
+                    pattern: ^\[(in_progress|exhausted|stopped|success)(,(in_progress|exhausted|stopped|success))*\]$
+                    example: null
+                  not_in:
+                    type: string
+                    description: |-
+                      * `in_progress` - Dunning is still in progress.
+                      * `exhausted` - Maximum number of attempts have been made.
+                      * `stopped` - Dunning has stopped for this invoice.
+                      * `success` - Payment successfully collected during dunning process.
+                    enum:
+                      - in_progress
+                      - exhausted
+                      - stopped
+                      - success
+                    pattern: ^\[(in_progress|exhausted|stopped|success)(,(in_progress|exhausted|stopped|success))*\]$
+                    example: null
+            example: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        invoice:
+                          $ref: '#/components/schemas/Invoice'
+                          description: |
+                            Resource object representing invoice
+                        invoice_retry_context:
+                          $ref: '#/components/schemas/InvoiceRetryContext'
+                          description: Resource object representing invoice_retry_context
+                      required:
+                        - invoice
+                        - invoice_retry_context
+                      example: null
+                    example: null
+                  next_offset:
+                    type: string
+                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    maxLength: 1000
+                    example: null
+                required:
+                  - list
                 example: null
         "400":
           description: on error
@@ -177623,13 +178758,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: reference_id
           in: query
@@ -177651,13 +178786,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: updated_at
           in: query
@@ -180080,6 +181215,7 @@ paths:
                       - payment_succeeded
                       - payment_failed
                       - dunning_updated
+                      - retry_segment_assigned
                       - payment_refunded
                       - refund_failed
                       - payment_initiated
@@ -180837,6 +181973,7 @@ paths:
                       - payment_succeeded
                       - payment_failed
                       - dunning_updated
+                      - retry_segment_assigned
                       - payment_refunded
                       - refund_failed
                       - payment_initiated
@@ -186253,14 +187390,6 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              not_in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
@@ -186268,6 +187397,14 @@ paths:
               is_not:
                 type: string
                 minLength: 1
+                example: null
+              not_in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -192034,6 +193171,31 @@ paths:
             type: object
             deprecated: false
             properties:
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
+                example: null
               in:
                 type: string
                 description: |-
@@ -192059,31 +193221,6 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -193697,6 +194834,13 @@ components:
         - message
         - type
       example: null
+    AccessMode:
+      type: string
+      deprecated: false
+      enum:
+        - read_write
+        - read_only
+      example: null
     AccountHolderType:
       type: string
       deprecated: true
@@ -194505,7 +195649,17 @@ components:
       example: null
     AllowedValue:
       type: object
-      properties: {}
+      properties:
+        value:
+          type: string
+          deprecated: false
+          maxLength: 250
+          example: null
+        description:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
       example: null
     Amendment:
       type: object
@@ -194786,7 +195940,28 @@ components:
       example: null
     Applicability:
       type: object
-      properties: {}
+      properties:
+        preference:
+          type: string
+          deprecated: false
+          maxLength: 150
+          example: null
+        operator:
+          type: string
+          deprecated: false
+          enum:
+            - is
+            - in
+          example: null
+        values:
+          type: array
+          deprecated: false
+          items:
+            type: string
+            deprecated: false
+            maxLength: 65000
+            example: null
+          example: null
       example: null
     AppliedRule:
       type: object
@@ -205505,7 +206680,191 @@ components:
       example: null
     CriteriaSchema:
       type: object
-      properties: {}
+      properties:
+        operand:
+          type: string
+          deprecated: false
+          enum:
+            - request_source
+          example: null
+        allowed_operator:
+          type: array
+          deprecated: false
+          items:
+            type: string
+            deprecated: false
+            enum:
+              - is
+              - in
+            example: null
+          example: null
+        value_schema:
+          type: object
+          deprecated: false
+          properties:
+            type:
+              type: string
+              deprecated: false
+              enum:
+                - boolean
+                - string
+                - numeric
+                - timestamp
+                - date
+                - list
+              example: null
+            min_value:
+              type: integer
+              format: int32
+              deprecated: false
+              example: null
+            max_value:
+              type: integer
+              format: int32
+              deprecated: false
+              example: null
+            max_chars:
+              type: integer
+              format: int32
+              deprecated: false
+              example: null
+            allowed_values:
+              type: array
+              deprecated: false
+              items:
+                type: object
+                deprecated: false
+                properties:
+                  value:
+                    type: string
+                    deprecated: false
+                    maxLength: 250
+                    example: null
+                  description:
+                    type: string
+                    deprecated: false
+                    maxLength: 65000
+                    example: null
+                example: null
+              example: null
+            items:
+              type: object
+              deprecated: false
+              properties:
+                type:
+                  type: string
+                  deprecated: false
+                  enum:
+                    - boolean
+                    - string
+                    - numeric
+                    - timestamp
+                    - date
+                  example: null
+                allowed_values:
+                  type: array
+                  deprecated: false
+                  items:
+                    type: object
+                    deprecated: false
+                    properties:
+                      value:
+                        type: string
+                        deprecated: false
+                        maxLength: 250
+                        example: null
+                      description:
+                        type: string
+                        deprecated: false
+                        maxLength: 65000
+                        example: null
+                    example: null
+                  example: null
+              example: null
+          example: null
+      example: null
+    CriteriaValueSchema:
+      type: object
+      properties:
+        type:
+          type: string
+          deprecated: false
+          enum:
+            - boolean
+            - string
+            - numeric
+            - timestamp
+            - date
+            - list
+          example: null
+        min_value:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        max_value:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        max_chars:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        allowed_values:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              value:
+                type: string
+                deprecated: false
+                maxLength: 250
+                example: null
+              description:
+                type: string
+                deprecated: false
+                maxLength: 65000
+                example: null
+            example: null
+          example: null
+        items:
+          type: object
+          deprecated: false
+          properties:
+            type:
+              type: string
+              deprecated: false
+              enum:
+                - boolean
+                - string
+                - numeric
+                - timestamp
+                - date
+              example: null
+            allowed_values:
+              type: array
+              deprecated: false
+              items:
+                type: object
+                deprecated: false
+                properties:
+                  value:
+                    type: string
+                    deprecated: false
+                    maxLength: 250
+                    example: null
+                  description:
+                    type: string
+                    deprecated: false
+                    maxLength: 65000
+                    example: null
+                example: null
+              example: null
+          example: null
       example: null
     CsvTaxRule:
       type: object
@@ -216940,6 +218299,7 @@ components:
             - payment_succeeded
             - payment_failed
             - dunning_updated
+            - retry_segment_assigned
             - payment_refunded
             - refund_failed
             - payment_initiated
@@ -217305,6 +218665,7 @@ components:
         - payment_succeeded
         - payment_failed
         - dunning_updated
+        - retry_segment_assigned
         - payment_refunded
         - refund_failed
         - payment_initiated
@@ -221772,11 +223133,6 @@ components:
             .
           minimum: 0
           example: null
-        retry_segment_id:
-          type: string
-          deprecated: false
-          maxLength: 40
-          example: null
         void_reason_code:
           type: string
           deprecated: false
@@ -224991,6 +226347,33 @@ components:
         - occurred_at
         - source
         - webhook_status
+      example: null
+    InvoiceRetryContext:
+      type: object
+      properties:
+        invoice_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
+        retry_segment_id:
+          type: string
+          deprecated: false
+          maxLength: 40
+          example: null
+        retry_segment_name:
+          type: string
+          deprecated: false
+          maxLength: 1000
+          example: null
+        retry_settings:
+          type: object
+          additionalProperties: true
+          deprecated: false
+          example: null
+      required:
+        - invoice_id
+        - retry_segment_id
       example: null
     InvoiceUpdatedEvent:
       type: object
@@ -233022,6 +234405,12 @@ components:
         - subscription_activation
         - contract_termination
       example: null
+    Operand:
+      type: string
+      deprecated: false
+      enum:
+        - request_source
+      example: null
     Operation:
       type: string
       deprecated: false
@@ -240146,15 +241535,399 @@ components:
       example: null
     Preference:
       type: object
-      properties: {}
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 150
+          example: null
+        preference_group:
+          type: string
+          deprecated: false
+          enum:
+            - unbilled_charges
+            - update_subscriptions
+            - subscription_reactivation
+            - trial_end_actions
+          example: null
+        value:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        level:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        allow_override_in_interface:
+          type: boolean
+          deprecated: false
+          example: null
+        allow_override_in_api:
+          type: boolean
+          deprecated: false
+          example: null
+        modified_at:
+          type: integer
+          format: unix-time
+          deprecated: false
+          example: null
+        criteria:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              operand:
+                type: string
+                deprecated: false
+                enum:
+                  - request_source
+                example: null
+              operator:
+                type: string
+                deprecated: false
+                enum:
+                  - is
+                  - in
+                example: null
+              values:
+                type: array
+                deprecated: false
+                items:
+                  type: string
+                  deprecated: false
+                  maxLength: 1000
+                  example: null
+                example: null
+            example: null
+          example: null
+      required:
+        - id
+        - preference_group
+        - value
       example: null
     PreferenceDefinition:
       type: object
-      properties: {}
+      properties:
+        id:
+          type: string
+          deprecated: false
+          maxLength: 150
+          example: null
+        preference_group:
+          type: string
+          deprecated: false
+          enum:
+            - unbilled_charges
+            - update_subscriptions
+            - subscription_reactivation
+            - trial_end_actions
+          example: null
+        main_group:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        sub_group:
+          type: string
+          deprecated: false
+          maxLength: 100
+          example: null
+        description:
+          type: string
+          deprecated: false
+          maxLength: 65000
+          example: null
+        access_mode:
+          type: string
+          deprecated: false
+          enum:
+            - read_write
+            - read_only
+          example: null
+        overridable_in_interface:
+          type: boolean
+          deprecated: false
+          example: null
+        overridable_in_api:
+          type: boolean
+          deprecated: false
+          example: null
+        applicability_operator:
+          type: string
+          deprecated: false
+          enum:
+            - and
+            - or
+          example: null
+        applicability:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              preference:
+                type: string
+                deprecated: false
+                maxLength: 150
+                example: null
+              operator:
+                type: string
+                deprecated: false
+                enum:
+                  - is
+                  - in
+                example: null
+              values:
+                type: array
+                deprecated: false
+                items:
+                  type: string
+                  deprecated: false
+                  maxLength: 65000
+                  example: null
+                example: null
+            example: null
+          example: null
+        value_schema:
+          type: object
+          deprecated: false
+          properties:
+            type:
+              type: string
+              deprecated: false
+              enum:
+                - boolean
+                - string
+                - numeric
+                - timestamp
+                - date
+                - list
+              example: null
+            min_value:
+              type: integer
+              format: int32
+              deprecated: false
+              example: null
+            max_value:
+              type: integer
+              format: int32
+              deprecated: false
+              example: null
+            max_chars:
+              type: integer
+              format: int32
+              deprecated: false
+              example: null
+            allowed_values:
+              type: array
+              deprecated: false
+              items:
+                type: object
+                deprecated: false
+                properties:
+                  value:
+                    type: string
+                    deprecated: false
+                    maxLength: 250
+                    example: null
+                  description:
+                    type: string
+                    deprecated: false
+                    maxLength: 65000
+                    example: null
+                example: null
+              example: null
+            items:
+              type: object
+              deprecated: false
+              properties:
+                type:
+                  type: string
+                  deprecated: false
+                  enum:
+                    - boolean
+                    - string
+                    - numeric
+                    - timestamp
+                    - date
+                  example: null
+                allowed_values:
+                  type: array
+                  deprecated: false
+                  items:
+                    type: object
+                    deprecated: false
+                    properties:
+                      value:
+                        type: string
+                        deprecated: false
+                        maxLength: 250
+                        example: null
+                      description:
+                        type: string
+                        deprecated: false
+                        maxLength: 65000
+                        example: null
+                    example: null
+                  example: null
+              example: null
+          required:
+            - type
+          example: null
+        criteria_schema:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              operand:
+                type: string
+                deprecated: false
+                enum:
+                  - request_source
+                example: null
+              allowed_operator:
+                type: array
+                deprecated: false
+                items:
+                  type: string
+                  deprecated: false
+                  enum:
+                    - is
+                    - in
+                  example: null
+                example: null
+              value_schema:
+                type: object
+                deprecated: false
+                properties:
+                  type:
+                    type: string
+                    deprecated: false
+                    enum:
+                      - boolean
+                      - string
+                      - numeric
+                      - timestamp
+                      - date
+                      - list
+                    example: null
+                  min_value:
+                    type: integer
+                    format: int32
+                    deprecated: false
+                    example: null
+                  max_value:
+                    type: integer
+                    format: int32
+                    deprecated: false
+                    example: null
+                  max_chars:
+                    type: integer
+                    format: int32
+                    deprecated: false
+                    example: null
+                  allowed_values:
+                    type: array
+                    deprecated: false
+                    items:
+                      type: object
+                      deprecated: false
+                      properties:
+                        value:
+                          type: string
+                          deprecated: false
+                          maxLength: 250
+                          example: null
+                        description:
+                          type: string
+                          deprecated: false
+                          maxLength: 65000
+                          example: null
+                      example: null
+                    example: null
+                  items:
+                    type: object
+                    deprecated: false
+                    properties:
+                      type:
+                        type: string
+                        deprecated: false
+                        enum:
+                          - boolean
+                          - string
+                          - numeric
+                          - timestamp
+                          - date
+                        example: null
+                      allowed_values:
+                        type: array
+                        deprecated: false
+                        items:
+                          type: object
+                          deprecated: false
+                          properties:
+                            value:
+                              type: string
+                              deprecated: false
+                              maxLength: 250
+                              example: null
+                            description:
+                              type: string
+                              deprecated: false
+                              maxLength: 65000
+                              example: null
+                          example: null
+                        example: null
+                    example: null
+                example: null
+            example: null
+          example: null
+      required:
+        - access_mode
+        - description
+        - id
+        - main_group
+        - overridable_in_api
+        - overridable_in_interface
+        - preference_group
+        - sub_group
+      example: null
+    PreferenceGroup:
+      type: string
+      deprecated: false
+      enum:
+        - unbilled_charges
+        - update_subscriptions
+        - subscription_reactivation
+        - trial_end_actions
       example: null
     PreferenceVariant:
       type: object
-      properties: {}
+      properties:
+        value:
+          type: string
+          deprecated: false
+          maxLength: 1000
+          example: null
+        allow_override_in_interface:
+          type: boolean
+          default: false
+          deprecated: false
+          example: null
+        allow_override_in_api:
+          type: boolean
+          default: false
+          deprecated: false
+          example: null
+      required:
+        - value
       example: null
     PriceRamp:
       type: object
@@ -248234,10 +250007,14 @@ components:
           deprecated: false
           maxLength: 1000
           example: null
-        invoice_id:
+        retry_type:
           type: string
           deprecated: false
-          maxLength: 50
+          enum:
+            - auto_collect
+            - offline
+            - direct_debit
+            - real_time_payments
           example: null
         enabled:
           type: boolean
@@ -248248,18 +250025,10 @@ components:
           format: int32
           deprecated: false
           example: null
-        condition_logic:
-          type: string
-          deprecated: false
-          enum:
-            - and
-            - or
-          example: null
         criteria:
-          type: array
+          type: object
+          additionalProperties: true
           deprecated: false
-          items:
-            example: null
           example: null
         retry_settings:
           type: object
@@ -248269,6 +250038,68 @@ components:
       required:
         - enabled
         - id
+      example: null
+    RetrySegmentAssignedEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the event
+          example: null
+        occurred_at:
+          type: integer
+          format: int64
+          description: Timestamp of the event
+          example: null
+        source:
+          type: string
+          description: Source of the event
+          example: null
+        object:
+          type: string
+          description: The object of the event
+          example: null
+        api_version:
+          type: string
+          description: API version
+          example: null
+        event_type:
+          type: string
+          description: Type of the event
+          example: null
+        webhook_status:
+          type: string
+          description: Status of webhook
+          example: null
+        content:
+          type: object
+          properties:
+            invoice:
+              $ref: '#/components/schemas/Invoice'
+            invoice_retry_context:
+              $ref: '#/components/schemas/InvoiceRetryContext'
+          required:
+            - invoice
+            - invoice_retry_context
+          example: null
+      required:
+        - api_version
+        - content
+        - event_type
+        - id
+        - object
+        - occurred_at
+        - source
+        - webhook_status
+      example: null
+    RetryType:
+      type: string
+      deprecated: false
+      enum:
+        - auto_collect
+        - offline
+        - direct_debit
+        - real_time_payments
       example: null
     Role:
       type: string
@@ -259868,6 +261699,12 @@ components:
         - p24
         - affirm_pay
         - rakuten_pay
+        - boolean
+        - string
+        - numeric
+        - timestamp
+        - date
+        - list
         - free_trial
         - pay_up_front
         - pay_as_you_go
@@ -261214,7 +263051,88 @@ components:
       example: null
     ValueSchema:
       type: object
-      properties: {}
+      properties:
+        type:
+          type: string
+          deprecated: false
+          enum:
+            - boolean
+            - string
+            - numeric
+            - timestamp
+            - date
+            - list
+          example: null
+        min_value:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        max_value:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        max_chars:
+          type: integer
+          format: int32
+          deprecated: false
+          example: null
+        allowed_values:
+          type: array
+          deprecated: false
+          items:
+            type: object
+            deprecated: false
+            properties:
+              value:
+                type: string
+                deprecated: false
+                maxLength: 250
+                example: null
+              description:
+                type: string
+                deprecated: false
+                maxLength: 65000
+                example: null
+            example: null
+          example: null
+        items:
+          type: object
+          deprecated: false
+          properties:
+            type:
+              type: string
+              deprecated: false
+              enum:
+                - boolean
+                - string
+                - numeric
+                - timestamp
+                - date
+              example: null
+            allowed_values:
+              type: array
+              deprecated: false
+              items:
+                type: object
+                deprecated: false
+                properties:
+                  value:
+                    type: string
+                    deprecated: false
+                    maxLength: 250
+                    example: null
+                  description:
+                    type: string
+                    deprecated: false
+                    maxLength: 65000
+                    example: null
+                example: null
+              example: null
+          example: null
+      required:
+        - type
       example: null
     Variant:
       type: object
@@ -262719,6 +264637,7 @@ components:
               - payment_succeeded
               - payment_failed
               - dunning_updated
+              - retry_segment_assigned
               - payment_refunded
               - refund_failed
               - payment_initiated
@@ -266783,6 +268702,20 @@ webhooks:
           application/json:
             schema:
               $ref: '#/components/schemas/OmnichannelSubscriptionItemUpgradedEvent'
+      responses:
+        "200":
+          description: Webhook received successfully
+      deprecated: false
+  retry_segment_assigned:
+    post:
+      summary: Triggered when an invoice's retries start and it matches a retry segment. The segment and retry settings are locked on the invoice.
+      operationId: onRetry_segment_assignedWebhook
+      requestBody:
+        description: Payload for retry_segment_assigned event
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetrySegmentAssignedEvent'
       responses:
         "200":
           description: Webhook received successfully
