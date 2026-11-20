@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-18.eabbda99b5dd
-  x-cb-product-catalog-version: 1
+  version: 2026-11-19.f96d87270885
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -95,7 +95,7 @@ tags:
   - name: in_app_subscriptions
     description: '**Important:** These APIs operate asynchronously.'
   - name: invoice_retry_contexts
-    description: Operations on the `invoice_retry_contexts` resource.
+    description: An invoice retry context is the [retry segment](/docs/api/v2/pcv-1/retry_segments) and the retry settings locked on an invoice when its dunning started.
   - name: invoices
     description: Invoices are statements containing charges, adjustments and any discounts for a subscription specific to a term.
   - name: non_subscriptions
@@ -135,7 +135,7 @@ tags:
   - name: resource_migrations
     description: Resource Migration is used for finding the status of customer migration between Chargebee sites.
   - name: retry_segments
-    description: Operations on the `retry_segments` resource.
+    description: A retry segment is a set of conditions together with the retry settings Chargebee uses for invoices that meet them.
   - name: rules
     description: Operations on the `rules` resource.
   - name: site_migration_details
@@ -38472,10 +38472,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38483,6 +38479,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38508,10 +38508,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38519,6 +38515,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38544,10 +38544,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38555,6 +38551,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38580,10 +38580,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38591,6 +38587,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38616,10 +38616,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38627,6 +38623,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38652,10 +38652,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38663,6 +38659,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38688,10 +38688,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38699,6 +38695,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38724,10 +38724,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38735,6 +38731,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38760,10 +38760,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38771,6 +38767,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38796,10 +38796,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38807,6 +38803,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38832,10 +38832,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38843,6 +38839,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38868,10 +38868,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38879,6 +38875,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38904,10 +38904,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38915,6 +38911,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38940,10 +38940,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38951,6 +38947,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -38976,10 +38976,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -38987,6 +38983,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39475,10 +39475,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39486,6 +39482,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39511,10 +39511,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39522,6 +39518,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39547,10 +39547,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39558,6 +39554,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39583,10 +39583,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39594,6 +39590,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39619,10 +39619,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39630,6 +39626,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39655,10 +39655,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39666,6 +39662,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39691,10 +39691,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39702,6 +39698,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39727,10 +39727,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39738,6 +39734,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39763,10 +39763,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39774,6 +39770,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39799,10 +39799,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39810,6 +39806,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39835,10 +39835,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39846,6 +39842,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39871,10 +39871,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39882,6 +39878,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -39907,10 +39907,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               is_not:
                 type: string
                 minLength: 1
@@ -39918,6 +39914,10 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
               not_in:
                 type: string
@@ -51632,13 +51632,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -51661,13 +51661,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -98392,13 +98392,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -117475,13 +117475,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -131920,6 +131920,14 @@ paths:
       tags:
         - retry_segments
       summary: List retry segments
+      description: |
+        Returns the published retry segments of the site, in `priority` order. The [default segment](/docs/api/v2/pcv-1/retry_segments#the-default-segment) is last.
+
+        The response describes each segment as currently published. Invoices already in dunning keep the settings locked on them when their dunning started; use [List invoice retry contexts](/docs/api/v2/pcv-1/invoice_retry_contexts/list-invoice-retry-contexts) to read those.  
+
+        ### Prerequisites \& Constraints
+
+        * Retry segments are enabled for the site. Otherwise, the list is empty.
       operationId: list_retry_segments
       parameters:
         - name: chargebee-request-origin-device
@@ -131975,29 +131983,31 @@ paths:
             pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
         - name: limit
           in: query
+          description: |
+            The number of resources to be returned.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/limit'
           style: form
           explode: true
           schema:
             type: integer
             format: int32
             default: 10
-            description: The number of resources to be returned.
             maximum: 100
             minimum: 1
             example: null
         - name: offset
           in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset`
+            to the value of `next_offset`
+            obtained in the previous iteration of the API call.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/offset'
           style: form
           explode: true
           schema:
             type: string
-            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
             maxLength: 1000
             example: null
       responses:
@@ -132022,7 +132032,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -132096,6 +132107,19 @@ paths:
       tags:
         - retry_segments
       summary: Retrieve a retry segment
+      description: |
+        Retrieves the retry segment with the specified `id`, as currently published in the dunning settings. This includes the [default segment](/docs/api/v2/pcv-1/retry_segments#the-default-segment).
+
+        Invoices already in dunning under this segment keep the settings locked on them when their dunning started, which can differ from the current configuration. To read those, use [List invoice retry contexts](/docs/api/v2/pcv-1/invoice_retry_contexts/list-invoice-retry-contexts).  
+
+        ### Prerequisites \& Constraints
+
+        * Retry segments are enabled for the site.
+        * The segment is published.  
+
+        ### Implementation Notes
+
+        The API returns a `resource_not_found` error when no published segment has this `id`, or when retry segments are not enabled for the site.
       operationId: retrieve_a_retry_segment
       parameters:
         - name: chargebee-request-origin-device
@@ -132169,7 +132193,8 @@ paths:
                 properties:
                   retry_segment:
                     $ref: '#/components/schemas/RetrySegment'
-                    description: Resource object representing retry_segment
+                    description: |
+                      Resource object representing retry segment
                 required:
                   - retry_segment
                 example: null
@@ -132241,6 +132266,22 @@ paths:
       tags:
         - invoice_retry_contexts
       summary: List invoice retry contexts
+      description: |
+        Returns invoices together with the retry segment and retry settings locked on them when their dunning started.
+
+        Pass `invoice_id[is]` to read the context of one invoice, or `retry_segment_id[is]` to list every invoice locked on a segment. A segment that has since been deleted still returns its invoices.
+
+        Each entry pairs the `invoice` with its `invoice_retry_context`, since invoices on the same segment can carry different locked settings.  
+
+        ### Prerequisites \& Constraints
+
+        * Retry segments are enabled for the site. Otherwise, the list is empty.  
+
+        ### Implementation Notes
+
+        Pass at least one of `invoice_id[is]` or `retry_segment_id[is]`. Otherwise, the API returns an `invalid_request` error.
+
+        An invoice that is not in `auto_collect` dunning has no context, so filtering by its `invoice_id` returns an empty list.
       operationId: list_invoice_retry_contexts
       parameters:
         - name: chargebee-request-origin-device
@@ -132296,33 +132337,48 @@ paths:
             pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$|^(([a-fA-F]|[a-fA-F][a-fA-F0-9\-]*[a-fA-F0-9])\.)*([A-Fa-f]|[A-Fa-f][A-Fa-f0-9\-]*[A-Fa-f0-9])$|^(?:(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){6})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:::(?:(?:(?:[0-9a-fA-F]{1,4})):){5})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){4})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,1}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){3})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,2}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:(?:[0-9a-fA-F]{1,4})):){2})(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,3}(?:(?:[0-9a-fA-F]{1,4})))?::(?:(?:[0-9a-fA-F]{1,4})):)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,4}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9]))\.){3}(?:(?:25[0-5]|(?:[1-9]|1[0-9]|2[0-4])?[0-9])))))))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,5}(?:(?:[0-9a-fA-F]{1,4})))?::)(?:(?:[0-9a-fA-F]{1,4})))|(?:(?:(?:(?:(?:(?:[0-9a-fA-F]{1,4})):){0,6}(?:(?:[0-9a-fA-F]{1,4})))?::)))))$
         - name: limit
           in: query
+          description: |
+            The number of resources to be returned.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/limit'
           style: form
           explode: true
           schema:
             type: integer
             format: int32
             default: 10
-            description: The number of resources to be returned.
             maximum: 100
             minimum: 1
             example: null
         - name: offset
           in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset`
+            to the value of `next_offset`
+            obtained in the previous iteration of the API call.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/offset'
           style: form
           explode: true
           schema:
             type: string
-            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
             maxLength: 1000
             example: null
         - name: invoice_id
           in: query
+          description: |
+            optional, string filter
+
+            Identifier of the [invoice](/docs/api/v2/pcv-1/invoices) whose context is to be returned. Returns at most one entry.
+
+            **Supported operators :**
+            is
+
+            **Example →**
+            *invoice_id\[is\] = "__demo_inv__17"*  
+            **Constraints**
+
+            * Either `invoice_id[is]` or `retry_segment_id[is]` must be passed. Otherwise, the API returns an `invalid_request` error.
           required: false
           deprecated: false
           style: deepObject
@@ -132330,7 +132386,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier of the invoice.
             example: INV-001
             properties:
               is:
@@ -132339,6 +132394,19 @@ paths:
                 example: null
         - name: retry_segment_id
           in: query
+          description: |
+            optional, string filter
+
+            Identifier of the [retry segment](/docs/api/v2/pcv-1/retry_segments). Returns every invoice locked on this segment, including invoices locked before the segment was edited or deleted.
+
+            **Supported operators :**
+            is
+
+            **Example →**
+            *retry_segment_id\[is\] = "__test__KyVkSOVWbgWtUY"*  
+            **Constraints**
+
+            * Either `invoice_id[is]` or `retry_segment_id[is]` must be passed. Otherwise, the API returns an `invalid_request` error.
           required: false
           deprecated: false
           style: deepObject
@@ -132346,7 +132414,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Identifier of the retry segment the invoice matched when its retries started.
             example: rs_high_value
             properties:
               is:
@@ -132355,6 +132422,8 @@ paths:
                 example: null
         - name: invoice
           in: query
+          description: |
+            Parameters for invoice
           required: false
           deprecated: false
           style: deepObject
@@ -132362,12 +132431,20 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: Parameters for invoice
             properties:
               dunning_status:
                 type: object
                 deprecated: false
-                description: Current dunning status of the invoice.
+                description: |
+                  optional, enumerated string filter
+
+                  Current [dunning status](/docs/api/v2/pcv-1/invoices#invoice_dunning_status) of the invoice. Possible values are : in_progress, exhausted, stopped, success.
+
+                  **Supported operators :**
+                  is, is_not, in, not_in
+
+                  **Example →**
+                  *invoice\[dunning_status\]\[is\] = "in_progress"*
                 example: in_progress
                 properties:
                   is:
@@ -132452,7 +132529,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -132630,13 +132708,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -132658,13 +132736,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -154973,6 +155051,7 @@ components:
             * subscription_trial_end_reminder - Sent when the customer's trial period is about to end.
             * subscription_renewed - Sent when the subscription is renewed from the current term.
             * vault_token_deleted - Triggered when a vaulted payment method is deleted from the vault.
+            * retry_segment_assigned - Triggered when an invoice's dunning starts and it matches a retry segment, including the default segment. The invoice is retried under the settings locked in the `invoice_retry_context`.
             * plan_created - Sent when a plan is created.
             * coupon_codes_updated - Sent when coupon codes are updated
             * gift_unclaimed - Triggered when a new gift is unclaimed and is ready to be claimed
@@ -161340,26 +161419,41 @@ components:
       example: null
     InvoiceRetryContext:
       type: object
+      description: |
+        An invoice retry context is the [retry segment](/docs/api/v2/pcv-1/retry_segments) and the retry settings locked on an invoice when its dunning started. Chargebee retries the invoice under these settings for the rest of its dunning, even if the segment is edited or deleted later. Two invoices on the same segment can therefore carry different settings.
+
+        An invoice that matches no other segment locks the [default segment](/docs/api/v2/pcv-1/retry_segments#the-default-segment), so it has a context too, named `Default segment`.
+
+        Use [List invoice retry contexts](/docs/api/v2/pcv-1/invoice_retry_contexts/list-invoice-retry-contexts) to read the context of one invoice, or every invoice locked on a segment. The context is also sent in the `retry_segment_assigned` [event](/docs/api/v2/pcv-1/events#event_types).  
+        **Note:** Invoice retry contexts apply only to invoices in `auto_collect` dunning, and only when retry segments are enabled for the site.
       properties:
         invoice_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the [invoice](/docs/api/v2/pcv-1/invoices) the context belongs to.
           maxLength: 50
           example: null
         retry_segment_id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the [retry segment](/docs/api/v2/pcv-1/retry_segments) the invoice matched when its dunning started.
           maxLength: 40
           example: null
         retry_segment_name:
           type: string
           deprecated: false
+          description: |
+            Name of the retry segment when the invoice matched it.
           maxLength: 1000
           example: null
         retry_settings:
           type: object
           additionalProperties: true
           deprecated: false
+          description: |
+            Retry settings locked on the invoice when its dunning started. Same structure as [`retry_segment.retry_settings`](/docs/api/v2/pcv-1/retry_segments#retry_segment_retry_settings). The invoice is retried under these settings even if the segment is edited or deleted later.
           example: null
       required:
         - invoice_id
@@ -173554,20 +173648,44 @@ components:
       example: null
     RetrySegment:
       type: object
+      description: |
+        A retry segment is a set of conditions together with the retry settings Chargebee uses for invoices that meet them. With retry segments, invoices on the same site can be retried differently, for example with a longer dunning period for high-value invoices or a different retry schedule for a particular payment gateway.
+
+        When an invoice enters dunning, Chargebee checks the switched-on segments in `priority` order and uses the first one whose `criteria` the invoice meets. The segment and its settings are then locked on the invoice as an [invoice retry context](/docs/api/v2/pcv-1/invoice_retry_contexts), so later edits to the segment don't change how that invoice is retried.
+
+        ### The default segment
+
+        The site's default dunning settings are also published as a segment named `Default segment`: it has no `criteria`, is always `enabled`, and has the last `priority`, so it matches every invoice no other segment does. Edit its settings in the **Default** tab of the dunning settings. An invoice that matches no other segment locks the default segment like any other, so it too has an invoice retry context and triggers the `retry_segment_assigned` event.
+
+        The default segment exists once a segment has been created, or the default settings saved, after retry segments were enabled for the site. Invoices dunned before that follow the default settings live and have no invoice retry context.
+
+        Segments are created and managed in the dunning settings in Chargebee Billing. The API is read-only: use [List retry segments](/docs/api/v2/pcv-1/retry_segments/list-retry-segments) and [Retrieve a retry segment](/docs/api/v2/pcv-1/retry_segments/retrieve-a-retry-segment) to read the segments as currently published, and [List invoice retry contexts](/docs/api/v2/pcv-1/invoice_retry_contexts/list-invoice-retry-contexts) to read the settings locked on a specific invoice.  
+        **Note:** Retry segments apply only to invoices in `auto_collect` dunning, and only when retry segments are enabled for the site.
       properties:
         id:
           type: string
           deprecated: false
+          description: |
+            Unique identifier of the retry segment. Same value as [`invoice_retry_context.retry_segment_id`](/docs/api/v2/pcv-1/invoice_retry_contexts).
           maxLength: 40
           example: null
         name:
           type: string
           deprecated: false
+          description: |
+            Name of the retry segment. `Default segment` for the default segment.
           maxLength: 1000
           example: null
         retry_type:
           type: string
           deprecated: false
+          description: |
+            Type of dunning the segment's retries apply to. Currently always `auto_collect`.
+
+            * offline - Retries of invoices collected offline.
+            * direct_debit - Retries of invoices collected by direct debit.
+            * real_time_payments - Retries of invoices collected through real-time payments.
+            * auto_collect - Retries of invoices collected automatically from a stored payment method.
           enum:
             - auto_collect
             - offline
@@ -173577,21 +173695,61 @@ components:
         enabled:
           type: boolean
           deprecated: false
+          description: |
+            Whether the segment is switched on. A switched-off segment is not matched against invoices. Always `true` for the default segment.
           example: null
         priority:
           type: integer
           format: int32
           deprecated: false
+          description: |
+            Position of the segment in the priority order. `1` is matched against an invoice first. Switched-off segments are placed after the switched-on ones, and the default segment is always last.
           example: null
         criteria:
           type: object
           additionalProperties: true
           deprecated: false
+          description: |
+            Conditions an invoice must meet for this segment to apply. A group object with:
+
+            * `type`: always `group`.
+            * `logical_operator`: how the `conditions` are combined. `and`: the invoice must meet every condition. `or`: the invoice must meet at least one condition.
+            * `conditions`: the conditions, each with:
+              * `type`: always `condition`.
+              * `field`: the invoice attribute compared.
+              * `operator`: one of `in`, `greater_than`, `less_than`, `between`.
+              * `value`: the value compared against. An array of values for `in` and for `between` (the lower and upper bound).
+
+            The fields are:
+
+            * `billing_frequency` (`in`): billing frequencies, each an object with `billing_period` and `billing_period_unit` (`day`, `week`, `month` or `year`), as on a subscription. For example, `{"billing_period": 3, "billing_period_unit": "month"}` is every 3 months.
+            * `invoice_amount` (`greater_than`, `less_than`, `between`): the amount to be collected on the invoice, as a number in whole major units of the invoice's currency. For example, `50` means $50 on a USD invoice.
+            * `billing_country` (`in`): billing address countries, as [ISO 3166 alpha-2](https://www.iso.org/iso-3166-country-codes.html) codes.
+            * `shipping_country` (`in`): shipping address countries, as ISO 3166 alpha-2 codes.
+            * `invoice_currency` (`in`): invoice currencies, as [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) codes.
+            * `payment_gateway` (`in`): payment gateways, for example `stripe`.
+            * `payment_method` (`in`): payment method types, for example `card`.
+            * `decline_type` (`in`): `hard` or `soft`, the type of decline of the failed payment.
+            * `plan` (`in`): plan IDs.
+
+            Each `field` appears at most once in `conditions`. The default segment has no conditions: `conditions` is empty.
           example: null
         retry_settings:
           type: object
           additionalProperties: true
           deprecated: false
+          description: |
+            Retry settings of the segment. Only the settings configured on the segment are returned. For the default segment, these are the site's default dunning settings.
+
+            * `dunning_days`: length of the dunning period in days, counted from the invoice due date. `0` means no retries: the final actions apply as soon as the payment fails.
+            * `retry_mode`: how retries are scheduled. One of `standard`, `custom`, `smart`, `ml_powered`.
+            * `retry_schedule_days`: days after the invoice due date on which retries are made. Returned when `retry_mode` is `custom`.
+            * `retry_weekdays`: days of the week retries are preferred on. Each value is one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`. A retry moves up to a day earlier or later to land on a selected day. When absent, retries follow the retry schedule.
+            * `retry_time_window`: hours of the day retries are made in, as `HH:00-HH:00`, optionally followed by a time zone, for example `09:00-17:00 America/New_York`. Without a time zone, the site's time zone applies.
+            * `skip_retries_for_hard_failures`: whether the remaining retries are skipped after a hard decline.
+            * `flexpay`: the hand-off to FlexPay. `enabled` is whether FlexPay retries part of the dunning period; `chargebee_days` and `flexpay_days` are the days retried by Chargebee and by FlexPay.
+            * `final_actions`: what happens when the dunning period ends without a successful payment. `subscription` is one of `retain_as_active`, `cancel_subscriptions`, `pause_subscriptions`. `invoice` is one of `mark_as_not_paid`, `mark_as_voided`, `write_off`, `reverse_the_invoice`.
+            * `applies_to`: `future_and_trial_subs` is whether the settings also apply to invoices raised when future or trial subscriptions activate; `onetime_invoices` is whether they also apply to one-time invoices.
           example: null
       required:
         - enabled
@@ -183529,6 +183687,7 @@ components:
               * credit_note_updated - Sent when a credit note is updated
               * quote_created - Triggered when a quote is created
               * credit_note_created - Sent when a credit note is created
+              * retry_segment_assigned - Triggered when an invoice's dunning starts and it matches a retry segment, including the default segment. The invoice is retried under the settings locked in the `invoice_retry_context`.
               * gift_expired - Triggered when a gift expires
               * transaction_created - Triggered when a transaction is recorded
               * contract_term_terminated - Triggered when contract term is terminated
