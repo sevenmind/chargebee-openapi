@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-23.be8df05ab705
-  x-cb-product-catalog-version: 1
+  version: 2026-11-24.9c008a6209be
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 1
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -20566,7 +20566,7 @@ paths:
                   description: |
                     Specifies if the customer is liable for tax.
 
-                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
+                    * zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
                     * taxable -
                       Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                       In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -24490,7 +24490,7 @@ paths:
                     * taxable -
                       Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                       In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
-                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
+                    * zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
                     * exempt -
                       * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.
                       * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.
@@ -25593,7 +25593,7 @@ paths:
         This API moves a customer's payment methods, subscriptions, invoices, credit notes, transactions, unbilled charges, and orders to another customer. Events and email logs will not be moved. The API execution is asynchronous.  
         **Note**
 
-        * Moving virtual bank accounts from one customer to another is not supported in this API.
+        * Virtual bank accounts stay with the original customer. This API doesn't move them to the merged customer.
         * Merging customers from different [business entities](/docs/api/getting-started) is not permitted.
       operationId: merge_customers
       parameters:
@@ -38472,14 +38472,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38487,6 +38479,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway
@@ -38508,14 +38508,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38523,6 +38515,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: status_code
@@ -38544,14 +38544,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38559,6 +38551,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: method
@@ -38580,14 +38580,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38595,6 +38587,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: url
@@ -38616,14 +38616,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38631,6 +38623,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: customer_handle
@@ -38652,14 +38652,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38667,6 +38659,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invoice_handle
@@ -38688,14 +38688,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38703,6 +38695,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: transaction_handle
@@ -38724,14 +38724,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38739,6 +38731,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_method_handle
@@ -38760,14 +38760,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38775,6 +38767,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -38796,14 +38796,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38811,6 +38803,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -38832,14 +38832,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38847,6 +38839,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_intent_handle
@@ -38868,14 +38868,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38883,6 +38875,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: operation_name
@@ -38904,14 +38904,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38919,6 +38911,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: operation_type
@@ -38940,14 +38940,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38955,6 +38947,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: source
@@ -38976,14 +38976,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38991,6 +38983,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invocation_time
@@ -39475,14 +39475,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39490,6 +39482,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway
@@ -39511,14 +39511,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39526,6 +39518,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: status_code
@@ -39547,14 +39547,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39562,6 +39554,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: method
@@ -39583,14 +39583,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39598,6 +39590,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: url
@@ -39619,14 +39619,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39634,6 +39626,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: id_at_gateway
@@ -39655,14 +39655,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39670,6 +39662,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: customer_handle
@@ -39691,14 +39691,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39706,6 +39698,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invoice_handle
@@ -39727,14 +39727,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39742,6 +39734,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: transaction_handle
@@ -39763,14 +39763,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39778,6 +39770,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_method_handle
@@ -39799,14 +39799,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39814,6 +39806,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -39835,14 +39835,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39850,6 +39842,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -39871,14 +39871,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39886,6 +39878,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_intent_handle
@@ -39907,14 +39907,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
-              is_not:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39922,6 +39914,14 @@ paths:
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
+              is_not:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: received_at
@@ -46561,7 +46561,7 @@ paths:
         - invoices
       summary: Apply credits for an invoice
       description: |
-        This API applies [available credits](/docs/api/customers/customer-object#balances) to an invoice. After credits are applied, [invoice.amount_due](/docs/api/invoices/invoice-object#amount_due) is recalculated. The invoice status changes to either `paid` or `payment_due` depending on how much credit is applied to the invoice amount.
+        Applies [available credits](/docs/api/v2/pcv-1/customers/customer-object#balances) to an invoice. For each credit note, you can set the amount to apply and the time it is applied. If you do not specify credit notes, available refundable credits for the customer are applied. After credits are applied, [invoice.amount_due](/docs/api/v2/pcv-1/invoices/invoice-object#amount_due) is recalculated. The invoice status changes to either `paid` or `payment_due` depending on how much credit is applied to the invoice amount. When the invoice becomes fully paid, [paid_at](/docs/api/v2/pcv-1/invoices/invoice-object#paid_at) is set to the `credit_notes[applied_at]` of the credit application that paid it, or to the current time when `credit_notes[applied_at]` is omitted.
       operationId: apply_credits_for_an_invoice
       parameters:
         - name: chargebee-request-origin-device
@@ -46687,12 +46687,25 @@ paths:
                   type: object
                   deprecated: false
                   description: |
-                    Parameters for credit_notes
+                    The credit notes to apply to this invoice. For each credit note, you can set the amount to apply and the time it is applied.
+
+                    Credit notes are applied in the order they appear in the request. Application stops when the invoice has nothing left to collect, and any remaining credit notes in the request are not applied.
                   properties:
                     id:
                       type: array
                       description: |
-                        The Credit Note number acts as an identifier for Credit Notes and is typically generated sequentially. Available refundable credits with the customer will be applied against this invoice if this paramenter is not passed.
+                        The ID of the credit note to apply to the invoice.  
+                        **Constraints**
+
+                        * `credit_note.type` must be `refundable`.
+                        * The `credit_note.customer_id` must be the same as `invoice.customer_id`.
+                        * Specify each credit note only once. The request fails if the same credit note is passed more than once.  
+                        **Required if**
+
+                        * `credit_notes[amount]` or `credit_notes[applied_at]` is passed for the same entry.  
+                        **Default behavior**
+
+                        When this parameter is not passed, available refundable credits for the customer are applied to the invoice.
                       items:
                         type: string
                         deprecated: false
@@ -46701,6 +46714,16 @@ paths:
                       example: null
                     amount:
                       type: array
+                      description: |
+                        The amount from this credit note to apply to the invoice, in the [minor unit of the currency](/docs/api/v2/pcv-1/currencies).
+
+                        The amount applied is the smallest of this value, [`credit_note.amount_available`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#amount_available), and the invoice [`amount_due`](/docs/api/v2/pcv-1/invoices/invoice-object#amount_due) that is still collectible. A higher value is reduced to that limit.  
+                        **Constraints**
+
+                        * Minimum value is `1`.  
+                        **Default behavior**
+
+                        When this parameter is not passed, Chargebee applies the smallest of [`credit_note.amount_available`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#amount_available) and the invoice amount still due.
                       items:
                         type: integer
                         format: int64
@@ -46710,6 +46733,17 @@ paths:
                       example: null
                     applied_at:
                       type: array
+                      description: |
+                        The time at which this credit is applied, in seconds since the Unix epoch.
+
+                        This time is stored as [`applied_credits.applied_at`](/docs/api/v2/pcv-1/invoices/invoice-object#applied_credits_applied_at). When this application is what makes the invoice fully paid, the same time is stored as [`paid_at`](/docs/api/v2/pcv-1/invoices/invoice-object#paid_at). When this application uses up the credit note, the same time is stored as [`credit_note.refunded_at`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#refunded_at).  
+                        **Constraints**
+
+                        * Must be on or after the invoice [`date`](/docs/api/v2/pcv-1/invoices/invoice-object#date) and the credit note [`date`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#date).
+                        * Must not be after the current time.  
+                        **Default behavior**
+
+                        When this parameter is not passed, Chargebee uses the current time.
                       items:
                         type: integer
                         format: unix-time
@@ -51632,13 +51666,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -51661,13 +51695,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -98392,13 +98426,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -117475,13 +117509,13 @@ paths:
                     List of itemPrice ids for which these coupons are applicable.
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -132708,13 +132742,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -132736,13 +132770,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -146542,7 +146576,7 @@ components:
           description: |
             Specifies if the customer is liable for tax
 
-            * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
+            * zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
             * taxable -
               Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
               In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -174974,10 +175008,10 @@ components:
           description: |
             Total number of invoices that are due for payment against the subscription.
             **Note:**
-            Not supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
-            is enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)
-            , and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `due_invoices_count`
-            .
+            Not supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
+            is enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)
+            and a parent customer owns and pays for the subscription's invoices.
+            Consolidated invoice amounts are excluded from the `due_invoices_count` calculation.
           example: null
         due_since:
           type: integer
@@ -174986,22 +175020,21 @@ components:
           description: |
             Time since this subscription has unpaid invoices.
             **Note:**
-            Not supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
-            is enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)
-            , and the parent of this customer owns and pays for the invoices of the subscription.
+            Not supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
+            is enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)
+            and a parent customer owns and pays for the subscription's invoices.
           example: null
         total_dues:
           type: integer
           format: int64
           deprecated: false
           description: |
-            Total invoice due amount for this subscription. The value depends on the [type of currency](/docs/api/v2/pcv-1/subscriptions)
-            .
+            Total invoice due amount for this subscription. The value depends on the [type of currency](/docs/api/v2/pcv-1/subscriptions).
             **Note:**
-            Not supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
-            is enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)
-            , and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `total_dues`
-            .
+            Not supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
+            is enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)
+            and a parent customer owns and pays for the subscription's invoices.
+            Consolidated invoice amounts are excluded from the `total_dues` calculation.
           minimum: 0
           example: null
         mrr:

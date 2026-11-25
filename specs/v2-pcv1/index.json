@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-23.be8df05ab705",
-    "x-cb-product-catalog-version": 1,
-    "x-cb-api-version": 2
+    "version": "2026-11-24.9c008a6209be",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 1
   },
   "servers": [
     {
@@ -21085,7 +21085,7 @@
                     "type": "string",
                     "default": "taxable",
                     "deprecated": false,
-                    "description": "Specifies if the customer is liable for tax.\n\n* zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                    "description": "Specifies if the customer is liable for tax.\n\n* zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
                     "enum": [
                       "taxable",
                       "exempt",
@@ -25288,7 +25288,7 @@
                     "type": "string",
                     "default": "taxable",
                     "deprecated": false,
-                    "description": "Specifies if the customer is liable for tax.\n\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                    "description": "Specifies if the customer is liable for tax.\n\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
                     "enum": [
                       "taxable",
                       "exempt",
@@ -26614,7 +26614,7 @@
           "customers"
         ],
         "summary": "Merge customers",
-        "description": "This API moves a customer's payment methods, subscriptions, invoices, credit notes, transactions, unbilled charges, and orders to another customer. Events and email logs will not be moved. The API execution is asynchronous.  \n**Note**\n\n* Moving virtual bank accounts from one customer to another is not supported in this API.\n* Merging customers from different [business entities](/docs/api/getting-started) is not permitted.\n",
+        "description": "This API moves a customer's payment methods, subscriptions, invoices, credit notes, transactions, unbilled charges, and orders to another customer. Events and email logs will not be moved. The API execution is asynchronous.  \n**Note**\n\n* Virtual bank accounts stay with the original customer. This API doesn't move them to the merged customer.\n* Merging customers from different [business entities](/docs/api/getting-started) is not permitted.\n",
         "operationId": "merge_customers",
         "parameters": [
           {
@@ -41426,16 +41426,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41444,6 +41434,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41462,16 +41462,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41480,6 +41470,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41498,16 +41498,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41516,6 +41506,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41534,16 +41534,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41552,6 +41542,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41570,16 +41570,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41588,6 +41578,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41606,16 +41606,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41624,6 +41614,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41642,16 +41642,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41660,6 +41650,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41678,16 +41678,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41696,6 +41686,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41714,16 +41714,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41732,6 +41722,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41750,16 +41750,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41768,6 +41758,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41786,16 +41786,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41804,6 +41794,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41822,16 +41822,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41840,6 +41830,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41858,16 +41858,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41876,6 +41866,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41894,16 +41894,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41912,6 +41902,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41930,16 +41930,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41948,6 +41938,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42542,16 +42542,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42560,6 +42550,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42578,16 +42578,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42596,6 +42586,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42614,16 +42614,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42632,6 +42622,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42650,16 +42650,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42668,6 +42658,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42686,16 +42686,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42704,6 +42694,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42722,16 +42722,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42740,6 +42730,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42758,16 +42758,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42776,6 +42766,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42794,16 +42794,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42812,6 +42802,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42830,16 +42830,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42848,6 +42838,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42866,16 +42866,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42884,6 +42874,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42902,16 +42902,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42920,6 +42910,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42938,16 +42938,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42956,6 +42946,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -42974,16 +42974,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -42992,6 +42982,16 @@
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -50480,7 +50480,7 @@
           "invoices"
         ],
         "summary": "Apply credits for an invoice",
-        "description": "This API applies [available credits](/docs/api/customers/customer-object#balances) to an invoice. After credits are applied, [invoice.amount_due](/docs/api/invoices/invoice-object#amount_due) is recalculated. The invoice status changes to either `paid` or `payment_due` depending on how much credit is applied to the invoice amount.\n",
+        "description": "Applies [available credits](/docs/api/v2/pcv-1/customers/customer-object#balances) to an invoice. For each credit note, you can set the amount to apply and the time it is applied. If you do not specify credit notes, available refundable credits for the customer are applied. After credits are applied, [invoice.amount_due](/docs/api/v2/pcv-1/invoices/invoice-object#amount_due) is recalculated. The invoice status changes to either `paid` or `payment_due` depending on how much credit is applied to the invoice amount. When the invoice becomes fully paid, [paid_at](/docs/api/v2/pcv-1/invoices/invoice-object#paid_at) is set to the `credit_notes[applied_at]` of the credit application that paid it, or to the current time when `credit_notes[applied_at]` is omitted.\n",
         "operationId": "apply_credits_for_an_invoice",
         "parameters": [
           {
@@ -50630,11 +50630,11 @@
                   "credit_notes": {
                     "type": "object",
                     "deprecated": false,
-                    "description": "Parameters for credit_notes\n",
+                    "description": "The credit notes to apply to this invoice. For each credit note, you can set the amount to apply and the time it is applied.\n\nCredit notes are applied in the order they appear in the request. Application stops when the invoice has nothing left to collect, and any remaining credit notes in the request are not applied.\n",
                     "properties": {
                       "id": {
                         "type": "array",
-                        "description": "The Credit Note number acts as an identifier for Credit Notes and is typically generated sequentially. Available refundable credits with the customer will be applied against this invoice if this paramenter is not passed.\n",
+                        "description": "The ID of the credit note to apply to the invoice.  \n**Constraints**\n\n* `credit_note.type` must be `refundable`.\n* The `credit_note.customer_id` must be the same as `invoice.customer_id`.\n* Specify each credit note only once. The request fails if the same credit note is passed more than once.  \n**Required if**\n\n* `credit_notes[amount]` or `credit_notes[applied_at]` is passed for the same entry.  \n**Default behavior**\n\nWhen this parameter is not passed, available refundable credits for the customer are applied to the invoice.\n",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -50645,6 +50645,7 @@
                       },
                       "amount": {
                         "type": "array",
+                        "description": "The amount from this credit note to apply to the invoice, in the [minor unit of the currency](/docs/api/v2/pcv-1/currencies).\n\nThe amount applied is the smallest of this value, [`credit_note.amount_available`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#amount_available), and the invoice [`amount_due`](/docs/api/v2/pcv-1/invoices/invoice-object#amount_due) that is still collectible. A higher value is reduced to that limit.  \n**Constraints**\n\n* Minimum value is `1`.  \n**Default behavior**\n\nWhen this parameter is not passed, Chargebee applies the smallest of [`credit_note.amount_available`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#amount_available) and the invoice amount still due.\n",
                         "items": {
                           "type": "integer",
                           "format": "int64",
@@ -50656,6 +50657,7 @@
                       },
                       "applied_at": {
                         "type": "array",
+                        "description": "The time at which this credit is applied, in seconds since the Unix epoch.\n\nThis time is stored as [`applied_credits.applied_at`](/docs/api/v2/pcv-1/invoices/invoice-object#applied_credits_applied_at). When this application is what makes the invoice fully paid, the same time is stored as [`paid_at`](/docs/api/v2/pcv-1/invoices/invoice-object#paid_at). When this application uses up the credit note, the same time is stored as [`credit_note.refunded_at`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#refunded_at).  \n**Constraints**\n\n* Must be on or after the invoice [`date`](/docs/api/v2/pcv-1/invoices/invoice-object#date) and the credit note [`date`](/docs/api/v2/pcv-1/credit_notes/credit-note-object#date).\n* Must not be after the current time.  \n**Default behavior**\n\nWhen this parameter is not passed, Chargebee uses the current time.\n",
                         "items": {
                           "type": "integer",
                           "format": "unix-time",
@@ -56297,14 +56299,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -56328,14 +56330,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -108257,14 +108259,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -128796,14 +128798,14 @@
                     "description": "List of itemPrice ids for which these coupons are applicable.\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -147874,14 +147876,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -147900,14 +147902,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -163347,7 +163349,7 @@
             "type": "string",
             "default": "taxable",
             "deprecated": false,
-            "description": "Specifies if the customer is liable for tax\n\n* zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+            "description": "Specifies if the customer is liable for tax\n\n* zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
             "enum": [
               "taxable",
               "exempt",
@@ -190235,21 +190237,21 @@
             "type": "integer",
             "format": "int32",
             "deprecated": false,
-            "description": "Total number of invoices that are due for payment against the subscription.\n**Note:**\nNot supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)\n, and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `due_invoices_count`\n.\n",
+            "description": "Total number of invoices that are due for payment against the subscription.\n**Note:**\nNot supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)\nand a parent customer owns and pays for the subscription's invoices.\nConsolidated invoice amounts are excluded from the `due_invoices_count` calculation.\n",
             "example": null
           },
           "due_since": {
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
-            "description": "Time since this subscription has unpaid invoices.\n**Note:**\nNot supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)\n, and the parent of this customer owns and pays for the invoices of the subscription.\n",
+            "description": "Time since this subscription has unpaid invoices.\n**Note:**\nNot supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)\nand a parent customer owns and pays for the subscription's invoices.\n",
             "example": null
           },
           "total_dues": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
-            "description": "Total invoice due amount for this subscription. The value depends on the [type of currency](/docs/api/v2/pcv-1/subscriptions)\n.\n**Note:**\nNot supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)\n, and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `total_dues`\n.\n",
+            "description": "Total invoice due amount for this subscription. The value depends on the [type of currency](/docs/api/v2/pcv-1/subscriptions).\n**Note:**\nNot supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)\nand a parent customer owns and pays for the subscription's invoices.\nConsolidated invoice amounts are excluded from the `total_dues` calculation.\n",
             "minimum": 0,
             "example": null
           },
