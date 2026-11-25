@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-23.be8df05ab705",
-    "x-cb-api-version": 2,
-    "x-cb-product-catalog-version": 2
+    "version": "2026-11-24.9c008a6209be",
+    "x-cb-product-catalog-version": 2,
+    "x-cb-api-version": 2
   },
   "servers": [
     {
@@ -19102,7 +19102,7 @@
                     "type": "string",
                     "default": "taxable",
                     "deprecated": false,
-                    "description": "Specifies if the customer is liable for tax.\n\n* zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). Third-party tax providers and integrations are not supported. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+                    "description": "Specifies if the customer is liable for tax.\n\n* zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
                     "enum": [
                       "taxable",
                       "exempt",
@@ -23479,7 +23479,7 @@
                     "type": "string",
                     "default": "taxable",
                     "deprecated": false,
-                    "description": "Specifies whether taxes are applicable to invoices generated for this customer.\n\n* taxable -\n  Taxes are calculated for this customer based on the [site's tax configuration](https://www.chargebee.com/docs/tax.html).\n  In some regions, [shipping_address](/docs/api/customers) is required for tax computation.\n  If a shipping address is not provided, the [billing_address](/docs/api/customers) is used. If neither address is available, no tax is applied.\n* zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n* exempt -\n  The customer is exempt from tax.\n\n  * If you use Chargebee [Taxes](https://www.chargebee.com/docs/tax.html) or the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no additional action is required.\n  * If you use the [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally specify the `entity_code` or `exempt_number` attributes with [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption), or the `exemption_details` attribute with [AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html). Avalara may still apply tax depending on the values of `entity_code`, `exempt_number`, or `exemption_details`, and the jurisdiction (state, region, or province) of the taxable address.\n",
+                    "description": "Specifies whether taxes are applicable to invoices generated for this customer.\n\n* taxable -\n  Taxes are calculated for this customer based on the [site's tax configuration](https://www.chargebee.com/docs/tax.html).\n  In some regions, [shipping_address](/docs/api/customers) is required for tax computation.\n  If a shipping address is not provided, the [billing_address](/docs/api/customers) is used. If neither address is available, no tax is applied.\n* zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.\n* exempt -\n  The customer is exempt from tax.\n\n  * If you use Chargebee [Taxes](https://www.chargebee.com/docs/tax.html) or the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no additional action is required.\n  * If you use the [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally specify the `entity_code` or `exempt_number` attributes with [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption), or the `exemption_details` attribute with [AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html). Avalara may still apply tax depending on the values of `entity_code`, `exempt_number`, or `exemption_details`, and the jurisdiction (state, region, or province) of the taxable address.\n",
                     "enum": [
                       "taxable",
                       "exempt",
@@ -24853,7 +24853,7 @@
           "customers"
         ],
         "summary": "Merge customers",
-        "description": "This API moves a customer's payment methods, subscriptions, invoices, credit notes, transactions, unbilled charges, and orders to another customer. Events and email logs will not be moved. The API execution is asynchronous.  \n**Note**\n\n* Moving virtual bank accounts from one customer to another is not supported in this API.\n* Merging customers from different [business entities](/docs/api/getting-started) is not permitted.\n",
+        "description": "This API moves a customer's payment methods, subscriptions, invoices, credit notes, transactions, unbilled charges, and orders to another customer. Events and email logs will not be moved. The API execution is asynchronous.  \n**Note**\n\n* Virtual bank accounts stay with the original customer. This API doesn't move them to the merged customer.\n* Merging customers from different [business entities](/docs/api/getting-started) is not permitted.\n",
         "operationId": "merge_customers",
         "parameters": [
           {
@@ -32123,7 +32123,7 @@
           "payment_sources"
         ],
         "summary": "Update a card payment source",
-        "description": "Merchants look to update card details when:\n\n* The billing address of a customer has changed. In such a case, modify the billing address in the Chargebee and the payment gateway.\n* The expiration date of the card has been extended by the bank. (This usually happens when the date of card expiry is in near future).\n\nMultiple parameters such as address, expiry date, month, and so on, can be updated through this API.\n\nYou can also pass `network_transaction_reference` to store or replace the original network transaction identifier on the payment source. When it is sent with other card fields, Chargebee calls the gateway first and persists the identifier only after a successful update. When it is the only parameter in the request, Chargebee updates it locally, does not call the gateway, and does not apply the gateway-support restriction in the note below.\n\nMeta data can also be added additionally(supported in Stripe only). Metadata is a JSON object. It is used to store additional information about customers.\n\nIn **Stripe** and **Braintree** payment gateways, changes in card details are auto-updated. This feature can also be used for other payment gateways in which auto-update is not enabled or is not supported by Chargebee.  \n**Note**\n: This endpoint supports Chargebee Test Gateway, [Stripe](https://www.chargebee.com/docs/2.0/stripe.html)\n, [Braintree](https://www.chargebee.com/docs/2.0/braintree.html)\n, [Authorize.net](https://www.chargebee.com/docs/2.0/authorize-index.html)\n, [Worldpay US eCom](https://www.chargebee.com/docs/2.0/vantiv_worldpay.html)\n, and [WorldPay Direct Integration](https://www.chargebee.com/docs/2.0/worldpay-direct.html)\n. For all other gateways, your customers must re-enter the full [card details](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nto update existing card details. For example, consider a customer not using the gateways mentioned above and wants to update the [card\\[billing_addr1\\]](/docs/api/payment_sources/update-a-card-payment-source#card_billing_addr1)\nparameter. In such a case, the customer must re-enter the value of all the parameters present in the [card](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nobject.\n",
+        "description": "Merchants look to update card details when:\n\n* The billing address of a customer has changed. In such a case, modify the billing address in the Chargebee and the payment gateway.\n* The expiration date of the card has been extended by the bank. (This usually happens when the date of card expiry is in near future).\n\nMultiple parameters such as address, expiry date, month, and so on, can be updated through this API.\n\nYou can also pass `network_transaction_reference` to store or replace the original network transaction identifier on the payment source. When it is sent with other card fields, Chargebee calls the gateway first and persists the identifier only after a successful update. When it is the only parameter in the request, Chargebee updates it locally, does not call the gateway, and does not apply the gateway-support restriction in the note below.\n\nMeta data can also be added additionally(supported in Stripe only). Metadata is a JSON object. It is used to store additional information about customers.\n\nIn **Stripe** and **Braintree** payment gateways, changes in card details are auto-updated. For gateways not listed in the note below, the customer must re-enter the full card details to update an existing card.  \n**Note**\n: This endpoint supports Chargebee Test Gateway, [Stripe](https://www.chargebee.com/docs/2.0/stripe.html)\n, [Braintree](https://www.chargebee.com/docs/2.0/braintree.html)\n, [Authorize.net](https://www.chargebee.com/docs/2.0/authorize-index.html)\n, [Worldpay US eCom](https://www.chargebee.com/docs/2.0/vantiv_worldpay.html)\n, [WorldPay Direct Integration](https://www.chargebee.com/docs/2.0/worldpay-direct.html)\n, EBANX, dLocal, BlueSnap, and Spreedly gateways (such as Bambora, First Data Global, PayPal Pro, Payflow Pro, and Paymill). For all other gateways, your customers must re-enter the full [card details](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nto update existing card details. For example, consider a customer not using the gateways mentioned above and wants to update the [card\\[billing_addr1\\]](/docs/api/payment_sources/update-a-card-payment-source#card_billing_addr1)\nparameter. In such a case, the customer must re-enter the value of all the parameters present in the [card](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)\nobject.\n",
         "operationId": "update_a_card_payment_source",
         "parameters": [
           {
@@ -40354,16 +40354,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40372,6 +40362,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40390,16 +40390,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40408,6 +40398,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40426,16 +40426,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40444,6 +40434,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40462,16 +40462,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40480,6 +40470,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40498,16 +40498,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40516,6 +40506,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40534,16 +40534,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40552,6 +40542,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40570,16 +40570,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40588,6 +40578,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40606,16 +40606,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40624,6 +40614,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40642,16 +40642,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40660,6 +40650,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40678,16 +40678,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40696,6 +40686,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40714,16 +40714,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40732,6 +40722,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40750,16 +40750,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40768,6 +40758,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40786,16 +40786,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40804,6 +40794,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40822,16 +40822,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40840,6 +40830,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -40858,16 +40858,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -40876,6 +40866,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41502,16 +41502,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41520,6 +41510,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41538,16 +41538,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41556,6 +41546,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41574,16 +41574,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41592,6 +41582,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41610,16 +41610,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41628,6 +41618,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41646,16 +41646,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41664,6 +41654,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41682,16 +41682,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41700,6 +41690,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41718,16 +41718,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41736,6 +41726,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41754,16 +41754,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41772,6 +41762,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41790,16 +41790,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41808,6 +41798,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41826,16 +41826,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41844,6 +41834,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41862,16 +41862,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41880,6 +41870,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41898,16 +41898,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41916,6 +41906,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -41934,16 +41934,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -41952,6 +41942,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -47868,7 +47868,7 @@
           "invoices"
         ],
         "summary": "Void authorizations before capture",
-        "description": "Voids all outstanding scheduled-capture authorizations linked to an invoice before capture, then voids or writes off the invoice.\n\nUse this operation when an invoice has an outstanding delayed-capture authorization that must be released before the invoice is either voided or written off. Use `invoice_action` to choose whether the invoice is voided or written off.  \n\n### Prerequisites \\& Constraints\n\n* The invoice must have at least one outstanding scheduled-capture authorization with a capturable amount greater than zero.\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n* The invoice must not have successful payments, taxes withheld, applied credit notes, adjustment amounts, refundable credits, or refunds in progress.\n* The outstanding authorization must not already have a successful or in-progress capture.\n* This operation is not supported for 2Checkout.  \n\n### Impacts\n\n**Authorizations**  \n* Chargebee voids all eligible outstanding scheduled-capture authorizations linked to the invoice at the payment gateway.  \n**Invoice**  \n* When `invoice_action` is `void`, Chargebee voids the invoice. The invoice `status` becomes `voided`.\n* When `invoice_action` is `write_off`, Chargebee writes off the invoice. The invoice `status` becomes `paid`, and `write_off_amount` is set to the invoice `amount_due`.  \n**Credit Note**  \n* When `invoice_action` is `write_off`, Chargebee creates an adjustment credit note for the write-off. The response includes the `credit_note` resource when one is generated.  \n\n### Implementation Notes\n\nBefore calling this API, ensure that the scheduled-capture authorization is still outstanding. If it has already been captured, if no eligible authorization remains, or if another conflicting payment operation is in progress, the API returns HTTP `409` with `api_error_code` set to `invalid_state_for_request`.\n",
+        "description": "Voids all outstanding scheduled-capture authorizations linked to an invoice before capture, then voids or writes off the invoice.\n\nUse this operation when an invoice has an outstanding delayed-capture authorization that must be released before the invoice is either voided or written off. Use `invoice_action` to choose whether the invoice is voided or written off.  \n\n### Prerequisites \\& Constraints\n\n* The invoice must have at least one outstanding scheduled-capture authorization with a capturable amount greater than zero.\n* The invoice `status` must be `payment_due`, `posted`, or `not_paid`.\n* The invoice must not have successful payments, taxes withheld, applied credit notes, adjustment amounts, refundable credits, or refunds in progress.\n* The outstanding authorization must not already have a successful or in-progress capture.\n* Chargebee does not support this operation for authorizations processed through 2Checkout.  \n\n### Impacts\n\n**Authorizations**  \n* Chargebee voids all eligible outstanding scheduled-capture authorizations linked to the invoice at the payment gateway.  \n**Invoice**  \n* When `invoice_action` is `void`, Chargebee voids the invoice. The invoice `status` becomes `voided`.\n* When `invoice_action` is `write_off`, Chargebee writes off the invoice. The invoice `status` becomes `paid`, and `write_off_amount` is set to the invoice `amount_due`.  \n**Credit Note**  \n* When `invoice_action` is `write_off`, Chargebee creates an adjustment credit note for the write-off. The response includes the `credit_note` resource when one is generated.  \n\n### Implementation Notes\n\nBefore calling this API, ensure that the scheduled-capture authorization is still outstanding. If it has already been captured, if no eligible authorization remains, or if another conflicting payment operation is in progress, the API returns HTTP `409` with `api_error_code` set to `invalid_state_for_request`.\n",
         "operationId": "void_authorizations_before_capture",
         "parameters": [
           {
@@ -48565,7 +48565,7 @@
           "invoices"
         ],
         "summary": "Apply credits for an invoice",
-        "description": "Applies a customer's [refundable credits](/docs/api/customers/customer-object#refundable_credits) to a specified invoice.\n\nYou can either specify the credit notes to be applied, or let Chargebee apply the available credit notes automatically.  \n\n### Prerequisites \\& Constraints\n\n* The customer must have refundable credits available.\n* The invoice `status` must be `not_paid`, `payment_due`, or `posted`.  \n\n### Impacts\n\n**Invoice**  \n* The `amount_due` decreases by the amount of credits applied.\n* The invoice `status`:\n  * changes to `paid` if the applied credits fully cover the amount due.\n* remains unchanged if the applied credits only partially cover the amount due.  \n**Credit Notes**  \nThe credit note `status`:\n\n* changes to `refunded` if the entire `credit_note.amount_available` is applied to the invoice.\n* remains `refund_due` if only part of the `credit_note.amount_available` is applied.  \n\n### Implementation Notes\n\nBefore calling this API, make sure the following conditions are met:\n\n* `customer.refundable_credits` is non-zero.\n* The invoice `status` is `not_paid`, `payment_due`, or `posted`.\n* The `credit_note.customer_id` matches the `invoice.customer_id`.  \n\n#### Related APIs\n\n[Apply payments for an invoice](/docs/api/invoices?prod_cat_ver=2#apply_payments_for_an_invoice)[Collect payment for an invoice](/docs/api/invoices?prod_cat_ver=2#collect_payment_for_an_invoice)[Record an invoice payment](/docs/api/invoices?prod_cat_ver=2#record_an_invoice_payment)\n",
+        "description": "Applies a customer's [refundable credits](/docs/api/customers/customer-object#refundable_credits) to a specified invoice.\n\nYou can specify the credit notes to apply, including the amount to apply from each credit note and the time it is applied. If you omit the credit notes, Chargebee applies the available credit notes automatically.  \n\n### Prerequisites \\& Constraints\n\n* The customer must have refundable credits available.\n* The invoice `status` must be `not_paid`, `payment_due`, or `posted`.  \n\n### Impacts\n\n**Invoice**  \n* The `amount_due` decreases by the amount of credits applied.\n* The invoice `status`:\n  * changes to `paid` if the applied credits fully cover the amount due.\n  * remains unchanged if the applied credits only partially cover the amount due.\n* When the invoice becomes `paid`, [`paid_at`](/docs/api/invoices/invoice-object#paid_at) is set to the `credit_notes[applied_at]` of the application that brought `amount_due` to zero. If that parameter is omitted, `paid_at` is the current time.  \n**Credit Notes**  \nThe credit note `status`:\n\n* changes to `refunded` if the entire `credit_note.amount_available` is applied to the invoice.\n* remains `refund_due` if only part of the `credit_note.amount_available` is applied.  \n\n### Implementation Notes\n\nBefore calling this API, make sure the following conditions are met:\n\n* `customer.refundable_credits` is non-zero.\n* The invoice `status` is `not_paid`, `payment_due`, or `posted`.\n* The `credit_note.customer_id` matches the `invoice.customer_id`.  \n\n#### Related APIs\n\n[Apply payments for an invoice](/docs/api/invoices?prod_cat_ver=2#apply_payments_for_an_invoice)[Collect payment for an invoice](/docs/api/invoices?prod_cat_ver=2#collect_payment_for_an_invoice)[Record an invoice payment](/docs/api/invoices?prod_cat_ver=2#record_an_invoice_payment)\n",
         "operationId": "apply_credits_for_an_invoice",
         "parameters": [
           {
@@ -48731,11 +48731,11 @@
                   "credit_notes": {
                     "type": "object",
                     "deprecated": false,
-                    "description": "Parameters for credit_notes\n",
+                    "description": "The credit notes to apply to this invoice. For each credit note, you can set the amount to apply and the time it is applied.\n\nCredit notes are applied in the order they appear in the request. Application stops when the invoice has nothing left to collect, and any remaining credit notes in the request are not applied.\n",
                     "properties": {
                       "id": {
                         "type": "array",
-                        "description": "The ID of the credit note to be applied to the invoice.  \n**Constraints**\n\n* `credit_note.type` must be `refundable`.\n* The `credit_note.customer_id` must always be the same as `invoice.customer_id` even if `invoice.payment_owner` is different.  \n**Default behavior**\n\nWhen the parameter is not passed, [available refundable credits](/docs/api/customers/customer-object#refundable_credits) with the customer are applied to the invoice.\n",
+                        "description": "The ID of the credit note to be applied to the invoice.  \n**Constraints**\n\n* `credit_note.type` must be `refundable`.\n* The `credit_note.customer_id` must always be the same as `invoice.customer_id` even if `invoice.payment_owner` is different.\n* Specify each credit note only once. The request fails if the same credit note is passed more than once.  \n**Required if**\n\n* `credit_notes[amount]` or `credit_notes[applied_at]` is passed for the same entry.  \n**Default behavior**\n\nWhen the parameter is not passed, [available refundable credits](/docs/api/customers/customer-object#refundable_credits) with the customer are applied to the invoice.\n",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -48746,6 +48746,7 @@
                       },
                       "amount": {
                         "type": "array",
+                        "description": "The amount from this credit note to apply to the invoice, in the [minor unit of the currency](/docs/api/currencies).\n\nThe amount applied is the smallest of this value, [`credit_note.amount_available`](/docs/api/credit_notes/credit_note-object#amount_available), and the invoice [`amount_due`](/docs/api/invoices/invoice-object#amount_due) that is still collectible. A higher value is reduced to that limit.  \n**Constraints**\n\n* Minimum value is `1`.  \n**Default behavior**\n\nWhen this parameter is not passed, Chargebee applies the smallest of [`credit_note.amount_available`](/docs/api/credit_notes/credit_note-object#amount_available) and the invoice amount still due.\n",
                         "items": {
                           "type": "integer",
                           "format": "int64",
@@ -48757,6 +48758,7 @@
                       },
                       "applied_at": {
                         "type": "array",
+                        "description": "The time at which this credit is applied, in seconds since the Unix epoch.\n\nThis time is stored as [`applied_credits.applied_at`](/docs/api/invoices/invoice-object#applied_credits_applied_at). When this application is what makes the invoice fully paid, the same time is stored as [`paid_at`](/docs/api/invoices/invoice-object#paid_at). When this application uses up the credit note, the same time is stored as [`credit_note.refunded_at`](/docs/api/credit_notes/credit_note-object#refunded_at).  \n**Constraints**\n\n* Must be on or after the invoice [`date`](/docs/api/invoices/invoice-object#date) and the credit note [`date`](/docs/api/credit_notes/credit_note-object#date).\n* Must not be after the current time.  \n**Default behavior**\n\nWhen this parameter is not passed, Chargebee uses the current time.\n",
                         "items": {
                           "type": "integer",
                           "format": "unix-time",
@@ -55790,14 +55792,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -55821,14 +55823,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "is": {
-                      "type": "string",
-                      "minLength": 1,
-                      "example": null
-                    },
                     "in": {
                       "type": "string",
                       "pattern": "^\\[(.*)(,.*)*\\]$",
+                      "example": null
+                    },
+                    "is": {
+                      "type": "string",
+                      "minLength": 1,
                       "example": null
                     }
                   }
@@ -59285,7 +59287,7 @@
                     "type": "integer",
                     "format": "int64",
                     "deprecated": false,
-                    "description": "The rounded-off amount for the credit note. For example, if the credit note amount is $99.99 and it is rounded off to $100.00, then $0.01 is the `round_off_amount`.  \n**Constraints**\n\n* Not supported for zero-decimal [currencies](/docs/api/currencies).\n",
+                    "description": "The rounded-off amount for the credit note. For example, if the credit note amount is $99.99 and it is rounded off to $100.00, then $0.01 is the `round_off_amount`.  \n**Constraints**\n\n* Applicable only to [currencies](/docs/api/currencies) with decimal places; not applicable to zero-decimal currencies.\n",
                     "maximum": 99,
                     "minimum": -99,
                     "example": null
@@ -67023,6 +67025,7 @@
                       },
                       "description": {
                         "type": "array",
+                        "description": "The line item name for this item price. It is returned as the [description](/docs/api/unbilled_charges/unbilled_charge-object#description) of the unbilled charge and displayed on the invoice when the unbilled charge is invoiced.  \n**Default value**\n\n* The invoice name defined for the item in the product catalog.\n",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -67033,6 +67036,7 @@
                       },
                       "entity_description": {
                         "type": "array",
+                        "description": "Descriptive text displayed below the line item name on the invoice when the unbilled charge is invoiced. This override is not returned on the [unbilled charge](/docs/api/unbilled_charges/unbilled_charge-object) object.  \n**Default value**\n\n* The [item price description](/docs/api/item_prices/item_price-object#description) from the product catalog.\n",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -67166,6 +67170,7 @@
                     "properties": {
                       "entity_description": {
                         "type": "array",
+                        "description": "Descriptive text for this one-time charge, shown below the line item name on the invoice when the unbilled charge is invoiced.\n",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -67199,7 +67204,7 @@
                       },
                       "description": {
                         "type": "array",
-                        "description": "Description for this charge\n",
+                        "description": "The name of this one-time charge as displayed on the invoice line item when the unbilled charge is invoiced.\n",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -76895,7 +76900,7 @@
           "transactions"
         ],
         "summary": "Refund a payment",
-        "description": "Refunds an online payment. Applicable only for `transaction`s of [type](/docs/api/transactions/transaction-object#type) = `payment`. You can only refund a `transaction` whose [status](/docs/api/transactions/transaction-object#status) is `success`.  \n* Not supported for ach_credit, sepa_credit, cash, check, bank_transfer, other.\n* Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable this endpoint.\n",
+        "description": "Refunds an online payment. Applicable only for `transaction`s of [type](/docs/api/transactions/transaction-object#type) = `payment`. You can only refund a `transaction` whose [status](/docs/api/transactions/transaction-object#status) is `success`.  \n* This operation refunds a successful online payment. It does not apply to `ach_credit`, `sepa_credit`, `cash`, `check`, `bank_transfer`, `automated_bank_transfer`, or `other`.\n* Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable this endpoint.\n",
         "operationId": "refund_a_payment",
         "parameters": [
           {
@@ -79811,6 +79816,11 @@
                     "deprecated": false,
                     "description": "This attribute allows you to store custom information with the `hosted_page` object. You can use it to associate specific data with a hosted page session.\nFor example, you can store the ID of the marketing campaign that initiated the user session. After a successful checkout, when the customer is redirected, you can retrieve the hosted page ID from the [redirect URL](/docs/api/hosted_pages/checkout-charge-items-and-one-time-charges)'s query parameters. Using this ID, you can fetch the hosted page and perform actions related to the success of the marketing campaign.\n",
                     "maxLength": 2048,
+                    "example": null
+                  },
+                  "allow_offline_payment_methods": {
+                    "type": "boolean",
+                    "deprecated": false,
                     "example": null
                   },
                   "customer": {
@@ -107986,14 +107996,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -108463,6 +108473,49 @@
                     ],
                     "example": null
                   },
+                  "accounting_detail": {
+                    "type": "object",
+                    "deprecated": false,
+                    "properties": {
+                      "sku": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_code": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category1": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category2": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category3": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category4": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      }
+                    },
+                    "example": null
+                  },
                   "item_constraints": {
                     "type": "object",
                     "deprecated": false,
@@ -108637,6 +108690,10 @@
                 "example": null
               },
               "encoding": {
+                "accounting_detail": {
+                  "style": "deepObject",
+                  "explode": true
+                },
                 "coupon_constraints": {
                   "style": "deepObject",
                   "explode": true
@@ -110224,6 +110281,49 @@
                     ],
                     "example": null
                   },
+                  "accounting_detail": {
+                    "type": "object",
+                    "deprecated": false,
+                    "properties": {
+                      "sku": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_code": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category1": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category2": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category3": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      },
+                      "accounting_category4": {
+                        "type": "string",
+                        "deprecated": false,
+                        "maxLength": 100,
+                        "example": null
+                      }
+                    },
+                    "example": null
+                  },
                   "item_constraints": {
                     "type": "object",
                     "deprecated": false,
@@ -110403,6 +110503,10 @@
                 "example": null
               },
               "encoding": {
+                "accounting_detail": {
+                  "style": "deepObject",
+                  "explode": true
+                },
                 "coupon_constraints": {
                   "style": "deepObject",
                   "explode": true
@@ -125303,17 +125407,6 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -125325,6 +125418,17 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
                           }
                         }
                       },
@@ -125334,14 +125438,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -131286,7 +131390,8 @@
         "tags": [
           "exports"
         ],
-        "summary": "Export Entitlements",
+        "summary": "Export entitlements",
+        "description": "Starts an export of [entitlements](/docs/api/entitlements). The response is an [export](/docs/api/exports) job. When the job completes, the download is a zip file that contains `Entitlements.csv`.  \n\n### Prerequisites \\& Constraints\n\nThe Entitlements feature must be enabled on the site.\n",
         "operationId": "export_entitlements",
         "parameters": [
           {
@@ -131432,21 +131537,22 @@
                   "entitlement": {
                     "type": "object",
                     "deprecated": false,
+                    "description": "Filters that select which [entitlements](/docs/api/entitlements) are included in the export. Every filter is optional. These filters accept only the `is` and `in` operators.\n",
                     "properties": {
                       "feature_id": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "The `id` of the feature towards which this entitlement has been granted.\n",
+                        "description": "The `id` of the feature this entitlement grants. For example, `user-licenses`.\n**Supported operators:** is, in\n",
                         "example": "user-licenses",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -131454,21 +131560,9 @@
                       "entity_type": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "The `type` of the `entity` to which this entitlement belongs.\n",
+                        "description": "The type of entity that holds the entitlement. Possible values are `plan`, `addon`, `charge`, `plan_price`, and `addon_price`.\n**Supported operators:** is, in\n",
                         "example": "plan_price",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                            "enum": [
-                              "plan",
-                              "addon",
-                              "charge",
-                              "plan_price",
-                              "addon_price"
-                            ],
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -131481,23 +131575,35 @@
                             ],
                             "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
                             "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                            "enum": [
+                              "plan",
+                              "addon",
+                              "charge",
+                              "plan_price",
+                              "addon_price"
+                            ],
+                            "example": null
                           }
                         }
                       },
                       "entity_id": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "The `id` of the `entity` to which this entitlement belongs.\n",
+                        "description": "The `id` of the item or item price that holds the entitlement. For example, `usd-professional-monthly`.\n**Supported operators:** is, in\n",
                         "example": "usd-professional-monthly",
                         "properties": {
-                          "is": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": null
-                          },
                           "in": {
                             "type": "string",
                             "pattern": "^\\[(.*)(,.*)*\\]$",
+                            "example": null
+                          },
+                          "is": {
+                            "type": "string",
+                            "minLength": 1,
                             "example": null
                           }
                         }
@@ -133992,7 +134098,8 @@
         "tags": [
           "exports"
         ],
-        "summary": "Export Features",
+        "summary": "Export features",
+        "description": "Starts an export of [features](/docs/api/features). The response is an [export](/docs/api/exports) job. When the job completes, the download is a zip file that contains `Features.csv`.  \n\n### Prerequisites \\& Constraints\n\nThe Entitlements feature must be enabled on the site.\n",
         "operationId": "export_features",
         "parameters": [
           {
@@ -134138,11 +134245,12 @@
                   "feature": {
                     "type": "object",
                     "deprecated": false,
+                    "description": "Filters that select which [features](/docs/api/features) are included in the export. Every filter is optional.\n",
                     "properties": {
                       "name": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "A case-sensitive unique name for the feature. For example: `user license`, `data storage`, `Salesforce Integration`, `devices`, `UHD Streaming`, and so on. **Note:** This name is not displayed on any customer-facing documents or pages such as [invoice PDFs](invoices#retrieve_invoice_as_pdf) or [hosted pages](hosted_pages). However, in the future, it is likely to be introduced on the [Self-Serve Portal](portal_sessions).\n",
+                        "description": "The name of the feature. For example, `User licenses`.\n**Supported operators:** is, is_not, starts_with, in, not_in\n",
                         "example": "User licenses",
                         "properties": {
                           "is": {
@@ -134175,7 +134283,7 @@
                       "id": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "A unique and immutable identifier for the feature. You can set it yourself, in which case it is recommended that a human-readable format (or slug) be used. For example, `number-of-users-ccjht01`. When not provided, a random value is automatically set.\n",
+                        "description": "The unique identifier of the feature. For example, `fea-user-licenses`.\n**Supported operators:** is, is_not, starts_with, in, not_in\n",
                         "example": "fea-user-licenses",
                         "properties": {
                           "is": {
@@ -134208,7 +134316,7 @@
                       "status": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "The current status of the feature.",
+                        "description": "The status of the feature. Possible values are `active`, `archived`, and `draft`.\n**Supported operators:** is, is_not, in, not_in\n",
                         "example": "active",
                         "properties": {
                           "is": {
@@ -134258,7 +134366,7 @@
                       "type": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "The type of feature.",
+                        "description": "The type of the feature. Possible values are `switch`, `custom`, `quantity`, and `range`.\n**Supported operators:** is, is_not, in, not_in\n",
                         "example": "boolean",
                         "properties": {
                           "is": {
@@ -134312,7 +134420,7 @@
                       "metered": {
                         "type": "object",
                         "deprecated": false,
-                        "description": "Determines if feature is metered or not",
+                        "description": "Whether the feature is metered. Possible values are `true` and `false`.\n**Supported operators:** is\n",
                         "example": "true",
                         "properties": {
                           "is": {
@@ -135716,14 +135824,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
-                        "example": null
-                      },
                       "in": {
                         "type": "string",
                         "pattern": "^\\[(.*)(,.*)*\\]$",
+                        "example": null
+                      },
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -151635,7 +151743,7 @@
                     "format": "int32",
                     "default": 0,
                     "deprecated": false,
-                    "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.\n* `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .\n",
+                    "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.\n* For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.\n",
                     "minimum": 0,
                     "example": null
                   },
@@ -154457,7 +154565,7 @@
                     "format": "int32",
                     "default": 0,
                     "deprecated": false,
-                    "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.\n* `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .\n",
+                    "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` applies only to [plan](/docs/api/items/item-object#type) `item_price`.\n* For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.\n\n**Constraints**\n\n* `free_quantity` can't be set for metered items when entitlement-based usage billing is enabled.\n* `free_quantity` can't be set when `pricing_model` is `flat_fee` (or omitted, which defaults to `flat_fee`), `tiered`, `volume`, or `stairstep`.\n",
                     "minimum": 0,
                     "example": null
                   },
@@ -163670,15 +163778,6 @@
               "deprecated": false,
               "example": "active",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -163687,6 +163786,15 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
                   "example": null
                 }
               }
@@ -163705,14 +163813,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -167438,14 +167546,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -167464,18 +167572,6 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -167487,6 +167583,18 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
                   "example": null
                 }
               }
@@ -167505,14 +167613,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -177619,17 +177727,6 @@
               "deprecated": false,
               "example": "subscription_reactivation",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
-                  "enum": [
-                    "unbilled_charges",
-                    "update_subscriptions",
-                    "subscription_reactivation",
-                    "trial_end_actions"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
@@ -177640,6 +177737,17 @@
                     "trial_end_actions"
                   ],
                   "pattern": "^\\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
+                  "enum": [
+                    "unbilled_charges",
+                    "update_subscriptions",
+                    "subscription_reactivation",
+                    "trial_end_actions"
+                  ],
                   "example": null
                 }
               }
@@ -178260,17 +178368,6 @@
               "deprecated": false,
               "example": "subscription_reactivation",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
-                  "enum": [
-                    "unbilled_charges",
-                    "update_subscriptions",
-                    "subscription_reactivation",
-                    "trial_end_actions"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
@@ -178281,6 +178378,17 @@
                     "trial_end_actions"
                   ],
                   "pattern": "^\\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
+                  "enum": [
+                    "unbilled_charges",
+                    "update_subscriptions",
+                    "subscription_reactivation",
+                    "trial_end_actions"
+                  ],
                   "example": null
                 }
               }
@@ -181254,6 +181362,16 @@
                           "example": null
                         },
                         "example": null
+                      },
+                      "description": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 100,
+                          "example": null
+                        },
+                        "example": null
                       }
                     },
                     "required": [
@@ -181576,17 +181694,6 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -181597,6 +181704,17 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
                   "example": null
                 }
               }
@@ -181615,14 +181733,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -182721,6 +182839,16 @@
                       "item_price_id": {
                         "type": "array",
                         "description": "The [id of the item price](/docs/api/subscriptions/subscription-object#subscription_items_item_price_id)\nin the subscription to which the discount is to be applied. Relevant only when `apply_on`\n= `specific_item_price`.\n",
+                        "items": {
+                          "type": "string",
+                          "deprecated": false,
+                          "maxLength": 100,
+                          "example": null
+                        },
+                        "example": null
+                      },
+                      "description": {
+                        "type": "array",
                         "items": {
                           "type": "string",
                           "deprecated": false,
@@ -190415,6 +190543,12 @@
                     "description": "JSON object of custom attributes (key-value pairs) used for pricing page targeting or content. [Configure](https://www.chargebee.com/docs/retention/settings-and-installation/chargebee-retention-field-mappings) custom attributes in the dashboard.\n",
                     "example": null
                   },
+                  "locale": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
+                    "example": null
+                  },
                   "pricing_page": {
                     "type": "object",
                     "deprecated": false,
@@ -190945,6 +191079,12 @@
                     "additionalProperties": true,
                     "deprecated": false,
                     "description": "JSON object of custom attributes (key-value pairs) used for pricing page targeting or content. [Configure](https://www.chargebee.com/docs/retention/settings-and-installation/chargebee-retention-field-mappings) custom attributes in the dashboard.\n",
+                    "example": null
+                  },
+                  "locale": {
+                    "type": "string",
+                    "deprecated": false,
+                    "maxLength": 50,
                     "example": null
                   },
                   "pricing_page": {
@@ -193006,13 +193146,13 @@
               "deprecated": false,
               "example": "1777556762",
               "properties": {
-                "on": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -193023,7 +193163,7 @@
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -193045,13 +193185,13 @@
               "deprecated": false,
               "example": "1777556271",
               "properties": {
-                "on": {
+                "after": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
                   "example": null
                 },
-                "after": {
+                "before": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -193062,7 +193202,7 @@
                   "pattern": "^\\[\\d{10},\\d{10}\\]$",
                   "example": null
                 },
-                "before": {
+                "on": {
                   "type": "string",
                   "format": "unix-time",
                   "pattern": "^\\d{10}$",
@@ -196141,12 +196281,12 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
+                "starts_with": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
                 },
-                "starts_with": {
+                "is": {
                   "type": "string",
                   "minLength": 1,
                   "example": null
@@ -199141,14 +199281,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -199167,14 +199307,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -209974,16 +210114,6 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "is_not": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "not_in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
@@ -209992,6 +210122,16 @@
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is_not": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               }
@@ -214590,6 +214730,7 @@
           "metered_features"
         ],
         "summary": "List credit rate versions",
+        "description": "Lists every version of a metered feature's credit rate, newest first.\n\nUse it to show how a credit rate changed over time: each version includes its rate, `change_option`, `effective_from`, and the `note` given for the change.  \n\n### Implementation Notes\n\n* A version in this list is not necessarily the one applied to a given subscription; that depends on the subscription and on each version's `change_option`. To see the rate that applies to a subscription, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription).\n",
         "operationId": "list_credit_rate_versions",
         "parameters": [
           {
@@ -214687,16 +214828,15 @@
           {
             "name": "limit",
             "in": "query",
+            "description": "The number of versions to return.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/limit",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "integer",
               "format": "int32",
               "default": 10,
-              "description": "The number of resources to be returned.",
               "maximum": 100,
               "minimum": 1,
               "example": null
@@ -214705,14 +214845,13 @@
           {
             "name": "offset",
             "in": "query",
+            "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset` to the value of `next_offset` obtained in the previous iteration of the API call.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/offset",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "string",
-              "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.",
               "maxLength": 1000,
               "example": null
             }
@@ -214745,7 +214884,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.",
+                      "description": "This attribute is returned only if more versions are present. To fetch the next set of versions, use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -214873,6 +215012,7 @@
           "metered_features"
         ],
         "summary": "Retrieve a credit rate",
+        "description": "Retrieves the latest version of a metered feature's feature-level credit rate. Depending on its `change_option`, this version might not apply to every subscription yet.  \n\n### Implementation Notes\n\n* A credit rate override can replace this rate for a subscription. To see the rate that applies to a subscription, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription).\n* To see earlier versions, use [List credit rate versions](/docs/api/credit_rates/list-credit-rate-versions).\n",
         "operationId": "retrieve_a_credit_rate",
         "parameters": [
           {
@@ -214978,7 +215118,7 @@
                   "properties": {
                     "credit_rate": {
                       "$ref": "#/components/schemas/CreditRate",
-                      "description": "Resource object representing credit_rate"
+                      "description": "The credit rate that was created, as version `0`.\n"
                     }
                   },
                   "required": [
@@ -215104,6 +215244,7 @@
           "metered_features"
         ],
         "summary": "Remove a credit rate override",
+        "description": "Removes a subscription's credit rate override. The subscription goes back to the feature-level credit rate that applies to it. To use the removed override's pricing again, set a new override with those values.  \n\n### Prerequisites \\& Constraints\n\n* The subscription must have an override for the metered feature.\n",
         "operationId": "remove_a_credit_rate_override",
         "parameters": [
           {
@@ -215262,12 +215403,14 @@
                   "subscription_id": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The identifier of the [subscription](/docs/api/subscriptions) whose override is removed.\n",
                     "maxLength": 50,
                     "example": null
                   },
                   "note": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The reason for removing the override, shown in the version history.\n",
                     "maxLength": 500,
                     "example": null
                   }
@@ -215291,7 +215434,7 @@
                   "properties": {
                     "credit_rate_override": {
                       "$ref": "#/components/schemas/CreditRateOverride",
-                      "description": "Resource object representing credit_rate_override"
+                      "description": "The latest version of the override.\n"
                     }
                   },
                   "required": [
@@ -215417,6 +215560,7 @@
           "metered_features"
         ],
         "summary": "Set a credit rate override",
+        "description": "Sets the credit rate override for a subscription. If the subscription has no override for the metered feature, this creates one as version `0`. If it already has one, this replaces it with a new version. Either way the override applies as soon as it is set, in place of the feature-level credit rate, and usage that was already converted into credits is not re-priced.\n\nThe request describes the whole override: nothing is carried over from the previous version, so pass every field you want the override to have. The credit unit is taken from the feature-level credit rate and cannot be changed.\n\nThe new override version stores this value in `credit_rate_version`: the version of the feature-level credit rate the subscription would use without an override.  \n\n### Prerequisites \\& Constraints\n\n* The metered feature must already have a feature-level credit rate.  \n\n### Implementation Notes\n\n* To return the subscription to the feature-level credit rate, use [Remove a credit rate override](/docs/api/credit_rates/remove-a-credit-rate-override).\n",
         "operationId": "set_a_credit_rate_override",
         "parameters": [
           {
@@ -215575,12 +215719,14 @@
                   "subscription_id": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The identifier of the [subscription](/docs/api/subscriptions) the override applies to.\n",
                     "maxLength": 50,
                     "example": null
                   },
                   "conversion_model": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "Determines how usage is converted into credits for this subscription. See [Conversion models](/docs/api/credit_rates#conversion-models).\n\n* package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.\n* unit - Every unit of usage costs `credit_cost` credits. Do not pass `package_size`.\n",
                     "enum": [
                       "unit",
                       "package"
@@ -215591,6 +215737,7 @@
                     "type": "number",
                     "format": "decimal",
                     "deprecated": false,
+                    "description": "The number of usage units in one package.  \n**Required if**\n\n* `conversion_model` is `package`.  \n**Constraints**\n\n* Must be greater than `0`.\n* Supports up to 9 decimal places.\n* Not accepted when `conversion_model` is `unit`.\n",
                     "maximum": 1000000000,
                     "minimum": 1e-09,
                     "example": null
@@ -215599,6 +215746,7 @@
                     "type": "number",
                     "format": "decimal",
                     "deprecated": false,
+                    "description": "The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  \n**Constraints**\n\n* Must be greater than or equal to `0`.\n* Supports up to 9 decimal places.\n",
                     "maximum": 1000000000,
                     "minimum": 0,
                     "example": null
@@ -215606,6 +215754,7 @@
                   "note": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The reason for this change, shown in the version history.\n",
                     "maxLength": 500,
                     "example": null
                   }
@@ -215631,7 +215780,7 @@
                   "properties": {
                     "credit_rate_override": {
                       "$ref": "#/components/schemas/CreditRateOverride",
-                      "description": "Resource object representing credit_rate_override"
+                      "description": "The latest version of the override.\n"
                     }
                   },
                   "required": [
@@ -215757,6 +215906,7 @@
           "metered_features"
         ],
         "summary": "Update a credit rate",
+        "description": "Changes the credit rate for a metered feature by creating a new version. Earlier versions are kept, and usage that was already converted into credits is not re-priced.\n\nFields you don't pass keep their values from the current version. `credit_unit_id` cannot be changed. [**change_option**](#change_option) decides which subscriptions get the new version and when. See [How the applicable credit rate is determined](/docs/api/credit_rates#how-the-applicable-credit-rate-is-determined).  \n\n### Prerequisites \\& Constraints\n\n* The metered feature must already have a credit rate.  \n\n### Implementation Notes\n\n* To change the rate for one subscription right away, don't update the credit rate. Use [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override) instead; an override applies to its subscription as soon as it is created.\n* The response contains the new version. To see the rate that applies to a particular subscription, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription).\n",
         "operationId": "update_a_credit_rate",
         "parameters": [
           {
@@ -215915,6 +216065,7 @@
                   "change_option": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "Determines which subscriptions get the new version and when. Pass `end_of_term` or `grandfathered`.\n\n**immediately**\nNot accepted. To change the rate for one subscription right away, use [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override).\n\n* end_of_term - Subscriptions created after the update get the new version right away. Existing subscriptions get it when their term renews or resets.\n* grandfathered - Only subscriptions created after the update get the new version. Existing subscriptions stay on the version they already use.\n",
                     "enum": [
                       "grandfathered",
                       "end_of_term",
@@ -215925,6 +216076,7 @@
                   "conversion_model": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "Determines how usage is converted into credits. If not passed, the current value is kept. See [Conversion models](/docs/api/credit_rates#conversion-models).\n\n* package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.\n* unit - Every unit of usage costs `credit_cost` credits. Do not pass `package_size`.\n",
                     "enum": [
                       "unit",
                       "package"
@@ -215935,6 +216087,7 @@
                     "type": "number",
                     "format": "decimal",
                     "deprecated": false,
+                    "description": "The number of usage units in one package. If not passed, the current value is kept.  \n**Required if**\n\n* `conversion_model` is `package`.  \n**Constraints**\n\n* Must be greater than `0`.\n* Supports up to 9 decimal places.\n* Not accepted when `conversion_model` is `unit`.\n",
                     "maximum": 1000000000,
                     "minimum": 1e-09,
                     "example": null
@@ -215943,6 +216096,7 @@
                     "type": "number",
                     "format": "decimal",
                     "deprecated": false,
+                    "description": "The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`. If not passed, the current value is kept.  \n**Constraints**\n\n* Must be greater than or equal to `0`.\n* Supports up to 9 decimal places.\n",
                     "maximum": 1000000000,
                     "minimum": 0,
                     "example": null
@@ -215950,6 +216104,7 @@
                   "note": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The reason for this change, shown in the version history.\n",
                     "maxLength": 500,
                     "example": null
                   }
@@ -215973,7 +216128,7 @@
                   "properties": {
                     "credit_rate": {
                       "$ref": "#/components/schemas/CreditRate",
-                      "description": "Resource object representing credit_rate"
+                      "description": "The credit rate that was created, as version `0`.\n"
                     }
                   },
                   "required": [
@@ -216099,11 +216254,13 @@
           "metered_features"
         ],
         "summary": "Retrieve a credit rate override",
+        "description": "Retrieves the latest version of a subscription's credit rate override for a metered feature.  \n\n### Prerequisites \\& Constraints\n\n* The subscription must have an override for the metered feature.  \n\n### Implementation Notes\n\n* This operation returns only overrides. It fails when the subscription has no override and uses the feature-level credit rate. To see the rate that applies to a subscription either way, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription) with `metered_feature_id[is]`.\n",
         "operationId": "retrieve_a_credit_rate_override",
         "parameters": [
           {
             "name": "subscription_id",
             "in": "query",
+            "description": "The identifier of the [subscription](/docs/api/subscriptions) whose override is retrieved.\n",
             "required": true,
             "deprecated": false,
             "style": "form",
@@ -216218,7 +216375,7 @@
                   "properties": {
                     "credit_rate_override": {
                       "$ref": "#/components/schemas/CreditRateOverride",
-                      "description": "Resource object representing credit_rate_override"
+                      "description": "The latest version of the override.\n"
                     }
                   },
                   "required": [
@@ -216344,6 +216501,7 @@
           "metered_features"
         ],
         "summary": "Create a credit rate",
+        "description": "Creates the credit rate for a metered feature. The new credit rate is version `0`, is `active`, and applies right away to every subscription that has a credit grant for its `credit_unit_id`.  \n\n### Prerequisites \\& Constraints\n\n* The metered feature must exist and be active.\n* The metered feature must not already have a credit rate.  \n\n### Implementation Notes\n\n* To change the credit rate later, use [Update a credit rate](/docs/api/credit_rates/update-a-credit-rate). Each update creates a new version.\n* To set a different rate for one subscription, use [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override).\n",
         "operationId": "create_a_credit_rate",
         "parameters": [
           {
@@ -216502,12 +216660,14 @@
                   "credit_unit_id": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The identifier of the [credit unit](/docs/api/credit_units) that usage is converted into. It cannot be changed after the credit rate is created.\n",
                     "maxLength": 50,
                     "example": null
                   },
                   "conversion_model": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "Determines how usage is converted into credits. See [Conversion models](/docs/api/credit_rates#conversion-models).\n\n* package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.\n* unit - Every unit of usage costs `credit_cost` credits. Do not pass `package_size`.\n",
                     "enum": [
                       "unit",
                       "package"
@@ -216518,6 +216678,7 @@
                     "type": "number",
                     "format": "decimal",
                     "deprecated": false,
+                    "description": "The number of usage units in one package.  \n**Required if**\n\n* `conversion_model` is `package`.  \n**Constraints**\n\n* Must be greater than `0`.\n* Supports up to 9 decimal places.\n* Not accepted when `conversion_model` is `unit`.\n",
                     "maximum": 1000000000,
                     "minimum": 1e-09,
                     "example": null
@@ -216526,6 +216687,7 @@
                     "type": "number",
                     "format": "decimal",
                     "deprecated": false,
+                    "description": "The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  \n**Constraints**\n\n* Must be greater than or equal to `0`.\n* Supports up to 9 decimal places.\n",
                     "maximum": 1000000000,
                     "minimum": 0,
                     "example": null
@@ -216533,6 +216695,7 @@
                   "note": {
                     "type": "string",
                     "deprecated": false,
+                    "description": "The reason for creating this credit rate, shown in the version history.\n",
                     "maxLength": 500,
                     "example": null
                   }
@@ -216558,7 +216721,7 @@
                   "properties": {
                     "credit_rate": {
                       "$ref": "#/components/schemas/CreditRate",
-                      "description": "Resource object representing credit_rate"
+                      "description": "The credit rate that was created, as version `0`.\n"
                     }
                   },
                   "required": [
@@ -216684,6 +216847,7 @@
           "subscriptions"
         ],
         "summary": "List credit rates for a subscription",
+        "description": "Lists all the credit rates that apply to a subscription. A credit rate applies to a subscription when the subscription has a credit grant for the credit rate's credit unit. If no credit rates apply, an empty `list` is returned.\n\nEach entry is the rate the subscription uses for a metered feature: its credit rate override when `is_overridden` is `true`, otherwise the feature-level credit rate.  \n\n### Implementation Notes\n\n* To list only overrides, filter with `is_overridden[is]` set to `true`.\n* After an override is removed, the entry shows the feature-level credit rate that applies to the subscription, with `is_overridden` set to `false`.\n",
         "operationId": "list_credit_rates_for_a_subscription",
         "parameters": [
           {
@@ -216781,16 +216945,15 @@
           {
             "name": "limit",
             "in": "query",
+            "description": "The number of credit rates to return.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/limit",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "integer",
               "format": "int32",
               "default": 10,
-              "description": "The number of resources to be returned.",
               "maximum": 100,
               "minimum": 1,
               "example": null
@@ -216799,14 +216962,13 @@
           {
             "name": "offset",
             "in": "query",
+            "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset` to the value of `next_offset` obtained in the previous iteration of the API call.\n",
             "required": false,
             "deprecated": false,
-            "$ref": "#/components/parameters/offset",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "string",
-              "description": "Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.",
               "maxLength": 1000,
               "example": null
             }
@@ -216814,6 +216976,7 @@
           {
             "name": "metered_feature_id",
             "in": "query",
+            "description": "optional, string filter\n\nThe identifier of the metered feature.\n\n**Supported operators :**\nis, in\n\n**Example →**\n*metered_feature_id\\[is\\] = \"opus-usage\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -216821,16 +216984,15 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Identifier of the metered feature. Filterable on subscription credit rate lists with the `is` and `in` operators.\n",
               "properties": {
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
                   "example": null
                 }
               },
@@ -216840,6 +217002,7 @@
           {
             "name": "credit_unit_id",
             "in": "query",
+            "description": "optional, string filter\n\nThe identifier of the credit unit that usage is converted into.\n\n**Supported operators :**\nis\n\n**Example →**\n*credit_unit_id\\[is\\] = \"ai-credits\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -216847,7 +217010,6 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Identifier of the credit unit. Filterable on subscription credit rate lists with the `is` operator.\n",
               "properties": {
                 "is": {
                   "type": "string",
@@ -216861,6 +217023,7 @@
           {
             "name": "status",
             "in": "query",
+            "description": "optional, enumerated string filter\n\nThe status of the credit rate. Possible values are : active, archived. Credit rates are currently always `active`.\n\n**Supported operators :**\nis\n\n**Example →**\n*status\\[is\\] = \"active\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -216868,7 +217031,6 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Denotes the status of the credit rate. Filterable on subscription credit rate lists with the `is` operator.\n",
               "properties": {
                 "is": {
                   "type": "string",
@@ -216886,6 +217048,7 @@
           {
             "name": "is_overridden",
             "in": "query",
+            "description": "optional, boolean filter\n\nFilters by whether the entry is an override (`true`) or the feature-level credit rate (`false`).\n\n**Supported operators :**\nis\n\n**Example →**\n*is_overridden\\[is\\] = \"true\"*\n",
             "required": false,
             "deprecated": false,
             "style": "deepObject",
@@ -216893,7 +217056,6 @@
             "schema": {
               "type": "object",
               "deprecated": false,
-              "description": "Whether the rate in this entry is the subscription's credit rate override (true) or the feature-level credit rate (false). Filterable on subscription credit rate lists with the `is` operator.\n",
               "properties": {
                 "is": {
                   "type": "string",
@@ -216911,6 +217073,7 @@
           {
             "name": "sort_by",
             "in": "query",
+            "description": "optional, string filter\n\nSorts based on the specified attribute.\n**Supported attributes :**\neffective_from, updated_at\n\n**Supported sort-orders :**\nasc, desc\n\nOnly one sort order may be specified. Defaults to descending `effective_from`.\n\n**Example →**\n*sort_by\\[desc\\] = \"updated_at\"*\n",
             "required": false,
             "style": "deepObject",
             "explode": true,
@@ -216966,7 +217129,7 @@
                     },
                     "next_offset": {
                       "type": "string",
-                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.",
+                      "description": "This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.\n",
                       "maxLength": 1000,
                       "example": null
                     }
@@ -219428,23 +219591,6 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
-                  "example": null
-                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -219461,6 +219607,23 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
+                  "example": null
+                },
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
                   "example": null
                 }
               },
@@ -224470,6 +224633,12 @@
             "deprecated": false,
             "maxLength": 100,
             "example": null
+          },
+          "business_entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
+            "example": null
           }
         },
         "required": [
@@ -224766,6 +224935,12 @@
             "type": "string",
             "deprecated": false,
             "maxLength": 3,
+            "example": null
+          },
+          "business_entity_id": {
+            "type": "string",
+            "deprecated": false,
+            "maxLength": 50,
             "example": null
           },
           "discounts": {
@@ -229611,6 +229786,49 @@
             },
             "example": null
           },
+          "accounting_detail": {
+            "type": "object",
+            "deprecated": false,
+            "properties": {
+              "sku": {
+                "type": "string",
+                "deprecated": false,
+                "maxLength": 100,
+                "example": null
+              },
+              "accounting_code": {
+                "type": "string",
+                "deprecated": false,
+                "maxLength": 100,
+                "example": null
+              },
+              "accounting_category1": {
+                "type": "string",
+                "deprecated": false,
+                "maxLength": 100,
+                "example": null
+              },
+              "accounting_category2": {
+                "type": "string",
+                "deprecated": false,
+                "maxLength": 100,
+                "example": null
+              },
+              "accounting_category3": {
+                "type": "string",
+                "deprecated": false,
+                "maxLength": 100,
+                "example": null
+              },
+              "accounting_category4": {
+                "type": "string",
+                "deprecated": false,
+                "maxLength": 100,
+                "example": null
+              }
+            },
+            "example": null
+          },
           "coupon_constraints": {
             "type": "array",
             "deprecated": false,
@@ -233102,34 +233320,40 @@
       },
       "CreditRate": {
         "type": "object",
+        "description": "The credit rate establishes a connection between a [metered feature](/docs/api/metered_features) and a [credit unit](/docs/api/credit_units). By defining this relationship, it specifies how usage recorded against the metered feature is converted into credits that are drawn down from the subscription's [credit balance](/docs/api/ledger_account_balances).\n\nA metered feature has at most one credit rate, its feature-level credit rate, which applies to every subscription granted its credit unit. To set a different rate for one subscription, use a [credit rate override](/docs/api/credit_rate_overrides). To see the rate in effect for each metered feature on a subscription, use [subscription credit rates](/docs/api/subscription_credit_rates).\n\nConversion models\n-----------------\n\nA credit rate converts usage into credits in one of two ways, set by [**conversion_model**](#conversion_model).  \n\n### Per unit (`unit`)\n\nEvery unit of usage costs [**credit_cost**](#credit_cost) credits.\n\n**Example:** `opus-usage` costs `1.5` `ai-credits` per token. Using 2,500 tokens draws down 3,750 `ai-credits`.  \n\n### Per package (`package`)\n\nUsage is charged in packages of [**package_size**](#package_size) units, and each package costs [**credit_cost**](#credit_cost) credits. Packages are counted on the total usage in the subscription's billing term, and a partly used package is charged as a full package. Further usage draws down credits only when it starts a new package in the same term.\n\n**Example:** `opus-usage` costs `10` `ai-credits` per package of `1000` tokens.  \n\n|  Usage sent  | Total usage in the term | Packages charged |               Credits drawn down                |\n|--------------|-------------------------|------------------|-------------------------------------------------|\n| 2,500 tokens | 2,500 tokens            | 3                | 30                                              |\n| 300 tokens   | 2,800 tokens            | 3                | 0, because the third package is not used up yet |\n| 300 tokens   | 3,100 tokens            | 4                | 10                                              |\n[Package conversion over one billing term.]\n\n**How credit rates are versioned**\n\n* Credit rates are immutable. [Update a credit rate](/docs/api/credit_rates/update-a-credit-rate) creates a new version instead of changing the current one, and never re-prices usage that was already converted.\n* The [**change_option**](#change_option) of a new version determines which subscriptions move to it and when. Two values are supported: `end_of_term` and `grandfathered`.\n* A version in the history returned by [List credit rate versions](/docs/api/credit_rates/list-credit-rate-versions) is not necessarily the version applied to a given subscription. That depends on the subscription and on each version's `change_option`.\n\nA `credit_cost` of `0` records usage without consuming credits. See [Credit rates and overrides](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/credit-rates-and-overrides).\n\nHow the applicable credit rate is determined\n--------------------------------------------\n\n### With a subscription-level override\n\nWhen the subscription has a [credit rate override](/docs/api/credit_rate_overrides) for the metered feature, the override applies instead of the feature-level credit rate. The latest version of the override applies from the moment it is created or updated.\n\nWhen the override is removed, the subscription goes back to the feature-level credit rate that applies to it.  \n\n### Without overrides\n\nThe first version of a credit rate, created by [Create a credit rate](/docs/api/credit_rates/create-a-credit-rate), applies to all subscriptions. When you update the credit rate, its `change_option` decides which subscriptions get the new version:\n\n* `grandfathered`: Only subscriptions created after the change get the new version. Existing subscriptions stay on the version they already use.\n* `end_of_term`: Subscriptions created after the change get the new version right away. Existing subscriptions get it when their term renews or resets.\n\nWhen more than one version applies to a subscription, the latest one is used.  \n**Subscriptions without the credit unit**\n\nA credit rate applies only to subscriptions that have a credit grant for its [**credit_unit_id**](#credit_unit_id). If a subscription has no credit grant for that credit unit, the credit drawdown for usage of the metered feature is rejected.\n",
         "properties": {
           "id": {
             "type": "string",
             "deprecated": false,
+            "description": "Identifier of the credit rate. It stays the same across all versions and is used for logging and correlating versions. Operations identify a credit rate by `metered_feature_id`, not by this value.\n",
             "maxLength": 50,
             "example": null
           },
           "metered_feature_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [metered feature](/docs/api/metered_features) this credit rate belongs to.\n",
             "maxLength": 50,
             "example": null
           },
           "credit_unit_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [credit unit](/docs/api/credit_units) that usage is converted into. It cannot be changed after the credit rate is created. The rate applies only to subscriptions that have a credit grant for this credit unit.\n",
             "maxLength": 50,
             "example": null
           },
           "unit": {
             "type": "string",
             "deprecated": false,
+            "description": "The unit of measure of the metered feature, such as `tokens`.\n",
             "maxLength": 50,
             "example": null
           },
           "status": {
             "type": "string",
             "deprecated": false,
+            "description": "The status of the credit rate. Currently always `active`.\n\n* active - Usage is converted into credits according to this credit rate.\n* archived - Reserved for future use.\n",
             "enum": [
               "active",
               "archived"
@@ -233139,6 +233363,7 @@
           "conversion_model": {
             "type": "string",
             "deprecated": false,
+            "description": "Determines how usage is converted into credits. See [Conversion models](#conversion-models).\n\n* package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.\n* unit - Every unit of usage costs `credit_cost` credits. `package_size` is always `1`.\n",
             "enum": [
               "unit",
               "package"
@@ -233149,6 +233374,7 @@
             "type": "number",
             "format": "decimal",
             "deprecated": false,
+            "description": "The number of usage units in one package. Applies only when `conversion_model` is `package`; for `unit` it is always `1`.  \n**Constraints**\n\n* Must be greater than `0`.\n* Supports up to 9 decimal places.\n",
             "maximum": 1000000000,
             "minimum": 1e-09,
             "example": null
@@ -233157,6 +233383,7 @@
             "type": "number",
             "format": "decimal",
             "deprecated": false,
+            "description": "The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  \n**Constraints**\n\n* Supports up to 9 decimal places.\n",
             "maximum": 1000000000,
             "minimum": 0,
             "example": null
@@ -233164,6 +233391,7 @@
           "change_option": {
             "type": "string",
             "deprecated": false,
+            "description": "Determines which subscriptions get this version and when. Updates accept `end_of_term` or `grandfathered`. See [How the applicable credit rate is determined](#how-the-applicable-credit-rate-is-determined).\n\n* grandfathered - Only subscriptions created after this version get it. Existing subscriptions stay on the version they already use.\n* end_of_term - Subscriptions created after this version get it right away. Existing subscriptions get it when their term renews or resets.\n* immediately - Set automatically on the first version of a credit rate. Not accepted by [Update a credit rate](/docs/api/credit_rates/update-a-credit-rate).\n",
             "enum": [
               "grandfathered",
               "end_of_term",
@@ -233175,41 +233403,48 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time this version takes effect, in UTC seconds. For `end_of_term` and `grandfathered` versions, this is the time of the update; existing subscriptions pick up the version later, or not at all, according to `change_option`.\n",
             "example": null
           },
           "effective_to": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time this version stopped applying, in UTC seconds. Not returned for the version in effect.\n",
             "example": null
           },
           "version": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The version number, starting at `0` for the first version and increasing by one with each update. Use it to display version history; use `resource_version` to detect changes.\n",
             "example": null
           },
           "resource_version": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "A timestamp in milliseconds identifying this version of the credit rate. Versions are immutable, so the value never changes for a version; each update creates a new version with a new `resource_version`. Use it to detect changes when syncing. It is not a version number; see `version` for that.\n",
             "example": null
           },
           "updated_at": {
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
+            "description": "The time at which the credit rate was last modified, in UTC seconds.\n",
             "example": null
           },
           "note": {
             "type": "string",
             "deprecated": false,
+            "description": "The reason given for this change, shown in the version history.\n",
             "maxLength": 500,
             "example": null
           },
           "created_by": {
             "type": "string",
             "deprecated": false,
+            "description": "The email of the user who created the credit rate.\n",
             "maxLength": 100,
             "example": null
           },
@@ -233217,11 +233452,13 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time at which the credit rate was created, in UTC seconds.\n",
             "example": null
           },
           "updated_by": {
             "type": "string",
             "deprecated": false,
+            "description": "The email of the user who last modified the credit rate.\n",
             "maxLength": 100,
             "example": null
           }
@@ -233235,34 +233472,40 @@
       },
       "CreditRateOverride": {
         "type": "object",
+        "description": "A credit rate override sets a different credit rate for one subscription, for example to apply a negotiated rate. It replaces the [feature-level credit rate](/docs/api/credit_rates) for that subscription only. A subscription can have one override per metered feature, and the override uses the credit unit of the feature-level credit rate.  \n**How overrides work**\n\n* An override applies as soon as it is created or updated. Usage that was already converted into credits is not re-priced.\n* Each update creates a new version of the override.\n* Removing an override returns the subscription to the feature-level credit rate that applies to it.\n\nSee [Credit rates](/docs/api/credit_rates#how-the-applicable-credit-rate-is-determined) for how credit rates are versioned and how the applicable rate is determined.\n\nOverrides are managed with [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override), [Retrieve a credit rate override](/docs/api/credit_rates/retrieve-a-credit-rate-override), and [Remove a credit rate override](/docs/api/credit_rates/remove-a-credit-rate-override), which are listed under [Credit rates](/docs/api/credit_rates).\n",
         "properties": {
           "id": {
             "type": "string",
             "deprecated": false,
+            "description": "Identifier of the override. It stays the same across all versions and is used for logging and correlating versions. Operations identify an override by `metered_feature_id` and `subscription_id`, not by this value.\n",
             "maxLength": 50,
             "example": null
           },
           "metered_feature_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [metered feature](/docs/api/metered_features) this override belongs to.\n",
             "maxLength": 50,
             "example": null
           },
           "credit_unit_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [credit unit](/docs/api/credit_units) inherited from the feature-level credit rate. An override cannot change it.\n",
             "maxLength": 50,
             "example": null
           },
           "unit": {
             "type": "string",
             "deprecated": false,
+            "description": "The unit of measure of the metered feature, such as `tokens`. Included so the rate can be displayed without retrieving the metered feature.\n",
             "maxLength": 50,
             "example": null
           },
           "conversion_model": {
             "type": "string",
             "deprecated": false,
+            "description": "Determines how usage is converted into credits. See [Conversion models](/docs/api/credit_rates#conversion-models).\n\n* package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.\n* unit - Every unit of usage costs `credit_cost` credits. `package_size` is always `1`.\n",
             "enum": [
               "unit",
               "package"
@@ -233273,6 +233516,7 @@
             "type": "number",
             "format": "decimal",
             "deprecated": false,
+            "description": "The number of usage units in one package. Applies only when `conversion_model` is `package`; for `unit` it is always `1`.  \n**Constraints**\n\n* Must be greater than `0`.\n* Supports up to 9 decimal places.\n",
             "maximum": 1000000000,
             "minimum": 1e-09,
             "example": null
@@ -233281,6 +233525,7 @@
             "type": "number",
             "format": "decimal",
             "deprecated": false,
+            "description": "The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  \n**Constraints**\n\n* Supports up to 9 decimal places.\n",
             "maximum": 1000000000,
             "minimum": 0,
             "example": null
@@ -233289,35 +233534,41 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time this version took effect, in UTC seconds. This is when the override was created or last updated.\n",
             "example": null
           },
           "version": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The version number, starting at `0` for the first version and increasing by one with each update. Use it to display version history; use `resource_version` to detect changes.\n",
             "example": null
           },
           "resource_version": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "A timestamp in milliseconds identifying this version of the override. Versions are immutable, so the value never changes for a version; each update creates a new version with a new `resource_version`. Use it to detect changes when syncing. It is not a version number; see `version` for that.\n",
             "example": null
           },
           "updated_at": {
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
+            "description": "The time at which the override was last modified, in UTC seconds.\n",
             "example": null
           },
           "note": {
             "type": "string",
             "deprecated": false,
+            "description": "The reason given for this change, shown in the version history.\n",
             "maxLength": 500,
             "example": null
           },
           "created_by": {
             "type": "string",
             "deprecated": false,
+            "description": "The email of the user who created the override.\n",
             "maxLength": 100,
             "example": null
           },
@@ -233325,22 +233576,26 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time at which the override was created, in UTC seconds.\n",
             "example": null
           },
           "updated_by": {
             "type": "string",
             "deprecated": false,
+            "description": "The email of the user who last modified the override.\n",
             "maxLength": 100,
             "example": null
           },
           "deleted": {
             "type": "boolean",
             "deprecated": false,
+            "description": "Indicates whether this override has been removed.\n",
             "example": null
           },
           "subscription_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [subscription](/docs/api/subscriptions) this override applies to.\n",
             "maxLength": 50,
             "example": null
           },
@@ -233348,6 +233603,7 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The version of the feature-level credit rate the subscription would use without an override. Together with `version`, this identifies a specific override version---for example, override version `1` for credit rate version `0`.\n",
             "example": null
           }
         },
@@ -234567,7 +234823,7 @@
             "type": "string",
             "default": "taxable",
             "deprecated": false,
-            "description": "Specifies if the customer is liable for tax\n\n* zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
+            "description": "Specifies if the customer is liable for tax\n\n* zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.\n* taxable -\n  Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).\n  In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.\n* exempt -\n  * Customer is exempted from tax. When using Chargebee's native [Taxes](https://www.chargebee.com/docs/tax.html) feature or when using the [TaxJar integration](https://www.chargebee.com/docs/taxjar.html), no other action is needed.\n  * However, when using our [Avalara integration](https://www.chargebee.com/docs/avalara.html), optionally, specify `entity_code` or `exempt_number` attributes if you use Chargebee's [AvaTax for Sales](https://www.chargebee.com/docs/avalara.html#configuring-tax-exemption) or specify `exemption_details` attribute if you use [Chargebee's AvaTax for Communications](https://www.chargebee.com/docs/avatax-for-communication.html) integration. Tax may still be applied by Avalara for certain values of `entity_code`/`exempt_number`/`exemption_details` based on the state/region/province of the taxable address.\n",
             "enum": [
               "taxable",
               "exempt",
@@ -252810,7 +253066,7 @@
             "format": "int32",
             "default": 0,
             "deprecated": false,
-            "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.\n* `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .\n",
+            "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.\n* For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.\n",
             "minimum": 0,
             "example": null
           },
@@ -272723,6 +272979,12 @@
                   "maxLength": 100,
                   "example": null
                 },
+                "description": {
+                  "type": "string",
+                  "deprecated": false,
+                  "maxLength": 100,
+                  "example": null
+                },
                 "type": {
                   "type": "string",
                   "default": "percentage",
@@ -276337,21 +276599,21 @@
             "type": "integer",
             "format": "int32",
             "deprecated": false,
-            "description": "Total number of invoices that are due for payment against the subscription.\n**Note:**\nNot supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)\n, and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `due_invoices_count`\n.\n",
+            "description": "Total number of invoices that are due for payment against the subscription.\n**Note:**\nNot supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)\nand a parent customer owns and pays for the subscription's invoices.\nConsolidated invoice amounts are excluded from the `due_invoices_count` calculation.\n",
             "example": null
           },
           "due_since": {
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
-            "description": "Time since this subscription has unpaid invoices.\n**Note:**\nNot supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)\n, and the parent of this customer owns and pays for the invoices of the subscription.\n",
+            "description": "Time since this subscription has unpaid invoices.\n**Note:**\nNot supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)\nand a parent customer owns and pays for the subscription's invoices.\n",
             "example": null
           },
           "total_dues": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
-            "description": "Total invoice due amount for this subscription. The value depends on the [type of currency](/docs/api/subscriptions)\n.\n**Note:**\nNot supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)\n, and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `total_dues`\n.\n",
+            "description": "Total invoice due amount for this subscription. The value depends on the type of currency.\n**Note:**\nNot supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)\nis enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)\nand a parent customer owns and pays for the subscription's invoices.\nConsolidated invoice amounts are excluded from the `total_dues` calculation.\n",
             "minimum": 0,
             "example": null
           },
@@ -278661,34 +278923,40 @@
       },
       "SubscriptionCreditRate": {
         "type": "object",
+        "description": "A subscription credit rate shows the credit rate a subscription uses for a metered feature: its [credit rate override](/docs/api/credit_rate_overrides) if it has one, otherwise the [feature-level credit rate](/docs/api/credit_rates).  \n**Which rate this is**\n\nEach entry is the rate the subscription uses for one metered feature. `is_overridden` says where it comes from:\n\n* `true`: the subscription's [credit rate override](/docs/api/credit_rate_overrides). Every field, including `id`, `version`, and `effective_from`, describes the override.\n* `false`: the feature-level [credit rate](/docs/api/credit_rates) that applies to the subscription.\n\nTo see the feature-level rate behind an override, use [Retrieve a credit rate](/docs/api/credit_rates/retrieve-a-credit-rate).\n\nSee [Credit rates](/docs/api/credit_rates#how-the-applicable-credit-rate-is-determined) for how credit rates are versioned and how the applicable rate is determined.\n",
         "properties": {
           "id": {
             "type": "string",
             "deprecated": false,
+            "description": "Identifier of the rate that applies to the subscription: the subscription's [credit rate override](/docs/api/credit_rate_overrides) when `is_overridden` is `true`, otherwise the feature-level [credit rate](/docs/api/credit_rates). It stays the same across that rate's versions.\n",
             "maxLength": 50,
             "example": null
           },
           "metered_feature_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [metered feature](/docs/api/metered_features) this credit rate belongs to.\n",
             "maxLength": 50,
             "example": null
           },
           "credit_unit_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [credit unit](/docs/api/credit_units) that usage is converted into.\n",
             "maxLength": 50,
             "example": null
           },
           "unit": {
             "type": "string",
             "deprecated": false,
+            "description": "The unit of measure of the metered feature, such as `tokens`. Included so the rate can be displayed without retrieving the metered feature.\n",
             "maxLength": 50,
             "example": null
           },
           "status": {
             "type": "string",
             "deprecated": false,
+            "description": "The status of the credit rate. Currently always `active`.\n\n* active - Usage is converted into credits according to this credit rate.\n* archived - Reserved for future use.\n",
             "enum": [
               "active",
               "archived"
@@ -278698,6 +278966,7 @@
           "conversion_model": {
             "type": "string",
             "deprecated": false,
+            "description": "Determines how the subscription's usage of this metered feature is converted into credits. See [Conversion models](/docs/api/credit_rates#conversion-models).\n\n* package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.\n* unit - Every unit of usage costs `credit_cost` credits. `package_size` is always `1`.\n",
             "enum": [
               "unit",
               "package"
@@ -278708,6 +278977,7 @@
             "type": "number",
             "format": "decimal",
             "deprecated": false,
+            "description": "The number of usage units in one package; `1` when `conversion_model` is `unit`.\n",
             "maximum": 1000000000,
             "minimum": 1e-09,
             "example": null
@@ -278716,6 +278986,7 @@
             "type": "number",
             "format": "decimal",
             "deprecated": false,
+            "description": "The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.\n",
             "maximum": 1000000000,
             "minimum": 0,
             "example": null
@@ -278724,35 +278995,41 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time the version in this entry took effect, in UTC seconds.\n",
             "example": null
           },
           "version": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The version number of the rate in this entry: the override's version when `is_overridden` is `true`, otherwise the feature-level credit rate's. The two are versioned separately, each starting at `0`. Use `resource_version` to detect changes.\n",
             "example": null
           },
           "resource_version": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "A timestamp in milliseconds identifying the version of the rate in this entry. It changes when that rate gets a new version, or when an override is set or removed. Use it to detect changes when syncing. It is not a version number; see `version` for that.\n",
             "example": null
           },
           "updated_at": {
             "type": "integer",
             "format": "unix-time",
             "deprecated": false,
+            "description": "The time at which the rate in this entry was last modified, in UTC seconds.\n",
             "example": null
           },
           "note": {
             "type": "string",
             "deprecated": false,
+            "description": "The reason given for the version in this entry, shown in the version history.\n",
             "maxLength": 500,
             "example": null
           },
           "created_by": {
             "type": "string",
             "deprecated": false,
+            "description": "The email of the user who created the credit rate.\n",
             "maxLength": 100,
             "example": null
           },
@@ -278760,29 +279037,34 @@
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The time at which the credit rate was created, in UTC seconds.\n",
             "example": null
           },
           "updated_by": {
             "type": "string",
             "deprecated": false,
+            "description": "The email of the user who last modified the rate in this entry.\n",
             "maxLength": 100,
             "example": null
           },
           "subscription_id": {
             "type": "string",
             "deprecated": false,
+            "description": "The identifier of the [subscription](/docs/api/subscriptions) this credit rate applies to.\n",
             "maxLength": 50,
             "example": null
           },
           "is_overridden": {
             "type": "boolean",
             "deprecated": false,
+            "description": "Whether the rate in this entry is the subscription's credit rate override (`true`) or the feature-level credit rate (`false`).\n",
             "example": null
           },
           "credit_rate_version": {
             "type": "integer",
             "format": "int64",
             "deprecated": false,
+            "description": "The version of the feature-level credit rate the subscription would use without an override. Returned only when `is_overridden` is `true`.\n",
             "example": null
           }
         },
@@ -283071,7 +283353,7 @@
             "format": "int32",
             "default": 0,
             "deprecated": false,
-            "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.\n* `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .\n",
+            "description": "Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  \n**Note:**\n\n* `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.\n* For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.\n",
             "minimum": 0,
             "example": null
           },

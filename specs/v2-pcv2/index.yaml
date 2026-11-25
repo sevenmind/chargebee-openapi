@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-23.be8df05ab705
-  x-cb-api-version: 2
+  version: 2026-11-24.9c008a6209be
   x-cb-product-catalog-version: 2
+  x-cb-api-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -18577,7 +18577,7 @@ paths:
                   description: |
                     Specifies if the customer is liable for tax.
 
-                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). Third-party tax providers and integrations are not supported. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
+                    * zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
                     * taxable -
                       Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
                       In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -22849,7 +22849,7 @@ paths:
                       Taxes are calculated for this customer based on the [site's tax configuration](https://www.chargebee.com/docs/tax.html).
                       In some regions, [shipping_address](/docs/api/customers) is required for tax computation.
                       If a shipping address is not provided, the [billing_address](/docs/api/customers) is used. If neither address is available, no tax is applied.
-                    * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
+                    * zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
                     * exempt -
                       The customer is exempt from tax.
 
@@ -24007,7 +24007,7 @@ paths:
         This API moves a customer's payment methods, subscriptions, invoices, credit notes, transactions, unbilled charges, and orders to another customer. Events and email logs will not be moved. The API execution is asynchronous.  
         **Note**
 
-        * Moving virtual bank accounts from one customer to another is not supported in this API.
+        * Virtual bank accounts stay with the original customer. This API doesn't move them to the merged customer.
         * Merging customers from different [business entities](/docs/api/getting-started) is not permitted.
       operationId: merge_customers
       parameters:
@@ -30990,14 +30990,14 @@ paths:
 
         Meta data can also be added additionally(supported in Stripe only). Metadata is a JSON object. It is used to store additional information about customers.
 
-        In **Stripe** and **Braintree** payment gateways, changes in card details are auto-updated. This feature can also be used for other payment gateways in which auto-update is not enabled or is not supported by Chargebee.  
+        In **Stripe** and **Braintree** payment gateways, changes in card details are auto-updated. For gateways not listed in the note below, the customer must re-enter the full card details to update an existing card.  
         **Note**
         : This endpoint supports Chargebee Test Gateway, [Stripe](https://www.chargebee.com/docs/2.0/stripe.html)
         , [Braintree](https://www.chargebee.com/docs/2.0/braintree.html)
         , [Authorize.net](https://www.chargebee.com/docs/2.0/authorize-index.html)
         , [Worldpay US eCom](https://www.chargebee.com/docs/2.0/vantiv_worldpay.html)
-        , and [WorldPay Direct Integration](https://www.chargebee.com/docs/2.0/worldpay-direct.html)
-        . For all other gateways, your customers must re-enter the full [card details](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)
+        , [WorldPay Direct Integration](https://www.chargebee.com/docs/2.0/worldpay-direct.html)
+        , EBANX, dLocal, BlueSnap, and Spreedly gateways (such as Bambora, First Data Global, PayPal Pro, Payflow Pro, and Paymill). For all other gateways, your customers must re-enter the full [card details](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)
         to update existing card details. For example, consider a customer not using the gateways mentioned above and wants to update the [card\[billing_addr1\]](/docs/api/payment_sources/update-a-card-payment-source#card_billing_addr1)
         parameter. In such a case, the customer must re-enter the value of all the parameters present in the [card](/docs/api/payment_sources/update-a-card-payment-source#card_first_name)
         object.
@@ -37568,14 +37568,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37583,6 +37575,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway
@@ -37604,14 +37604,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37619,6 +37611,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: status_code
@@ -37640,14 +37640,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37655,6 +37647,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: method
@@ -37676,14 +37676,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37691,6 +37683,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: url
@@ -37712,14 +37712,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37727,6 +37719,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: customer_handle
@@ -37748,14 +37748,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37763,6 +37755,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invoice_handle
@@ -37784,14 +37784,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37799,6 +37791,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: transaction_handle
@@ -37820,14 +37820,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37835,6 +37827,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_method_handle
@@ -37856,14 +37856,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37871,6 +37863,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -37892,14 +37892,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37907,6 +37899,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -37928,14 +37928,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37943,6 +37935,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_intent_handle
@@ -37964,14 +37964,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -37979,6 +37971,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: operation_name
@@ -38000,14 +38000,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38015,6 +38007,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: operation_type
@@ -38036,14 +38036,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38051,6 +38043,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: source
@@ -38072,14 +38072,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38087,6 +38079,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invocation_time
@@ -38597,14 +38597,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38612,6 +38604,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway
@@ -38633,14 +38633,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38648,6 +38640,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: status_code
@@ -38669,14 +38669,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38684,6 +38676,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: method
@@ -38705,14 +38705,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38720,6 +38712,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: url
@@ -38741,14 +38741,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38756,6 +38748,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: id_at_gateway
@@ -38777,14 +38777,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38792,6 +38784,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: customer_handle
@@ -38813,14 +38813,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38828,6 +38820,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: invoice_handle
@@ -38849,14 +38849,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38864,6 +38856,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: transaction_handle
@@ -38885,14 +38885,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38900,6 +38892,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_method_handle
@@ -38921,14 +38921,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38936,6 +38928,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -38957,14 +38957,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -38972,6 +38964,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -38993,14 +38993,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39008,6 +39000,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: payment_intent_handle
@@ -39029,14 +39029,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -39044,6 +39036,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
             example: null
         - name: received_at
@@ -44086,7 +44086,7 @@ paths:
         * The invoice `status` must be `payment_due`, `posted`, or `not_paid`.
         * The invoice must not have successful payments, taxes withheld, applied credit notes, adjustment amounts, refundable credits, or refunds in progress.
         * The outstanding authorization must not already have a successful or in-progress capture.
-        * This operation is not supported for 2Checkout.  
+        * Chargebee does not support this operation for authorizations processed through 2Checkout.  
 
         ### Impacts
 
@@ -44647,7 +44647,7 @@ paths:
       description: |
         Applies a customer's [refundable credits](/docs/api/customers/customer-object#refundable_credits) to a specified invoice.
 
-        You can either specify the credit notes to be applied, or let Chargebee apply the available credit notes automatically.  
+        You can specify the credit notes to apply, including the amount to apply from each credit note and the time it is applied. If you omit the credit notes, Chargebee applies the available credit notes automatically.  
 
         ### Prerequisites \& Constraints
 
@@ -44660,7 +44660,8 @@ paths:
         * The `amount_due` decreases by the amount of credits applied.
         * The invoice `status`:
           * changes to `paid` if the applied credits fully cover the amount due.
-        * remains unchanged if the applied credits only partially cover the amount due.  
+          * remains unchanged if the applied credits only partially cover the amount due.
+        * When the invoice becomes `paid`, [`paid_at`](/docs/api/invoices/invoice-object#paid_at) is set to the `credit_notes[applied_at]` of the application that brought `amount_due` to zero. If that parameter is omitted, `paid_at` is the current time.  
         **Credit Notes**  
         The credit note `status`:
 
@@ -44816,7 +44817,9 @@ paths:
                   type: object
                   deprecated: false
                   description: |
-                    Parameters for credit_notes
+                    The credit notes to apply to this invoice. For each credit note, you can set the amount to apply and the time it is applied.
+
+                    Credit notes are applied in the order they appear in the request. Application stops when the invoice has nothing left to collect, and any remaining credit notes in the request are not applied.
                   properties:
                     id:
                       type: array
@@ -44825,7 +44828,11 @@ paths:
                         **Constraints**
 
                         * `credit_note.type` must be `refundable`.
-                        * The `credit_note.customer_id` must always be the same as `invoice.customer_id` even if `invoice.payment_owner` is different.  
+                        * The `credit_note.customer_id` must always be the same as `invoice.customer_id` even if `invoice.payment_owner` is different.
+                        * Specify each credit note only once. The request fails if the same credit note is passed more than once.  
+                        **Required if**
+
+                        * `credit_notes[amount]` or `credit_notes[applied_at]` is passed for the same entry.  
                         **Default behavior**
 
                         When the parameter is not passed, [available refundable credits](/docs/api/customers/customer-object#refundable_credits) with the customer are applied to the invoice.
@@ -44837,6 +44844,16 @@ paths:
                       example: null
                     amount:
                       type: array
+                      description: |
+                        The amount from this credit note to apply to the invoice, in the [minor unit of the currency](/docs/api/currencies).
+
+                        The amount applied is the smallest of this value, [`credit_note.amount_available`](/docs/api/credit_notes/credit_note-object#amount_available), and the invoice [`amount_due`](/docs/api/invoices/invoice-object#amount_due) that is still collectible. A higher value is reduced to that limit.  
+                        **Constraints**
+
+                        * Minimum value is `1`.  
+                        **Default behavior**
+
+                        When this parameter is not passed, Chargebee applies the smallest of [`credit_note.amount_available`](/docs/api/credit_notes/credit_note-object#amount_available) and the invoice amount still due.
                       items:
                         type: integer
                         format: int64
@@ -44846,6 +44863,17 @@ paths:
                       example: null
                     applied_at:
                       type: array
+                      description: |
+                        The time at which this credit is applied, in seconds since the Unix epoch.
+
+                        This time is stored as [`applied_credits.applied_at`](/docs/api/invoices/invoice-object#applied_credits_applied_at). When this application is what makes the invoice fully paid, the same time is stored as [`paid_at`](/docs/api/invoices/invoice-object#paid_at). When this application uses up the credit note, the same time is stored as [`credit_note.refunded_at`](/docs/api/credit_notes/credit_note-object#refunded_at).  
+                        **Constraints**
+
+                        * Must be on or after the invoice [`date`](/docs/api/invoices/invoice-object#date) and the credit note [`date`](/docs/api/credit_notes/credit_note-object#date).
+                        * Must not be after the current time.  
+                        **Default behavior**
+
+                        When this parameter is not passed, Chargebee uses the current time.
                       items:
                         type: integer
                         format: unix-time
@@ -51570,13 +51598,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: payment_reference_number
           in: query
@@ -51599,13 +51627,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  is:
-                    type: string
-                    minLength: 1
-                    example: null
                   in:
                     type: string
                     pattern: ^\[(.*)(,.*)*\]$
+                    example: null
+                  is:
+                    type: string
+                    minLength: 1
                     example: null
             example: null
       responses:
@@ -54556,7 +54584,7 @@ paths:
                     The rounded-off amount for the credit note. For example, if the credit note amount is $99.99 and it is rounded off to $100.00, then $0.01 is the `round_off_amount`.  
                     **Constraints**
 
-                    * Not supported for zero-decimal [currencies](/docs/api/currencies).
+                    * Applicable only to [currencies](/docs/api/currencies) with decimal places; not applicable to zero-decimal currencies.
                   maximum: 99
                   minimum: -99
                   example: null
@@ -61312,6 +61340,11 @@ paths:
                       example: null
                     description:
                       type: array
+                      description: |
+                        The line item name for this item price. It is returned as the [description](/docs/api/unbilled_charges/unbilled_charge-object#description) of the unbilled charge and displayed on the invoice when the unbilled charge is invoiced.  
+                        **Default value**
+
+                        * The invoice name defined for the item in the product catalog.
                       items:
                         type: string
                         deprecated: false
@@ -61320,6 +61353,11 @@ paths:
                       example: null
                     entity_description:
                       type: array
+                      description: |
+                        Descriptive text displayed below the line item name on the invoice when the unbilled charge is invoiced. This override is not returned on the [unbilled charge](/docs/api/unbilled_charges/unbilled_charge-object) object.  
+                        **Default value**
+
+                        * The [item price description](/docs/api/item_prices/item_price-object#description) from the product catalog.
                       items:
                         type: string
                         deprecated: false
@@ -61469,6 +61507,8 @@ paths:
                   properties:
                     entity_description:
                       type: array
+                      description: |
+                        Descriptive text for this one-time charge, shown below the line item name on the invoice when the unbilled charge is invoiced.
                       items:
                         type: string
                         deprecated: false
@@ -61502,7 +61542,7 @@ paths:
                     description:
                       type: array
                       description: |
-                        Description for this charge
+                        The name of this one-time charge as displayed on the invoice line item when the unbilled charge is invoiced.
                       items:
                         type: string
                         deprecated: false
@@ -70483,7 +70523,7 @@ paths:
       summary: Refund a payment
       description: |
         Refunds an online payment. Applicable only for `transaction`s of [type](/docs/api/transactions/transaction-object#type) = `payment`. You can only refund a `transaction` whose [status](/docs/api/transactions/transaction-object#status) is `success`.  
-        * Not supported for ach_credit, sepa_credit, cash, check, bank_transfer, other.
+        * This operation refunds a successful online payment. It does not apply to `ach_credit`, `sepa_credit`, `cash`, `check`, `bank_transfer`, `automated_bank_transfer`, or `other`.
         * Contact [Chargebee Support](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/how-to-contact-chargebees-support-team?utm_source=docs_api&utm_medium=content&utm_campaign=support) to enable this endpoint.
       operationId: refund_a_payment
       parameters:
@@ -72804,6 +72844,10 @@ paths:
                     This attribute allows you to store custom information with the `hosted_page` object. You can use it to associate specific data with a hosted page session.
                     For example, you can store the ID of the marketing campaign that initiated the user session. After a successful checkout, when the customer is redirected, you can retrieve the hosted page ID from the [redirect URL](/docs/api/hosted_pages/checkout-charge-items-and-one-time-charges)'s query parameters. Using this ID, you can fetch the hosted page and perform actions related to the success of the marketing campaign.
                   maxLength: 2048
+                  example: null
+                allow_offline_payment_methods:
+                  type: boolean
+                  deprecated: false
                   example: null
                 customer:
                   type: object
@@ -100445,13 +100489,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -100905,6 +100949,41 @@ paths:
                     - month
                     - year
                   example: null
+                accounting_detail:
+                  type: object
+                  deprecated: false
+                  properties:
+                    sku:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_code:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category1:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category2:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category3:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category4:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                  example: null
                 item_constraints:
                   type: object
                   deprecated: false
@@ -101110,6 +101189,9 @@ paths:
                   example: null
               example: null
             encoding:
+              accounting_detail:
+                style: deepObject
+                explode: true
               coupon_constraints:
                 style: deepObject
                 explode: true
@@ -102382,6 +102464,41 @@ paths:
                     - active
                     - archived
                   example: null
+                accounting_detail:
+                  type: object
+                  deprecated: false
+                  properties:
+                    sku:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_code:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category1:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category2:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category3:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                    accounting_category4:
+                      type: string
+                      deprecated: false
+                      maxLength: 100
+                      example: null
+                  example: null
                 item_constraints:
                   type: object
                   deprecated: false
@@ -102591,6 +102708,9 @@ paths:
                 - name
               example: null
             encoding:
+              accounting_detail:
+                style: deepObject
+                explode: true
               coupon_constraints:
                 style: deepObject
                 explode: true
@@ -116597,19 +116717,6 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
-                        is:
-                          type: string
-                          description: |-
-                            * `scheduled` - Status of the subscription schedule on creation. 
-                            * `succeeded` - The execution status of the schedule if success. 
-                            * `failed` - The execution status of the schedule if failed. 
-                            * `draft` - Status of the subscription schedule considering as draft
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                         in:
                           type: string
                           description: |-
@@ -116624,6 +116731,19 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
+                        is:
+                          type: string
+                          description: |-
+                            * `scheduled` - Status of the subscription schedule on creation. 
+                            * `succeeded` - The execution status of the schedule if success. 
+                            * `failed` - The execution status of the schedule if failed. 
+                            * `draft` - Status of the subscription schedule considering as draft
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -116631,13 +116751,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        is:
-                          type: string
-                          minLength: 1
-                          example: null
                         in:
                           type: string
                           pattern: ^\[(.*)(,.*)*\]$
+                          example: null
+                        is:
+                          type: string
+                          minLength: 1
                           example: null
                     effective_from:
                       type: object
@@ -121969,7 +122089,13 @@ paths:
     post:
       tags:
         - exports
-      summary: Export Entitlements
+      summary: Export entitlements
+      description: |
+        Starts an export of [entitlements](/docs/api/entitlements). The response is an [export](/docs/api/exports) job. When the job completes, the download is a zip file that contains `Entitlements.csv`.  
+
+        ### Prerequisites \& Constraints
+
+        The Entitlements feature must be enabled on the site.
       operationId: export_entitlements
       parameters:
         - name: chargebee-request-origin-device
@@ -122087,44 +122213,33 @@ paths:
                 entitlement:
                   type: object
                   deprecated: false
+                  description: |
+                    Filters that select which [entitlements](/docs/api/entitlements) are included in the export. Every filter is optional. These filters accept only the `is` and `in` operators.
                   properties:
                     feature_id:
                       type: object
                       deprecated: false
                       description: |
-                        The `id` of the feature towards which this entitlement has been granted.
+                        The `id` of the feature this entitlement grants. For example, `user-licenses`.
+                        **Supported operators:** is, in
                       example: user-licenses
                       properties:
-                        is:
-                          type: string
-                          minLength: 1
-                          example: null
                         in:
                           type: string
                           pattern: ^\[(.*)(,.*)*\]$
+                          example: null
+                        is:
+                          type: string
+                          minLength: 1
                           example: null
                     entity_type:
                       type: object
                       deprecated: false
                       description: |
-                        The `type` of the `entity` to which this entitlement belongs.
+                        The type of entity that holds the entitlement. Possible values are `plan`, `addon`, `charge`, `plan_price`, and `addon_price`.
+                        **Supported operators:** is, in
                       example: plan_price
                       properties:
-                        is:
-                          type: string
-                          description: |-
-                            * `plan` - Plan
-                            * `addon` - Addon
-                            * `charge` - Charge
-                            * `plan_price` - Plan Price
-                            * `addon_price` - Addon Price
-                          enum:
-                            - plan
-                            - addon
-                            - charge
-                            - plan_price
-                            - addon_price
-                          example: null
                         in:
                           type: string
                           description: |-
@@ -122141,20 +122256,36 @@ paths:
                             - addon_price
                           pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
                           example: null
+                        is:
+                          type: string
+                          description: |-
+                            * `plan` - Plan
+                            * `addon` - Addon
+                            * `charge` - Charge
+                            * `plan_price` - Plan Price
+                            * `addon_price` - Addon Price
+                          enum:
+                            - plan
+                            - addon
+                            - charge
+                            - plan_price
+                            - addon_price
+                          example: null
                     entity_id:
                       type: object
                       deprecated: false
                       description: |
-                        The `id` of the `entity` to which this entitlement belongs.
+                        The `id` of the item or item price that holds the entitlement. For example, `usd-professional-monthly`.
+                        **Supported operators:** is, in
                       example: usd-professional-monthly
                       properties:
-                        is:
-                          type: string
-                          minLength: 1
-                          example: null
                         in:
                           type: string
                           pattern: ^\[(.*)(,.*)*\]$
+                          example: null
+                        is:
+                          type: string
+                          minLength: 1
                           example: null
                   example: null
               example: null
@@ -124561,7 +124692,13 @@ paths:
     post:
       tags:
         - exports
-      summary: Export Features
+      summary: Export features
+      description: |
+        Starts an export of [features](/docs/api/features). The response is an [export](/docs/api/exports) job. When the job completes, the download is a zip file that contains `Features.csv`.  
+
+        ### Prerequisites \& Constraints
+
+        The Entitlements feature must be enabled on the site.
       operationId: export_features
       parameters:
         - name: chargebee-request-origin-device
@@ -124679,12 +124816,15 @@ paths:
                 feature:
                   type: object
                   deprecated: false
+                  description: |
+                    Filters that select which [features](/docs/api/features) are included in the export. Every filter is optional.
                   properties:
                     name:
                       type: object
                       deprecated: false
                       description: |
-                        A case-sensitive unique name for the feature. For example: `user license`, `data storage`, `Salesforce Integration`, `devices`, `UHD Streaming`, and so on. **Note:** This name is not displayed on any customer-facing documents or pages such as [invoice PDFs](invoices#retrieve_invoice_as_pdf) or [hosted pages](hosted_pages). However, in the future, it is likely to be introduced on the [Self-Serve Portal](portal_sessions).
+                        The name of the feature. For example, `User licenses`.
+                        **Supported operators:** is, is_not, starts_with, in, not_in
                       example: User licenses
                       properties:
                         is:
@@ -124711,7 +124851,8 @@ paths:
                       type: object
                       deprecated: false
                       description: |
-                        A unique and immutable identifier for the feature. You can set it yourself, in which case it is recommended that a human-readable format (or slug) be used. For example, `number-of-users-ccjht01`. When not provided, a random value is automatically set.
+                        The unique identifier of the feature. For example, `fea-user-licenses`.
+                        **Supported operators:** is, is_not, starts_with, in, not_in
                       example: fea-user-licenses
                       properties:
                         is:
@@ -124737,7 +124878,9 @@ paths:
                     status:
                       type: object
                       deprecated: false
-                      description: The current status of the feature.
+                      description: |
+                        The status of the feature. Possible values are `active`, `archived`, and `draft`.
+                        **Supported operators:** is, is_not, in, not_in
                       example: active
                       properties:
                         is:
@@ -124789,7 +124932,9 @@ paths:
                     type:
                       type: object
                       deprecated: false
-                      description: The type of feature.
+                      description: |
+                        The type of the feature. Possible values are `switch`, `custom`, `quantity`, and `range`.
+                        **Supported operators:** is, is_not, in, not_in
                       example: boolean
                       properties:
                         is:
@@ -124849,7 +124994,9 @@ paths:
                     metered:
                       type: object
                       deprecated: false
-                      description: Determines if feature is metered or not
+                      description: |
+                        Whether the feature is metered. Possible values are `true` and `false`.
+                        **Supported operators:** is
                       example: "true"
                       properties:
                         is:
@@ -126067,13 +126214,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    is:
-                      type: string
-                      minLength: 1
-                      example: null
                     in:
                       type: string
                       pattern: ^\[(.*)(,.*)*\]$
+                      example: null
+                    is:
+                      type: string
+                      minLength: 1
                       example: null
                 coupon:
                   type: object
@@ -139680,7 +139827,7 @@ paths:
                     **Note:**
 
                     * `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.
-                    * `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .
+                    * For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.
                   minimum: 0
                   example: null
                 free_quantity_in_decimal:
@@ -142376,8 +142523,13 @@ paths:
                     Free quantity the subscriptions of this **plan** `item_price` will have. Only the quantity exceeding this value will be charged in the subscription.  
                     **Note:**
 
-                    * `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.
-                    * `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .
+                    * `free_quantity` applies only to [plan](/docs/api/items/item-object#type) `item_price`.
+                    * For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.
+
+                    **Constraints**
+
+                    * `free_quantity` can't be set for metered items when entitlement-based usage billing is enabled.
+                    * `free_quantity` can't be set when `pricing_model` is `flat_fee` (or omitted, which defaults to `flat_fee`), `tiered`, `volume`, or `stairstep`.
                   minimum: 0
                   example: null
                 free_quantity_in_decimal:
@@ -150221,15 +150373,6 @@ paths:
             deprecated: false
             example: active
             properties:
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
-                example: null
               in:
                 type: string
                 description: |-
@@ -150239,6 +150382,15 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
                 example: null
         - name: id
           in: query
@@ -150260,13 +150412,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -153326,13 +153478,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: entity_type
           in: query
@@ -153357,21 +153509,6 @@ paths:
             deprecated: false
             example: plan_price
             properties:
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
-                example: null
               in:
                 type: string
                 description: |-
@@ -153387,6 +153524,21 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -153410,13 +153562,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -162400,19 +162552,6 @@ paths:
             deprecated: false
             example: subscription_reactivation
             properties:
-              is:
-                type: string
-                description: |-
-                  * `unbilled_charges` - Unbilled Charges
-                  * `update_subscriptions` - Update Subscriptions
-                  * `subscription_reactivation` - Subscription Reactivation
-                  * `trial_end_actions` - Trial End Actions
-                enum:
-                  - unbilled_charges
-                  - update_subscriptions
-                  - subscription_reactivation
-                  - trial_end_actions
-                example: null
               in:
                 type: string
                 description: |-
@@ -162426,6 +162565,19 @@ paths:
                   - subscription_reactivation
                   - trial_end_actions
                 pattern: ^\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - subscription_reactivation
+                  - trial_end_actions
                 example: null
       responses:
         "200":
@@ -162923,19 +163075,6 @@ paths:
             deprecated: false
             example: subscription_reactivation
             properties:
-              is:
-                type: string
-                description: |-
-                  * `unbilled_charges` - Unbilled Charges
-                  * `update_subscriptions` - Update Subscriptions
-                  * `subscription_reactivation` - Subscription Reactivation
-                  * `trial_end_actions` - Trial End Actions
-                enum:
-                  - unbilled_charges
-                  - update_subscriptions
-                  - subscription_reactivation
-                  - trial_end_actions
-                example: null
               in:
                 type: string
                 description: |-
@@ -162949,6 +163088,19 @@ paths:
                   - subscription_reactivation
                   - trial_end_actions
                 pattern: ^\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - subscription_reactivation
+                  - trial_end_actions
                 example: null
       responses:
         "200":
@@ -165455,6 +165607,14 @@ paths:
                         maxLength: 100
                         example: null
                       example: null
+                    description:
+                      type: array
+                      items:
+                        type: string
+                        deprecated: false
+                        maxLength: 100
+                        example: null
+                      example: null
                   required:
                     - apply_on
                     - duration_type
@@ -165709,19 +165869,6 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
-              is:
-                type: string
-                description: |-
-                  * `scheduled` - Status of the subscription schedule on creation. 
-                  * `succeeded` - The execution status of the schedule if success. 
-                  * `failed` - The execution status of the schedule if failed. 
-                  * `draft` - Status of the subscription schedule considering as draft
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
-                example: null
               in:
                 type: string
                 description: |-
@@ -165735,6 +165882,19 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `scheduled` - Status of the subscription schedule on creation. 
+                  * `succeeded` - The execution status of the schedule if success. 
+                  * `failed` - The execution status of the schedule if failed. 
+                  * `draft` - Status of the subscription schedule considering as draft
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -165760,13 +165920,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: effective_from
           in: query
@@ -166955,6 +167115,14 @@ paths:
                         The [id of the item price](/docs/api/subscriptions/subscription-object#subscription_items_item_price_id)
                         in the subscription to which the discount is to be applied. Relevant only when `apply_on`
                         = `specific_item_price`.
+                      items:
+                        type: string
+                        deprecated: false
+                        maxLength: 100
+                        example: null
+                      example: null
+                    description:
+                      type: array
                       items:
                         type: string
                         deprecated: false
@@ -172481,6 +172649,11 @@ paths:
                   description: |
                     JSON object of custom attributes (key-value pairs) used for pricing page targeting or content. [Configure](https://www.chargebee.com/docs/retention/settings-and-installation/chargebee-retention-field-mappings) custom attributes in the dashboard.
                   example: null
+                locale:
+                  type: string
+                  deprecated: false
+                  maxLength: 50
+                  example: null
                 pricing_page:
                   type: object
                   deprecated: false
@@ -172965,6 +173138,11 @@ paths:
                   deprecated: false
                   description: |
                     JSON object of custom attributes (key-value pairs) used for pricing page targeting or content. [Configure](https://www.chargebee.com/docs/retention/settings-and-installation/chargebee-retention-field-mappings) custom attributes in the dashboard.
+                  example: null
+                locale:
+                  type: string
+                  deprecated: false
+                  maxLength: 50
                   example: null
                 pricing_page:
                   type: object
@@ -174763,12 +174941,12 @@ paths:
             deprecated: false
             example: "1777556762"
             properties:
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -174777,7 +174955,7 @@ paths:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -174803,12 +174981,12 @@ paths:
             deprecated: false
             example: "1777556271"
             properties:
-              "on":
+              after:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
                 example: null
-              after:
+              before:
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -174817,7 +174995,7 @@ paths:
                 type: string
                 pattern: ^\[\d{10},\d{10}\]$
                 example: null
-              before:
+              "on":
                 type: string
                 format: unix-time
                 pattern: ^\d{10}$
@@ -177301,11 +177479,11 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
+              starts_with:
                 type: string
                 minLength: 1
                 example: null
-              starts_with:
+              is:
                 type: string
                 minLength: 1
                 example: null
@@ -179655,13 +179833,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: reference_id
           in: query
@@ -179683,13 +179861,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
         - name: updated_at
           in: query
@@ -188287,14 +188465,6 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              is_not:
-                type: string
-                minLength: 1
-                example: null
-              is:
-                type: string
-                minLength: 1
-                example: null
               not_in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
@@ -188302,6 +188472,14 @@ paths:
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
+                example: null
+              is_not:
+                type: string
+                minLength: 1
+                example: null
+              is:
+                type: string
+                minLength: 1
                 example: null
       responses:
         "200":
@@ -191983,6 +192161,14 @@ paths:
       tags:
         - metered_features
       summary: List credit rate versions
+      description: |
+        Lists every version of a metered feature's credit rate, newest first.
+
+        Use it to show how a credit rate changed over time: each version includes its rate, `change_option`, `effective_from`, and the `note` given for the change.  
+
+        ### Implementation Notes
+
+        * A version in this list is not necessarily the one applied to a given subscription; that depends on the subscription and on each version's `change_option`. To see the rate that applies to a subscription, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription).
       operationId: list_credit_rate_versions
       parameters:
         - name: chargebee-request-origin-device
@@ -192061,29 +192247,29 @@ paths:
             example: null
         - name: limit
           in: query
+          description: |
+            The number of versions to return.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/limit'
           style: form
           explode: true
           schema:
             type: integer
             format: int32
             default: 10
-            description: The number of resources to be returned.
             maximum: 100
             minimum: 1
             example: null
         - name: offset
           in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset` to the value of `next_offset` obtained in the previous iteration of the API call.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/offset'
           style: form
           explode: true
           schema:
             type: string
-            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
             maxLength: 1000
             example: null
       responses:
@@ -192108,7 +192294,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: |
+                      This attribute is returned only if more versions are present. To fetch the next set of versions, use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -192182,6 +192369,13 @@ paths:
       tags:
         - metered_features
       summary: Retrieve a credit rate
+      description: |
+        Retrieves the latest version of a metered feature's feature-level credit rate. Depending on its `change_option`, this version might not apply to every subscription yet.  
+
+        ### Implementation Notes
+
+        * A credit rate override can replace this rate for a subscription. To see the rate that applies to a subscription, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription).
+        * To see earlier versions, use [List credit rate versions](/docs/api/credit_rates/list-credit-rate-versions).
       operationId: retrieve_a_credit_rate
       parameters:
         - name: chargebee-request-origin-device
@@ -192268,7 +192462,8 @@ paths:
                 properties:
                   credit_rate:
                     $ref: '#/components/schemas/CreditRate'
-                    description: Resource object representing credit_rate
+                    description: |
+                      The credit rate that was created, as version `0`.
                 required:
                   - credit_rate
                 example: null
@@ -192340,6 +192535,12 @@ paths:
       tags:
         - metered_features
       summary: Remove a credit rate override
+      description: |
+        Removes a subscription's credit rate override. The subscription goes back to the feature-level credit rate that applies to it. To use the removed override's pricing again, set a new override with those values.  
+
+        ### Prerequisites \& Constraints
+
+        * The subscription must have an override for the metered feature.
       operationId: remove_a_credit_rate_override
       parameters:
         - name: chargebee-request-origin-device
@@ -192467,11 +192668,15 @@ paths:
                 subscription_id:
                   type: string
                   deprecated: false
+                  description: |
+                    The identifier of the [subscription](/docs/api/subscriptions) whose override is removed.
                   maxLength: 50
                   example: null
                 note:
                   type: string
                   deprecated: false
+                  description: |
+                    The reason for removing the override, shown in the version history.
                   maxLength: 500
                   example: null
               required:
@@ -192488,7 +192693,8 @@ paths:
                 properties:
                   credit_rate_override:
                     $ref: '#/components/schemas/CreditRateOverride'
-                    description: Resource object representing credit_rate_override
+                    description: |
+                      The latest version of the override.
                 required:
                   - credit_rate_override
                 example: null
@@ -192560,6 +192766,20 @@ paths:
       tags:
         - metered_features
       summary: Set a credit rate override
+      description: |
+        Sets the credit rate override for a subscription. If the subscription has no override for the metered feature, this creates one as version `0`. If it already has one, this replaces it with a new version. Either way the override applies as soon as it is set, in place of the feature-level credit rate, and usage that was already converted into credits is not re-priced.
+
+        The request describes the whole override: nothing is carried over from the previous version, so pass every field you want the override to have. The credit unit is taken from the feature-level credit rate and cannot be changed.
+
+        The new override version stores this value in `credit_rate_version`: the version of the feature-level credit rate the subscription would use without an override.  
+
+        ### Prerequisites \& Constraints
+
+        * The metered feature must already have a feature-level credit rate.  
+
+        ### Implementation Notes
+
+        * To return the subscription to the feature-level credit rate, use [Remove a credit rate override](/docs/api/credit_rates/remove-a-credit-rate-override).
       operationId: set_a_credit_rate_override
       parameters:
         - name: chargebee-request-origin-device
@@ -192687,11 +192907,18 @@ paths:
                 subscription_id:
                   type: string
                   deprecated: false
+                  description: |
+                    The identifier of the [subscription](/docs/api/subscriptions) the override applies to.
                   maxLength: 50
                   example: null
                 conversion_model:
                   type: string
                   deprecated: false
+                  description: |
+                    Determines how usage is converted into credits for this subscription. See [Conversion models](/docs/api/credit_rates#conversion-models).
+
+                    * package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.
+                    * unit - Every unit of usage costs `credit_cost` credits. Do not pass `package_size`.
                   enum:
                     - unit
                     - package
@@ -192700,6 +192927,16 @@ paths:
                   type: number
                   format: decimal
                   deprecated: false
+                  description: |
+                    The number of usage units in one package.  
+                    **Required if**
+
+                    * `conversion_model` is `package`.  
+                    **Constraints**
+
+                    * Must be greater than `0`.
+                    * Supports up to 9 decimal places.
+                    * Not accepted when `conversion_model` is `unit`.
                   maximum: 1000000000
                   minimum: 0.0000000010
                   example: null
@@ -192707,12 +192944,20 @@ paths:
                   type: number
                   format: decimal
                   deprecated: false
+                  description: |
+                    The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  
+                    **Constraints**
+
+                    * Must be greater than or equal to `0`.
+                    * Supports up to 9 decimal places.
                   maximum: 1000000000
                   minimum: 0
                   example: null
                 note:
                   type: string
                   deprecated: false
+                  description: |
+                    The reason for this change, shown in the version history.
                   maxLength: 500
                   example: null
               required:
@@ -192731,7 +192976,8 @@ paths:
                 properties:
                   credit_rate_override:
                     $ref: '#/components/schemas/CreditRateOverride'
-                    description: Resource object representing credit_rate_override
+                    description: |
+                      The latest version of the override.
                 required:
                   - credit_rate_override
                 example: null
@@ -192803,6 +193049,19 @@ paths:
       tags:
         - metered_features
       summary: Update a credit rate
+      description: |
+        Changes the credit rate for a metered feature by creating a new version. Earlier versions are kept, and usage that was already converted into credits is not re-priced.
+
+        Fields you don't pass keep their values from the current version. `credit_unit_id` cannot be changed. [**change_option**](#change_option) decides which subscriptions get the new version and when. See [How the applicable credit rate is determined](/docs/api/credit_rates#how-the-applicable-credit-rate-is-determined).  
+
+        ### Prerequisites \& Constraints
+
+        * The metered feature must already have a credit rate.  
+
+        ### Implementation Notes
+
+        * To change the rate for one subscription right away, don't update the credit rate. Use [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override) instead; an override applies to its subscription as soon as it is created.
+        * The response contains the new version. To see the rate that applies to a particular subscription, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription).
       operationId: update_a_credit_rate
       parameters:
         - name: chargebee-request-origin-device
@@ -192930,6 +193189,14 @@ paths:
                 change_option:
                   type: string
                   deprecated: false
+                  description: |
+                    Determines which subscriptions get the new version and when. Pass `end_of_term` or `grandfathered`.
+
+                    **immediately**
+                    Not accepted. To change the rate for one subscription right away, use [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override).
+
+                    * end_of_term - Subscriptions created after the update get the new version right away. Existing subscriptions get it when their term renews or resets.
+                    * grandfathered - Only subscriptions created after the update get the new version. Existing subscriptions stay on the version they already use.
                   enum:
                     - grandfathered
                     - end_of_term
@@ -192938,6 +193205,11 @@ paths:
                 conversion_model:
                   type: string
                   deprecated: false
+                  description: |
+                    Determines how usage is converted into credits. If not passed, the current value is kept. See [Conversion models](/docs/api/credit_rates#conversion-models).
+
+                    * package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.
+                    * unit - Every unit of usage costs `credit_cost` credits. Do not pass `package_size`.
                   enum:
                     - unit
                     - package
@@ -192946,6 +193218,16 @@ paths:
                   type: number
                   format: decimal
                   deprecated: false
+                  description: |
+                    The number of usage units in one package. If not passed, the current value is kept.  
+                    **Required if**
+
+                    * `conversion_model` is `package`.  
+                    **Constraints**
+
+                    * Must be greater than `0`.
+                    * Supports up to 9 decimal places.
+                    * Not accepted when `conversion_model` is `unit`.
                   maximum: 1000000000
                   minimum: 0.0000000010
                   example: null
@@ -192953,12 +193235,20 @@ paths:
                   type: number
                   format: decimal
                   deprecated: false
+                  description: |
+                    The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`. If not passed, the current value is kept.  
+                    **Constraints**
+
+                    * Must be greater than or equal to `0`.
+                    * Supports up to 9 decimal places.
                   maximum: 1000000000
                   minimum: 0
                   example: null
                 note:
                   type: string
                   deprecated: false
+                  description: |
+                    The reason for this change, shown in the version history.
                   maxLength: 500
                   example: null
               required:
@@ -192975,7 +193265,8 @@ paths:
                 properties:
                   credit_rate:
                     $ref: '#/components/schemas/CreditRate'
-                    description: Resource object representing credit_rate
+                    description: |
+                      The credit rate that was created, as version `0`.
                 required:
                   - credit_rate
                 example: null
@@ -193047,10 +193338,22 @@ paths:
       tags:
         - metered_features
       summary: Retrieve a credit rate override
+      description: |
+        Retrieves the latest version of a subscription's credit rate override for a metered feature.  
+
+        ### Prerequisites \& Constraints
+
+        * The subscription must have an override for the metered feature.  
+
+        ### Implementation Notes
+
+        * This operation returns only overrides. It fails when the subscription has no override and uses the feature-level credit rate. To see the rate that applies to a subscription either way, use [List credit rates for a subscription](/docs/api/subscription_credit_rates/list-credit-rates-for-a-subscription) with `metered_feature_id[is]`.
       operationId: retrieve_a_credit_rate_override
       parameters:
         - name: subscription_id
           in: query
+          description: |
+            The identifier of the [subscription](/docs/api/subscriptions) whose override is retrieved.
           required: true
           deprecated: false
           style: form
@@ -193144,7 +193447,8 @@ paths:
                 properties:
                   credit_rate_override:
                     $ref: '#/components/schemas/CreditRateOverride'
-                    description: Resource object representing credit_rate_override
+                    description: |
+                      The latest version of the override.
                 required:
                   - credit_rate_override
                 example: null
@@ -193216,6 +193520,18 @@ paths:
       tags:
         - metered_features
       summary: Create a credit rate
+      description: |
+        Creates the credit rate for a metered feature. The new credit rate is version `0`, is `active`, and applies right away to every subscription that has a credit grant for its `credit_unit_id`.  
+
+        ### Prerequisites \& Constraints
+
+        * The metered feature must exist and be active.
+        * The metered feature must not already have a credit rate.  
+
+        ### Implementation Notes
+
+        * To change the credit rate later, use [Update a credit rate](/docs/api/credit_rates/update-a-credit-rate). Each update creates a new version.
+        * To set a different rate for one subscription, use [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override).
       operationId: create_a_credit_rate
       parameters:
         - name: chargebee-request-origin-device
@@ -193343,11 +193659,18 @@ paths:
                 credit_unit_id:
                   type: string
                   deprecated: false
+                  description: |
+                    The identifier of the [credit unit](/docs/api/credit_units) that usage is converted into. It cannot be changed after the credit rate is created.
                   maxLength: 50
                   example: null
                 conversion_model:
                   type: string
                   deprecated: false
+                  description: |
+                    Determines how usage is converted into credits. See [Conversion models](/docs/api/credit_rates#conversion-models).
+
+                    * package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.
+                    * unit - Every unit of usage costs `credit_cost` credits. Do not pass `package_size`.
                   enum:
                     - unit
                     - package
@@ -193356,6 +193679,16 @@ paths:
                   type: number
                   format: decimal
                   deprecated: false
+                  description: |
+                    The number of usage units in one package.  
+                    **Required if**
+
+                    * `conversion_model` is `package`.  
+                    **Constraints**
+
+                    * Must be greater than `0`.
+                    * Supports up to 9 decimal places.
+                    * Not accepted when `conversion_model` is `unit`.
                   maximum: 1000000000
                   minimum: 0.0000000010
                   example: null
@@ -193363,12 +193696,20 @@ paths:
                   type: number
                   format: decimal
                   deprecated: false
+                  description: |
+                    The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  
+                    **Constraints**
+
+                    * Must be greater than or equal to `0`.
+                    * Supports up to 9 decimal places.
                   maximum: 1000000000
                   minimum: 0
                   example: null
                 note:
                   type: string
                   deprecated: false
+                  description: |
+                    The reason for creating this credit rate, shown in the version history.
                   maxLength: 500
                   example: null
               required:
@@ -193387,7 +193728,8 @@ paths:
                 properties:
                   credit_rate:
                     $ref: '#/components/schemas/CreditRate'
-                    description: Resource object representing credit_rate
+                    description: |
+                      The credit rate that was created, as version `0`.
                 required:
                   - credit_rate
                 example: null
@@ -193459,6 +193801,15 @@ paths:
       tags:
         - subscriptions
       summary: List credit rates for a subscription
+      description: |
+        Lists all the credit rates that apply to a subscription. A credit rate applies to a subscription when the subscription has a credit grant for the credit rate's credit unit. If no credit rates apply, an empty `list` is returned.
+
+        Each entry is the rate the subscription uses for a metered feature: its credit rate override when `is_overridden` is `true`, otherwise the feature-level credit rate.  
+
+        ### Implementation Notes
+
+        * To list only overrides, filter with `is_overridden[is]` set to `true`.
+        * After an override is removed, the entry shows the feature-level credit rate that applies to the subscription, with `is_overridden` set to `false`.
       operationId: list_credit_rates_for_a_subscription
       parameters:
         - name: chargebee-request-origin-device
@@ -193537,33 +193888,43 @@ paths:
             example: null
         - name: limit
           in: query
+          description: |
+            The number of credit rates to return.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/limit'
           style: form
           explode: true
           schema:
             type: integer
             format: int32
             default: 10
-            description: The number of resources to be returned.
             maximum: 100
             minimum: 1
             example: null
         - name: offset
           in: query
+          description: |
+            Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set `offset` to the value of `next_offset` obtained in the previous iteration of the API call.
           required: false
           deprecated: false
-          $ref: '#/components/parameters/offset'
           style: form
           explode: true
           schema:
             type: string
-            description: Determines your position in the list for pagination. To ensure that the next page is retrieved correctly, always set 'offset' to the value of 'next_offset' obtained in the previous iteration of the API call.
             maxLength: 1000
             example: null
         - name: metered_feature_id
           in: query
+          description: |
+            optional, string filter
+
+            The identifier of the metered feature.
+
+            **Supported operators :**
+            is, in
+
+            **Example →**
+            *metered_feature_id\[is\] = "opus-usage"*
           required: false
           deprecated: false
           style: deepObject
@@ -193571,20 +193932,28 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: |
-              Identifier of the metered feature. Filterable on subscription credit rate lists with the `is` and `in` operators.
             properties:
-              is:
-                type: string
-                minLength: 1
-                example: null
               in:
                 type: string
                 pattern: ^\[(.*)(,.*)*\]$
                 example: null
+              is:
+                type: string
+                minLength: 1
+                example: null
             example: null
         - name: credit_unit_id
           in: query
+          description: |
+            optional, string filter
+
+            The identifier of the credit unit that usage is converted into.
+
+            **Supported operators :**
+            is
+
+            **Example →**
+            *credit_unit_id\[is\] = "ai-credits"*
           required: false
           deprecated: false
           style: deepObject
@@ -193592,8 +193961,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: |
-              Identifier of the credit unit. Filterable on subscription credit rate lists with the `is` operator.
             properties:
               is:
                 type: string
@@ -193602,6 +193969,16 @@ paths:
             example: null
         - name: status
           in: query
+          description: |
+            optional, enumerated string filter
+
+            The status of the credit rate. Possible values are : active, archived. Credit rates are currently always `active`.
+
+            **Supported operators :**
+            is
+
+            **Example →**
+            *status\[is\] = "active"*
           required: false
           deprecated: false
           style: deepObject
@@ -193609,8 +193986,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: |
-              Denotes the status of the credit rate. Filterable on subscription credit rate lists with the `is` operator.
             properties:
               is:
                 type: string
@@ -193624,6 +193999,16 @@ paths:
             example: null
         - name: is_overridden
           in: query
+          description: |
+            optional, boolean filter
+
+            Filters by whether the entry is an override (`true`) or the feature-level credit rate (`false`).
+
+            **Supported operators :**
+            is
+
+            **Example →**
+            *is_overridden\[is\] = "true"*
           required: false
           deprecated: false
           style: deepObject
@@ -193631,8 +194016,6 @@ paths:
           schema:
             type: object
             deprecated: false
-            description: |
-              Whether the rate in this entry is the subscription's credit rate override (true) or the feature-level credit rate (false). Filterable on subscription credit rate lists with the `is` operator.
             properties:
               is:
                 type: string
@@ -193644,6 +194027,20 @@ paths:
             example: null
         - name: sort_by
           in: query
+          description: |
+            optional, string filter
+
+            Sorts based on the specified attribute.
+            **Supported attributes :**
+            effective_from, updated_at
+
+            **Supported sort-orders :**
+            asc, desc
+
+            Only one sort order may be specified. Defaults to descending `effective_from`.
+
+            **Example →**
+            *sort_by\[desc\] = "updated_at"*
           required: false
           style: deepObject
           explode: true
@@ -193686,7 +194083,8 @@ paths:
                     example: null
                   next_offset:
                     type: string
-                    description: This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
+                    description: |
+                      This attribute is returned only if more resources are present. To fetch the next set of resources use this value for the input parameter `offset`.
                     maxLength: 1000
                     example: null
                 required:
@@ -195845,31 +196243,6 @@ paths:
             type: object
             deprecated: false
             properties:
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
-                example: null
               in:
                 type: string
                 description: |-
@@ -195895,6 +196268,31 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
+                example: null
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -200421,6 +200819,11 @@ components:
           deprecated: false
           maxLength: 100
           example: null
+        business_entity_id:
+          type: string
+          deprecated: false
+          maxLength: 50
+          example: null
       required:
         - billing_doc_type
         - created_at
@@ -200667,6 +201070,11 @@ components:
           type: string
           deprecated: false
           maxLength: 3
+          example: null
+        business_entity_id:
+          type: string
+          deprecated: false
+          maxLength: 50
           example: null
         discounts:
           type: array
@@ -205570,6 +205978,41 @@ components:
               - item_type
             example: null
           example: null
+        accounting_detail:
+          type: object
+          deprecated: false
+          properties:
+            sku:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            accounting_code:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            accounting_category1:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            accounting_category2:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            accounting_category3:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+            accounting_category4:
+              type: string
+              deprecated: false
+              maxLength: 100
+              example: null
+          example: null
         coupon_constraints:
           type: array
           deprecated: false
@@ -209117,30 +209560,100 @@ components:
       example: null
     CreditRate:
       type: object
+      description: |
+        The credit rate establishes a connection between a [metered feature](/docs/api/metered_features) and a [credit unit](/docs/api/credit_units). By defining this relationship, it specifies how usage recorded against the metered feature is converted into credits that are drawn down from the subscription's [credit balance](/docs/api/ledger_account_balances).
+
+        A metered feature has at most one credit rate, its feature-level credit rate, which applies to every subscription granted its credit unit. To set a different rate for one subscription, use a [credit rate override](/docs/api/credit_rate_overrides). To see the rate in effect for each metered feature on a subscription, use [subscription credit rates](/docs/api/subscription_credit_rates).
+
+        Conversion models
+        -----------------
+
+        A credit rate converts usage into credits in one of two ways, set by [**conversion_model**](#conversion_model).  
+
+        ### Per unit (`unit`)
+
+        Every unit of usage costs [**credit_cost**](#credit_cost) credits.
+
+        **Example:** `opus-usage` costs `1.5` `ai-credits` per token. Using 2,500 tokens draws down 3,750 `ai-credits`.  
+
+        ### Per package (`package`)
+
+        Usage is charged in packages of [**package_size**](#package_size) units, and each package costs [**credit_cost**](#credit_cost) credits. Packages are counted on the total usage in the subscription's billing term, and a partly used package is charged as a full package. Further usage draws down credits only when it starts a new package in the same term.
+
+        **Example:** `opus-usage` costs `10` `ai-credits` per package of `1000` tokens.  
+
+        |  Usage sent  | Total usage in the term | Packages charged |               Credits drawn down                |
+        |--------------|-------------------------|------------------|-------------------------------------------------|
+        | 2,500 tokens | 2,500 tokens            | 3                | 30                                              |
+        | 300 tokens   | 2,800 tokens            | 3                | 0, because the third package is not used up yet |
+        | 300 tokens   | 3,100 tokens            | 4                | 10                                              |
+        [Package conversion over one billing term.]
+
+        **How credit rates are versioned**
+
+        * Credit rates are immutable. [Update a credit rate](/docs/api/credit_rates/update-a-credit-rate) creates a new version instead of changing the current one, and never re-prices usage that was already converted.
+        * The [**change_option**](#change_option) of a new version determines which subscriptions move to it and when. Two values are supported: `end_of_term` and `grandfathered`.
+        * A version in the history returned by [List credit rate versions](/docs/api/credit_rates/list-credit-rate-versions) is not necessarily the version applied to a given subscription. That depends on the subscription and on each version's `change_option`.
+
+        A `credit_cost` of `0` records usage without consuming credits. See [Credit rates and overrides](https://www.chargebee.com/docs/billing/2.0/usage-based-billing/credit-rates-and-overrides).
+
+        How the applicable credit rate is determined
+        --------------------------------------------
+
+        ### With a subscription-level override
+
+        When the subscription has a [credit rate override](/docs/api/credit_rate_overrides) for the metered feature, the override applies instead of the feature-level credit rate. The latest version of the override applies from the moment it is created or updated.
+
+        When the override is removed, the subscription goes back to the feature-level credit rate that applies to it.  
+
+        ### Without overrides
+
+        The first version of a credit rate, created by [Create a credit rate](/docs/api/credit_rates/create-a-credit-rate), applies to all subscriptions. When you update the credit rate, its `change_option` decides which subscriptions get the new version:
+
+        * `grandfathered`: Only subscriptions created after the change get the new version. Existing subscriptions stay on the version they already use.
+        * `end_of_term`: Subscriptions created after the change get the new version right away. Existing subscriptions get it when their term renews or resets.
+
+        When more than one version applies to a subscription, the latest one is used.  
+        **Subscriptions without the credit unit**
+
+        A credit rate applies only to subscriptions that have a credit grant for its [**credit_unit_id**](#credit_unit_id). If a subscription has no credit grant for that credit unit, the credit drawdown for usage of the metered feature is rejected.
       properties:
         id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the credit rate. It stays the same across all versions and is used for logging and correlating versions. Operations identify a credit rate by `metered_feature_id`, not by this value.
           maxLength: 50
           example: null
         metered_feature_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [metered feature](/docs/api/metered_features) this credit rate belongs to.
           maxLength: 50
           example: null
         credit_unit_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [credit unit](/docs/api/credit_units) that usage is converted into. It cannot be changed after the credit rate is created. The rate applies only to subscriptions that have a credit grant for this credit unit.
           maxLength: 50
           example: null
         unit:
           type: string
           deprecated: false
+          description: |
+            The unit of measure of the metered feature, such as `tokens`.
           maxLength: 50
           example: null
         status:
           type: string
           deprecated: false
+          description: |
+            The status of the credit rate. Currently always `active`.
+
+            * active - Usage is converted into credits according to this credit rate.
+            * archived - Reserved for future use.
           enum:
             - active
             - archived
@@ -209148,6 +209661,11 @@ components:
         conversion_model:
           type: string
           deprecated: false
+          description: |
+            Determines how usage is converted into credits. See [Conversion models](#conversion-models).
+
+            * package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.
+            * unit - Every unit of usage costs `credit_cost` credits. `package_size` is always `1`.
           enum:
             - unit
             - package
@@ -209156,6 +209674,12 @@ components:
           type: number
           format: decimal
           deprecated: false
+          description: |
+            The number of usage units in one package. Applies only when `conversion_model` is `package`; for `unit` it is always `1`.  
+            **Constraints**
+
+            * Must be greater than `0`.
+            * Supports up to 9 decimal places.
           maximum: 1000000000
           minimum: 0.0000000010
           example: null
@@ -209163,12 +209687,23 @@ components:
           type: number
           format: decimal
           deprecated: false
+          description: |
+            The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  
+            **Constraints**
+
+            * Supports up to 9 decimal places.
           maximum: 1000000000
           minimum: 0
           example: null
         change_option:
           type: string
           deprecated: false
+          description: |
+            Determines which subscriptions get this version and when. Updates accept `end_of_term` or `grandfathered`. See [How the applicable credit rate is determined](#how-the-applicable-credit-rate-is-determined).
+
+            * grandfathered - Only subscriptions created after this version get it. Existing subscriptions stay on the version they already use.
+            * end_of_term - Subscriptions created after this version get it right away. Existing subscriptions get it when their term renews or resets.
+            * immediately - Set automatically on the first version of a credit rate. Not accepted by [Update a credit rate](/docs/api/credit_rates/update-a-credit-rate).
           enum:
             - grandfathered
             - end_of_term
@@ -209178,45 +209713,63 @@ components:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The time this version takes effect, in UTC seconds. For `end_of_term` and `grandfathered` versions, this is the time of the update; existing subscriptions pick up the version later, or not at all, according to `change_option`.
           example: null
         effective_to:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The time this version stopped applying, in UTC seconds. Not returned for the version in effect.
           example: null
         version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The version number, starting at `0` for the first version and increasing by one with each update. Use it to display version history; use `resource_version` to detect changes.
           example: null
         resource_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            A timestamp in milliseconds identifying this version of the credit rate. Versions are immutable, so the value never changes for a version; each update creates a new version with a new `resource_version`. Use it to detect changes when syncing. It is not a version number; see `version` for that.
           example: null
         updated_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            The time at which the credit rate was last modified, in UTC seconds.
           example: null
         note:
           type: string
           deprecated: false
+          description: |
+            The reason given for this change, shown in the version history.
           maxLength: 500
           example: null
         created_by:
           type: string
           deprecated: false
+          description: |
+            The email of the user who created the credit rate.
           maxLength: 100
           example: null
         created_at:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The time at which the credit rate was created, in UTC seconds.
           example: null
         updated_by:
           type: string
           deprecated: false
+          description: |
+            The email of the user who last modified the credit rate.
           maxLength: 100
           example: null
       required:
@@ -209226,30 +209779,54 @@ components:
       example: null
     CreditRateOverride:
       type: object
+      description: |
+        A credit rate override sets a different credit rate for one subscription, for example to apply a negotiated rate. It replaces the [feature-level credit rate](/docs/api/credit_rates) for that subscription only. A subscription can have one override per metered feature, and the override uses the credit unit of the feature-level credit rate.  
+        **How overrides work**
+
+        * An override applies as soon as it is created or updated. Usage that was already converted into credits is not re-priced.
+        * Each update creates a new version of the override.
+        * Removing an override returns the subscription to the feature-level credit rate that applies to it.
+
+        See [Credit rates](/docs/api/credit_rates#how-the-applicable-credit-rate-is-determined) for how credit rates are versioned and how the applicable rate is determined.
+
+        Overrides are managed with [Set a credit rate override](/docs/api/credit_rates/set-a-credit-rate-override), [Retrieve a credit rate override](/docs/api/credit_rates/retrieve-a-credit-rate-override), and [Remove a credit rate override](/docs/api/credit_rates/remove-a-credit-rate-override), which are listed under [Credit rates](/docs/api/credit_rates).
       properties:
         id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the override. It stays the same across all versions and is used for logging and correlating versions. Operations identify an override by `metered_feature_id` and `subscription_id`, not by this value.
           maxLength: 50
           example: null
         metered_feature_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [metered feature](/docs/api/metered_features) this override belongs to.
           maxLength: 50
           example: null
         credit_unit_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [credit unit](/docs/api/credit_units) inherited from the feature-level credit rate. An override cannot change it.
           maxLength: 50
           example: null
         unit:
           type: string
           deprecated: false
+          description: |
+            The unit of measure of the metered feature, such as `tokens`. Included so the rate can be displayed without retrieving the metered feature.
           maxLength: 50
           example: null
         conversion_model:
           type: string
           deprecated: false
+          description: |
+            Determines how usage is converted into credits. See [Conversion models](/docs/api/credit_rates#conversion-models).
+
+            * package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.
+            * unit - Every unit of usage costs `credit_cost` credits. `package_size` is always `1`.
           enum:
             - unit
             - package
@@ -209258,6 +209835,12 @@ components:
           type: number
           format: decimal
           deprecated: false
+          description: |
+            The number of usage units in one package. Applies only when `conversion_model` is `package`; for `unit` it is always `1`.  
+            **Constraints**
+
+            * Must be greater than `0`.
+            * Supports up to 9 decimal places.
           maximum: 1000000000
           minimum: 0.0000000010
           example: null
@@ -209265,6 +209848,11 @@ components:
           type: number
           format: decimal
           deprecated: false
+          description: |
+            The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.  
+            **Constraints**
+
+            * Supports up to 9 decimal places.
           maximum: 1000000000
           minimum: 0
           example: null
@@ -209272,55 +209860,77 @@ components:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The time this version took effect, in UTC seconds. This is when the override was created or last updated.
           example: null
         version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The version number, starting at `0` for the first version and increasing by one with each update. Use it to display version history; use `resource_version` to detect changes.
           example: null
         resource_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            A timestamp in milliseconds identifying this version of the override. Versions are immutable, so the value never changes for a version; each update creates a new version with a new `resource_version`. Use it to detect changes when syncing. It is not a version number; see `version` for that.
           example: null
         updated_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            The time at which the override was last modified, in UTC seconds.
           example: null
         note:
           type: string
           deprecated: false
+          description: |
+            The reason given for this change, shown in the version history.
           maxLength: 500
           example: null
         created_by:
           type: string
           deprecated: false
+          description: |
+            The email of the user who created the override.
           maxLength: 100
           example: null
         created_at:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The time at which the override was created, in UTC seconds.
           example: null
         updated_by:
           type: string
           deprecated: false
+          description: |
+            The email of the user who last modified the override.
           maxLength: 100
           example: null
         deleted:
           type: boolean
           deprecated: false
+          description: |
+            Indicates whether this override has been removed.
           example: null
         subscription_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [subscription](/docs/api/subscriptions) this override applies to.
           maxLength: 50
           example: null
         credit_rate_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The version of the feature-level credit rate the subscription would use without an override. Together with `version`, this identifies a specific override version---for example, override version `1` for credit rate version `0`.
           example: null
       required:
         - credit_unit_id
@@ -210627,7 +211237,7 @@ components:
           description: |
             Specifies if the customer is liable for tax
 
-            * zero_rated - This option is available only when zero-rated customer taxability is enabled for the site and the site uses [Chargebee Taxes](https://www.chargebee.com/docs/tax.html); third-party tax providers and integrations are not supported. Otherwise taxable line items for the customer are taxed at 0%. These line items have `is_taxed` set to `true`, the tax rate and tax amount set to `0`, and `tax_exempt_reason` set to `zero_rated`. Unlike `exempt`, this option follows the taxable tax path at a zero rate.
+            * zero_rated - This option is available when zero-rated customer taxability is enabled for the site and taxes are calculated by [Chargebee Taxes](https://www.chargebee.com/docs/tax.html). It does not apply to taxes calculated by third-party tax providers or integrations. Line items that would otherwise be taxable are taxed at 0%. For these line items, `is_taxed` is `true`, the tax rate and tax amount are `0`, and `tax_exempt_reason` is `zero_rated`. Unlike `exempt`, `zero_rated` follows the taxable tax path at a zero rate.
             * taxable -
               Computes tax for the customer based on the [site configuration](https://www.chargebee.com/docs/tax.html).
               In some cases, depending on the region, shipping_address is needed. If not provided, then billing_address is used to compute tax. If that's not available either, the tax is taken as zero.
@@ -230695,7 +231305,7 @@ components:
             **Note:**
 
             * `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.
-            * `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .
+            * For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.
           minimum: 0
           example: null
         free_quantity_in_decimal:
@@ -251864,6 +252474,11 @@ components:
                   .
                 maxLength: 100
                 example: null
+              description:
+                type: string
+                deprecated: false
+                maxLength: 100
+                example: null
               type:
                 type: string
                 default: percentage
@@ -255698,10 +256313,10 @@ components:
           description: |
             Total number of invoices that are due for payment against the subscription.
             **Note:**
-            Not supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
-            is enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)
-            , and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `due_invoices_count`
-            .
+            Not supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
+            is enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)
+            and a parent customer owns and pays for the subscription's invoices.
+            Consolidated invoice amounts are excluded from the `due_invoices_count` calculation.
           example: null
         due_since:
           type: integer
@@ -255710,22 +256325,21 @@ components:
           description: |
             Time since this subscription has unpaid invoices.
             **Note:**
-            Not supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
-            is enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)
-            , and the parent of this customer owns and pays for the invoices of the subscription.
+            Not supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
+            is enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)
+            and a parent customer owns and pays for the subscription's invoices.
           example: null
         total_dues:
           type: integer
           format: int64
           deprecated: false
           description: |
-            Total invoice due amount for this subscription. The value depends on the [type of currency](/docs/api/subscriptions)
-            .
+            Total invoice due amount for this subscription. The value depends on the type of currency.
             **Note:**
-            Not supported if [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
-            is enabled, or when the subscription is for the customer who is in [hierarchy](/docs/api/hierarchies)
-            , and the parent of this customer owns and pays for the invoices of the subscription. It is also worth noting that the consolidated invoice amount is not included in the calculation of `total_dues`
-            .
+            Not supported when [consolidated invoicing](https://www.chargebee.com/docs/consolidated-invoicing.html)
+            is enabled, or when the subscription is for a customer in [hierarchy](/docs/api/hierarchies)
+            and a parent customer owns and pays for the subscription's invoices.
+            Consolidated invoice amounts are excluded from the `total_dues` calculation.
           minimum: 0
           example: null
         mrr:
@@ -258036,30 +258650,55 @@ components:
       example: null
     SubscriptionCreditRate:
       type: object
+      description: |
+        A subscription credit rate shows the credit rate a subscription uses for a metered feature: its [credit rate override](/docs/api/credit_rate_overrides) if it has one, otherwise the [feature-level credit rate](/docs/api/credit_rates).  
+        **Which rate this is**
+
+        Each entry is the rate the subscription uses for one metered feature. `is_overridden` says where it comes from:
+
+        * `true`: the subscription's [credit rate override](/docs/api/credit_rate_overrides). Every field, including `id`, `version`, and `effective_from`, describes the override.
+        * `false`: the feature-level [credit rate](/docs/api/credit_rates) that applies to the subscription.
+
+        To see the feature-level rate behind an override, use [Retrieve a credit rate](/docs/api/credit_rates/retrieve-a-credit-rate).
+
+        See [Credit rates](/docs/api/credit_rates#how-the-applicable-credit-rate-is-determined) for how credit rates are versioned and how the applicable rate is determined.
       properties:
         id:
           type: string
           deprecated: false
+          description: |
+            Identifier of the rate that applies to the subscription: the subscription's [credit rate override](/docs/api/credit_rate_overrides) when `is_overridden` is `true`, otherwise the feature-level [credit rate](/docs/api/credit_rates). It stays the same across that rate's versions.
           maxLength: 50
           example: null
         metered_feature_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [metered feature](/docs/api/metered_features) this credit rate belongs to.
           maxLength: 50
           example: null
         credit_unit_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [credit unit](/docs/api/credit_units) that usage is converted into.
           maxLength: 50
           example: null
         unit:
           type: string
           deprecated: false
+          description: |
+            The unit of measure of the metered feature, such as `tokens`. Included so the rate can be displayed without retrieving the metered feature.
           maxLength: 50
           example: null
         status:
           type: string
           deprecated: false
+          description: |
+            The status of the credit rate. Currently always `active`.
+
+            * active - Usage is converted into credits according to this credit rate.
+            * archived - Reserved for future use.
           enum:
             - active
             - archived
@@ -258067,6 +258706,11 @@ components:
         conversion_model:
           type: string
           deprecated: false
+          description: |
+            Determines how the subscription's usage of this metered feature is converted into credits. See [Conversion models](/docs/api/credit_rates#conversion-models).
+
+            * package - Usage is charged in packages of `package_size` units, and each package costs `credit_cost` credits. Packages are counted on the total usage in the billing term, and a partly used package is charged as a full package.
+            * unit - Every unit of usage costs `credit_cost` credits. `package_size` is always `1`.
           enum:
             - unit
             - package
@@ -258075,6 +258719,8 @@ components:
           type: number
           format: decimal
           deprecated: false
+          description: |
+            The number of usage units in one package; `1` when `conversion_model` is `unit`.
           maximum: 1000000000
           minimum: 0.0000000010
           example: null
@@ -258082,6 +258728,8 @@ components:
           type: number
           format: decimal
           deprecated: false
+          description: |
+            The credits charged for each unit of usage when `conversion_model` is `unit`, or for each package of `package_size` units when `conversion_model` is `package`.
           maximum: 1000000000
           minimum: 0
           example: null
@@ -258089,55 +258737,77 @@ components:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The time the version in this entry took effect, in UTC seconds.
           example: null
         version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The version number of the rate in this entry: the override's version when `is_overridden` is `true`, otherwise the feature-level credit rate's. The two are versioned separately, each starting at `0`. Use `resource_version` to detect changes.
           example: null
         resource_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            A timestamp in milliseconds identifying the version of the rate in this entry. It changes when that rate gets a new version, or when an override is set or removed. Use it to detect changes when syncing. It is not a version number; see `version` for that.
           example: null
         updated_at:
           type: integer
           format: unix-time
           deprecated: false
+          description: |
+            The time at which the rate in this entry was last modified, in UTC seconds.
           example: null
         note:
           type: string
           deprecated: false
+          description: |
+            The reason given for the version in this entry, shown in the version history.
           maxLength: 500
           example: null
         created_by:
           type: string
           deprecated: false
+          description: |
+            The email of the user who created the credit rate.
           maxLength: 100
           example: null
         created_at:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The time at which the credit rate was created, in UTC seconds.
           example: null
         updated_by:
           type: string
           deprecated: false
+          description: |
+            The email of the user who last modified the rate in this entry.
           maxLength: 100
           example: null
         subscription_id:
           type: string
           deprecated: false
+          description: |
+            The identifier of the [subscription](/docs/api/subscriptions) this credit rate applies to.
           maxLength: 50
           example: null
         is_overridden:
           type: boolean
           deprecated: false
+          description: |
+            Whether the rate in this entry is the subscription's credit rate override (`true`) or the feature-level credit rate (`false`).
           example: null
         credit_rate_version:
           type: integer
           format: int64
           deprecated: false
+          description: |
+            The version of the feature-level credit rate the subscription would use without an override. Returned only when `is_overridden` is `true`.
           example: null
       required:
         - credit_unit_id
@@ -262511,7 +263181,7 @@ components:
             **Note:**
 
             * `free_quantity` is currently supported only for [plan](/docs/api/items/item-object#type) `item_price`.
-            * `free_quantity` is not supported for the [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB). All included or free quantities should be configured exclusively through [entitlements](/docs/api/entitlements) .
+            * For [Usage-Based Billing](https://www.chargebee.com/docs/2.0/understanding-usages.html) (UBB), configure all included or free quantities exclusively through [entitlements](/docs/api/entitlements) instead of `free_quantity`.
           minimum: 0
           example: null
         free_quantity_in_decimal:
