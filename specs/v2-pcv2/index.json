@@ -7,9 +7,9 @@
       "url": "https://www.chargebee.com",
       "email": "support@chargebee.com"
     },
-    "version": "2026-11-24.9c008a6209be",
-    "x-cb-product-catalog-version": 2,
-    "x-cb-api-version": 2
+    "version": "2026-11-25.93dbb747b7b5",
+    "x-cb-api-version": 2,
+    "x-cb-product-catalog-version": 2
   },
   "servers": [
     {
@@ -40354,9 +40354,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40369,9 +40369,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40390,9 +40390,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40405,9 +40405,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40426,9 +40426,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40441,9 +40441,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40462,9 +40462,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40477,9 +40477,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40498,9 +40498,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40513,9 +40513,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40534,9 +40534,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40549,9 +40549,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40570,9 +40570,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40585,9 +40585,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40606,9 +40606,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40621,9 +40621,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40642,9 +40642,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40657,9 +40657,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40678,9 +40678,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40693,9 +40693,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40714,9 +40714,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40729,9 +40729,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40750,9 +40750,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40765,9 +40765,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40786,9 +40786,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40801,9 +40801,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40822,9 +40822,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40837,9 +40837,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -40858,9 +40858,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -40873,9 +40873,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41502,9 +41502,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41517,9 +41517,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41538,9 +41538,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41553,9 +41553,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41574,9 +41574,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41589,9 +41589,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41610,9 +41610,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41625,9 +41625,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41646,9 +41646,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41661,9 +41661,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41682,9 +41682,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41697,9 +41697,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41718,9 +41718,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41733,9 +41733,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41754,9 +41754,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41769,9 +41769,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41790,9 +41790,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41805,9 +41805,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41826,9 +41826,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41841,9 +41841,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41862,9 +41862,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41877,9 +41877,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41898,9 +41898,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41913,9 +41913,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -41934,9 +41934,9 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -41949,9 +41949,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -55792,14 +55792,14 @@
               "deprecated": false,
               "example": "old_inv_001",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -55823,14 +55823,14 @@
                   "description": "This parameter is used to identify the PRN in the system and retrieve its corresponding payment information.\n**Note**:\nTo retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.\n",
                   "example": "001234",
                   "properties": {
-                    "in": {
-                      "type": "string",
-                      "pattern": "^\\[(.*)(,.*)*\\]$",
-                      "example": null
-                    },
                     "is": {
                       "type": "string",
                       "minLength": 1,
+                      "example": null
+                    },
+                    "in": {
+                      "type": "string",
+                      "pattern": "^\\[(.*)(,.*)*\\]$",
                       "example": null
                     }
                   }
@@ -79821,6 +79821,7 @@
                   "allow_offline_payment_methods": {
                     "type": "boolean",
                     "deprecated": false,
+                    "description": "Whether the customer can pay with an [offline payment method](https://www.chargebee.com/docs/payments/2.0/offline-checkout/offline_payments), such as cash, check, or bank transfer, on this checkout. When the customer pays offline, Chargebee creates the invoice with the [`payment_due`](/docs/api/invoices#invoice_status) status and does not attempt to collect payment. Use [Record an invoice payment](/docs/api/invoices/record-an-invoice-payment) to record the payment after you receive it.\n\n* `true`: Offline payment methods are offered, even if they are disabled in the site's checkout settings, including the one-time payments setting.\n* `false`: Offline payment methods are not offered.\n\n**Prerequisites**\n\n* Offline payment methods are enabled and configured for the site, for the checkout's currency.  \n**Default behavior**\n\n* When not provided, offline payment methods are offered only when both **Allow customers to use offline payment methods** (checkout settings) and **Provide offline payment methods for one time purchases** (one-time payments settings) are enabled. The other offline payment settings, such as restricting offline payment methods to customers who have no online payment method, also apply.\n",
                     "example": null
                   },
                   "customer": {
@@ -81723,6 +81724,7 @@
                   "show_billing_frequency_selector": {
                     "type": "boolean",
                     "deprecated": false,
+                    "description": "Whether the billing frequency selector is shown on this checkout.  \n**Default behavior**\n\nWhen not passed, the selector follows the site-level [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).\n",
                     "example": null
                   },
                   "gifter": {
@@ -81907,6 +81909,7 @@
                     "properties": {
                       "period": {
                         "type": "array",
+                        "description": "The billing period, in `allowed_billing_frequencies[period_unit]` units, of a frequency the customer may pick on this checkout. A quarterly cadence is `period` `3` and `period_unit` `month`.\n\nPass each frequency as a pair, `allowed_billing_frequencies[period][n]` and `allowed_billing_frequencies[period_unit][n]`, starting at `n` of `0`.  \n**Default behavior**\n\nWhen not passed, the selector offers [every billing frequency](/docs/api/item_prices/list-item-prices) enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).  \n**Constraints**\n\n* Minimum value is `1`.\n* At most 3 frequencies, including the initial frequency.\n* Every index needs both `period` and `period_unit`.\n* Each frequency must be enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).\n* The list must include the billing frequency of the plan [item prices](/docs/api/hosted_pages/checkout-gift-subscription-for-items#subscription_items_item_price_id) specified in this checkout.\n* When more than one plan [item price](/docs/api/hosted_pages/checkout-gift-subscription-for-items#subscription_items_item_price_id) is included in the checkout, the listed frequencies here must have a matching [item price](/docs/api/item_prices) under every plan [item](/docs/api/items).\n",
                         "items": {
                           "type": "integer",
                           "format": "int32",
@@ -81921,6 +81924,7 @@
                         "items": {
                           "type": "string",
                           "deprecated": false,
+                          "description": "The unit of time for `allowed_billing_frequencies[period]`.  \n**Required if**\n\nRequired for every index that has a `period`.\n\n* month - A period of 1 calendar month.\n* day - A period of 24 hours.\n* year - A period of 1 calendar year.\n* week - A period of 7 days.\n",
                           "enum": [
                             "day",
                             "week",
@@ -83853,6 +83857,7 @@
                   "show_billing_frequency_selector": {
                     "type": "boolean",
                     "deprecated": false,
+                    "description": "Whether the billing frequency selector is shown on this checkout.  \n**Default behavior**\n\nWhen not passed, the selector follows the site-level [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).\n",
                     "example": null
                   },
                   "allow_offline_payment_methods": {
@@ -84798,6 +84803,7 @@
                     "properties": {
                       "period": {
                         "type": "array",
+                        "description": "The billing period, in `allowed_billing_frequencies[period_unit]` units, of a frequency the customer may pick on this checkout. A quarterly cadence is `period` `3` and `period_unit` `month`.\n\nPass each frequency as a pair, `allowed_billing_frequencies[period][n]` and `allowed_billing_frequencies[period_unit][n]`, starting at `n` of `0`.  \n**Default behavior**\n\nWhen not passed, the selector offers [every billing frequency](/docs/api/item_prices/list-item-prices) enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).  \n**Constraints**\n\n* Minimum value is `1`.\n* At most 3 frequencies, including the initial frequency.\n* Every index needs both `period` and `period_unit`.\n* Each frequency must be enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).\n* The list must include the billing frequency of the plan [item prices](/docs/api/hosted_pages/create-checkout-for-a-new-subscription#subscription_items_item_price_id) specified in this checkout.\n* When more than one plan [item price](/docs/api/hosted_pages/create-checkout-for-a-new-subscription#subscription_items_item_price_id) is included in the checkout, the listed frequencies here must have a matching [item price](/docs/api/item_prices) under every plan [item](/docs/api/items).\n",
                         "items": {
                           "type": "integer",
                           "format": "int32",
@@ -84812,6 +84818,7 @@
                         "items": {
                           "type": "string",
                           "deprecated": false,
+                          "description": "The unit of time for `allowed_billing_frequencies[period]`.  \n**Required if**\n\nRequired for every index that has a `period`.\n\n* month - A period of 1 calendar month.\n* week - A period of 7 days.\n* year - A period of 1 calendar year.\n* day - A period of 24 hours.\n",
                           "enum": [
                             "day",
                             "week",
@@ -85655,6 +85662,7 @@
                   "show_billing_frequency_selector": {
                     "type": "boolean",
                     "deprecated": false,
+                    "description": "Whether the billing frequency selector is shown on this checkout.  \n**Default behavior**\n\nWhen not passed, the selector follows the site-level [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).\n",
                     "example": null
                   },
                   "allow_offline_payment_methods": {
@@ -86316,6 +86324,7 @@
                     "properties": {
                       "period": {
                         "type": "array",
+                        "description": "The billing period, in `allowed_billing_frequencies[period_unit]` units, of a frequency the customer may pick on this checkout. A quarterly cadence is `period` `3` and `period_unit` `month`.\n\nPass each frequency as a pair, `allowed_billing_frequencies[period][n]` and `allowed_billing_frequencies[period_unit][n]`, starting at `n` of `0`.  \n**Default behavior**\n\nWhen not passed, the selector offers [every billing frequency](/docs/api/item_prices/list-item-prices) enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).  \n**Constraints**\n\n* Minimum value is `1`.\n* At most 3 frequencies, including the initial frequency.\n* Every index needs both `period` and `period_unit`.\n* Each frequency must be enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).\n* The list must include the billing frequency of the plan [item prices](/docs/api/hosted_pages/create-checkout-to-update-a-subscription#subscription_items_item_price_id) specified in this checkout.\n* When more than one plan [item price](/docs/api/hosted_pages/create-checkout-to-update-a-subscription#subscription_items_item_price_id) is included in the checkout, the listed frequencies here must have a matching [item price](/docs/api/item_prices) under every plan [item](/docs/api/items).\n",
                         "items": {
                           "type": "integer",
                           "format": "int32",
@@ -86330,6 +86339,7 @@
                         "items": {
                           "type": "string",
                           "deprecated": false,
+                          "description": "The unit of time for `allowed_billing_frequencies[period]`.  \n**Required if**\n\nRequired for every index that has a `period`.\n\n* month - A period of 1 calendar month.\n* week - A period of 7 days.\n* year - A period of 1 calendar year.\n* day - A period of 24 hours.\n",
                           "enum": [
                             "day",
                             "week",
@@ -107996,14 +108006,14 @@
               "deprecated": false,
               "example": "day-pass-USD",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -125407,6 +125417,17 @@
                         "description": "The execution status of the ramp. Use this filter to export ramps in a specific status, such as `scheduled`\n, `succeeded`\n, `failed`\n, or `draft`.\n",
                         "example": "SCHEDULED",
                         "properties": {
+                          "is": {
+                            "type": "string",
+                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                            "enum": [
+                              "scheduled",
+                              "succeeded",
+                              "failed",
+                              "draft"
+                            ],
+                            "example": null
+                          },
                           "in": {
                             "type": "string",
                             "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -125418,17 +125439,6 @@
                             ],
                             "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
                             "example": null
-                          },
-                          "is": {
-                            "type": "string",
-                            "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                            "enum": [
-                              "scheduled",
-                              "succeeded",
-                              "failed",
-                              "draft"
-                            ],
-                            "example": null
                           }
                         }
                       },
@@ -125438,14 +125448,14 @@
                         "description": "The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.\n",
                         "example": "8gsnbYfsMLds",
                         "properties": {
-                          "in": {
-                            "type": "string",
-                            "pattern": "^\\[(.*)(,.*)*\\]$",
-                            "example": null
-                          },
                           "is": {
                             "type": "string",
                             "minLength": 1,
+                            "example": null
+                          },
+                          "in": {
+                            "type": "string",
+                            "pattern": "^\\[(.*)(,.*)*\\]$",
                             "example": null
                           }
                         }
@@ -126243,6 +126253,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_family`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -126250,11 +126265,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -127916,6 +127926,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `price_variant`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -127923,11 +127938,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -128428,6 +128438,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -128435,11 +128450,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -131545,14 +131555,14 @@
                         "description": "The `id` of the feature this entitlement grants. For example, `user-licenses`.\n**Supported operators:** is, in\n",
                         "example": "user-licenses",
                         "properties": {
-                          "in": {
-                            "type": "string",
-                            "pattern": "^\\[(.*)(,.*)*\\]$",
-                            "example": null
-                          },
                           "is": {
                             "type": "string",
                             "minLength": 1,
+                            "example": null
+                          },
+                          "in": {
+                            "type": "string",
+                            "pattern": "^\\[(.*)(,.*)*\\]$",
                             "example": null
                           }
                         }
@@ -131563,6 +131573,18 @@
                         "description": "The type of entity that holds the entitlement. Possible values are `plan`, `addon`, `charge`, `plan_price`, and `addon_price`.\n**Supported operators:** is, in\n",
                         "example": "plan_price",
                         "properties": {
+                          "is": {
+                            "type": "string",
+                            "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                            "enum": [
+                              "plan",
+                              "addon",
+                              "charge",
+                              "plan_price",
+                              "addon_price"
+                            ],
+                            "example": null
+                          },
                           "in": {
                             "type": "string",
                             "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -131575,18 +131597,6 @@
                             ],
                             "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
                             "example": null
-                          },
-                          "is": {
-                            "type": "string",
-                            "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                            "enum": [
-                              "plan",
-                              "addon",
-                              "charge",
-                              "plan_price",
-                              "addon_price"
-                            ],
-                            "example": null
                           }
                         }
                       },
@@ -131596,14 +131606,14 @@
                         "description": "The `id` of the item or item price that holds the entitlement. For example, `usd-professional-monthly`.\n**Supported operators:** is, in\n",
                         "example": "usd-professional-monthly",
                         "properties": {
-                          "in": {
-                            "type": "string",
-                            "pattern": "^\\[(.*)(,.*)*\\]$",
-                            "example": null
-                          },
                           "is": {
                             "type": "string",
                             "minLength": 1,
+                            "example": null
+                          },
+                          "in": {
+                            "type": "string",
+                            "pattern": "^\\[(.*)(,.*)*\\]$",
                             "example": null
                           }
                         }
@@ -135824,14 +135834,14 @@
                     "description": "optional, string filter\n\nList of itemPrice ids for which these coupons are applicable.\n\n**Supported operators :**\nin, is\n\n**Example →**\n*applicable_item_price_ids\\[in\\] = \"day-pass-USD\"*\n",
                     "example": "day-pass-USD",
                     "properties": {
-                      "in": {
-                        "type": "string",
-                        "pattern": "^\\[(.*)(,.*)*\\]$",
-                        "example": null
-                      },
                       "is": {
                         "type": "string",
                         "minLength": 1,
+                        "example": null
+                      },
+                      "in": {
+                        "type": "string",
+                        "pattern": "^\\[(.*)(,.*)*\\]$",
                         "example": null
                       }
                     }
@@ -137596,6 +137606,11 @@
                     "description": "optional, string filter\n\nThe unique ID of the\n[business entity](/docs/api/business_entities)\nof this `item_price`.\n[Learn more](/docs/api/using_business_entity_filters_in_product_catalog_list_apis)\nabout all the scenarios before using this filter.\n\n**Supported operators :**\nis, is_present\n\n**Example →**\n*business_entity_id\\[is_present\\] = \"true\"*\n",
                     "example": "business_entity_id",
                     "properties": {
+                      "is": {
+                        "type": "string",
+                        "minLength": 1,
+                        "example": null
+                      },
                       "is_present": {
                         "type": "string",
                         "format": "boolean",
@@ -137603,11 +137618,6 @@
                           "true",
                           "false"
                         ],
-                        "example": null
-                      },
-                      "is": {
-                        "type": "string",
-                        "minLength": 1,
                         "example": null
                       }
                     }
@@ -141758,6 +141768,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -141765,11 +141780,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -147479,6 +147489,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -147486,11 +147501,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -150061,6 +150071,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -150068,11 +150083,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -153936,6 +153946,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -153943,11 +153958,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -159270,6 +159280,11 @@
               "deprecated": false,
               "example": "business_entity_id",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "minLength": 1,
+                  "example": null
+                },
                 "is_present": {
                   "type": "string",
                   "format": "boolean",
@@ -159277,11 +159292,6 @@
                     "true",
                     "false"
                   ],
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "minLength": 1,
                   "example": null
                 }
               }
@@ -163778,6 +163788,15 @@
               "deprecated": false,
               "example": "active",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
+                  "enum": [
+                    "active",
+                    "archived"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
@@ -163786,15 +163805,6 @@
                     "archived"
                   ],
                   "pattern": "^\\[(active|archived)(,(active|archived))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `active` - The credit unit is active.\n* `archived` - The credit unit is archived; it can be reactivated.",
-                  "enum": [
-                    "active",
-                    "archived"
-                  ],
                   "example": null
                 }
               }
@@ -163813,14 +163823,14 @@
               "deprecated": false,
               "example": "ai-tokens",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -167546,14 +167556,14 @@
               "deprecated": false,
               "example": "user-licenses",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -167572,6 +167582,18 @@
               "deprecated": false,
               "example": "plan_price",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
+                  "enum": [
+                    "plan",
+                    "addon",
+                    "charge",
+                    "plan_price",
+                    "addon_price"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
@@ -167583,18 +167605,6 @@
                     "addon_price"
                   ],
                   "pattern": "^\\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `plan` - Plan\n* `addon` - Addon\n* `charge` - Charge\n* `plan_price` - Plan Price\n* `addon_price` - Addon Price",
-                  "enum": [
-                    "plan",
-                    "addon",
-                    "charge",
-                    "plan_price",
-                    "addon_price"
-                  ],
                   "example": null
                 }
               }
@@ -167613,14 +167623,14 @@
               "deprecated": false,
               "example": "usd-professional-monthly",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -172689,7 +172699,7 @@
           "purchases"
         ],
         "summary": "Create a purchase",
-        "description": "Creates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n. The exception is a subscription group whose subscription starts in trial, which is possible when trial support for purchases is enabled for the site. No charges are raised for such a group until the trial ends. When no group in the purchase raises charges, no invoice is created and `purchase.invoice_ids` is empty.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. Multi-plan subscriptions are not supported: a group cannot contain more than one plan item price. To create multiple subscriptions, provide multiple subscription groups. Plans in different groups can belong to different [item families](/docs/api/item_families). When item families are enabled, item prices in one group must belong to the same item family as that group's plan.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. You cannot target one item price in a group. A manual discount applies to the invoice for the group. A coupon with [apply_on](/docs/api/coupons/coupon-object#apply_on) set to `invoice_amount` applies to the invoice `sub_total`. A coupon configured for specific item prices applies only to those item prices.\n\nThe following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                                                                                                                                                 **`discounts[index][i]` is not provided**                                                                                                                                                                                                                  |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon must have [apply_on](/docs/api/coupons/coupon-object#apply_on) set to `invoice_amount`. A coupon configured for specific item prices is rejected unless you pass `discounts[index][i]`. * The coupon is applied to the first invoice only, irrespective of [coupon.duration_type](/docs/api/coupons/coupon-object#duration_type) or [coupon.max_redemptions](/docs/api/coupons/coupon-object#max_redemptions). * The coupon is not applied to later invoices. |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied only to the first invoice for the purchase. * The manual discount is not applied to later invoices.                                                                                                                                                                                                                                                                                                                                       |\n\n**Note**\n\nFor a subscription group whose subscription is in trial, no invoice is created for the group when this API is invoked. A discount with `discounts[index][i]` set to that group is kept on the subscription and applied when the subscription is first invoiced. A discount without `discounts[index][i]` applies only to the first invoice, so it cannot be passed when the purchase creates no invoice.\n\n### Limitations\n\nItem prices in a subscription group are validated the same way as in [Create a subscription](/docs/api/subscriptions/create-subscription-for-items). This operation also has the following limitations.\n\n#### Item prices\n\n* A subscription group contains exactly one item price of `type` `plan`. You cannot create one subscription with more than one plan item price. Multi-plan subscriptions are not supported.\n* Plans in different subscription groups can belong to different [item families](/docs/api/item_families). When item families are enabled, item prices in one group must belong to the same item family as that group's plan.\n* You cannot set a service period for a charge. This operation has no equivalent of [subscription_items[service_period_days]](/docs/api/subscriptions/create-subscription-for-items#subscription_items_service_period_days).\n\n#### Subscriptions\n\n* You cannot set [free_period](/docs/api/subscriptions/create-subscription-for-items#free_period).\n* You cannot set [start_date](/docs/api/subscriptions/create-subscription-for-items#start_date). Each subscription starts immediately. A group can start in trial only when trial support for purchases is enabled and you set `subscription_info[trial_end]`.\n* [Calendar billing](https://www.chargebee.com/docs/calendar-billing.html#alignment-of-billing-date) settings for the site apply. You cannot override them with [billing_alignment_mode](/docs/api/subscriptions/create-subscription-for-items#billing_alignment_mode).\n* Each subscription uses the customer's [auto_collection](/docs/api/customers/customer-object#auto_collection). You cannot override it for the subscription.\n* Only the current term is charged. You cannot set [terms_to_charge](/docs/api/subscriptions/create-subscription-for-items#terms_to_charge).\n* You cannot create [ramps](/docs/api/ramps) or schedule a subscription change in this request. After the subscriptions are created, use [Create a subscription ramp](/docs/api/ramps/create-a-ramp) or [Update a subscription](/docs/api/subscriptions/update-subscription-for-items).\n* The `purchase` resource cannot be changed after it is created. Update each subscription with the subscription operations.\n\n#### Multiple business entities\n\nThis operation does not accept [business_entity_id](/docs/api/subscriptions/create-subscription-for-items#business_entity_id). Calling it on a site where [multiple business entities](https://www.chargebee.com/docs/2.0/mbe.html) are enabled returns an error.\n\n#### Invoices\n\n* When the purchase raises invoiceable charges and [consolidated invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html) is enabled for the customer, Chargebee consolidates those charges. Subscription differences can still produce more than one invoice. When consolidated invoicing is disabled, each subscription gets its own invoice. A trial-only purchase, where every subscription group starts in trial and no one-time charges are raised, creates no invoice and `purchase.invoice_ids` is empty.\n* Invoices for subscriptions and one-time charges are created immediately and are not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately). A subscription group that starts in trial is the exception: no charges are raised for that group until the trial ends.\n* This operation does not accept a net-term parameter. Net terms already set on the customer still apply. When those terms are greater than zero, the invoice is posted and payment collection waits until the due date. When the terms are zero and the customer's [auto_collection](/docs/api/customers/customer-object#auto_collection) is `on`, Chargebee attempts to collect payment while closing the invoice. The operation fails if the customer has no valid payment method, or if collection fails. When `auto_collection` is `off`, the invoice is closed with payment due.\n",
+        "description": "Creates a `purchase` resource. A purchase can contain one or more of the following:\n\n* subscriptions (a [subscription](/docs/api/subscriptions) resource consists of item prices such that at least one of the item prices belongs to an [item](/docs/api/items) of `type` `plan`.)\n* group of one-time charges (aka [charge item prices](/docs/api/item_prices))\n\nWhen you call this API, the invoices for the subscription(s) and one-time charge(s) are created immediately and not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately)\n. The exception is a subscription group whose subscription starts in trial, which is possible when trial support for purchases is enabled for the site. No charges are raised for such a group until the trial ends. When no group in the purchase raises charges, no invoice is created and `purchase.invoice_ids` is empty.  \n**Note**\n\nProviding `shipping_addresses[]` is required when the [Orders feature](https://www.chargebee.com/docs/2.0/orders.html#configuration_step-1-configure-site-wide-settings) has been enabled.\n\n### Specifying `purchase_item` groups\n\nWhen creating a purchase, you must specify the *group* or `index` to which each item price belongs. You can do this by setting the `purchase_items[index]` for each item price. Item prices with the same `purchase_items[index]` belong to the same group.\nThe grouping of item prices allows you to specify the `discounts[]` applicable for each group and indicate which item prices should be added to any subscriptions you want to create. Groups can be one of two types:\n\n* Subscription groups\n* One-time charge groups\n\nThe following subsections describe the types of groups in detail.  \n**Note**\n\nYou can specify up to 10 groups,\n\n* with a recommended subscription group of 5. To increase this limit to a maximum of 8, contact eap@chargebee.com.\n* with a maximum of 10 one-time charge groups by default.\n\nThe total limit for group items for a single purchase is 60.\n\n#### Subscription groups\n\nTo create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a set of item prices built around a single plan: each group must contain exactly one item price of `type` `plan`. To create multiple subscriptions, provide multiple subscription groups, one for each plan. Plans in different groups can belong to different [item families](/docs/api/item_families). When item families are enabled, all item prices in a group must belong to the same item family as that group's plan.  \n**Note**\n\nA subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n\n#### Custom Fields\n\nPurchase API supports custom fields of Subscriptions, use the following format to specify custom fields in Purchase API: **`subscription_info[custom_field]`**.\n\n#### One-time charge groups\n\nA one-time charge [group](/docs/api/purchases) is a group of charge item prices (i.e. item prices belonging to items of `type` `charge`). Charge item prices can be added to subscription groups as well. The charges within and across each one-time group must be unique.  \n**Note**\n\n* A one-time charge group can have up to 20 item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.\n* A charge item price can only be added to a single one-time charge group. However, it can be part of multiple [subscription groups](/docs/api/purchases).\n\n### Applying discounts\n\nDiscounts, both [manual discounts](/docs/api/discounts) and [coupons](/docs/api/coupons), can be applied to groups by specifying the `discounts[]` array. You cannot target one item price in a group. A manual discount applies to the invoice for the group. A coupon with [apply_on](/docs/api/coupons/coupon-object#apply_on) set to `invoice_amount` applies to the invoice `sub_total`. A coupon configured for specific item prices applies only to those item prices.\n\nThe following table describes the method of application based on whether `discounts[index][i]` is provided:  \n\n|                      |                                                                                                                                                                   **`discounts[index][i]` is provided**                                                                                                                                                                    |                                                                                                                                                                                                                 **`discounts[index][i]` is not provided**                                                                                                                                                                                                                  |\n|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| **Coupons**          | * The coupon is applied exclusively to the invoice for group `i`. * The coupon is applied exclusively to the invoice created immediately upon invoking this API. * If group `i` is a [subscription group](/docs/api/purchases), then the coupon is applied to invoices for subscription renewals based on coupon attributes such as `duration_type` and `max_redemptions`. | * The coupon must have [apply_on](/docs/api/coupons/coupon-object#apply_on) set to `invoice_amount`. A coupon configured for specific item prices is rejected unless you pass `discounts[index][i]`. * The coupon is applied to the first invoice only, irrespective of [coupon.duration_type](/docs/api/coupons/coupon-object#duration_type) or [coupon.max_redemptions](/docs/api/coupons/coupon-object#max_redemptions). * The coupon is not applied to later invoices. |\n| **Manual discounts** | * The manual discount is applied exclusively to the invoice for group `i`. * The manual discount is applied exclusively to the invoice created immediately upon invoking this API. * The manual discount is not applied to subsequent invoices, such as those generated upon subscription renewal.                                                                         | * The manual discount is applied only to the first invoice for the purchase. * The manual discount is not applied to later invoices.                                                                                                                                                                                                                                                                                                                                       |\n\n**Note**\n\nFor a subscription group whose subscription is in trial, no invoice is created for the group when this API is invoked. A discount with `discounts[index][i]` set to that group is kept on the subscription and applied when the subscription is first invoiced. A discount without `discounts[index][i]` applies only to the first invoice, so it cannot be passed when the purchase creates no invoice.\n\n### Limitations\n\nItem prices in a subscription group are validated the same way as in [Create a subscription](/docs/api/subscriptions/create-subscription-for-items). This operation also has the following limitations.\n\n#### Item prices\n\n* A subscription group contains exactly one item price of `type` `plan`. You cannot create one subscription with more than one plan item price. To create multiple subscriptions, provide multiple subscription groups, one for each plan.\n* Plans in different subscription groups can belong to different [item families](/docs/api/item_families). When item families are enabled, all item prices in a group must belong to the same item family as that group's plan.\n* You cannot set a service period for a charge. This operation has no equivalent of [subscription_items[service_period_days]](/docs/api/subscriptions/create-subscription-for-items#subscription_items_service_period_days).\n\n#### Subscriptions\n\n* You cannot set [free_period](/docs/api/subscriptions/create-subscription-for-items#free_period).\n* You cannot set [start_date](/docs/api/subscriptions/create-subscription-for-items#start_date). Each subscription starts immediately. A group can start in trial only when trial support for purchases is enabled and you set `subscription_info[trial_end]`.\n* [Calendar billing](https://www.chargebee.com/docs/calendar-billing.html#alignment-of-billing-date) settings for the site apply. You cannot override them with [billing_alignment_mode](/docs/api/subscriptions/create-subscription-for-items#billing_alignment_mode).\n* Each subscription uses the customer's [auto_collection](/docs/api/customers/customer-object#auto_collection). You cannot override it for the subscription.\n* Only the current term is charged. You cannot set [terms_to_charge](/docs/api/subscriptions/create-subscription-for-items#terms_to_charge).\n* You cannot create [ramps](/docs/api/ramps) or schedule a subscription change in this request. After the subscriptions are created, use [Create a subscription ramp](/docs/api/ramps/create-a-ramp) or [Update a subscription](/docs/api/subscriptions/update-subscription-for-items).\n* The `purchase` resource cannot be changed after it is created. Update each subscription with the subscription operations.\n\n#### Multiple business entities\n\nThis operation does not accept [business_entity_id](/docs/api/subscriptions/create-subscription-for-items#business_entity_id). Calling it on a site where [multiple business entities](https://www.chargebee.com/docs/2.0/mbe.html) are enabled returns an error.\n\n#### Invoices\n\n* When the purchase raises invoiceable charges and [consolidated invoicing](https://www.chargebee.com/docs/2.0/consolidated-invoicing.html) is enabled for the customer, Chargebee consolidates those charges. Subscription differences can still produce more than one invoice. When consolidated invoicing is disabled, each subscription gets its own invoice. A trial-only purchase, where every subscription group starts in trial and no one-time charges are raised, creates no invoice and `purchase.invoice_ids` is empty.\n* Invoices for subscriptions and one-time charges are created immediately and are not left [unbilled](/docs/api/subscriptions/create-subscription-for-items#invoice_immediately). A subscription group that starts in trial is the exception: no charges are raised for that group until the trial ends.\n* This operation does not accept a net-term parameter. Net terms already set on the customer still apply. When those terms are greater than zero, the invoice is posted and payment collection waits until the due date. When the terms are zero and the customer's [auto_collection](/docs/api/customers/customer-object#auto_collection) is `on`, Chargebee attempts to collect payment while closing the invoice. The operation fails if the customer has no valid payment method, or if collection fails. When `auto_collection` is `off`, the invoice is closed with payment due.\n",
         "operationId": "create_a_purchase",
         "parameters": [
           {
@@ -177727,27 +177737,29 @@
               "deprecated": false,
               "example": "subscription_reactivation",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
-                  "enum": [
-                    "unbilled_charges",
-                    "update_subscriptions",
-                    "subscription_reactivation",
-                    "trial_end_actions"
-                  ],
-                  "pattern": "^\\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
-                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
+                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
                   "enum": [
                     "unbilled_charges",
                     "update_subscriptions",
+                    "backdating_subscriptions_and_invoices",
                     "subscription_reactivation",
                     "trial_end_actions"
                   ],
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
+                  "enum": [
+                    "unbilled_charges",
+                    "update_subscriptions",
+                    "backdating_subscriptions_and_invoices",
+                    "subscription_reactivation",
+                    "trial_end_actions"
+                  ],
+                  "pattern": "^\\[(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions))*\\]$",
                   "example": null
                 }
               }
@@ -178368,27 +178380,29 @@
               "deprecated": false,
               "example": "subscription_reactivation",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
-                  "enum": [
-                    "unbilled_charges",
-                    "update_subscriptions",
-                    "subscription_reactivation",
-                    "trial_end_actions"
-                  ],
-                  "pattern": "^\\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
-                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
+                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
                   "enum": [
                     "unbilled_charges",
                     "update_subscriptions",
+                    "backdating_subscriptions_and_invoices",
                     "subscription_reactivation",
                     "trial_end_actions"
                   ],
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "description": "* `unbilled_charges` - Unbilled Charges\n* `update_subscriptions` - Update Subscriptions\n* `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices\n* `subscription_reactivation` - Subscription Reactivation\n* `trial_end_actions` - Trial End Actions",
+                  "enum": [
+                    "unbilled_charges",
+                    "update_subscriptions",
+                    "backdating_subscriptions_and_invoices",
+                    "subscription_reactivation",
+                    "trial_end_actions"
+                  ],
+                  "pattern": "^\\[(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions))*\\]$",
                   "example": null
                 }
               }
@@ -181694,6 +181708,17 @@
               "deprecated": false,
               "example": "SCHEDULED",
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
+                  "enum": [
+                    "scheduled",
+                    "succeeded",
+                    "failed",
+                    "draft"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
@@ -181704,17 +181729,6 @@
                     "draft"
                   ],
                   "pattern": "^\\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `scheduled` - Status of the subscription schedule on creation. \n* `succeeded` - The execution status of the schedule if success. \n* `failed` - The execution status of the schedule if failed. \n* `draft` - Status of the subscription schedule considering as draft",
-                  "enum": [
-                    "scheduled",
-                    "succeeded",
-                    "failed",
-                    "draft"
-                  ],
                   "example": null
                 }
               }
@@ -181733,14 +181747,14 @@
               "deprecated": false,
               "example": "8gsnbYfsMLds",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -199281,14 +199295,14 @@
               "deprecated": false,
               "example": "HmaT0avT2mtbTL3mR",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -199307,14 +199321,14 @@
               "deprecated": false,
               "example": "einvoice_ref_123",
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -210114,9 +210128,9 @@
               "deprecated": false,
               "example": "us-east",
               "properties": {
-                "not_in": {
+                "is": {
                   "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
+                  "minLength": 1,
                   "example": null
                 },
                 "in": {
@@ -210129,9 +210143,9 @@
                   "minLength": 1,
                   "example": null
                 },
-                "is": {
+                "not_in": {
                   "type": "string",
-                  "minLength": 1,
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               }
@@ -216985,14 +216999,14 @@
               "type": "object",
               "deprecated": false,
               "properties": {
-                "in": {
-                  "type": "string",
-                  "pattern": "^\\[(.*)(,.*)*\\]$",
-                  "example": null
-                },
                 "is": {
                   "type": "string",
                   "minLength": 1,
+                  "example": null
+                },
+                "in": {
+                  "type": "string",
+                  "pattern": "^\\[(.*)(,.*)*\\]$",
                   "example": null
                 }
               },
@@ -219591,6 +219605,23 @@
               "type": "object",
               "deprecated": false,
               "properties": {
+                "is": {
+                  "type": "string",
+                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
+                  "enum": [
+                    "allocation",
+                    "capture",
+                    "authorize",
+                    "release_authorization",
+                    "capture_authorization",
+                    "expiry",
+                    "void",
+                    "rollover",
+                    "adjustment",
+                    "overdraft_settlement"
+                  ],
+                  "example": null
+                },
                 "in": {
                   "type": "string",
                   "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
@@ -219607,23 +219638,6 @@
                     "overdraft_settlement"
                   ],
                   "pattern": "^\\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\\]$",
-                  "example": null
-                },
-                "is": {
-                  "type": "string",
-                  "description": "* `allocation` - Allocation Operation\n* `capture` - Capture Operation\n* `authorize` - Authorization Operation\n* `release_authorization` - Release Authorization Operation\n* `capture_authorization` - Capture Authorization Operation\n* `expiry` - Expiry Operation\n* `void` - Void Operation\n* `rollover` - Rollover Operation\n* `adjustment` - Overdraft Adjustment Operation\n* `overdraft_settlement` - Settle Overdraft Amount Operation",
-                  "enum": [
-                    "allocation",
-                    "capture",
-                    "authorize",
-                    "release_authorization",
-                    "capture_authorization",
-                    "expiry",
-                    "void",
-                    "rollover",
-                    "adjustment",
-                    "overdraft_settlement"
-                  ],
                   "example": null
                 }
               },
@@ -222695,7 +222709,8 @@
             "deprecated": false,
             "enum": [
               "is",
-              "in"
+              "in",
+              "contains"
             ],
             "example": null
           },
@@ -264372,7 +264387,7 @@
                 "maxLength": 100,
                 "example": null
               },
-              "transaction_link_id": {
+              "original_mastercard_transaction_link_id": {
                 "type": "string",
                 "deprecated": false,
                 "maxLength": 100,
@@ -266350,10 +266365,11 @@
           "preference_group": {
             "type": "string",
             "deprecated": false,
-            "description": "The area of Chargebee this preference belongs to. Pass this as the required \\`preference_group\\[\\]\\` filter on \\[List preferences\\](/docs/api/preferences/list-preferences) and \\[List preference definitions\\](/docs/api/preference_definitions/list-preference-definitions).\n\n* update_subscriptions - Preferences applied when a subscription is updated, including plan changes and scheduled cancellations.\n* trial_end_actions - Preferences for what happens when a trial ends: the subscription is activated and billed, or it is cancelled.\n* unbilled_charges - Preferences for whether charges from a subscription action are invoiced immediately or held as unbilled charges until the next invoice.\n* subscription_reactivation - Preferences for reactivating a cancelled subscription before its current billing term ends.\n",
+            "description": "The area of Chargebee this preference belongs to. Pass this as the required \\`preference_group\\[\\]\\` filter on \\[List preferences\\](/docs/api/preferences/list-preferences) and \\[List preference definitions\\](/docs/api/preference_definitions/list-preference-definitions).\n\n* update_subscriptions - Preferences applied when a subscription is updated, including plan changes and scheduled cancellations.\n* trial_end_actions - Preferences for what happens when a trial ends: the subscription is activated and billed, or it is cancelled.\n* unbilled_charges - Preferences for whether charges from a subscription action are invoiced immediately or held as unbilled charges until the next invoice.\n* backdating_subscriptions_and_invoices - Preferences for recording subscription actions and their invoices with a past date.\n* subscription_reactivation - Preferences for reactivating a cancelled subscription before its current billing term ends.\n",
             "enum": [
               "unbilled_charges",
               "update_subscriptions",
+              "backdating_subscriptions_and_invoices",
               "subscription_reactivation",
               "trial_end_actions"
             ],
@@ -266458,10 +266474,11 @@
           "preference_group": {
             "type": "string",
             "deprecated": false,
-            "description": "The area of Chargebee this preference belongs to. Pass this as the required \\`preference_group\\[\\]\\` filter on \\[List preference definitions\\](/docs/api/preference_definitions/list-preference-definitions) and \\[List preferences\\](/docs/api/preferences/list-preferences).\n\n* trial_end_actions - Preferences for what happens when a trial ends: the subscription is activated and billed, or it is cancelled.\n* unbilled_charges - Preferences for whether charges from a subscription action are invoiced immediately or held as unbilled charges until the next invoice.\n* update_subscriptions - Preferences applied when a subscription is updated, including plan changes and scheduled cancellations.\n* subscription_reactivation - Preferences for reactivating a cancelled subscription before its current billing term ends.\n",
+            "description": "The area of Chargebee this preference belongs to. Pass this as the required \\`preference_group\\[\\]\\` filter on \\[List preference definitions\\](/docs/api/preference_definitions/list-preference-definitions) and \\[List preferences\\](/docs/api/preferences/list-preferences).\n\n* backdating_subscriptions_and_invoices - Preferences for recording subscription actions and their invoices with a past date.\n* trial_end_actions - Preferences for what happens when a trial ends: the subscription is activated and billed, or it is cancelled.\n* unbilled_charges - Preferences for whether charges from a subscription action are invoiced immediately or held as unbilled charges until the next invoice.\n* update_subscriptions - Preferences applied when a subscription is updated, including plan changes and scheduled cancellations.\n* subscription_reactivation - Preferences for reactivating a cancelled subscription before its current billing term ends.\n",
             "enum": [
               "unbilled_charges",
               "update_subscriptions",
+              "backdating_subscriptions_and_invoices",
               "subscription_reactivation",
               "trial_end_actions"
             ],
@@ -266541,7 +266558,8 @@
                   "description": "How that preference's current value is compared against `values`.\n\n* in - The condition holds when the preference equals any one of the entries in `values`.\n* is - The condition holds when the preference equals the single entry in `values`.\n* contains - The condition holds when the referenced preference's list contains at least one of the entries in `values`. Applies only to list-valued preferences.\n",
                   "enum": [
                     "is",
-                    "in"
+                    "in",
+                    "contains"
                   ],
                   "example": null
                 },
@@ -266858,6 +266876,7 @@
         "enum": [
           "unbilled_charges",
           "update_subscriptions",
+          "backdating_subscriptions_and_invoices",
           "subscription_reactivation",
           "trial_end_actions"
         ],
@@ -285030,6 +285049,12 @@
                 "type": "string",
                 "deprecated": false,
                 "description": "The network transaction identifier returned by the card network or gateway for this transaction.\n",
+                "maxLength": 100,
+                "example": null
+              },
+              "mastercard_transaction_link_id": {
+                "type": "string",
+                "deprecated": false,
                 "maxLength": 100,
                 "example": null
               },

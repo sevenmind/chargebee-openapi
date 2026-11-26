@@ -5,9 +5,9 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-24.9c008a6209be
-  x-cb-product-catalog-version: 2
+  version: 2026-11-25.93dbb747b7b5
   x-cb-api-version: 2
+  x-cb-product-catalog-version: 2
 servers:
   - url: '{protocol}://{site}.{environment}:{port}/api/v2'
     variables:
@@ -37568,9 +37568,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37580,9 +37580,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -37604,9 +37604,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37616,9 +37616,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -37640,9 +37640,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37652,9 +37652,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -37676,9 +37676,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37688,9 +37688,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -37712,9 +37712,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37724,9 +37724,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -37748,9 +37748,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37760,9 +37760,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -37784,9 +37784,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37796,9 +37796,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -37820,9 +37820,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37832,9 +37832,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -37856,9 +37856,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37868,9 +37868,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -37892,9 +37892,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37904,9 +37904,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -37928,9 +37928,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37940,9 +37940,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -37964,9 +37964,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -37976,9 +37976,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_name
@@ -38000,9 +38000,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38012,9 +38012,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: operation_type
@@ -38036,9 +38036,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38048,9 +38048,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: source
@@ -38072,9 +38072,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38084,9 +38084,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invocation_time
@@ -38597,9 +38597,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38609,9 +38609,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway
@@ -38633,9 +38633,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38645,9 +38645,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: status_code
@@ -38669,9 +38669,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38681,9 +38681,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: method
@@ -38705,9 +38705,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38717,9 +38717,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: url
@@ -38741,9 +38741,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38753,9 +38753,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: id_at_gateway
@@ -38777,9 +38777,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38789,9 +38789,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: customer_handle
@@ -38813,9 +38813,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38825,9 +38825,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: invoice_handle
@@ -38849,9 +38849,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38861,9 +38861,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: transaction_handle
@@ -38885,9 +38885,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38897,9 +38897,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_method_handle
@@ -38921,9 +38921,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38933,9 +38933,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: gateway_credential_handle
@@ -38957,9 +38957,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -38969,9 +38969,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_attempt_handle
@@ -38993,9 +38993,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -39005,9 +39005,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: payment_intent_handle
@@ -39029,9 +39029,9 @@ paths:
             type: object
             deprecated: false
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -39041,9 +39041,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: received_at
@@ -51598,13 +51598,13 @@ paths:
             deprecated: false
             example: old_inv_001
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: payment_reference_number
           in: query
@@ -51627,13 +51627,13 @@ paths:
                   To retrieve the PRN, the API requires either the invoice ID or the payment reference number to be provided by the user. If both values are missing, an error will be returned by the API.
                 example: "001234"
                 properties:
-                  in:
-                    type: string
-                    pattern: ^\[(.*)(,.*)*\]$
-                    example: null
                   is:
                     type: string
                     minLength: 1
+                    example: null
+                  in:
+                    type: string
+                    pattern: ^\[(.*)(,.*)*\]$
                     example: null
             example: null
       responses:
@@ -72848,6 +72848,18 @@ paths:
                 allow_offline_payment_methods:
                   type: boolean
                   deprecated: false
+                  description: |
+                    Whether the customer can pay with an [offline payment method](https://www.chargebee.com/docs/payments/2.0/offline-checkout/offline_payments), such as cash, check, or bank transfer, on this checkout. When the customer pays offline, Chargebee creates the invoice with the [`payment_due`](/docs/api/invoices#invoice_status) status and does not attempt to collect payment. Use [Record an invoice payment](/docs/api/invoices/record-an-invoice-payment) to record the payment after you receive it.
+
+                    * `true`: Offline payment methods are offered, even if they are disabled in the site's checkout settings, including the one-time payments setting.
+                    * `false`: Offline payment methods are not offered.
+
+                    **Prerequisites**
+
+                    * Offline payment methods are enabled and configured for the site, for the checkout's currency.  
+                    **Default behavior**
+
+                    * When not provided, offline payment methods are offered only when both **Allow customers to use offline payment methods** (checkout settings) and **Provide offline payment methods for one time purchases** (one-time payments settings) are enabled. The other offline payment settings, such as restricting offline payment methods to customers who have no online payment method, also apply.
                   example: null
                 customer:
                   type: object
@@ -74691,6 +74703,11 @@ paths:
                 show_billing_frequency_selector:
                   type: boolean
                   deprecated: false
+                  description: |
+                    Whether the billing frequency selector is shown on this checkout.  
+                    **Default behavior**
+
+                    When not passed, the selector follows the site-level [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).
                   example: null
                 gifter:
                   type: object
@@ -74907,6 +74924,21 @@ paths:
                   properties:
                     period:
                       type: array
+                      description: |
+                        The billing period, in `allowed_billing_frequencies[period_unit]` units, of a frequency the customer may pick on this checkout. A quarterly cadence is `period` `3` and `period_unit` `month`.
+
+                        Pass each frequency as a pair, `allowed_billing_frequencies[period][n]` and `allowed_billing_frequencies[period_unit][n]`, starting at `n` of `0`.  
+                        **Default behavior**
+
+                        When not passed, the selector offers [every billing frequency](/docs/api/item_prices/list-item-prices) enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).  
+                        **Constraints**
+
+                        * Minimum value is `1`.
+                        * At most 3 frequencies, including the initial frequency.
+                        * Every index needs both `period` and `period_unit`.
+                        * Each frequency must be enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).
+                        * The list must include the billing frequency of the plan [item prices](/docs/api/hosted_pages/checkout-gift-subscription-for-items#subscription_items_item_price_id) specified in this checkout.
+                        * When more than one plan [item price](/docs/api/hosted_pages/checkout-gift-subscription-for-items#subscription_items_item_price_id) is included in the checkout, the listed frequencies here must have a matching [item price](/docs/api/item_prices) under every plan [item](/docs/api/items).
                       items:
                         type: integer
                         format: int32
@@ -74919,6 +74951,16 @@ paths:
                       items:
                         type: string
                         deprecated: false
+                        description: |
+                          The unit of time for `allowed_billing_frequencies[period]`.  
+                          **Required if**
+
+                          Required for every index that has a `period`.
+
+                          * month - A period of 1 calendar month.
+                          * day - A period of 24 hours.
+                          * year - A period of 1 calendar year.
+                          * week - A period of 7 days.
                         enum:
                           - day
                           - week
@@ -76566,6 +76608,11 @@ paths:
                 show_billing_frequency_selector:
                   type: boolean
                   deprecated: false
+                  description: |
+                    Whether the billing frequency selector is shown on this checkout.  
+                    **Default behavior**
+
+                    When not passed, the selector follows the site-level [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).
                   example: null
                 allow_offline_payment_methods:
                   type: boolean
@@ -77741,6 +77788,21 @@ paths:
                   properties:
                     period:
                       type: array
+                      description: |
+                        The billing period, in `allowed_billing_frequencies[period_unit]` units, of a frequency the customer may pick on this checkout. A quarterly cadence is `period` `3` and `period_unit` `month`.
+
+                        Pass each frequency as a pair, `allowed_billing_frequencies[period][n]` and `allowed_billing_frequencies[period_unit][n]`, starting at `n` of `0`.  
+                        **Default behavior**
+
+                        When not passed, the selector offers [every billing frequency](/docs/api/item_prices/list-item-prices) enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).  
+                        **Constraints**
+
+                        * Minimum value is `1`.
+                        * At most 3 frequencies, including the initial frequency.
+                        * Every index needs both `period` and `period_unit`.
+                        * Each frequency must be enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).
+                        * The list must include the billing frequency of the plan [item prices](/docs/api/hosted_pages/create-checkout-for-a-new-subscription#subscription_items_item_price_id) specified in this checkout.
+                        * When more than one plan [item price](/docs/api/hosted_pages/create-checkout-for-a-new-subscription#subscription_items_item_price_id) is included in the checkout, the listed frequencies here must have a matching [item price](/docs/api/item_prices) under every plan [item](/docs/api/items).
                       items:
                         type: integer
                         format: int32
@@ -77753,6 +77815,16 @@ paths:
                       items:
                         type: string
                         deprecated: false
+                        description: |
+                          The unit of time for `allowed_billing_frequencies[period]`.  
+                          **Required if**
+
+                          Required for every index that has a `period`.
+
+                          * month - A period of 1 calendar month.
+                          * week - A period of 7 days.
+                          * year - A period of 1 calendar year.
+                          * day - A period of 24 hours.
                         enum:
                           - day
                           - week
@@ -78566,6 +78638,11 @@ paths:
                 show_billing_frequency_selector:
                   type: boolean
                   deprecated: false
+                  description: |
+                    Whether the billing frequency selector is shown on this checkout.  
+                    **Default behavior**
+
+                    When not passed, the selector follows the site-level [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).
                   example: null
                 allow_offline_payment_methods:
                   type: boolean
@@ -79410,6 +79487,21 @@ paths:
                   properties:
                     period:
                       type: array
+                      description: |
+                        The billing period, in `allowed_billing_frequencies[period_unit]` units, of a frequency the customer may pick on this checkout. A quarterly cadence is `period` `3` and `period_unit` `month`.
+
+                        Pass each frequency as a pair, `allowed_billing_frequencies[period][n]` and `allowed_billing_frequencies[period_unit][n]`, starting at `n` of `0`.  
+                        **Default behavior**
+
+                        When not passed, the selector offers [every billing frequency](/docs/api/item_prices/list-item-prices) enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).  
+                        **Constraints**
+
+                        * Minimum value is `1`.
+                        * At most 3 frequencies, including the initial frequency.
+                        * Every index needs both `period` and `period_unit`.
+                        * Each frequency must be enabled in the site's [Checkout and Self-Serve Portal configuration](https://www.chargebee.com/docs/billing/2.0/hosted-capabilities/configure-fullpage#configuration-tab).
+                        * The list must include the billing frequency of the plan [item prices](/docs/api/hosted_pages/create-checkout-to-update-a-subscription#subscription_items_item_price_id) specified in this checkout.
+                        * When more than one plan [item price](/docs/api/hosted_pages/create-checkout-to-update-a-subscription#subscription_items_item_price_id) is included in the checkout, the listed frequencies here must have a matching [item price](/docs/api/item_prices) under every plan [item](/docs/api/items).
                       items:
                         type: integer
                         format: int32
@@ -79422,6 +79514,16 @@ paths:
                       items:
                         type: string
                         deprecated: false
+                        description: |
+                          The unit of time for `allowed_billing_frequencies[period]`.  
+                          **Required if**
+
+                          Required for every index that has a `period`.
+
+                          * month - A period of 1 calendar month.
+                          * week - A period of 7 days.
+                          * year - A period of 1 calendar year.
+                          * day - A period of 24 hours.
                         enum:
                           - day
                           - week
@@ -100489,13 +100591,13 @@ paths:
             deprecated: false
             example: day-pass-USD
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -116717,6 +116819,19 @@ paths:
                         , or `draft`.
                       example: SCHEDULED
                       properties:
+                        is:
+                          type: string
+                          description: |-
+                            * `scheduled` - Status of the subscription schedule on creation. 
+                            * `succeeded` - The execution status of the schedule if success. 
+                            * `failed` - The execution status of the schedule if failed. 
+                            * `draft` - Status of the subscription schedule considering as draft
+                          enum:
+                            - scheduled
+                            - succeeded
+                            - failed
+                            - draft
+                          example: null
                         in:
                           type: string
                           description: |-
@@ -116731,19 +116846,6 @@ paths:
                             - draft
                           pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
                           example: null
-                        is:
-                          type: string
-                          description: |-
-                            * `scheduled` - Status of the subscription schedule on creation. 
-                            * `succeeded` - The execution status of the schedule if success. 
-                            * `failed` - The execution status of the schedule if failed. 
-                            * `draft` - Status of the subscription schedule considering as draft
-                          enum:
-                            - scheduled
-                            - succeeded
-                            - failed
-                            - draft
-                          example: null
                     subscription_id:
                       type: object
                       deprecated: false
@@ -116751,13 +116853,13 @@ paths:
                         The ID of the subscription for which the ramp was created. Use this filter to export ramps that belong to specific subscriptions.
                       example: 8gsnbYfsMLds
                       properties:
-                        in:
-                          type: string
-                          pattern: ^\[(.*)(,.*)*\]$
-                          example: null
                         is:
                           type: string
                           minLength: 1
+                          example: null
+                        in:
+                          type: string
+                          pattern: ^\[(.*)(,.*)*\]$
                           example: null
                     effective_from:
                       type: object
@@ -117370,16 +117472,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -118794,16 +118896,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -119214,16 +119316,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -122224,13 +122326,13 @@ paths:
                         **Supported operators:** is, in
                       example: user-licenses
                       properties:
-                        in:
-                          type: string
-                          pattern: ^\[(.*)(,.*)*\]$
-                          example: null
                         is:
                           type: string
                           minLength: 1
+                          example: null
+                        in:
+                          type: string
+                          pattern: ^\[(.*)(,.*)*\]$
                           example: null
                     entity_type:
                       type: object
@@ -122240,6 +122342,21 @@ paths:
                         **Supported operators:** is, in
                       example: plan_price
                       properties:
+                        is:
+                          type: string
+                          description: |-
+                            * `plan` - Plan
+                            * `addon` - Addon
+                            * `charge` - Charge
+                            * `plan_price` - Plan Price
+                            * `addon_price` - Addon Price
+                          enum:
+                            - plan
+                            - addon
+                            - charge
+                            - plan_price
+                            - addon_price
+                          example: null
                         in:
                           type: string
                           description: |-
@@ -122256,21 +122373,6 @@ paths:
                             - addon_price
                           pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
                           example: null
-                        is:
-                          type: string
-                          description: |-
-                            * `plan` - Plan
-                            * `addon` - Addon
-                            * `charge` - Charge
-                            * `plan_price` - Plan Price
-                            * `addon_price` - Addon Price
-                          enum:
-                            - plan
-                            - addon
-                            - charge
-                            - plan_price
-                            - addon_price
-                          example: null
                     entity_id:
                       type: object
                       deprecated: false
@@ -122279,13 +122381,13 @@ paths:
                         **Supported operators:** is, in
                       example: usd-professional-monthly
                       properties:
-                        in:
-                          type: string
-                          pattern: ^\[(.*)(,.*)*\]$
-                          example: null
                         is:
                           type: string
                           minLength: 1
+                          example: null
+                        in:
+                          type: string
+                          pattern: ^\[(.*)(,.*)*\]$
                           example: null
                   example: null
               example: null
@@ -126214,13 +126316,13 @@ paths:
                     *applicable_item_price_ids\[in\] = "day-pass-USD"*
                   example: day-pass-USD
                   properties:
-                    in:
-                      type: string
-                      pattern: ^\[(.*)(,.*)*\]$
-                      example: null
                     is:
                       type: string
                       minLength: 1
+                      example: null
+                    in:
+                      type: string
+                      pattern: ^\[(.*)(,.*)*\]$
                       example: null
                 coupon:
                   type: object
@@ -127806,16 +127908,16 @@ paths:
                     *business_entity_id\[is_present\] = "true"*
                   example: business_entity_id
                   properties:
+                    is:
+                      type: string
+                      minLength: 1
+                      example: null
                     is_present:
                       type: string
                       format: boolean
                       enum:
                         - "true"
                         - "false"
-                      example: null
-                    is:
-                      type: string
-                      minLength: 1
                       example: null
                 include_site_level_resources:
                   type: object
@@ -131543,16 +131645,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -136254,16 +136356,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -138489,16 +138591,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -141927,16 +142029,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -146658,16 +146760,16 @@ paths:
             deprecated: false
             example: business_entity_id
             properties:
+              is:
+                type: string
+                minLength: 1
+                example: null
               is_present:
                 type: string
                 format: boolean
                 enum:
                   - "true"
                   - "false"
-                example: null
-              is:
-                type: string
-                minLength: 1
                 example: null
         - name: include_site_level_resources
           in: query
@@ -150373,6 +150475,15 @@ paths:
             deprecated: false
             example: active
             properties:
+              is:
+                type: string
+                description: |-
+                  * `active` - The credit unit is active.
+                  * `archived` - The credit unit is archived; it can be reactivated.
+                enum:
+                  - active
+                  - archived
+                example: null
               in:
                 type: string
                 description: |-
@@ -150382,15 +150493,6 @@ paths:
                   - active
                   - archived
                 pattern: ^\[(active|archived)(,(active|archived))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `active` - The credit unit is active.
-                  * `archived` - The credit unit is archived; it can be reactivated.
-                enum:
-                  - active
-                  - archived
                 example: null
         - name: id
           in: query
@@ -150412,13 +150514,13 @@ paths:
             deprecated: false
             example: ai-tokens
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -153478,13 +153580,13 @@ paths:
             deprecated: false
             example: user-licenses
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: entity_type
           in: query
@@ -153509,6 +153611,21 @@ paths:
             deprecated: false
             example: plan_price
             properties:
+              is:
+                type: string
+                description: |-
+                  * `plan` - Plan
+                  * `addon` - Addon
+                  * `charge` - Charge
+                  * `plan_price` - Plan Price
+                  * `addon_price` - Addon Price
+                enum:
+                  - plan
+                  - addon
+                  - charge
+                  - plan_price
+                  - addon_price
+                example: null
               in:
                 type: string
                 description: |-
@@ -153524,21 +153641,6 @@ paths:
                   - plan_price
                   - addon_price
                 pattern: ^\[(plan|addon|charge|plan_price|addon_price)(,(plan|addon|charge|plan_price|addon_price))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `plan` - Plan
-                  * `addon` - Addon
-                  * `charge` - Charge
-                  * `plan_price` - Plan Price
-                  * `addon_price` - Addon Price
-                enum:
-                  - plan
-                  - addon
-                  - charge
-                  - plan_price
-                  - addon_price
                 example: null
         - name: entity_id
           in: query
@@ -153562,13 +153664,13 @@ paths:
             deprecated: false
             example: usd-professional-monthly
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -158006,7 +158108,7 @@ paths:
 
         #### Subscription groups
 
-        To create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a group of item prices that contains exactly one item price of `type` `plan`. Multi-plan subscriptions are not supported: a group cannot contain more than one plan item price. To create multiple subscriptions, provide multiple subscription groups. Plans in different groups can belong to different [item families](/docs/api/item_families). When item families are enabled, item prices in one group must belong to the same item family as that group's plan.  
+        To create a subscription, specify a *subscription group* . A subscription [group](/docs/api/purchases) is a set of item prices built around a single plan: each group must contain exactly one item price of `type` `plan`. To create multiple subscriptions, provide multiple subscription groups, one for each plan. Plans in different groups can belong to different [item families](/docs/api/item_families). When item families are enabled, all item prices in a group must belong to the same item family as that group's plan.  
         **Note**
 
         A subscription group can have up to 20 non-plan item prices. To increase this limit to a maximum of 60, contact eap@chargebee.com.
@@ -158044,8 +158146,8 @@ paths:
 
         #### Item prices
 
-        * A subscription group contains exactly one item price of `type` `plan`. You cannot create one subscription with more than one plan item price. Multi-plan subscriptions are not supported.
-        * Plans in different subscription groups can belong to different [item families](/docs/api/item_families). When item families are enabled, item prices in one group must belong to the same item family as that group's plan.
+        * A subscription group contains exactly one item price of `type` `plan`. You cannot create one subscription with more than one plan item price. To create multiple subscriptions, provide multiple subscription groups, one for each plan.
+        * Plans in different subscription groups can belong to different [item families](/docs/api/item_families). When item families are enabled, all item prices in a group must belong to the same item family as that group's plan.
         * You cannot set a service period for a charge. This operation has no equivalent of [subscription_items[service_period_days]](/docs/api/subscriptions/create-subscription-for-items#subscription_items_service_period_days).
 
         #### Subscriptions
@@ -162552,32 +162654,36 @@ paths:
             deprecated: false
             example: subscription_reactivation
             properties:
-              in:
-                type: string
-                description: |-
-                  * `unbilled_charges` - Unbilled Charges
-                  * `update_subscriptions` - Update Subscriptions
-                  * `subscription_reactivation` - Subscription Reactivation
-                  * `trial_end_actions` - Trial End Actions
-                enum:
-                  - unbilled_charges
-                  - update_subscriptions
-                  - subscription_reactivation
-                  - trial_end_actions
-                pattern: ^\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\]$
-                example: null
               is:
                 type: string
                 description: |-
                   * `unbilled_charges` - Unbilled Charges
                   * `update_subscriptions` - Update Subscriptions
+                  * `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices
                   * `subscription_reactivation` - Subscription Reactivation
                   * `trial_end_actions` - Trial End Actions
                 enum:
                   - unbilled_charges
                   - update_subscriptions
+                  - backdating_subscriptions_and_invoices
                   - subscription_reactivation
                   - trial_end_actions
+                example: null
+              in:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - backdating_subscriptions_and_invoices
+                  - subscription_reactivation
+                  - trial_end_actions
+                pattern: ^\[(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions))*\]$
                 example: null
       responses:
         "200":
@@ -163075,32 +163181,36 @@ paths:
             deprecated: false
             example: subscription_reactivation
             properties:
-              in:
-                type: string
-                description: |-
-                  * `unbilled_charges` - Unbilled Charges
-                  * `update_subscriptions` - Update Subscriptions
-                  * `subscription_reactivation` - Subscription Reactivation
-                  * `trial_end_actions` - Trial End Actions
-                enum:
-                  - unbilled_charges
-                  - update_subscriptions
-                  - subscription_reactivation
-                  - trial_end_actions
-                pattern: ^\[(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|subscription_reactivation|trial_end_actions))*\]$
-                example: null
               is:
                 type: string
                 description: |-
                   * `unbilled_charges` - Unbilled Charges
                   * `update_subscriptions` - Update Subscriptions
+                  * `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices
                   * `subscription_reactivation` - Subscription Reactivation
                   * `trial_end_actions` - Trial End Actions
                 enum:
                   - unbilled_charges
                   - update_subscriptions
+                  - backdating_subscriptions_and_invoices
                   - subscription_reactivation
                   - trial_end_actions
+                example: null
+              in:
+                type: string
+                description: |-
+                  * `unbilled_charges` - Unbilled Charges
+                  * `update_subscriptions` - Update Subscriptions
+                  * `backdating_subscriptions_and_invoices` - Backdating Subscriptions And Invoices
+                  * `subscription_reactivation` - Subscription Reactivation
+                  * `trial_end_actions` - Trial End Actions
+                enum:
+                  - unbilled_charges
+                  - update_subscriptions
+                  - backdating_subscriptions_and_invoices
+                  - subscription_reactivation
+                  - trial_end_actions
+                pattern: ^\[(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions)(,(unbilled_charges|update_subscriptions|backdating_subscriptions_and_invoices|subscription_reactivation|trial_end_actions))*\]$
                 example: null
       responses:
         "200":
@@ -165869,6 +165979,19 @@ paths:
             deprecated: false
             example: SCHEDULED
             properties:
+              is:
+                type: string
+                description: |-
+                  * `scheduled` - Status of the subscription schedule on creation. 
+                  * `succeeded` - The execution status of the schedule if success. 
+                  * `failed` - The execution status of the schedule if failed. 
+                  * `draft` - Status of the subscription schedule considering as draft
+                enum:
+                  - scheduled
+                  - succeeded
+                  - failed
+                  - draft
+                example: null
               in:
                 type: string
                 description: |-
@@ -165882,19 +166005,6 @@ paths:
                   - failed
                   - draft
                 pattern: ^\[(scheduled|succeeded|failed|draft)(,(scheduled|succeeded|failed|draft))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `scheduled` - Status of the subscription schedule on creation. 
-                  * `succeeded` - The execution status of the schedule if success. 
-                  * `failed` - The execution status of the schedule if failed. 
-                  * `draft` - Status of the subscription schedule considering as draft
-                enum:
-                  - scheduled
-                  - succeeded
-                  - failed
-                  - draft
                 example: null
         - name: subscription_id
           in: query
@@ -165920,13 +166030,13 @@ paths:
             deprecated: false
             example: 8gsnbYfsMLds
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: effective_from
           in: query
@@ -179833,13 +179943,13 @@ paths:
             deprecated: false
             example: HmaT0avT2mtbTL3mR
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: reference_id
           in: query
@@ -179861,13 +179971,13 @@ paths:
             deprecated: false
             example: einvoice_ref_123
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
         - name: updated_at
           in: query
@@ -188465,9 +188575,9 @@ paths:
             deprecated: false
             example: us-east
             properties:
-              not_in:
+              is:
                 type: string
-                pattern: ^\[(.*)(,.*)*\]$
+                minLength: 1
                 example: null
               in:
                 type: string
@@ -188477,9 +188587,9 @@ paths:
                 type: string
                 minLength: 1
                 example: null
-              is:
+              not_in:
                 type: string
-                minLength: 1
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
       responses:
         "200":
@@ -193933,13 +194043,13 @@ paths:
             type: object
             deprecated: false
             properties:
-              in:
-                type: string
-                pattern: ^\[(.*)(,.*)*\]$
-                example: null
               is:
                 type: string
                 minLength: 1
+                example: null
+              in:
+                type: string
+                pattern: ^\[(.*)(,.*)*\]$
                 example: null
             example: null
         - name: credit_unit_id
@@ -196243,6 +196353,31 @@ paths:
             type: object
             deprecated: false
             properties:
+              is:
+                type: string
+                description: |-
+                  * `allocation` - Allocation Operation
+                  * `capture` - Capture Operation
+                  * `authorize` - Authorization Operation
+                  * `release_authorization` - Release Authorization Operation
+                  * `capture_authorization` - Capture Authorization Operation
+                  * `expiry` - Expiry Operation
+                  * `void` - Void Operation
+                  * `rollover` - Rollover Operation
+                  * `adjustment` - Overdraft Adjustment Operation
+                  * `overdraft_settlement` - Settle Overdraft Amount Operation
+                enum:
+                  - allocation
+                  - capture
+                  - authorize
+                  - release_authorization
+                  - capture_authorization
+                  - expiry
+                  - void
+                  - rollover
+                  - adjustment
+                  - overdraft_settlement
+                example: null
               in:
                 type: string
                 description: |-
@@ -196268,31 +196403,6 @@ paths:
                   - adjustment
                   - overdraft_settlement
                 pattern: ^\[(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement)(,(allocation|capture|authorize|release_authorization|capture_authorization|expiry|void|rollover|adjustment|overdraft_settlement))*\]$
-                example: null
-              is:
-                type: string
-                description: |-
-                  * `allocation` - Allocation Operation
-                  * `capture` - Capture Operation
-                  * `authorize` - Authorization Operation
-                  * `release_authorization` - Release Authorization Operation
-                  * `capture_authorization` - Capture Authorization Operation
-                  * `expiry` - Expiry Operation
-                  * `void` - Void Operation
-                  * `rollover` - Rollover Operation
-                  * `adjustment` - Overdraft Adjustment Operation
-                  * `overdraft_settlement` - Settle Overdraft Amount Operation
-                enum:
-                  - allocation
-                  - capture
-                  - authorize
-                  - release_authorization
-                  - capture_authorization
-                  - expiry
-                  - void
-                  - rollover
-                  - adjustment
-                  - overdraft_settlement
                 example: null
             example: null
         - name: sort_by
@@ -199024,6 +199134,7 @@ components:
           enum:
             - is
             - in
+            - contains
           example: null
         values:
           type: array
@@ -243117,7 +243228,7 @@ components:
                 The identifier the card network (for example Visa or Mastercard) assigned to the original customer-initiated transaction that established this stored-credential chain.
               maxLength: 100
               example: null
-            transaction_link_id:
+            original_mastercard_transaction_link_id:
               type: string
               deprecated: false
               maxLength: 100
@@ -245007,10 +245118,12 @@ components:
             * update_subscriptions - Preferences applied when a subscription is updated, including plan changes and scheduled cancellations.
             * trial_end_actions - Preferences for what happens when a trial ends: the subscription is activated and billed, or it is cancelled.
             * unbilled_charges - Preferences for whether charges from a subscription action are invoiced immediately or held as unbilled charges until the next invoice.
+            * backdating_subscriptions_and_invoices - Preferences for recording subscription actions and their invoices with a past date.
             * subscription_reactivation - Preferences for reactivating a cancelled subscription before its current billing term ends.
           enum:
             - unbilled_charges
             - update_subscriptions
+            - backdating_subscriptions_and_invoices
             - subscription_reactivation
             - trial_end_actions
           example: null
@@ -245212,6 +245325,7 @@ components:
           description: |
             The area of Chargebee this preference belongs to. Pass this as the required \`preference_group\[\]\` filter on \[List preference definitions\](/docs/api/preference_definitions/list-preference-definitions) and \[List preferences\](/docs/api/preferences/list-preferences).
 
+            * backdating_subscriptions_and_invoices - Preferences for recording subscription actions and their invoices with a past date.
             * trial_end_actions - Preferences for what happens when a trial ends: the subscription is activated and billed, or it is cancelled.
             * unbilled_charges - Preferences for whether charges from a subscription action are invoiced immediately or held as unbilled charges until the next invoice.
             * update_subscriptions - Preferences applied when a subscription is updated, including plan changes and scheduled cancellations.
@@ -245219,6 +245333,7 @@ components:
           enum:
             - unbilled_charges
             - update_subscriptions
+            - backdating_subscriptions_and_invoices
             - subscription_reactivation
             - trial_end_actions
           example: null
@@ -245307,6 +245422,7 @@ components:
                 enum:
                   - is
                   - in
+                  - contains
                 example: null
               values:
                 type: array
@@ -245624,6 +245740,7 @@ components:
       enum:
         - unbilled_charges
         - update_subscriptions
+        - backdating_subscriptions_and_invoices
         - subscription_reactivation
         - trial_end_actions
       example: null
@@ -265268,6 +265385,11 @@ components:
               deprecated: false
               description: |
                 The network transaction identifier returned by the card network or gateway for this transaction.
+              maxLength: 100
+              example: null
+            mastercard_transaction_link_id:
+              type: string
+              deprecated: false
               maxLength: 100
               example: null
             original_network_transaction_id:
