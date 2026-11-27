@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-25.93dbb747b7b5
+  version: 2026-11-26.81995167413c
   x-cb-product-catalog-version: 1
   x-cb-api-version: 2
 servers:
@@ -46030,7 +46030,7 @@ paths:
         * The invoice `status` must be `payment_due`, `posted`, or `not_paid`.
         * The invoice must not have successful payments, taxes withheld, applied credit notes, adjustment amounts, refundable credits, or refunds in progress.
         * The outstanding authorization must not already have a successful or in-progress capture.
-        * This operation is not supported for 2Checkout.  
+        * Chargebee does not support this operation for invoices whose customer's card payment source is 2Checkout.  
 
         ### Impacts
 
