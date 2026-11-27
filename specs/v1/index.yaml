@@ -5,7 +5,7 @@ info:
     name: Chargebee Support
     url: https://www.chargebee.com
     email: support@chargebee.com
-  version: 2026-11-25.93dbb747b7b5
+  version: 2026-11-26.81995167413c
   x-cb-product-catalog-version: 1
   x-cb-api-version: 1
 servers:
@@ -9607,7 +9607,7 @@ paths:
         Switches the gateway in which customer's card information is stored.
 
         This is applicable only if the payment method is "card".  
-        This operation is not supported if the current gateway is Braintree or Stripe.
+        This operation is supported only for cards stored in gateways powered by Spreedly.
       operationId: switch_gateway
       parameters:
         - name: chargebee-request-origin-device
